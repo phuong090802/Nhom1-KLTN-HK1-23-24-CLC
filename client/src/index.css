@@ -1,0 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #EDEDED;
+    font-family: 'Source Sans Pro', sans-serif;
+}
