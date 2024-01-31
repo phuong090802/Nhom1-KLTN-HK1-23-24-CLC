@@ -1,5 +1,5 @@
-import DepartmentList from "../../../components/department_list"
-import NewsList from "../../../components/news_list"
+import DepartmentList from "../../../components/department-list"
+import NewsList from "../../../components/news-list"
 import CounsellorListContent from "./CounsellorListContent"
 
 const UserCounsellorList = () => {
