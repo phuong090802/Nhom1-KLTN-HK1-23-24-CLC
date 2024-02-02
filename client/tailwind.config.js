@@ -10,6 +10,9 @@ export default {
         'primary': '#2785DC',
         'ghost-white': '#EDEDED',
       },
+      fontFamily: {
+        'title': "Play"
+      }
     },
   },
   plugins: [],

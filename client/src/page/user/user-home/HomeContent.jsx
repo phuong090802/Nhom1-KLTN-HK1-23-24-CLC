@@ -2,12 +2,16 @@ import user_avatar from '../../../assets/svg/user_avatar.svg'
 import Filter from '../../../components/filter'
 
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
-import HomeContentItem from './HomeContentItem';
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
+import LoadingComponent from '../../../components/loading-component';
+
+const HomeContentItem = lazy(() => import('./HomeContentItem'))
 
 const HomeContent = () => {
 
     const [selectedId, setSelectedId] = useState('')
+
+    const sampleId = [1, 2, 3, 4, 5, 6, 7, 8]
 
     return <>
         <div className='bg-white py-4 rounded-2xl flex items-center justify-between shadow-md'>
@@ -31,14 +35,13 @@ const HomeContent = () => {
         </div>
 
         <div className='mt-4'>
-            <HomeContentItem id={1} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={2} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={3} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={4} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={5} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={6} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={7} selectedId={selectedId} setSelectedId={setSelectedId} />
-            <HomeContentItem id={8} selectedId={selectedId} setSelectedId={setSelectedId} />
+            {
+                sampleId.map((id) => {
+                    return <Suspense fallback={<LoadingComponent />}>
+                        < HomeContentItem key={id} id={id} selectedId={selectedId} setSelectedId={setSelectedId} />
+                    </Suspense>
+                })
+            }
         </div>
     </>
 }
