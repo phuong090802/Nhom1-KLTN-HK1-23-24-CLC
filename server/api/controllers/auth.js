@@ -74,7 +74,7 @@ export const loginHandler = catchAsyncErrors(async (req, res, next) => {
   sendToken(res, token, refreshToken, userInfo);
 });
 
-export const refreshHandler = catchAsyncErrors(async (req, res, next) => {
+export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
 
