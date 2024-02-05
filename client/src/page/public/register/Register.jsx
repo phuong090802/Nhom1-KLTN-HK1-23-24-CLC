@@ -3,11 +3,8 @@ import { useState } from 'react';
 import FormStep1 from './FormStep1';
 import FormStep2 from './FormStep2';
 
-let renderCount = 0;
 
 const Register = () => {
-
-    renderCount++
 
     const [step, setStep] = useState(1)
 
@@ -23,15 +20,7 @@ const Register = () => {
 
     const [registerData, setRegisterData] = useState(initRegisterData)
 
-    const HandleSubmitForm2 = (data) => {
-        console.log({ ...registerData, ...data });
-        setRegisterData(initRegisterData)
-    }
-
     return <div className="h-[95vh] bg-[#C4D1FF] flex justify-center items-center ">
-        <div className='fixed top-0 left-0 bg-slate-300 p-5'>
-            Render Count: {renderCount}
-        </div>
         <div className="bg-white w-96 rounded-2xl flex flex-col justify-center items-center text-black/75 shadow-md">
             <div className='pt-8 pb-4 text-3xl font-bold font-title text-[#2E3192] self-start ml-8'>
                 Đăng ký
