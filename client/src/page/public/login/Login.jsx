@@ -1,34 +1,77 @@
 import logo from '../../../assets/svg/big_logo.svg'
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
+import { useForm } from 'react-hook-form';
+import { signIn } from '../../../service/guest/authorService';
 
 
 const Login = () => {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        mode: 'onBlur',
+        defaultValues: {
+            username: '',
+            password: ''
+        }
+    })
+
+    const onSubmit = async (data) => {
+        try {
+            const response = await signIn(data)
+            console.log(response);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return <div className="h-[95vh] bg-[#C4D1FF] flex justify-center items-center ">
 
         <div className="bg-white w-96 rounded-2xl flex flex-col justify-center items-center text-black/75 shadow-md">
-            <img src={logo} alt="" className='mt-12 w-32' />
+            <div className='pt-8 pb-4 text-3xl font-bold font-title text-[#2E3192] self-start ml-8'>
+                Đăng nhập
+                <p className='text-xs font-medium text-black/50 w-3/4'>
+                    Chào mừng trở lại! Vui lòng đăng nhập để sử dụng các chức năng tính năng của trang tư vấn
+                </p>
+            </div>
 
-            <form action="" className='px-8 pb-8 w-full mt-8'>
-                <label htmlFor="phoneNumber "
+            <form
+                className='px-8 pb-8 w-full'
+                onSubmit={handleSubmit((data) => {
+                    onSubmit(data)
+                })}>
+                <label htmlFor="username "
                     className='text-[18px] font-semibold'>Số điện thoại</label>
-                <div className='relative mb-6 mt-2'>
+                <div className={`relative mt-2 ${!errors?.username && 'mb-6'}`}>
                     <input
+                        {...register("username", {
+                            required: 'Số điện thoại không được để trống'
+                        })}
+                        className='block outline-none border-b border-black w-full pl-8'
                         type="tel"
-                        name="phoneNumber" id=""
-                        className='block outline-none border-b border-black w-full pl-8' placeholder='0123456789' />
+                        placeholder='0123456789' />
                     <LocalPhoneOutlinedIcon className='absolute inset-y-0 start-0' />
                 </div>
+                {errors?.username && <p className='text-xs text-red-500 my-1'>{errors.username.message}</p>}
+
 
                 <label htmlFor="password"
                     className='text-[18px] font-semibold '>Mật khẩu</label>
-                <div className='relative mb-4 mt-2'>
+                <div className={`relative mt-2 ${!errors?.password && 'mb-6'}`}>
                     <input
-                        type="password"
-                        name="password" id=""
-                        className='block outline-none border-b border-black w-full pl-8' placeholder='xxxxxx' />
+                        {...register("password", {
+                            required: "Mật khẩu không được để trống"
+                        })}
+                        className='block outline-none border-b border-black w-full pl-8'
+                        placeholder='xxxxxx' />
                     <HttpsOutlinedIcon className='absolute inset-y-0 start-0' />
                 </div>
+                {errors?.password && <p className='text-xs text-red-500 my-1'>{errors.password.message}</p>}
+
 
                 <button
                     type='submit'

@@ -1,12 +1,13 @@
 import API from "../api";
-import { jsonHeader } from "../header";
 
 const signUp = (data) => {
-    return API.post('auth/register', data, {
-        headers: jsonHeader
-    })
+    return API.post('auth/register', data)
+}
+const signIn = (data) => {
+    return API.post('auth/login', data)
 }
 
 export {
-    signUp
+    signUp,
+    signIn
 }
