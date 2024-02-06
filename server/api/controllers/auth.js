@@ -116,12 +116,10 @@ export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
 export const logoutHandler = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
-
   // object
   const refreshToken = await RefreshToken.findOne({ token });
 
   await RefreshToken.deleteMany({ branch: refreshToken.branch });
-
   clearToken(res);
 
   res.json({

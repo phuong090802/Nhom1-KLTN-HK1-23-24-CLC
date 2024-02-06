@@ -4,7 +4,7 @@ import User from '../../models/user.js';
 import catchAsyncErrors from './catchAsyncErrors.js';
 import ErrorHandler from '../../utils/ErrorHandler.js';
 
-export const isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
+export const isAuthenticatedHandler = catchAsyncErrors(async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return next(
@@ -22,7 +22,7 @@ export const isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
   next();
 });
 
-export const authorizeRoles = (...roles) => {
+export const authorizeRolesHandler = (...roles) => {
   return (req, res, next) => {
     const role = req.user.role;
     if (!roles.includes(role)) {
@@ -39,7 +39,7 @@ export const authorizeRoles = (...roles) => {
 };
 
 const authHandler = (...roles) => [
-  isAuthenticatedUser,
-  authorizeRoles(...roles),
+  isAuthenticatedHandler,
+  authorizeRolesHandler(...roles),
 ];
 export default authHandler;
