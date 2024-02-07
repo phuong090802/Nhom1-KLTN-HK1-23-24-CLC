@@ -3,9 +3,13 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import { useForm } from 'react-hook-form';
 import { signIn } from '../../../service/guest/authorService';
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router';
 
 
 const Login = () => {
+
+    const naviagte = useNavigate()
 
     const {
         register,
@@ -22,8 +26,11 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             const response = await signIn(data)
-            console.log(response);
-
+            Cookies.set('isLoggedIn', true)
+            for (const [key, value] of Object.entries(response.user)) {
+                Cookies.set(key, value)
+            }
+            naviagte('/')
         } catch (error) {
             console.log(error);
         }
@@ -66,6 +73,7 @@ const Login = () => {
                         {...register("password", {
                             required: "Mật khẩu không được để trống"
                         })}
+                        type='password'
                         className='block outline-none border-b border-black w-full pl-8'
                         placeholder='xxxxxx' />
                     <HttpsOutlinedIcon className='absolute inset-y-0 start-0' />

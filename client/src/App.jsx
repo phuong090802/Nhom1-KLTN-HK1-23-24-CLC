@@ -7,6 +7,7 @@ import CounsellorQuestionList from "./page/counsellor/counsellor-question-list";
 import Login from "./page/public/login";
 import Register from "./page/public/register/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
   return (
@@ -15,16 +16,16 @@ export default function App() {
         <Layout >
           <Routes>
             <Route path="/" element={<UserHome />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/dang-nhap" element={<Login />} />
+            <Route path="/dang-ky" element={<Register />} />
+            <Route path="/thu-vien-cau-hoi" element={<UserFaqs />} />
+            <Route path="/danh-sach-tu-van-vien" element={<UserCounsellorList />} />
 
+            <Route element={<ProtectedRoute />}>
+              <Route path="/counsellor" element={<CounsellorHome />} />
+              <Route path="/counsellor/danh-sach-cau-hoi" element={<CounsellorQuestionList />} />
+            </Route>
 
-            <Route path="/faqs" element={<UserFaqs />} />
-            <Route path="/counsellors" element={<UserCounsellorList />} />
-
-
-            <Route path="/counsellor" element={<CounsellorHome />} />
-            <Route path="/counsellor/question-list" element={<CounsellorQuestionList />} />
           </Routes>
         </Layout>
       </BrowserRouter>

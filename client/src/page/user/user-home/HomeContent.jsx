@@ -36,8 +36,8 @@ const HomeContent = () => {
 
         <div className='mt-4'>
             {
-                sampleId.map((id) => {
-                    return <Suspense fallback={<LoadingComponent />}>
+                sampleId.map((id, index) => {
+                    return <Suspense key={index} fallback={<LoadingComponent />}>
                         < HomeContentItem key={id} id={id} selectedId={selectedId} setSelectedId={setSelectedId} />
                     </Suspense>
                 })
