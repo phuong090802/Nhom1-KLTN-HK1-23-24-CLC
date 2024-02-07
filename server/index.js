@@ -21,3 +21,12 @@ server.listen(process.env.PORT, () => {
     `Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode`
   );
 });
+
+// Handle Unhandled Promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  console.log('Shutting down the server due to Unhandled Promise rejection');
+  server.close(() => {
+    process.exit(1);
+  });
+});
