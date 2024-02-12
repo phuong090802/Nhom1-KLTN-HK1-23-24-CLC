@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { signIn } from '../../../service/guest/authorService';
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router';
+import './style.css'
 
 
 const Login = () => {
@@ -36,66 +37,54 @@ const Login = () => {
         }
     }
 
-    return <div className="h-[95vh] bg-[#C4D1FF] flex justify-center items-center ">
-
-        <div className="bg-white w-96 rounded-2xl flex flex-col justify-center items-center text-black/75 shadow-md">
-            <div className='pt-8 pb-4 text-3xl font-bold font-title text-[#2E3192] self-start ml-8'>
+    return <div className="container">
+        <div className="form-container">
+            <div className='form-header'>
                 Đăng nhập
-                <p className='text-xs font-medium text-black/50 w-3/4'>
-                    Chào mừng trở lại! Vui lòng đăng nhập để sử dụng các chức năng tính năng của trang tư vấn
-                </p>
+                <p>Chào mừng trở lại! Vui lòng đăng nhập để sử dụng các chức năng tính năng của trang tư vấn</p>
             </div>
 
             <form
-                className='px-8 pb-8 w-full'
+                className='form-body'
                 onSubmit={handleSubmit((data) => {
                     onSubmit(data)
                 })}>
-                <label htmlFor="username "
-                    className='text-[18px] font-semibold'>Số điện thoại</label>
-                <div className={`relative mt-2 ${!errors?.username && 'mb-6'}`}>
+                <label htmlFor="username">Số điện thoại</label>
+                <div className={`input-container ${!errors?.username && 'mb-6'}`}>
                     <input
                         {...register("username", {
                             required: 'Số điện thoại không được để trống'
                         })}
-                        className='block outline-none border-b border-black w-full pl-8'
                         type="tel"
                         placeholder='0123456789' />
-                    <LocalPhoneOutlinedIcon className='absolute inset-y-0 start-0' />
+                    <LocalPhoneOutlinedIcon className='input-icon' />
                 </div>
-                {errors?.username && <p className='text-xs text-red-500 my-1'>{errors.username.message}</p>}
+                {errors?.username && <p className='alert-message'>{errors.username.message}</p>}
 
 
-                <label htmlFor="password"
-                    className='text-[18px] font-semibold '>Mật khẩu</label>
-                <div className={`relative mt-2 ${!errors?.password && 'mb-6'}`}>
+                <label htmlFor="password">Mật khẩu</label>
+                <div className={`input-container ${!errors?.password && 'mb-6'}`}>
                     <input
                         {...register("password", {
                             required: "Mật khẩu không được để trống"
                         })}
                         type='password'
-                        className='block outline-none border-b border-black w-full pl-8'
                         placeholder='xxxxxx' />
-                    <HttpsOutlinedIcon className='absolute inset-y-0 start-0' />
+                    <HttpsOutlinedIcon className='input-icon' />
                 </div>
-                {errors?.password && <p className='text-xs text-red-500 my-1'>{errors.password.message}</p>}
+                {errors?.password && <p className='alert-message'>{errors.password.message}</p>}
 
 
                 <button
                     type='submit'
-                    className='w-full text-xl font-semibold text-white bg-primary rounded-lg py-2 mt-4'>
+                    className='login-btn bg-primary'>
                     Đăng nhập
                 </button>
             </form>
 
-            <div className='flex justify-between w-full px-8 pb-8'>
-                <p className='text-xs font-semibold'>
-                    Chưa có tài khoản?
-                    <span className='text-primary'>Đăng ký</span>
-                </p>
-                <p className='text-xs font-semibold'>
-                    <span className='text-primary'>Quên mật khẩu</span>
-                </p>
+            <div className='form-footer'>
+                <p>Chưa có tài khoản? <span className='text-primary'>Đăng ký</span></p>
+                <p><span className='text-primary'>Quên mật khẩu</span></p>
             </div>
         </div>
     </div>

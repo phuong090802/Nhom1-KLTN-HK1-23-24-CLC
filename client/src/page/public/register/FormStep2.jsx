@@ -6,7 +6,7 @@ import { signUp } from '../../../service/guest/authorService';
 import { checkPhoneExist } from '../../../socket/guest/authorSocket';
 import validator from "validator"
 import useAuthorSocket from '../../../hooks/useAuthorSocket';
-import { alertTextStyle, buttonStyle, formStyle, inputContainer, inputStyle, labelStyle } from './style';
+import './style.css'
 
 
 
@@ -70,29 +70,26 @@ const FormStep2 = ({ data, setData, setStep }) => {
     }
 
     return <form
-        className={formStyle}
+        className='form-body'
         onSubmit={handleSubmit((data) => {
             onSubmit(data)
         })}>
-        <label htmlFor="phoneNumber"
-            className={labelStyle}>Số điện thoại</label>
-        <div className={`${inputContainer} ${!errors?.phoneValidate && 'mb-6'}`}>
+        <label htmlFor="phoneNumber">Số điện thoại</label>
+        <div className={`input-container ${!errors?.phoneValidate && 'mb-6'}`}>
             <input
                 type="tel"
                 {...register("phoneNumber", {
                     onBlur: e => phoneValidate(e.target.value)
                 })}
                 name='phoneNumber'
-                className={inputStyle}
                 placeholder='0123456789' />
-            <LocalPhoneOutlinedIcon className='absolute inset-y-0 start-0' />
+            <LocalPhoneOutlinedIcon className='input-icon' />
         </div>
-        {errors?.phoneValidate && <p className={alertTextStyle}>{errors.phoneValidate.message}</p>}
+        {errors?.phoneValidate && <p className='alert-message'>{errors.phoneValidate.message}</p>}
 
 
-        <label htmlFor="password "
-            className={labelStyle}>Mật khẩu</label>
-        <div className={`${inputContainer} ${!errors?.password && 'mb-6'}`}>
+        <label htmlFor="password ">Mật khẩu</label>
+        <div className={`input-container ${!errors?.password && 'mb-6'}`}>
             <input
                 type="password"
                 {...register("password", {
@@ -103,28 +100,25 @@ const FormStep2 = ({ data, setData, setStep }) => {
                     }
                 })}
                 name='password'
-                className={inputStyle}
                 placeholder='xxxxxx' />
-            <HttpsOutlinedIcon className='absolute inset-y-0 start-0' />
+            <HttpsOutlinedIcon className='input-icon' />
         </div>
-        {errors?.password && <p className={alertTextStyle}>{errors.password.message}</p>}
+        {errors?.password && <p className='alert-message'>{errors.password.message}</p>}
 
 
-        <label htmlFor="rePassword "
-            className={labelStyle}>Xác nhận mật khẩu</label>
-        <div className={`${inputContainer} ${!errors?.confirmPasswordValidate && 'mb-6'}`}>
+        <label htmlFor="rePassword ">Xác nhận mật khẩu</label>
+        <div className={`input-container ${!errors?.confirmPasswordValidate && 'mb-6'}`}>
             <input
                 type="password"
                 {...register("confirmPassword", {
                     onBlur: e => confirmPasswordValidate(e.target.value)
                 })}
                 name='confirmPassword'
-                className={inputStyle}
                 placeholder='xxxxxx' />
-            <HttpsOutlinedIcon className='absolute inset-y-0 start-0' />
+            <HttpsOutlinedIcon className='input-icon' />
         </div>
         {
-            errors?.confirmPasswordValidate && <p className={alertTextStyle}>
+            errors?.confirmPasswordValidate && <p className='alert-message'>
                 {errors.confirmPasswordValidate.message}
             </p>
         }
@@ -137,9 +131,10 @@ const FormStep2 = ({ data, setData, setStep }) => {
             </span>
             <span className='border-[3px] border-blue-400'></span>
         </div>
+        
         <button
             type='submit'
-            className={buttonStyle}>
+            className='submit-btn'>
             Đăng ký
         </button>
     </form >

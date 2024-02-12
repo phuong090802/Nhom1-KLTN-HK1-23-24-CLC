@@ -9,7 +9,7 @@ import { checkEmailExist } from "../../../socket/guest/authorSocket";
 import useAuthorSocket from "../../../hooks/useAuthorSocket";
 import { objIsEmpty } from "../../../utils/object";
 
-import { inputContainer, labelStyle, formStyle, iconStyle, inputStyle, alertTextStyle, buttonStyle } from "./style";
+import './style.css'
 
 const FormStep1 = ({ data, setData, setStep }) => {
 
@@ -70,44 +70,40 @@ const FormStep1 = ({ data, setData, setStep }) => {
     };
 
     return <form
-        className={formStyle}
+        className="form-body"
         onSubmit={handleSubmit((data) => {
             onSubmit(data)
         })}>
-        <label htmlFor="name"
-            className={labelStyle}>Họ & Tên</label>
-        <div className={`${inputContainer} ${!errors?.fullName && 'mb-6'}`}>
+        <label htmlFor="name">Họ & Tên</label>
+        <div className={`input-container ${!errors?.fullName && 'mb-6'}`}>
             <input
                 type="text"
                 {...register("fullName", {
                     required: 'Tên không được để trống!!',
                 })}
                 name='fullName'
-                className={inputStyle}
                 placeholder='Trần Văn A' />
-            <PersonOutlineOutlinedIcon className={iconStyle} />
+            <PersonOutlineOutlinedIcon className='input-icon' />
         </div>
-        {errors?.fullName && <p className={alertTextStyle}>{errors.fullName.message}</p>}
+        {errors?.fullName && <p className='alert-message'>{errors.fullName.message}</p>}
 
-        <label htmlFor="occupation "
-            className={labelStyle}>Nghề nghiệp</label>
-        <div className={`${inputContainer} mb-6`}>
+        <label htmlFor="occupation ">Nghề nghiệp</label>
+        <div className={`input-container mb-6`}>
             <select
                 {...register("occupation")}
-                className={`${inputStyle} pb-1`}
+                className={`pb-1`}
                 id='occupation'>
                 <option value={'Sinh viên'}>Sinh viên</option>
                 <option value={'Cựu sinh viên'}>Cựu sinh viên</option>
                 <option value={'Phụ huynh'}>Phụ huynh</option>
                 <option value={'Khác'}>Khác</option>
             </select>
-            <WorkOutlineOutlinedIcon className={iconStyle} />
+            <WorkOutlineOutlinedIcon className='input-icon' />
         </div>
 
         <label
-            htmlFor="email "
-            className={labelStyle}>Email</label>
-        <div className={`${inputContainer} ${!errors?.emailValidate && 'mb-6'}`}>
+            htmlFor="email ">Email</label>
+        <div className={`input-container ${!errors?.emailValidate && 'mb-6'}`}>
             <input
                 type="email"
                 {...register("email", {
@@ -115,11 +111,10 @@ const FormStep1 = ({ data, setData, setStep }) => {
                         validateEmail(e.target.value)
                     }
                 })}
-                className={inputStyle}
                 placeholder='example@hcmute.com' />
-            <EmailOutlinedIcon className={iconStyle} />
+            <EmailOutlinedIcon className='input-icon' />
         </div>
-        {errors?.emailValidate && <p className={alertTextStyle}>{errors.emailValidate.message}</p>}
+        {errors?.emailValidate && <p className='alert-message'>{errors.emailValidate.message}</p>}
 
         <div className='grid grid-cols-2 gap-1 w-40 self-center mt-2'>
             <span className='border-[3px] border-blue-400'></span>
@@ -127,9 +122,7 @@ const FormStep1 = ({ data, setData, setStep }) => {
                 onClick={onNext}>
             </span>
         </div>
-        <button
-            className={buttonStyle}
-        >
+        <button className='submit-btn'>
             Tiếp tục
         </button>
     </form>
