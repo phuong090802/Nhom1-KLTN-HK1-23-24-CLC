@@ -1,6 +1,6 @@
 import User from '../../models/user.js';
 
-export const registerHandler = (namespace, socket) => {
+export const authHandler = (namespace, socket) => {
   socket.on('check-email-exists', async (email, callback) => {
     const user = await User.findOne({
       email: { $regex: new RegExp(email, 'i') },

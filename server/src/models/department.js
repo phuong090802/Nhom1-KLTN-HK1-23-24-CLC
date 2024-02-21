@@ -8,9 +8,9 @@ const departmentSchema = new mongoose.Schema({
     required: [true, 'Vui lòng nhập tên khoa'],
     maxLength: [100, 'Tên khoa không được vượt quá 100 ký tự'],
   },
-  isDeleted: {
+  isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

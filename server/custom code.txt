@@ -27,6 +27,7 @@
 4025 = nhập lại mật khẩu không khớp (đặt lại mật khẩu)
 4026 = không tìm thấy người dùng với email (đặt lại mật khẩu)
 4027 = Email liên kết với tài khoản chưa được xác thực (đặt lại mật khẩu)
+4028 = Tên khoa đã tồn tại
 
 ======//Thành công//=====
 2001 = register thành công
@@ -38,3 +39,5 @@
 2007 = gửi lại giá trị resetPasswordToken thành công
 2008 = đặt lại mật khẩu thành công
 2009 = email hợp lệ (quên mật khẩu)
+2010 = tên khoa khả dụng
+2011 = cập nhật khoa thành công
