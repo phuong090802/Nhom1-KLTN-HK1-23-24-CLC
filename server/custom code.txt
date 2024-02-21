@@ -19,9 +19,22 @@
 4017 = xác thực không thành công (chữ ký token không khớp)
 4018 = xác thực không thành công (token hết hạn)
 4019 = yêu cầu bị chặn bởi cors
+4020 = không tìm thấy người dùng với email (email không tồn tại hoặc email chưa được xác thực)
+4021 = lỗi server khi gửi email (thất bại)
+4022 = email liên kết với tài khoản chưa được xác thực
+4023 = otp trống
+4024 = token không tồn tại trong DB hoặc hết hạn
+4025 = nhập lại mật khẩu không khớp (đặt lại mật khẩu)
+4026 = không tìm thấy người dùng với email (đặt lại mật khẩu)
+4027 = Email liên kết với tài khoản chưa được xác thực (đặt lại mật khẩu)
+
 ======//Thành công//=====
 2001 = register thành công
 2002 = socket - email khả dụng
 2003 = socket - số điện thoại khả dụng
 2004 = đăng xuất thành công
 2005 = lấy thông tin bản thân thành công
+2006 = gửi email đặt lại mật khẩu thành công
+2007 = gửi lại giá trị resetPasswordToken thành công
+2008 = đặt lại mật khẩu thành công
+2009 = email hợp lệ (quên mật khẩu)

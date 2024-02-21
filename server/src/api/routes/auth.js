@@ -6,6 +6,9 @@ import {
   meHandler,
   refreshTokenHandler,
   registerHandler,
+  forgotPasswordHandler,
+  verifyOTPHandler,
+  resetPasswordHandler,
 } from '../controllers/auth.js';
 import { isAuthenticatedHandler } from '../middlewares/auth.js';
 
@@ -20,5 +23,8 @@ router.post('/logout', logoutHandler);
 // then router.use(authAllRole)
 // router.use(authHandler('USER', 'COUNSELLOR', 'DEPARTMENT_HEAD', 'SUPERVISOR', 'ADMIN'));
 router.get('/me', isAuthenticatedHandler, meHandler);
+router.post('/forgot-password', forgotPasswordHandler);
+router.post('/verify-otp', verifyOTPHandler);
+router.post('/reset-password/:token', resetPasswordHandler);
 
 export default router;

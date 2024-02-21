@@ -36,4 +36,31 @@ export const registerHandler = (namespace, socket) => {
     }
     callback(res);
   });
+
+  socket.on('verify-email', async (email, callback) => {
+    const user = await User.findOne({
+      email: { $regex: new RegExp(email, 'i') },
+    });
+
+    const res = {
+      success: true,
+      message: 'Email hợp lệ',
+      valid: true,
+      code: 2009,
+    };
+
+    if (!user) {
+      res.message = 'Không tìm thấy người dùng với email';
+      res.valid = false;
+      res.code = 4026;
+    }
+
+    if (!user.isEmailVerified) {
+      res.message = 'Email liên kết với tài khoản chưa được xác thực';
+      res.valid = false;
+      res.code = 4027;
+    }
+
+    callback(res);
+  });
 };

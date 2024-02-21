@@ -3,10 +3,12 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { nanoid } from 'nanoid';
+import crypto from 'crypto';
 
 import ErrorHandler from '../utils/ErrorHandler.js';
 import RefreshToken from './refreshToken.js';
 import Counsellor from './counsellor.js';
+import { generateOTP } from '../utils/authUtils.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -88,11 +90,19 @@ const userSchema = new mongoose.Schema({
       message: 'Vui lòng nhập nghề nghiệp',
     },
   },
+  forgotPassword: {
+    otp: {
+      type: String,
+    },
+    otpExpiresAt: {
+      type: Date,
+    },
+  },
   resetPassword: {
     token: {
       type: String,
     },
-    expires: {
+    resetTokenExpiresAt: {
       type: Date,
     },
   },
@@ -108,7 +118,7 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 userSchema.methods.generateAuthToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRATION_TIME_IN_SECONDS,
+    expiresIn: process.env.JWT_EXPIRATION_TIME_IN_MINUTES,
   });
 };
 
@@ -118,6 +128,33 @@ userSchema.methods.generateRefreshToken = async function () {
     owner: this._id,
   });
   return await refreshToken.save();
+};
+
+userSchema.methods.generateForgotPassword = async function () {
+  const otp = generateOTP(6);
+  this.forgotPassword.otp = otp;
+  this.forgotPassword.otpExpiresAt =
+    Date.now() + process.env.OTP_EXPIRATION_TIME_IN_SECONDS * 1000;
+  await this.save();
+  return otp;
+};
+
+userSchema.methods.generateResetPasswordToken = async function () {
+  // Generate token
+  const resetToken = crypto.randomBytes(20).toString('hex');
+
+  // Hash and set to resetPassword.token
+  this.resetPassword.token = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.resetPassword.resetTokenExpiresAt =
+    Date.now() +
+    process.env.RESET_PASSWORD_TOKEN_EXPIRATION_TIME_IN_MINUTES * 60 * 1000;
+  await this.save();
+
+  return resetToken;
 };
 
 userSchema.methods.getUserInfo = async function () {
@@ -144,7 +181,7 @@ userSchema.pre('save', async function (next) {
   }
   const { password, confirmPassword } = JSON.parse(this.password);
   if (!validator.equals(password, confirmPassword)) {
-    next(new ErrorHandler(400, 'Mật khẩu không khớp', 4003));
+    next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
   }
   this.password = await bcrypt.hash(password, 10);
   next();

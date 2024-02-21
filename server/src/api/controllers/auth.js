@@ -1,8 +1,11 @@
+import crypto from 'crypto';
+
 import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
 import User from '../../models/user.js';
 import ErrorHandler from '../../utils/ErrorHandler.js';
 import { sendToken, clearToken } from '../../utils/token.js';
 import RefreshToken from '../../models/refreshToken.js';
+import { sendVerificationEmail } from '../../utils/authUtils.js';
 
 export const registerHandler = catchAsyncErrors(async (req, res, next) => {
   const {
@@ -135,5 +138,118 @@ export const meHandler = catchAsyncErrors(async (req, res, next) => {
     success: true,
     user,
     code: 2005,
+  });
+});
+
+export const forgotPasswordHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = await User.findOne({
+      email: req.body.email,
+    });
+
+    if (!user) {
+      return next(
+        new ErrorHandler(404, 'Không tìm thấy người dùng với email', 4020)
+      );
+    }
+    
+
+    if (!user.isEmailVerified) {
+      return next(
+        new ErrorHandler(
+          400,
+          'Email liên kết với tài khoản chưa được xác thực',
+          4022
+        )
+      );
+    }
+
+    const otp = await user.generateForgotPassword();
+
+    const message = `Mã OTP của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
+
+    try {
+      await sendVerificationEmail({
+        email: user.email,
+        subject: 'Khôi phục mật khẩu Tư Vấn Sinh Viên',
+        message,
+      });
+      res.json({
+        success: true,
+        message: `Đã gửi email đến: ${user.email}`,
+        code: 2006,
+      });
+    } catch (error) {
+      user.forgotPassword = null;
+      await user.save();
+      return next(new ErrorHandler(500, error.message, 4021));
+    }
+  }
+);
+
+export const verifyOTPHandler = catchAsyncErrors(async (req, res, next) => {
+  const { email, otp } = req.body;
+  const user = await User.findOne({
+    email,
+    'forgotPassword.otp': otp,
+    'forgotPassword.otpExpiresAt': { $gt: Date.now() },
+  });
+  if (!user) {
+    return next(
+      new ErrorHandler(400, 'Mã OTP không hợp lệ. Vui lòng kiểm tra lại', 4023)
+    );
+  }
+
+  const resetPasswordToken = await user.generateResetPasswordToken();
+
+  user.forgotPassword = null;
+  await user.save();
+
+  res.json({
+    success: true,
+    resetPasswordToken,
+    code: 2007,
+  });
+});
+
+export const resetPasswordHandler = catchAsyncErrors(async (req, res, next) => {
+  // Hash URL token
+  const resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(req.params.token)
+    .digest('hex');
+
+  const user = await User.findOne({
+    'resetPassword.token': resetPasswordToken,
+    'resetPassword.resetTokenExpiresAt': { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(
+        400,
+        'Đặt lại mật khẩu không thành công. Vui lòng thử lại',
+        4024
+      )
+    );
+  }
+
+  const { password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    return next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4025));
+  }
+
+  const mergePassword = JSON.stringify({ password, confirmPassword });
+
+  user.password = mergePassword;
+  user.resetPassword = null;
+
+  await user.save();
+
+  res.json({
+    success: true,
+    message: 'Đặt lại mật khẩu thành công',
+    code: 2008,
   });
 });
