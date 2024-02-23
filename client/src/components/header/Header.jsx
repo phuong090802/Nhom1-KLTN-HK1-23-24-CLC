@@ -18,11 +18,13 @@ const Header = () => {
     const isLoggedIn = Cookies.get("isLoggedIn") === "true";
 
     return (
-        <div className="flex justify-between items-center bg-white h-[60px] border-b border-black/10">
+        <div className="flex justify-between items-center bg-white h-[60px] border-b border-black/10 relative">
             <div className='ml-14'>
                 <img className="" src={logo} alt="Logo HCMUTE" />
             </div>
-            <div className='flex gap-4'>
+            <div className={`${(locale.pathname !== '/dang-nhap' && locale.pathname !== '/dang-ky')
+                ? '' :
+                'self-center translate-x-[25%] left-1/2'} flex gap-4`}>
                 <HeaderButton icon={'home'} selected={selected} setSelected={setSelected} />
                 <HeaderButton icon={'faqs'} selected={selected} setSelected={setSelected} />
                 <HeaderButton icon={'counlist'} selected={selected} setSelected={setSelected} />

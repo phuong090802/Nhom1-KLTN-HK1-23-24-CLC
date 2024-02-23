@@ -27,11 +27,9 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             const response = await signIn(data)
-            Cookies.set('isLoggedIn', true)
-            for (const [key, value] of Object.entries(response.user)) {
-                Cookies.set(key, value)
-            }
-            naviagte('/')
+            var userData = JSON.stringify(response.user);
+            Cookies.set('userData', btoa(userData))
+            Cookies.set('accessToken', response.token)
         } catch (error) {
             console.log(error);
         }
