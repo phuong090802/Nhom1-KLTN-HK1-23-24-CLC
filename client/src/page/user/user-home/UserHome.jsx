@@ -7,7 +7,7 @@ const DepartmentList = lazy(() => import('../../../components/department-list'))
 
 const UserHome = () => {
     return <div className="mt-4 px-16 grid grid-cols-4 gap-4">
-        <div className="">
+        <div>
             <Suspense fallback={<LoadingComponent />}>
                 <NewsList />
             </Suspense>
@@ -15,7 +15,7 @@ const UserHome = () => {
         <div className="col-span-2">
             <HomeContent />
         </div>
-        <div className="">
+        <div>
             <Suspense fallback={<LoadingComponent />}>
                 <DepartmentList />
             </Suspense>

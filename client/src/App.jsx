@@ -8,6 +8,7 @@ import Login from "./page/public/login";
 import Register from "./page/public/register/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import Temp from "./temp/components";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
             <Route path="/dang-ky" element={<Register />} />
             <Route path="/thu-vien-cau-hoi" element={<UserFaqs />} />
             <Route path="/danh-sach-tu-van-vien" element={<UserCounsellorList />} />
+            <Route path="/temp" element={<Temp />} />
+
 
             <Route element={<ProtectedRoute />}>
               <Route path="/counsellor" element={<CounsellorHome />} />

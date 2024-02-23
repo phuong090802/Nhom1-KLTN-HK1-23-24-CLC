@@ -1,4 +1,5 @@
-const jsonHeader = { "Content-Type": "application/json" }
+const jsonHeader = { "Content-Type": "application/json",
+ }
 
 
 export {
