@@ -1,5 +1,5 @@
 import ErrorHandler from '../../utils/ErrorHandler.js';
-import objectMapper from '../../utils/objectMapper.js';
+import fieldMapper from '../../utils/fieldMapper.js';
 
 const errorHandler = (err, req, res, next) => {
   err.status = err.status || 500;
@@ -24,7 +24,7 @@ const errorHandler = (err, req, res, next) => {
     if (err.name === 'MongoServerError' && err.code === 11000) {
       const keys = Object.keys(err.keyValue);
       const message =
-        keys.map((key) => `${objectMapper[key]} đã được sử dụng`) + '';
+        keys.map((key) => `${fieldMapper[key]} đã được sử dụng`) + '';
       error = new ErrorHandler(409, message, 4001);
     }
 

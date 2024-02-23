@@ -8,7 +8,7 @@ import crypto from 'crypto';
 import ErrorHandler from '../utils/ErrorHandler.js';
 import RefreshToken from './refreshToken.js';
 import Counsellor from './counsellor.js';
-import { generateOTP } from '../utils/authUtils.js';
+import { generateOTP } from '../utils/auth.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -180,6 +180,14 @@ userSchema.pre('save', async function (next) {
     next();
   }
   const { password, confirmPassword } = JSON.parse(this.password);
+
+  if (
+    !validator.isLength(password.trim(), { min: 6 }) ||
+    !validator.isLength(confirmPassword.trim(), { min: 6 })
+  ) {
+    next(new ErrorHandler(400, 'Mật khẩu của bạn phải ít nhất 6 ký tự', 4025));
+  }
+
   if (!validator.equals(password, confirmPassword)) {
     next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
   }

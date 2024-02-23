@@ -1,7 +1,7 @@
-const objectMapper = {
+const fieldMapper = {
   email: 'Email',
   phoneNumber: 'Số điện thoại',
   departmentName: 'Tên khoa'
 };
 
-export default objectMapper;
+export default fieldMapper;

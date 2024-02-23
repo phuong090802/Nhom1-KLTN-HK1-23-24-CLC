@@ -24,10 +24,12 @@
 4022 = email liên kết với tài khoản chưa được xác thực
 4023 = otp trống
 4024 = token không tồn tại trong DB hoặc hết hạn
-4025 = nhập lại mật khẩu không khớp (đặt lại mật khẩu)
 4026 = không tìm thấy người dùng với email (đặt lại mật khẩu)
 4027 = Email liên kết với tài khoản chưa được xác thực (đặt lại mật khẩu)
+4025 = Mật khẩu của bạn phải ít nhất 6 ký tự
 4028 = Tên khoa đã tồn tại
+4029 = role không được phép hoặc không tồn tại
+4030 = Không tìm thấy khoa với id được truyền vào
 
 ======//Thành công//=====
 2001 = register thành công
@@ -41,3 +43,4 @@
 2009 = email hợp lệ (quên mật khẩu)
 2010 = tên khoa khả dụng
 2011 = cập nhật khoa thành công
+2012 = Thêm nhân sự thành công

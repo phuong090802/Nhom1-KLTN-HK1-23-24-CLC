@@ -5,7 +5,7 @@ import User from '../../models/user.js';
 import ErrorHandler from '../../utils/ErrorHandler.js';
 import { sendToken, clearToken } from '../../utils/token.js';
 import RefreshToken from '../../models/refreshToken.js';
-import { sendVerificationEmail } from '../../utils/authUtils.js';
+import { sendVerificationEmail } from '../../utils/auth.js';
 
 export const registerHandler = catchAsyncErrors(async (req, res, next) => {
   const {
@@ -152,7 +152,6 @@ export const forgotPasswordHandler = catchAsyncErrors(
         new ErrorHandler(404, 'Không tìm thấy người dùng với email', 4020)
       );
     }
-    
 
     if (!user.isEmailVerified) {
       return next(
@@ -235,10 +234,6 @@ export const resetPasswordHandler = catchAsyncErrors(async (req, res, next) => {
   }
 
   const { password, confirmPassword } = req.body;
-
-  if (password !== confirmPassword) {
-    return next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4025));
-  }
 
   const mergePassword = JSON.stringify({ password, confirmPassword });
 
