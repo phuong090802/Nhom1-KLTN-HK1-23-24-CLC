@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const counsellorSchema = new mongoose.Schema({
   department: {
     type: mongoose.Schema.Types.ObjectId,
-    required: [true, 'Thiếu thông tin phòng ban'],
+    // required: [true, 'Thiếu thông tin phòng ban'],
     ref: 'Department',
   },
   fields: [

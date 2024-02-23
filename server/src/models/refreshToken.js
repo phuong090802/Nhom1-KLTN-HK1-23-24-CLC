@@ -18,7 +18,7 @@ const refreshTokenSchema = new mongoose.Schema(
       ),
     },
     branch: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: [true, 'Thiếu thông tin nhánh token'],
     },
     owner: {

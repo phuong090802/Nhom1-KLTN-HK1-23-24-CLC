@@ -29,7 +29,10 @@
 4025 = Mật khẩu của bạn phải ít nhất 6 ký tự
 4028 = Tên khoa đã tồn tại
 4029 = role không được phép hoặc không tồn tại
-4030 = Không tìm thấy khoa với id được truyền vào
+4030 = Không tìm thấy khoa với id được truyền vào (/admin/staffs)
+4031 = Tư vấn viên đã được thêm vào phòng ban trước đó
+4032 = không tìm thấy tư vấn viên (tìm theo id + COUNSELLOR)
+4033 = Không tìm thấy khoa với id được truyền vào (/admin/counsellors)
 
 ======//Thành công//=====
 2001 = register thành công
@@ -43,4 +46,5 @@
 2009 = email hợp lệ (quên mật khẩu)
 2010 = tên khoa khả dụng
 2011 = cập nhật khoa thành công
-2012 = Thêm nhân sự thành công
+2012 = Thêm tư vấn viên/giám sát viên thành công
+2013 = Thêm tư vấn viên vào phòng ban thành cong

@@ -1,8 +1,8 @@
-import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
-import Department from '../../models/department.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
 import Counsellor from '../../models/counsellor.js';
+import Department from '../../models/department.js';
 import User from '../../models/user.js';
+import ErrorHandler from '../../utils/ErrorHandler.js';
+import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
 
 export const addDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
   const { departmentName } = req.body;
@@ -65,9 +65,14 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(400, `${role} không được hổ trợ`, 4029));
   }
   // check department Id
-  const department = await Department.findById(departmentId);
-  if (!department) {
-    return next(new ErrorHandler(404, `Không tìm thấy khoa`, 4030));
+
+  let department;
+
+  if (departmentId) {
+    department = await Department.findById(departmentId);
+    if (!department) {
+      return next(new ErrorHandler(404, `Không tìm thấy khoa`, 4030));
+    }
   }
 
   const mergePassword = JSON.stringify({ password, confirmPassword });
@@ -81,14 +86,26 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
     role,
   });
 
+  let dataCreateCounsellor = { user };
+
+  if (department) {
+    dataCreateCounsellor = { ...dataCreateCounsellor, department };
+  }
+
   if (user.role === 'COUNSELLOR') {
-    await Counsellor.create({ user, department });
+    await Counsellor.create(dataCreateCounsellor);
+  }
+
+  let roleStr = 'tư vấn viên';
+
+  if (user.role === 'SUPERVISOR') {
+    roleStr = 'giám sát viên';
   }
 
   // res
   res.status(201).json({
     success: true,
-    message: 'Thêm nhân sự thành công',
+    message: `Thêm ${roleStr} thành công`,
     code: 2012,
   });
 });
@@ -96,6 +113,38 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
 // endpoint (POST): /counsellor not in any department
 // add counsellor (COUNSELLOR) to department
 
-// export const addCounsellorToDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
+export const addCounsellorToDepartmentHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const { userId, departmentId } = req.body;
+    const user = await User.findOne({ _id: userId, role: 'COUNSELLOR' });
 
-// })
+    if (!user) {
+      return next(new ErrorHandler(404, 'Không tìm thấy tư vấn viên', 4032));
+    }
+
+    const counsellor = await Counsellor.findOne({ user });
+
+    if (counsellor.department) {
+      return next(
+        new ErrorHandler(
+          400,
+          'Tư vấn viên đã được thêm vào khoa trước đó',
+          4031
+        )
+      );
+    }
+    const department = await Department.findById(departmentId);
+    if (!department) {
+      return next(new ErrorHandler(404, `Không tìm thấy khoa`, 4033));
+    }
+
+    counsellor.department = department;
+    await counsellor.save();
+
+    res.json({
+      success: true,
+      message: `Thêm tư vấn viên vào khoa thành công`,
+      code: 2013,
+    });
+  }
+);

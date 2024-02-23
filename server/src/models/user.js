@@ -1,14 +1,13 @@
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import validator from 'validator';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { nanoid } from 'nanoid';
-import crypto from 'crypto';
 
 import ErrorHandler from '../utils/ErrorHandler.js';
-import RefreshToken from './refreshToken.js';
-import Counsellor from './counsellor.js';
 import { generateOTP } from '../utils/auth.js';
+import Counsellor from './counsellor.js';
+import RefreshToken from './refreshToken.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -124,7 +123,7 @@ userSchema.methods.generateAuthToken = function () {
 
 userSchema.methods.generateRefreshToken = async function () {
   const refreshToken = new RefreshToken({
-    branch: nanoid(),
+    branch: new mongoose.Types.ObjectId(),
     owner: this._id,
   });
   return await refreshToken.save();
