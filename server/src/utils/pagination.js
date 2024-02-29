@@ -1,6 +1,11 @@
-const paginateData = (totalRecords, currentPage, pageSize, data) => {
-  const totalPages = Math.ceil(totalRecords / +pageSize);
-  return { data, page: +currentPage, totalPages };
+const paginateResults = (
+  numberOfRecord,
+  pageRequest,
+  sizeRequest,
+  totalRecords
+) => {
+  const totalPages = Math.ceil(numberOfRecord / +sizeRequest);
+  return { data: totalRecords, page: +pageRequest, pages: totalPages };
 };
 
-export default paginateData;
+export default paginateResults;

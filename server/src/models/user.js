@@ -174,6 +174,14 @@ userSchema.methods.getUserInfo = async function () {
   };
 };
 
+userSchema.methods.adminGetCounsellorInfo = async function () {
+  return {
+    _id: this._id,
+    fullName: this.fullName,
+    avatar: this.avatar.url || null,
+  };
+};
+
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();

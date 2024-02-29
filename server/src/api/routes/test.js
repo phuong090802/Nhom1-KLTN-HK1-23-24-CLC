@@ -52,7 +52,7 @@ router.get(
     const {
       data: users,
       page,
-      totalPages,
+      pages: totalPages,
     } = paginateData(totalUsers, req.query.page, req.query.size, userInfos);
 
     res.json({

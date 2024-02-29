@@ -19,6 +19,14 @@ const errorHandler = (err, req, res, next) => {
 
   if (process.env.NODE_ENV === 'PRODUCTION') {
     let error = err;
+    
+    // console.log(err);
+
+    // Wrong Mongoose Object ID Error
+    if (err.name === 'CastError') {
+      const message = 'Không tìm thấy tài nguyên';
+      error = new ErrorHandler(400, message, 4035);
+    }
 
     // Handling Mongoose duplicate key errors
     if (err.name === 'MongoServerError' && err.code === 11000) {

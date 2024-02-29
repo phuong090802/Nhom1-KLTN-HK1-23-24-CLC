@@ -33,6 +33,9 @@
 4031 = Tư vấn viên đã được thêm vào phòng ban trước đó
 4032 = không tìm thấy tư vấn viên (tìm theo id + COUNSELLOR)
 4033 = Không tìm thấy khoa với id được truyền vào (/admin/counsellors)
+4034 = Không tìm thấy khoa với id được truyền vào (/departments/:id/counsellors)
+4035 = lỗi Cast thành ObjectId
+4036 = lỗi lấy thông tin counsellor (Promise)
 
 ======//Thành công//=====
 2001 = register thành công

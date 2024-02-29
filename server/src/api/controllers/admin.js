@@ -3,6 +3,110 @@ import Department from '../../models/department.js';
 import User from '../../models/user.js';
 import ErrorHandler from '../../utils/ErrorHandler.js';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
+import QueryAPI from '../../utils/QueryAPI.js';
+import paginateResults from '../../utils/pagination.js';
+
+export const updateDepartmentHeadHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const { departmentId, userId } = req.body;
+    const department = await Department.findById(departmentId);
+
+    // check department <> truthy -> end or continue
+
+    // find user
+
+    // check user <> truthy -> end or continue
+
+    // update role old department -> clear token
+    // update role new department
+    // response
+    
+    console.log(departmentId, userId);
+    res.end();
+  }
+);
+
+export const counsellorsInDepartmentHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const department = await Department.findById(req.params.id);
+    if (!department) {
+      return next(new ErrorHandler(404, 'Không tìm thấy khoa', 4034));
+    }
+
+    const userIsCounsellors = await Counsellor.find({ department }).select(
+      '-_id user'
+    );
+
+    const userIsCounsellorIds = userIsCounsellors.map(
+      (counsellor) => counsellor.user
+    );
+
+    const queryAPI = new QueryAPI(
+      User.find({ _id: { $in: userIsCounsellorIds } }),
+      req.query
+    )
+      .search()
+      .filter()
+      .sort();
+
+    let counsellorRecords = await queryAPI.query;
+    const numberOfCounsellors = counsellorRecords.length;
+    counsellorRecords = await queryAPI.pagination().query.clone();
+
+    const counsellorInfoRecords = await Promise.all(
+      counsellorRecords.map((user) => user.adminGetCounsellorInfo())
+    ).catch((reason) => {
+      console.log(reason);
+      return next(
+        new ErrorHandler(500, `Lỗi ${reason} khi lấy thông tin nhân sự`, 4036)
+      );
+    });
+
+    const {
+      data: counsellors,
+      page,
+      pages,
+    } = paginateResults(
+      numberOfCounsellors,
+      req.query.page,
+      req.query.size,
+      counsellorInfoRecords
+    );
+
+    res.json({ counsellors, page, pages });
+  }
+);
+
+export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
+  const queryAPI = new QueryAPI(
+    Department.find().lean().select('-__v'),
+    req.query
+  )
+    .search()
+    .filter()
+    .sort();
+
+  // get all departments in DB
+  let departmentRecords = await queryAPI.query;
+  // number of record in db
+  const numberOfDepartments = departmentRecords.length;
+
+  // get department in page with size
+  departmentRecords = await queryAPI.pagination().query.clone();
+
+  const {
+    data: departments,
+    page,
+    pages,
+  } = paginateResults(
+    numberOfDepartments,
+    req.query.page,
+    req.query.size,
+    departmentRecords
+  );
+
+  res.json({ departments, page, pages });
+});
 
 export const addDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
   const { departmentName } = req.body;

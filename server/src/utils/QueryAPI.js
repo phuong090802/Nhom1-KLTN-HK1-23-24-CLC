@@ -5,10 +5,10 @@ class QueryAPI {
   }
 
   search() {
-    const { keyword, fields } = this.queryString;
+    const { keyword, search } = this.queryString;
     let keywordSearch = {};
-    if (keyword && fields && Array.isArray(fields) && fields.length) {
-      const orConditions = fields.map((field) => ({
+    if (keyword && search && Array.isArray(search) && search.length) {
+      const orConditions = search.map((field) => ({
         [field]: { $regex: keyword, $options: 'i' },
       }));
       keywordSearch = { $or: orConditions };
@@ -48,7 +48,6 @@ class QueryAPI {
     this.query = this.query.limit(size).skip(skip);
     return this;
   }
-
 }
 
 export default QueryAPI;
