@@ -10,27 +10,69 @@ import {
   departmentsHandler,
   counsellorsInDepartmentHandler,
   updateDepartmentHeadHandler,
+  usersHandler,
+  updateEnabledUserHandler,
+  userHandler,
 } from '../controllers/admin.js';
 import { setDefaultPaginationParams } from '../middlewares/query.js';
+import {
+  validateRoleInBody,
+  validateDepartmentIdInBody,
+  validateDepartmentIdInParams,
+  validateRoleIdInParam,
+  validateRoles,
+  validateUserIdInParams,
+} from '../middlewares/validate.js';
 
 const router = express.Router();
 
-// router.use(authHandler('ADMIN'));
+router.use(authHandler('ADMIN'));
 
-router.post('/departments/:id/status', updateStatusDepartmentHandler);
+router
+  .route('/users/:id/is-enabled')
+  .put(validateRoleIdInParam('USER'), updateEnabledUserHandler);
+
+router.route('/users/:id').get(validateUserIdInParams, userHandler);
+
+router.route('/users').get(setDefaultPaginationParams, usersHandler);
+
+router.put(
+  '/departments/:id/status',
+  validateDepartmentIdInParams,
+  updateStatusDepartmentHandler
+);
+
 router.get(
   '/departments/:id/counsellors',
+  validateDepartmentIdInParams,
   setDefaultPaginationParams,
   counsellorsInDepartmentHandler
 );
-router.route('/departments/:id').put(updateDepartmentHandler);
+
+router
+  .route('/departments/:id')
+  .put(validateDepartmentIdInParams, updateDepartmentHandler);
+
 router
   .route('/departments')
   .post(addDepartmentHandler)
   .get(setDefaultPaginationParams, departmentsHandler)
-  .put(updateDepartmentHeadHandler);
+  .put(
+    validateDepartmentIdInBody,
+    validateRoleInBody('COUNSELLOR'),
+    updateDepartmentHeadHandler
+  );
 
-router.route('/staffs').post(addStaffHandler);
-router.route('/counsellors').post(addCounsellorToDepartmentHandler);
+router
+  .route('/staffs')
+  .post(validateRoles('COUNSELLOR', 'SUPERVISOR'), addStaffHandler);
+
+router
+  .route('/counsellors')
+  .post(
+    validateRoleInBody,
+    validateDepartmentIdInBody,
+    addCounsellorToDepartmentHandler
+  );
 
 export default router;

@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import auth from './routes/auth.js';
 import admin from './routes/admin.js';
+import user from './routes/user.js';
 import test from './routes/test.js';
 import errorHandler from './middlewares/errorHandler.js';
 import { apiCorsOptions } from '../configs/cors.js';
@@ -33,6 +34,7 @@ app.use(cookieParser());
 
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
+app.use('/api/users', user);
 app.use('/api/test', test);
 
 app.use(errorHandler);

@@ -4,26 +4,28 @@ import User from '../../models/user.js';
 import catchAsyncErrors from './catchAsyncErrors.js';
 import ErrorHandler from '../../utils/ErrorHandler.js';
 
-export const isAuthenticatedHandler = catchAsyncErrors(async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return next(
-      new ErrorHandler(
-        401,
-        'Đăng nhập trước khi truy cập vào tài nguyên này',
-        4015
-      )
-    );
-  }
+export const isAuthenticatedHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return next(
+        new ErrorHandler(
+          401,
+          'Đăng nhập trước khi truy cập vào tài nguyên này',
+          4015
+        )
+      );
+    }
 
-  const token = authHeader.split(' ')[1];
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = await User.findById(decoded.id);
-  next();
-});
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.id);
+    next();
+  }
+);
 
 export const authorizeRolesHandler = (...roles) => {
-  return (req, res, next) => {
+  return catchAsyncErrors((req, res, next) => {
     const role = req.user.role;
     if (!roles.includes(role)) {
       return next(
@@ -35,7 +37,7 @@ export const authorizeRolesHandler = (...roles) => {
       );
     }
     next();
-  };
+  });
 };
 
 const authHandler = (...roles) => [

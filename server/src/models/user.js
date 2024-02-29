@@ -6,8 +6,8 @@ import validator from 'validator';
 
 import ErrorHandler from '../utils/ErrorHandler.js';
 import { generateOTP } from '../utils/auth.js';
-import Counsellor from './counsellor.js';
 import RefreshToken from './refreshToken.js';
+import Department from './department.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -59,6 +59,7 @@ const userSchema = new mongoose.Schema({
     },
     url: {
       type: String,
+      default: null,
     },
   },
   isEnabled: {
@@ -104,6 +105,18 @@ const userSchema = new mongoose.Schema({
     resetTokenExpiresAt: {
       type: Date,
     },
+  },
+  counsellor: {
+    department: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Department',
+    },
+    fields: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Field',
+      },
+    ],
   },
   createdAt: {
     type: Date,
@@ -156,31 +169,39 @@ userSchema.methods.generateResetPasswordToken = async function () {
   return resetToken;
 };
 
-userSchema.methods.getUserInfo = async function () {
-  const counsellor = await Counsellor.findOne({ user: this._id }).populate(
-    'department',
-    'departmentName'
-  );
+userSchema.methods.adminGetUserInfo = async function () {
+  const department = await Department.findById(this.counsellor.department);
+  return {
+    _id: this._id,
+    phoneNumber: this.phoneNumber,
+    email: this.email,
+    role: this.role,
+    occupation: this.occupation,
+    isEnabled: this.isEnabled,
+    departmentName: department ? department.departmentName : null,
+  };
+};
 
+userSchema.methods.getUserInfo = async function () {
+  const department = await Department.findById(this.counsellor.department);
   return {
     _id: this._id,
     fullName: this.fullName,
     email: this.email,
     phoneNumber: this.phoneNumber,
-    avatar: this.avatar.url || null,
+    avatar: this.avatar.url,
     role: this.role,
     occupation: this.occupation,
-    departmentName: counsellor ? counsellor.department.departmentName : null,
+    departmentName: department ? department.departmentName : null,
   };
 };
 
-userSchema.methods.adminGetCounsellorInfo = async function () {
-  return {
-    _id: this._id,
-    fullName: this.fullName,
-    avatar: this.avatar.url || null,
-  };
-};
+userSchema.post('find', function (result) {
+  return result.map((user) => {
+    user.avatar = user.avatar.url;
+    return user;
+  });
+});
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
