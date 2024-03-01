@@ -1,5 +1,9 @@
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
+export const makeQuestionHandler = catchAsyncErrors(async (req, res, next) => {
+  
+});
+
 export const updateProfile = catchAsyncErrors(async (req, res, next) => {
   const { fullName, occupation } = req.body;
   const user = req.user;

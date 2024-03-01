@@ -45,6 +45,9 @@
 4043 = Role ... không được phép truy cập vào tài nguyên này
 4044 = Tên khoa đã được sử dụng (tạo)
 4045 = Tên khoa đã được sử dụng (cập nhật)
+4046 = Tên khoa đã được sử dụng (tạo)
+4047 = Không tìm thấy lĩnh vực thuộc khoa
+4048 =Tên khoa đã được sử dụng (cập nhật)
 
 ======//Thành công//=====
 2001 = register thành công
@@ -73,3 +76,6 @@
 2024 = mã xác thực hợp lệ (socket)
 2025 = tên khoa khả dụng khi tạo (socket)
 2026 = tên khoa khả dụng cập nhật (socket)
+2027 = tên lĩnh vực khả dụng (socket) khi tạo mới
+2028 = cập nhật tên lĩnh vực thành công (api)
+2029 = tên khoa khả dụng khi cập nhật (socket)

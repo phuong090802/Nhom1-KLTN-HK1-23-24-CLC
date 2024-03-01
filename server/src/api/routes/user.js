@@ -1,11 +1,12 @@
 import express from 'express';
 
-import { updateProfile } from '../controllers/user.js';
+import { makeQuestionHandler, updateProfile } from '../controllers/user.js';
 import { isAuthenticatedHandler } from '../middlewares/auth.js';
 
 const router = express.Router();
 router.use(isAuthenticatedHandler);
 
-router.route('/').put(updateProfile);
+router.route('/users').put(updateProfile);
+router.route('/questions').post(makeQuestionHandler);
 
 export default router;

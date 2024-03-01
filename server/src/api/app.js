@@ -35,8 +35,8 @@ app.use(cookieParser());
 
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
-app.use('/api/users', user);
-app.use('/api/department-heads', departmentHead);
+app.use('/api', user);
+app.use('/api/department-head', departmentHead);
 app.use('/api/test', test);
 
 app.use(errorHandler);

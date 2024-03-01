@@ -2,6 +2,7 @@ import catchAsyncErrors from './catch-async-errors.js';
 import Department from '../../models/department.js';
 import User from '../../models/user.js';
 import ErrorHandler from '../../utils/error-handler.js';
+import Field from '../../models/field.js';
 
 export const validateDepartmentIdInBody = catchAsyncErrors(
   async (req, res, next) => {
@@ -93,7 +94,20 @@ export const validateDepartmentOfDepartmentHead = catchAsyncErrors(
     if (!department) {
       return next(new ErrorHandler(404, 'Không tìm thấy khoa', 4038));
     }
-    req.departmentInBody = department;
+    req.foundDepartment = department;
+    next();
+  }
+);
+
+export const validateFieldIdInParams = catchAsyncErrors(
+  async (req, res, next) => {
+    const { id } = req.params;
+    const department = req.foundDepartment;
+    const field = await Field.findOne({_id: id, department});
+    if (!field) {
+      return next(new ErrorHandler(404, 'Không tìm lĩnh vực thuộc khoa', 4047));
+    }
+    req.fieldInParams = field;
     next();
   }
 );
