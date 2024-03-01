@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-import ErrorHandler from '../utils/ErrorHandler.js';
+import ErrorHandler from '../utils/error-handler.js';
 import { generateOTP } from '../utils/auth.js';
-import RefreshToken from './refreshToken.js';
+import RefreshToken from './refresh-token.js';
 import Department from './department.js';
 
 const userSchema = new mongoose.Schema({

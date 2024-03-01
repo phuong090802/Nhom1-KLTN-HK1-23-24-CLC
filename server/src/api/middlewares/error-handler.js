@@ -1,5 +1,5 @@
-import ErrorHandler from '../../utils/ErrorHandler.js';
-import fieldMapper from '../../utils/fieldMapper.js';
+import ErrorHandler from '../../utils/error-handler.js';
+import fieldMapper from '../../utils/field-mapper.js';
 
 const errorHandler = (err, req, res, next) => {
   err.status = err.status || 500;

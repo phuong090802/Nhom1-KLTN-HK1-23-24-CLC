@@ -1,7 +1,7 @@
-import catchAsyncErrors from './catchAsyncErrors.js';
+import catchAsyncErrors from './catch-async-errors.js';
 import Department from '../../models/department.js';
 import User from '../../models/user.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
+import ErrorHandler from '../../utils/error-handler.js';
 
 export const validateDepartmentIdInBody = catchAsyncErrors(
   async (req, res, next) => {
@@ -81,6 +81,19 @@ export const validateUserIdInParams = catchAsyncErrors(
       return next(new ErrorHandler(404, 'Không tìm thấy tài khoản', 4037));
     }
     req.userInParams = user;
+    next();
+  }
+);
+
+export const validateDepartmentOfDepartmentHead = catchAsyncErrors(
+  async (req, res, next) => {
+    const department = await Department.findById(
+      req.user.counsellor.department
+    );
+    if (!department) {
+      return next(new ErrorHandler(404, 'Không tìm thấy khoa', 4038));
+    }
+    req.departmentInBody = department;
     next();
   }
 );

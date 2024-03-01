@@ -36,7 +36,15 @@
 4034 = Không tìm thấy khoa với id được truyền vào params (middleware)
 4035 = lỗi Cast thành ObjectId
 4036 = Không tìm thấy người dùng với id được truyền vào params (middleware)
-4037 = không tìm thấy người dùng trong hệ thống (middleware) 
+4037 = không tìm thấy người dùng trong hệ thống (middleware)
+4038 = Không tìm thấy khoa (trưởng khoa thêm lĩnh vực)
+4039 = Mã xác thực không hợp lệ (socket)
+4040 = không có authorization trong headers (socket)
+4041 = không phải bearer token (socket)
+4042 = lỗi giải mã token (socket)
+4043 = Role ... không được phép truy cập vào tài nguyên này
+4044 = Tên khoa đã được sử dụng (tạo)
+4045 = Tên khoa đã được sử dụng (cập nhật)
 
 ======//Thành công//=====
 2001 = register thành công
@@ -56,3 +64,12 @@
 2015 = cập nhật trạng thái tài khoản người dùng thành công
 2016 = admin lấy thông tin người dùng thành công
 2017 = Cập nhật thông tin thành công
+2018 = Thêm lĩnh vực thành công
+2019 = Thêm khoa thành công
+2020 = cập nhật trạng thái khoa thành công
+2021 = lọc, phân trang, tìm kiếm người dùng thành công
+2022 = lọc, phân trang, tìm kiếm nhân viên trong khoa thành công
+2023 = lọc, phân trang, tìm kiếm khoa thành công
+2024 = mã xác thực hợp lệ (socket)
+2025 = tên khoa khả dụng khi tạo (socket)
+2026 = tên khoa khả dụng cập nhật (socket)

@@ -4,7 +4,7 @@ import { Server } from 'socket.io';
 import 'dotenv/config.js';
 import app from './api/app.js';
 import connectDB from './configs/db.js';
-import socket from './socket/index.js';
+import socketIO from './socket/socket-io.js';
 import { socketCorsOptions } from './configs/cors.js';
 
 connectDB();
@@ -14,7 +14,7 @@ const io = new Server(server, {
   cors: socketCorsOptions,
 });
 
-socket(io);
+socketIO(io);
 
 server.listen(process.env.PORT, () => {
   console.log(

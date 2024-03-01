@@ -1,14 +1,14 @@
 import express from 'express';
 
 import User from '../../models/user.js';
-import QueryAPI from '../../utils/QueryAPI.js';
-import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
+import QueryAPI from '../../utils/query-api.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 import {
   setDefaultPaginationParams,
   setUserSearchFieldsParams,
 } from '../middlewares/query.js';
 import paginateData from '../../utils/pagination.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
+import ErrorHandler from '../../utils/error-handler.js';
 // import Department from '../../models/department.js';
 // import Counsellor from '../../models/counsellor.js';
 

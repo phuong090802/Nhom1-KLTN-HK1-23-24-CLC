@@ -1,10 +1,9 @@
 import Department from '../../models/department.js';
 import User from '../../models/user.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
-import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
-import QueryAPI from '../../utils/QueryAPI.js';
+import ErrorHandler from '../../utils/error-handler.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
+import QueryAPI from '../../utils/query-api.js';
 import paginateResults from '../../utils/pagination.js';
-import RefreshToken from '../../models/refreshToken.js';
 
 export const userHandler = catchAsyncErrors(async (req, res, next) => {
   const user = await req.userInParams.adminGetUserInfo();
@@ -53,7 +52,7 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
     req.query.size,
     userRecords
   );
-  res.json({ success: true, users, page, pages });
+  res.json({ success: true, users, page, pages, code: 2021 });
 });
 
 export const updateDepartmentHeadHandler = catchAsyncErrors(
@@ -71,13 +70,11 @@ export const updateDepartmentHeadHandler = catchAsyncErrors(
     if (oldDepartmentHead) {
       oldDepartmentHead.role = 'COUNSELLOR';
       await oldDepartmentHead.save();
-      await RefreshToken.deleteMany({ owner: oldDepartmentHead });
     }
 
     // update role new department
     user.role = 'DEPARTMENT_HEAD';
     await user.save();
-    await RefreshToken.deleteMany({ owner: user });
     // response
 
     res.json({
@@ -118,7 +115,7 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
       req.query.size,
       counsellorRecords
     );
-    res.json({ success: true, counsellors, page, pages });
+    res.json({ success: true, counsellors, page, pages, code: 2022 });
   }
 );
 
@@ -146,7 +143,7 @@ export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
     req.query.size,
     departmentRecords
   );
-  res.json({ success: true, departments, page, pages });
+  res.json({ success: true, departments, page, pages, code: 2023 });
 });
 
 export const addDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
@@ -156,7 +153,7 @@ export const addDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
   res.status(201).json({
     success: true,
     message: 'Thêm khoa thành công',
-    code: 2001,
+    code: 2019,
   });
 });
 
@@ -183,7 +180,7 @@ export const updateStatusDepartmentHandler = catchAsyncErrors(
     res.json({
       success: true,
       message: newStrStatus + ' thành công',
-      code: 2011,
+      code: 2020,
     });
   }
 );
@@ -262,7 +259,7 @@ export const addCounsellorToDepartmentHandler = catchAsyncErrors(
 
     res.json({
       success: true,
-      message: `Thêm tư vấn viên vào khoa thành công`,
+      message: 'Thêm tư vấn viên vào khoa thành công',
       code: 2013,
     });
   }

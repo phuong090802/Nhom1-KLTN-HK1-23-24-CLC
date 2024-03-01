@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 
-import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 import User from '../../models/user.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
+import ErrorHandler from '../../utils/error-handler.js';
 import { sendToken, clearToken } from '../../utils/token.js';
-import RefreshToken from '../../models/refreshToken.js';
+import RefreshToken from '../../models/refresh-token.js';
 import { sendVerificationEmail } from '../../utils/auth.js';
 
 export const registerHandler = catchAsyncErrors(async (req, res, next) => {
@@ -189,7 +189,7 @@ export const forgotPasswordHandler = catchAsyncErrors(
 export const verifyOTPHandler = catchAsyncErrors(async (req, res, next) => {
   const { email, otp } = req.body;
   const user = await User.findOne({
-    email,
+    email: { $regex: new RegExp(email, 'i') },
     'forgotPassword.otp': otp,
     'forgotPassword.otpExpiresAt': { $gt: Date.now() },
   });

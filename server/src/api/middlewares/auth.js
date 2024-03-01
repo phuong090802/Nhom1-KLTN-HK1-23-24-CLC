@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
 import User from '../../models/user.js';
-import catchAsyncErrors from './catchAsyncErrors.js';
-import ErrorHandler from '../../utils/ErrorHandler.js';
+import catchAsyncErrors from './catch-async-errors.js';
+import ErrorHandler from '../../utils/error-handler.js';
 
 export const isAuthenticatedHandler = catchAsyncErrors(
   async (req, res, next) => {
@@ -31,7 +31,7 @@ export const authorizeRolesHandler = (...roles) => {
       return next(
         new ErrorHandler(
           403,
-          `Role (${role}) không được phép truy cập vào tài nguyên này`,
+          `Role ${role} không được phép truy cập vào tài nguyên này`,
           4016
         )
       );

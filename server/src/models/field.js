@@ -8,9 +8,13 @@ const fieldSchema = new mongoose.Schema({
     required: [true, 'Vui lòng nhập tên lĩnh vực'],
     maxLength: [100, 'Tên lĩnh vực không được vượt quá 100 ký tự'],
   },
-  isDeleted: {
+  department: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Department',
+  },
+  isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

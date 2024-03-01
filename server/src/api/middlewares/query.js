@@ -1,4 +1,4 @@
-import catchAsyncErrors from './catchAsyncErrors.js';
+import catchAsyncErrors from './catch-async-errors.js';
 
 export const setDefaultPaginationParams = catchAsyncErrors((req, res, next) => {
   console.log('Before:', req.query.page, req.query.size);

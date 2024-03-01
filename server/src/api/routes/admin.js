@@ -70,7 +70,7 @@ router
 router
   .route('/counsellors')
   .post(
-    validateRoleInBody,
+    validateRoleInBody('COUNSELLOR'),
     validateDepartmentIdInBody,
     addCounsellorToDepartmentHandler
   );

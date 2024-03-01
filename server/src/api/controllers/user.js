@@ -1,4 +1,4 @@
-import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
 export const updateProfile = catchAsyncErrors(async (req, res, next) => {
   const { fullName, occupation } = req.body;
