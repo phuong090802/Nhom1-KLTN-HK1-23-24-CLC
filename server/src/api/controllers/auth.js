@@ -7,6 +7,75 @@ import { sendToken, clearToken } from '../../utils/token.js';
 import RefreshToken from '../../models/refresh-token.js';
 import { sendVerificationEmail } from '../../utils/auth.js';
 
+export const verifyEmailHandler = catchAsyncErrors(async (req, res, next) => {
+  const { otp } = req.body;
+
+  const user = req.user;
+  if (
+    !otp ||
+    !user.verifyEmail.otp ||
+    user.verifyEmail.otp !== otp ||
+    user.verifyEmail.otpExpiresAt < Date.now()
+  ) {
+    return next(
+      new ErrorHandler(400, 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại', 4062)
+    );
+  }
+
+  user.isEmailVerified = true;
+  user.verifyEmail = null;
+  await user.save();
+
+  res.json({
+    success: true,
+    message: 'Xác thực email thành công',
+    code: 2035,
+  });
+});
+
+export const validateEmailHandler = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
+
+  const user = req.user;
+
+  if (user.isEmailVerified) {
+    return next(new ErrorHandler(400, 'Email đã được xác thực', 4067));
+  }
+
+  if (!email) {
+    return next(new ErrorHandler(400, 'Vui lòng nhập email', 4060));
+  }
+
+  const foundedUser = await User.findOne({
+    _id: { $ne: user._id },
+    email: { $regex: new RegExp(email, 'i') },
+  });
+
+  if (foundedUser) {
+    return next(new ErrorHandler(400, 'Email đã được sử dụng', 4059));
+  }
+
+  const otp = await user.generateVerifyEmail();
+  const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu xác thực email thì hãy bỏ qua nó</strong>`;
+
+  try {
+    await sendVerificationEmail({
+      email,
+      subject: 'Xác thực email Tư Vấn Sinh Viên',
+      message,
+    });
+    res.json({
+      success: true,
+      message: `Đã gửi email đến: ${user.email}`,
+      code: 2034,
+    });
+  } catch (error) {
+    user.verifyEmail = null;
+    await user.save();
+    return next(new ErrorHandler(500, 'Lỗi gửi email xác thực', 4061));
+  }
+});
+
 export const registerHandler = catchAsyncErrors(async (req, res, next) => {
   const {
     fullName,
@@ -165,7 +234,7 @@ export const forgotPasswordHandler = catchAsyncErrors(
 
     const otp = await user.generateForgotPassword();
 
-    const message = `Mã OTP của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
+    const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
 
     try {
       await sendVerificationEmail({
@@ -181,7 +250,7 @@ export const forgotPasswordHandler = catchAsyncErrors(
     } catch (error) {
       user.forgotPassword = null;
       await user.save();
-      return next(new ErrorHandler(500, error.message, 4021));
+      return next(new ErrorHandler(500, 'Lỗi gửi mã xác thực', 4021));
     }
   }
 );
@@ -195,7 +264,7 @@ export const verifyOTPHandler = catchAsyncErrors(async (req, res, next) => {
   });
   if (!user) {
     return next(
-      new ErrorHandler(400, 'Mã OTP không hợp lệ. Vui lòng kiểm tra lại', 4023)
+      new ErrorHandler(400, 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại', 4023)
     );
   }
 

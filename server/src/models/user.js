@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  verifyEmail: {
+    otp: {
+      type: String,
+    },
+    otpExpiresAt: {
+      type: Date,
+    },
+  },
   phoneNumber: {
     type: String,
     unique: true,
@@ -54,8 +62,9 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
   avatar: {
-    blobId: {
+    ref: {
       type: String,
+      default: null,
     },
     url: {
       type: String,
@@ -146,7 +155,17 @@ userSchema.methods.generateForgotPassword = async function () {
   const otp = generateOTP(6);
   this.forgotPassword.otp = otp;
   this.forgotPassword.otpExpiresAt =
-    Date.now() + process.env.OTP_EXPIRATION_TIME_IN_SECONDS * 1000;
+    Date.now() +
+    process.env.OTP_FORGOT_PASSWORD_EXPIRATION_TIME_IN_SECONDS * 1000; // 1m30s
+  await this.save();
+  return otp;
+};
+
+userSchema.methods.generateVerifyEmail = async function () {
+  const otp = generateOTP(6);
+  this.verifyEmail.otp = otp;
+  this.verifyEmail.otpExpiresAt =
+    Date.now() + process.env.OTP_VERIFY_EMAIL_EXPIRATION_TIME_IN_SECONDS * 1000; // 1m30s
   await this.save();
   return otp;
 };

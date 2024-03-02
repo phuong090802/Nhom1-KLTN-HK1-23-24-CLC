@@ -11,6 +11,7 @@ const fieldSchema = new mongoose.Schema({
   department: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Department',
+    required: [true, 'Vui lòng nhập mã khoa'],
   },
   isActive: {
     type: Boolean,

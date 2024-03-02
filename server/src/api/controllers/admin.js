@@ -257,7 +257,7 @@ export const addCounsellorToDepartmentHandler = catchAsyncErrors(
     user.counsellor.department = department;
     await user.save();
 
-    res.json({
+    res.status(201).json({
       success: true,
       message: 'Thêm tư vấn viên vào khoa thành công',
       code: 2013,

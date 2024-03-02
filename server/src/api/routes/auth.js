@@ -9,6 +9,8 @@ import {
   forgotPasswordHandler,
   verifyOTPHandler,
   resetPasswordHandler,
+  validateEmailHandler,
+  verifyEmailHandler,
 } from '../controllers/auth.js';
 import { isAuthenticatedHandler } from '../middlewares/auth.js';
 
@@ -26,5 +28,8 @@ router.get('/me', isAuthenticatedHandler, meHandler);
 router.post('/forgot-password', forgotPasswordHandler);
 router.post('/verify-otp', verifyOTPHandler);
 router.post('/reset-password/:token', resetPasswordHandler);
+
+router.post('/validate-email', isAuthenticatedHandler, validateEmailHandler);
+router.post('/verify-email', isAuthenticatedHandler, verifyEmailHandler);
 
 export default router;

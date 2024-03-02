@@ -1,5 +1,5 @@
 import ErrorHandler from '../../utils/error-handler.js';
-import fieldMapper from '../../utils/field-mapper.js';
+import { fieldMapper } from '../../utils/field-mapper.js';
 
 const errorHandler = (err, req, res, next) => {
   err.status = err.status || 500;
@@ -19,7 +19,7 @@ const errorHandler = (err, req, res, next) => {
 
   if (process.env.NODE_ENV === 'PRODUCTION') {
     let error = err;
-    
+
     // console.log(err);
 
     // Wrong Mongoose Object ID Error

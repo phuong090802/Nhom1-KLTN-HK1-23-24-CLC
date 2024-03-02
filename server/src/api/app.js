@@ -33,11 +33,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use('/api/test', test);
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
-app.use('/api', user);
 app.use('/api/department-head', departmentHead);
-app.use('/api/test', test);
+app.use('/api', user);
 
 app.use(errorHandler);
 

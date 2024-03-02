@@ -103,11 +103,23 @@ export const validateFieldIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const department = req.foundDepartment;
-    const field = await Field.findOne({_id: id, department});
+    const field = await Field.findOne({ _id: id, department });
     if (!field) {
       return next(new ErrorHandler(404, 'Không tìm lĩnh vực thuộc khoa', 4047));
     }
     req.fieldInParams = field;
+    next();
+  }
+);
+
+export const validateFieldIdInBody = catchAsyncErrors(
+  async (req, res, next) => {
+    const { fieldId } = req.body;
+    const field = await Field.findById(fieldId);
+    if (!field) {
+      return next(new ErrorHandler(404, 'Không tìm lĩnh vực', 4049));
+    }
+    req.fieldInBody = field;
     next();
   }
 );
