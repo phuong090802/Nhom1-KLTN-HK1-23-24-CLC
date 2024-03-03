@@ -32,10 +32,10 @@ import { isSupportFileSize, isSupportedMimetype } from '../utils/validation.js';
 import { statusQuestionMapper } from '../utils/field-mapper.js';
 import QueryAPI from '../utils/query-api.js';
 import paginateResults from '../utils/pagination.js';
-import { defaultPayloadForPaginationQuestions } from './utils/socket-payload.js';
+import { defaultPayloadForPaginationQuestions } from '../constants/socket-payload.js';
 
 export default function socketIO(io) {
-  io.of('/auth').on('connection', (socket) => {
+  io.of('/account').on('connection', (socket) => {
     socket.on('register:validate-email', validateEmailForRegister);
     socket.on('register:validate-phone-number', validatePhoneNumberForRegister);
     socket.on('forgot-password:validate-email', validateEmailForForgotPassword);
