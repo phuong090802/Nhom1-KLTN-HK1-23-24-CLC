@@ -35,7 +35,7 @@ import paginateResults from '../utils/pagination.js';
 import { defaultPayloadForPaginationQuestions } from '../constants/socket-payload.js';
 
 export default function socketIO(io) {
-  io.of('/account').on('connection', (socket) => {
+  io.of('/').on('connection', (socket) => {
     socket.on('register:validate-email', validateEmailForRegister);
     socket.on('register:validate-phone-number', validatePhoneNumberForRegister);
     socket.on('forgot-password:validate-email', validateEmailForForgotPassword);
