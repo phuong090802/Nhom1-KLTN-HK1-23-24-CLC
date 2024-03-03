@@ -4,7 +4,7 @@ export const sendToken = async (res, token, refreshToken, user) => {
     httpOnly: true,
     path: '/api/auth',
     secure: true,
-    sameSite: 'None',
+    // sameSite: 'None',
   };
   res.cookie('refreshToken', refreshToken.token, options).json({
     success: true,
@@ -18,6 +18,6 @@ export const clearToken = (res) => {
     httpOnly: true,
     path: '/api/auth',
     secure: true,
-    sameSite: 'None',
+    // sameSite: 'None',
   });
 };
