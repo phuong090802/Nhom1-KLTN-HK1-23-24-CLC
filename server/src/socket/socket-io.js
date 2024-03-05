@@ -1,3 +1,4 @@
+import { defaultPayloadForPaginationQuestions } from '../constants/socket-payload.js';
 import {
   validateDepartmentNameForCreate,
   validateDepartmentNameForUpdate,
@@ -16,7 +17,7 @@ import {
   validateFieldNameCreate,
   validateFieldNameUpdate,
 } from './controllers/department-head.js';
-import { getAllQuestions } from './controllers/user.js';
+import { getAllQuestions } from './controllers/public/index.js';
 import {
   authorizeRolesHandler,
   isAuthenticatedHandler,
@@ -82,9 +83,9 @@ export default function socketIO(io) {
       });
     });
 
-  io.of('/questions').on('connection', (socket) => {
+  io.of('/').on('connection', (socket) => {
     socket.on('get-all-questions', (payload) => {
-      getAllQuestions(socket, payload);
+      getAllQuestions(socket, payload || defaultPayloadForPaginationQuestions);
     });
   });
 }

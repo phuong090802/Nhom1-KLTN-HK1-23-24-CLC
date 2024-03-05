@@ -1,10 +1,8 @@
-import Question from '../../models/question.js';
-import QueryAPI from '../../utils/query-api.js';
-import paginateResults from '../../utils/pagination.js';
+import Question from '../../../models/question.js';
+import paginateResults from '../../../utils/pagination.js';
+import QueryAPI from '../../../utils/query-api.js';
 
 export async function getAllQuestions(socket, payload) {
-  payload.page = payload.page || 1;
-  payload.size = payload.size || 5;
   const query = Question.find({
     // status: 'publicly-answered-and-approved',
     status: 'publicly-answered-pending-approval', // for test

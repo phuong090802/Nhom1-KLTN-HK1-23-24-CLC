@@ -5,6 +5,7 @@ class QueryAPI {
   }
 
   search() {
+    console.log(this.queryString);
     const { keyword, search } = this.queryString;
     let keywordSearch = {};
     if (keyword && search && Array.isArray(search) && search.length) {
