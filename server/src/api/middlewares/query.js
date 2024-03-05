@@ -1,11 +1,11 @@
 import catchAsyncErrors from './catch-async-errors.js';
 
 export const setDefaultPaginationParams = catchAsyncErrors((req, res, next) => {
-  console.log('Before:', req.query.page, req.query.size);
+  // console.log('Before:', req.query.page, req.query.size);
   req.query.page = Number(req.query.page) || 1;
   req.query.size = Number(req.query.size) || 5;
   // for tess
-  console.log('After:', req.query.page, req.query.size);
+  // console.log('After:', req.query.page, req.query.size);
   next();
 });
 
