@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+import Answer from '../models/answer.js';
+
 export default function connectDB() {
   let DB_URI = '';
   if (process.env.NODE_ENV === 'DEVELOPMENT') DB_URI = process.env.DB_LOCAL_URI;

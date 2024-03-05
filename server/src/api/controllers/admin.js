@@ -31,7 +31,9 @@ export const updateEnabledUserHandler = catchAsyncErrors(
 
 export const usersHandler = catchAsyncErrors(async (req, res, next) => {
   const queryAPI = new QueryAPI(
-    User.find().lean().select('_id fullName avatar email phoneNumber role'),
+    User.find({ role: { $ne: 'AMIN' } })
+      .lean()
+      .select('_id fullName avatar email phoneNumber role'),
     req.query
   )
     .search()

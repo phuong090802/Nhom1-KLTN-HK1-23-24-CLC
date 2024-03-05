@@ -1,4 +1,5 @@
 import Field from '../../models/field.js';
+import Question from '../../models/question.js';
 
 export async function validateFieldNameCreate(socket, payload, callback) {
   const { fieldName } = payload;
@@ -55,4 +56,47 @@ export async function validateFieldNameUpdate(socket, payload, callback) {
   }
 
   callback(res);
+}
+
+export async function approveAnswer(io, payload, callback) {
+  const { questionId, isApproved } = payload;
+
+  if (!validator.isMongoId(questionId)) {
+    return callback({
+      success: false,
+      message: 'Mã câu hỏi không hợp lệ',
+      code: 4057,
+    });
+  }
+
+  const question = await Question.findById(questionId);
+
+  if (question.status !== 'publicly-answered-pending-approval') {
+    return callback({
+      success: false,
+      message: 'Câu hỏi chưa được trả lời',
+      code: 4058,
+    });
+  }
+
+  if (isApproved) {
+    question.status = 'publicly-answered-and-approved';
+  } else {
+    question.status = 'unanswered';
+    question.answer = null;
+  }
+  const savedQuestion = await question.save();
+
+  const newStrStatus = statusQuestionMapper[savedQuestion.status];
+
+  callback({
+    success: true,
+    message: newStrStatus + ' thành công',
+    code: 2032,
+  });
+
+  io.of('/questions').emit(
+    'get-all-questions',
+    defaultPayloadForPaginationQuestions
+  );
 }
