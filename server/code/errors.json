@@ -1,0 +1,496 @@
+{
+  "errors": [
+    {
+      "code": "5000",
+      "message": "Internal Server Error",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "Lỗi server"
+    },
+    {
+      "code": "4001",
+      "message": "'${fieldMapper[key]}' đã được sử dụng",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "Lỗi trùng lập giá trị unique trong schema"
+    },
+    {
+      "code": "4002",
+      "message": "Giá trị '${error.value}' không hợp lệ cho trường '${error.path}'. Yêu cầu kiểu dữ liệu: '${error.kind}'",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "Lỗi cast kiểm dữ liệu (các kiểu dữ liệu khác trừ ObjectId)"
+    },
+    {
+      "code": "4003",
+      "message": "Nhập lại mật khẩu không khớp",
+      "file": "models/user.js",
+      "detail": "password và confirmPassword không khớp"
+    },
+    {
+      "code": "4004",
+      "message": "Email đã được sử dụng",
+      "file": "socket-io/controllers/auth.js",
+      "detail": ""
+    },
+    {
+      "code": "4005",
+      "message": "Số điện thoại đã được sử dụng",
+      "file": "socket-io/controllers/auth.js",
+      "detail": ""
+    },
+    {
+      "code": "4006",
+      "message": "Vui lòng nhập tên đăng nhập và mật khẩu",
+      "file": "express/controllers/auth.js",
+      "detail": "username hoặc password không được cung cấp khi đăng nhập"
+    },
+    {
+      "code": "4007",
+      "message": "Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu",
+      "file": "express/controllers/auth.js",
+      "detail": "không tìm thấy user khi đăng nhập bằng username (số điện thoại)"
+    },
+    {
+      "code": "4008",
+      "message": "'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu",
+      "file": "express/controllers/auth.js",
+      "detail": "Mật khẩu không khớp với mật khẩu được mã hóa trong DB"
+    },
+    {
+      "code": "4009",
+      "message": "Yêu cầu không hợp lệ",
+      "file": "express/controllers/auth.js",
+      "detail": "Không có token trong cookie"
+    },
+    {
+      "code": "4010",
+      "message": "Yêu cầu không hợp lệ",
+      "file": "express/controllers/auth.js",
+      "detail": "Không tìm thấy refresh token với token được gửi cùng với yêu cầu (trong cookie)"
+    },
+    {
+      "code": "4011",
+      "message": "Yêu cầu không hợp lệ",
+      "file": "express/controllers/auth.js",
+      "detail": "Refresh token đã được sử dụng"
+    },
+    {
+      "code": "4012",
+      "message": "Tài khoản đã bị khóa",
+      "file": "express/controllers/auth.js",
+      "detail": "Trạng thái của tài khoản là isEnabled = false khi đăng nhập"
+    },
+    {
+      "code": "4013",
+      "message": "Không tìm thấy tài khoản",
+      "file": "express/controllers/auth.js",
+      "detail": "Không tìm thấy tài khoản của người dùng khi tìm bằng refreshToken.owner"
+    },
+    {
+      "code": "4014",
+      "message": "Tài khoản đã bị khóa",
+      "file": "express/controllers/auth.js",
+      "detail": "Trạng thái của tài khoản là isEnabled = false khi refresh token"
+    },
+    {
+      "code": "4015",
+      "message": "Đăng nhập trước khi truy cập vào tài nguyên này",
+      "file": "express/middlewares/auth.js",
+      "detail": "Không có token ở header hoặc token không bắt đầu bằng Bearer"
+    },
+    {
+      "code": "4016",
+      "message": "Role '${role}' không được phép truy cập vào tài nguyên này",
+      "file": "express/middlewares/auth.js",
+      "detail": ""
+    },
+    {
+      "code": "4017",
+      "message": "Xác thực không thành công. Vui lòng đăng nhập lại'",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "JWT không hợp lệ/chữ ký không hợp lệ"
+    },
+    {
+      "code": "4018",
+      "message": "Xác thực không thành công. Vui lòng đăng nhập lại",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "JWT hết hạn"
+    },
+    {
+      "code": "4019",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4020",
+      "message": "Không tìm thấy người dùng với email",
+      "file": "express/controllers/auth.js",
+      "detail": "Không tìm thấy người dùng với email được cung cấp (forgot password)"
+    },
+    {
+      "code": "4021",
+      "message": "Lỗi gửi mã xác thực đặt lại mật khẩu",
+      "file": "",
+      "detail": "Lỗi gửi otp qua email khi forgot password"
+    },
+    {
+      "code": "4022",
+      "message": "Email liên kết với tài khoản chưa được xác thực",
+      "file": "express/controllers/auth.js",
+      "detail": "Email khi yêu cầu forgot password chưa được xác thực"
+    },
+    {
+      "code": "4023",
+      "message": "Mã xác thực không hợp lệ. Vui lòng kiểm tra lại",
+      "file": "express/controllers/auth.js",
+      "detail": "Không tìm thấy người dùng với email, OTP được cung cấp và OTP còn hạn (verify OTP forgót password)"
+    },
+    {
+      "code": "4024",
+      "message": "Đặt lại mật khẩu không thành công. Vui lòng thử lại",
+      "file": "express/controllers/auth.js",
+      "detail": "Không tìm thấy người dùng với token được cung cấp và token còn hạn (forgot password)"
+    },
+    {
+      "code": "4025",
+      "message": "Mật khẩu của bạn phải ít nhất 6 ký tự",
+      "file": "models/user.js",
+      "detail": "password hoặc confirmPassword có độ dài dưới 6 ký tự"
+    },
+    {
+      "code": "4026",
+      "message": "Không tìm thấy người dùng với email",
+      "file": "socket-io/controllers/auth.js",
+      "detail": "Kiểm tra email trước khi yêu cầu quên mật khẩu"
+    },
+    {
+      "code": "4027",
+      "message": "Email liên kết với tài khoản chưa được xác thực",
+      "file": "socket-io/controllers/auth.js",
+      "detail": "Kiểm tra email trước khi yêu cầu quên mật khẩu"
+    },
+    {
+      "code": "4028",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4029",
+      "message": "${role} không được hổ trợ",
+      "file": "express/middlewares/validate.js",
+      "detail": "admin chỉ thêm tài khoản cho COUNSELLOR và SUPERVISOR"
+    },
+    {
+      "code": "4030",
+      "message": "Không tìm thấy khoa",
+      "file": "express/controllers/admin.js",
+      "detail": "Khoa được thêm vào form với id là 1 giá trị không tồn tại trong DB (chỉ áp dụng khi thêm COUNSELLOR)"
+    },
+    {
+      "code": "4031",
+      "message": "Tư vấn viên đã được thêm vào khoa trước đó",
+      "file": "express/controllers/admin.js",
+      "detail": "Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể nhưng tư vấn viên đã được thêm vào khoa trước đó"
+    },
+    {
+      "code": "4032",
+      "message": "Không tìm thấy tài khoản với vai trò ${role}",
+      "file": "express/middlewares/validate.js",
+      "detail": "Kiểm tra role của người dùng có phù hợp để thực hiện thao tác không (cập nhật trưởng khoa, thêm tư vấn viên chưa có khoa vào khoa cụ thể"
+    },
+    {
+      "code": "4033",
+      "message": "Không tìm thấy khoa",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy khoa được truyền với id trong body"
+    },
+    {
+      "code": "4034",
+      "message": "Không tìm thấy khoa",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy khoa được truyền với id trong params"
+    },
+    {
+      "code": "4035",
+      "message": "Không tìm thấy tài nguyên với mã được truyền vào",
+      "file": "express/middlewares/error-handler.js",
+      "detail": "Lỗi Cast ObjectId"
+    },
+    {
+      "code": "4036",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4037",
+      "message": "Không tìm thấy tài khoản",
+      "file": "express/middlewares/validate.js",
+      "detail": "kiểm tra id người dùng có tồn tại trong DB không"
+    },
+    {
+      "code": "4038",
+      "message": "Không tìm thấy khoa",
+      "file": "express/middlewares/validate.js",
+      "detail": "Kiểm tra mã khoa của tư vấn viên, trưởng khoa trước khi truy cập vào các route"
+    },
+    {
+      "code": "4039",
+      "message": "Mã xác thực không hợp lệ",
+      "file": "socket-io/controllers/auth.js",
+      "detail": "Kiểm tra mã xác thực trước khi nhập mã xác thực để đặt lại mật khẩu"
+    },
+    {
+      "code": "4040",
+      "message": "Đăng nhập trước khi truy cập vào tài nguyên này",
+      "file": "socket-io/middlewares/auth.js",
+      "detail": "Không có header authorization"
+    },
+    {
+      "code": "4041",
+      "message": "Đăng nhập trước khi truy cập vào tài nguyên này",
+      "file": "socket-io/middlewares/auth.js",
+      "detail": "Token không bắt đầu với bearer"
+    },
+    {
+      "code": "4042",
+      "message": "Xác thực không thành công. Vui lòng đăng nhập lại",
+      "file": "socket-io/middlewares/auth.js",
+      "detail": "JWT không hợp lệ/lỗi giả mã JWT"
+    },
+    {
+      "code": "4043",
+      "message": "Role ${role} không được phép truy cập vào tài nguyên này",
+      "file": "socket-io/middlewares/auth.js",
+      "detail": ""
+    },
+    {
+      "code": "4044",
+      "message": "Tên khoa đã được sử dụng",
+      "file": "socket-io/controllers/based-roles/admin.js",
+      "detail": "Kiểm tra tên khoa trước khi tạo khoa mới"
+    },
+    {
+      "code": "4045",
+      "message": "Tên khoa đã được sử dụng",
+      "file": "socket-io/controllers/based-roles/admin.js",
+      "detail": "Kiểm tra tên khoa trước khi cập nhật tên khoa"
+    },
+    {
+      "code": "4046",
+      "message": "Tên lĩnh vực đã được sử dụng",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Kiểm tra tên lĩnh vực trước khi tạo lĩnh vực"
+    },
+    {
+      "code": "4047",
+      "message": "Không tìm lĩnh vực thuộc khoa",
+      "file": "express/middlewares/validate.js",
+      "detail": "Trưởng khoa kiểm tra lĩnh vực của thuộc khoa mình trước khi thực hiện các thao tác liên quan"
+    },
+    {
+      "code": "4048",
+      "message": "Tên lĩnh vực đã được sử dụng",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Kiểm tra tên lĩnh vực trước khi cập tên mới"
+    },
+    {
+      "code": "4049",
+      "message": "Không tìm lĩnh vực",
+      "file": "express/middlewares/validate.js",
+      "detail": "Kiểm tra lĩnh vực có trong DB không bằng id"
+    },
+    {
+      "code": "4050",
+      "message": "Định dạng file không hỗ trợ",
+      "file": "express/middlewares/upload-file.js",
+      "detail": ""
+    },
+    {
+      "code": "4051",
+      "message": "Chỉ hổ trợ file trong khoảng ${limits} MB",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Kiểm tra kích thước file khi tư vấn viên, trưởng khoa trả lời câu hỏi"
+    },
+    {
+      "code": "4052",
+      "message": "Định dạng file không được hỗ trợ",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Kiểm tra định dạng file khi tư vấn viên, trưởng khoa trả lời câu hỏi"
+    },
+    {
+      "code": "4053",
+      "message": "Mã câu hỏi không hợp lệ",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Mã câu hỏi không phải là ObjectId"
+    },
+    {
+      "code": "4054",
+      "message": "Mã khoa không hợp lệ",
+      "file": "socket-io/controllers/based-roles/admin.js",
+      "detail": "Mã khoa không phải là ObjectId"
+    },
+    {
+      "code": "4055",
+      "message": "Mã lĩnh vực không hợp lệ",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Mã lĩnh vực không phải là ObjectId"
+    },
+    {
+      "code": "4056",
+      "message": "Câu hỏi không ở tình trạng chưa trả lời",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": ""
+    },
+    {
+      "code": "4057",
+      "message": "Mã câu hỏi không hợp lệ",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Mã câu hỏi không hợp lệ khu duyệt"
+    },
+    {
+      "code": "4058",
+      "message": "Câu hỏi không ở trạng thái chờ duyệt",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": ""
+    },
+    {
+      "code": "4059",
+      "message": "Email đã được sử dụng",
+      "file": "express/controllers/auth.js",
+      "detail": "Email đã được sử dụng (kiểm tra trước khi xác thực email)"
+    },
+    {
+      "code": "4060",
+      "message": "Vui lòng nhập email",
+      "file": "express/controllers/auth.js",
+      "detail": "Email không được cung cấp (kiểm tra trước khi xác thực email)"
+    },
+    {
+      "code": "4061",
+      "message": "Lỗi gửi email xác thực",
+      "file": "express/controllers/auth.js",
+      "detail": "Lỗi gửi otp qua email (gửi OTP để tiến hành xác nhận email sau khi xác thực hoàn tất)"
+    },
+    {
+      "code": "4062",
+      "message": "Mã xác thực không hợp lệ. Vui lòng kiểm tra lại",
+      "file": "express/controllers/auth.js",
+      "detail": "opt xác thực email không được cung cấp hoặc otp không khớp otp được lưu trong DB hoặc OTP hết hạn"
+    },
+    {
+      "code": "4063",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4064",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4065",
+      "message": "Email đã được sử dụng",
+      "file": "socket-io/controllers/auth.js",
+      "detail": "Xác thực email (cần xác thực người dùng)"
+    },
+    {
+      "code": "4066",
+      "message": "Tài khoản đã được xác thực trước đó",
+      "file": "socket-io/controllers/auth.js",
+      "detail": ""
+    },
+    {
+      "code": "4067",
+      "message": "Email đã được xác thực",
+      "file": "express/controllers/auth.js",
+      "detail": "Email của tài khoản đã được xác thực trước đó (kiểm tra trước khi xác thực)"
+    },
+    {
+      "code": "4068",
+      "message": "Mã xác thực không hợp lệ",
+      "file": "socket-io/controllers/auth.js",
+      "detail": "Xác nhận email (cần xác thực người dùng)"
+    },
+    {
+      "code": "4069",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4070",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4071",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4072",
+      "message": "",
+      "file": "",
+      "detail": ""
+    },
+    {
+      "code": "4073",
+      "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
+      "file": "express/middlewares/validate.js",
+      "detail": "Khi admin cập nhật tên khoa, thêm người dùng vào khoa"
+    },
+    {
+      "code": "4074",
+      "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
+      "file": "express/controllers/based-role/admin.js",
+      "detail": "Khoa đang có isActive = false (thêm nhân tư vấn viên vào khoa cụ thể)"
+    },
+    {
+      "code": "4075",
+      "message": "Không thể truy cập. Khoa đang bị khóa",
+      "file": "express/middlewares/validate.js",
+      "detail": "Khoa đang có isActive = false (COUNSELLOR + DEPARTMENT_HEAD) kiểm tra trước khi truy cập vào route cụ thể. Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào các route"
+    },
+    {
+      "code": "4076",
+      "message": "Khoa đang bị khóa. Không thể đặt câu hỏi",
+      "file": "express/middlewares/validate.js",
+      "detail": "Khoa đang có isActive = false (khi người dùng đặt câu hỏi)"
+    },
+    {
+      "code": "4077",
+      "message": "Lĩnh vực đang bị khóa. Không thể đặt câu hỏi",
+      "file": "express/middlewares/validate.js",
+      "detail": "Lĩnh đang có isActive = false (khi người dùng đặt câu hỏi)"
+    },
+    {
+      "code": "4078",
+      "message": "Lĩnh vực đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
+      "file": "express/middlewares/validate.js",
+      "detail": "Kiểm tra trạng thái của lĩnh vực trước khi trưởng khoa cập nhật lĩnh vực (tên)"
+    },
+    {
+      "code": "4079",
+      "message": "Khoa đang bị khóa.",
+      "file": "express/middlewares/validate.js",
+      "detail": "Khoa đang có isActive = false (khi lấy fields thuộc khoa)"
+    },
+    {
+      "code": "4080",
+      "message": "Không tìm thấy khoa",
+      "file": "socket-io/middlewares/validate.js",
+      "detail": "Kiểm tra mã khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
+    },
+    {
+      "code": "4081",
+      "message": "Không thể truy cập. Khoa đang bị khóa",
+      "file": "socket-io/middlewares/validate.js",
+      "detail": "Khoa đang có isActive = false (COUNSELLOR + DEPARTMENT_HEAD) kiểm tra trước khi truy cập vào route cụ thể. Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
+    }
+  ]
+}

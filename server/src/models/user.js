@@ -4,10 +4,11 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-import ErrorHandler from '../utils/error-handler.js';
-import { generateOTP } from '../utils/auth.js';
-import RefreshToken from './refresh-token.js';
 import Department from './department.js';
+import RefreshToken from './refresh-token.js';
+
+import ErrorHandler from '../utils/error-handler.js';
+import { generateOTP } from '../utils/email-verify.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -23,6 +24,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Vui lòng nhập email'],
     validate: {
       validator: function (v) {
+        // lowercase then check format
         const normalizeEmail = v.toLowerCase();
         return validator.isEmail(normalizeEmail);
       },
@@ -48,6 +50,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Vui lòng nhập số điện thoại'],
     validate: {
       validator: function (v) {
+        // check phone with pattern
         const pattern =
           /^(0)((3([2-9]))|(5([25689]))|(7([0|6-9]))|(8([1-9]))|(9([0-9])))([0-9]{7})$/;
         return pattern.test(v);
@@ -79,6 +82,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     uppercase: true,
     default: 'USER',
+    // check if role USER, occupation is required
+    validate: {
+      validator: function (v) {
+        return !(v === 'USER' && this.occupation === undefined);
+      },
+      message: 'Vui lòng nhập nghề nghiệp',
+    },
     enum: {
       values: ['USER', 'COUNSELLOR', 'DEPARTMENT_HEAD', 'SUPERVISOR', 'ADMIN'],
       message: '{VALUE} không được hổ trợ',
@@ -89,14 +99,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     enum: {
       values: ['Học sinh', 'Sinh viên', 'Cựu sinh viên', 'Phụ huynh', 'Khác'],
-      message: '{VALUE} không được hổ trợ',
-    },
-    // kiểm tra nếu role là user thì bắt buộc
-    validate: {
-      validator: function (v) {
-        return !(this.role === 'USER' && validator.isEmpty(v));
-      },
-      message: 'Vui lòng nhập nghề nghiệp',
+      message: `'{VALUE}' không được hổ trợ`,
     },
   },
   forgotPassword: {
@@ -133,16 +136,21 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// add method
+
+// compare password
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-userSchema.methods.generateAuthToken = function () {
+// generate access token
+userSchema.methods.generateAccessToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRATION_TIME_IN_MINUTES,
+    expiresIn: process.env.JWT_EXPIRATION_TIME,
   });
 };
 
+// generate refresh token
 userSchema.methods.generateRefreshToken = async function () {
   const refreshToken = new RefreshToken({
     branch: new mongoose.Types.ObjectId(),
@@ -151,6 +159,7 @@ userSchema.methods.generateRefreshToken = async function () {
   return await refreshToken.save();
 };
 
+// generate otp and return for forgot password
 userSchema.methods.generateForgotPassword = async function () {
   const otp = generateOTP(6);
   this.forgotPassword.otp = otp;
@@ -161,6 +170,7 @@ userSchema.methods.generateForgotPassword = async function () {
   return otp;
 };
 
+// generate otp and return for verify email
 userSchema.methods.generateVerifyEmail = async function () {
   const otp = generateOTP(6);
   this.verifyEmail.otp = otp;
@@ -170,11 +180,12 @@ userSchema.methods.generateVerifyEmail = async function () {
   return otp;
 };
 
+// generate reset password token and return resetToken
 userSchema.methods.generateResetPasswordToken = async function () {
-  // Generate token
+  // generate token
   const resetToken = crypto.randomBytes(20).toString('hex');
 
-  // Hash and set to resetPassword.token
+  // hash and set to resetPassword.token
   this.resetPassword.token = crypto
     .createHash('sha256')
     .update(resetToken)
@@ -188,7 +199,8 @@ userSchema.methods.generateResetPasswordToken = async function () {
   return resetToken;
 };
 
-userSchema.methods.adminGetUserInfo = async function () {
+// set structure for admin request
+userSchema.methods.adminRequestUserInformation = async function () {
   const department = await Department.findById(this.counsellor.department);
   return {
     _id: this._id,
@@ -201,7 +213,8 @@ userSchema.methods.adminGetUserInfo = async function () {
   };
 };
 
-userSchema.methods.getUserInfo = async function () {
+// set same structure for ...
+userSchema.methods.userRequestInformation = async function () {
   const department = await Department.findById(this.counsellor.department);
   return {
     _id: this._id,
@@ -215,30 +228,46 @@ userSchema.methods.getUserInfo = async function () {
   };
 };
 
+// add hook
+
 userSchema.post('find', function (result) {
-  return result.map((user) => {
-    user.avatar = user.avatar.url;
-    return user;
-  });
+  // assign user.avatar equal user.avatar.url when user find() method
+  return result.map((user) => (user.avatar = user.avatar.url));
 });
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('validate', function (next) {
+  // split merge password to password and confirmPassword
   if (!this.isModified('password')) {
-    next();
+    return next();
   }
   const { password, confirmPassword } = JSON.parse(this.password);
 
+  // check length of password and confirm password
   if (
     !validator.isLength(password.trim(), { min: 6 }) ||
     !validator.isLength(confirmPassword.trim(), { min: 6 })
   ) {
-    next(new ErrorHandler(400, 'Mật khẩu của bạn phải ít nhất 6 ký tự', 4025));
+    return next(
+      new ErrorHandler(400, 'Mật khẩu của bạn phải ít nhất 6 ký tự', 4025)
+    );
+  }
+  // check password and confirmPassword equals
+  if (!validator.equals(password, confirmPassword)) {
+    return next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
+  }
+  this.password = password;
+  next();
+});
+
+// hash password if it is modified
+userSchema.pre('save', async function (next) {
+  // password is not is isModified
+  if (!this.isModified('password')) {
+    return next();
   }
 
-  if (!validator.equals(password, confirmPassword)) {
-    next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
-  }
-  this.password = await bcrypt.hash(password, 10);
+  // encode password
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 

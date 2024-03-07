@@ -1,10 +1,9 @@
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-// import './configs/env.js';
 import 'dotenv/config.js';
-import app from './api/app.js';
+import app from './express/app.js';
 import connectDB from './configs/db.js';
-import socketIO from './socket/socket-io.js';
+import socketInit from './socket-io/socket-init.js';
 import { socketCorsOptions } from './configs/cors.js';
 
 connectDB();
@@ -14,7 +13,7 @@ const io = new Server(server, {
   cors: socketCorsOptions,
 });
 
-socketIO(io);
+socketInit(io);
 
 server.listen(process.env.PORT, () => {
   console.log(

@@ -1,4 +1,10 @@
-export const sendToken = async (res, token, refreshToken, user) => {
+// sendToken when login, refresh token
+export const sendToken = async (
+  res,
+  accessToken,
+  refreshToken,
+  userInformation
+) => {
   const options = {
     expires: refreshToken.expires,
     httpOnly: true,
@@ -8,11 +14,13 @@ export const sendToken = async (res, token, refreshToken, user) => {
   };
   res.cookie('refreshToken', refreshToken.token, options).json({
     success: true,
-    user,
-    token,
+    user: userInformation,
+    token: accessToken,
+    code: 2072,
   });
 };
 
+// clear token when refresh token fail, logout
 export const clearToken = (res) => {
   res.clearCookie('refreshToken', {
     httpOnly: true,

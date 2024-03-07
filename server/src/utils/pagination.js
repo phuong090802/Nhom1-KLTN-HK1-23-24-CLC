@@ -1,3 +1,4 @@
+// handle return result of pagination with input
 const paginateResults = (
   numberOfRecord,
   pageRequest,

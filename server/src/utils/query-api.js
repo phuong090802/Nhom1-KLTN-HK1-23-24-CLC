@@ -1,3 +1,4 @@
+// class handle search, sort, pagination, filter
 class QueryAPI {
   constructor(query, queryString) {
     this.query = query;

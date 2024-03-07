@@ -1,3 +1,4 @@
+// blue print error
 export default class ErrorHandler extends Error {
   constructor(status, message, code) {
     super(message);
