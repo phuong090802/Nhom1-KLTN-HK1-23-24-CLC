@@ -25,8 +25,6 @@ import {
   usersHandler,
 } from '../../controllers/based-roles/admin.js';
 
-
-
 const router = express.Router();
 
 router.use(authHandler('ADMIN'));
@@ -37,12 +35,6 @@ router
   .put(validateUserIdInParams, updateEnabledUserHandler);
 
 router.route('/users').get(defaultPaginationParams, usersHandler);
-
-router.put(
-  '/departments/:id/status',
-  validateDepartmentIdInParams,
-  updateStatusDepartmentHandler
-);
 
 router.get(
   '/departments/:id/counsellors',
@@ -57,7 +49,8 @@ router
     validateDepartmentIdInParams,
     adminValidateStatusOfDepartment,
     updateDepartmentHandler
-  );
+  )
+  .patch(validateDepartmentIdInParams, updateStatusDepartmentHandler);
 
 router
   .route('/departments')

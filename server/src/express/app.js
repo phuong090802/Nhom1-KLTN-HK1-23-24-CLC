@@ -10,9 +10,9 @@ import test from './routes/test.js';
 
 import admin from './routes/based-roles/admin.js';
 import user from './routes/based-roles/user.js';
-import allRole from './routes/based-roles/all-role.js';
 import departmentHead from './routes/based-roles/department-head.js';
 
+import users from './routes/based-schemas/users.js';
 import departments from './routes/based-schemas/departments.js';
 
 import errorHandler from './middlewares/error-handler.js';
@@ -43,7 +43,7 @@ app.use('/api/test', test);
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
-app.use('/api/users', allRole);
+app.use('/api/users', users);
 app.use('/api/user', user);
 app.use('/api/departments', departments);
 

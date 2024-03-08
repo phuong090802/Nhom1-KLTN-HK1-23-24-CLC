@@ -116,9 +116,9 @@
     },
     {
       "code": "4019",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không tìm thấy file",
+      "file": "express/middlewares/upload-file.js",
+      "detail": "Upload ảnh mà không có file trong request"
     },
     {
       "code": "4020",
@@ -170,9 +170,9 @@
     },
     {
       "code": "4028",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Định dạng file không hỗ trợ",
+      "file": "express/middlewares/upload-file.js",
+      "detail": "Định dạng file không phải là ảnh khi upload ảnh"
     },
     {
       "code": "4029",

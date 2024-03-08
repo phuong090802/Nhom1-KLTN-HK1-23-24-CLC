@@ -1,0 +1,29 @@
+import mongoose from 'mongoose';
+
+import answerSchema from './answer.js';
+
+const feedbackSchema = mongoose.Schema({
+  content: {
+    type: String,
+    default: 'Câu trả lời không phù hợp! Kiểm tra lại',
+  },
+  answer: {
+    type: answerSchema,
+    required: [true, 'Vui lòng nhập thông tin câu trả lời bị từ chối'],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+feedbackSchema.pre('validate', function (next) {
+  if (typeof this.content === 'string' && this.content.trim().length === 0) {
+    this.content = 'Câu trả lời không phù hợp! Kiểm tra lại';
+  }
+  next();
+});
+
+const Feedback = mongoose.model('Feedback', feedbackSchema);
+
+export default Feedback;

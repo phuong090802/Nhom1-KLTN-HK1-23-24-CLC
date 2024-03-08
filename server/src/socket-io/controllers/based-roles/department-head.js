@@ -1,9 +1,11 @@
 import validator from 'validator';
 
+import { statusQuestionApprovedMapper } from '../../../constants/mapper.js';
+import { defaultPayloadForPaginationQuestions } from '../../../constants/socket-payload.js';
+
 import Field from '../../../models/field.js';
 import Question from '../../../models/question.js';
-import { statusQuestionMapper } from '../../../constants/mapper.js';
-import { defaultPayloadForPaginationQuestions } from '../../../constants/socket-payload.js';
+import Feedback from '../../../models/feedback.js';
 
 // namespace: /department-head
 // listen event (ack): field:validate-field-name:create
@@ -72,7 +74,7 @@ export async function validateFieldNameUpdate(socket, payload, callback) {
 // listen event (ack): answer:approve
 // description: Duyệt câu trả lời
 export async function approveAnswer(io, payload, callback) {
-  const { questionId, isApproved } = payload;
+  const { questionId, isApproved, content } = payload;
 
   if (!validator.isMongoId(questionId)) {
     return callback({
@@ -96,11 +98,13 @@ export async function approveAnswer(io, payload, callback) {
     question.status = 'publicly-answered-and-approved';
   } else {
     question.status = 'unanswered';
+    const answer = question.answer;
+    await Feedback.create({ content, answer });
     question.answer = null;
   }
   const savedQuestion = await question.save();
 
-  const newStrStatus = statusQuestionMapper[savedQuestion.status];
+  const newStrStatus = statusQuestionApprovedMapper[savedQuestion.status];
 
   callback({
     success: true,

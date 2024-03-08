@@ -17,13 +17,11 @@ const router = express.Router();
 
 router.use(authHandler('DEPARTMENT_HEAD'), validateDepartmentBeforeAccess);
 
-router.put(
-  '/fields/:id/status',
-  departmentHeadValidateField,
-  updateStatusFieldHandler
-);
+router
+  .route('/fields/:id')
+  .put(validateFieldIdInParams, updateFieldHandler)
+  .patch(departmentHeadValidateField, updateStatusFieldHandler);
 
-router.route('/fields/:id').put(validateFieldIdInParams, updateFieldHandler);
 router.route('/fields').post(addFieldHandler);
 
 export default router;

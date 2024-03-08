@@ -8,7 +8,7 @@ export const fieldMapper = {
   field: 'Lĩnh vực',
 };
 
-export const statusQuestionMapper = {
+export const statusQuestionApprovedMapper = {
   unanswered: 'Từ chối duyệt câu trả lời',
   'publicly-answered-and-approved': 'Duyệt câu trả lời',
 };

@@ -10,30 +10,41 @@ import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 // import paginateData from '../../utils/pagination.js';
 // import ErrorHandler from '../../utils/error-handler.js';
 import {
-  uploadFileToFirebaseHandler,
+  optionalUploadFileToFirebaseHandler,
   uploadImageOrDocumentHandler,
 } from '../middlewares/upload-file.js';
 // import Department from '../../models/department.js';
 // import Counsellor from '../../models/counsellor.js';
+import Feedback from '../../models/feedback.js';
 
 const router = express.Router();
 
-const uploadHandler = catchAsyncErrors(async (req, res, next) => {
-  const { title, content, departmentId, fieldId } = req.body;
-  console.log('departmentId', departmentId);
-  console.log('fieldId', fieldId);
-  console.log('title', title);
-  console.log('content', content);
-  const uploadedFile = req.uploadedFile;
-  res.end();
-});
+// const uploadHandler = catchAsyncErrors(async (req, res, next) => {
+//   const { title, content, departmentId, fieldId } = req.body;
+//   console.log('departmentId', departmentId);
+//   console.log('fieldId', fieldId);
+//   console.log('title', title);
+//   console.log('content', content);
+//   const uploadedFile = req.uploadedFile;
+//   res.end();
+// });
+
+// router.post(
+//   '/upload',
+//   uploadImageOrDocumentHandler.single('file'),
+//   uploadFileToFirebaseHandler('questions'),
+//   uploadHandler
+// );
 
 router.post(
-  '/upload',
-  uploadImageOrDocumentHandler.single('file'),
-  uploadFileToFirebaseHandler('questions'),
-  uploadHandler
+  '/feedbacks',
+  catchAsyncErrors(async (req, res, next) => {
+    const { content, answer } = req.body;
+    const feedback = await Feedback.create({ content, answer });
+    res.json(feedback);
+  })
 );
+
 export default router;
 
 // router.post('/departments',)

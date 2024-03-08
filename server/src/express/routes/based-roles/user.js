@@ -4,7 +4,7 @@ import authHandler from '../../middlewares/auth.js';
 
 import { makeQuestionHandler } from '../../controllers/based-roles/user.js';
 import {
-  uploadFileToFirebaseHandler,
+  optionalUploadFileToFirebaseHandler,
   uploadImageOrDocumentHandler,
 } from '../../middlewares/upload-file.js';
 import { validateBeforeMakeQuestion } from '../../middlewares/validate.js';
@@ -17,7 +17,7 @@ router
   .post(
     uploadImageOrDocumentHandler.single('file'),
     validateBeforeMakeQuestion,
-    uploadFileToFirebaseHandler('questions'),
+    optionalUploadFileToFirebaseHandler('questions'),
     makeQuestionHandler
   );
 
