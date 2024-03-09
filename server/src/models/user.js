@@ -230,11 +230,6 @@ userSchema.methods.userRequestInformation = async function () {
 
 // add hook
 
-userSchema.post('find', function (result) {
-  // assign user.avatar equal user.avatar.url when user find() method
-  return result.map((user) => (user.avatar = user.avatar.url));
-});
-
 userSchema.pre('validate', function (next) {
   // split merge password to password and confirmPassword
   if (!this.isModified('password')) {

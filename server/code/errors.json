@@ -296,9 +296,9 @@
     },
     {
       "code": "4049",
-      "message": "Không tìm lĩnh vực",
+      "message": "Không tìm lĩnh vực thuộc khoa",
       "file": "express/middlewares/validate.js",
-      "detail": "Kiểm tra lĩnh vực có trong DB không bằng id"
+      "detail": "Kiểm tra lĩnh vực có trong DB không (tìm bằng id và khoa)"
     },
     {
       "code": "4050",
@@ -380,15 +380,15 @@
     },
     {
       "code": "4063",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không tìm thấy tư vấn viên",
+      "file": "socket-io/middlewares/validate.js",
+      "detail": "Không tìm thấy tư vấn viên với id được truyền vào"
     },
     {
       "code": "4064",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Vui lòng nhập lĩnh vực thêm cho tư vấn viên",
+      "file": "express/controllers/based-roles/department-head.js",
+      "detail": "Lĩnh vực bị null hoặc là mảng rỗng"
     },
     {
       "code": "4065",
@@ -416,9 +416,9 @@
     },
     {
       "code": "4069",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Permission error. Thao tác không hợp lệ",
+      "file": "express/middlewares/validate.js",
+      "detail": "Tránh tình trạng admin upload trạng thái của bản thân. Tránh tình trạng department upload trạng thái của bản thân hoặc department khác"
     },
     {
       "code": "4070",

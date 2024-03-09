@@ -52,7 +52,7 @@ export const validateUserIdInBodyWithRole = (role) => {
 };
 
 // admin chỉ thêm tài khoản cho COUNSELLOR và SUPERVISOR
-export const validateRoles = (...roles) => {
+export const validateRoleInBody = (...roles) => {
   return catchAsyncErrors((req, res, next) => {
     const role = req.body.role;
     if (!roles.includes(role)) {
@@ -61,25 +61,6 @@ export const validateRoles = (...roles) => {
     next();
   });
 };
-
-// nếu dùng lại check code trước khi dùng
-// export const validateRoleIdInParam = (role) => {
-//   return catchAsyncErrors(async (req, res, next) => {
-//     const { id } = req.params;
-//     const user = await User.findOne({ _id: id, role });
-//     if (!user) {
-//       return next(
-//         new ErrorHandler(
-//           404,
-//           `Không tìm thấy tài khoản với vai trò ${role}`,
-//           //???// 4036
-//         )
-//       );
-//     }
-//     req.foundUser = user;
-//     next();
-//   });
-// };
 
 // kiểm tra id người dùng có tồn tại trong DB không
 export const validateUserIdInParams = catchAsyncErrors(
@@ -162,16 +143,19 @@ export const departmentHeadValidateField = [
   departmentHeadValidateStatusOfField,
 ];
 
-// Kiểm tra lĩnh vực có trong DB không bằng id
-const validateFieldIdInBody = catchAsyncErrors(async (req, res, next) => {
-  const { fieldId } = req.body;
-  const field = await Field.findById(fieldId);
-  if (!field) {
-    return next(new ErrorHandler(404, 'Không tìm lĩnh vực', 4049));
+// Kiểm tra lĩnh vực có trong DB không (tìm bằng id và khoa)
+export const validateFieldIdInBodyOfDepartment = catchAsyncErrors(
+  async (req, res, next) => {
+    const { fieldId } = req.body;
+    const department = req.foundDepartment;
+    const field = await Field.findOne({ _id: fieldId, department });
+    if (!field) {
+      return next(new ErrorHandler(404, 'Không tìm lĩnh vực thuộc khoa', 4049));
+    }
+    req.foundField = field;
+    next();
   }
-  req.foundField = field;
-  next();
-});
+);
 
 // admin kiểm tra trạng thái của khoa trước khi cập nhật (tên, thêm tư vấn viên vào khoa)
 export const adminValidateStatusOfDepartment = catchAsyncErrors(
@@ -220,7 +204,7 @@ const userValidateStatusOfField = catchAsyncErrors(async (req, res, next) => {
 
 export const validateBeforeMakeQuestion = [
   validateDepartmentIdInBody,
-  validateFieldIdInBody,
+  validateFieldIdInBodyOfDepartment,
   userValidateStatusOfDepartment,
   userValidateStatusOfField,
 ];
@@ -237,3 +221,33 @@ export const validateStatusOfDepartment = catchAsyncErrors(
     next();
   }
 );
+
+// kiểm tra id tư vấn viên có tồn tại trong DB không
+export const validateCounsellorIdInParams = catchAsyncErrors(
+  async (req, res, next) => {
+    const { id } = req.params;
+    const counsellor = await User.findOne({ _id: id, role: 'COUNSELLOR' });
+    if (!counsellor) {
+      return next(new ErrorHandler(404, 'Không tìm thấy tư vấn viên', 4063));
+    }
+    req.foundCounsellor = counsellor;
+    next();
+  }
+);
+
+// những role bị chặn (trong param)
+// tránh tình trạng admin upload trạng thái của bản thân
+// tránh tình trạng department upload trạng thái của bản thân hoặc department khác
+export const permissionsCannotBeModified = (roles) => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const user = req.foundUser;
+
+    if (roles.includes(user.role)) {
+      return next(
+        new ErrorHandler(404, 'Permission error. Thao tác không hợp lệ', 4069)
+      );
+    }
+    req.foundUser = user;
+    next();
+  });
+};

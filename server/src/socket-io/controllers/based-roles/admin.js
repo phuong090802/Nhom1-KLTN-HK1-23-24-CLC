@@ -32,7 +32,7 @@ export const validateDepartmentNameForCreate = async (payload, callback) => {
 export const validateDepartmentNameForUpdate = async (payload, callback) => {
   const { departmentId, departmentName } = payload;
 
-  if (!validator.isMongoId(departmentId)) {
+  if (!departmentId || !validator.isMongoId(departmentId)) {
     return callback({
       success: false,
       message: 'Mã khoa không hợp lệ',

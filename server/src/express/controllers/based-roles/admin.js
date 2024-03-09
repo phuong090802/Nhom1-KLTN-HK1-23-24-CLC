@@ -22,7 +22,7 @@ export const userHandler = catchAsyncErrors(async (req, res, next) => {
 // endpoint: /api/admin/users/:id
 // method: PUT
 // description: Khóa/mở khóa người dùng (tất cả các role ngoại trừ ADMIN)
-export const updateEnabledUserHandler = catchAsyncErrors(
+export const updateIsEnabledUserHandler = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.foundUser;
     user.isEnabled = req.body.isEnabled;
@@ -56,7 +56,7 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
   userRecords = await queryAPI.pagination().query.clone();
 
   const {
-    data: users,
+    data: retUsers,
     page,
     pages,
   } = paginateResults(
@@ -65,6 +65,9 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
     req.query.size,
     userRecords
   );
+
+  const users = retUsers.map((user) => ({ ...user, avatar: user.avatar.url }));
+
   res.json({ success: true, users, page, pages, code: 2021 });
 });
 

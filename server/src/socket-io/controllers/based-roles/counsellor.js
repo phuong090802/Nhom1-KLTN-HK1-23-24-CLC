@@ -18,7 +18,7 @@ export async function createAnswer(io, socket, payload, callback) {
   const user = socket.user;
   const { questionId, content, file } = payload;
 
-  if (!validator.isMongoId(questionId)) {
+  if (!questionId || !validator.isMongoId(questionId)) {
     return callback({
       success: false,
       message: 'Mã câu hỏi không hợp lệ',

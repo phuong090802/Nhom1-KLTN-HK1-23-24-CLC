@@ -39,7 +39,7 @@ export async function validateFieldNameCreate(socket, payload, callback) {
 export async function validateFieldNameUpdate(socket, payload, callback) {
   const { fieldId, fieldName } = payload;
 
-  if (!validator.isMongoId(fieldId)) {
+  if (!fieldId || !validator.isMongoId(fieldId)) {
     return callback({
       success: false,
       message: 'Mã lĩnh vực không hợp lệ',
@@ -76,7 +76,7 @@ export async function validateFieldNameUpdate(socket, payload, callback) {
 export async function approveAnswer(io, payload, callback) {
   const { questionId, isApproved, content } = payload;
 
-  if (!validator.isMongoId(questionId)) {
+  if (!questionId || !validator.isMongoId(questionId)) {
     return callback({
       success: false,
       message: 'Mã câu hỏi không hợp lệ',
@@ -99,6 +99,9 @@ export async function approveAnswer(io, payload, callback) {
   } else {
     question.status = 'unanswered';
     const answer = question.answer;
+    // emit event feedback
+
+    
     await Feedback.create({ content, answer });
     question.answer = null;
   }

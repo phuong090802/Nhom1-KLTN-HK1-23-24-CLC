@@ -4,10 +4,11 @@ import authHandler from '../../middlewares/auth.js';
 import {
   validateDepartmentIdInBody,
   validateDepartmentIdInParams,
-  validateRoles,
+  validateRoleInBody,
   adminValidateStatusOfDepartment,
   validateUserIdInParams,
   validateUserIdInBodyWithRole,
+  permissionsCannotBeModified,
 } from '../../middlewares/validate.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
 
@@ -19,7 +20,7 @@ import {
   departmentsHandler,
   updateDepartmentHandler,
   updateDepartmentHeadHandler,
-  updateEnabledUserHandler,
+  updateIsEnabledUserHandler,
   updateStatusDepartmentHandler,
   userHandler,
   usersHandler,
@@ -32,7 +33,11 @@ router.use(authHandler('ADMIN'));
 router
   .route('/users/:id')
   .get(validateUserIdInParams, userHandler)
-  .put(validateUserIdInParams, updateEnabledUserHandler);
+  .put(
+    validateUserIdInParams,
+    permissionsCannotBeModified('ADMIN'),
+    updateIsEnabledUserHandler
+  );
 
 router.route('/users').get(defaultPaginationParams, usersHandler);
 
@@ -65,7 +70,7 @@ router
 
 router
   .route('/staffs')
-  .post(validateRoles('COUNSELLOR', 'SUPERVISOR'), addStaffHandler);
+  .post(validateRoleInBody('COUNSELLOR', 'SUPERVISOR'), addStaffHandler);
 
 router
   .route('/counsellors')

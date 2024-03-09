@@ -243,26 +243,26 @@
     {
       "code": "2041",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-role/department-head.js",
+      "detail": "Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2042",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Thêm tư vấn viên thành công",
+      "file": "express/controllers/based-schemas/departments.js",
+      "detail": "Trưởng khoa thêm tư vấn viên thành công"
     },
     {
       "code": "2043",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Xóa lĩnh vực của tư vấn viên thành công",
+      "file": "express/controllers/based-role/department-head.js",
+      "detail": "Cập nhật (xóa) lĩnh vực cho tư vấn viên"
     },
     {
       "code": "2044",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "newStrIsEnabled + ' tài khoản thành công'",
+      "file": "express/controllers/based-role/department-head.js",
+      "detail": "Trưởng khoa khóa/mở khóa tài khoản tư vấn viên"
     },
     {
       "code": "2045",
