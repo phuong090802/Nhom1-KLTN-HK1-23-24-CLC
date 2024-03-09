@@ -202,8 +202,8 @@ export const updateDepartmentHandler = catchAsyncErrors(
   }
 );
 
-// endpoint: /api/admin/departments/:id/status
-// method: PUT
+// endpoint: /api/admin/departments/:id
+// method: PATCH
 // description: khóa/mở khóa khoa
 export const updateStatusDepartmentHandler = catchAsyncErrors(
   async (req, res, next) => {

@@ -237,8 +237,8 @@
     {
       "code": "2040",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-role/department-head.js",
+      "detail": "Lấy danh sách lĩnh vực (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2041",

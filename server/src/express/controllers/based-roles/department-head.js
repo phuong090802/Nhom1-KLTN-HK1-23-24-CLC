@@ -1,8 +1,41 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+
+import QueryAPI from '../../../utils/query-api.js';
+import paginateResults from '../../../utils/pagination.js';
+
 import Field from '../../../models/field.js';
 
-// endpoint: /api/department-head/fields/:id/status
-// method: PUT
+// endpoint: /api/department-head/fields
+// method: GET
+// description: Lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
+export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
+  const queryAPI = new QueryAPI(Field.find().lean().select('-__v'), req.query)
+    .search()
+    .filter()
+    .sort();
+
+  // get all fields in DB
+  let fieldsRecords = await queryAPI.query;
+  // number of record in db
+  const numberOfFields = fieldsRecords.length;
+  // get department in page with size
+  fieldsRecords = await queryAPI.pagination().query.clone();
+
+  const {
+    data: fields,
+    page,
+    pages,
+  } = paginateResults(
+    numberOfFields,
+    req.query.page,
+    req.query.size,
+    fieldsRecords
+  );
+  res.json({ success: true, fields, page, pages, code: 2040 });
+});
+
+// endpoint: /api/department-head/fields/:id
+// method: PATCH
 // description: Cập nhật trạng lĩnh vực của khoa
 export const updateStatusFieldHandler = catchAsyncErrors(
   async (req, res, next) => {

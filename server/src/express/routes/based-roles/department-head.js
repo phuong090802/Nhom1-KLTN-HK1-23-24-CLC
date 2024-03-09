@@ -9,9 +9,12 @@ import {
 
 import {
   addFieldHandler,
+  fieldsHandler,
   updateFieldHandler,
   updateStatusFieldHandler,
 } from '../../controllers/based-roles/department-head.js';
+
+import { defaultPaginationParams } from '../../middlewares/query.js';
 
 const router = express.Router();
 
@@ -22,6 +25,9 @@ router
   .put(validateFieldIdInParams, updateFieldHandler)
   .patch(departmentHeadValidateField, updateStatusFieldHandler);
 
-router.route('/fields').post(addFieldHandler);
+router
+  .route('/fields')
+  .get(defaultPaginationParams, fieldsHandler)
+  .post(addFieldHandler);
 
 export default router;
