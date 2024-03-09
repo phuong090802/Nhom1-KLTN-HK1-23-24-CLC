@@ -60,5 +60,5 @@
 }
 
 .dropdown-container {
-    @apply mb-2 duration-500 overflow-hidden
+    @apply mb-2 overflow-hidden
 }

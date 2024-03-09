@@ -1,16 +1,19 @@
-import logo from '../../../assets/svg/big_logo.svg'
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import { useForm } from 'react-hook-form';
 import { signIn } from '../../../service/guest/authorService';
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router';
+import { toast } from 'sonner'
 import './style.css'
+import useMyContext from '../../../hooks/userMyContext';
+import { roleData } from '../../admin/admin-user/const';
 
 
 const Login = () => {
+    const { setUser } = useMyContext()
 
-    const naviagte = useNavigate()
+    const navigate = useNavigate()
 
     const {
         register,
@@ -27,11 +30,18 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             const response = await signIn(data)
-            var userData = JSON.stringify(response.user);
-            Cookies.set('userData', btoa(userData))
             Cookies.set('accessToken', response.token)
+            setUser(response.user);
+            toast.success('Đăng nhập thành công')
+            setTimeout(() => {
+                response.user.role === 'ADMIN' && navigate('/admin')
+                response.user.role === 'DEPARTMENT_HEAD' && navigate('/department-head')
+                // response.user.role === 'ADMIN' && navigate('/admin')
+                // response.user.role === 'ADMIN' && navigate('/admin')
+                // response.user.role === 'ADMIN' && navigate('/admin')
+            }, 1000)
         } catch (error) {
-            console.log(error);
+            toast.error(error?.data?.message || 'Đăng nhập không thành công')
         }
     }
 
@@ -81,8 +91,16 @@ const Login = () => {
             </form>
 
             <div className='form-footer'>
-                <p>Chưa có tài khoản? <span className='text-primary'>Đăng ký</span></p>
-                <p><span className='text-primary'>Quên mật khẩu</span></p>
+                <p>Chưa có tài khoản?
+                    <span className='text-primary cursor-pointer'
+                        onClick={() => navigate('/dang-ky')}
+                    >
+                        Đăng ký
+                    </span></p>
+                <p>
+                    <span className='text-primary cursor-pointer'>
+                        Quên mật khẩu
+                    </span></p>
             </div>
         </div>
     </div>

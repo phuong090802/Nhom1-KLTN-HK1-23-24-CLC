@@ -1,4 +1,4 @@
-import StaffMenu from "../../../components/staff-menu"
+import StaffMenu from "../../../molecule/staff-menu"
 import Dashboard from "./Dashboard"
 
 const CounsellorHome = () => {
