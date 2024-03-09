@@ -56,9 +56,9 @@
     },
     {
       "code": "2010",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Cập nhật ảnh đại diện thành công",
+      "file": "express/controllers/based-schemas/user.js",
+      "detail": "Người dùng cập nhật ảnh đại diện thành công"
     },
     {
       "code": "2011",

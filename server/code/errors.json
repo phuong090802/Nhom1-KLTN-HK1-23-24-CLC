@@ -183,13 +183,13 @@
     {
       "code": "4030",
       "message": "Không tìm thấy khoa",
-      "file": "express/controllers/admin.js",
+      "file": "express/controllers/based-roles/admin.js",
       "detail": "Khoa được thêm vào form với id là 1 giá trị không tồn tại trong DB (chỉ áp dụng khi thêm COUNSELLOR)"
     },
     {
       "code": "4031",
       "message": "Tư vấn viên đã được thêm vào khoa trước đó",
-      "file": "express/controllers/admin.js",
+      "file": "express/controllers/based-roles/admin.js",
       "detail": "Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể nhưng tư vấn viên đã được thêm vào khoa trước đó"
     },
     {
@@ -218,9 +218,9 @@
     },
     {
       "code": "4036",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Lỗi cập nhật ảnh đại diện",
+      "file": "express/controllers/based-schemas/users.js",
+      "detail": "Lỗi khi gỡ ảnh cũ cập nhật ảnh người dùng"
     },
     {
       "code": "4037",

@@ -15,7 +15,6 @@ const router = express.Router();
 
 router.use(isAuthenticatedHandler);
 
-// chưa làm xong. Mai test
 router
   .route('/')
   .put(updateProfile)

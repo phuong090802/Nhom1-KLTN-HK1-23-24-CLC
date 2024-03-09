@@ -55,6 +55,7 @@ export const requiredUploadFileToFirebaseHandler = (folder) => {
       // return next error
       return next(new ErrorHandler(422, 'Không tìm thấy file', 4019));
     }
+
     const extension = path.extname(req.file.originalname);
     const filename = nanoid() + extension;
     const fileRef = `${folder}/${filename}`;
