@@ -1,6 +1,6 @@
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
 
-import StaffMenu from "../../../components/staff-menu"
+import StaffMenu from "../../../molecule/staff-menu"
 import Item from './Item';
 import { useState } from 'react';
 

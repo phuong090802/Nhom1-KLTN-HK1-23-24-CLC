@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react"
 import HomeContent from "./HomeContent"
 import LoadingComponent from "../../../components/loading-component"
+import UserRoute from "../../../routes/UserRoute"
 
 const NewsList = lazy(() => import('../../../components/news-list'))
 const DepartmentList = lazy(() => import('../../../components/department-list'))

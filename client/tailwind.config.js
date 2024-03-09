@@ -9,21 +9,18 @@ export default {
       colors: {
         'primary': '#2785DC',
         'ghost-white': '#EDEDED',
+        'secondary': '#DAF8FF'
       },
       fontFamily: {
         'title': "Play"
       },
       keyframes: {
-        'scale-in-ver-top': {
+        'slide-down': {
           '0%': {
-            transform: 'scaleY(0)',
-            transformOrigin: '100% 0%',
-            opacity: '1',
+            maxHeight: '0px',
           },
           '100%': {
-            transform: 'scaleY(1)',
-            transformOrigin: '100% 0%',
-            opacity: '1',
+            maxHeight: '10000px',
           },
         },
       },

@@ -24,7 +24,7 @@ const HomeContent = () => {
         </div>
 
         <div className='home-title'>
-            <p>Hỏi đáp</p>
+            <p className=''>Hỏi đáp</p>
             <div>
                 <FilterListOutlinedIcon className='mr-4' />
                 <Filter />

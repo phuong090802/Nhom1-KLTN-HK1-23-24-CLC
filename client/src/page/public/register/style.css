@@ -36,7 +36,7 @@
 }
 
 .submit-btn {
-    @apply text-xl font-semibold text-white rounded-lg py-2 mt-4 bg-primary;
+    @apply text-xl font-semibold rounded-lg py-2 mt-4 bg-primary text-white;
 }
 
 .input-icon {

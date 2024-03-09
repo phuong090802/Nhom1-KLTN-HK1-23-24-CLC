@@ -1,27 +1,28 @@
 import { io } from "socket.io-client";
 
-const authSocket = io(import.meta.env.VITE_SOCKET_BASE_URL + 'auth',
+console.log(import.meta.env.VITE_SOCKET_BASE_URL);
+
+const authSocket = io(import.meta.env.VITE_SOCKET_BASE_URL,
     {
         withCredentials: true,
         autoConnect: false,
     })
 
 const checkEmailExist = async (email) => {
+    console.log(email);
     try {
         const response = await authSocket
-            .emitWithAck('check-email-exists', email)
-        return response.code
+            .emitWithAck('register:validate-email', email)
+        return response.success
     } catch (error) {
-        return 5000
+        return false
     }
 };
 
 const checkPhoneExist = async (phone) => {
-    console.log('sdt');
     try {
         const response = await authSocket
-            .emitWithAck('check-phone-number-exists', phone)
-        console.log(response);
+            .emitWithAck('register:validate-phone-number', phone)
         return response.code
     } catch (error) {
         return 5000

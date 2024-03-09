@@ -49,8 +49,8 @@ const HomeContentItem = ({ id, selectedId, setSelectedId }) => {
                     <ArrowDropDownOutlinedIcon className='text-white' />}
             </div>
         </div>
-        <div className={`dropdown-container animate-scale-in-ver-top  ${id === selectedId ? 'h-52' : 'h-0'}`}>
-            <div className='pb-2 border-t-2 duration-500'>
+        <div className={`dropdown-container duration-500 animate-slide-down ${id === selectedId ? 'h-auto' : 'h-0'}`}>
+            <div className='pb-2 border-t-2 duration-500 pt-2'>
                 <div className='px-4 flex'>
                     <QuestionMarkOutlinedIcon className='mr-2' />
                     <div className='text-black/75'>

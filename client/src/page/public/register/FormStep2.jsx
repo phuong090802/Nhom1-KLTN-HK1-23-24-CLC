@@ -133,7 +133,6 @@ const FormStep2 = ({ data, setData, setStep }) => {
         </div>
         
         <button
-            type='submit'
             className='submit-btn'>
             Đăng ký
         </button>

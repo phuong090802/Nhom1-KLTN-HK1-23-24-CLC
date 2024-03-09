@@ -14,7 +14,6 @@ import './style.css'
 const FormStep1 = ({ data, setData, setStep }) => {
 
     useAuthorSocket()
-
     const {
         register,
         handleSubmit,
@@ -25,8 +24,6 @@ const FormStep1 = ({ data, setData, setStep }) => {
             mode: 'onBlur',
             defaultValues: data
         })
-
-    console.log(errors);
 
     const onSubmit = useCallback((submitData) => {
         setData({ ...data, ...submitData })
@@ -57,7 +54,7 @@ const FormStep1 = ({ data, setData, setStep }) => {
             const code = await checkEmailExist(email);
             switch (code) {
                 case 4004:
-                    setError("emailValidate", { type: "manvalidateual", message: "Email đã được sử dụng", })
+                    setError("emailValidate", { type: "validate", message: "Email đã được sử dụng", })
                     break;
                 case 5000:
                     setError("emailValidate", { type: "validate", message: "Lỗi khi xác minh email", })
@@ -124,7 +121,7 @@ const FormStep1 = ({ data, setData, setStep }) => {
         </div>
         <button className='submit-btn'>
             Tiếp tục
-        </button>
+        </button>   
     </form>
 }
 

@@ -12,14 +12,16 @@ API.interceptors.response.use(
     },
 
     async (error) => {
+        console.log(error.response.data);
         const originalRequest = error.config;
-        if (error?.response?.status === 401 && !originalRequest._retry) {
+        if (error?.response?.status === 401
+            && error?.response?.data?.code !== 4008
+            && !originalRequest._retry) {
             originalRequest._retry = true;
-
             try {
-                const response = await refreshToken();
-                const token = response.data?.token;
                 Cookies.remove('accessToken')
+                const response = await refreshToken();
+                const token = response.token;
                 Cookies.set('accessToken', token)
                 originalRequest.headers.Authorization = `Bearer ${token}`;
                 return API(originalRequest);
@@ -27,10 +29,10 @@ API.interceptors.response.use(
                 console.error(refreshError);
                 Cookies.remove('userInfor')
                 Cookies.remove('accessToken')
-                return Promise.reject(refreshError);
+                return Promise.reject(refreshError.response);
             }
         }
-        return Promise.reject(error);
+        return Promise.reject(error.response.data);
     }
 )
 
