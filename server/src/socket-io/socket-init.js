@@ -1,4 +1,7 @@
-import { defaultPayloadForPaginationQuestions } from '../constants/socket-payload.js';
+import {
+  defaultPayloadForPaginationFeedbacks,
+  defaultPayloadForPaginationQuestions,
+} from '../constants/socket-payload.js';
 import {
   validateDepartmentNameForCreate,
   validateDepartmentNameForUpdate,
@@ -11,7 +14,10 @@ import {
   verifyEmail,
   verifyOTP,
 } from './controllers/auth.js';
-import { createAnswer } from './controllers/based-roles/counsellor.js';
+import {
+  createAnswer,
+  getAllFeedbacks,
+} from './controllers/based-roles/counsellor.js';
 import {
   approveAnswer,
   validateFieldNameCreate,
@@ -88,6 +94,13 @@ export default function socketIO(io) {
     .on('connection', (socket) => {
       socket.on('answer:create', (payload, callback) => {
         createAnswer(io, socket, payload, callback);
+      });
+
+      socket.on('get-all-feedbacks', (payload) => {
+        getAllFeedbacks(
+          socket,
+          payload || defaultPayloadForPaginationFeedbacks
+        );
       });
     });
 

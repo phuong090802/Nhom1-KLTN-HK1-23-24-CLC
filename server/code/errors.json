@@ -218,7 +218,7 @@
     },
     {
       "code": "4036",
-      "message": "Lỗi cập nhật ảnh đại diện",
+      "message": "Lỗi cập nhật ảnh đại diện. Vui lòng thử lại",
       "file": "express/controllers/based-schemas/users.js",
       "detail": "Lỗi khi gỡ ảnh cũ cập nhật ảnh người dùng"
     },
@@ -422,20 +422,20 @@
     },
     {
       "code": "4070",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không tìm thấy phản hồi",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy phản hồi thuộc tư vấn viên để xóa theo Id"
     },
     {
       "code": "4071",
-      "message": "",
+      "message": "Lỗi khi xóa phản hồi. Vui lòng thử lại",
       "file": "",
       "detail": ""
     },
     {
       "code": "4072",
-      "message": "",
-      "file": "",
+      "message": "Lỗi khi xóa tất cả phản hồi. Vui lòng thử lại",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {

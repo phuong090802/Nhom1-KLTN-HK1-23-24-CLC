@@ -1,7 +1,10 @@
 import validator from 'validator';
 
 import { statusQuestionApprovedMapper } from '../../../constants/mapper.js';
-import { defaultPayloadForPaginationQuestions } from '../../../constants/socket-payload.js';
+import {
+  defaultPayloadForPaginationFeedbacks,
+  defaultPayloadForPaginationQuestions,
+} from '../../../constants/socket-payload.js';
 
 import Field from '../../../models/field.js';
 import Question from '../../../models/question.js';
@@ -99,10 +102,16 @@ export async function approveAnswer(io, payload, callback) {
   } else {
     question.status = 'unanswered';
     const answer = question.answer;
+
+    await Feedback.create({ content, answer, question });
+
     // emit event feedback
 
-    
-    await Feedback.create({ content, answer });
+    io.of('/counsellor').emit(
+      'get-all-feedbacks',
+      defaultPayloadForPaginationFeedbacks
+    );
+
     question.answer = null;
   }
   const savedQuestion = await question.save();

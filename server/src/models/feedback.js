@@ -9,7 +9,12 @@ const feedbackSchema = mongoose.Schema({
   },
   answer: {
     type: answerSchema,
-    required: [true, 'Vui lòng nhập thông tin câu trả lời bị từ chối'],
+    required: [true, 'Không tìm thấy thông tin câu trả lời'],
+  },
+  question: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question',
+    required: [true, 'Không tìm thấy thông tin câu hỏi'],
   },
   createdAt: {
     type: Date,

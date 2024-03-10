@@ -11,6 +11,7 @@ import test from './routes/test.js';
 import admin from './routes/based-roles/admin.js';
 import user from './routes/based-roles/user.js';
 import departmentHead from './routes/based-roles/department-head.js';
+import counsellor from './routes/based-roles/counsellor.js';
 
 import users from './routes/based-schemas/users.js';
 import departments from './routes/based-schemas/departments.js';
@@ -43,6 +44,7 @@ app.use('/api/test', test);
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
+app.use('/api/counsellor', counsellor);
 app.use('/api/users', users);
 app.use('/api/user', user);
 app.use('/api/departments', departments);

@@ -5,6 +5,7 @@ import User from '../../models/user.js';
 import Field from '../../models/field.js';
 
 import ErrorHandler from '../../utils/error-handler.js';
+import Feedback from '../../models/feedback.js';
 
 // validate value id of department in body
 export const validateDepartmentIdInBody = catchAsyncErrors(
@@ -251,3 +252,17 @@ export const permissionsCannotBeModified = (roles) => {
     next();
   });
 };
+
+// Kiểm tra feedback id được truyền vào có phải của tư vấn viên không
+export const validateFeedbackOfCounsellor = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const { id } = req.params;
+    const feedback = await Feedback.findOne({ _id: id, 'answer.user': user });
+    if (!feedback) {
+      return next(new ErrorHandler(404, 'Không tìm thấy phản hồi', 4070));
+    }
+    req.foundFeedback = feedback;
+    next();
+  }
+);

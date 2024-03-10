@@ -267,19 +267,19 @@
     {
       "code": "2045",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Tư vấn viên lấy danh sách feedback của họ (mặc định mới nhất đến củ nhất) - giảm dần z -> a"
     },
     {
       "code": "2046",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Xóa phản hồi thành công",
+      "file": "express/controllers/based-role/counsellor.js",
+      "detail": "Tư vấn viên xóa phản hồi của họ thành công (xóa bằng Id)"
     },
     {
       "code": "2047",
-      "message": "",
-      "file": "",
+      "message": "Xóa danh sách phản hồi thành công",
+      "file": "express/controllers/based-role/counsellor.js",
       "detail": ""
     },
     {

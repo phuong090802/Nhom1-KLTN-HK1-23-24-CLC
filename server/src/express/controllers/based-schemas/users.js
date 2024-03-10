@@ -12,14 +12,20 @@ export const updateAvatar = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const oldStrRef = user.avatar.ref;
 
-  if (user.avatar.ref) {
+  if (oldStrRef) {
     try {
       // remove old avatar
       await deleteFile(oldStrRef);
     } catch (error) {
       // remove new image if error
       await deleteFile(avatar.ref);
-      return next(new ErrorHandler(500, 'Lỗi cập nhật ảnh đại diện', 4036));
+      return next(
+        new ErrorHandler(
+          500,
+          'Lỗi cập nhật ảnh đại diện. Vui lòng thử lại',
+          4036
+        )
+      );
     }
   }
 

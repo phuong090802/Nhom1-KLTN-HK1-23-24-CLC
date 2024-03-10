@@ -4,12 +4,52 @@ import path from 'path';
 import { nanoid } from 'nanoid';
 
 import storage from '../../../configs/firebase-init.js';
-import Question from '../../../models/question.js';
 import { mimetype } from '../../../constants/file.js';
 import {
   isSupportFileSize,
   isSupportedMimetype,
 } from '../../../utils/validation.js';
+import paginateResults from '../../../utils/pagination.js';
+
+import Question from '../../../models/question.js';
+import Feedback from '../../../models/feedback.js';
+import QueryAPI from '../../../utils/query-api.js';
+
+// namespace: /counsellor
+// listen event (ack): feedback:list
+// description: Tư vấn viên load danh sách feedback của họ
+export async function getAllFeedbacks(socket, payload) {
+  const user = socket.user;
+  const query = Feedback.find({ 'answer.user': user })
+    .sort({ createdAt: -1 })
+    .lean()
+    .populate({
+      path: 'question',
+      select: '-_id title content',
+    })
+    .select('_id content createdAt answer.content answer.answeredAt question');
+
+  const queryAPI = new QueryAPI(query, payload).search().filter().sort();
+
+  let feedbackRecords = await queryAPI.query;
+  const numberOfFeedbacks = feedbackRecords.length;
+  feedbackRecords = await queryAPI.pagination().query.clone();
+
+  const {
+    data: feedbacks,
+    page,
+    pages,
+  } = paginateResults(
+    numberOfFeedbacks,
+    payload.page,
+    payload.size,
+    feedbackRecords
+  );
+
+  const response = { success: true, feedbacks, page, pages, code: 2045 };
+
+  socket.emit('feedback:list', response);
+}
 
 // namespace: /counsellor
 // listen event (ack): answer:create
