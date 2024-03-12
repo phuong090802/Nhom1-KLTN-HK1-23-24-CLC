@@ -5,6 +5,7 @@ export const mimetype = {
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // MIME for .docx
     'application/pdf', // MIME for .pdf
   ],
+  csv: 'text/csv',
 };
 
 // export const ext = {

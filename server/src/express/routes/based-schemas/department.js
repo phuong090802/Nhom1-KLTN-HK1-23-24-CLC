@@ -4,11 +4,12 @@ import {
   validateDepartmentIdInParams,
   validateStatusOfDepartment,
 } from '../../middlewares/validate.js';
+import { defaultPaginationParams } from '../../middlewares/query.js';
 
 import {
   departmentsHandler,
   fieldsHandler,
-} from '../../controllers/based-schemas/departments.js';
+} from '../../controllers/based-schemas/department.js';
 
 const router = express.Router();
 
@@ -19,6 +20,6 @@ router.get(
   fieldsHandler
 );
 
-router.get('/', departmentsHandler);
+router.get('/', defaultPaginationParams, departmentsHandler);
 
 export default router;

@@ -9,6 +9,7 @@ import {
   validateUserIdInParams,
   validateUserIdInBodyWithRole,
   permissionsCannotBeModified,
+  validateFileInFormData,
 } from '../../middlewares/validate.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
 
@@ -22,13 +23,15 @@ import {
   updateDepartmentHeadHandler,
   updateIsEnabledUserHandler,
   updateStatusDepartmentHandler,
+  uploadCounsellorHandler,
   userHandler,
   usersHandler,
 } from '../../controllers/based-roles/admin.js';
+import { uploadCSVHandler } from '../../middlewares/upload-file.js';
 
 const router = express.Router();
 
-router.use(authHandler('ADMIN'));
+// router.use(authHandler('ADMIN'));
 
 router
   .route('/users/:id')
@@ -71,6 +74,13 @@ router
 router
   .route('/staffs')
   .post(validateRoleInBody('COUNSELLOR', 'SUPERVISOR'), addStaffHandler);
+
+router.post(
+  '/counsellors/upload',
+  uploadCSVHandler.single('file'),
+  validateFileInFormData,
+  uploadCounsellorHandler
+);
 
 router
   .route('/counsellors')

@@ -83,3 +83,15 @@ export const uploadImageHandler = multer({
     }
   },
 });
+
+// handle limit file size and check ext of file (.csv)
+export const uploadCSVHandler = multer({
+  limits: { fieldSize: 2 * 1024 * 1024 }, // 2MB
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype === mimetype.csv) {
+      cb(null, true);
+    } else {
+      cb(new ErrorHandler(422, 'Định dạng file không hỗ trợ', 4082));
+    }
+  },
+});

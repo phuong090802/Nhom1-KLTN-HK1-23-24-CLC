@@ -1,11 +1,14 @@
 import catchAsyncErrors from './catch-async-errors.js';
 
 import Department from '../../models/department.js';
-import User from '../../models/user.js';
 import Field from '../../models/field.js';
+import User from '../../models/user.js';
 
-import ErrorHandler from '../../utils/error-handler.js';
 import Feedback from '../../models/feedback.js';
+import Question from '../../models/question.js';
+import ErrorHandler from '../../utils/error-handler.js';
+
+import { questionStatus } from '../../constants/mapper.js';
 
 // validate value id of department in body
 export const validateDepartmentIdInBody = catchAsyncErrors(
@@ -266,3 +269,41 @@ export const validateFeedbackOfCounsellor = catchAsyncErrors(
     next();
   }
 );
+
+export const validateFileInFormData = catchAsyncErrors(
+  async (req, res, next) => {
+    if (!req.file) {
+      return next(new ErrorHandler(400, 'Không tìm thấy file', 4083));
+    }
+    next();
+  }
+);
+
+// kiểm tra id có tồn tại có tồn tại trong DB không
+export const validateQuestionIdInBody = catchAsyncErrors(
+  async (req, res, next) => {
+    const { questionId } = req.body;
+    const question = await Question.findById(questionId);
+    if (question) {
+      return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi', 4084));
+    }
+    req.foundQuestion = question;
+    next();
+  }
+);
+
+export const validateStatusOfQuestion = (status) => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const question = req.foundQuestion;
+    if (question.status !== status) {
+      return next(
+        new ErrorHandler(
+          404,
+          `Không tìm thấy câu hỏi ở trạng thái: '${questionStatus[status]}'`,
+          4085
+        )
+      );
+    }
+    next();
+  });
+};

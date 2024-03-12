@@ -7,7 +7,6 @@ import { deleteFile } from '../../../utils/upload-file.js';
 // method: PATCH
 // description: Người dùng cập nhật ảnh đại diện (tất cả các role trong hệ thống)
 export const updateAvatar = catchAsyncErrors(async (req, res, next) => {
-  console.log('req.uploadedFile', req.uploadedFile);
   const avatar = req.uploadedFile;
   const user = req.user;
   const oldStrRef = user.avatar.ref;

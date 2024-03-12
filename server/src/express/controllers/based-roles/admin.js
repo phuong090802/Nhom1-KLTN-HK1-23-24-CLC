@@ -1,3 +1,7 @@
+import csvParser from 'csv-parser';
+import streamifier from 'streamifier';
+import bcrypt from 'bcryptjs';
+
 import Department from '../../../models/department.js';
 import User from '../../../models/user.js';
 
@@ -6,6 +10,85 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import ErrorHandler from '../../../utils/error-handler.js';
 import QueryAPI from '../../../utils/query-api.js';
 import paginateResults from '../../../utils/pagination.js';
+
+import { fieldMapper } from '../../../constants/mapper.js';
+
+// endpoint: /api/admin/counsellors/upload
+// method: POST
+// description: Import dữ liệu user từ file .csv
+export const uploadCounsellorHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const csvBuffer = req.file.buffer;
+    const failCounsellorInserted = [];
+    const counsellors = [];
+    const password = bcrypt.hashSync(
+      process.env.DEFAULT_COUNSELLOR_PASSWORD,
+      10
+    );
+
+    await new Promise((resolve) => {
+      streamifier
+        .createReadStream(csvBuffer)
+        .pipe(csvParser())
+        .on('data', async (data) => {
+          if (
+            data.Phone_Number &&
+            !data.Phone_Number.startsWith('0') &&
+            data.Phone_Number.trim().length > 0 &&
+            data.Phone_Number.trim().length < 10
+          ) {
+            data.Phone_Number = '0' + data.Phone_Number.trim();
+          }
+          
+          counsellors.push({
+            fullName: data.FullName,
+            email: data.Email,
+            phoneNumber: data.Phone_Number,
+            password,
+            role: 'COUNSELLOR',
+          });
+        })
+        .on('end', () => {
+          resolve();
+        });
+    });
+
+    try {
+      await User.insertMany(counsellors, { ordered: false });
+    } catch (err) {
+      if (err.writeErrors) {
+        err.writeErrors.forEach((writeError) => {
+          const errorIndex = writeError.index;
+
+          const erroredCounsellor = counsellors[errorIndex];
+
+          delete erroredCounsellor.password;
+
+          const errorMessage = writeError.err.errmsg;
+
+          let message = 'Lỗi trùng lập giá trị';
+
+          const match = errorMessage.match(/{\s*(\w+): "([^"]+)"\s*}/);
+          if (match) {
+            const key = match[1];
+            const value = match[2];
+            message = `'${fieldMapper[key]}: ${value}' đã được sử dụng`;
+          }
+          failCounsellorInserted.push({
+            ...erroredCounsellor,
+            message,
+          });
+        });
+      }
+    }
+    res.json({
+      success: true,
+      message: 'Thêm tư vấn viên từ file .csv thành công',
+      code: 2048,
+      failCounsellorInserted,
+    });
+  }
+);
 
 // endpoint: /api/admin/users/:id
 // method: GET

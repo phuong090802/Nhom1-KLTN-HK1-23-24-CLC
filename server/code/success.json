@@ -183,7 +183,7 @@
     {
       "code": "2031",
       "message": "Trả lời câu hỏi thành công",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên, trưởng khoa trả lời câu hỏi"
     },
     {
@@ -195,7 +195,7 @@
     {
       "code": "2033",
       "message": "",
-      "file": "socket-io/controllers/based-schemas/questions.js",
+      "file": "express/controllers/based-schemas/questions.js",
       "detail": "Lấy danh sách câu hỏi phân trang, tìm kiếm, lọc với trạng thái publicly-answered-and-approved"
     },
     {
@@ -268,7 +268,7 @@
       "code": "2045",
       "message": "",
       "file": "socket-io/controllers/based-roles/counsellor.js",
-      "detail": "Tư vấn viên lấy danh sách feedback của họ (mặc định mới nhất đến củ nhất) - giảm dần z -> a"
+      "detail": "Tư vấn viên lấy danh sách feedback của họ (mặc định mới nhất đến củ nhất, không phân trang) - giảm dần z -> a"
     },
     {
       "code": "2046",
@@ -284,8 +284,8 @@
     },
     {
       "code": "2048",
-      "message": "",
-      "file": "",
+      "message": "Thêm tư vấn viên từ file .csv thành công",
+      "file": "express/controllers/based-role/admin.js",
       "detail": ""
     },
     {

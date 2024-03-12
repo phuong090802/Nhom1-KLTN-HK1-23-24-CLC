@@ -9,12 +9,13 @@ import auth from './routes/auth.js';
 import test from './routes/test.js';
 
 import admin from './routes/based-roles/admin.js';
-import user from './routes/based-roles/user.js';
+import userRoleBased from './routes/based-roles/user.js';
 import departmentHead from './routes/based-roles/department-head.js';
 import counsellor from './routes/based-roles/counsellor.js';
 
-import users from './routes/based-schemas/users.js';
-import departments from './routes/based-schemas/departments.js';
+import question from './routes/based-schemas/question.js';
+import basedUserSchema from './routes/based-schemas/user.js';
+import departments from './routes/based-schemas/department.js';
 
 import errorHandler from './middlewares/error-handler.js';
 
@@ -45,9 +46,10 @@ app.use('/api/auth', auth);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
 app.use('/api/counsellor', counsellor);
-app.use('/api/users', users);
-app.use('/api/user', user);
+app.use('/api/users', basedUserSchema);
+app.use('/api/user', userRoleBased);
 app.use('/api/departments', departments);
+app.use('/api/questions', question);
 
 app.use(errorHandler);
 

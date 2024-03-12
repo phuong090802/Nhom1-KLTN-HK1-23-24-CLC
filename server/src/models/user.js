@@ -230,11 +230,14 @@ userSchema.methods.userRequestInformation = async function () {
 
 // add hook
 
-userSchema.pre('validate', function (next) {
-  // split merge password to password and confirmPassword
+
+// hash password if it is modified
+userSchema.pre('save', async function (next) {
+  // password is not is isModified
   if (!this.isModified('password')) {
     return next();
   }
+
   const { password, confirmPassword } = JSON.parse(this.password);
 
   // check length of password and confirm password
@@ -249,16 +252,6 @@ userSchema.pre('validate', function (next) {
   // check password and confirmPassword equals
   if (!validator.equals(password, confirmPassword)) {
     return next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
-  }
-  this.password = password;
-  next();
-});
-
-// hash password if it is modified
-userSchema.pre('save', async function (next) {
-  // password is not is isModified
-  if (!this.isModified('password')) {
-    return next();
   }
 
   // encode password

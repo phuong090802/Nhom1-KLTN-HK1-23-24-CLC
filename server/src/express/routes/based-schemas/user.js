@@ -9,7 +9,7 @@ import {
 import {
   updateAvatar,
   updateProfile,
-} from '../../controllers/based-schemas/users.js';
+} from '../../controllers/based-schemas/user.js';
 
 const router = express.Router();
 

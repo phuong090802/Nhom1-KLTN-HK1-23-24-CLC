@@ -1,12 +1,4 @@
 import {
-  defaultPayloadForPaginationFeedbacks,
-  defaultPayloadForPaginationQuestions,
-} from '../constants/socket-payload.js';
-import {
-  validateDepartmentNameForCreate,
-  validateDepartmentNameForUpdate,
-} from './controllers/based-roles/admin.js';
-import {
   validateEmail,
   validateEmailForForgotPassword,
   validateEmailForRegister,
@@ -15,15 +7,17 @@ import {
   verifyOTP,
 } from './controllers/auth.js';
 import {
-  createAnswer,
-  getAllFeedbacks,
+  validateDepartmentNameForCreate,
+  validateDepartmentNameForUpdate,
+} from './controllers/based-roles/admin.js';
+import {
+  getAllFeedbacks
 } from './controllers/based-roles/counsellor.js';
 import {
   approveAnswer,
   validateFieldNameCreate,
   validateFieldNameUpdate,
 } from './controllers/based-roles/department-head.js';
-import { getAllQuestions } from './controllers/base-schemas/questions.js';
 import {
   authorizeRolesHandler,
   isAuthenticatedHandler,
@@ -92,21 +86,11 @@ export default function socketIO(io) {
     .use(validateDepartmentOfCounsellor)
     .use(validateStatusDepartmentOfCounsellor)
     .on('connection', (socket) => {
-      socket.on('answer:create', (payload, callback) => {
-        createAnswer(io, socket, payload, callback);
-      });
-
       socket.on('get-all-feedbacks', (payload) => {
-        getAllFeedbacks(
-          socket,
-          payload || defaultPayloadForPaginationFeedbacks
-        );
+        getAllFeedbacks(socket, payload);
       });
     });
-
-  io.of('/').on('connection', (socket) => {
-    socket.on('get-all-questions', (payload) => {
-      getAllQuestions(socket, payload || defaultPayloadForPaginationQuestions);
-    });
-  });
+  // nếu phân trang handle set giá trị payload lại
+  // payload.page || defaultPayload.page
+  // ...
 }

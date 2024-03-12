@@ -308,21 +308,21 @@
     },
     {
       "code": "4051",
-      "message": "Chỉ hổ trợ file trong khoảng ${limits} MB",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
-      "detail": "Kiểm tra kích thước file khi tư vấn viên, trưởng khoa trả lời câu hỏi"
+      "message": "",
+      "file": "",
+      "detail": ""
     },
     {
       "code": "4052",
-      "message": "Định dạng file không được hỗ trợ",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
-      "detail": "Kiểm tra định dạng file khi tư vấn viên, trưởng khoa trả lời câu hỏi"
+      "message": "",
+      "file": "",
+      "detail": ""
     },
     {
       "code": "4053",
-      "message": "Mã câu hỏi không hợp lệ",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
-      "detail": "Mã câu hỏi không phải là ObjectId"
+      "message": "",
+      "file": "",
+      "detail": ""
     },
     {
       "code": "4054",
@@ -338,8 +338,8 @@
     },
     {
       "code": "4056",
-      "message": "Câu hỏi không ở tình trạng chưa trả lời",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "message": "",
+      "file": "",
       "detail": ""
     },
     {
@@ -491,6 +491,30 @@
       "message": "Không thể truy cập. Khoa đang bị khóa",
       "file": "socket-io/middlewares/validate.js",
       "detail": "Khoa đang có isActive = false (COUNSELLOR + DEPARTMENT_HEAD) kiểm tra trước khi truy cập vào route cụ thể. Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
+    },
+    {
+      "code": "4082",
+      "message": "Định dạng file không hỗ trợ",
+      "file": "express/middlewares/upload-file.js",
+      "detail": "Import file .csv để import tư vấn viên"
+    },
+    {
+      "code": "4083",
+      "message": "Không tìm thấy file trong Form Data",
+      "file": "express/middlewares/validate.js",
+      "detail": ""
+    },
+    {
+      "code": "4084",
+      "message": "Không tìm thấy câu hỏi",
+      "file": "express/middlewares/validate.js",
+      "detail": ""
+    },
+    {
+      "code": "4085",
+      "message": "Không tìm thấy câu hỏi ở trạng thái: '${questionStatus[status]}",
+      "file": "express/middlewares/validate.js",
+      "detail": ""
     }
   ]
 }

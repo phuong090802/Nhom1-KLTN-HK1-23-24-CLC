@@ -39,7 +39,6 @@ export const isAuthenticatedHandler = (socket, next) => {
       return next(err);
     }
     socket.user = await User.findById(decoded.id);
-    // console.log(socket.user);
     next();
   });
 };

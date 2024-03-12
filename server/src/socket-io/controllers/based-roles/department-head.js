@@ -1,14 +1,10 @@
 import validator from 'validator';
 
 import { statusQuestionApprovedMapper } from '../../../constants/mapper.js';
-import {
-  defaultPayloadForPaginationFeedbacks,
-  defaultPayloadForPaginationQuestions,
-} from '../../../constants/socket-payload.js';
 
+import Feedback from '../../../models/feedback.js';
 import Field from '../../../models/field.js';
 import Question from '../../../models/question.js';
-import Feedback from '../../../models/feedback.js';
 
 // namespace: /department-head
 // listen event (ack): field:validate-field-name:create
@@ -107,10 +103,7 @@ export async function approveAnswer(io, payload, callback) {
 
     // emit event feedback
 
-    io.of('/counsellor').emit(
-      'get-all-feedbacks',
-      defaultPayloadForPaginationFeedbacks
-    );
+    io.of('/counsellor').emit('get-all-feedbacks');
 
     question.answer = null;
   }
@@ -123,9 +116,4 @@ export async function approveAnswer(io, payload, callback) {
     message: newStrStatus + ' thành công',
     code: 2032,
   });
-
-  io.of('/questions').emit(
-    'get-all-questions',
-    defaultPayloadForPaginationQuestions
-  );
 }

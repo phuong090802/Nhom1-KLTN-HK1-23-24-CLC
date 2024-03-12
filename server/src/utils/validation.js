@@ -4,7 +4,7 @@ export function isSupportedMimetype(supportedMimeTypes, file) {
   return supportedMimeTypes.includes(mimetype);
 }
 
-// check limit file size
-export function isSupportFileSize(fileSize, file) {
-  return file.size < fileSize;
-}
+// // check limit file size
+// export function isSupportFileSize(fileSize, file) {
+//   return file.size < fileSize;
+// }
