@@ -20,16 +20,17 @@ import {
 
 const router = express.Router();
 
-router.route(
-  '/answers',
-  authHandler('COUNSELLOR', 'DEPARTMENT_HEAD'),
-  validateDepartmentBeforeAccess,
-  validateQuestionIdInBody,
-  validateStatusOfQuestion('unanswered'),
-  uploadImageOrDocumentHandler.single('file'),
-  optionalUploadFileToFirebaseHandler('answers'),
-  createAnswerHandler
-);
+router
+  .route('/answers')
+  .post(
+    authHandler('COUNSELLOR', 'DEPARTMENT_HEAD'),
+    validateDepartmentBeforeAccess,
+    validateQuestionIdInBody,
+    validateStatusOfQuestion('unanswered'),
+    uploadImageOrDocumentHandler.single('file'),
+    optionalUploadFileToFirebaseHandler('answers'),
+    createAnswerHandler
+  );
 
 router
   .route('/feedbacks/:id')
