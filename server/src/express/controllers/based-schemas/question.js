@@ -21,8 +21,8 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
       path: 'user',
       select: '_id fullName avatar',
     })
-    .lean()
-    .select('_id title content createdAt views user answer');
+    // .lean()
+    .select('_id title content file createdAt views user answer');
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
@@ -38,32 +38,24 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     questionRecords
   );
 
-  const questions = retQuestions.map((question) => {
-    const user = {
-      ...question.user,
-      avatar: question.user.avatar.url,
-    };
+  const questions = await Promise.all(
+    retQuestions.map(async (question) => {
+      const questionInformation = await question.getQuestionInformation();
+      const user = await question.user.getUserInQuestion();
 
-    const counsellor = {
-      _id: question.answer.user._id,
-      fullName: question.answer.user.fullName,
-      avatar: question.answer.user.avatar.url,
-    };
+      const counsellor = await question.answer.user.getUserInQuestion();
 
-    const answer = {
-      ...question.answer,
-      user: counsellor,
-      fileURL: question.answer.file.url,
-    };
-
-    delete answer.file;
-
-    return {
-      ...question,
-      user,
-      answer,
-    };
-  });
+      const answer = await question.answer.getAnswerInQuestion();
+      return {
+        ...questionInformation,
+        user,
+        answer: {
+          user: { ...counsellor },
+          ...answer,
+        },
+      };
+    })
+  );
 
   res.json({
     success: true,

@@ -228,8 +228,16 @@ userSchema.methods.userRequestInformation = async function () {
   };
 };
 
-// add hook
+// set same structure for ...
+userSchema.methods.getUserInQuestion = async function () {
+  return {
+    _id: this._id,
+    fullName: this.fullName,
+    avatar: this.avatar.url,
+  };
+};
 
+// add hook
 
 // hash password if it is modified
 userSchema.pre('save', async function (next) {

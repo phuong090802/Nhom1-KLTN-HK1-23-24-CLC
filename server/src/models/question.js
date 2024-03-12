@@ -68,6 +68,17 @@ const questionSchema = new mongoose.Schema({
   },
 });
 
+questionSchema.methods.getQuestionInformation = async function () {
+  return {
+    _id: this._id,
+    title: this.title,
+    content: this.content,
+    createdAt: this.createdAt,
+    fileURL: this.file.url,
+    views: this.views,
+  };
+};
+
 const Question = mongoose.model('Question', questionSchema);
 
 export default Question;
