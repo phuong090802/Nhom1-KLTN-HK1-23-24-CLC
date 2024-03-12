@@ -4,7 +4,7 @@ import authHandler from '../../middlewares/auth.js';
 import {
   validateDepartmentBeforeAccess,
   validateFeedbackOfCounsellor,
-  validateQuestionIdInBody,
+  validateQuestionIdInParams,
   validateStatusOfQuestion,
 } from '../../middlewares/validate.js';
 import {
@@ -21,11 +21,11 @@ import {
 const router = express.Router();
 
 router
-  .route('/answers')
+  .route('/questions/:id/answers')
   .post(
     authHandler('COUNSELLOR', 'DEPARTMENT_HEAD'),
     validateDepartmentBeforeAccess,
-    validateQuestionIdInBody,
+    validateQuestionIdInParams,
     validateStatusOfQuestion('unanswered'),
     uploadImageOrDocumentHandler.single('file'),
     optionalUploadFileToFirebaseHandler('answers'),

@@ -280,11 +280,12 @@ export const validateFileInFormData = catchAsyncErrors(
 );
 
 // kiểm tra id có tồn tại có tồn tại trong DB không
-export const validateQuestionIdInBody = catchAsyncErrors(
+export const validateQuestionIdInParams = catchAsyncErrors(
   async (req, res, next) => {
-    const { questionId } = req.body;
-    const question = await Question.findById(questionId);
-    if (question) {
+    const { id } = req.params;
+    console.log(id);
+    const question = await Question.findById(id);
+    if (!question) {
       return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi', 4084));
     }
     req.foundQuestion = question;
