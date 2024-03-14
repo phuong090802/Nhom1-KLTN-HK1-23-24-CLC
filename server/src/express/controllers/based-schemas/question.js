@@ -5,6 +5,19 @@ import Question from '../../../models/question.js';
 import QueryAPI from '../../../utils/query-api.js';
 import paginateResults from '../../../utils/pagination.js';
 
+// endpoint: /api/questions/:id
+// method: PUT
+// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+export const updateViewsHandler = catchAsyncErrors(async (req, res, next) => {
+  const question = req.foundQuestion;
+  question.views += 1;
+  await question.save();
+  res.status(204);
+});
+
+// endpoint: /api/questions
+// method: GET
+// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
   const query = Question.find({
     status: 'publicly-answered-and-approved',

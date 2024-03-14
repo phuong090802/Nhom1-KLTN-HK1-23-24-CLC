@@ -297,8 +297,8 @@
     {
       "code": "2050",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-role/user.js",
+      "detail": "Lấy danh sách câu hỏi của bản thân đã đặt"
     },
     {
       "code": "2051",

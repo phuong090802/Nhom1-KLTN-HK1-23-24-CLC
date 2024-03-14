@@ -283,7 +283,6 @@ export const validateFileInFormData = catchAsyncErrors(
 export const validateQuestionIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
-    console.log(id);
     const question = await Question.findById(id);
     if (!question) {
       return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi', 4084));
