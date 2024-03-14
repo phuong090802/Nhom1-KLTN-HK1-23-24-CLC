@@ -21,7 +21,7 @@ class QueryAPI {
 
   filter() {
     const { filter } = this.queryString;
-    console.log(filter);
+    // console.log(filter);
 
     if (
       filter &&
