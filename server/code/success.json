@@ -290,8 +290,8 @@
     },
     {
       "code": "2049",
-      "message": "",
-      "file": "",
+      "message": "Đổi mật khẩu thành công",
+      "file": "express/controllers/auth.js",
       "detail": ""
     },
     {

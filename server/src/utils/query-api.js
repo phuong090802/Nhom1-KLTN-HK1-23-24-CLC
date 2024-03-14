@@ -7,6 +7,7 @@ class QueryAPI {
 
   search() {
     const { keyword, search } = this.queryString;
+
     let keywordSearch = {};
     if (keyword && search && Array.isArray(search) && search.length) {
       const orConditions = search.map((field) => ({
@@ -20,6 +21,8 @@ class QueryAPI {
 
   filter() {
     const { filter } = this.queryString;
+    console.log(filter);
+
     if (
       filter &&
       typeof filter === 'object' &&

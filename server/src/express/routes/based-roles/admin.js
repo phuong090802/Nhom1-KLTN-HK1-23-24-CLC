@@ -31,7 +31,7 @@ import { uploadCSVHandler } from '../../middlewares/upload-file.js';
 
 const router = express.Router();
 
-// router.use(authHandler('ADMIN'));
+router.use(authHandler('ADMIN'));
 
 router
   .route('/users/:id')

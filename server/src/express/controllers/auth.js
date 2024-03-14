@@ -9,6 +9,30 @@ import ErrorHandler from '../../utils/error-handler.js';
 import { sendToken, clearToken } from '../../utils/token.js';
 import { sendVerificationEmail } from '../../utils/email-verify.js';
 
+// endpoint: /api/auth/password
+// method: PUT
+// description: Đổi mật khẩu
+// role: all role
+export const passwordHandler = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  const { password, confirmPassword } = req.body;
+
+  const mergePassword = JSON.stringify({ password, confirmPassword });
+
+  user.password = mergePassword;
+
+  await user.save();
+
+  await RefreshToken.deleteMany({ owner: user });
+  clearToken(res);
+
+  res.json({
+    success: true,
+    message: 'Đổi mật khẩu thành công',
+    code: 2049,
+  });
+});
+
 // endpoint: /api/auth/verify-email
 // method: POST
 // description: xác nhận email
@@ -251,7 +275,7 @@ export const meHandler = catchAsyncErrors(async (req, res, next) => {
 export const forgotPasswordHandler = catchAsyncErrors(
   async (req, res, next) => {
     const { email } = req.body;
-    
+
     const user = await User.findOne({
       email: { $regex: new RegExp(email, 'i') },
     });
@@ -367,6 +391,9 @@ export const resetPasswordHandler = catchAsyncErrors(async (req, res, next) => {
   user.resetPassword = null;
 
   await user.save();
+
+  await RefreshToken.deleteMany({ owner: user });
+  clearToken(res);
 
   res.json({
     success: true,

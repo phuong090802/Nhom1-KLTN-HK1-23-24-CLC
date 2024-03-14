@@ -23,6 +23,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     })
     // .lean()
     .select('_id title content file createdAt views user answer');
+
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
