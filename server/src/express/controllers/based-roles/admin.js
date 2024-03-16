@@ -39,7 +39,7 @@ export const uploadCounsellorHandler = catchAsyncErrors(
           ) {
             data.Phone_Number = '0' + data.Phone_Number.trim();
           }
-          
+
           counsellors.push({
             fullName: data.FullName,
             email: data.Email,
@@ -213,7 +213,7 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
     counsellorRecords = await queryAPI.pagination().query.clone();
 
     const {
-      data: counsellors,
+      data: retCounsellors,
       page,
       pages,
     } = paginateResults(
@@ -222,6 +222,12 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
       req.query.size,
       counsellorRecords
     );
+
+    const counsellors = retCounsellors.map((counsellor) => ({
+      ...counsellor,
+      avatar: counsellor.avatar.url,
+    }));
+
     res.json({ success: true, counsellors, page, pages, code: 2022 });
   }
 );
