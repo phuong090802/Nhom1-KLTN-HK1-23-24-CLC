@@ -30,3 +30,4 @@ export const validateStatusDepartmentOfCounsellor = async (socket, next) => {
   }
   next();
 };
+

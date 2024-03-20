@@ -1,4 +1,4 @@
-import ErrorHandler from '../../utils/error-handler.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
 import { fieldMapper } from '../../constants/mapper.js';
 
 // middleware handling errors

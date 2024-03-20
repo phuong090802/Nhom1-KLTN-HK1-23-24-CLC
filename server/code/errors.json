@@ -308,45 +308,45 @@
     },
     {
       "code": "4051",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không tìm cuộc đối thoại",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm cuộc đối thoại trong params"
     },
     {
       "code": "4052",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không tìm câu hỏi",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Không tìm thấy câu hỏi để trả lời riêng tư"
     },
     {
       "code": "4053",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không thể vượt quá 2 người trong một cuộc trò chuyện",
+      "file": "models/conversation.js",
+      "detail": "deletedBy không thể hơn 2 người (danh sách xóa)"
     },
     {
       "code": "4054",
-      "message": "Mã khoa không hợp lệ",
-      "file": "socket-io/controllers/based-roles/admin.js",
-      "detail": "Mã khoa không phải là ObjectId"
+      "message": "Không tìm thấy cuộc trò chuyện",
+      "file": "express/middlewares/validate.js",
+      "detail": "Khi userId không nằm trong mảng participates"
     },
     {
       "code": "4055",
-      "message": "Mã lĩnh vực không hợp lệ",
-      "file": "socket-io/controllers/based-roles/department-head.js",
-      "detail": "Mã lĩnh vực không phải là ObjectId"
+      "message": "Không tìm thấy cuộc trò chuyện",
+      "file": "",
+      "detail": "Khi userId nằm trong mảng deletedBy"
     },
     {
       "code": "4056",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Không thể vượt quá 2 người trong một cuộc trò chuyện",
+      "file": "models/conversation.js",
+      "detail": "participates không thể hơn 2 người (danh sách người dùng trong conversation)"
     },
     {
       "code": "4057",
-      "message": "Mã câu hỏi không hợp lệ",
-      "file": "socket-io/controllers/based-roles/department-head.js",
-      "detail": "Mã câu hỏi không hợp lệ khu duyệt"
+      "message": "",
+      "file": "",
+      "detail": ""
     },
     {
       "code": "4058",
@@ -429,7 +429,7 @@
     {
       "code": "4071",
       "message": "Lỗi khi xóa phản hồi. Vui lòng thử lại",
-      "file": "",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
@@ -514,7 +514,43 @@
       "code": "4085",
       "message": "Không tìm thấy câu hỏi ở trạng thái: '${questionStatus[status]}",
       "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy câu hỏi ở trạng thái được truyền vào (value)"
+    },
+    {
+      "code": "4086",
+      "message": "Câu hỏi không không ở trạng thái chưa được trả lời",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
       "detail": ""
+    },
+    {
+      "code": "4087",
+      "message": "Quyền truy cập không hợp lệ",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Role không phải là DEPARTMENT_HEAD/COUNSELLOR"
+    },
+    {
+      "code": "4088",
+      "message": "Không tìm thấy cuộc trò chuyện",
+      "file": "socket-io/controllers/based-roles/user.js",
+      "detail": "Người dùng không thuộc cuộc trò chuyện (không trong mảng participates)"
+    },
+    {
+      "code": "4089",
+      "message": "Không tìm thấy tài nguyên với mã được truyền vào",
+      "file": "socket-io/middlewares/catch-async-event-errors",
+      "detail": "Không tìm thấy tài nguyên với mã được truyền vào"
+    },
+    {
+      "code": "4090",
+      "message": "'${fieldMapper[key]}' đã được sử dụng",
+      "file": "socket-io/middlewares/catch-async-event-errors.js",
+      "detail": "Lỗi trùng lập giá trị unique trong schema"
+    },
+    {
+      "code": "4091",
+      "message": "Giá trị '${error.value}' không hợp lệ cho trường '${error.path}'. Yêu cầu kiểu dữ liệu: '${error.kind}'",
+      "file": "socket-io/middlewares/catch-async-event-errors.js",
+      "detail": "Lỗi cast kiểm dữ liệu (các kiểu dữ liệu khác trừ ObjectId)"
     }
   ]
 }

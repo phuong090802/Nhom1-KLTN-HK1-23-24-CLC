@@ -7,8 +7,8 @@ import validator from 'validator';
 import Department from './department.js';
 import RefreshToken from './refresh-token.js';
 
-import ErrorHandler from '../utils/error-handler.js';
-import { generateOTP } from '../utils/email-verify.js';
+import ErrorHandler from '../util/error/http-error-handler.js';
+import { generateOTP } from '../util/auth/email-verify.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -229,7 +229,7 @@ userSchema.methods.userRequestInformation = async function () {
 };
 
 // set same structure for ...
-userSchema.methods.getUserInQuestion = async function () {
+userSchema.methods.getUserInQuestion = function () {
   return {
     _id: this._id,
     fullName: this.fullName,

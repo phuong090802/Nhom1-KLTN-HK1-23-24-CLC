@@ -7,11 +7,14 @@ import {
   validateDepartmentBeforeAccess,
   validateFieldIdInBodyOfDepartment,
   validateFieldIdInParams,
+  validateQuestionIdInParams,
+  validateStatusOfQuestion,
 } from '../../middlewares/validate.js';
 
 import {
   addCounsellorToDepartment,
   addFieldHandler,
+  approveAnswerHandler,
   counsellorsHandler,
   fieldsHandler,
   removeFieldOfCounsellor,
@@ -29,6 +32,14 @@ import {
 const router = express.Router();
 
 router.use(authHandler('DEPARTMENT_HEAD'), validateDepartmentBeforeAccess);
+
+router
+  .route('/questions/:id')
+  .patch(
+    validateQuestionIdInParams,
+    validateStatusOfQuestion('publicly-answered-pending-approval'),
+    approveAnswerHandler
+  );
 
 router
   .route('/counsellors/:id')

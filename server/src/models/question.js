@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import answerSchema from './answer.js';
+import answerSchema from './embedded/answer.js';
 
 const questionSchema = new mongoose.Schema({
   title: {

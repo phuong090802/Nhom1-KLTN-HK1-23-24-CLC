@@ -188,8 +188,8 @@
     },
     {
       "code": "2032",
-      "message": "newStrStatus + ' thành công'",
-      "file": "socket-io/controllers/based-roles/department-head.js",
+      "message": "Duyệt câu tả lời thành công",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Duyệt câu trả lời"
     },
     {
@@ -225,13 +225,13 @@
     {
       "code": "2038",
       "message": "",
-      "file": "express/controllers/based-schemas/departments.js",
+      "file": "express/controllers/based-schemas/department.js",
       "detail": "Lấy danh sách khoa (đặt câu hỏi, lọc câu hỏi)"
     },
     {
       "code": "2039",
       "message": "",
-      "file": "express/controllers/based-schemas/departments.js",
+      "file": "express/controllers/based-schemas/department.js",
       "detail": "Lấy danh sách lĩnh vực (đặt câu hỏi, lọc câu hỏi)"
     },
     {
@@ -249,7 +249,7 @@
     {
       "code": "2042",
       "message": "Thêm tư vấn viên thành công",
-      "file": "express/controllers/based-schemas/departments.js",
+      "file": "express/controllers/based-schemas/department.js",
       "detail": "Trưởng khoa thêm tư vấn viên thành công"
     },
     {
@@ -267,7 +267,7 @@
     {
       "code": "2045",
       "message": "",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên lấy danh sách feedback của họ (mặc định mới nhất đến củ nhất, không phân trang) - giảm dần z -> a"
     },
     {
@@ -302,33 +302,33 @@
     },
     {
       "code": "2051",
-      "message": "",
-      "file": "",
+      "message": "Trả lời câu hỏi riêng tư thành công",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
       "code": "2052",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "socket-io/controllers/based-roles/user.js",
+      "detail": "Trả Id của message thành công"
     },
     {
       "code": "2053",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-schemas/user.js",
+      "detail": "Lấy danh sách các cuộc trò chuyện của bản thân thành công"
     },
     {
       "code": "2054",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-schemas/conversation.js",
+      "detail": "Lấy danh sách tin nhắn trong cuộc đối thoại thành công (conversationId)"
     },
     {
       "code": "2055",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Gửi phản hồi thành công",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Trưởng khoa gửi phản hồi thành công"
     },
     {
       "code": "2056",

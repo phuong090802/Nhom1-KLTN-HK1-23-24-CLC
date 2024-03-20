@@ -5,9 +5,9 @@ import RefreshToken from '../../models/refresh-token.js';
 
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
-import ErrorHandler from '../../utils/error-handler.js';
-import { sendToken, clearToken } from '../../utils/token.js';
-import { sendVerificationEmail } from '../../utils/email-verify.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
+import { sendToken, clearToken } from '../../util/auth/token.js';
+import { sendVerificationEmail } from '../../util/auth/email-verify.js';
 
 // endpoint: /api/auth/password
 // method: PUT

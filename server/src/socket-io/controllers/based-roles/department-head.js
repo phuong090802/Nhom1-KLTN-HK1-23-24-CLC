@@ -1,119 +1,87 @@
-import validator from 'validator';
-
-import { statusQuestionApprovedMapper } from '../../../constants/mapper.js';
-
-import Feedback from '../../../models/feedback.js';
 import Field from '../../../models/field.js';
 import Question from '../../../models/question.js';
+import Feedback from '../../../models/feedback.js';
+
+import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+
+// namespace: /counsellor
+// listen event (ack): feedback:create
+// description: Trưởng khoa gửi feedback khi từ chối duyệt
+export const createFeedback = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    const { questionId, content } = payload;
+    const question = await Question.findById(questionId);
+
+    if (question.status !== 'publicly-answered-pending-approval') {
+      throw new ErrorHandler('Câu hỏi không ở trạng thái chờ duyệt', 4058);
+    }
+
+    const answer = question.answer;
+    question.status = 'unanswered';
+    question.answer = null;
+    await question.save();
+
+    const savedFeedback = await Feedback.create({ content, answer, question });
+
+    callback({
+      success: true,
+      message: 'Gửi phản hồi thành công',
+      code: 2055,
+    });
+
+    // handle emit feedback
+  }
+);
 
 // namespace: /department-head
 // listen event (ack): field:validate-field-name:create
 // description: Kiểm tra tên lĩnh vực trước khi tạo lĩnh vực
-export async function validateFieldNameCreate(socket, payload, callback) {
-  const { fieldName } = payload;
-  const department = socket.user.counsellor.department;
+export const validateFieldNameCreate = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    const { fieldName } = payload;
+    const department = socket.user.counsellor.department;
 
-  const field = await Field.findOne({
-    fieldName: { $regex: new RegExp(fieldName, 'i') },
-    department,
-  });
-  const res = {
-    success: true,
-    message: 'Tên lĩnh vực khả dụng',
-    code: 2027,
-  };
+    const field = await Field.findOne({
+      fieldName: { $regex: new RegExp(fieldName, 'i') },
+      department,
+    });
 
-  if (field) {
-    res.success = false;
-    res.message = 'Tên lĩnh vực đã được sử dụng';
-    res.code = 4046;
+    if (field) {
+      throw new ErrorHandler('Tên lĩnh vực đã được sử dụng', 4046);
+    }
+
+    callback({
+      success: true,
+      message: 'Tên lĩnh vực khả dụng',
+      code: 2027,
+    });
   }
-
-  callback(res);
-}
+);
 
 // namespace: /department-head
 // listen event (ack): field:validate-field-name:create
 // description: Kiểm tra tên lĩnh vực trước khi cập tên mới
-export async function validateFieldNameUpdate(socket, payload, callback) {
-  const { fieldId, fieldName } = payload;
+export const validateFieldNameUpdate = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    const { fieldId, fieldName } = payload;
 
-  if (!fieldId || !validator.isMongoId(fieldId)) {
-    return callback({
-      success: false,
-      message: 'Mã lĩnh vực không hợp lệ',
-      code: 4055,
+    const department = socket.user.counsellor.department;
+
+    const field = await Field.findOne({
+      _id: { $ne: fieldId },
+      fieldName: { $regex: new RegExp(fieldName, 'i') },
+      department,
+    });
+
+    if (field) {
+      throw new ErrorHandler('Tên lĩnh vực đã được sử dụng', 4048);
+    }
+
+    callback({
+      success: true,
+      message: 'Tên lĩnh vực khả dụng',
+      code: 2029,
     });
   }
-
-  const department = socket.user.counsellor.department;
-
-  const field = await Field.findOne({
-    _id: { $ne: fieldId },
-    fieldName: { $regex: new RegExp(fieldName, 'i') },
-    department,
-  });
-
-  const res = {
-    success: true,
-    message: 'Tên lĩnh vực khả dụng',
-    code: 2029,
-  };
-
-  if (field) {
-    res.exist = false;
-    res.message = 'Tên lĩnh vực đã được sử dụng';
-    res.code = 4048;
-  }
-
-  callback(res);
-}
-
-// namespace: /department-head
-// listen event (ack): answer:approve
-// description: Duyệt câu trả lời
-export async function approveAnswer(io, payload, callback) {
-  const { questionId, isApproved, content } = payload;
-
-  if (!questionId || !validator.isMongoId(questionId)) {
-    return callback({
-      success: false,
-      message: 'Mã câu hỏi không hợp lệ',
-      code: 4057,
-    });
-  }
-
-  const question = await Question.findById(questionId);
-
-  if (question.status !== 'publicly-answered-pending-approval') {
-    return callback({
-      success: false,
-      message: 'Câu hỏi không ở trạng thái chờ duyệt',
-      code: 4058,
-    });
-  }
-
-  if (isApproved) {
-    question.status = 'publicly-answered-and-approved';
-  } else {
-    question.status = 'unanswered';
-    const answer = question.answer;
-
-    await Feedback.create({ content, answer, question });
-
-    // emit event feedback
-
-    io.of('/counsellor').emit('get-all-feedbacks');
-
-    question.answer = null;
-  }
-  const savedQuestion = await question.save();
-
-  const newStrStatus = statusQuestionApprovedMapper[savedQuestion.status];
-
-  callback({
-    success: true,
-    message: newStrStatus + ' thành công',
-    code: 2032,
-  });
-}
+);

@@ -1,96 +1,30 @@
-import {
-  validateEmail,
-  validateEmailForForgotPassword,
-  validateEmailForRegister,
-  validatePhoneNumberForRegister,
-  verifyEmail,
-  verifyOTP,
-} from './controllers/auth.js';
-import {
-  validateDepartmentNameForCreate,
-  validateDepartmentNameForUpdate,
-} from './controllers/based-roles/admin.js';
-import {
-  getAllFeedbacks
-} from './controllers/based-roles/counsellor.js';
-import {
-  approveAnswer,
-  validateFieldNameCreate,
-  validateFieldNameUpdate,
-} from './controllers/based-roles/department-head.js';
-import {
-  authorizeRolesHandler,
-  isAuthenticatedHandler,
-} from './middlewares/auth.js';
-import {
-  validateDepartmentOfCounsellor,
-  validateStatusDepartmentOfCounsellor,
-} from './middlewares/validate.js';
+import auth from './namespaces/auth.js';
+import main from './namespaces/main.js';
+
+import admin from './namespaces/based-roles/admin.js';
+import departmentHead from './namespaces/based-roles/department-head.js';
+import message from './namespaces/based-schemas/message.js';
 
 export default function socketIO(io) {
-  io.of('/').on('connection', (socket) => {
-    socket.on('register:validate-email', validateEmailForRegister);
-    socket.on('register:validate-phone-number', validatePhoneNumberForRegister);
-    socket.on('forgot-password:validate-email', validateEmailForForgotPassword);
-    socket.on('verify-otp', verifyOTP);
-  });
+  // main namespace
+  main(io);
 
-  io.of('/auth')
-    .use(isAuthenticatedHandler)
-    .on('connection', (socket) => {
-      socket.on('validate-email', (payload, callback) =>
-        validateEmail(socket, payload, callback)
-      );
+  // auth namespace
+  auth(io);
 
-      socket.on('verify-email', (payload, callback) => {
-        verifyEmail(socket, payload, callback);
-      });
-    });
+  //#region based-roles
 
-  io.of('/admin')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('ADMIN'))
-    .on('connection', (socket) => {
-      socket.on(
-        'department:validate-department-name:create',
-        validateDepartmentNameForCreate
-      );
-      socket.on(
-        'department:validate-department-name:update',
-        validateDepartmentNameForUpdate
-      );
-    });
+  // admin namespace
+  admin(io);
 
-  io.of('/department-head')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('DEPARTMENT_HEAD'))
-    .use(validateDepartmentOfCounsellor)
-    .use(validateStatusDepartmentOfCounsellor)
-    .on('connection', (socket) => {
-      socket.on('field:validate-field-name:create', (payload, callback) =>
-        validateFieldNameCreate(socket, payload, callback)
-      );
+  // department-head namespace
+  departmentHead(io);
 
-      socket.on('field:validate-field-name:update', (payload, callback) =>
-        validateFieldNameUpdate(socket, payload, callback)
-      );
+  // counsellor namespace
 
-      socket.on('answer:approve', async (payload, callback) => {
-        approveAnswer(io, payload, callback);
-      });
-    });
+  //#endregion
 
-  io.of('/counsellor')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('COUNSELLOR', 'DEPARTMENT_HEAD'))
-    .use(validateDepartmentOfCounsellor)
-    .use(validateStatusDepartmentOfCounsellor)
-    .on('connection', (socket) => {
-      socket.on('get-all-feedbacks', (payload) => {
-        getAllFeedbacks(socket, payload);
-      });
-    });
-  // nếu phân trang handle set giá trị payload lại
-  // payload.page || defaultPayload.page
-  // ...
+  //#region based-schema
+  message(io);
+  //#endregion
 }

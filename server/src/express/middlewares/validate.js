@@ -6,7 +6,9 @@ import User from '../../models/user.js';
 
 import Feedback from '../../models/feedback.js';
 import Question from '../../models/question.js';
-import ErrorHandler from '../../utils/error-handler.js';
+import Conversation from '../../models/conversation.js';
+
+import ErrorHandler from '../../util/error/http-error-handler.js';
 
 import { questionStatus } from '../../constants/mapper.js';
 
@@ -307,3 +309,54 @@ export const validateStatusOfQuestion = (status) => {
     next();
   });
 };
+
+// validate value id of conversation in body
+export const validateConversationIdInParams = catchAsyncErrors(
+  async (req, res, next) => {
+    const { id } = req.params;
+
+    const conversation = await Conversation.findById(id);
+
+    if (!conversation) {
+      return next(new ErrorHandler(404, 'Không tìm cuộc đối thoại', 4051));
+    }
+    req.foundConversation = conversation;
+    next();
+  }
+);
+
+// validate user is not in participates
+export const userIsInParticipatesConversation = catchAsyncErrors(
+  async (req, res, next) => {
+    const conversation = req.foundConversation;
+    const user = req.user;
+
+    const participates = conversation.participates;
+
+    if (!participates.includes(user._id)) {
+      throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4054);
+    }
+
+    next();
+  }
+);
+
+// validate user is not in deletedBy
+export const userIsNotInDeleteConversation = catchAsyncErrors(
+  async (req, res, next) => {
+    const conversation = req.foundConversation;
+    const user = req.user;
+    const deletedBy = conversation.deletedBy;
+
+    if (deletedBy.includes(user._id)) {
+      throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4055);
+    }
+    next();
+  }
+);
+
+export const validateConversationGetAllMessage = [
+  validateConversationIdInParams,
+  userIsInParticipatesConversation,
+  userIsNotInDeleteConversation,
+];

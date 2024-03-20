@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
 
+import { hasArrayMaxLength } from '../util/validation.js';
+
+import Message from './message.js';
+
 const conversationSchema = new mongoose.Schema({
-  users: [
+  participates: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      validate: [
-        arrayLimit,
-        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
-      ],
     },
   ],
   lastMessage: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Message',
     default: null,
   },
@@ -22,20 +22,58 @@ const conversationSchema = new mongoose.Schema({
   },
   deletedBy: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      validate: [
-        arrayLimit,
-        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
-      ],
     },
   ],
 });
 
-// validator function
-function arrayLimit(val) {
-  return val.length <= 2;
-}
+conversationSchema.pre('save', function (next) {
+  if (!this.isModified('participates')) {
+    return next();
+  }
+
+  if (!hasArrayMaxLength(this.participates, 2)) {
+    return next(
+      new ErrorHandler(
+        400,
+        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
+        4056
+      )
+    );
+  }
+
+  next();
+});
+
+conversationSchema.pre('save', function (next) {
+  if (!this.isModified('deletedBy')) {
+    return next();
+  }
+
+  if (!hasArrayMaxLength(this.deletedBy, 2)) {
+    return next(
+      new ErrorHandler(
+        400,
+        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
+        4053
+      )
+    );
+  }
+  next();
+});
+
+// set structure for detail conversation
+conversationSchema.methods.detailConversation = async function () {
+  const message = await Message.findById(this.lastMessage);
+  const lastMessage = await message.getMessage();
+  return {
+    _id: this._id,
+    lastMessage: lastMessage,
+    createdAt: this.createdAt,
+  };
+};
 
 const Conversation = mongoose.model('Conversation', conversationSchema);
+
 export default Conversation;

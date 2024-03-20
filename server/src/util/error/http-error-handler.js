@@ -1,4 +1,4 @@
-// blue print error
+// blue print error (express)
 export default class ErrorHandler extends Error {
   constructor(status, message, code) {
     super(message);

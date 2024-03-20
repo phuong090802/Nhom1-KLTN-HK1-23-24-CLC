@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
-import { apiCorsOptions } from '../configs/cors.js';
+import { apiCorsOptions } from '../config/cors.js';
 
 import auth from './routes/auth.js';
 import test from './routes/test.js';
@@ -16,6 +16,7 @@ import counsellor from './routes/based-roles/counsellor.js';
 import question from './routes/based-schemas/question.js';
 import basedUserSchema from './routes/based-schemas/user.js';
 import departments from './routes/based-schemas/department.js';
+import conversation from './routes/based-schemas/conversation.js';
 
 import errorHandler from './middlewares/error-handler.js';
 
@@ -50,6 +51,7 @@ app.use('/api/users', basedUserSchema);
 app.use('/api/user', userRoleBased);
 app.use('/api/departments', departments);
 app.use('/api/questions', question);
+app.use('/api/conversations', conversation);
 
 app.use(errorHandler);
 

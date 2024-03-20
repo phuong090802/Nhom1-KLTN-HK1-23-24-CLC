@@ -1,11 +1,23 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
-import QueryAPI from '../../../utils/query-api.js';
-import paginateResults from '../../../utils/pagination.js';
-import ErrorHandler from '../../../utils/error-handler.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginateResults from '../../../util/db/pagination.js';
+import ErrorHandler from '../../../util/error/http-error-handler.js';
 
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
+
+export const approveAnswerHandler = catchAsyncErrors(async (req, res, next) => {
+  const question = req.foundQuestion;
+  question.status = 'publicly-answered-and-approved';
+  await question.save();
+
+  res.json({
+    success: true,
+    message: 'Duyệt câu trả lời thành công',
+    code: 2032,
+  });
+});
 
 // endpoint: /api/department-head/counsellors/:id
 // method: PATCH

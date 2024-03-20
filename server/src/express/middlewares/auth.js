@@ -4,7 +4,7 @@ import catchAsyncErrors from './catch-async-errors.js';
 
 import User from '../../models/user.js';
 
-import ErrorHandler from '../../utils/error-handler.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
 
 // Authentication user
 export const isAuthenticatedHandler = catchAsyncErrors(

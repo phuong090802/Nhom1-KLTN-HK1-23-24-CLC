@@ -1,25 +1,79 @@
-import Feedback from '../../../models/feedback.js';
-import QueryAPI from '../../../utils/query-api.js';
 
-// namespace: /counsellor
-// listen event (ack): feedback:list
-// description: Tư vấn viên load danh sách feedback của họ (không phân trang)
-export async function getAllFeedbacks(socket, payload) {
-  const user = socket.user;
-  const query = Feedback.find({ 'answer.user': user })
-    .sort({ createdAt: -1 })
-    .lean()
-    .populate({
-      path: 'question',
-      select: '-_id title content',
-    })
-    .select('_id content createdAt answer.content answer.answeredAt question');
+import Conversation from '../../../models/conversation.js';
+import Message from '../../../models/message.js';
 
-  const queryAPI = new QueryAPI(query, payload).search().filter().sort();
+import Question from '../../../models/question.js';
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
-  let feedbacks = await queryAPI.query;
+// namespace: /messages
+// listen event (ack): conversation:create
+// description: Tư vấn viên/trưởng khoa trả lời câu hỏi riêng tư
+export const createConversation = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    const { questionId, messageContent } = payload;
+    // console.log(questionId, messageContent);
+    // console.log(payload);
 
-  const response = { success: true, feedbacks, code: 2045 };
+    const user = socket.user;
 
-  socket.emit('feedback:list', response);
-}
+    const allowRoles = ['COUNSELLOR', 'DEPARTMENT_HEAD'];
+
+    if (!allowRoles.includes(user.role)) {
+      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4087);
+    }
+
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4052);
+    }
+
+    if (question.status !== 'unanswered') {
+      throw new ErrorHandler(
+        'Câu hỏi không không ở trạng thái chưa được trả lời',
+        4086
+      );
+    }
+
+    // console.log(question);
+
+    const receiver = question.user;
+
+    const participates = [user, receiver];
+
+    let conversation = await Conversation.findOne({ participates });
+
+    if (!conversation) {
+      conversation = await Conversation.create({ participates });
+    }
+
+    const message = await Message.create({
+      content: messageContent,
+      conversation,
+      sender: user,
+    });
+
+    conversation.lastMessage = message;
+
+    await conversation.save();
+
+    question.status = 'privately-answered';
+
+    await question.save();
+
+    // console.log('receiver._id', receiver._id.toString());
+
+    const latestConversation = await conversation.detailConversation();
+
+    // console.log(latestConversation);
+
+    // new conversation is payload
+    socket.emit(`${receiver._id.toString()}:read`, latestConversation);
+
+    callback({
+      success: true,
+      message: 'Trả lời câu hỏi riêng tư thành công',
+      code: 2051,
+    });
+  }
+);

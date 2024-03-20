@@ -16,6 +16,7 @@ import {
   createAnswerHandler,
   deleteFeedbackHandler,
   deleteFeedbacksHandler,
+  feedbacksHandler,
 } from '../../controllers/based-roles/counsellor.js';
 
 const router = express.Router();
@@ -43,6 +44,11 @@ router
 
 router
   .route('/feedbacks')
+  .get(
+    authHandler('COUNSELLOR'),
+    validateDepartmentBeforeAccess,
+    feedbacksHandler
+  )
   .delete(
     authHandler('COUNSELLOR'),
     validateDepartmentBeforeAccess,

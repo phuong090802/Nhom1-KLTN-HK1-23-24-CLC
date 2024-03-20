@@ -1,8 +1,33 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import Feedback from '../../../models/feedback.js';
-import { deleteFile } from '../../../utils/upload-file.js';
-import ErrorHandler from '../../../utils/error-handler.js';
+
+import QueryAPI from '../../../util/db/query-api.js';
+import { deleteFile } from '../../../util/upload-file.js';
+import ErrorHandler from '../../../util/error/http-error-handler.js';
+
+// endpoint: /api/counsellor/feedbacks
+// method: GET
+// description: Tư vấn viên load danh sách feedback của họ (không phân trang)
+export const feedbacksHandler = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  const query = Feedback.find({ 'answer.user': user })
+    .sort({ createdAt: -1 })
+    .lean()
+    .populate({
+      path: 'question',
+      select: '-_id title content',
+    })
+    .select('_id content createdAt answer.content answer.answeredAt question');
+  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  let feedbacks = await queryAPI.query;
+
+  res.json({
+    success: true,
+    feedbacks,
+    code: 2045,
+  });
+});
 
 // endpoint: /api/counsellor/answers
 // method: POST

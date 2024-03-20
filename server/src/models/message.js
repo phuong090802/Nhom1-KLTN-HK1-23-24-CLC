@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const messageSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Types.ObjectId,
+    default: () => new mongoose.Types.ObjectId(),
+  },
   conversation: {
     type: mongoose.Schema.Types.ObjectId,
     required: [true, 'Tin nhắn phải thuộc về một cuộc trò chuyện'],
@@ -19,19 +23,22 @@ const messageSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  deletedBySender: {
-    type: Boolean,
-    default: false,
-  },
-  deletedByReceiver: {
-    type: Boolean,
-    default: false,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
+messageSchema.methods.getMessage = function () {
+  return {
+    _id: this._id,
+    content: this.content,
+    senderId: this.sender,
+    viewed: this.viewed,
+    createdAt: this.createdAt,
+  };
+};
+
 const Message = mongoose.model('Message', messageSchema);
+
 export default Message;

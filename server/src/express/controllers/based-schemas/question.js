@@ -2,8 +2,8 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import Question from '../../../models/question.js';
 
-import QueryAPI from '../../../utils/query-api.js';
-import paginateResults from '../../../utils/pagination.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginateResults from '../../../util/db/pagination.js';
 
 // endpoint: /api/questions/:id
 // method: PUT

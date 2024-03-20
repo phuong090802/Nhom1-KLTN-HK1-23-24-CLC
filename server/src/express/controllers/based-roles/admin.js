@@ -7,9 +7,9 @@ import User from '../../../models/user.js';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
-import ErrorHandler from '../../../utils/error-handler.js';
-import QueryAPI from '../../../utils/query-api.js';
-import paginateResults from '../../../utils/pagination.js';
+import ErrorHandler from '../../../util/error/http-error-handler.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginateResults from '../../../util/db/pagination.js';
 
 import { fieldMapper } from '../../../constants/mapper.js';
 
