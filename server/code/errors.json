@@ -344,9 +344,9 @@
     },
     {
       "code": "4057",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "message": "Quyền truy cập không hợp lệ",
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Role không phải là DEPARTMENT_HEAD"
     },
     {
       "code": "4058",

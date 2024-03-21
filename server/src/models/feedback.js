@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 import answerSchema from './embedded/answer.js';
+import Question from './question.js';
 
 const feedbackSchema = mongoose.Schema({
   content: {
@@ -28,6 +29,24 @@ feedbackSchema.pre('validate', function (next) {
   }
   next();
 });
+
+feedbackSchema.methods.getFeedback = async function () {
+  await this.populate('question');
+  return {
+    _id: this._id,
+    content: this.content,
+    createdAt: this.createdAt,
+    answer: {
+      content: this.answer.content,
+      answeredAt: this.answer.answeredAt,
+    },
+    question: {
+      _id: this.question._id,
+      title: this.question.title,
+      content: this.question.content,
+    },
+  };
+};
 
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 

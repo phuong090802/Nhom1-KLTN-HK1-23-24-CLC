@@ -53,6 +53,12 @@ export const createMessage = catchAsyncErrors(
 
     // console.log(receiver);
 
-    socket.emit(`${receiver._id.toString()}:read`, latestConversation);
+    const response = {
+      success: true,
+      latestConversation,
+      code: 2057,
+    };
+
+    socket.emit(`${receiver._id.toString()}:read`, response);
   }
 );

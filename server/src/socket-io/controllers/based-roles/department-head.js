@@ -10,6 +10,14 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 // description: Trưởng khoa gửi feedback khi từ chối duyệt
 export const createFeedback = catchAsyncErrors(
   async (socket, payload, callback) => {
+    const user = socket.user;
+
+    const allowRoles = ['DEPARTMENT_HEAD'];
+
+    if (!allowRoles.includes(user.role)) {
+      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4057);
+    }
+
     const { questionId, content } = payload;
     const question = await Question.findById(questionId);
 
@@ -29,6 +37,20 @@ export const createFeedback = catchAsyncErrors(
       message: 'Gửi phản hồi thành công',
       code: 2055,
     });
+
+    const feedback = await Feedback.findById(savedFeedback._id);
+
+    const latestFeedback = await feedback.getFeedback();
+
+    const response = {
+      success: true,
+      latestFeedback,
+      code: 2056,
+    };
+
+    // console.log(answer.user._id.toString());
+
+    socket.emit(`${answer.user._id.toString()}:read`, response);
 
     // handle emit feedback
   }

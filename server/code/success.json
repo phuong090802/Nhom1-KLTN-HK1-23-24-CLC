@@ -208,7 +208,7 @@
       "code": "2035",
       "message": "Xác thực email thành công",
       "file": "express/controllers/auth.js",
-      "detail": "xác nhận email"
+      "detail": "Xác nhận email"
     },
     {
       "code": "2036",
@@ -298,7 +298,7 @@
       "code": "2050",
       "message": "",
       "file": "express/controllers/based-role/user.js",
-      "detail": "Lấy danh sách câu hỏi của bản thân đã đặt"
+      "detail": "Lấy danh sách câu hỏi của bản thân đã hỏi"
     },
     {
       "code": "2051",
@@ -333,14 +333,23 @@
     {
       "code": "2056",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Gửi feedback tới tư vấn viên thành công"
     },
     {
       "code": "2057",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "details": [
+        {
+          "message": "",
+          "file": "socket-io/controllers/based-roles/counsellor.js",
+          "detail": "Trưởng khoa/tư vấn viên gửi tin nhắn thành công"
+        },
+        {
+          "message": "",
+          "file": "socket-io/controllers/based-schemas/user.js",
+          "detail": "Gửi tin nhắn thành công (tất cả các role)"
+        }
+      ]
     },
     {
       "code": "2058",

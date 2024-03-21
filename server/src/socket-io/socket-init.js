@@ -4,6 +4,7 @@ import main from './namespaces/main.js';
 import admin from './namespaces/based-roles/admin.js';
 import departmentHead from './namespaces/based-roles/department-head.js';
 import message from './namespaces/based-schemas/message.js';
+import counsellor from './namespaces/based-roles/counsellor.js';
 
 export default function socketIO(io) {
   // main namespace
@@ -21,6 +22,7 @@ export default function socketIO(io) {
   departmentHead(io);
 
   // counsellor namespace
+  counsellor(io);
 
   //#endregion
 

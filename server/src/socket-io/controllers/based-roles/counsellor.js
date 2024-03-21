@@ -1,4 +1,3 @@
-
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 
@@ -67,8 +66,14 @@ export const createConversation = catchAsyncErrors(
 
     // console.log(latestConversation);
 
+    const response = {
+      success: true,
+      latestConversation,
+      code: 2057,
+    };
+
     // new conversation is payload
-    socket.emit(`${receiver._id.toString()}:read`, latestConversation);
+    socket.emit(`${receiver._id.toString()}:read`, response);
 
     callback({
       success: true,

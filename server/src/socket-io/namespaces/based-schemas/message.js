@@ -2,7 +2,7 @@ import { isAuthenticatedHandler } from '../../middlewares/auth.js';
 
 import { createConversation } from '../../controllers/based-roles/counsellor.js';
 
-import { createMessage } from '../../controllers/based-roles/user.js';
+import { createMessage } from '../../controllers/based-schemas/user.js';
 
 export default function message(io) {
   io.of('/messages')
