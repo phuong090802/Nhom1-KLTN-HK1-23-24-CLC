@@ -20,6 +20,7 @@ export const hasNewQuestionsHandler = catchAsyncErrors(
 
     const numberOfQuestions = await Question.countDocuments({
       department,
+      status: 'unanswered',
       field: { $in: fields },
     });
 
@@ -51,37 +52,6 @@ export const feedbacksHandler = catchAsyncErrors(async (req, res, next) => {
     success: true,
     feedbacks,
     code: 2045,
-  });
-});
-
-// endpoint: /api/counsellor/answers
-// method: POST
-// description: Tư vấn viên, trưởng khoa trả lời câu hỏi
-export const createAnswerHandler = catchAsyncErrors(async (req, res, next) => {
-  const user = req.user;
-
-  const question = req.foundQuestion;
-
-  const { content } = req.body;
-  const file = req.uploadedFile;
-
-  const answer = { content, file, user };
-
-  let status = 'publicly-answered-pending-approval';
-
-  if (user.role === 'DEPARTMENT_HEAD') {
-    status = 'publicly-answered-and-approved';
-  }
-
-  question.answer = answer;
-  question.status = status;
-
-  await question.save();
-
-  res.json({
-    success: true,
-    message: 'Trả lời câu hỏi thành công',
-    code: 2031,
   });
 });
 

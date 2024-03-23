@@ -3,36 +3,17 @@ import express from 'express';
 import authHandler from '../../middlewares/auth.js';
 import {
   validateDepartmentBeforeAccess,
-  validateFeedbackOfCounsellor,
-  validateQuestionIdInParams,
-  validateStatusOfQuestion,
+  validateFeedbackOfCounsellor
 } from '../../middlewares/validate.js';
-import {
-  optionalUploadFileToFirebaseHandler,
-  uploadImageOrDocumentHandler,
-} from '../../middlewares/upload-file.js';
 
 import {
-  createAnswerHandler,
   deleteFeedbackHandler,
   deleteFeedbacksHandler,
   feedbacksHandler,
-  hasNewQuestionsHandler,
+  hasNewQuestionsHandler
 } from '../../controllers/based-roles/counsellor.js';
 
 const router = express.Router();
-
-router
-  .route('/questions/:id/answers')
-  .post(
-    authHandler('COUNSELLOR', 'DEPARTMENT_HEAD'),
-    validateDepartmentBeforeAccess,
-    validateQuestionIdInParams,
-    validateStatusOfQuestion('unanswered'),
-    uploadImageOrDocumentHandler.single('file'),
-    optionalUploadFileToFirebaseHandler('answers'),
-    createAnswerHandler
-  );
 
 router
   .route('/questions')

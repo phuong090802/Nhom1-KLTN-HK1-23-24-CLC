@@ -1,6 +1,6 @@
 import Department from '../../models/department.js';
 
-export const validateDepartmentOfCounsellor = async (socket, next) => {
+export const validateDepartment = async (socket, next) => {
   const department = await Department.findById(
     socket.user.counsellor.department
   );
@@ -17,7 +17,7 @@ export const validateDepartmentOfCounsellor = async (socket, next) => {
   next();
 };
 
-export const validateStatusDepartmentOfCounsellor = async (socket, next) => {
+export const validateStatusDepartment = async (socket, next) => {
   const department = socket.foundDepartment;
   if (!department.isActive) {
     const err = new Error('Không thể truy cập. Khoa đang bị khóa');

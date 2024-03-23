@@ -8,6 +8,25 @@ import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
 import Question from '../../../models/question.js';
 
+// endpoint: /api/department-head/answers
+// method: GET
+// description: Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không
+export const hasNewAnswersHandler = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  const { department } = user.counsellor;
+
+  const numberOfAnswers = await Question.countDocuments({
+    department,
+    status: 'publicly-answered-pending-approval',
+  });
+
+  res.json({
+    success: true,
+    hasNewAnswers: numberOfAnswers > 0,
+    code: 2059,
+  });
+});
+
 // endpoint: /api/department-head/questions
 // method: GET
 // description: Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không
@@ -18,6 +37,7 @@ export const hasNewQuestionsHandler = catchAsyncErrors(
 
     const numberOfQuestions = await Question.countDocuments({
       department,
+      status: 'unanswered',
     });
 
     res.json({

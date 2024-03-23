@@ -183,7 +183,7 @@
     {
       "code": "2031",
       "message": "Trả lời câu hỏi thành công",
-      "file": "express/controllers/based-roles/counsellor.js",
+      "file": "socket-io/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên, trưởng khoa trả lời câu hỏi"
     },
     {
@@ -273,13 +273,13 @@
     {
       "code": "2046",
       "message": "Xóa phản hồi thành công",
-      "file": "express/controllers/based-role/counsellor.js",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên xóa phản hồi của họ thành công (xóa bằng Id)"
     },
     {
       "code": "2047",
       "message": "Xóa danh sách phản hồi thành công",
-      "file": "express/controllers/based-role/counsellor.js",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
@@ -360,8 +360,8 @@
     {
       "code": "2059",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "socket-io/controllers/based-roles/counsellor.js",
+      "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
     },
     {
       "code": "2060",
@@ -426,8 +426,8 @@
     {
       "code": "2070",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/auth.js",
+      "detail": "Kiểm tra email đã được xác thực hay chưa"
     },
     {
       "code": "2071",
@@ -439,12 +439,12 @@
         },
         {
           "message": "",
-          "file": "express/controllers/based-role/counsellor.js",
+          "file": "express/controllers/based-roles/counsellor.js",
           "detail": "Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không"
         },
         {
           "message": "",
-          "file": "express/controllers/based-role/department-head.js",
+          "file": "express/controllers/based-roles/department-head.js",
           "detail": "Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không"
         }
       ]

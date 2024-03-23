@@ -23,6 +23,7 @@ export const approveAnswer = catchAsyncErrors(
     validateQuestionAndStatus(question, 'publicly-answered-pending-approval');
 
     question.status = 'publicly-answered-and-approved';
+    question.answer.answeredAt = Date.now();
 
     await question.save();
 

@@ -14,6 +14,7 @@ import {
   addFieldHandler,
   counsellorsHandler,
   fieldsHandler,
+  hasNewAnswersHandler,
   hasNewQuestionsHandler,
   removeFieldOfCounsellor,
   updateFieldHandler,
@@ -30,6 +31,8 @@ import {
 const router = express.Router();
 
 router.use(authHandler('DEPARTMENT_HEAD'), validateDepartmentBeforeAccess);
+
+router.route('/answers').get(hasNewAnswersHandler);
 
 router.route('/questions').get(hasNewQuestionsHandler);
 

@@ -581,6 +581,12 @@
       "message": "Chỉ hổ trợ file tối đa ${maxSize} MB",
       "file": "socket-io/middlewares/event/validate-event.js",
       "detail": ""
+    },
+    {
+      "code": "4097",
+      "message": "Bạn không hỗ trợ lĩnh vực này",
+      "file": "socket-io/middlewares/event/validate-event.js",
+      "detail": ""
     }
   ]
 }

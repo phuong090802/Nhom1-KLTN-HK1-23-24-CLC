@@ -8,7 +8,7 @@ import User from '../../../models/user.js';
 import {
   validateDepartmentAndStatus,
   validateFieldAndStatus,
-  validateFileCreateQuestion,
+  validateMimetypeAndFileSize,
 } from '../../middlewares/event/validate-event.js';
 import { uploadFileSocketIO } from '../../../util/upload-file.js';
 import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
@@ -38,7 +38,7 @@ export const createQuestion = catchAsyncErrors(
 
     if (file && file.buffer) {
       // maxSize: 2MB
-      validateFileCreateQuestion(file, 2);
+      validateMimetypeAndFileSize(file, 2);
       const { ref, url } = await uploadFileSocketIO('questions', file);
       questionData = {
         ...questionData,

@@ -9,16 +9,16 @@ import {
 } from '../../controllers/based-roles/department-head.js';
 
 import {
-  validateDepartmentOfCounsellor,
-  validateStatusDepartmentOfCounsellor,
+  validateDepartment,
+  validateStatusDepartment,
 } from '../../middlewares/validate.js';
 
 export default function departmentHead(io) {
   io.of('/department-head')
     .use(isAuthenticatedHandler)
     .use(authorizeRolesHandler('DEPARTMENT_HEAD'))
-    .use(validateDepartmentOfCounsellor)
-    .use(validateStatusDepartmentOfCounsellor)
+    .use(validateDepartment)
+    .use(validateStatusDepartment)
     .on('connection', (socket) => {
       socket.on('field:validate-field-name:create', (payload, callback) =>
         validateFieldNameCreate(socket, payload, callback)

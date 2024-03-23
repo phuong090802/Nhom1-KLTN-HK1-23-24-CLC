@@ -40,5 +40,7 @@ export default function auth(io) {
       socket.on('question:create', (payload, callback) => {
         createQuestion(socket, payload, callback);
       });
+
+      
     });
 }

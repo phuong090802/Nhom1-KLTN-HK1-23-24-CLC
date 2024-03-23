@@ -88,7 +88,13 @@ export const validateFileSize = (file, maxSize) => {
   }
 };
 
-export const validateFileCreateQuestion = (file, maxSize) => {
+export const validateMimetypeAndFileSize = (file, maxSize) => {
   validateMimetype(file);
   validateFileSize(file, maxSize);
+};
+
+export const validateFieldOfCounsellor = (fieldOfQuestion, counsellor) => {
+  if (!counsellor.counsellor.fields.includes(fieldOfQuestion)) {
+    throw new ErrorHandler('Bạn không hỗ trợ lĩnh vực này', 4097);
+  }
 };

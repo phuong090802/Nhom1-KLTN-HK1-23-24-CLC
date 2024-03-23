@@ -9,6 +9,23 @@ import ErrorHandler from '../../util/error/http-error-handler.js';
 import { sendToken, clearToken } from '../../util/auth/token.js';
 import { sendVerificationEmail } from '../../util/auth/email-verify.js';
 
+// endpoint: /api/auth/email
+// method: GET
+// description: Kiểm tra email đã được xác thực
+// role: all role
+export const isVerifiedEmailHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const isVerifiedEmail = user.isEmailVerified;
+
+    res.json({
+      success: true,
+      isVerifiedEmail,
+      code: 2070,
+    });
+  }
+);
+
 // endpoint: /api/auth/password
 // method: PUT
 // description: Đổi mật khẩu

@@ -12,8 +12,9 @@ import {
   validateEmailHandler,
   verifyEmailHandler,
   passwordHandler,
+  isVerifiedEmailHandler,
 } from '../controllers/auth.js';
-import { isAuthenticatedHandler } from '../middlewares/auth.js';
+import authHandler, { isAuthenticatedHandler } from '../middlewares/auth.js';
 
 const router = express.Router();
 
@@ -30,5 +31,11 @@ router.post('/reset-password/:token', resetPasswordHandler);
 router.post('/validate-email', isAuthenticatedHandler, validateEmailHandler);
 router.post('/verify-email', isAuthenticatedHandler, verifyEmailHandler);
 router.put('/password', isAuthenticatedHandler, passwordHandler);
+
+router.get(
+  '/is-verified-email',
+  authHandler('USER', 'COUNSELLOR', 'DEPARTMENT_HEAD', 'SUPERVISOR'),
+  isVerifiedEmailHandler
+);
 
 export default router;
