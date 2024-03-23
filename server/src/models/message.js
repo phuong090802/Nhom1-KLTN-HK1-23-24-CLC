@@ -29,7 +29,7 @@ const messageSchema = new mongoose.Schema({
   },
 });
 
-messageSchema.methods.getMessage = function () {
+messageSchema.methods.getFormatMessage = function () {
   return {
     _id: this._id,
     content: this.content,

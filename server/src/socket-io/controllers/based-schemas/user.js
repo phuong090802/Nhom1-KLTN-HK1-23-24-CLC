@@ -3,9 +3,12 @@ import mongoose from 'mongoose';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
+// namespace: /auth
+// listen event (ack): message:create
+// description: Gửi tin nhắn
 export const createMessage = catchAsyncErrors(
   async (socket, payload, callback) => {
     const { conversationId, messageContent } = payload;
@@ -59,6 +62,6 @@ export const createMessage = catchAsyncErrors(
       code: 2057,
     };
 
-    socket.emit(`${receiver._id.toString()}:read`, response);
+    socket.emit(`${receiver._id.toString()}:message:read`, response);
   }
 );

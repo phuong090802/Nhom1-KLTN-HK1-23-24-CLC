@@ -1,28 +1,78 @@
 import Field from '../../../models/field.js';
 import Question from '../../../models/question.js';
 import Feedback from '../../../models/feedback.js';
+import Notification from '../../../models/notification.js';
+
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
+import { validateQuestionAndStatus } from '../../middlewares/event/validate-event.js';
 
 import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+
+// namespace: /auth
+// listen event (ack): notification:create
+// description: Gửi thông báo câu hỏi đã được trả lời (câu trả lời đã được trưởng khoa duyệt)
+export const approveAnswer = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    authorizeRolesHandler(socket, 'COUNSELLOR', 'DEPARTMENT_HEAD');
+
+    const { questionId } = payload;
+
+    const question = await Question.findById(questionId);
+
+    validateQuestionAndStatus(question, 'publicly-answered-pending-approval');
+
+    question.status = 'publicly-answered-and-approved';
+
+    await question.save();
+
+    callback({
+      success: true,
+      message: 'Duyệt câu trả lời thành công',
+      code: 2032,
+    });
+
+    // console.log(question.user._id.toString());
+
+    const recipient = question.user;
+
+    const content = `Câu hỏi đã được trả lời: ${question.title}`;
+
+    const lastNotification = await Notification.create({ recipient, content });
+
+    const response = {
+      success: true,
+      lastNotification,
+      code: 2058,
+    };
+
+    // emit notification to user
+    socket.emit(`${question.user._id.toString()}:notification:read`, response);
+  }
+);
 
 // namespace: /counsellor
 // listen event (ack): feedback:create
 // description: Trưởng khoa gửi feedback khi từ chối duyệt
 export const createFeedback = catchAsyncErrors(
   async (socket, payload, callback) => {
-    const user = socket.user;
-
-    const allowRoles = ['DEPARTMENT_HEAD'];
-
-    if (!allowRoles.includes(user.role)) {
-      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4057);
-    }
+    authorizeRolesHandler('DEPARTMENT_HEAD')(socket, payload, callback);
 
     const { questionId, content } = payload;
     const question = await Question.findById(questionId);
 
-    if (question.status !== 'publicly-answered-pending-approval') {
-      throw new ErrorHandler('Câu hỏi không ở trạng thái chờ duyệt', 4058);
+    validateQuestionAndStatus(question, 'publicly-answered-pending-approval');
+
+    if (!question.answer) {
+      question.status = 'unanswered';
+
+      await question.save();
+
+      return callback({
+        success: false,
+        message: 'Câu hỏi chưa được trả lời',
+        code: 4057,
+      });
     }
 
     const answer = question.answer;
@@ -40,7 +90,7 @@ export const createFeedback = catchAsyncErrors(
 
     const feedback = await Feedback.findById(savedFeedback._id);
 
-    const latestFeedback = await feedback.getFeedback();
+    const latestFeedback = await feedback.getFormatFeedback();
 
     const response = {
       success: true,
@@ -50,9 +100,8 @@ export const createFeedback = catchAsyncErrors(
 
     // console.log(answer.user._id.toString());
 
-    socket.emit(`${answer.user._id.toString()}:read`, response);
-
     // handle emit feedback
+    socket.emit(`${answer.user._id.toString()}:feedback:read`, response);
   }
 );
 

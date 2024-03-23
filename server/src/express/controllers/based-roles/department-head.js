@@ -6,18 +6,27 @@ import ErrorHandler from '../../../util/error/http-error-handler.js';
 
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
+import Question from '../../../models/question.js';
 
-export const approveAnswerHandler = catchAsyncErrors(async (req, res, next) => {
-  const question = req.foundQuestion;
-  question.status = 'publicly-answered-and-approved';
-  await question.save();
+// endpoint: /api/department-head/questions
+// method: GET
+// description: Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không
+export const hasNewQuestionsHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const { department } = user.counsellor;
 
-  res.json({
-    success: true,
-    message: 'Duyệt câu trả lời thành công',
-    code: 2032,
-  });
-});
+    const numberOfQuestions = await Question.countDocuments({
+      department,
+    });
+
+    res.json({
+      success: true,
+      hasNewQuestions: numberOfQuestions > 0,
+      code: 2071,
+    });
+  }
+);
 
 // endpoint: /api/department-head/counsellors/:id
 // method: PATCH

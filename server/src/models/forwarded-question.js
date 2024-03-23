@@ -10,7 +10,7 @@ const forwardedQuestionSchema = mongoose.Schema({
   fromDepartment: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Department',
-    required: [true, 'Vui lòng nhập mã chuyển tiếp câu hỏi'],
+    required: [true, 'Vui lòng nhập mã khoa chuyển tiếp câu hỏi'],
   },
   toDepartment: {
     type: mongoose.Schema.Types.ObjectId,

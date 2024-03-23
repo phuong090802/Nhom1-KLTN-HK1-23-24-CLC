@@ -177,7 +177,7 @@
     {
       "code": "2030",
       "message": "Đặt câu hỏi thành công",
-      "file": "express/controllers/based-role/user.js",
+      "file": "socket-io/controllers/based-role/user.js",
       "detail": ""
     },
     {
@@ -189,7 +189,7 @@
     {
       "code": "2032",
       "message": "Duyệt câu tả lời thành công",
-      "file": "express/controllers/based-roles/department-head.js",
+      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Duyệt câu trả lời"
     },
     {
@@ -354,8 +354,8 @@
     {
       "code": "2058",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "socket-io/controllers/based-roles/department-head.js",
+      "detail": "Gửi thông báo câu hỏi đã được trả lời (câu trả lời đã được trưởng khoa duyệt)"
     },
     {
       "code": "2059",
@@ -431,9 +431,23 @@
     },
     {
       "code": "2071",
-      "message": "",
-      "file": "",
-      "detail": ""
+      "details": [
+        {
+          "message": "",
+          "file": "socket-io/controllers/based-roles/user.js",
+          "detail": "Đặt câu hỏi thành công và lấy danh, thông báo câu hỏi mới tới tư vấn viên trong khoa có cùng lĩnh vực"
+        },
+        {
+          "message": "",
+          "file": "express/controllers/based-role/counsellor.js",
+          "detail": "Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không"
+        },
+        {
+          "message": "",
+          "file": "express/controllers/based-role/department-head.js",
+          "detail": "Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không"
+        }
+      ]
     },
     {
       "code": "2072",

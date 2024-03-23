@@ -17,6 +17,7 @@ import {
   deleteFeedbackHandler,
   deleteFeedbacksHandler,
   feedbacksHandler,
+  hasNewQuestionsHandler,
 } from '../../controllers/based-roles/counsellor.js';
 
 const router = express.Router();
@@ -31,6 +32,14 @@ router
     uploadImageOrDocumentHandler.single('file'),
     optionalUploadFileToFirebaseHandler('answers'),
     createAnswerHandler
+  );
+
+router
+  .route('/questions')
+  .get(
+    authHandler('COUNSELLOR'),
+    validateDepartmentBeforeAccess,
+    hasNewQuestionsHandler
   );
 
 router

@@ -1,3 +1,5 @@
+// giá trị unique
+// sau này làm thì cần đặt khác tên để map tùy biến cho dễ
 export const fieldMapper = {
   email: 'Email',
   phoneNumber: 'Số điện thoại',
@@ -6,6 +8,7 @@ export const fieldMapper = {
   // Pitfall trong OneNote
   department: 'Khoa',
   field: 'Lĩnh vực',
+  question: 'Câu hỏi'
 };
 
 export const statusQuestionApprovedMapper = {

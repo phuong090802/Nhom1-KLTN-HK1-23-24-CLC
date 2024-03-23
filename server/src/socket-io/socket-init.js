@@ -2,9 +2,8 @@ import auth from './namespaces/auth.js';
 import main from './namespaces/main.js';
 
 import admin from './namespaces/based-roles/admin.js';
-import departmentHead from './namespaces/based-roles/department-head.js';
-import message from './namespaces/based-schemas/message.js';
 import counsellor from './namespaces/based-roles/counsellor.js';
+import departmentHead from './namespaces/based-roles/department-head.js';
 
 export default function socketIO(io) {
   // main namespace
@@ -27,6 +26,6 @@ export default function socketIO(io) {
   //#endregion
 
   //#region based-schema
-  message(io);
+  
   //#endregion
 }

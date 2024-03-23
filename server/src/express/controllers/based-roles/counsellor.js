@@ -1,10 +1,35 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import Feedback from '../../../models/feedback.js';
+import Question from '../../../models/question.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
 import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
+
+// endpoint: /api/counsellor/questions
+// method: GET
+// description: Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không
+export const hasNewQuestionsHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const { department, fields } = user.counsellor;
+
+    // console.log(department);
+    // console.log(fields);
+
+    const numberOfQuestions = await Question.countDocuments({
+      department,
+      field: { $in: fields },
+    });
+
+    res.json({
+      success: true,
+      hasNewQuestions: numberOfQuestions > 0,
+      code: 2071,
+    });
+  }
+);
 
 // endpoint: /api/counsellor/feedbacks
 // method: GET

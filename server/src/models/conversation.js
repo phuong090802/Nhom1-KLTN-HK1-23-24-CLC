@@ -66,7 +66,7 @@ conversationSchema.pre('save', function (next) {
 // set structure for detail conversation
 conversationSchema.methods.detailConversation = async function () {
   const message = await Message.findById(this.lastMessage);
-  const lastMessage = await message.getMessage();
+  const lastMessage = await message.getFormatMessage();
   return {
     _id: this._id,
     lastMessage: lastMessage,

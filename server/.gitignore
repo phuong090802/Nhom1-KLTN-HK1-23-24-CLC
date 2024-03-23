@@ -7,10 +7,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# My project
 node_modules
 .env
 .env.production
-src/configs/env.js
+
 dist
 dist-ssr
 *.local

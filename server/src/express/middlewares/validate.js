@@ -180,6 +180,7 @@ export const adminValidateStatusOfDepartment = catchAsyncErrors(
   }
 );
 
+// chưa sử dụng
 // người dùng kiểm tra trạng thái khoa trước khi đặt câu hỏi
 const userValidateStatusOfDepartment = catchAsyncErrors(
   async (req, res, next) => {
@@ -193,6 +194,7 @@ const userValidateStatusOfDepartment = catchAsyncErrors(
   }
 );
 
+// chưa sử dụng
 // người dùng kiểm tra trạng thái lĩnh vực trước khi đặt câu hỏi
 const userValidateStatusOfField = catchAsyncErrors(async (req, res, next) => {
   const field = req.foundField;
@@ -208,6 +210,7 @@ const userValidateStatusOfField = catchAsyncErrors(async (req, res, next) => {
   next();
 });
 
+// chưa sử dụng
 export const validateBeforeMakeQuestion = [
   validateDepartmentIdInBody,
   validateFieldIdInBodyOfDepartment,
@@ -281,7 +284,7 @@ export const validateFileInFormData = catchAsyncErrors(
   }
 );
 
-// kiểm tra id có tồn tại có tồn tại trong DB không
+// kiểm tra id câu hỏi có tồn tại có tồn tại trong DB không
 export const validateQuestionIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;

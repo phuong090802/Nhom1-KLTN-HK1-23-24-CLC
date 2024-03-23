@@ -1,40 +1,23 @@
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 
-import Question from '../../../models/question.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
+import { validateQuestionAndStatus } from '../../middlewares/event/validate-event.js';
 
-// namespace: /messages
+import Question from '../../../models/question.js';
+
+// namespace: /auth
 // listen event (ack): conversation:create
 // description: Tư vấn viên/trưởng khoa trả lời câu hỏi riêng tư
 export const createConversation = catchAsyncErrors(
   async (socket, payload, callback) => {
+    authorizeRolesHandler(socket, 'COUNSELLOR', 'DEPARTMENT_HEAD');
+
     const { questionId, messageContent } = payload;
-    // console.log(questionId, messageContent);
-    // console.log(payload);
-
-    const user = socket.user;
-
-    const allowRoles = ['COUNSELLOR', 'DEPARTMENT_HEAD'];
-
-    if (!allowRoles.includes(user.role)) {
-      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4087);
-    }
-
     const question = await Question.findById(questionId);
-
-    if (!question) {
-      throw new ErrorHandler('Quyền truy cập không hợp lệ', 4052);
-    }
-
-    if (question.status !== 'unanswered') {
-      throw new ErrorHandler(
-        'Câu hỏi không không ở trạng thái chưa được trả lời',
-        4086
-      );
-    }
-
-    // console.log(question);
+    validateQuestionAndStatus(question, 'unanswered');
+    const user = socket.user;
 
     const receiver = question.user;
 
@@ -60,11 +43,7 @@ export const createConversation = catchAsyncErrors(
 
     await question.save();
 
-    // console.log('receiver._id', receiver._id.toString());
-
     const latestConversation = await conversation.detailConversation();
-
-    // console.log(latestConversation);
 
     const response = {
       success: true,
@@ -73,7 +52,7 @@ export const createConversation = catchAsyncErrors(
     };
 
     // new conversation is payload
-    socket.emit(`${receiver._id.toString()}:read`, response);
+    socket.emit(`${receiver._id.toString()}:message:read`, response);
 
     callback({
       success: true,
