@@ -1,33 +1,55 @@
 import express from 'express';
 
-import authHandler from '../../middlewares/auth.js';
 import {
-  validateDepartmentBeforeAccess,
-  validateFeedbackOfCounsellor
+  validateCounsellorIncludesFieldOfQuestion,
+  validateDepartmentIdBeforeForwarding,
+  validateFeedbackOfCounsellor,
+  validateFieldIdInBodyOfBelongToDepartment,
+  validateQuestionBelongToDepartment,
 } from '../../middlewares/validate.js';
 
 import {
   deleteFeedbackHandler,
   deleteFeedbacksHandler,
   feedbacksHandler,
-  hasNewQuestionsHandler
+  forwardQuestionHandler,
+  hasNewQuestionsHandler,
 } from '../../controllers/based-roles/counsellor.js';
+import {
+  validateDepartmentInBody,
+  validateRoleAndStatusDepartmentBeforeAccess,
+  validateStatusQuestionInParams,
+} from '../../middlewares/combine-validate.js';
 
 const router = express.Router();
 
 router
+  .route('/questions/:id')
+  .put(
+    validateRoleAndStatusDepartmentBeforeAccess(
+      'DEPARTMENT_HEAD',
+      'COUNSELLOR'
+    ),
+    validateStatusQuestionInParams('unanswered'),
+    validateQuestionBelongToDepartment,
+    validateCounsellorIncludesFieldOfQuestion,
+    validateDepartmentInBody,
+    validateDepartmentIdBeforeForwarding,
+    validateFieldIdInBodyOfBelongToDepartment,
+    forwardQuestionHandler
+  );
+
+router
   .route('/questions')
   .get(
-    authHandler('COUNSELLOR'),
-    validateDepartmentBeforeAccess,
+    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
     hasNewQuestionsHandler
   );
 
 router
   .route('/feedbacks/:id')
   .delete(
-    authHandler('COUNSELLOR'),
-    validateDepartmentBeforeAccess,
+    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
     validateFeedbackOfCounsellor,
     deleteFeedbackHandler
   );
@@ -35,13 +57,11 @@ router
 router
   .route('/feedbacks')
   .get(
-    authHandler('COUNSELLOR'),
-    validateDepartmentBeforeAccess,
+    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
     feedbacksHandler
   )
   .delete(
-    authHandler('COUNSELLOR'),
-    validateDepartmentBeforeAccess,
+    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
     deleteFeedbacksHandler
   );
 

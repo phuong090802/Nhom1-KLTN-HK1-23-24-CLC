@@ -1,17 +1,15 @@
 import express from 'express';
 
 import authHandler from '../../middlewares/auth.js';
-import {
-  validateDepartmentIdInBody,
-  validateDepartmentIdInParams,
-  validateRoleInBody,
-  adminValidateStatusOfDepartment,
-  validateUserIdInParams,
-  validateUserIdInBodyWithRole,
-  permissionsCannotBeModified,
-  validateFileInFormData,
-} from '../../middlewares/validate.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
+import {
+  permissionsCannotBeModified,
+  validateDepartmentIdInParams,
+  validateFileInFormData,
+  validateRoleInBody,
+  validateUserIdInBodyWithRole,
+  validateUserIdInParams,
+} from '../../middlewares/validate.js';
 
 import {
   addCounsellorToDepartmentHandler,
@@ -27,6 +25,10 @@ import {
   userHandler,
   usersHandler,
 } from '../../controllers/based-roles/admin.js';
+import {
+  adminValidateDepartmentInBody,
+  adminValidateDepartmentInParams,
+} from '../../middlewares/combine-validate.js';
 import { uploadCSVHandler } from '../../middlewares/upload-file.js';
 
 const router = express.Router();
@@ -53,11 +55,7 @@ router.get(
 
 router
   .route('/departments/:id')
-  .put(
-    validateDepartmentIdInParams,
-    adminValidateStatusOfDepartment,
-    updateDepartmentHandler
-  )
+  .put(adminValidateDepartmentInParams, updateDepartmentHandler)
   .patch(validateDepartmentIdInParams, updateStatusDepartmentHandler);
 
 router
@@ -65,8 +63,7 @@ router
   .post(addDepartmentHandler)
   .get(defaultPaginationParams, departmentsHandler)
   .put(
-    validateDepartmentIdInBody,
-    adminValidateStatusOfDepartment,
+    adminValidateDepartmentInBody,
     validateUserIdInBodyWithRole('COUNSELLOR'),
     updateDepartmentHeadHandler
   );
@@ -86,8 +83,7 @@ router
   .route('/counsellors')
   .post(
     validateUserIdInBodyWithRole('COUNSELLOR'),
-    validateDepartmentIdInBody,
-    adminValidateStatusOfDepartment,
+    adminValidateDepartmentInBody,
     addCounsellorToDepartmentHandler
   );
 

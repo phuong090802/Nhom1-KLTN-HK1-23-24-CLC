@@ -81,7 +81,7 @@ export const uploadCounsellorHandler = catchAsyncErrors(
         });
       }
     }
-    res.json({
+    res.status(201).json({
       success: true,
       message: 'Thêm tư vấn viên từ file .csv thành công',
       code: 2048,

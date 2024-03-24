@@ -587,6 +587,24 @@
       "message": "Bạn không hỗ trợ lĩnh vực này",
       "file": "socket-io/middlewares/event/validate-event.js",
       "detail": ""
+    },
+    {
+      "code": "4098",
+      "message": "Không tìm thấy câu hỏi thuộc về khoa",
+      "file": "express/middlewares/combine-validate.js",
+      "detail": ""
+    },
+    {
+      "code": "4099",
+      "message": "Không thể chuyển tiếp câu hỏi cùng khoa",
+      "file": "express/controllers/based-roles/counsellor.js",
+      "detail": ""
+    },
+    {
+      "code": "4100",
+      "message": "Không thể chuyển tiếp. Câu hỏi không thuộc lĩnh vực được hỗ trợ",
+      "file": "express/middlewares/validate.js",
+      "detail": ""
     }
   ]
 }

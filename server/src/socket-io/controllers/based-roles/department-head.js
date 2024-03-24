@@ -5,7 +5,7 @@ import Notification from '../../../models/notification.js';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
-import { validateQuestionAndStatus } from '../../middlewares/event/validate-event.js';
+import { validateQuestionAndStatus } from '../../middlewares/event/combine-validate.js';
 
 import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
 

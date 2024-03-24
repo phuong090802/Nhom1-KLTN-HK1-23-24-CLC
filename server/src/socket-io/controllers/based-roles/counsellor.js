@@ -3,11 +3,12 @@ import Message from '../../../models/message.js';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
+import { validateFieldOfCounsellor } from '../../middlewares/event/validate-event.js';
+
 import {
-  validateFieldOfCounsellor,
-  validateMimetypeAndFileSize,
   validateQuestionAndStatus,
-} from '../../middlewares/event/validate-event.js';
+  validateMimetypeAndFileSize,
+} from '../../middlewares/event/combine-validate.js';
 
 import Question from '../../../models/question.js';
 import User from '../../../models/user.js';

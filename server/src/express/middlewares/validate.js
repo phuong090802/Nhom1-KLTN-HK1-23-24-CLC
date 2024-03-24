@@ -4,9 +4,9 @@ import Department from '../../models/department.js';
 import Field from '../../models/field.js';
 import User from '../../models/user.js';
 
+import Conversation from '../../models/conversation.js';
 import Feedback from '../../models/feedback.js';
 import Question from '../../models/question.js';
-import Conversation from '../../models/conversation.js';
 
 import ErrorHandler from '../../util/error/http-error-handler.js';
 
@@ -82,7 +82,7 @@ export const validateUserIdInParams = catchAsyncErrors(
 );
 
 // Kiểm tra mã khoa của tư vấn viên, trưởng khoa trước khi truy cập vào các route
-const validateDepartmentOfCounsellor = catchAsyncErrors(
+export const validateDepartmentOfCounsellor = catchAsyncErrors(
   async (req, res, next) => {
     const department = await Department.findById(
       req.user.counsellor.department
@@ -96,7 +96,7 @@ const validateDepartmentOfCounsellor = catchAsyncErrors(
 );
 
 // Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào các route
-const validateStatusDepartmentOfCounsellor = catchAsyncErrors(
+export const validateStatusDepartmentOfCounsellor = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
     if (!department.isActive) {
@@ -107,11 +107,6 @@ const validateStatusDepartmentOfCounsellor = catchAsyncErrors(
     next();
   }
 );
-
-export const validateDepartmentBeforeAccess = [
-  validateDepartmentOfCounsellor,
-  validateStatusDepartmentOfCounsellor,
-];
 
 // trưởng khoa kiểm tra lĩnh vực của thuộc khoa mình trước khi thực hiện các thao tác liên quan
 export const validateFieldIdInParams = catchAsyncErrors(
@@ -128,7 +123,7 @@ export const validateFieldIdInParams = catchAsyncErrors(
 );
 
 // Kiểm tra trạng thái của lĩnh vực trước khi trưởng khoa cập nhật lĩnh vực (tên)
-const departmentHeadValidateStatusOfField = catchAsyncErrors(
+export const departmentHeadValidateStatusOfField = catchAsyncErrors(
   async (req, res, next) => {
     const field = req.foundField;
     if (!field.isActive) {
@@ -144,13 +139,8 @@ const departmentHeadValidateStatusOfField = catchAsyncErrors(
   }
 );
 
-export const departmentHeadValidateField = [
-  validateFieldIdInParams,
-  departmentHeadValidateStatusOfField,
-];
-
 // Kiểm tra lĩnh vực có trong DB không (tìm bằng id và khoa)
-export const validateFieldIdInBodyOfDepartment = catchAsyncErrors(
+export const validateFieldIdInBodyOfBelongToDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const { fieldId } = req.body;
     const department = req.foundDepartment;
@@ -182,7 +172,7 @@ export const adminValidateStatusOfDepartment = catchAsyncErrors(
 
 // chưa sử dụng
 // người dùng kiểm tra trạng thái khoa trước khi đặt câu hỏi
-const userValidateStatusOfDepartment = catchAsyncErrors(
+export const userValidateStatusOfDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
     if (!department.isActive) {
@@ -196,27 +186,21 @@ const userValidateStatusOfDepartment = catchAsyncErrors(
 
 // chưa sử dụng
 // người dùng kiểm tra trạng thái lĩnh vực trước khi đặt câu hỏi
-const userValidateStatusOfField = catchAsyncErrors(async (req, res, next) => {
-  const field = req.foundField;
-  if (!field.isActive) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Lĩnh vực đang bị khóa. Không thể đặt câu hỏi',
-        4077
-      )
-    );
+export const userValidateStatusOfField = catchAsyncErrors(
+  async (req, res, next) => {
+    const field = req.foundField;
+    if (!field.isActive) {
+      return next(
+        new ErrorHandler(
+          400,
+          'Lĩnh vực đang bị khóa. Không thể đặt câu hỏi',
+          4077
+        )
+      );
+    }
+    next();
   }
-  next();
-});
-
-// chưa sử dụng
-export const validateBeforeMakeQuestion = [
-  validateDepartmentIdInBody,
-  validateFieldIdInBodyOfDepartment,
-  userValidateStatusOfDepartment,
-  userValidateStatusOfField,
-];
+);
 
 // kiểm tra trạng thái của khoa trước khi lấy lĩnh vực
 export const validateStatusOfDepartment = catchAsyncErrors(
@@ -358,8 +342,58 @@ export const userIsNotInDeleteConversation = catchAsyncErrors(
   }
 );
 
-export const validateConversationGetAllMessage = [
-  validateConversationIdInParams,
-  userIsInParticipatesConversation,
-  userIsNotInDeleteConversation,
-];
+// Kiểm tra câu hỏi có thuộc về khoa hay không trước khi chuyển tiếp
+export const validateQuestionBelongToDepartment = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const question = req.foundQuestion;
+    if (!question.department.equals(user.counsellor.department)) {
+      return next(
+        new ErrorHandler(
+          404,
+          'Không tìm thấy câu hỏi thuộc về khoa để chuyển tiếp',
+          4098
+        )
+      );
+    }
+    next();
+  }
+);
+
+// Kiểm tra khoa có khác nhau trước khia chuyển tiếp
+export const validateDepartmentIdBeforeForwarding = catchAsyncErrors(
+  async (req, res, next) => {
+    const newDepartment = req.foundDepartment;
+    const question = req.foundQuestion;
+    if (question._id.equals(newDepartment._id)) {
+      return next(
+        new ErrorHandler(400, 'Không thể chuyển tiếp câu hỏi cùng khoa', 4099)
+      );
+    }
+    next();
+  }
+);
+
+// Kiểm tra khoa có khác nhau trước khia chuyển tiếp
+export const validateCounsellorIncludesFieldOfQuestion = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+
+    if (user.role === 'DEPARTMENT_HEAD') {
+      return next();
+    }
+
+    const { fields } = user.counsellor;
+    const question = req.foundQuestion;
+    if (!fields.includes(question.field)) {
+      return next(
+        new ErrorHandler(
+          400,
+          'Không thể chuyển tiếp. Câu hỏi không thuộc lĩnh vực được hỗ trợ',
+          4100
+        )
+      );
+    }
+    next();
+  }
+);

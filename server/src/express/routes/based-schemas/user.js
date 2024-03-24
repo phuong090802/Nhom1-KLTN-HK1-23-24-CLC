@@ -8,7 +8,7 @@ import {
 
 import {
   updateAvatar,
-  updateProfile
+  updateProfile,
 } from '../../controllers/based-schemas/user.js';
 
 const router = express.Router();

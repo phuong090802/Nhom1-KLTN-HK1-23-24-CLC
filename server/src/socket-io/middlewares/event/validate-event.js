@@ -23,12 +23,6 @@ export const validateStatusOfQuestion = (question, status) => {
   }
 };
 
-// kiểm tra id câu hỏi và trạng thái câu hỏi
-export const validateQuestionAndStatus = (question, status) => {
-  validateQuestion(question);
-  validateStatusOfQuestion(question, status);
-};
-
 // kiểm tra Id của khoa có tồn tại có tồn tại trong DB không
 export const validateDepartment = (department) => {
   if (!department) {
@@ -60,16 +54,7 @@ export const validateStatusOfField = (field) => {
   }
 };
 
-export const validateDepartmentAndStatus = (department) => {
-  validateDepartment(department);
-  validateStatusOfDepartment(department);
-};
-
-export const validateFieldAndStatus = (field) => {
-  validateField(field);
-  validateStatusOfField(field);
-};
-
+// Kiểm tra định dạng file
 export const validateMimetype = (file) => {
   const isSupport = isSupportedMimetype(
     [...mimetype.image, ...mimetype.document],
@@ -81,6 +66,7 @@ export const validateMimetype = (file) => {
   }
 };
 
+// Kiểm tra kích thước của file
 export const validateFileSize = (file, maxSize) => {
   const isSupport = isSupportFileSize(maxSize * 1024 * 1024, file);
   if (!isSupport) {
@@ -88,11 +74,7 @@ export const validateFileSize = (file, maxSize) => {
   }
 };
 
-export const validateMimetypeAndFileSize = (file, maxSize) => {
-  validateMimetype(file);
-  validateFileSize(file, maxSize);
-};
-
+// Kiểm tra lĩnh vực của tư vấn viên có hỗ trợ câu hỏi không
 export const validateFieldOfCounsellor = (fieldOfQuestion, counsellor) => {
   if (!counsellor.counsellor.fields.includes(fieldOfQuestion)) {
     throw new ErrorHandler('Bạn không hỗ trợ lĩnh vực này', 4097);

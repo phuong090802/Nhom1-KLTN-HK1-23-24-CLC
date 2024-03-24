@@ -9,7 +9,7 @@ import {
   validateDepartmentAndStatus,
   validateFieldAndStatus,
   validateMimetypeAndFileSize,
-} from '../../middlewares/event/validate-event.js';
+} from '../../middlewares/event/combine-validate.js';
 import { uploadFileSocketIO } from '../../../util/upload-file.js';
 import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
 

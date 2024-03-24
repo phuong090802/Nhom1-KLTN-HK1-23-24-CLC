@@ -2,7 +2,7 @@ import express from 'express';
 
 import { isAuthenticatedHandler } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
-import { validateConversationGetAllMessage } from '../../middlewares/validate.js';
+import { validateConversationGetAllMessage } from '../../middlewares/combine-validate.js';
 
 import {
   conversationsHandler,

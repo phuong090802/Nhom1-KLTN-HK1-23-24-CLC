@@ -6,18 +6,14 @@ import {
   questionsHandler,
   updateViewsHandler,
 } from '../../controllers/based-schemas/question.js';
-import {
-  validateQuestionIdInParams,
-  validateStatusOfQuestion,
-} from '../../middlewares/validate.js';
+import { validateStatusQuestionInParams } from '../../middlewares/combine-validate.js';
 
 const router = express.Router();
 
 router
   .route('/:id')
   .put(
-    validateQuestionIdInParams,
-    validateStatusOfQuestion('publicly-answered-and-approved'),
+    validateStatusQuestionInParams('publicly-answered-and-approved'),
     updateViewsHandler
   );
 

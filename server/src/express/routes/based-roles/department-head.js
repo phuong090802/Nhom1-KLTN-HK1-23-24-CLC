@@ -1,11 +1,10 @@
 import express from 'express';
 
-import authHandler from '../../middlewares/auth.js';
+import { departmentHeadValidateField } from '../../middlewares/combine-validate.js';
+
 import {
-  departmentHeadValidateField,
   validateCounsellorIdInParams,
-  validateDepartmentBeforeAccess,
-  validateFieldIdInBodyOfDepartment,
+  validateFieldIdInBodyOfBelongToDepartment,
   validateFieldIdInParams,
 } from '../../middlewares/validate.js';
 
@@ -23,6 +22,7 @@ import {
   updateStatusFieldHandler,
 } from '../../controllers/based-roles/department-head.js';
 
+import { validateRoleAndStatusDepartmentBeforeAccess } from '../../middlewares/combine-validate.js';
 import {
   defaultPaginationParams,
   departmentHeadLimitFilterRole,
@@ -30,7 +30,7 @@ import {
 
 const router = express.Router();
 
-router.use(authHandler('DEPARTMENT_HEAD'), validateDepartmentBeforeAccess);
+router.use(validateRoleAndStatusDepartmentBeforeAccess('DEPARTMENT_HEAD'));
 
 router.route('/answers').get(hasNewAnswersHandler);
 
@@ -41,7 +41,7 @@ router
   .put(validateCounsellorIdInParams, updateFieldToCounsellor)
   .delete(
     validateCounsellorIdInParams,
-    validateFieldIdInBodyOfDepartment,
+    validateFieldIdInBodyOfBelongToDepartment,
     removeFieldOfCounsellor
   )
   .patch(validateCounsellorIdInParams, updateIsEnabledCounsellorHandler);

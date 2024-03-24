@@ -419,8 +419,8 @@
     },
     {
       "code": "2069",
-      "message": "",
-      "file": "",
+      "message": "Chuyển tiếp câu hỏi thành công",
+      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {

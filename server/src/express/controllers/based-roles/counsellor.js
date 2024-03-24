@@ -6,6 +6,49 @@ import Question from '../../../models/question.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
+import ForwardedQuestion from '../../../models/forwarded-question.js';
+
+// endpoint: /api/counsellor/questions/:id
+// method: PUT
+// description: Trưởng khoa/tư vấn viên chuyển tiếp câu hỏi
+export const forwardQuestionHandler = catchAsyncErrors(
+  async (req, res, next) => {
+    const question = req.foundQuestion;
+
+    const newDepartment = req.foundDepartment;
+
+    const newField = req.foundField;
+
+    const fromDepartment = question.department;
+
+    const forwardedQuestion = await ForwardedQuestion.findOne({ question });
+
+    if (forwardedQuestion) {
+      forwardedQuestion.fromDepartment = fromDepartment;
+      forwardedQuestion.toDepartment = newDepartment;
+      forwardedQuestion.field = newField;
+      forwardedQuestion.forwardedAt = Date.now();
+      await forwardedQuestion.save();
+    } else {
+      await ForwardedQuestion.create({
+        question,
+        fromDepartment,
+        toDepartment: newDepartment,
+        field: newField,
+      });
+      question.isForwarded = true;
+    }
+
+    question.department = newDepartment;
+    await question.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'Chuyển tiếp câu hỏi thành công',
+      code: 2069,
+    });
+  }
+);
 
 // endpoint: /api/counsellor/questions
 // method: GET
