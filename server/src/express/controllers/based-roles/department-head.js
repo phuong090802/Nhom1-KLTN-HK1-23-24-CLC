@@ -3,10 +3,96 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import paginateResults from '../../../util/db/pagination.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
+import { deleteFile } from '../../../util/upload-file.js';
 
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
 import Question from '../../../models/question.js';
+import FAQ from '../../../models/faq.js';
+
+// endpoint: /api/department-head/faqs/:id
+// method: DELETE
+// description: Trưởng khoa xóa câu hỏi chung
+export const deleteFAQHandler = catchAsyncErrors(async (req, res, next) => {
+  const faq = req.foundFAQ;
+  const { ref, url } = faq.answerAttachment;
+
+  if (ref && url) {
+    try {
+      // remove file
+      await deleteFile(ref);
+    } catch (error) {
+      return next(
+        new ErrorHandler(500, 'Lỗi xóa câu hỏi chung. Vui lòng thử lại', 4104)
+      );
+    }
+  }
+
+  await FAQ.findByIdAndDelete(faq._id);
+
+  res.json({
+    success: true,
+    message: 'Xóa câu hỏi chung thành công',
+    code: 2066,
+  });
+});
+
+// endpoint: /api/department-head/faqs/:id
+// method: PUT
+// description: Trưởng khoa cập nhật câu hỏi chung
+export const updateFAQHandler = catchAsyncErrors(async (req, res, next) => {
+  const faq = req.foundFAQ;
+  const field = req.foundField;
+  const { ref, url } = faq.answerAttachment;
+  const answerAttachment = req.uploadedFile;
+
+  // check if have news file and it have old attachment remove
+  // doing noting
+  if (ref && url) {
+    try {
+      // remove file
+      await deleteFile(ref);
+    } catch (error) {
+      // remove new image if error
+      await deleteFile(answerAttachment.ref);
+      return next(
+        new ErrorHandler(
+          500,
+          'Lỗi cập nhật câu hỏi chung. Vui lòng thử lại',
+          4103
+        )
+      );
+    }
+  }
+  faq.field = field;
+  faq.answerAttachment = answerAttachment;
+
+  await faq.save();
+
+  res.json({
+    success: true,
+    message: 'Cập nhật câu hỏi chung thành công',
+    code: 2067,
+  });
+});
+
+// endpoint: /api/department-head/faqs
+// method: POST
+// description: Trưởng khoa tạo câu hỏi chung
+export const createFAQHandler = catchAsyncErrors(async (req, res, next) => {
+  const department = req.foundDepartment;
+  const field = req.foundField;
+  const { question, answer } = req.body;
+  const answerAttachment = req.uploadedFile;
+
+  await FAQ.create({ question, answer, field, department, answerAttachment });
+
+  res.status(201).json({
+    success: true,
+    message: 'Tạo câu hỏi chung thành công',
+    code: 2068,
+  });
+});
 
 // endpoint: /api/department-head/answers
 // method: GET

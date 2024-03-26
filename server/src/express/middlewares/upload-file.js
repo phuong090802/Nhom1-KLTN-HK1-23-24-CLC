@@ -12,7 +12,6 @@ import { mimetype } from '../../constants/file.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import { isSupportedMimetype } from '../../util/validation.js';
 
-// chưa sử dụng
 // handle limit file size and check ext of file (image or document)
 export const uploadImageOrDocumentHandler = multer({
   limits: { fieldSize: 2 * 1024 * 1024 }, // 2MB
@@ -25,7 +24,6 @@ export const uploadImageOrDocumentHandler = multer({
   },
 });
 
-// chưa sử dụng
 // handle upload file to firebase with input folder (optional)
 export const optionalUploadFileToFirebaseHandler = (folder) => {
   return catchAsyncErrors(async (req, res, next) => {

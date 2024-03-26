@@ -105,7 +105,7 @@
     {
       "code": "2018",
       "message": "Thêm lĩnh vực thành công",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
@@ -165,7 +165,7 @@
     {
       "code": "2028",
       "message": "Cập nhật tên lĩnh vực thành công",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Cập nhật lĩnh vực của khoa"
     },
     {
@@ -237,13 +237,13 @@
     {
       "code": "2040",
       "message": "",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Lấy danh sách lĩnh vực (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2041",
       "message": "",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc)"
     },
     {
@@ -255,13 +255,13 @@
     {
       "code": "2043",
       "message": "Xóa lĩnh vực của tư vấn viên thành công",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Cập nhật (xóa) lĩnh vực cho tư vấn viên"
     },
     {
       "code": "2044",
       "message": "newStrIsEnabled + ' tài khoản thành công'",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Trưởng khoa khóa/mở khóa tài khoản tư vấn viên"
     },
     {
@@ -401,20 +401,20 @@
     },
     {
       "code": "2066",
-      "message": "",
-      "file": "",
+      "message": "Xóa câu hỏi chung thành công",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2067",
-      "message": "",
-      "file": "",
+      "message": "Cập nhật câu hỏi chung thành công",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2068",
-      "message": "",
-      "file": "",
+      "message": "Tạo câu hỏi chung thành công",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
@@ -458,7 +458,7 @@
     {
       "code": "2073",
       "message": "${newStrStatus} lĩnh vực thành công",
-      "file": "express/controllers/based-role/department-head.js",
+      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Khóa/mở khóa lĩnh vực thành công"
     }
   ]

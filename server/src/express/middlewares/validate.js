@@ -11,6 +11,7 @@ import Question from '../../models/question.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 
 import { questionStatus } from '../../constants/mapper.js';
+import FAQ from '../../models/faq.js';
 
 // validate value id of department in body
 export const validateDepartmentIdInBody = catchAsyncErrors(
@@ -392,6 +393,39 @@ export const validateCounsellorIncludesFieldOfQuestion = catchAsyncErrors(
           'Không thể chuyển tiếp. Câu hỏi không thuộc lĩnh vực được hỗ trợ',
           4100
         )
+      );
+    }
+    next();
+  }
+);
+
+// Kiểm tra faq có tồn tại trong db không bằng id được truyền vào
+export const validateFAQIdInParams = catchAsyncErrors(
+  async (req, res, next) => {
+    const { id } = req.params;
+    const faq = await FAQ.findById(id);
+    if (!faq) {
+      return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi chung', 4101));
+    }
+    req.foundFAQ = faq;
+    next();
+  }
+);
+
+export const validateFAQBelongDepartment = catchAsyncErrors(
+  async (req, res, next) => {
+    const faq = req.foundFAQ;
+    const user = req.user;
+
+    const { department: departmentOfUser } = user.counsellor;
+    const departmentOfFAQ = faq.department;
+
+    // console.log('departmentOfUser', departmentOfUser);
+    // console.log('departmentOfFAQ', departmentOfFAQ);
+
+    if (!departmentOfUser.equals(departmentOfFAQ)) {
+      return next(
+        new ErrorHandler(400, 'Câu hỏi chung không thuộc về khoa', 4102)
       );
     }
     next();

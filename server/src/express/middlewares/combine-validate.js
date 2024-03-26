@@ -10,6 +10,8 @@ import {
   validateDepartmentIdInBody,
   validateDepartmentIdInParams,
   validateDepartmentOfCounsellor,
+  validateFAQBelongDepartment,
+  validateFAQIdInParams,
   validateFieldIdInBodyOfBelongToDepartment,
   validateFieldIdInParams,
   validateQuestionIdInParams,
@@ -75,4 +77,10 @@ export const departmentHeadValidateField = [
 export const validateDepartmentInBody = [
   validateDepartmentIdInBody,
   validateStatusOfDepartment,
+];
+
+// Trưởng khoa kiểm tra mã câu hỏi chung có tồn tại, và có thuộc về khoa trước khi cập nhật
+export const validateFAQ = [
+  validateFAQIdInParams,
+  validateFAQBelongDepartment,
 ];

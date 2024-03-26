@@ -605,6 +605,30 @@
       "message": "Không thể chuyển tiếp. Câu hỏi không thuộc lĩnh vực được hỗ trợ",
       "file": "express/middlewares/validate.js",
       "detail": ""
+    },
+    {
+      "code": "4101",
+      "message": "Không tìm thấy câu hỏi chung",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy câu hỏi chung bằng id"
+    },
+    {
+      "code": "4102",
+      "message": "Câu hỏi chung không thuộc về khoa",
+      "file": "express/middlewares/validate.js",
+      "detail": ""
+    },
+    {
+      "code": "4103",
+      "message": "Lỗi cập nhật câu hỏi chung. Vui lòng thử lại",
+      "file": "express/controllers/based-roles/department-head.js",
+      "detail": ""
+    },
+    {
+      "code": "4104",
+      "message": "Lỗi xóa câu hỏi chung. Vui lòng thử lại",
+      "file": "express/controllers/based-roles/department-head.js",
+      "detail": ""
     }
   ]
 }

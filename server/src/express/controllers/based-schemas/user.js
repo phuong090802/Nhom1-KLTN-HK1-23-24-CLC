@@ -10,12 +10,12 @@ import { deleteFile } from '../../../util/upload-file.js';
 export const updateAvatar = catchAsyncErrors(async (req, res, next) => {
   const avatar = req.uploadedFile;
   const user = req.user;
-  const oldStrRef = user.avatar.ref;
+  const { ref, url } = user.avatar;
 
-  if (oldStrRef) {
+  if (ref && url) {
     try {
       // remove old avatar
-      await deleteFile(oldStrRef);
+      await deleteFile(ref);
     } catch (error) {
       // remove new image if error
       await deleteFile(avatar.ref);

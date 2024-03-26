@@ -1,6 +1,9 @@
 import express from 'express';
 
-import { departmentHeadValidateField } from '../../middlewares/combine-validate.js';
+import {
+  departmentHeadValidateField,
+  validateFAQ,
+} from '../../middlewares/combine-validate.js';
 
 import {
   validateCounsellorIdInParams,
@@ -12,10 +15,13 @@ import {
   addCounsellorToDepartment,
   addFieldHandler,
   counsellorsHandler,
+  createFAQHandler,
+  deleteFAQHandler,
   fieldsHandler,
   hasNewAnswersHandler,
   hasNewQuestionsHandler,
   removeFieldOfCounsellor,
+  updateFAQHandler,
   updateFieldHandler,
   updateFieldToCounsellor,
   updateIsEnabledCounsellorHandler,
@@ -27,10 +33,34 @@ import {
   defaultPaginationParams,
   departmentHeadLimitFilterRole,
 } from '../../middlewares/query.js';
+import {
+  optionalUploadFileToFirebaseHandler,
+  uploadImageOrDocumentHandler,
+} from '../../middlewares/upload-file.js';
 
 const router = express.Router();
 
 router.use(validateRoleAndStatusDepartmentBeforeAccess('DEPARTMENT_HEAD'));
+
+router
+  .route('/faqs/:id')
+  .put(
+    // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+    validateFAQ,
+    uploadImageOrDocumentHandler.single('file'),
+    validateFieldIdInBodyOfBelongToDepartment,
+    optionalUploadFileToFirebaseHandler('faqs'),
+    updateFAQHandler
+  )
+  .delete(validateFAQ, deleteFAQHandler);
+
+router.route('/faqs').post(
+  // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+  uploadImageOrDocumentHandler.single('file'),
+  validateFieldIdInBodyOfBelongToDepartment,
+  optionalUploadFileToFirebaseHandler('faqs'),
+  createFAQHandler
+);
 
 router.route('/answers').get(hasNewAnswersHandler);
 

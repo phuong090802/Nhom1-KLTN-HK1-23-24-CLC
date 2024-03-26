@@ -5,6 +5,7 @@ import answerSchema from './embedded/answer.js';
 const feedbackSchema = mongoose.Schema({
   content: {
     type: String,
+    // default content if it empty or null
     default: 'Câu trả lời không phù hợp! Kiểm tra lại',
   },
   answer: {

@@ -8,7 +8,7 @@ import { validateFieldOfCounsellor } from '../../middlewares/event/validate-even
 import {
   validateQuestionAndStatus,
   validateMimetypeAndFileSize,
-} from '../../middlewares/event/combine-validate.js';
+} from '../../middlewares/event/combine-validate-event.js';
 
 import Question from '../../../models/question.js';
 import User from '../../../models/user.js';
