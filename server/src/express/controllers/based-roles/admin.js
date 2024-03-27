@@ -127,7 +127,9 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
   const queryAPI = new QueryAPI(
     User.find({ role: { $ne: 'ADMIN' } })
       .lean()
-      .select('_id fullName avatar email phoneNumber role'),
+      .select(
+        '_id fullName avatar email phoneNumber isEnabled role occupation'
+      ),
     req.query
   )
     .search()
