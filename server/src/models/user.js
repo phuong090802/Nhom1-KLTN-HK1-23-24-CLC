@@ -9,6 +9,12 @@ import RefreshToken from './refresh-token.js';
 
 import ErrorHandler from '../util/error/http-error-handler.js';
 import { generateOTP } from '../util/auth/email-verify.js';
+import {
+  ADMIN_GET_USER,
+  LOGIN,
+  ME,
+  REFRESH_TOKEN,
+} from '../constants/actions/user.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -199,46 +205,43 @@ userSchema.methods.generateResetPasswordToken = async function () {
   return resetToken;
 };
 
-// set structure for admin request
-userSchema.methods.adminRequestUserInformation = async function () {
-  const department = await Department.findById(this.counsellor.department);
-  return {
+// set same structure for ...
+userSchema.methods.getUserInformation = function (action) {
+  let department = null;
+
+  if (this.counsellor.department) {
+    department = this.counsellor.department.departmentName;
+  }
+
+  const baseUser = {
     _id: this._id,
     phoneNumber: this.phoneNumber,
     email: this.email,
     role: this.role,
     occupation: this.occupation,
-    isEnabled: this.isEnabled,
-    departmentName: department ? department.departmentName : null,
+    department,
   };
-};
 
-// set same structure for ...
-userSchema.methods.userRequestInformation = async function () {
-  const department = await Department.findById(this.counsellor.department);
-  return {
-    _id: this._id,
-    fullName: this.fullName,
-    email: this.email,
-    phoneNumber: this.phoneNumber,
-    avatar: this.avatar.url,
-    role: this.role,
-    occupation: this.occupation,
-    departmentName: department ? department.departmentName : null,
-  };
-};
-
-// set same structure for ...
-userSchema.methods.getUserInQuestion = function () {
-  return {
-    // _id: this._id,
-    fullName: this.fullName,
-    avatar: this.avatar.url,
-  };
+  switch (action) {
+    case LOGIN:
+    case REFRESH_TOKEN:
+    case ME:
+      return {
+        ...baseUser,
+        fullName: this.fullName,
+        avatar: this.avatar.url,
+      };
+    case ADMIN_GET_USER:
+      return {
+        ...baseUser,
+        isEnabled: this.isEnabled,
+      };
+    default:
+      return baseUser;
+  }
 };
 
 // add hook
-
 // hash password if it is modified
 userSchema.pre('save', async function (next) {
   // password is not is isModified
@@ -266,7 +269,6 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(password, 10);
   next();
 });
-
 
 const User = mongoose.model('User', userSchema);
 

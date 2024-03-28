@@ -30,24 +30,6 @@ feedbackSchema.pre('validate', function (next) {
   next();
 });
 
-feedbackSchema.methods.getFormatFeedback = async function () {
-  await this.populate('question');
-  return {
-    _id: this._id,
-    content: this.content,
-    createdAt: this.createdAt,
-    answer: {
-      content: this.answer.content,
-      answeredAt: this.answer.answeredAt,
-    },
-    question: {
-      _id: this.question._id,
-      title: this.question.title,
-      content: this.question.content,
-    },
-  };
-};
-
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 export default Feedback;

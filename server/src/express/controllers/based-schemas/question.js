@@ -4,6 +4,7 @@ import Question from '../../../models/question.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
 import paginateResults from '../../../util/db/pagination.js';
+import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 
 // endpoint: /api/questions/:id
 // method: PUT
@@ -19,24 +20,25 @@ export const updateViewsHandler = catchAsyncErrors(async (req, res, next) => {
 // method: GET
 // description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
-  const query = Question.find({
-    status: 'publicly-answered-and-approved',
-    // status: 'publicly-answered-pending-approval', // for test
-  })
+  const query = Question.find()
     .populate({
       path: 'answer',
-      populate: {
-        path: 'user',
-      },
+      select: 'content file.url answeredAt',
+      populate: { path: 'user', select: '-_id fullName avatar.url' },
     })
-    .populate({
-      path: 'user',
-    })
+    .populate({ path: 'user', select: '-_id fullName avatar.url' })
     // không sử dụng learn vì method trong được tạo schema
     // .lean()
-    .select('_id title content file createdAt views user answer');
+    .select('title content file createdAt views user answer');
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const requestQuery = {
+    ...req.query,
+    filter: {
+      status: 'publicly-answered-and-approved',
+    },
+  };
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();
@@ -51,10 +53,8 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     questionRecords
   );
 
-  const questions = await Promise.all(
-    retQuestions.map(async (question) => {
-      return await question.getQuestionInformation();
-    })
+  const questions = retQuestions.map((question) =>
+    question.getQuestionInformation(HOME_GET_ALL_QUESTIONS)
   );
 
   res.json({

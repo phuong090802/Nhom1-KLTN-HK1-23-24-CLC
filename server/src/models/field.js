@@ -18,11 +18,6 @@ const fieldSchema = new mongoose.Schema({
   },
 });
 
-fieldSchema.methods.getFieldInQuestion = function () {
-  return {
-    fieldName: this.fieldName,
-  };
-};
-
 const Field = mongoose.model('Field', fieldSchema);
+
 export default Field;

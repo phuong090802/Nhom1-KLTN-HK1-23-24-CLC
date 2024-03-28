@@ -54,15 +54,11 @@ faqSchema.methods.userRequestFAQInformation = async function () {
 };
 
 // set structure for department-head request FAQ
-faqSchema.methods.departmentHeadRequestFAQInformation = async function () {
-  const field = await Field.findOne({
-    _id: this.field._id,
-    department: this.department,
-  });
+faqSchema.methods.departmentHeadRequestFAQInformation = function () {
   return {
     _id: this._id,
     question: this.question,
-    field: field !== null ? field.fieldName : null,
+    field: this.field,
     answer: this.answer,
     answerAttachment: this.answerAttachment.url,
     createdAt: this.createdAt,

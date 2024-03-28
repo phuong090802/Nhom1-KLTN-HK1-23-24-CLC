@@ -10,7 +10,7 @@ import ErrorHandler from '../../util/error/http-error-handler.js';
 export const isAuthenticatedHandler = catchAsyncErrors(
   async (req, res, next) => {
     const authHeader = req.headers.authorization;
-    console.log(authHeader);
+    // console.log(authHeader);
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return next(

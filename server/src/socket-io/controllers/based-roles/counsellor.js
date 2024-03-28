@@ -118,7 +118,17 @@ export const createConversation = catchAsyncErrors(
 
     await question.save();
 
-    const latestConversation = await conversation.detailConversation();
+    const latestConversation = {
+      _id: conversation._id,
+      lastMessage: {
+        _id: message._id,
+        content: message.content,
+        sender: message.sender._id,
+        view: message.viewed,
+        createdAt: message.createdAt,
+      },
+      createdAt: conversation.createdAt,
+    };
 
     const response = {
       success: true,

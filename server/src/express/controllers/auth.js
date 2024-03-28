@@ -8,6 +8,7 @@ import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import { sendToken, clearToken } from '../../util/auth/token.js';
 import { sendVerificationEmail } from '../../util/auth/email-verify.js';
+import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
 
 // endpoint: /api/auth/email
 // method: GET
@@ -174,9 +175,9 @@ export const loginHandler = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  const user = await User.findOne({ phoneNumber: username }).select(
-    '+password'
-  );
+  const user = await User.findOne({ phoneNumber: username })
+    .select('+password')
+    .populate({ path: 'counsellor.department', select: '-_id departmentName' });
 
   if (!user) {
     return next(
@@ -206,7 +207,7 @@ export const loginHandler = catchAsyncErrors(async (req, res, next) => {
 
   const accessToken = user.generateAccessToken();
   const refreshToken = await user.generateRefreshToken();
-  const userInformation = await user.userRequestInformation();
+  const userInformation = user.getUserInformation(LOGIN);
 
   sendToken(res, accessToken, refreshToken, userInformation);
 });
@@ -237,7 +238,10 @@ export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4011));
   }
 
-  const user = await User.findById(refreshToken.owner);
+  const user = await User.findById(refreshToken.owner).populate({
+    path: 'counsellor.department',
+    select: '-_id departmentName',
+  });
 
   if (!user) {
     return next(new ErrorHandler(401, 'Không tìm thấy tài khoản', 4013));
@@ -249,7 +253,7 @@ export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
 
   const newAccessToken = user.generateAccessToken();
   const newRefreshToken = await refreshToken.generateRefreshToken();
-  const userInformation = await user.userRequestInformation();
+  const userInformation = user.getUserInformation(REFRESH_TOKEN);
   sendToken(res, newAccessToken, newRefreshToken, userInformation);
 });
 
@@ -277,11 +281,11 @@ export const logoutHandler = catchAsyncErrors(async (req, res, next) => {
 // description: lấy thông tin cá nhân
 // role: all role
 export const meHandler = catchAsyncErrors(async (req, res, next) => {
-  const userInformation = await req.user.userRequestInformation();
+  const user = req.user.getUserInformation(ME);
 
   res.json({
     success: true,
-    user: userInformation,
+    user,
     code: 2005,
   });
 });

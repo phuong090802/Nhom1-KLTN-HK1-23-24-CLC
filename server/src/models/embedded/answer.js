@@ -29,12 +29,4 @@ const answerSchema = mongoose.Schema(
   { _id: false }
 );
 
-answerSchema.methods.getAnswerInQuestion = async function () {
-  return {
-    content: this.content,
-    fileURL: this.file.url,
-    answeredAt: this.answeredAt,
-  };
-};
-
 export default answerSchema;

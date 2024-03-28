@@ -63,17 +63,6 @@ conversationSchema.pre('save', function (next) {
   next();
 });
 
-// set structure for detail conversation
-conversationSchema.methods.detailConversation = async function () {
-  const message = await Message.findById(this.lastMessage);
-  const lastMessage = await message.getFormatMessage();
-  return {
-    _id: this._id,
-    lastMessage: lastMessage,
-    createdAt: this.createdAt,
-  };
-};
-
 const Conversation = mongoose.model('Conversation', conversationSchema);
 
 export default Conversation;

@@ -11,7 +11,8 @@ import ErrorHandler from '../../../util/error/http-error-handler.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import paginateResults from '../../../util/db/pagination.js';
 
-import { fieldMapper } from '../../../constants/mapper.js';
+import attribute from '../../../constants/mapper/attribute.js';
+import { ADMIN_GET_USER } from '../../../constants/actions/user.js';
 
 // endpoint: /api/admin/counsellors/upload
 // method: POST
@@ -72,7 +73,7 @@ export const uploadCounsellorHandler = catchAsyncErrors(
           if (match) {
             const key = match[1];
             const value = match[2];
-            message = `'${fieldMapper[key]}: ${value}' đã được sử dụng`;
+            message = `'${attribute[key]}: ${value}' đã được sử dụng`;
           }
           failCounsellorInserted.push({
             ...erroredCounsellor,
@@ -94,7 +95,7 @@ export const uploadCounsellorHandler = catchAsyncErrors(
 // method: GET
 // description: Xem thông tin của người dùng với cấu trúc được yêu cầu
 export const userHandler = catchAsyncErrors(async (req, res, next) => {
-  const user = await req.foundUser.adminRequestUserInformation();
+  const user = req.foundUser.getUserInformation(ADMIN_GET_USER);
   res.json({
     success: true,
     user,
@@ -127,9 +128,7 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
   const queryAPI = new QueryAPI(
     User.find({ role: { $ne: 'ADMIN' } })
       .lean()
-      .select(
-        '_id fullName avatar email phoneNumber isEnabled role occupation'
-      ),
+      .select('fullName avatar email phoneNumber isEnabled role occupation'),
     req.query
   )
     .search()
@@ -203,7 +202,7 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
         'counsellor.department': department,
       })
         .lean()
-        .select('_id fullName avatar role'),
+        .select('fullName avatar role'),
       req.query
     )
       .search()

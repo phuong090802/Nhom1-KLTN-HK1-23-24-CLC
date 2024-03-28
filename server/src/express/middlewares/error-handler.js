@@ -1,5 +1,5 @@
 import ErrorHandler from '../../util/error/http-error-handler.js';
-import { fieldMapper } from '../../constants/mapper.js';
+import attribute from '../../constants/mapper/attribute.js';
 
 // middleware handling errors
 const errorHandler = (err, req, res, next) => {
@@ -33,7 +33,7 @@ const errorHandler = (err, req, res, next) => {
     if (err.name === 'MongoServerError' && err.code === 11000) {
       const keys = Object.keys(err.keyValue);
       const message =
-        keys.map((key) => `'${fieldMapper[key]}' đã được sử dụng`) + '';
+        keys.map((key) => `'${attribute[key]}' đã được sử dụng`) + '';
       error = new ErrorHandler(409, message, 4001);
     }
 

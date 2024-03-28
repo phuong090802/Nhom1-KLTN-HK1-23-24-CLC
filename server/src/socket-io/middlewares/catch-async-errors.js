@@ -1,3 +1,4 @@
+import attribute from '../../constants/mapper/attribute.js';
 import ErrorHandler from '../../util/error/socket-io-error-handler.js';
 
 // handle error if occurred when handler executing
@@ -32,7 +33,7 @@ const catchAsyncErrors = (handler) => (socket, payload, callback) => {
       if (err.name === 'MongoServerError' && err.code === 11000) {
         const keys = Object.keys(err.keyValue);
         const message =
-          keys.map((key) => `'${fieldMapper[key]}' đã được sử dụng`) + '';
+          keys.map((key) => `'${attribute[key]}' đã được sử dụng`) + '';
         error = new ErrorHandler(message, 4090);
       }
 

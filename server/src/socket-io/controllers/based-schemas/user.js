@@ -46,7 +46,19 @@ export const createMessage = catchAsyncErrors(
 
     const savedConversation = await conversation.save();
 
-    const latestConversation = await savedConversation.detailConversation();
+    const latestConversation = {
+      _id: savedConversation._id,
+      lastMessage: {
+        _id: message._id,
+        content: message.content,
+        sender: message.sender._id,
+        view: message.viewed,
+        createdAt: message.createdAt,
+      },
+      createdAt: savedConversation.createdAt,
+    };
+
+    // console.log(latestConversation);
 
     // console.log(participates);
 

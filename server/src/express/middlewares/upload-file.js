@@ -7,7 +7,7 @@ import catchAsyncErrors from './catch-async-errors.js';
 
 import storage from '../../config/firebase-init.js';
 
-import { mimetype } from '../../constants/file.js';
+import mimetype from '../../constants/file/mimetype.js';
 
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import { isSupportedMimetype } from '../../util/validation.js';

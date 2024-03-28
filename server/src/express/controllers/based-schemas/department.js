@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
   const fields = await Field.find({ department, isActive: true })
-    .select('_id fieldName')
+    .select('fieldName')
     .lean();
 
   res.json({
@@ -23,7 +23,7 @@ export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
 // description: Lấy danh sách khoa
 export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
   const departments = await Department.find({ isActive: true })
-    .select('_id departmentName')
+    .select('departmentName')
     .lean();
 
   res.json({

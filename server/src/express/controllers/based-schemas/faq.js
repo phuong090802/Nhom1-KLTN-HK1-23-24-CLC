@@ -12,7 +12,7 @@ export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
   const query = FAQ.find()
     // .lean()
     // don't use learn for method
-    .select('_id question answer answerAttachment field department createdAt');
+    .select('question answer answerAttachment field department createdAt');
 
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let faqRecords = await queryAPI.query;

@@ -89,13 +89,20 @@ export const createFeedback = catchAsyncErrors(
       code: 2055,
     });
 
-    const feedback = await Feedback.findById(savedFeedback._id);
-
-    const latestFeedback = await feedback.getFormatFeedback();
+    const feedback = await Feedback.findById(savedFeedback._id)
+      .populate({
+        path: 'answer',
+        select: '-_id content answeredAt',
+      })
+      .populate({
+        path: 'question',
+        select: '-_id title content',
+      })
+      .select('content answer question');
 
     const response = {
       success: true,
-      latestFeedback,
+      latestFeedback: feedback,
       code: 2056,
     };
 

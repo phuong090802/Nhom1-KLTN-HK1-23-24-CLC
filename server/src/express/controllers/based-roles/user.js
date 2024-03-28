@@ -4,24 +4,31 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import paginateResults from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
+import { USER_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 
 // endpoint: /api/user/questions
 // method: GET
 // description: Lấy danh sách câu hỏi bản thân đã đặt
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
-  const query = Question.find({ user })
+  const query = Question.find()
     .populate({
       path: 'answer',
-      populate: {
-        path: 'user',
-        select: '_id fullName avatar',
-      },
+      select: 'content file.url answeredAt',
+      populate: { path: 'user', select: '-_id fullName avatar.url' },
     })
     // .lean()
-    .select('_id title content file createdAt views answer');
+    // không sử dụng learn vì method trong được tạo schema
+    .select('title content file createdAt answer');
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const requestQuery = {
+    ...req.query,
+    filter: {
+      user: user._id.toString(),
+    },
+  };
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();
@@ -36,27 +43,8 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     questionRecords
   );
 
-  const questions = await Promise.all(
-    retQuestions.map(async (question) => {
-      const questionInformation = await question.getQuestionInformation();
-
-      let counsellor;
-      let answer = null;
-
-      if (question.answer) {
-        counsellor = await question.answer.user.getUserInQuestion();
-        const gotAnswer = await question.answer.getAnswerInQuestion();
-        answer = {
-          user: { ...counsellor },
-          ...gotAnswer,
-        };
-      }
-
-      return {
-        ...questionInformation,
-        answer,
-      };
-    })
+  const questions = retQuestions.map((question) =>
+    question.getQuestionInformation(USER_GET_ALL_QUESTIONS)
   );
 
   res.json({

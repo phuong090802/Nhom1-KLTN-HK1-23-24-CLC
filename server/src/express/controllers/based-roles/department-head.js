@@ -17,9 +17,13 @@ export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
   const { department } = req.user.counsellor;
 
   const query = FAQ.find({ department })
+    .populate({
+      path: 'field',
+      select: 'fieldName',
+    })
     // .lean()
     // don't use learn for method
-    .select('_id question answer answerAttachment department field createdAt');
+    .select('question answer answerAttachment department field createdAt');
 
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let faqRecords = await queryAPI.query;
@@ -32,11 +36,7 @@ export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
     pages,
   } = paginateResults(numberOfFAQs, req.query.page, req.query.size, faqRecords);
 
-  const faqs = await Promise.all(
-    retFAQs.map(async (faq) => {
-      return await faq.departmentHeadRequestFAQInformation();
-    })
-  );
+  const faqs = retFAQs.map((faq) => faq.departmentHeadRequestFAQInformation());
 
   res.json({
     success: true,
@@ -313,7 +313,7 @@ export const counsellorsHandler = catchAsyncErrors(async (req, res, next) => {
       .lean()
       .populate({
         path: 'counsellor.fields',
-        select: '_id fieldName',
+        select: 'fieldName',
       })
       // .select(
       //   '_id fullName avatar email phoneNumber counsellor.fields isEnabled'
@@ -321,7 +321,7 @@ export const counsellorsHandler = catchAsyncErrors(async (req, res, next) => {
 
       // for test show role
       .select(
-        '_id fullName role avatar email phoneNumber counsellor.fields isEnabled'
+        'fullName role avatar email phoneNumber counsellor.fields isEnabled'
       ),
     req.query
   )

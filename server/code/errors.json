@@ -8,7 +8,7 @@
     },
     {
       "code": "4001",
-      "message": "'${fieldMapper[key]}' đã được sử dụng",
+      "message": "'${attribute[key]}' đã được sử dụng",
       "file": "express/middlewares/error-handler.js",
       "detail": "Lỗi trùng lập giá trị unique trong schema"
     },
@@ -542,7 +542,7 @@
     },
     {
       "code": "4090",
-      "message": "'${fieldMapper[key]}' đã được sử dụng",
+      "message": "'${attribute[key]}' đã được sử dụng",
       "file": "socket-io/middlewares/catch-async-event-errors.js",
       "detail": "Lỗi trùng lập giá trị unique trong schema"
     },

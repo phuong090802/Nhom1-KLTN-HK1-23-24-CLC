@@ -29,16 +29,6 @@ const messageSchema = new mongoose.Schema({
   },
 });
 
-messageSchema.methods.getFormatMessage = function () {
-  return {
-    _id: this._id,
-    content: this.content,
-    senderId: this.sender,
-    viewed: this.viewed,
-    createdAt: this.createdAt,
-  };
-};
-
 const Message = mongoose.model('Message', messageSchema);
 
 export default Message;

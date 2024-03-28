@@ -10,7 +10,7 @@ import Question from '../../models/question.js';
 
 import ErrorHandler from '../../util/error/http-error-handler.js';
 
-import { questionStatus } from '../../constants/mapper.js';
+import questionStatus from '../../constants/mapper/question-status.js';
 import FAQ from '../../models/faq.js';
 
 // validate value id of department in body

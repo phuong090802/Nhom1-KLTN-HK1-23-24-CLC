@@ -1,4 +1,4 @@
-export const mimetype = {
+const mimetype = {
   image: ['image/png', 'image/jpeg', 'image/jpg'],
   document: [
     'application/msword', // MIME for .doc
@@ -7,6 +7,8 @@ export const mimetype = {
   ],
   csv: 'text/csv',
 };
+
+export default mimetype;
 
 // export const ext = {
 //   image: ['.png', '.jpeg', '.jpg'],

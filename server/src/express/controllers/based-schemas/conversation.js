@@ -15,7 +15,7 @@ export const messagesInConversationHandler = catchAsyncErrors(
 
     const query = Message.find({
       conversation,
-    }).select('_id content sender viewed createdAt');
+    }).select('content sender viewed createdAt');
 
     const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
     let messageRecords = await queryAPI.query;
@@ -54,10 +54,10 @@ export const conversationsHandler = catchAsyncErrors(async (req, res, next) => {
   })
     .populate({
       path: 'lastMessage',
-      select: '_id content sender viewed createdAt',
+      select: 'content sender viewed createdAt',
     })
     // .lean()
-    .select('_id lastMessage createdAt');
+    .select('lastMessage createdAt');
 
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let conversationRecords = await queryAPI.query;

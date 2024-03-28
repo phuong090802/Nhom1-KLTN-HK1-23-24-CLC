@@ -8,25 +8,30 @@ import paginateResults from '../../../util/db/pagination.js';
 import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
 import ForwardedQuestion from '../../../models/forwarded-question.js';
+import { DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 
 // endpoint: /api/counsellor/questions
 // method: GET
 // description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
-  const query = Question.find({
-    status: 'unanswered',
-  })
-    .populate({
-      path: 'user',
-    })
-    .populate({
-      path: 'field',
-    })
+  const { department } = req.user.counsellor;
+
+  const query = Question.find()
+    .populate({ path: 'user', select: '-_id fullName avatar.url' })
+    .populate({ path: 'field', select: '-_id fieldName' })
     // không sử dụng learn vì method trong được tạo schema
     // .lean()
-    .select('_id title content file createdAt views user field answer');
+    .select('title content file createdAt views user field answer');
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const requestQuery = {
+    ...req.query,
+    filter: {
+      status: 'unanswered',
+      department: department.toString(),
+    },
+  };
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();
@@ -41,10 +46,10 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     questionRecords
   );
 
-  const questions = await Promise.all(
-    retQuestions.map(async (question) => {
-      return await question.counsellorGetQuestionInformation();
-    })
+  const questions = retQuestions.map((question) =>
+    question.getQuestionInformation(
+      DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS
+    )
   );
 
   res.json({
@@ -135,7 +140,7 @@ export const feedbacksHandler = catchAsyncErrors(async (req, res, next) => {
       path: 'question',
       select: '-_id title content',
     })
-    .select('_id content createdAt answer.content answer.answeredAt question');
+    .select('content createdAt answer.content answer.answeredAt question');
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let feedbacks = await queryAPI.query;
 
