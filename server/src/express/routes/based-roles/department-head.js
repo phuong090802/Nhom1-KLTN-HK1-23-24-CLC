@@ -20,7 +20,7 @@ import {
   deleteFAQHandler,
   faqsHandler,
   fieldsHandler,
-  hasNewAnswersHandler,
+  unapprovedAnswerExistsHandler,
   unansweredQuestionHandler,
   removeFieldOfCounsellor,
   updateFAQHandler,
@@ -64,7 +64,7 @@ router.route('/faqs').get(defaultPaginationParams, faqsHandler).post(
   createFAQHandler
 );
 
-router.route('/answers').get(hasNewAnswersHandler);
+router.route('/answers/unapproved-answer-exists').get(unapprovedAnswerExistsHandler);
 
 router.route('/questions/unanswered-question').get(unansweredQuestionHandler);
 

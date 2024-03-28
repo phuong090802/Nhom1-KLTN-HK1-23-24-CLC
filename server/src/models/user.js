@@ -231,7 +231,7 @@ userSchema.methods.userRequestInformation = async function () {
 // set same structure for ...
 userSchema.methods.getUserInQuestion = function () {
   return {
-    _id: this._id,
+    // _id: this._id,
     fullName: this.fullName,
     avatar: this.avatar.url,
   };

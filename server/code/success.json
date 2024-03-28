@@ -378,8 +378,8 @@
     {
       "code": "2062",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-roles/counsellor.js",
+      "detail": "Tư vấn viên/trưởng khoa lấy danh sách câu hỏi chưa được trả lời (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2063",

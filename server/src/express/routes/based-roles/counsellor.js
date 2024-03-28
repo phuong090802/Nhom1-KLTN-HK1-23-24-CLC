@@ -13,6 +13,7 @@ import {
   deleteFeedbacksHandler,
   feedbacksHandler,
   forwardQuestionHandler,
+  questionsHandler,
   unansweredQuestionHandler,
 } from '../../controllers/based-roles/counsellor.js';
 import {
@@ -20,16 +21,24 @@ import {
   validateRoleAndStatusDepartmentBeforeAccess,
   validateStatusQuestionInParams,
 } from '../../middlewares/combine-validate.js';
+import { defaultPaginationParams } from '../../middlewares/query.js';
 
 const router = express.Router();
 
 router
-  .route('/questions/:id')
-  .put(
+  .route('/questions')
+  .get(
     validateRoleAndStatusDepartmentBeforeAccess(
       'DEPARTMENT_HEAD',
       'COUNSELLOR'
     ),
+    defaultPaginationParams,
+    questionsHandler
+  );
+
+router
+  .route('/questions/:id')
+  .put(
     validateStatusQuestionInParams('unanswered'),
     validateQuestionBelongToDepartment,
     validateCounsellorIncludesFieldOfQuestion,
@@ -45,12 +54,6 @@ router
     validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
     unansweredQuestionHandler
   );
-
-// router
-//   .route('/questions')
-//   .get(
-
-//   );
 
 router
   .route('/feedbacks/:id')

@@ -14,7 +14,7 @@ import counsellor from './routes/based-roles/counsellor.js';
 
 import question from './routes/based-schemas/question.js';
 import basedUserSchema from './routes/based-schemas/user.js';
-import departments from './routes/based-schemas/department.js';
+import department from './routes/based-schemas/department.js';
 import conversation from './routes/based-schemas/conversation.js';
 import faq from './routes/based-schemas/faq.js';
 
@@ -46,9 +46,9 @@ app.use('/api/auth', auth);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
 app.use('/api/counsellor', counsellor);
-app.use('/api/users', basedUserSchema);
 app.use('/api/user', userRoleBased);
-app.use('/api/departments', departments);
+app.use('/api/users', basedUserSchema);
+app.use('/api/departments', department);
 app.use('/api/questions', question);
 app.use('/api/conversations', conversation);
 app.use('/api/faqs', faq);

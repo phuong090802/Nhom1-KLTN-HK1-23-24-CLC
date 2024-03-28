@@ -68,7 +68,12 @@ const questionSchema = new mongoose.Schema({
   },
 });
 
+// cách này không tìm chay
+// populate rồi dùng phương thức bên kia
 questionSchema.methods.getQuestionInformation = async function () {
+  const user = await this.user.getUserInQuestion();
+  const counsellor = await this.answer.user.getUserInQuestion();
+  const answer = await this.answer.getAnswerInQuestion();
   return {
     _id: this._id,
     title: this.title,
@@ -76,6 +81,28 @@ questionSchema.methods.getQuestionInformation = async function () {
     createdAt: this.createdAt,
     fileURL: this.file.url,
     views: this.views,
+    user,
+    answer: {
+      user: { ...counsellor },
+      ...answer,
+    },
+  };
+};
+
+
+questionSchema.methods.counsellorGetQuestionInformation = async function () {
+  const user = await this.user.getUserInQuestion();
+  const field = await this.field.getFieldInQuestion();
+
+  return {
+    _id: this._id,
+    title: this.title,
+    content: this.content,
+    createdAt: this.createdAt,
+    fileURL: this.file.url,
+    views: this.views,
+    user,
+    field,
   };
 };
 

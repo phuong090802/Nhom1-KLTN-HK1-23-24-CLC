@@ -27,13 +27,12 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
       path: 'answer',
       populate: {
         path: 'user',
-        select: '_id fullName avatar',
       },
     })
     .populate({
       path: 'user',
-      select: '_id fullName avatar',
     })
+    // không sử dụng learn vì method trong được tạo schema
     // .lean()
     .select('_id title content file createdAt views user answer');
 
@@ -54,20 +53,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
 
   const questions = await Promise.all(
     retQuestions.map(async (question) => {
-      const questionInformation = await question.getQuestionInformation();
-      const user = await question.user.getUserInQuestion();
-
-      const counsellor = await question.answer.user.getUserInQuestion();
-
-      const answer = await question.answer.getAnswerInQuestion();
-      return {
-        ...questionInformation,
-        user,
-        answer: {
-          user: { ...counsellor },
-          ...answer,
-        },
-      };
+      return await question.getQuestionInformation();
     })
   );
 

@@ -4,6 +4,7 @@ import Feedback from '../../../models/feedback.js';
 import Question from '../../../models/question.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
+import paginateResults from '../../../util/db/pagination.js';
 import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
 import ForwardedQuestion from '../../../models/forwarded-question.js';
@@ -13,22 +14,17 @@ import ForwardedQuestion from '../../../models/forwarded-question.js';
 // description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
   const query = Question.find({
-    status: 'publicly-answered-and-approved',
-    // status: 'publicly-answered-pending-approval', // for test
+    status: 'unanswered',
   })
     .populate({
-      path: 'answer',
-      populate: {
-        path: 'user',
-        select: '_id fullName avatar',
-      },
+      path: 'user',
     })
     .populate({
-      path: 'user',
-      select: '_id fullName avatar',
+      path: 'field',
     })
+    // không sử dụng learn vì method trong được tạo schema
     // .lean()
-    .select('_id title content file createdAt views user answer');
+    .select('_id title content file createdAt views user field answer');
 
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let questionRecords = await queryAPI.query;
@@ -47,20 +43,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
 
   const questions = await Promise.all(
     retQuestions.map(async (question) => {
-      const questionInformation = await question.getQuestionInformation();
-      const user = await question.user.getUserInQuestion();
-
-      const counsellor = await question.answer.user.getUserInQuestion();
-
-      const answer = await question.answer.getAnswerInQuestion();
-      return {
-        ...questionInformation,
-        user,
-        answer: {
-          user: { ...counsellor },
-          ...answer,
-        },
-      };
+      return await question.counsellorGetQuestionInformation();
     })
   );
 
@@ -69,7 +52,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     questions,
     page,
     pages,
-    code: 2033,
+    code: 2062,
   });
 });
 
