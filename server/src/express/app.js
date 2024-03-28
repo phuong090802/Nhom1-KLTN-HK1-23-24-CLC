@@ -6,7 +6,6 @@ import cors from 'cors';
 import { apiCorsOptions } from '../config/cors.js';
 
 import auth from './routes/auth.js';
-import test from './routes/test.js';
 
 import admin from './routes/based-roles/admin.js';
 import userRoleBased from './routes/based-roles/user.js';
@@ -17,6 +16,7 @@ import question from './routes/based-schemas/question.js';
 import basedUserSchema from './routes/based-schemas/user.js';
 import departments from './routes/based-schemas/department.js';
 import conversation from './routes/based-schemas/conversation.js';
+import faq from './routes/based-schemas/faq.js';
 
 import errorHandler from './middlewares/error-handler.js';
 
@@ -42,7 +42,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/api/test', test);
 app.use('/api/auth', auth);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
@@ -52,6 +51,7 @@ app.use('/api/user', userRoleBased);
 app.use('/api/departments', departments);
 app.use('/api/questions', question);
 app.use('/api/conversations', conversation);
+app.use('/api/faqs', faq);
 
 app.use(errorHandler);
 

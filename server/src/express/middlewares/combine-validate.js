@@ -79,8 +79,14 @@ export const validateDepartmentInBody = [
   validateStatusOfDepartment,
 ];
 
-// Trưởng khoa kiểm tra mã câu hỏi chung có tồn tại, và có thuộc về khoa trước khi cập nhật
-export const validateFAQ = [
+// Trưởng khoa kiểm tra mã câu hỏi chung có tồn tại, và có thuộc về khoa trước khi xóa/cập nhật
+export const validateBeforeUpdateOrDeleteFAQ = [
   validateFAQIdInParams,
   validateFAQBelongDepartment,
+];
+
+// Trưởng khoa kiểm tra mã câu hỏi chung có tồn tại, và có thuộc về khoa trước khi tạo/cập nhật
+export const validateBeforeCreateOrUpdateFAQ = [
+  validateFieldIdInBodyOfBelongToDepartment,
+  departmentHeadValidateStatusOfField,
 ];

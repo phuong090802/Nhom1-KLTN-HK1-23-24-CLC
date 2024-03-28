@@ -2,7 +2,8 @@ import express from 'express';
 
 import {
   departmentHeadValidateField,
-  validateFAQ,
+  validateBeforeCreateOrUpdateFAQ,
+  validateBeforeUpdateOrDeleteFAQ,
 } from '../../middlewares/combine-validate.js';
 
 import {
@@ -17,6 +18,7 @@ import {
   counsellorsHandler,
   createFAQHandler,
   deleteFAQHandler,
+  faqsHandler,
   fieldsHandler,
   hasNewAnswersHandler,
   hasNewQuestionsHandler,
@@ -46,15 +48,15 @@ router
   .route('/faqs/:id')
   .put(
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
-    validateFAQ,
+    validateBeforeUpdateOrDeleteFAQ,
     uploadImageOrDocumentHandler.single('file'),
-    validateFieldIdInBodyOfBelongToDepartment,
+    validateBeforeCreateOrUpdateFAQ,
     optionalUploadFileToFirebaseHandler('faqs'),
     updateFAQHandler
   )
-  .delete(validateFAQ, deleteFAQHandler);
+  .delete(validateBeforeUpdateOrDeleteFAQ, deleteFAQHandler);
 
-router.route('/faqs').post(
+router.route('/faqs').get(defaultPaginationParams, faqsHandler).post(
   // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
   uploadImageOrDocumentHandler.single('file'),
   validateFieldIdInBodyOfBelongToDepartment,

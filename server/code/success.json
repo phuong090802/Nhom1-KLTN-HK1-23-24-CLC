@@ -366,14 +366,14 @@
     {
       "code": "2060",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-schemas/faq.js",
+      "detail": "Lấy danh sách câu hỏi chung của khoa thành công (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2061",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/based-roles/department-head.js",
+      "detail": "Lấy danh sách câu hỏi chung của khoa thành công (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2062",

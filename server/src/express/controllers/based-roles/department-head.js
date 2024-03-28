@@ -10,6 +10,43 @@ import User from '../../../models/user.js';
 import Question from '../../../models/question.js';
 import FAQ from '../../../models/faq.js';
 
+// endpoint: /api/faqs
+// method: GET
+// description: Trưởng khoa lấy danh sách câu hỏi chung (phân trang, lọc lĩnh vực của khoa, tìm kiếm)
+export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
+  const { department } = req.user.counsellor;
+
+  const query = FAQ.find({ department })
+    // .lean()
+    // don't use learn for method
+    .select('_id question answer answerAttachment department field createdAt');
+
+  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  let faqRecords = await queryAPI.query;
+  const numberOfFAQs = faqRecords.length;
+  faqRecords = await queryAPI.pagination().query.clone();
+
+  const {
+    data: retFAQs,
+    page,
+    pages,
+  } = paginateResults(numberOfFAQs, req.query.page, req.query.size, faqRecords);
+
+  const faqs = await Promise.all(
+    retFAQs.map(async (faq) => {
+      return await faq.departmentHeadRequestFAQInformation();
+    })
+  );
+
+  res.json({
+    success: true,
+    faqs,
+    page,
+    pages,
+    code: 2061,
+  });
+});
+
 // endpoint: /api/department-head/faqs/:id
 // method: DELETE
 // description: Trưởng khoa xóa câu hỏi chung
