@@ -8,6 +8,71 @@ import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
 import ForwardedQuestion from '../../../models/forwarded-question.js';
 
+// endpoint: /api/counsellor/questions
+// method: GET
+// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
+  const query = Question.find({
+    status: 'publicly-answered-and-approved',
+    // status: 'publicly-answered-pending-approval', // for test
+  })
+    .populate({
+      path: 'answer',
+      populate: {
+        path: 'user',
+        select: '_id fullName avatar',
+      },
+    })
+    .populate({
+      path: 'user',
+      select: '_id fullName avatar',
+    })
+    // .lean()
+    .select('_id title content file createdAt views user answer');
+
+  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  let questionRecords = await queryAPI.query;
+  const numberOfQuestions = questionRecords.length;
+  questionRecords = await queryAPI.pagination().query.clone();
+  const {
+    data: retQuestions,
+    page,
+    pages,
+  } = paginateResults(
+    numberOfQuestions,
+    req.query.page,
+    req.query.size,
+    questionRecords
+  );
+
+  const questions = await Promise.all(
+    retQuestions.map(async (question) => {
+      const questionInformation = await question.getQuestionInformation();
+      const user = await question.user.getUserInQuestion();
+
+      const counsellor = await question.answer.user.getUserInQuestion();
+
+      const answer = await question.answer.getAnswerInQuestion();
+      return {
+        ...questionInformation,
+        user,
+        answer: {
+          user: { ...counsellor },
+          ...answer,
+        },
+      };
+    })
+  );
+
+  res.json({
+    success: true,
+    questions,
+    page,
+    pages,
+    code: 2033,
+  });
+});
+
 // endpoint: /api/counsellor/questions/:id
 // method: PUT
 // description: Trưởng khoa/tư vấn viên chuyển tiếp câu hỏi
@@ -50,10 +115,10 @@ export const forwardQuestionHandler = catchAsyncErrors(
   }
 );
 
-// endpoint: /api/counsellor/questions
+// endpoint: /api/counsellor/questions/unanswered-question
 // method: GET
 // description: Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không
-export const hasNewQuestionsHandler = catchAsyncErrors(
+export const unansweredQuestionHandler = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const { department, fields } = user.counsellor;
@@ -69,7 +134,7 @@ export const hasNewQuestionsHandler = catchAsyncErrors(
 
     res.json({
       success: true,
-      hasNewQuestions: numberOfQuestions > 0,
+      unansweredQuestion: numberOfQuestions > 0,
       code: 2071,
     });
   }

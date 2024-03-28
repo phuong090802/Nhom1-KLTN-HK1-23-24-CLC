@@ -145,15 +145,15 @@ export const hasNewAnswersHandler = catchAsyncErrors(async (req, res, next) => {
 
   res.json({
     success: true,
-    hasNewAnswers: numberOfAnswers > 0,
+    unapprovedAnswerExists: numberOfAnswers > 0,
     code: 2059,
   });
 });
 
-// endpoint: /api/department-head/questions
+// endpoint: /api/department-head/questions/unanswered-question
 // method: GET
 // description: Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không
-export const hasNewQuestionsHandler = catchAsyncErrors(
+export const unansweredQuestionHandler = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const { department } = user.counsellor;

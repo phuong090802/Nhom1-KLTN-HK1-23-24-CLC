@@ -21,7 +21,7 @@ import {
   faqsHandler,
   fieldsHandler,
   hasNewAnswersHandler,
-  hasNewQuestionsHandler,
+  unansweredQuestionHandler,
   removeFieldOfCounsellor,
   updateFAQHandler,
   updateFieldHandler,
@@ -66,7 +66,7 @@ router.route('/faqs').get(defaultPaginationParams, faqsHandler).post(
 
 router.route('/answers').get(hasNewAnswersHandler);
 
-router.route('/questions').get(hasNewQuestionsHandler);
+router.route('/questions/unanswered-question').get(unansweredQuestionHandler);
 
 router
   .route('/counsellors/:id')

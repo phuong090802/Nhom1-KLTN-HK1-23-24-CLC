@@ -74,7 +74,7 @@ export const createQuestion = catchAsyncErrors(
     const response = {
       success: true,
       // hasNewQuestions: numberOfQuestions > 0,
-      hasNewQuestions: true,
+      unansweredQuestion: true,
       // change code
       code: 2071,
     };

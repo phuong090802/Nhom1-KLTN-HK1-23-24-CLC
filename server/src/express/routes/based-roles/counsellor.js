@@ -13,7 +13,7 @@ import {
   deleteFeedbacksHandler,
   feedbacksHandler,
   forwardQuestionHandler,
-  hasNewQuestionsHandler,
+  unansweredQuestionHandler,
 } from '../../controllers/based-roles/counsellor.js';
 import {
   validateDepartmentInBody,
@@ -40,11 +40,17 @@ router
   );
 
 router
-  .route('/questions')
+  .route('/questions/unanswered-question')
   .get(
     validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
-    hasNewQuestionsHandler
+    unansweredQuestionHandler
   );
+
+// router
+//   .route('/questions')
+//   .get(
+
+//   );
 
 router
   .route('/feedbacks/:id')

@@ -62,7 +62,7 @@ export const createAnswer = catchAsyncErrors(
 
     const response = {
       success: true,
-      hasNewAnswers: true,
+      unapprovedAnswerExists: true,
       code: 2059,
     };
 
