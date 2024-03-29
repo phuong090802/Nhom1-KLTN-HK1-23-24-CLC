@@ -63,6 +63,20 @@ conversationSchema.pre('save', function (next) {
   next();
 });
 
+conversationSchema.methods.getLatestConversation = function (message) {
+  return {
+    _id: this._id,
+    lastMessage: {
+      _id: message._id,
+      content: message.content,
+      sender: message.sender._id,
+      view: message.viewed,
+      createdAt: message.createdAt,
+    },
+    createdAt: this.createdAt,
+  };
+};
+
 const Conversation = mongoose.model('Conversation', conversationSchema);
 
 export default Conversation;

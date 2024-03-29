@@ -1,10 +1,10 @@
-import questionStatus from '../../../constants/mapper/question-status.js';
-import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
+import questionStatus from '../../../../constants/mapper/question-status.js';
+import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
 import {
   isSupportFileSize,
   isSupportedMimetype,
-} from '../../../util/validation.js';
-import mimetype from '../../../constants/file/mimetype.js';
+} from '../../../../util/validation.js';
+import mimetype from '../../../../constants/file/mimetype.js';
 
 // kiểm tra Id câu hỏi có tồn tại có tồn tại trong DB không
 export const validateQuestion = (question) => {

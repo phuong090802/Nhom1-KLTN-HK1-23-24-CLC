@@ -38,33 +38,6 @@ const faqSchema = new mongoose.Schema({
   },
 });
 
-// set structure for user request FAQ
-faqSchema.methods.userRequestFAQInformation = async function () {
-  const department = await Department.findById(this.department);
-  const field = await Field.findOne({ _id: this.field._id, department });
-  return {
-    _id: this._id,
-    question: this.question,
-    department: department !== null ? department.departmentName : null,
-    field: field !== null ? field.fieldName : null,
-    answer: this.answer,
-    answerAttachment: this.answerAttachment.url,
-    createdAt: this.createdAt,
-  };
-};
-
-// set structure for department-head request FAQ
-faqSchema.methods.departmentHeadRequestFAQInformation = function () {
-  return {
-    _id: this._id,
-    question: this.question,
-    field: this.field,
-    answer: this.answer,
-    answerAttachment: this.answerAttachment.url,
-    createdAt: this.createdAt,
-  };
-};
-
 const FAQ = mongoose.model('FAQ', faqSchema);
 
 export default FAQ;

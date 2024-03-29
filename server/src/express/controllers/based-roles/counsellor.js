@@ -2,34 +2,37 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import Feedback from '../../../models/feedback.js';
 import Question from '../../../models/question.js';
+import ForwardedQuestion from '../../../models/forwarded-question.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
 import { deleteFile } from '../../../util/upload-file.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
-import ForwardedQuestion from '../../../models/forwarded-question.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+
 import { DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 
 // endpoint: /api/counsellor/questions
 // method: GET
-// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+// description: Lấy danh sách các câu hỏi chưa được trả lời
 export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
   const { department } = req.user.counsellor;
 
   const query = Question.find()
     .populate({ path: 'user', select: '-_id fullName avatar.url' })
     .populate({ path: 'field', select: '-_id fieldName' })
-    // không sử dụng learn vì method trong được tạo schema
-    // .lean()
     .select('title content file createdAt views user field answer');
+  // không sử dụng learn vì method trong được tạo schema
+  // .lean()
 
-  const requestQuery = {
-    ...req.query,
-    filter: {
-      status: 'unanswered',
-      department: department.toString(),
-    },
-  };
+  const filterStatus = { status: 'unanswered' };
+  const filterDepartment = { department: department };
+
+  const requestQuery = queryFiltersLimit(
+    req.query,
+    filterStatus,
+    filterDepartment
+  );
 
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
@@ -39,7 +42,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     data: retQuestions,
     page,
     pages,
-  } = paginateResults(
+  } = paginate(
     numberOfQuestions,
     req.query.page,
     req.query.size,
@@ -133,7 +136,7 @@ export const unansweredQuestionHandler = catchAsyncErrors(
 // description: Tư vấn viên load danh sách feedback của họ (không phân trang)
 export const feedbacksHandler = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
-  const query = Feedback.find({ 'answer.user': user })
+  const query = Feedback.find()
     .sort({ createdAt: -1 })
     .lean()
     .populate({
@@ -141,7 +144,12 @@ export const feedbacksHandler = catchAsyncErrors(async (req, res, next) => {
       select: '-_id title content',
     })
     .select('content createdAt answer.content answer.answeredAt question');
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+
+  const filterUser = { 'answer.user': user._id };
+
+  const requestQuery = queryFiltersLimit(req.query, filterUser);
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let feedbacks = await queryAPI.query;
 
   res.json({

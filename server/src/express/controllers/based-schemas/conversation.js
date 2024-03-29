@@ -1,7 +1,8 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
@@ -13,11 +14,17 @@ export const messagesInConversationHandler = catchAsyncErrors(
   async (req, res, next) => {
     const conversation = req.foundConversation;
 
-    const query = Message.find({
-      conversation,
-    }).select('content sender viewed createdAt');
+    const query = Message.find()
+      .select('content sender viewed createdAt')
+      .lean();
 
-    const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+    const filterConversation = {
+      conversation: conversation._id,
+    };
+
+    const requestQuery = queryFiltersLimit(req.query, filterConversation);
+
+    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
     let messageRecords = await queryAPI.query;
     const numberOfMessages = messageRecords.length;
     messageRecords = await queryAPI.pagination().query.clone();
@@ -25,7 +32,7 @@ export const messagesInConversationHandler = catchAsyncErrors(
       data: messages,
       page,
       pages,
-    } = paginateResults(
+    } = paginate(
       numberOfMessages,
       req.query.page,
       req.query.size,
@@ -48,18 +55,27 @@ export const messagesInConversationHandler = catchAsyncErrors(
 export const conversationsHandler = catchAsyncErrors(async (req, res, next) => {
   const userId = req.user._id;
 
-  const query = Conversation.find({
-    participates: userId,
-    deletedBy: { $ne: userId },
-  })
+  const query = Conversation.find()
     .populate({
       path: 'lastMessage',
       select: 'content sender viewed createdAt',
     })
-    // .lean()
-    .select('lastMessage createdAt');
+    .select('lastMessage createdAt')
+    .lean();
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const filterParticipates = {
+    participates: userId,
+  };
+
+  const filterDeletedBy = { deletedBy: { $ne: userId } };
+
+  const requestQuery = queryFiltersLimit(
+    req.query,
+    filterParticipates,
+    filterDeletedBy
+  );
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let conversationRecords = await queryAPI.query;
   const numberOfConversations = conversationRecords.length;
   conversationRecords = await queryAPI.pagination().query.clone();
@@ -67,7 +83,7 @@ export const conversationsHandler = catchAsyncErrors(async (req, res, next) => {
     data: conversations,
     page,
     pages,
-  } = paginateResults(
+  } = paginate(
     numberOfConversations,
     req.query.page,
     req.query.size,

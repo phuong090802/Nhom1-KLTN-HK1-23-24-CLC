@@ -3,8 +3,10 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import Question from '../../../models/question.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
+
 import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 
 // endpoint: /api/questions/:id
 // method: PUT
@@ -27,16 +29,13 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
       populate: { path: 'user', select: '-_id fullName avatar.url' },
     })
     .populate({ path: 'user', select: '-_id fullName avatar.url' })
-    // không sử dụng learn vì method trong được tạo schema
-    // .lean()
     .select('title content file createdAt views user answer');
+  // không sử dụng learn vì method trong được tạo schema
+  // .lean()
 
-  const requestQuery = {
-    ...req.query,
-    filter: {
-      status: 'publicly-answered-and-approved',
-    },
-  };
+  const filterStatus = { status: 'publicly-answered-and-approved' };
+
+  const requestQuery = queryFiltersLimit(req.query, filterStatus);
 
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
@@ -46,7 +45,7 @@ export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
     data: retQuestions,
     page,
     pages,
-  } = paginateResults(
+  } = paginate(
     numberOfQuestions,
     req.query.page,
     req.query.size,

@@ -8,6 +8,7 @@ import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import { sendToken, clearToken } from '../../util/auth/token.js';
 import { sendVerificationEmail } from '../../util/auth/email-verify.js';
+
 import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
 
 // endpoint: /api/auth/email

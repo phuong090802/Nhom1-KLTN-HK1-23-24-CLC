@@ -1,7 +1,6 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import ErrorHandler from '../../../util/error/http-error-handler.js';
-
 import { deleteFile } from '../../../util/upload-file.js';
 
 // endpoint: /api/users

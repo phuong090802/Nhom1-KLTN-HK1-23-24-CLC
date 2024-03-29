@@ -1,9 +1,10 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
 import { deleteFile } from '../../../util/upload-file.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
@@ -16,16 +17,19 @@ import FAQ from '../../../models/faq.js';
 export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
   const { department } = req.user.counsellor;
 
-  const query = FAQ.find({ department })
+  const query = FAQ.find()
     .populate({
       path: 'field',
       select: 'fieldName',
     })
-    // .lean()
-    // don't use learn for method
-    .select('question answer answerAttachment department field createdAt');
+    .select('question answer answerAttachment field createdAt')
+    .lean();
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const filterDepartment = { department };
+
+  const requestQuery = queryFiltersLimit(req.query, filterDepartment);
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let faqRecords = await queryAPI.query;
   const numberOfFAQs = faqRecords.length;
   faqRecords = await queryAPI.pagination().query.clone();
@@ -34,9 +38,12 @@ export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
     data: retFAQs,
     page,
     pages,
-  } = paginateResults(numberOfFAQs, req.query.page, req.query.size, faqRecords);
+  } = paginate(numberOfFAQs, req.query.page, req.query.size, faqRecords);
 
-  const faqs = retFAQs.map((faq) => faq.departmentHeadRequestFAQInformation());
+  const faqs = retFAQs.map((faq) => ({
+    ...faq,
+    answerAttachment: faq.answerAttachment.url,
+  }));
 
   res.json({
     success: true,
@@ -182,10 +189,10 @@ export const updateIsEnabledCounsellorHandler = catchAsyncErrors(
     counsellor.isEnabled = req.body.isEnabled;
     const savedUser = await counsellor.save();
 
-    const newStrIsEnabled = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
+    const strStatus = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
     res.json({
       success: true,
-      message: newStrIsEnabled + ' tài khoản thành công',
+      message: strStatus + ' tài khoản thành công',
       code: 2044,
     });
   }
@@ -305,29 +312,29 @@ export const updateFieldToCounsellor = catchAsyncErrors(
 // description: Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc)
 export const counsellorsHandler = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
-  const queryAPI = new QueryAPI(
-    User.find({
-      role: { $ne: 'DEPARTMENT_HEAD' },
-      'counsellor.department': department,
+  const query = User.find()
+    .populate({
+      path: 'counsellor.fields',
+      select: '_id fieldName',
     })
-      .lean()
-      .populate({
-        path: 'counsellor.fields',
-        select: 'fieldName',
-      })
-      // .select(
-      //   '_id fullName avatar email phoneNumber counsellor.fields isEnabled'
-      // ),
+    .select(
+      'fullName role avatar email phoneNumber counsellor.fields isEnabled'
+    )
+    .lean();
 
-      // for test show role
-      .select(
-        'fullName role avatar email phoneNumber counsellor.fields isEnabled'
-      ),
-    req.query
-  )
-    .search()
-    .filter()
-    .sort();
+  const filterRolesValue = {
+    role: { $ne: 'DEPARTMENT_HEAD', $eq: 'COUNSELLOR' },
+  };
+
+  const filterDepartment = { 'counsellor.department': department };
+
+  const requestQuery = queryFiltersLimit(
+    req.query,
+    filterRolesValue,
+    filterDepartment
+  );
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
 
   let counsellorRecords = await queryAPI.query;
   const numberOfCounsellors = counsellorRecords.length;
@@ -337,7 +344,7 @@ export const counsellorsHandler = catchAsyncErrors(async (req, res, next) => {
     data: retCounsellors,
     page,
     pages,
-  } = paginateResults(
+  } = paginate(
     numberOfCounsellors,
     req.query.page,
     req.query.size,
@@ -358,10 +365,9 @@ export const counsellorsHandler = catchAsyncErrors(async (req, res, next) => {
 // method: GET
 // description: Lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
 export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
-  const queryAPI = new QueryAPI(Field.find().lean().select('-__v'), req.query)
-    .search()
-    .filter()
-    .sort();
+  const query = Field.find().select('-__v -department').lean();
+
+  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
 
   // get all fields in DB
   let fieldsRecords = await queryAPI.query;
@@ -374,12 +380,7 @@ export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
     data: fields,
     page,
     pages,
-  } = paginateResults(
-    numberOfFields,
-    req.query.page,
-    req.query.size,
-    fieldsRecords
-  );
+  } = paginate(numberOfFields, req.query.page, req.query.size, fieldsRecords);
   res.json({ success: true, fields, page, pages, code: 2040 });
 });
 
@@ -394,11 +395,11 @@ export const updateStatusFieldHandler = catchAsyncErrors(
 
     const savedField = await field.save();
 
-    const newStrStatus = savedField.isActive ? 'Mở khóa' : 'Khóa';
+    const strStatus = savedField.isActive ? 'Mở khóa' : 'Khóa';
 
     res.json({
       success: true,
-      message: `${newStrStatus} lĩnh vực thành công`,
+      message: `${strStatus} lĩnh vực thành công`,
       code: 2073,
     });
   }

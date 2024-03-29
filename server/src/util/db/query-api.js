@@ -15,7 +15,9 @@ class QueryAPI {
       }));
       keywordSearch = { $or: orConditions };
     }
+    // console.log(keywordSearch);
     this.query = this.query.find({ ...keywordSearch });
+
     return this;
   }
 
@@ -26,6 +28,7 @@ class QueryAPI {
       typeof filter === 'object' &&
       Object.keys(filter).length > 0
     ) {
+
       this.query = this.query.find(filter);
     }
     return this;

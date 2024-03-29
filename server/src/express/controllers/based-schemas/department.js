@@ -1,12 +1,14 @@
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+
 import Department from '../../../models/department.js';
 import Field from '../../../models/field.js';
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // endpoint: /api/departments/:id/fields
 // method: GET
 // description: Lấy danh sách lĩnh vực của khoa bằng id
 export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
+
   const fields = await Field.find({ department, isActive: true })
     .select('fieldName')
     .lean();

@@ -3,12 +3,12 @@ import Message from '../../../models/message.js';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import { authorizeRolesHandler } from '../../middlewares/event/auth-event.js';
-import { validateFieldOfCounsellor } from '../../middlewares/event/validate-event.js';
+import { validateFieldOfCounsellor } from '../../middlewares/event/validate/validate-event.js';
 
 import {
   validateQuestionAndStatus,
   validateMimetypeAndFileSize,
-} from '../../middlewares/event/combine-validate-event.js';
+} from '../../middlewares/event/validate/combine-validate-event.js';
 
 import Question from '../../../models/question.js';
 import User from '../../../models/user.js';
@@ -118,17 +118,7 @@ export const createConversation = catchAsyncErrors(
 
     await question.save();
 
-    const latestConversation = {
-      _id: conversation._id,
-      lastMessage: {
-        _id: message._id,
-        content: message.content,
-        sender: message.sender._id,
-        view: message.viewed,
-        createdAt: message.createdAt,
-      },
-      createdAt: conversation.createdAt,
-    };
+    const latestConversation = conversation.getLatestConversation(message);
 
     const response = {
       success: true,

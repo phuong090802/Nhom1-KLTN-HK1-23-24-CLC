@@ -9,7 +9,8 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import ErrorHandler from '../../../util/error/http-error-handler.js';
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 
 import attribute from '../../../constants/mapper/attribute.js';
 import { ADMIN_GET_USER } from '../../../constants/actions/user.js';
@@ -112,10 +113,10 @@ export const updateIsEnabledUserHandler = catchAsyncErrors(
     user.isEnabled = req.body.isEnabled;
     const savedUser = await user.save();
 
-    const newStrIsEnabled = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
+    const strStatus = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
     res.json({
       success: true,
-      message: newStrIsEnabled + ' tài khoản thành công',
+      message: strStatus + ' tài khoản thành công',
       code: 2015,
     });
   }
@@ -125,15 +126,29 @@ export const updateIsEnabledUserHandler = catchAsyncErrors(
 // method: GET
 // description: Lấy danh sách người dùng trong hệ thống (phân trang, tìm kiếm, lọc)
 export const usersHandler = catchAsyncErrors(async (req, res, next) => {
-  const queryAPI = new QueryAPI(
-    User.find({ role: { $ne: 'ADMIN' } })
-      .lean()
-      .select('fullName avatar email phoneNumber isEnabled role occupation'),
-    req.query
-  )
-    .search()
-    .filter()
-    .sort();
+  const query = User.find()
+    .select('fullName avatar email phoneNumber isEnabled role occupation')
+    .lean();
+  // không lấy khoa
+
+  const reqFilterRole = req.query.filter?.role;
+
+  // console.log(reqFilterRole);
+
+  let filterRolesValue = { $ne: 'ADMIN' };
+  if (reqFilterRole) {
+    filterRolesValue = { ...filterRolesValue, $eq: reqFilterRole };
+  }
+
+  const filterRoles = { role: filterRolesValue };
+
+  // console.log(filterRoles);
+
+  const requestQuery = queryFiltersLimit(req.query, filterRoles);
+
+  // console.log(requestQuery);
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
 
   let userRecords = await queryAPI.query;
   const numberOfUsers = userRecords.length;
@@ -143,12 +158,7 @@ export const usersHandler = catchAsyncErrors(async (req, res, next) => {
     data: retUsers,
     page,
     pages,
-  } = paginateResults(
-    numberOfUsers,
-    req.query.page,
-    req.query.size,
-    userRecords
-  );
+  } = paginate(numberOfUsers, req.query.page, req.query.size, userRecords);
 
   const users = retUsers.map((user) => ({ ...user, avatar: user.avatar.url }));
 
@@ -197,17 +207,13 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
 
-    const queryAPI = new QueryAPI(
-      User.find({
-        'counsellor.department': department,
-      })
-        .lean()
-        .select('fullName avatar role'),
-      req.query
-    )
-      .search()
-      .filter()
-      .sort();
+    const query = User.find().select('fullName avatar role').lean();
+
+    const filterDepartment = { 'counsellor.department': department };
+
+    const requestQuery = queryFiltersLimit(req.query, filterDepartment);
+
+    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
 
     let counsellorRecords = await queryAPI.query;
     const numberOfCounsellors = counsellorRecords.length;
@@ -217,7 +223,7 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
       data: retCounsellors,
       page,
       pages,
-    } = paginateResults(
+    } = paginate(
       numberOfCounsellors,
       req.query.page,
       req.query.size,
@@ -237,13 +243,9 @@ export const counsellorsInDepartmentHandler = catchAsyncErrors(
 // method: GET
 // description: lấy danh sách khoa (phân trang, tìm kiếm, lọc)
 export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
-  const queryAPI = new QueryAPI(
-    Department.find().lean().select('-__v'),
-    req.query
-  )
-    .search()
-    .filter()
-    .sort();
+  const query = Department.find().select('-__v').lean();
+
+  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   // get all departments in DB
   let departmentRecords = await queryAPI.query;
   // number of record in db
@@ -254,7 +256,7 @@ export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
     data: departments,
     page,
     pages,
-  } = paginateResults(
+  } = paginate(
     numberOfDepartments,
     req.query.page,
     req.query.size,
@@ -265,7 +267,7 @@ export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
 
 // endpoint: /api/admin/departments
 // method: POST
-// description: thêm khoa
+// description: Thêm khoa
 export const addDepartmentHandler = catchAsyncErrors(async (req, res, next) => {
   const { departmentName } = req.body;
   await Department.create({ departmentName });
@@ -306,11 +308,11 @@ export const updateStatusDepartmentHandler = catchAsyncErrors(
 
     const savedDepartment = await department.save();
     // handle disable account user
-    const newStrStatus = savedDepartment.isActive ? 'Mở khóa' : 'Khóa';
+    const strStatus = savedDepartment.isActive ? 'Mở khóa' : 'Khóa';
 
     res.json({
       success: true,
-      message: newStrStatus + ' thành công',
+      message: strStatus + ' thành công',
       code: 2020,
     });
   }
@@ -334,11 +336,22 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
   // check department Id
   let department;
 
+  const mergePassword = JSON.stringify({ password, confirmPassword });
+
+  let userData = {
+    fullName,
+    email,
+    phoneNumber,
+    password: mergePassword,
+    role,
+  };
+
   if (departmentId && role !== 'SUPERVISOR') {
     department = await Department.findById(departmentId);
     if (!department) {
       return next(new ErrorHandler(404, 'Không tìm thấy khoa', 4030));
     }
+
     if (!department.isActive) {
       return next(
         new ErrorHandler(
@@ -348,33 +361,24 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
         )
       );
     }
+
+    userData = { ...userData, 'counsellor.department': department };
   }
 
-  const mergePassword = JSON.stringify({ password, confirmPassword });
   // handle add User
 
-  let userInput = {
-    fullName,
-    email,
-    phoneNumber,
-    password: mergePassword,
-    role,
-  };
+  const user = await User.create(userData);
 
-  if (department && role !== 'SUPERVISOR') {
-    userInput = { ...userInput, 'counsellor.department': department };
-  }
+  let strRole = 'tư vấn viên';
 
-  const user = await User.create(userInput);
-
-  let roleStr = 'tư vấn viên';
   if (user.role === 'SUPERVISOR') {
-    roleStr = 'giám sát viên';
+    strRole = 'giám sát viên';
   }
+
   // res
   res.status(201).json({
     success: true,
-    message: `Thêm ${roleStr} thành công`,
+    message: `Thêm ${strRole} thành công`,
     code: 2012,
   });
 });
@@ -382,7 +386,7 @@ export const addStaffHandler = catchAsyncErrors(async (req, res, next) => {
 // Endpoint (POST): /api/admin/counsellor
 // endpoint: /api/admin/counsellor
 // method: POST
-// description: thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể
+// description: Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể
 export const addCounsellorToDepartmentHandler = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.foundUser;
@@ -396,6 +400,7 @@ export const addCounsellorToDepartmentHandler = catchAsyncErrors(
         )
       );
     }
+
     const department = req.foundDepartment;
 
     user.counsellor.department = department;

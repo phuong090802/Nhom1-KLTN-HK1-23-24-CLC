@@ -1,7 +1,7 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 import QueryAPI from '../../../util/db/query-api.js';
-import paginateResults from '../../../util/db/pagination.js';
+import paginate from '../../../util/db/paginate.js';
 
 import FAQ from '../../../models/faq.js';
 
@@ -10,9 +10,10 @@ import FAQ from '../../../models/faq.js';
 // description: Lấy danh sách câu hỏi chung (phân trang, lọc theo khoa, lĩnh vực của khoa, tìm kiếm)
 export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
   const query = FAQ.find()
-    // .lean()
-    // don't use learn for method
-    .select('question answer answerAttachment field department createdAt');
+    .populate({ path: 'field', select: '-_id fieldName' })
+    .populate({ path: 'department', select: '-_id departmentName' })
+    .select('question answer answerAttachment field department createdAt')
+    .lean();
 
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   let faqRecords = await queryAPI.query;
@@ -23,13 +24,14 @@ export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
     data: retFAQs,
     page,
     pages,
-  } = paginateResults(numberOfFAQs, req.query.page, req.query.size, faqRecords);
+  } = paginate(numberOfFAQs, req.query.page, req.query.size, faqRecords);
 
-  const faqs = await Promise.all(
-    retFAQs.map(async (faq) => {
-      return await faq.userRequestFAQInformation();
-    })
-  );
+  const faqs = retFAQs.map((faq) => ({
+    ...faq,
+    answerAttachment: faq.answerAttachment.url,
+    department: faq.department.departmentName,
+    field: faq.field.fieldName,
+  }));
 
   res.json({
     success: true,
