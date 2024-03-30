@@ -188,7 +188,7 @@
     },
     {
       "code": "4031",
-      "message": "Tư vấn viên đã được thêm vào khoa trước đó",
+      "message": "Tư vấn viên đã được có khoa",
       "file": "express/controllers/based-roles/admin.js",
       "detail": "Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể nhưng tư vấn viên đã được thêm vào khoa trước đó"
     },
@@ -284,7 +284,7 @@
     },
     {
       "code": "4047",
-      "message": "Không tìm lĩnh vực thuộc khoa",
+      "message": "Không tìm lĩnh vực",
       "file": "express/middlewares/validate.js",
       "detail": "Trưởng khoa kiểm tra lĩnh vực của thuộc khoa mình trước khi thực hiện các thao tác liên quan"
     },
@@ -416,7 +416,7 @@
     },
     {
       "code": "4069",
-      "message": "Permission error. Thao tác không hợp lệ",
+      "message": "Thao tác không hợp lệ. Lỗi quyền truy cập",
       "file": "express/middlewares/validate.js",
       "detail": "Tránh tình trạng admin upload trạng thái của bản thân. Tránh tình trạng department upload trạng thái của bản thân hoặc department khác"
     },
@@ -440,15 +440,24 @@
     },
     {
       "code": "4073",
-      "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
-      "file": "express/middlewares/validate.js",
-      "detail": "Khi admin cập nhật tên khoa, thêm người dùng vào khoa"
+      "details": [
+        {
+          "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
+          "file": "express/middlewares/validate.js",
+          "detail": "Khi admin cập nhật tên khoa, thêm người dùng vào khoa"
+        },
+        {
+          "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
+          "file": "express/controllers/based-role/admin.js",
+          "detail": "Khoa đang có isActive = false (thêm nhân tư vấn viên vào khoa cụ thể)"
+        }
+      ]
     },
     {
       "code": "4074",
-      "message": "Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan",
-      "file": "express/controllers/based-role/admin.js",
-      "detail": "Khoa đang có isActive = false (thêm nhân tư vấn viên vào khoa cụ thể)"
+      "message": "Không tìm thấy tài khoản",
+      "file": "express/middlewares/validate.js",
+      "detail": "Không tìm thấy tài khoản với userId trong body"
     },
     {
       "code": "4075",
@@ -592,19 +601,19 @@
       "code": "4098",
       "message": "Không tìm thấy câu hỏi thuộc về khoa",
       "file": "express/middlewares/combine-validate.js",
-      "detail": ""
+      "detail": "Không tìm thấy câu hỏi thuộc về khoa (kiểm tra trước khi chuyển tiếp)"
     },
     {
       "code": "4099",
       "message": "Không thể chuyển tiếp câu hỏi cùng khoa",
       "file": "express/controllers/based-roles/counsellor.js",
-      "detail": ""
+      "detail": "departmentId cũ bằng departmentId mới"
     },
     {
       "code": "4100",
       "message": "Không thể chuyển tiếp. Câu hỏi không thuộc lĩnh vực được hỗ trợ",
       "file": "express/middlewares/validate.js",
-      "detail": ""
+      "detail": "Tư vấn viên không có field của câu hỏi chuyển tiếp"
     },
     {
       "code": "4101",
@@ -615,20 +624,50 @@
     {
       "code": "4102",
       "message": "Câu hỏi chung không thuộc về khoa",
-      "file": "express/middlewares/validate.js",
-      "detail": ""
+      "file": "express/middlewares/validate/based-schemas/field.js",
+      "detail": "Khác mã khoa"
     },
     {
       "code": "4103",
       "message": "Lỗi cập nhật câu hỏi chung. Vui lòng thử lại",
       "file": "express/controllers/based-roles/department-head.js",
-      "detail": ""
+      "detail": "Bị lỗi khi gỡ file trên firebase"
     },
     {
       "code": "4104",
       "message": "Lỗi xóa câu hỏi chung. Vui lòng thử lại",
       "file": "express/controllers/based-roles/department-head.js",
+      "detail": "Bị lỗi khi gỡ file trên firebase"
+    },
+    {
+      "code": "4105",
+      "message": "Mốc thời gian không hợp lệ",
+      "file": "express/middlewares/validate/statistic.js",
+      "detail": "Không thuộc ['month', 'year']"
+    },
+    {
+      "code": "4106",
+      "message": "Thời gian không hợp lệ",
+      "file": "express/middlewares/validate/statistic.js",
+      "detail": "Không phải là số kiểu Int"
+    },
+    {
+      "code": "4107",
+      "message": "",
+      "file": "",
       "detail": ""
+    },
+    {
+      "code": "4108",
+      "message": "Không tìm lĩnh vực",
+      "file": "express/middlewares/validate/based-schemas/counsellor.js",
+      "detail": "Không tìm lĩnh vực trong body"
+    },
+    {
+      "code": "4109",
+      "message": "Tư vấn viên không thuộc khoa",
+      "file": "express/middlewares/validate/based-roles/counsellor.js",
+      "detail": "Khác department id"
     }
   ]
 }

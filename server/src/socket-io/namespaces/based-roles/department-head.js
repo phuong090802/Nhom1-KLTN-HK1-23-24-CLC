@@ -1,31 +1,20 @@
-import {
-  authorizeRolesHandler,
-  isAuthenticatedHandler,
-} from '../../middlewares/auth.js';
-
-import {
-  validateFieldNameCreate,
-  validateFieldNameUpdate,
-} from '../../controllers/based-roles/department-head.js';
-
-import {
-  validateDepartment,
-  validateStatusDepartment,
-} from '../../middlewares/validate.js';
+import * as authMiddleware from '../../middlewares/auth.js';
+import * as departmentValidateMiddleware from '../../middlewares/validate/based-schemas/department.js';
+import * as fieldController from '../../controllers/based-roles/department-head/field.js';
 
 export default function departmentHead(io) {
   io.of('/department-head')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('DEPARTMENT_HEAD'))
-    .use(validateDepartment)
-    .use(validateStatusDepartment)
+    .use(authMiddleware.handleAuthentication)
+    .use(authMiddleware.handleAuthorization('DEPARTMENT_HEAD'))
+    .use(departmentValidateMiddleware.handleValidateDepartment)
+    .use(departmentValidateMiddleware.handleCheckStatusOfDepartment)
     .on('connection', (socket) => {
       socket.on('field:validate-field-name:create', (payload, callback) =>
-        validateFieldNameCreate(socket, payload, callback)
+        fieldController.handleValidateFieldNameCreate(socket, payload, callback)
       );
 
       socket.on('field:validate-field-name:update', (payload, callback) =>
-        validateFieldNameUpdate(socket, payload, callback)
+        fieldController.handleValidateFieldNameUpdate(socket, payload, callback)
       );
     });
 }

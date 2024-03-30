@@ -1,14 +1,13 @@
 import express from 'express';
 
-import authHandler from '../../middlewares/auth.js';
-
-import { questionsHandler } from '../../controllers/based-roles/user.js';
-
+import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
+import { handleGetQuestions } from '../../controllers/based-roles/user/question.js';
 
 const router = express.Router();
-router.use(authHandler('USER'));
 
-router.route('/questions').get(defaultPaginationParams, questionsHandler);
+router.use(...handleAuthenticationAndAuthorization('USER'));
+
+router.route('/questions').get(defaultPaginationParams, handleGetQuestions);
 
 export default router;

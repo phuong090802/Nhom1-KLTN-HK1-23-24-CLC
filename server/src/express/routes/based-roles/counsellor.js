@@ -1,77 +1,97 @@
 import express from 'express';
 
 import {
-  validateCounsellorIncludesFieldOfQuestion,
-  validateDepartmentIdBeforeForwarding,
-  validateFeedbackOfCounsellor,
-  validateFieldIdInBodyOfBelongToDepartment,
-  validateQuestionBelongToDepartment,
-} from '../../middlewares/validate.js';
-
-import {
-  deleteFeedbackHandler,
-  deleteFeedbacksHandler,
-  feedbacksHandler,
-  forwardQuestionHandler,
-  questionsHandler,
-  unansweredQuestionHandler,
-} from '../../controllers/based-roles/counsellor.js';
-import {
-  validateDepartmentInBody,
-  validateRoleAndStatusDepartmentBeforeAccess,
-  validateStatusQuestionInParams,
-} from '../../middlewares/combine-validate.js';
+  handleCheckCounsellorIncludesFieldOfQuestion,
+  handleValidateDepartmentIdBeforeForwarding,
+} from '../../middlewares/validate/based-schemas/forward-question.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
+import {
+  handleAuthentication,
+  handleAuthenticationAndAuthorization,
+} from '../../middlewares/auth.js';
+import {
+  handleCheckDepartmentOfCounsellor,
+  handleCheckStatusDepartmentOfCounsellor,
+} from '../../middlewares/validate/based-roles/counsellor.js';
+import {
+  handleValidateDepartmentIdInBody,
+  handleCheckStatusOfDepartment,
+} from '../../middlewares/validate/based-schemas/department.js';
+import {
+  handleCheckFeedbackBelongToCounsellor,
+  handleValidateFeedbackIdInParams,
+} from '../../middlewares/validate/based-schemas/feedback.js';
+import { handleCheckFieldBelongToDepartment } from '../../middlewares/validate/based-schemas/field.js';
+import {
+  handleCheckQuestionBelongToDepartment,
+  handleValidateQuestionIdInParams,
+  handleValidateStatusOfQuestion,
+} from '../../middlewares/validate/based-schemas/question.js';
+import * as feedbackController from '../../controllers/based-roles/counsellor/feedback.js';
+import * as questionController from '../../controllers/based-roles/counsellor/question.js';
 
 const router = express.Router();
 
 router
   .route('/questions')
   .get(
-    validateRoleAndStatusDepartmentBeforeAccess(
-      'DEPARTMENT_HEAD',
-      'COUNSELLOR'
-    ),
+    ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
     defaultPaginationParams,
-    questionsHandler
+    questionController.handleGetQuestions
   );
 
 router
   .route('/questions/:id')
   .put(
-    validateStatusQuestionInParams('unanswered'),
-    validateQuestionBelongToDepartment,
-    validateCounsellorIncludesFieldOfQuestion,
-    validateDepartmentInBody,
-    validateDepartmentIdBeforeForwarding,
-    validateFieldIdInBodyOfBelongToDepartment,
-    forwardQuestionHandler
+    ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
+    handleValidateQuestionIdInParams,
+    handleValidateStatusOfQuestion('unanswered'),
+    handleCheckQuestionBelongToDepartment,
+    handleCheckCounsellorIncludesFieldOfQuestion,
+    handleValidateDepartmentIdInBody,
+    handleCheckStatusOfDepartment,
+    handleValidateDepartmentIdBeforeForwarding,
+    handleCheckFieldBelongToDepartment,
+    questionController.handleForwardQuestion
   );
 
 router
   .route('/questions/unanswered-question')
   .get(
-    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
-    unansweredQuestionHandler
+    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
+    questionController.handleCheckUnansweredQuestionExists
   );
 
 router
   .route('/feedbacks/:id')
   .delete(
-    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
-    validateFeedbackOfCounsellor,
-    deleteFeedbackHandler
+    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
+    handleValidateFeedbackIdInParams,
+    handleCheckFeedbackBelongToCounsellor,
+    feedbackController.handleDeleteFeedback
   );
 
 router
   .route('/feedbacks')
   .get(
-    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
-    feedbacksHandler
+    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
+    feedbackController.handleGetFeedbacks
   )
   .delete(
-    validateRoleAndStatusDepartmentBeforeAccess('COUNSELLOR'),
-    deleteFeedbacksHandler
+    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor,
+    feedbackController.handleDeleteFeedbacks
   );
 
 export default router;

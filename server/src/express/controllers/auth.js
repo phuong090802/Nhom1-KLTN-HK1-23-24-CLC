@@ -2,20 +2,17 @@ import crypto from 'crypto';
 
 import User from '../../models/user.js';
 import RefreshToken from '../../models/refresh-token.js';
-
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-
-import ErrorHandler from '../../util/error/http-error-handler.js';
-import { sendToken, clearToken } from '../../util/auth/token.js';
-import { sendVerificationEmail } from '../../util/auth/email-verify.js';
-
+import ErrorHandler from '../../utils/error/http-error-handler.js';
+import { sendToken, clearToken } from '../../utils/auth/token.js';
+import { sendVerificationEmail } from '../../utils/auth/email-verify.js';
 import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
 
-// endpoint: /api/auth/email
-// method: GET
-// description: Kiểm tra email đã được xác thực
-// role: all role
-export const isVerifiedEmailHandler = catchAsyncErrors(
+// Endpoint: /api/auth/email
+// Method: GET
+// Description: Kiểm tra email đã được xác thực
+// Role: All role
+export const handleEmailIsVerified = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const isVerifiedEmail = user.isEmailVerified;
@@ -28,11 +25,11 @@ export const isVerifiedEmailHandler = catchAsyncErrors(
   }
 );
 
-// endpoint: /api/auth/password
-// method: PUT
-// description: Đổi mật khẩu
-// role: all role
-export const passwordHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/password
+// Method: PUT
+// Description: Đổi mật khẩu
+// Role: All role
+export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const { password, confirmPassword } = req.body;
 
@@ -52,11 +49,11 @@ export const passwordHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/verify-email
-// method: POST
-// description: xác nhận email
-// role: all role
-export const verifyEmailHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/verify-email
+// Method: POST
+// Description: xác nhận email
+// Role: All role
+export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
   const { otp } = req.body;
 
   const user = req.user;
@@ -86,11 +83,11 @@ export const verifyEmailHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/validate-email
-// method: POST
-// description: xác thực email
-// role: All role
-export const validateEmailHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/validate-email
+// Method: POST
+// Description: Xác thực email
+// Role: All role
+export const handleValidateEmail = catchAsyncErrors(async (req, res, next) => {
   const { email } = req.body;
 
   const user = req.user;
@@ -134,10 +131,10 @@ export const validateEmailHandler = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
-// endpoint: /api/auth/register
-// method: POST
-// description: đăng ký tài khoản
-export const registerHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/register
+// Method: POST
+// Description: Đăng ký tài khoản
+export const handleRegister = catchAsyncErrors(async (req, res, next) => {
   const {
     fullName,
     email,
@@ -164,10 +161,10 @@ export const registerHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/register
-// method: POST
-// description: đăng nhập
-export const loginHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/register
+// Method: POST
+// Description: Đăng nhập
+export const handleLogin = catchAsyncErrors(async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -213,10 +210,10 @@ export const loginHandler = catchAsyncErrors(async (req, res, next) => {
   sendToken(res, accessToken, refreshToken, userInformation);
 });
 
-// endpoint: /api/auth/refresh-token
-// method: POST
-// description: yêu cầu cấp mới access token
-export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/refresh-token
+// Method: POST
+// Description: Yêu cầu cấp mới access token
+export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
 
@@ -258,10 +255,10 @@ export const refreshTokenHandler = catchAsyncErrors(async (req, res, next) => {
   sendToken(res, newAccessToken, newRefreshToken, userInformation);
 });
 
-// endpoint: /api/auth/logout
-// method: POST
-// description: đăng xuất
-export const logoutHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/logout
+// Method: POST
+// Description: Đăng xuất
+export const handleLogout = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
   // object
@@ -277,11 +274,11 @@ export const logoutHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/me
-// method: GET
-// description: lấy thông tin cá nhân
-// role: all role
-export const meHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/me
+// Method: GET
+// Description: Lấy thông tin cá nhân
+// Role: All role
+export const handleGetMe = catchAsyncErrors(async (req, res, next) => {
   const user = req.user.getUserInformation(ME);
 
   res.json({
@@ -291,63 +288,61 @@ export const meHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/forgot-password
-// method: POST
-// description: yêu cầu đặt lại mật khẩu
-export const forgotPasswordHandler = catchAsyncErrors(
-  async (req, res, next) => {
-    const { email } = req.body;
+// Endpoint: /api/auth/forgot-password
+// Method: POST
+// Description: Yêu cầu đặt lại mật khẩu
+export const handleForgotPassword = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
 
-    const user = await User.findOne({
-      email: { $regex: new RegExp(email, 'i') },
+  const user = await User.findOne({
+    email: { $regex: new RegExp(email, 'i') },
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(404, 'Không tìm thấy người dùng với email', 4020)
+    );
+  }
+
+  if (!user.isEmailVerified) {
+    return next(
+      new ErrorHandler(
+        400,
+        'Email liên kết với tài khoản chưa được xác thực',
+        4022
+      )
+    );
+  }
+
+  const otp = await user.generateForgotPassword();
+
+  const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
+
+  try {
+    await sendVerificationEmail({
+      email: user.email,
+      subject: 'Khôi phục mật khẩu Tư Vấn Sinh Viên',
+      message,
     });
 
-    if (!user) {
-      return next(
-        new ErrorHandler(404, 'Không tìm thấy người dùng với email', 4020)
-      );
-    }
-
-    if (!user.isEmailVerified) {
-      return next(
-        new ErrorHandler(
-          400,
-          'Email liên kết với tài khoản chưa được xác thực',
-          4022
-        )
-      );
-    }
-
-    const otp = await user.generateForgotPassword();
-
-    const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
-
-    try {
-      await sendVerificationEmail({
-        email: user.email,
-        subject: 'Khôi phục mật khẩu Tư Vấn Sinh Viên',
-        message,
-      });
-
-      res.json({
-        success: true,
-        message: `Đã gửi email đến: ${user.email}`,
-        code: 2006,
-      });
-    } catch (error) {
-      user.forgotPassword = null;
-      await user.save();
-      return next(
-        new ErrorHandler(500, 'Lỗi gửi mã xác thực đặt lại mật khẩu', 4021)
-      );
-    }
+    res.json({
+      success: true,
+      message: `Đã gửi email đến: ${user.email}`,
+      code: 2006,
+    });
+  } catch (error) {
+    user.forgotPassword = null;
+    await user.save();
+    return next(
+      new ErrorHandler(500, 'Lỗi gửi mã xác thực đặt lại mật khẩu', 4021)
+    );
   }
-);
+});
 
-// endpoint: /api/auth/verify-otp
-// method: POST
-// description: xác thực OTP sau khi yêu cầu đặt lại mật khẩu
-export const verifyOTPHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/verify-otp
+// Method: POST
+// Description: Xác thực OTP sau khi yêu cầu đặt lại mật khẩu
+export const handleVerifyOTP = catchAsyncErrors(async (req, res, next) => {
   const { email, otp } = req.body;
 
   const user = await User.findOne({
@@ -379,10 +374,10 @@ export const verifyOTPHandler = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// endpoint: /api/auth/reset-password/:token
-// method: POST
-// description: đặt lại mật khẩu sau khi xác nhận mã OTP thành công (quên mật khẩu)
-export const resetPasswordHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/auth/reset-password/:token
+// Method: POST
+// Description: Đặt lại mật khẩu sau khi xác nhận mã OTP thành công (quên mật khẩu)
+export const handleResetPassword = catchAsyncErrors(async (req, res, next) => {
   // hash URL token
   // hash request token and then find with hash token in DB
   const resetPasswordToken = crypto

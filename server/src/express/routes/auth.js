@@ -1,41 +1,48 @@
 import express from 'express';
 
+import * as authController from '../controllers/auth.js';
 import {
-  loginHandler,
-  logoutHandler,
-  meHandler,
-  refreshTokenHandler,
-  registerHandler,
-  forgotPasswordHandler,
-  verifyOTPHandler,
-  resetPasswordHandler,
-  validateEmailHandler,
-  verifyEmailHandler,
-  passwordHandler,
-  isVerifiedEmailHandler,
-} from '../controllers/auth.js';
-import authHandler, { isAuthenticatedHandler } from '../middlewares/auth.js';
+  handleAuthentication,
+  handleAuthenticationAndAuthorization,
+} from '../middlewares/auth.js';
 
 const router = express.Router();
 
-router.post('/register', registerHandler);
-router.post('/login', loginHandler);
-router.post('/refresh-token', refreshTokenHandler);
-router.post('/logout', logoutHandler);
+router.post('/register', authController.handleRegister);
+router.post('/login', authController.handleLogin);
+router.post('/refresh-token', authController.handleRefreshToken);
+router.post('/logout', authController.handleLogout);
 
-router.get('/me', isAuthenticatedHandler, meHandler);
-router.post('/forgot-password', forgotPasswordHandler);
-router.post('/verify-otp', verifyOTPHandler);
-router.post('/reset-password/:token', resetPasswordHandler);
+router.get('/me', handleAuthentication, authController.handleGetMe);
+router.post('/forgot-password', authController.handleForgotPassword);
+router.post('/verify-otp', authController.handleVerifyOTP);
+router.post('/reset-password/:token', authController.handleResetPassword);
 
-router.post('/validate-email', isAuthenticatedHandler, validateEmailHandler);
-router.post('/verify-email', isAuthenticatedHandler, verifyEmailHandler);
-router.put('/password', isAuthenticatedHandler, passwordHandler);
+router.post(
+  '/validate-email',
+  handleAuthentication,
+  authController.handleValidateEmail
+);
+router.post(
+  '/verify-email',
+  handleAuthentication,
+  authController.handleVerifyEmail
+);
+router.put(
+  '/password',
+  handleAuthentication,
+  authController.handleChangePassword
+);
 
 router.get(
   '/is-verified-email',
-  authHandler('USER', 'COUNSELLOR', 'DEPARTMENT_HEAD', 'SUPERVISOR'),
-  isVerifiedEmailHandler
+  ...handleAuthenticationAndAuthorization(
+    'USER',
+    'COUNSELLOR',
+    'DEPARTMENT_HEAD',
+    'SUPERVISOR'
+  ),
+  authController.handleEmailIsVerified
 );
 
 export default router;

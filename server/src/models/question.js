@@ -1,11 +1,7 @@
 import mongoose from 'mongoose';
 
 import answerSchema from './embedded/answer.js';
-import {
-  DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS,
-  HOME_GET_ALL_QUESTIONS,
-  USER_GET_ALL_QUESTIONS,
-} from '../constants/actions/question.js';
+import * as questionAction from '../constants/actions/question.js';
 
 const questionSchema = new mongoose.Schema({
   title: {
@@ -85,7 +81,7 @@ questionSchema.methods.getQuestionInformation = function (action) {
   };
 
   switch (action) {
-    case DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS:
+    case questionAction.DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
         user: {
@@ -94,7 +90,7 @@ questionSchema.methods.getQuestionInformation = function (action) {
         },
         field: this.field.fieldName,
       };
-    case USER_GET_ALL_QUESTIONS:
+    case questionAction.USER_GET_ALL_QUESTIONS:
       let answer = null;
       if (this.answer) {
         answer = {
@@ -111,7 +107,7 @@ questionSchema.methods.getQuestionInformation = function (action) {
         ...baseQuestion,
         answer,
       };
-    case HOME_GET_ALL_QUESTIONS:
+    case questionAction.HOME_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
         user: {

@@ -1,29 +1,30 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-
 import Department from '../../../models/department.js';
 import Field from '../../../models/field.js';
 
-// endpoint: /api/departments/:id/fields
-// method: GET
-// description: Lấy danh sách lĩnh vực của khoa bằng id
-export const fieldsHandler = catchAsyncErrors(async (req, res, next) => {
-  const department = req.foundDepartment;
+// Endpoint: /api/departments/:id/fields
+// Method: GET
+// Description: Lấy danh sách lĩnh vực của khoa bằng id
+export const handleGetFieldsOfDepartment = catchAsyncErrors(
+  async (req, res, next) => {
+    const department = req.foundDepartment;
 
-  const fields = await Field.find({ department, isActive: true })
-    .select('fieldName')
-    .lean();
+    const fields = await Field.find({ department, isActive: true })
+      .select('fieldName')
+      .lean();
 
-  res.json({
-    success: true,
-    fields,
-    code: 2039,
-  });
-});
+    res.json({
+      success: true,
+      fields,
+      code: 2039,
+    });
+  }
+);
 
-// endpoint: /api/departments
-// method: GET
-// description: Lấy danh sách khoa
-export const departmentsHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/departments
+// Method: GET
+// Description: Lấy danh sách khoa
+export const handleGetDepartments = catchAsyncErrors(async (req, res, next) => {
   const departments = await Department.find({ isActive: true })
     .select('departmentName')
     .lean();

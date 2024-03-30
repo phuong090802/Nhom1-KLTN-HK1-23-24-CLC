@@ -1,100 +1,129 @@
 import express from 'express';
 
+import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
+import { defaultPaginationParams } from '../../middlewares/query.js';
 import {
-  departmentHeadValidateField,
-  validateBeforeCreateOrUpdateFAQ,
-  validateBeforeUpdateOrDeleteFAQ,
-} from '../../middlewares/combine-validate.js';
-
-import {
-  validateCounsellorIdInParams,
-  validateFieldIdInBodyOfBelongToDepartment,
-  validateFieldIdInParams,
-} from '../../middlewares/validate.js';
-
-import {
-  addCounsellorToDepartment,
-  addFieldHandler,
-  counsellorsHandler,
-  createFAQHandler,
-  deleteFAQHandler,
-  faqsHandler,
-  fieldsHandler,
-  unapprovedAnswerExistsHandler,
-  unansweredQuestionHandler,
-  removeFieldOfCounsellor,
-  updateFAQHandler,
-  updateFieldHandler,
-  updateFieldToCounsellor,
-  updateIsEnabledCounsellorHandler,
-  updateStatusFieldHandler,
-} from '../../controllers/based-roles/department-head.js';
-
-import { validateRoleAndStatusDepartmentBeforeAccess } from '../../middlewares/combine-validate.js';
-import {
-  defaultPaginationParams,
-  departmentHeadLimitFilterRole,
-} from '../../middlewares/query.js';
-import {
-  optionalUploadFileToFirebaseHandler,
-  uploadImageOrDocumentHandler,
+  handleOptionalUploadFileToFirebase,
+  handleUploadImageOrDocument,
 } from '../../middlewares/upload-file.js';
+import {
+  handleCheckCounsellorBelongDepartment,
+  handleCheckDepartmentOfCounsellor,
+  handleCheckStatusDepartmentOfCounsellor,
+} from '../../middlewares/validate/based-roles/counsellor.js';
+import {
+  handleCheckFieldBelongToDepartment,
+  handleValidateFieldIdInBody,
+  handleValidateFieldIdInParams,
+} from '../../middlewares/validate/based-schemas/field.js';
+import { handleCheckStatusOfField } from '../../middlewares/validate/based-roles/department-head.js';
+import {
+  handleCheckFAQBelongDepartment,
+  validateFAQIdInParams,
+} from '../../middlewares/validate/based-schemas/faq.js';
+import {
+  handleValidateRoleUser,
+  handleValidateUserIdInParams,
+} from '../../middlewares/validate/based-schemas/user.js';
+import { handleCheckUnapprovedAnswerExists } from '../../controllers/based-roles/department-head/answer.js';
+import { handleCheckUnansweredQuestionExits } from '../../controllers/based-roles/department-head/question.js';
+import * as counsellorController from '../../controllers/based-roles/department-head/counsellor.js';
+import * as fieldController from '../../controllers/based-roles/department-head/field.js';
+import * as faqController from '../../controllers/based-roles/department-head/faq.js';
 
 const router = express.Router();
 
-router.use(validateRoleAndStatusDepartmentBeforeAccess('DEPARTMENT_HEAD'));
+// check status
+router.use(
+  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD'),
+  handleCheckDepartmentOfCounsellor,
+  handleCheckStatusDepartmentOfCounsellor
+);
 
 router
   .route('/faqs/:id')
   .put(
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
-    validateBeforeUpdateOrDeleteFAQ,
-    uploadImageOrDocumentHandler.single('file'),
-    validateBeforeCreateOrUpdateFAQ,
-    optionalUploadFileToFirebaseHandler('faqs'),
-    updateFAQHandler
+    handleUploadImageOrDocument.single('file'),
+    validateFAQIdInParams,
+    handleCheckFAQBelongDepartment,
+    handleValidateFieldIdInBody,
+    handleCheckFieldBelongToDepartment,
+    handleCheckStatusOfField,
+    handleOptionalUploadFileToFirebase('faqs'),
+    faqController.handleUpdateFAQ
   )
-  .delete(validateBeforeUpdateOrDeleteFAQ, deleteFAQHandler);
+  .delete(
+    validateFAQIdInParams,
+    handleCheckFAQBelongDepartment,
+    faqController.handleDeleteFAQ
+  );
 
-router.route('/faqs').get(defaultPaginationParams, faqsHandler).post(
-  // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
-  uploadImageOrDocumentHandler.single('file'),
-  validateFieldIdInBodyOfBelongToDepartment,
-  optionalUploadFileToFirebaseHandler('faqs'),
-  createFAQHandler
-);
+router
+  .route('/faqs')
+  .get(defaultPaginationParams, faqController.handleGetFAQs)
+  .post(
+    // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+    handleUploadImageOrDocument.single('file'),
+    handleValidateFieldIdInBody,
+    handleCheckFieldBelongToDepartment,
+    handleOptionalUploadFileToFirebase('faqs'),
+    faqController.handleCreateFAQ
+  );
 
-router.route('/answers/unapproved-answer-exists').get(unapprovedAnswerExistsHandler);
+router
+  .route('/answers/unapproved-answer-exists')
+  .get(handleCheckUnapprovedAnswerExists);
 
-router.route('/questions/unanswered-question').get(unansweredQuestionHandler);
+router
+  .route('/questions/unanswered-question')
+  .get(handleCheckUnansweredQuestionExits);
 
 router
   .route('/counsellors/:id')
-  .put(validateCounsellorIdInParams, updateFieldToCounsellor)
-  .delete(
-    validateCounsellorIdInParams,
-    validateFieldIdInBodyOfBelongToDepartment,
-    removeFieldOfCounsellor
+  .put(
+    handleValidateUserIdInParams,
+    handleValidateRoleUser('COUNSELLOR'),
+    handleCheckCounsellorBelongDepartment,
+    counsellorController.handleAddFieldToCounsellor
   )
-  .patch(validateCounsellorIdInParams, updateIsEnabledCounsellorHandler);
+  .delete(
+    handleValidateUserIdInParams,
+    handleValidateRoleUser('COUNSELLOR'),
+    handleCheckCounsellorBelongDepartment,
+    handleValidateFieldIdInBody,
+    handleCheckFieldBelongToDepartment,
+    counsellorController.handleRemoveFieldOfCounsellor
+  )
+  .patch(
+    handleValidateUserIdInParams,
+    handleValidateRoleUser('COUNSELLOR'),
+    handleCheckCounsellorBelongDepartment,
+    counsellorController.handleUpdateStatusOfCounsellor
+  );
 
 router
   .route('/counsellors')
-  .get(
-    defaultPaginationParams,
-    departmentHeadLimitFilterRole,
-    counsellorsHandler
-  )
-  .post(addCounsellorToDepartment);
+  .get(defaultPaginationParams, counsellorController.handleGetCounsellors)
+  .post(counsellorController.handleCreateCounsellor);
 
 router
   .route('/fields/:id')
-  .put(validateFieldIdInParams, updateFieldHandler)
-  .patch(departmentHeadValidateField, updateStatusFieldHandler);
+  .put(
+    handleValidateFieldIdInParams,
+    handleCheckFieldBelongToDepartment,
+    handleCheckStatusOfField,
+    fieldController.handleRenameField
+  )
+  .patch(
+    handleValidateFieldIdInParams,
+    handleCheckFieldBelongToDepartment,
+    fieldController.handleUpdateStatusOfField
+  );
 
 router
   .route('/fields')
-  .get(defaultPaginationParams, fieldsHandler)
-  .post(addFieldHandler);
+  .get(defaultPaginationParams, fieldController.handleGetFields)
+  .post(fieldController.handleCreateField);
 
 export default router;

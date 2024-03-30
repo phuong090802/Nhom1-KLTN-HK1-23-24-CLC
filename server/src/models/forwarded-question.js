@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const forwardedQuestionSchema = mongoose.Schema(
+const forwardedQuestionSchema = new mongoose.Schema(
   {
     question: {
       type: mongoose.Schema.Types.ObjectId,

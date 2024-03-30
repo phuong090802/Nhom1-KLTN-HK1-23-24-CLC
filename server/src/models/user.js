@@ -1,19 +1,13 @@
-import bcrypt from 'bcryptjs';
-import crypto from 'crypto';
-import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import validator from 'validator';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 
 import RefreshToken from './refresh-token.js';
-
-import {
-  ADMIN_GET_USER,
-  LOGIN,
-  ME,
-  REFRESH_TOKEN,
-} from '../constants/actions/user.js';
-import { generateOTP } from '../util/auth/email-verify.js';
-import ErrorHandler from '../util/error/http-error-handler.js';
+import { generateOTP } from '../utils/auth/email-verify.js';
+import ErrorHandler from '../utils/error/http-error-handler.js';
+import * as userAction from '../constants/actions/user.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -222,15 +216,15 @@ userSchema.methods.getUserInformation = function (action) {
   };
 
   switch (action) {
-    case LOGIN:
-    case REFRESH_TOKEN:
-    case ME:
+    case userAction.LOGIN:
+    case userAction.REFRESH_TOKEN:
+    case userAction.ME:
       return {
         ...baseUser,
         fullName: this.fullName,
         avatar: this.avatar.url,
       };
-    case ADMIN_GET_USER:
+    case userAction.ADMIN_GET_USER:
       return {
         ...baseUser,
         isEnabled: this.isEnabled,

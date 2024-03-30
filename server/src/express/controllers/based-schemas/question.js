@@ -1,27 +1,26 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-
 import Question from '../../../models/question.js';
-
-import QueryAPI from '../../../util/db/query-api.js';
-import paginate from '../../../util/db/paginate.js';
-
+import QueryAPI from '../../../utils/db/query-api.js';
+import paginate from '../../../utils/db/paginate.js';
 import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
-import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import queryFiltersLimit from '../../../utils/db/query-filters-limit.js';
 
-// endpoint: /api/questions/:id
-// method: PUT
-// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
-export const updateViewsHandler = catchAsyncErrors(async (req, res, next) => {
-  const question = req.foundQuestion;
-  question.views += 1;
-  await question.save();
-  res.status(204);
-});
+// Endpoint: /api/questions/:id
+// Method: PUT
+// Description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+export const handleUpdateViewsOfQuestion = catchAsyncErrors(
+  async (req, res, next) => {
+    const question = req.foundQuestion;
+    question.views += 1;
+    await question.save();
+    res.status(204);
+  }
+);
 
-// endpoint: /api/questions
-// method: GET
-// description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
-export const questionsHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/questions
+// Method: GET
+// Description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const query = Question.find()
     .populate({
       path: 'answer',

@@ -47,4 +47,5 @@ refreshTokenSchema.methods.generateRefreshToken = async function () {
 };
 
 const RefreshToken = mongoose.model('RefreshToken', refreshTokenSchema);
+
 export default RefreshToken;

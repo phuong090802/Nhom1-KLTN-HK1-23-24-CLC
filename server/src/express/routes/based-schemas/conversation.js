@@ -1,26 +1,30 @@
 import express from 'express';
 
-import { isAuthenticatedHandler } from '../../middlewares/auth.js';
+import { handleAuthentication } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
-import { validateConversationGetAllMessage } from '../../middlewares/combine-validate.js';
-
 import {
-  conversationsHandler,
-  messagesInConversationHandler,
-} from '../../controllers/based-schemas/conversation.js';
+  handleCheckUserIsInParticipatesConversation,
+  handleCheckUserIsNotInDeletedByConversation,
+  handleValidateConversationIdInParams,
+} from '../../middlewares/validate/based-schemas/conversation.js';
+import * as conversationController from '../../controllers/based-schemas/conversation.js';
 
 const router = express.Router();
 
-router.use(isAuthenticatedHandler);
+router.use(handleAuthentication);
 
 router
   .route('/:id')
   .get(
-    validateConversationGetAllMessage,
+    handleValidateConversationIdInParams,
+    handleCheckUserIsInParticipatesConversation,
+    handleCheckUserIsNotInDeletedByConversation,
     defaultPaginationParams,
-    messagesInConversationHandler
+    conversationController.handleGetMessagesInConversation
   );
 
-router.route('/').get(defaultPaginationParams, conversationsHandler);
+router
+  .route('/')
+  .get(defaultPaginationParams, conversationController.handleGetConversations);
 
 export default router;

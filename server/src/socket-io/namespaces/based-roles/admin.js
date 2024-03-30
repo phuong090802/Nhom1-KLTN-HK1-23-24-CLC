@@ -1,28 +1,30 @@
-import {
-  authorizeRolesHandler,
-  isAuthenticatedHandler,
-} from '../../middlewares/auth.js';
-
-import {
-  validateDepartmentNameForCreate,
-  validateDepartmentNameForUpdate,
-} from '../../controllers/based-roles/admin.js';
+import * as authMiddleware from '../../middlewares/auth.js';
+import * as departmentController from '../../controllers/based-roles/admin/department.js';
 
 export default function admin(io) {
   io.of('/admin')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('ADMIN'))
+    .use(authMiddleware.handleAuthentication)
+    .use(authMiddleware.handleAuthorization('ADMIN'))
     .on('connection', (socket) => {
       socket.on(
         'department:validate-department-name:create',
         (payload, callback) => {
-          validateDepartmentNameForCreate(socket, payload, callback);
+          departmentController.handleValidateDepartmentNameForCreate(
+            socket,
+            payload,
+            callback
+          );
         }
       );
+
       socket.on(
         'department:validate-department-name:update',
         (payload, callback) => {
-          validateDepartmentNameForUpdate(socket, payload, callback);
+          departmentController.handleValidateDepartmentNameForUpdate(
+            socket,
+            payload,
+            callback
+          );
         }
       );
     });

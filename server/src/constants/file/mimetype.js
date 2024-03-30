@@ -9,8 +9,3 @@ const mimetype = {
 };
 
 export default mimetype;
-
-// export const ext = {
-//   image: ['.png', '.jpeg', '.jpg'],
-//   document: ['.doc', '.docx', '.pdf'],
-// };

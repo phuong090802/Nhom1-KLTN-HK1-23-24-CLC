@@ -1,25 +1,23 @@
 import express from 'express';
 
-import {
-  validateDepartmentIdInParams,
-  validateStatusOfDepartment,
-} from '../../middlewares/validate.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
-
-import {
-  departmentsHandler,
-  fieldsHandler,
-} from '../../controllers/based-schemas/department.js';
+import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-schemas/department.js';
+import { handleValidateDepartmentIdInParams } from '../../middlewares/validate/based-schemas/department.js';
+import * as departmentController from '../../controllers/based-schemas/department.js';
 
 const router = express.Router();
 
 router.get(
   '/:id/fields',
-  validateDepartmentIdInParams,
-  validateStatusOfDepartment,
-  fieldsHandler
+  handleValidateDepartmentIdInParams,
+  handleCheckStatusOfDepartment,
+  departmentController.handleGetFieldsOfDepartment
 );
 
-router.get('/', defaultPaginationParams, departmentsHandler);
+router.get(
+  '/',
+  defaultPaginationParams,
+  departmentController.handleGetDepartments
+);
 
 export default router;

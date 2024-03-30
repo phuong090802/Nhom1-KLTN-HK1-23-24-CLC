@@ -1,27 +1,23 @@
 import express from 'express';
 
-import { isAuthenticatedHandler } from '../../middlewares/auth.js';
+import { handleAuthentication } from '../../middlewares/auth.js';
 import {
-  requiredUploadFileToFirebaseHandler,
-  uploadImageHandler,
+  handleRequiredUploadFileToFirebase,
+  handleUploadImage,
 } from '../../middlewares/upload-file.js';
-
-import {
-  updateAvatar,
-  updateProfile,
-} from '../../controllers/based-schemas/user.js';
+import * as userController from '../../controllers/based-schemas/user.js';
 
 const router = express.Router();
 
-router.use(isAuthenticatedHandler);
+router.use(handleAuthentication);
 
 router
   .route('/')
-  .put(updateProfile)
+  .put(userController.handleUpdateProfile)
   .patch(
-    uploadImageHandler.single('file'),
-    requiredUploadFileToFirebaseHandler('users'),
-    updateAvatar
+    handleUploadImage.single('file'),
+    handleRequiredUploadFileToFirebase('users'),
+    userController.handleUpdateAvatar
   );
 
 export default router;

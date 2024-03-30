@@ -1,54 +1,59 @@
 import jwt from 'jsonwebtoken';
 
 import catchAsyncErrors from './catch-async-errors.js';
-
 import User from '../../models/user.js';
+import ErrorHandler from '../../utils/error/http-error-handler.js';
+import rolesMapper from '../../constants/mapper/roles.js';
 
-import ErrorHandler from '../../util/error/http-error-handler.js';
+// handle authentication
+export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
+  const headerAuth = req.headers.authorization;
+  // console.log(authHeader);
 
-// Authentication user
-export const isAuthenticatedHandler = catchAsyncErrors(
-  async (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    // console.log(authHeader);
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return next(
-        new ErrorHandler(
-          401,
-          'Đăng nhập trước khi truy cập vào tài nguyên này',
-          4015
-        )
-      );
-    }
-
-    const token = authHeader.split(' ')[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.id);
-    next();
+  if (!headerAuth || !headerAuth.startsWith('Bearer ')) {
+    const msg = 'Đăng nhập trước khi truy cập vào tài nguyên này';
+    return next(new ErrorHandler(401, msg, 4015));
   }
-);
 
-// Authorization user by role
-export const authorizeRolesHandler = (...roles) => {
+  const token = headerAuth.split(' ')[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  req.user = await User.findById(decoded.id);
+
+  next();
+});
+
+// handleAuthorization
+export const handleAuthorization = (...roles) => {
   return catchAsyncErrors((req, res, next) => {
     const role = req.user.role;
+
     if (!roles.includes(role)) {
-      return next(
-        new ErrorHandler(
-          403,
-          `Role '${role}' không được phép truy cập vào tài nguyên này`,
-          4016
-        )
-      );
+      const msg = `${rolesMapper[role]} không được phép truy cập vào tài nguyên này`;
+      return next(new ErrorHandler(403, msg, 4016));
     }
+
     next();
   });
 };
 
-// Combine authentication user + authorization user by role
-const authHandler = (...roles) => [
-  isAuthenticatedHandler,
-  authorizeRolesHandler(...roles),
+export const handleAuthenticationAndAuthorization = (...roles) => [
+  handleAuthentication,
+  handleAuthorization(...roles),
 ];
-export default authHandler;
+
+// Những role bị chặn (trong param)
+// tránh tình trạng admin upload trạng thái của bản thân
+// tránh tình trạng department upload trạng thái của bản thân hoặc department khác
+export const handlePreventRoles = (...roles) => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const user = req.foundUser;
+
+    if (roles.includes(user.role)) {
+      const msg = 'Thao tác không hợp lệ. Lỗi quyền truy cập';
+      return next(new ErrorHandler(404, msg, 4069));
+    }
+
+    req.foundUser = user;
+    next();
+  });
+};

@@ -1,11 +1,11 @@
-import User from '../../models/user.js';
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../util/error/socket-io-error-handler.js';
+import ErrorHandler from '../../utils/error/socket-io-error-handler.js';
+import User from '../../models/user.js';
 
 // namespace: /auth
 // listen event (ack): validate-email
 // description: xác thực email (cần xác thực người dùng)
-export const validateEmail = catchAsyncErrors(
+export const handleValidateEmail = catchAsyncErrors(
   async (socket, payload, callback) => {
     const user = socket.user;
 
@@ -35,7 +35,7 @@ export const validateEmail = catchAsyncErrors(
 // namespace: /auth
 // listen event (ack): verify-email
 // description: xác nhận email (cần xác thực người dùng)
-export const verifyEmail = catchAsyncErrors(
+export const handleVerifyEmail = catchAsyncErrors(
   async (socket, payload, callback) => {
     const user = socket.user;
     const { otp } = payload;
@@ -60,7 +60,7 @@ export const verifyEmail = catchAsyncErrors(
 // namespace: /
 // listen event (ack): register:validate-email
 // description: Kiểm tra email trước khi tạo tài khoản
-export const validateEmailForRegister = catchAsyncErrors(
+export const handleValidateEmailForRegister = catchAsyncErrors(
   async (socket, payload, callback) => {
     const { email } = payload;
 
@@ -83,7 +83,7 @@ export const validateEmailForRegister = catchAsyncErrors(
 // namespace: /
 // listen event (ack): register:validate-phone-number
 // description: Kiểm tra số điện thoại trước khi tạo tài khoản
-export const validatePhoneNumberForRegister = catchAsyncErrors(
+export const handleValidatePhoneNumberForRegister = catchAsyncErrors(
   async (socket, payload, callback) => {
     const { phoneNumber } = payload;
 
@@ -104,30 +104,32 @@ export const validatePhoneNumberForRegister = catchAsyncErrors(
 // namespace: /
 // listen event (ack): verify-otp
 // description: kiểm tra mã xác thực trước khi nhập mã xác thực để đặt lại mật khẩu
-export const verifyOTP = catchAsyncErrors(async (socket, payload, callback) => {
-  const { email, otp } = payload;
+export const handleVerifyOTP = catchAsyncErrors(
+  async (socket, payload, callback) => {
+    const { email, otp } = payload;
 
-  const user = await User.findOne({
-    email: { $regex: new RegExp(email, 'i') },
-    'forgotPassword.otp': otp,
-    'forgotPassword.otpExpiresAt': { $gt: Date.now() },
-  });
+    const user = await User.findOne({
+      email: { $regex: new RegExp(email, 'i') },
+      'forgotPassword.otp': otp,
+      'forgotPassword.otpExpiresAt': { $gt: Date.now() },
+    });
 
-  if (!user) {
-    throw new ErrorHandler('Mã xác thực không hợp lệ', 4039);
+    if (!user) {
+      throw new ErrorHandler('Mã xác thực không hợp lệ', 4039);
+    }
+
+    callback({
+      success: true,
+      message: 'Mã xác thực hợp lệ',
+      code: 2024,
+    });
   }
-
-  callback({
-    success: true,
-    message: 'Mã xác thực hợp lệ',
-    code: 2024,
-  });
-});
+);
 
 // namespace: /
 // listen event (ack): forgot-password:validate-email
 // description: Kiểm tra email trước khi yêu cầu quên mật khẩu
-export const validateEmailForForgotPassword = catchAsyncErrors(
+export const handleValidateEmailForForgotPassword = catchAsyncErrors(
   async (socket, payload, callback) => {
     const { email } = payload;
 

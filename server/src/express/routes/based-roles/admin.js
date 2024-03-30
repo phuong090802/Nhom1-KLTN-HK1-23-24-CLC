@@ -1,90 +1,100 @@
 import express from 'express';
 
-import authHandler from '../../middlewares/auth.js';
+import {
+  handleAuthenticationAndAuthorization,
+  handlePreventRoles,
+} from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/query.js';
 import {
-  permissionsCannotBeModified,
-  validateDepartmentIdInParams,
-  validateFileInFormData,
-  validateRoleInBody,
-  validateUserIdInBodyWithRole,
-  validateUserIdInParams,
-} from '../../middlewares/validate.js';
-
+  handleRequiredFileInFormData,
+  handleUploadFileCSV,
+} from '../../middlewares/upload-file.js';
+import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-roles/admin.js';
 import {
-  addCounsellorToDepartmentHandler,
-  addDepartmentHandler,
-  addStaffHandler,
-  counsellorsInDepartmentHandler,
-  departmentsHandler,
-  updateDepartmentHandler,
-  updateDepartmentHeadHandler,
-  updateIsEnabledUserHandler,
-  updateStatusDepartmentHandler,
-  uploadCounsellorHandler,
-  userHandler,
-  usersHandler,
-} from '../../controllers/based-roles/admin.js';
+  handleValidateDepartmentIdInBody,
+  handleValidateDepartmentIdInParams,
+} from '../../middlewares/validate/based-schemas/department.js';
 import {
-  adminValidateDepartmentInBody,
-  adminValidateDepartmentInParams,
-} from '../../middlewares/combine-validate.js';
-import { uploadCSVHandler } from '../../middlewares/upload-file.js';
+  handleValidateRoleUser,
+  handleValidateUserIdInBody,
+  handleValidateUserIdInParams,
+} from '../../middlewares/validate/based-schemas/user.js';
+import { handleValidateRoleInBody } from '../../middlewares/validate/role.js';
+import * as counsellorController from '../../controllers/based-roles/admin/counsellor.js';
+import * as departmentController from '../../controllers/based-roles/admin/department.js';
+import * as userController from '../../controllers/based-roles/admin/user.js';
+import { handleCreateStaff } from '../../controllers/based-roles/admin/staff.js';
 
 const router = express.Router();
 
-router.use(authHandler('ADMIN'));
+router.use(handleAuthenticationAndAuthorization('ADMIN'));
 
 router
   .route('/users/:id')
-  .get(validateUserIdInParams, userHandler)
+  .get(handleValidateUserIdInParams, userController.handleGetUser)
   .put(
-    validateUserIdInParams,
-    permissionsCannotBeModified('ADMIN'),
-    updateIsEnabledUserHandler
+    handleValidateUserIdInParams,
+    handlePreventRoles('ADMIN'),
+    userController.handleUpdateStatusOfUser
   );
 
-router.route('/users').get(defaultPaginationParams, usersHandler);
+router
+  .route('/users')
+  .get(defaultPaginationParams, userController.handleGetUsers);
 
 router.get(
   '/departments/:id/counsellors',
-  validateDepartmentIdInParams,
+  handleValidateDepartmentIdInParams,
   defaultPaginationParams,
-  counsellorsInDepartmentHandler
+  departmentController.handleGetCounsellorsInDepartment
 );
 
 router
   .route('/departments/:id')
-  .put(adminValidateDepartmentInParams, updateDepartmentHandler)
-  .patch(validateDepartmentIdInParams, updateStatusDepartmentHandler);
+  .put(
+    handleValidateDepartmentIdInParams,
+    handleCheckStatusOfDepartment,
+    departmentController.handleRenameDepartment
+  )
+  .patch(
+    handleValidateDepartmentIdInParams,
+    departmentController.handleUpdateStatusOfDepartment
+  );
 
 router
   .route('/departments')
-  .post(addDepartmentHandler)
-  .get(defaultPaginationParams, departmentsHandler)
+  .post(departmentController.handleCreateDepartment)
+  .get(defaultPaginationParams, departmentController.handleGetDepartments)
   .put(
-    adminValidateDepartmentInBody,
-    validateUserIdInBodyWithRole('COUNSELLOR'),
-    updateDepartmentHeadHandler
+    handleValidateDepartmentIdInBody,
+    handleCheckStatusOfDepartment,
+    handleValidateUserIdInBody,
+    handleValidateRoleUser('COUNSELLOR'),
+    departmentController.handleChangeDepartmentHead
   );
 
 router
   .route('/staffs')
-  .post(validateRoleInBody('COUNSELLOR', 'SUPERVISOR'), addStaffHandler);
+  .post(
+    handleValidateRoleInBody('COUNSELLOR', 'SUPERVISOR'),
+    handleCreateStaff
+  );
 
 router.post(
   '/counsellors/upload',
-  uploadCSVHandler.single('file'),
-  validateFileInFormData,
-  uploadCounsellorHandler
+  handleUploadFileCSV.single('file'),
+  handleRequiredFileInFormData,
+  counsellorController.handleCreateCounsellorFromCSV
 );
 
 router
   .route('/counsellors')
   .post(
-    validateUserIdInBodyWithRole('COUNSELLOR'),
-    adminValidateDepartmentInBody,
-    addCounsellorToDepartmentHandler
+    handleValidateUserIdInBody,
+    handleValidateRoleUser('COUNSELLOR'),
+    handleValidateDepartmentIdInBody,
+    handleCheckStatusOfDepartment,
+    counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
   );
 
 export default router;

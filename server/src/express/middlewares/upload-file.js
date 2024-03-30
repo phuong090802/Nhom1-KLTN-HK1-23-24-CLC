@@ -4,16 +4,13 @@ import { nanoid } from 'nanoid';
 import path from 'path';
 
 import catchAsyncErrors from './catch-async-errors.js';
-
 import storage from '../../config/firebase-init.js';
-
 import mimetype from '../../constants/file/mimetype.js';
-
-import ErrorHandler from '../../util/error/http-error-handler.js';
-import { isSupportedMimetype } from '../../util/validation.js';
+import ErrorHandler from '../../utils/error/http-error-handler.js';
+import { isSupportedMimetype } from '../../utils/validation.js';
 
 // handle limit file size and check ext of file (image or document)
-export const uploadImageOrDocumentHandler = multer({
+export const handleUploadImageOrDocument = multer({
   limits: { fieldSize: 2 * 1024 * 1024 }, // 2MB
   fileFilter: function (req, file, cb) {
     if (isSupportedMimetype([...mimetype.image, ...mimetype.document], file)) {
@@ -25,7 +22,7 @@ export const uploadImageOrDocumentHandler = multer({
 });
 
 // handle upload file to firebase with input folder (optional)
-export const optionalUploadFileToFirebaseHandler = (folder) => {
+export const handleOptionalUploadFileToFirebase = (folder) => {
   return catchAsyncErrors(async (req, res, next) => {
     const uploadedFile = {
       ref: null,
@@ -49,7 +46,7 @@ export const optionalUploadFileToFirebaseHandler = (folder) => {
 };
 
 // handle upload file to firebase with input folder (required)
-export const requiredUploadFileToFirebaseHandler = (folder) => {
+export const handleRequiredUploadFileToFirebase = (folder) => {
   return catchAsyncErrors(async (req, res, next) => {
     if (!req.file) {
       // return next error
@@ -73,7 +70,7 @@ export const requiredUploadFileToFirebaseHandler = (folder) => {
 };
 
 // handle limit file size and check ext of file (image)
-export const uploadImageHandler = multer({
+export const handleUploadImage = multer({
   limits: { fieldSize: 2 * 1024 * 1024 }, // 2MB
   fileFilter: function (req, file, cb) {
     if (isSupportedMimetype([...mimetype.image], file)) {
@@ -85,7 +82,7 @@ export const uploadImageHandler = multer({
 });
 
 // handle limit file size and check ext of file (.csv)
-export const uploadCSVHandler = multer({
+export const handleUploadFileCSV = multer({
   limits: { fieldSize: 2 * 1024 * 1024 }, // 2MB
   fileFilter: function (req, file, cb) {
     if (file.mimetype === mimetype.csv) {
@@ -95,3 +92,12 @@ export const uploadCSVHandler = multer({
     }
   },
 });
+
+export const handleRequiredFileInFormData = catchAsyncErrors(
+  async (req, res, next) => {
+    if (!req.file) {
+      return next(new ErrorHandler(400, 'Không tìm thấy file', 4083));
+    }
+    next();
+  }
+);

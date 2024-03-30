@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-import { hasArrayMaxLength } from '../util/validation.js';
-
-import Message from './message.js';
+import { hasArrayMaxLength } from '../utils/validation.js';
 
 const conversationSchema = new mongoose.Schema({
   participates: [

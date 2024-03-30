@@ -1,14 +1,12 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-
-import QueryAPI from '../../../util/db/query-api.js';
-import paginate from '../../../util/db/paginate.js';
-
+import QueryAPI from '../../../utils/db/query-api.js';
+import paginate from '../../../utils/db/paginate.js';
 import FAQ from '../../../models/faq.js';
 
-// endpoint: /api/faqs
-// method: GET
-// description: Lấy danh sách câu hỏi chung (phân trang, lọc theo khoa, lĩnh vực của khoa, tìm kiếm)
-export const faqsHandler = catchAsyncErrors(async (req, res, next) => {
+// Endpoint: /api/faqs
+// Method: GET
+// Description: Lấy danh sách câu hỏi chung (phân trang, lọc theo khoa, lĩnh vực của khoa, tìm kiếm)
+export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
   const query = FAQ.find()
     .populate({ path: 'field', select: '-_id fieldName' })
     .populate({ path: 'department', select: '-_id departmentName' })

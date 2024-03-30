@@ -1,5 +1,5 @@
 import attribute from '../../constants/mapper/attribute.js';
-import ErrorHandler from '../../util/error/socket-io-error-handler.js';
+import ErrorHandler from '../../utils/error/socket-io-error-handler.js';
 
 // handle error if occurred when handler executing
 const catchAsyncErrors = (handler) => (socket, payload, callback) => {

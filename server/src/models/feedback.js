@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import answerSchema from './embedded/answer.js';
 
-const feedbackSchema = mongoose.Schema({
+const feedbackSchema = new mongoose.Schema({
   content: {
     type: String,
     // default content if it empty or null

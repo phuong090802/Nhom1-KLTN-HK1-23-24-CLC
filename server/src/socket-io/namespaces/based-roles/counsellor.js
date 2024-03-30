@@ -1,28 +1,21 @@
-import {
-  authorizeRolesHandler,
-  isAuthenticatedHandler,
-} from '../../middlewares/auth.js';
-import {
-  validateDepartment,
-  validateStatusDepartment,
-} from '../../middlewares/validate.js';
-
-import { createFeedback } from '../../controllers/based-roles/department-head.js';
-import { createAnswer } from '../../controllers/based-roles/counsellor.js';
+import * as authMiddleware from '../../middlewares/auth.js';
+import * as departmentValidateMiddleware from '../../middlewares/validate/based-schemas/department.js';
+import { handleCreateFeedback } from '../../controllers/based-roles/department-head/feedback.js';
+import { handleCreateAnswer } from '../../controllers/based-roles/counsellor/answer.js';
 
 export default function counsellor(io) {
   io.of('/counsellor')
-    .use(isAuthenticatedHandler)
-    .use(authorizeRolesHandler('DEPARTMENT_HEAD', 'COUNSELLOR'))
-    .use(validateDepartment)
-    .use(validateStatusDepartment)
+    .use(authMiddleware.handleAuthentication)
+    .use(authMiddleware.handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'))
+    .use(departmentValidateMiddleware.handleValidateDepartment)
+    .use(departmentValidateMiddleware.handleCheckStatusOfDepartment)
     .on('connection', (socket) => {
       socket.on('feedback:create', (payload, callback) =>
-        createFeedback(socket, payload, callback)
+        handleCreateFeedback(socket, payload, callback)
       );
 
       socket.on('answer:create', (payload, callback) => {
-        createAnswer(socket, payload, callback);
+        handleCreateAnswer(socket, payload, callback);
       });
     });
 }

@@ -3,29 +3,25 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
+import handleError from './middlewares/error.js';
 import { apiCorsOptions } from '../config/cors.js';
-
 import auth from './routes/auth.js';
-
 import admin from './routes/based-roles/admin.js';
 import userRoleBased from './routes/based-roles/user.js';
 import departmentHead from './routes/based-roles/department-head.js';
 import counsellor from './routes/based-roles/counsellor.js';
-
 import question from './routes/based-schemas/question.js';
 import basedUserSchema from './routes/based-schemas/user.js';
 import department from './routes/based-schemas/department.js';
 import conversation from './routes/based-schemas/conversation.js';
 import faq from './routes/based-schemas/faq.js';
-
-import errorHandler from './middlewares/error-handler.js';
+import statistic from './routes/statistic.js';
 
 const app = express();
 
 app.use(cors(apiCorsOptions));
 
 // for DEV mode
-
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
   app.use(
     morgan((tokens, req, res) => {
@@ -52,7 +48,8 @@ app.use('/api/departments', department);
 app.use('/api/questions', question);
 app.use('/api/conversations', conversation);
 app.use('/api/faqs', faq);
+app.use('/api/statistic', statistic);
 
-app.use(errorHandler);
+app.use(handleError);
 
 export default app;

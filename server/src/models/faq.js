@@ -1,8 +1,5 @@
 import mongoose from 'mongoose';
 
-import Department from './department.js';
-import Field from './field.js';
-
 const faqSchema = new mongoose.Schema({
   question: {
     type: String,

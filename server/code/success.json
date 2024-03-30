@@ -384,8 +384,8 @@
     {
       "code": "2063",
       "message": "",
-      "file": "",
-      "detail": ""
+      "file": "express/controllers/statistics/department.js",
+      "detail": "Thống kê phòng ban thành công"
     },
     {
       "code": "2064",
