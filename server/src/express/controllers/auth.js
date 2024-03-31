@@ -175,7 +175,7 @@ export const handleLogin = catchAsyncErrors(async (req, res, next) => {
 
   const user = await User.findOne({ phoneNumber: username })
     .select('+password')
-    .populate({ path: 'counsellor.department', select: '-_id departmentName' });
+    .populate({ path: 'counsellor.department', select: '_id departmentName' });
 
   if (!user) {
     return next(

@@ -203,7 +203,7 @@ userSchema.methods.getUserInformation = function (action) {
   let department = null;
 
   if (this.counsellor.department) {
-    department = this.counsellor.department.departmentName;
+    department = this.counsellor.department;
   }
 
   const baseUser = {
