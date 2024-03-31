@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
-import { defaultPaginationParams } from '../../middlewares/query.js';
+import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleOptionalUploadFileToFirebase,
   handleUploadImageOrDocument,

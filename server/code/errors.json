@@ -476,10 +476,12 @@
     },
     {
       "code": "4095",
+      "message": "",
       "detail": ""
     },
     {
       "code": "4096",
+      "message": "Tháng phải nằm trong khoảng từ 1 đến 12",
       "detail": ""
     },
     {
@@ -518,7 +520,8 @@
     },
     {
       "code": "4104",
-      "message": "Lỗi xóa câu hỏi chung. Vui lòng thử lại"
+      "message": "Lỗi xóa câu hỏi chung. Vui lòng thử lại",
+      "detail": ""
     },
     {
       "code": "4105",
@@ -532,7 +535,7 @@
     },
     {
       "code": "4107",
-      "message": "",
+      "message": "Tuần phải nằm trong khoảng từ 1 đến 4",
       "detail": ""
     },
     {

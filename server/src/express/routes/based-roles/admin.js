@@ -8,7 +8,7 @@ import {
   handleAuthenticationAndAuthorization,
   handlePreventRoles,
 } from '../../middlewares/auth.js';
-import { defaultPaginationParams } from '../../middlewares/query.js';
+import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleRequiredFileInFormData,
   handleUploadFileCSV,

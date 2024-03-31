@@ -3,7 +3,7 @@ import express from 'express';
 import * as feedbackController from '../../controllers/based-roles/counsellor/feedback.js';
 import * as questionController from '../../controllers/based-roles/counsellor/question.js';
 import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
-import { defaultPaginationParams } from '../../middlewares/query.js';
+import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,

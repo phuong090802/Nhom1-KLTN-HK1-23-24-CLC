@@ -5,6 +5,7 @@ import User from '../../../models/user.js';
 import Question from '../../../models/question.js';
 import QueryAPI from '../../../utils/db/query-api.js';
 import paginate from '../../../utils/db/paginate.js';
+import { convertTimeAndGenerateRangesForStatistic } from '../../../utils/generate/time-converter.js';
 
 // Endpoint: /api/statistic/departments/:id
 // Method: GET
@@ -14,18 +15,54 @@ export const handleStatisticDepartment = catchAsyncErrors(
     const department = req.foundDepartment;
 
     // validate
-    const { timeUnit, timestamp } = req.body;
+    const { timeUnit, latestTime } = req.body;
 
-    const current = new Date();
-    const currentYear = current.getFullYear();
+    const ranges = convertTimeAndGenerateRangesForStatistic(
+      timeUnit,
+      latestTime
+    );
 
-    const offset = currentYear - timestamp;
+    const departmentStatistic = [];
 
-    // begin: thời gian hiện tại
-    // end: thời gian hiện tại + timestamp
-    // lặp qua và tìm trong db
-    // push vào
-    // res
+    await Promise.all(
+      ranges.map(async (range) => {
+        const { start, end } = range;
+        // console.log(start.toLocaleDateString(), '-', end.toLocaleDateString());
+        // console.log(start, '-', end);
+        const query = {
+          department,
+          createdAt: {
+            $gte: start,
+            $lte: end,
+          },
+        };
+
+        const countOfQuestions = await Question.countDocuments(query);
+
+        const countOfAnsweredQuestions = await Question.countDocuments({
+          answer: { $ne: null },
+          status: {
+            $in: ['publicly-answered-and-approved', 'privately-answered'],
+          },
+          ...query,
+        });
+
+        departmentStatistic.push({
+          date: {
+            start,
+            end,
+          },
+          countOfQuestions,
+          countOfAnsweredQuestions,
+        });
+      })
+    );
+
+    res.json({
+      success: true,
+      departmentStatistic,
+      code: 2065,
+    });
   }
 );
 

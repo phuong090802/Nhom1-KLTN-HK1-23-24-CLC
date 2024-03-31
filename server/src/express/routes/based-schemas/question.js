@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { defaultPaginationParams } from '../../middlewares/query.js';
+import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleValidateQuestionIdInParams,
   handleValidateStatusOfQuestion,

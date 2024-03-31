@@ -1,4 +1,4 @@
-import catchAsyncErrors from './catch-async-errors.js';
+import catchAsyncErrors from '../catch-async-errors.js';
 
 // set default page and size for pagination
 export const defaultPaginationParams = catchAsyncErrors((req, res, next) => {
