@@ -3,337 +3,280 @@
     {
       "code": "2001",
       "message": "Tạo tài khoản thành công",
-      "file": "express/controllers/auth.js",
       "detail": ""
     },
     {
       "code": "2002",
       "message": "Email khả dụng",
-      "file": "socket-io/controllers/auth.js",
       "detail": "Kiểm tra email trước khi tạo tài khoản"
     },
     {
       "code": "2003",
       "message": "Số điện thoại khả dụng",
-      "file": "socket-io/controllers/auth.js",
       "detail": "Kiểm tra số điện thoại trước khi tạo tài khoản"
     },
     {
       "code": "2004",
       "message": "Đăng xuất thành công",
-      "file": "express/controllers/auth.js",
       "detail": ""
     },
     {
       "code": "2005",
       "message": "",
-      "file": "express/controllers/auth.js",
       "detail": "Lấy thông tin cá nhân thành công"
     },
     {
       "code": "2006",
       "message": "Đã gửi email đến: ${user.email}",
-      "file": "express/controllers/auth.js",
       "detail": "Gửi OTP khi yêu cầu đặt lại mật khẩu thành công"
     },
     {
       "code": "2007",
       "message": "",
-      "file": "express/controllers/auth.js",
       "detail": "Xác thực OTP sau khi yêu cầu đặt lại mật khẩu thành công"
     },
     {
       "code": "2008",
       "message": "Đặt lại mật khẩu thành công",
-      "file": "express/controllers/auth.js",
       "detail": ""
     },
     {
       "code": "2009",
       "message": "Email hợp lệ",
-      "file": "socket-io/controllers/auth.js",
       "detail": "Kiểm tra email trước khi yêu cầu quên mật khẩ"
     },
     {
       "code": "2010",
       "message": "Cập nhật ảnh đại diện thành công",
-      "file": "express/controllers/based-schemas/user.js",
       "detail": "Người dùng cập nhật ảnh đại diện thành công"
     },
     {
       "code": "2011",
       "message": "Cập nhật khoa thành công",
-      "file": "",
       "detail": "Cập nhật tên khoa thành công"
     },
     {
       "code": "2012",
       "message": "Thêm ${roleStr} thành công",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Thêm nhân sự vào hệ thống (COUNSELLOR, SUPERVISOR)"
     },
     {
       "code": "2013",
       "message": "Thêm tư vấn viên vào khoa thành công",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể"
     },
     {
       "code": "2014",
       "message": "Cập nhật trưởng khoa thành công",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "nếu khoa có trưởng khoa rồi -> cập nhật role trưởng khoa cũ thành COUNSELLOR cập nhật trưởng khoa mới role thành DEPARTMENT_HEAD"
     },
     {
       "code": "2015",
       "message": "",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Khóa/mở khóa người dùng (tất cả các role ngoại trừ ADMIN)"
     },
     {
       "code": "2016",
       "message": "",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Xem thông tin của người dùng với cấu trúc được yêu cầu"
     },
     {
       "code": "2017",
       "message": "Cập nhật thông tin thành công",
-      "file": "express/controllers/based-role/all-role.js",
       "detail": "người dùng cập nhật fullName, occupation (tất cả các role)"
     },
     {
       "code": "2018",
       "message": "Thêm lĩnh vực thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2019",
       "message": "Thêm khoa thành công",
-      "file": "express/controllers/based-role/admin.js",
       "detail": ""
     },
     {
       "code": "2020",
       "message": "newStrStatus + ' thành công'",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Khóa/mở khóa khoa"
     },
     {
       "code": "2021",
       "message": "",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Lấy danh sách người dùng trong hệ thống (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2022",
       "message": "",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "Lấy danh sách tư vấn viên trong 1 khoa cụ thể bằng id (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2023",
       "message": "",
-      "file": "express/controllers/based-role/admin.js",
       "detail": "lấy danh sách khoa (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2024",
       "message": "Mã xác thực hợp lệ",
-      "file": "socket-io/controllers/auth.js",
       "detail": "kiểm tra mã xác thực trước khi nhập mã xác thực để đặt lại mật khẩu"
     },
     {
       "code": "2025",
       "message": "Tên khoa khả dụng",
-      "file": "socket-io/controllers/based-roles/admin.js",
       "detail": "Kiểm tra tên khoa trước khi tạo khoa mới"
     },
     {
       "code": "2026",
       "message": "Tên khoa khả dụng",
-      "file": "socket-io/controllers/based-roles/admin.js",
       "detail": "Kiểm tra tên khoa trước khi cập nhật tên khoa"
     },
     {
       "code": "2027",
       "message": "Tên lĩnh vực khả dụng",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2028",
       "message": "Cập nhật tên lĩnh vực thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Cập nhật lĩnh vực của khoa"
     },
     {
       "code": "2029",
       "message": "Tên lĩnh vực khả dụng",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Kiểm tra tên lĩnh vực trước khi cập tên mới"
     },
     {
       "code": "2030",
       "message": "Đặt câu hỏi thành công",
-      "file": "socket-io/controllers/based-role/user.js",
       "detail": ""
     },
     {
       "code": "2031",
       "message": "Trả lời câu hỏi thành công",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên, trưởng khoa trả lời câu hỏi"
     },
     {
       "code": "2032",
       "message": "Duyệt câu tả lời thành công",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Duyệt câu trả lời"
     },
     {
       "code": "2033",
       "message": "",
-      "file": "express/controllers/based-schemas/questions.js",
       "detail": "Lấy danh sách câu hỏi phân trang, tìm kiếm, lọc với trạng thái publicly-answered-and-approved"
     },
     {
       "code": "2034",
       "message": "Đã gửi email đến: ${user.email}",
-      "file": "express/controllers/auth.js",
       "detail": "Gửi email thành công (xác thực email)"
     },
     {
       "code": "2035",
       "message": "Xác thực email thành công",
-      "file": "express/controllers/auth.js",
       "detail": "Xác nhận email"
     },
     {
       "code": "2036",
       "message": "Email khả dụng",
-      "file": "socket-io/controllers/auth.js",
       "detail": "Xác thực email (cần xác thực người dùng)"
     },
     {
       "code": "2037",
       "message": "Mã xác thực hợp lệ",
-      "file": "socket-io/controllers/auth.js",
       "detail": "Xác nhận email (cần xác thực người dùng)"
     },
     {
       "code": "2038",
       "message": "",
-      "file": "express/controllers/based-schemas/department.js",
       "detail": "Lấy danh sách khoa (đặt câu hỏi, lọc câu hỏi)"
     },
     {
       "code": "2039",
       "message": "",
-      "file": "express/controllers/based-schemas/department.js",
       "detail": "Lấy danh sách lĩnh vực (đặt câu hỏi, lọc câu hỏi)"
     },
     {
       "code": "2040",
       "message": "",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Lấy danh sách lĩnh vực (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2041",
       "message": "",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc)"
     },
     {
       "code": "2042",
       "message": "Thêm tư vấn viên thành công",
-      "file": "express/controllers/based-schemas/department.js",
       "detail": "Trưởng khoa thêm tư vấn viên thành công"
     },
     {
       "code": "2043",
       "message": "Xóa lĩnh vực của tư vấn viên thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Cập nhật (xóa) lĩnh vực cho tư vấn viên"
     },
     {
       "code": "2044",
       "message": "newStrIsEnabled + ' tài khoản thành công'",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Trưởng khoa khóa/mở khóa tài khoản tư vấn viên"
     },
     {
       "code": "2045",
       "message": "",
-      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên lấy danh sách feedback của họ (mặc định mới nhất đến củ nhất, không phân trang) - giảm dần z -> a"
     },
     {
       "code": "2046",
       "message": "Xóa phản hồi thành công",
-      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên xóa phản hồi của họ thành công (xóa bằng Id)"
     },
     {
       "code": "2047",
       "message": "Xóa danh sách phản hồi thành công",
-      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
       "code": "2048",
-      "message": "Thêm tư vấn viên từ file .csv thành công",
-      "file": "express/controllers/based-role/admin.js",
       "detail": ""
     },
     {
       "code": "2049",
       "message": "Đổi mật khẩu thành công",
-      "file": "express/controllers/auth.js",
       "detail": ""
     },
     {
       "code": "2050",
       "message": "",
-      "file": "express/controllers/based-role/user.js",
       "detail": "Lấy danh sách câu hỏi của bản thân đã hỏi"
     },
     {
       "code": "2051",
       "message": "Trả lời câu hỏi riêng tư thành công",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
       "code": "2052",
       "message": "",
-      "file": "socket-io/controllers/based-roles/user.js",
       "detail": "Trả Id của message thành công"
     },
     {
       "code": "2053",
       "message": "",
-      "file": "express/controllers/based-schemas/user.js",
       "detail": "Lấy danh sách các cuộc trò chuyện của bản thân thành công"
     },
     {
       "code": "2054",
       "message": "",
-      "file": "express/controllers/based-schemas/conversation.js",
       "detail": "Lấy danh sách tin nhắn trong cuộc đối thoại thành công (conversationId)"
     },
     {
       "code": "2055",
       "message": "Gửi phản hồi thành công",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Trưởng khoa gửi phản hồi thành công"
     },
     {
       "code": "2056",
       "message": "",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Gửi feedback tới tư vấn viên thành công"
     },
     {
@@ -341,12 +284,10 @@
       "details": [
         {
           "message": "",
-          "file": "socket-io/controllers/based-roles/counsellor.js",
           "detail": "Trưởng khoa/tư vấn viên gửi tin nhắn thành công"
         },
         {
           "message": "",
-          "file": "socket-io/controllers/based-schemas/user.js",
           "detail": "Gửi tin nhắn thành công (tất cả các role)"
         }
       ]
@@ -354,79 +295,74 @@
     {
       "code": "2058",
       "message": "",
-      "file": "socket-io/controllers/based-roles/department-head.js",
       "detail": "Gửi thông báo câu hỏi đã được trả lời (câu trả lời đã được trưởng khoa duyệt)"
     },
     {
       "code": "2059",
-      "message": "",
-      "file": "socket-io/controllers/based-roles/counsellor.js",
-      "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
+      "details": [
+        {
+          "message": "",
+          "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
+        },
+        {
+          "message": "",
+          "detail": ""
+        }
+      ]
     },
     {
       "code": "2060",
       "message": "",
-      "file": "express/controllers/based-schemas/faq.js",
       "detail": "Lấy danh sách câu hỏi chung của khoa thành công (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2061",
       "message": "",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Lấy danh sách câu hỏi chung của khoa thành công (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2062",
       "message": "",
-      "file": "express/controllers/based-roles/counsellor.js",
       "detail": "Tư vấn viên/trưởng khoa lấy danh sách câu hỏi chưa được trả lời (lọc, tìm kiếm, sắp xếp)"
     },
     {
       "code": "2063",
       "message": "",
-      "file": "express/controllers/statistics/department.js",
       "detail": "Thống kê phòng ban thành công"
     },
     {
       "code": "2064",
       "message": "",
-      "file": "",
       "detail": ""
     },
     {
       "code": "2065",
       "message": "",
-      "file": "",
       "detail": ""
     },
     {
       "code": "2066",
       "message": "Xóa câu hỏi chung thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2067",
       "message": "Cập nhật câu hỏi chung thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2068",
       "message": "Tạo câu hỏi chung thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": ""
     },
     {
       "code": "2069",
       "message": "Chuyển tiếp câu hỏi thành công",
-      "file": "express/controllers/based-roles/counsellor.js",
       "detail": ""
     },
     {
       "code": "2070",
       "message": "",
-      "file": "express/controllers/auth.js",
       "detail": "Kiểm tra email đã được xác thực hay chưa"
     },
     {
@@ -434,17 +370,14 @@
       "details": [
         {
           "message": "",
-          "file": "socket-io/controllers/based-roles/user.js",
           "detail": "Đặt câu hỏi thành công và lấy danh, thông báo câu hỏi mới tới tư vấn viên trong khoa có cùng lĩnh vực"
         },
         {
           "message": "",
-          "file": "express/controllers/based-roles/counsellor.js",
           "detail": "Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không"
         },
         {
           "message": "",
-          "file": "express/controllers/based-roles/department-head.js",
           "detail": "Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không"
         }
       ]
@@ -452,13 +385,11 @@
     {
       "code": "2072",
       "message": "",
-      "file": "utils/token.js",
       "detail": "Gửi set token cookie, gửi thông tin user, access token khi đăng nhập hoặc refresh token thành công"
     },
     {
       "code": "2073",
       "message": "${newStrStatus} lĩnh vực thành công",
-      "file": "express/controllers/based-roles/department-head.js",
       "detail": "Khóa/mở khóa lĩnh vực thành công"
     }
   ]
