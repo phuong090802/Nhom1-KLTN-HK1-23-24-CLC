@@ -9,7 +9,7 @@ import * as statisticDepartment from '../controllers/statistics/department.js';
 
 const router = express.Router();
 
-// router.use(...handleAuthenticationAndAuthorization('ADMIN'));
+router.use(...handleAuthenticationAndAuthorization('ADMIN'));
 
 router.post(
   '/departments/:id/question',

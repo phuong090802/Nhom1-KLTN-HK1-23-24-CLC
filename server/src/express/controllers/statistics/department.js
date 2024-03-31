@@ -40,10 +40,10 @@ export const handleStatisticDepartment = catchAsyncErrors(
         const countOfQuestions = await Question.countDocuments(query);
 
         const countOfAnsweredQuestions = await Question.countDocuments({
-          answer: { $ne: null },
-          status: {
-            $in: ['publicly-answered-and-approved', 'privately-answered'],
-          },
+          $or: [
+            { status: 'publicly-answered-and-approved', answer: { $ne: null } },
+            { status: 'privately-answered' },
+          ],
           ...query,
         });
 
