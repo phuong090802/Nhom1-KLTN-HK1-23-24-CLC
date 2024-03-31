@@ -63,13 +63,8 @@ export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
     user.verifyEmail.otp !== otp ||
     user.verifyEmail.otpExpiresAt < Date.now()
   ) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại',
-        4062
-      )
-    );
+    const msg = 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại';
+    return next(new ErrorHandler(400, msg, 4062));
   }
 
   user.isEmailVerified = true;
@@ -178,25 +173,15 @@ export const handleLogin = catchAsyncErrors(async (req, res, next) => {
     .populate({ path: 'counsellor.department', select: '_id departmentName' });
 
   if (!user) {
-    return next(
-      new ErrorHandler(
-        401,
-        'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu',
-        4007
-      )
-    );
+    const msg = 'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu';
+    return next(new ErrorHandler(401, msg, 4007));
   }
 
   const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(
-      new ErrorHandler(
-        401,
-        'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu',
-        4008
-      )
-    );
+    const msg = 'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu';
+    return next(new ErrorHandler(401, msg, 4008));
   }
 
   if (!user.isEnabled) {
@@ -238,7 +223,7 @@ export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
 
   const user = await User.findById(refreshToken.owner).populate({
     path: 'counsellor.department',
-    select: '-_id departmentName',
+    select: '_id departmentName',
   });
 
   if (!user) {
@@ -305,13 +290,8 @@ export const handleForgotPassword = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (!user.isEmailVerified) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Email liên kết với tài khoản chưa được xác thực',
-        4022
-      )
-    );
+    const msg = 'Email liên kết với tài khoản chưa được xác thực';
+    return next(new ErrorHandler(400, msg, 4022));
   }
 
   const otp = await user.generateForgotPassword();
@@ -352,13 +332,8 @@ export const handleVerifyOTP = catchAsyncErrors(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại',
-        4023
-      )
-    );
+    const msg = 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại';
+    return next(new ErrorHandler(400, msg, 4023));
   }
 
   const resetPasswordToken = await user.generateResetPasswordToken();
@@ -391,13 +366,8 @@ export const handleResetPassword = catchAsyncErrors(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Đặt lại mật khẩu không thành công. Vui lòng thử lại',
-        4024
-      )
-    );
+    const msg = 'Đặt lại mật khẩu không thành công. Vui lòng thử lại';
+    return next(new ErrorHandler(400, msg, 4024));
   }
 
   const { password, confirmPassword } = req.body;
