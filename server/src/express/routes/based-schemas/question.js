@@ -12,7 +12,9 @@ const router = express.Router();
 router
   .route('/:id')
   .put(
+    // question
     handleValidateQuestionIdInParams,
+    // status of question
     handleValidateStatusOfQuestion('publicly-answered-and-approved'),
     questionController.handleUpdateViewsOfQuestion
   );

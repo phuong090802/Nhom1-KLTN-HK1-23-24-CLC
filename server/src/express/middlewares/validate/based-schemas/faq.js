@@ -23,7 +23,7 @@ export const handleCheckFAQBelongDepartment = catchAsyncErrors(
 );
 
 // Kiểm tra faq có tồn tại trong db không bằng id được truyền vào
-export const validateFAQIdInParams = catchAsyncErrors(
+export const handleValidateFAQIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const faq = await FAQ.findById(id);

@@ -20,22 +20,26 @@ router.post('/reset-password/:token', authController.handleResetPassword);
 
 router.post(
   '/validate-email',
+  // auth
   handleAuthentication,
   authController.handleValidateEmail
 );
 router.post(
   '/verify-email',
+  // auth
   handleAuthentication,
   authController.handleVerifyEmail
 );
 router.put(
   '/password',
+  // auth
   handleAuthentication,
   authController.handleChangePassword
 );
 
 router.get(
   '/is-verified-email',
+  // auth
   ...handleAuthenticationAndAuthorization(
     'USER',
     'COUNSELLOR',

@@ -1,5 +1,9 @@
 import express from 'express';
 
+import * as counsellorController from '../../controllers/based-roles/admin/counsellor.js';
+import * as departmentController from '../../controllers/based-roles/admin/department.js';
+import { handleCreateStaff } from '../../controllers/based-roles/admin/staff.js';
+import * as userController from '../../controllers/based-roles/admin/user.js';
 import {
   handleAuthenticationAndAuthorization,
   handlePreventRoles,
@@ -20,10 +24,6 @@ import {
   handleValidateUserIdInParams,
 } from '../../middlewares/validate/based-schemas/user.js';
 import { handleValidateRoleInBody } from '../../middlewares/validate/role.js';
-import * as counsellorController from '../../controllers/based-roles/admin/counsellor.js';
-import * as departmentController from '../../controllers/based-roles/admin/department.js';
-import * as userController from '../../controllers/based-roles/admin/user.js';
-import { handleCreateStaff } from '../../controllers/based-roles/admin/staff.js';
 
 const router = express.Router();
 
@@ -33,7 +33,9 @@ router
   .route('/users/:id')
   .get(handleValidateUserIdInParams, userController.handleGetUser)
   .put(
+    // user
     handleValidateUserIdInParams,
+    // is not admin
     handlePreventRoles('ADMIN'),
     userController.handleUpdateStatusOfUser
   );
@@ -44,7 +46,9 @@ router
 
 router.get(
   '/departments/:id/counsellors',
+  // department
   handleValidateDepartmentIdInParams,
+
   defaultPaginationParams,
   departmentController.handleGetCounsellorsInDepartment
 );
@@ -52,12 +56,17 @@ router.get(
 router
   .route('/departments/:id')
   .put(
+    // department
     handleValidateDepartmentIdInParams,
+    // status of department
     handleCheckStatusOfDepartment,
+
     departmentController.handleRenameDepartment
   )
   .patch(
+    // department
     handleValidateDepartmentIdInParams,
+
     departmentController.handleUpdateStatusOfDepartment
   );
 
@@ -66,35 +75,46 @@ router
   .post(departmentController.handleCreateDepartment)
   .get(defaultPaginationParams, departmentController.handleGetDepartments)
   .put(
+    // department
     handleValidateDepartmentIdInBody,
+    // status of department
     handleCheckStatusOfDepartment,
+    // user
     handleValidateUserIdInBody,
+    // counsellor
     handleValidateRoleUser('COUNSELLOR'),
+
     departmentController.handleChangeDepartmentHead
   );
 
-router
-  .route('/staffs')
-  .post(
-    handleValidateRoleInBody('COUNSELLOR', 'SUPERVISOR'),
-    handleCreateStaff
-  );
+router.route('/staffs').post(
+  // role
+  handleValidateRoleInBody('COUNSELLOR', 'SUPERVISOR'),
+
+  handleCreateStaff
+);
 
 router.post(
   '/counsellors/upload',
+  // file
   handleUploadFileCSV.single('file'),
   handleRequiredFileInFormData,
+
   counsellorController.handleCreateCounsellorFromCSV
 );
 
-router
-  .route('/counsellors')
-  .post(
-    handleValidateUserIdInBody,
-    handleValidateRoleUser('COUNSELLOR'),
-    handleValidateDepartmentIdInBody,
-    handleCheckStatusOfDepartment,
-    counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
-  );
+router.route('/counsellors').post(
+  // user
+  handleValidateUserIdInBody,
+  // counsellor
+  handleValidateRoleUser('COUNSELLOR'),
+
+  // department
+  handleValidateDepartmentIdInBody,
+  // status of department
+  handleCheckStatusOfDepartment,
+
+  counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
+);
 
 export default router;

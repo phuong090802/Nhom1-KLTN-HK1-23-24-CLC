@@ -9,7 +9,9 @@ const router = express.Router();
 
 router.get(
   '/:id/fields',
+  // department
   handleValidateDepartmentIdInParams,
+  // status of department
   handleCheckStatusOfDepartment,
   departmentController.handleGetFieldsOfDepartment
 );

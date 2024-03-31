@@ -13,15 +13,16 @@ const router = express.Router();
 
 router.use(handleAuthentication);
 
-router
-  .route('/:id')
-  .get(
-    handleValidateConversationIdInParams,
-    handleCheckUserIsInParticipatesConversation,
-    handleCheckUserIsNotInDeletedByConversation,
-    defaultPaginationParams,
-    conversationController.handleGetMessagesInConversation
-  );
+router.route('/:id').get(
+  // conversation
+  handleValidateConversationIdInParams,
+  // user in participates
+  handleCheckUserIsInParticipatesConversation,
+  // user not in deleted by
+  handleCheckUserIsNotInDeletedByConversation,
+  defaultPaginationParams,
+  conversationController.handleGetMessagesInConversation
+);
 
 router
   .route('/')
