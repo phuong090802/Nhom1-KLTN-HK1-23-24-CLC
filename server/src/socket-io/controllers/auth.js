@@ -142,10 +142,8 @@ export const handleValidateEmailForForgotPassword = catchAsyncErrors(
     }
 
     if (!user.isEmailVerified) {
-      throw new ErrorHandler(
-        'Email liên kết với tài khoản chưa được xác thực',
-        4027
-      );
+      const msg = 'Email liên kết với tài khoản chưa được xác thực';
+      throw new ErrorHandler(msg, 4027);
     }
 
     callback({

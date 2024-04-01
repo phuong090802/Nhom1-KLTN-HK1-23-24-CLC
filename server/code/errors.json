@@ -97,7 +97,8 @@
     },
     {
       "code": "4019",
-      "message": "Không tìm thấy file"
+      "message": "Không tìm thấy file",
+      "detail": "Upload ảnh mà không có file trong request"
     },
     {
       "code": "4020",
@@ -141,7 +142,8 @@
     },
     {
       "code": "4028",
-      "message": "Định dạng file không hỗ trợ"
+      "message": "Định dạng file không hỗ trợ",
+      "detail": "Định dạng file không phải là ảnh khi upload ảnh"
     },
     {
       "code": "4029",
@@ -250,7 +252,8 @@
     },
     {
       "code": "4050",
-      "message": "Định dạng file không hỗ trợ"
+      "message": "Định dạng file không hỗ trợ",
+      "detail": ""
     },
     {
       "code": "4051",
@@ -387,12 +390,12 @@
     },
     {
       "code": "4076",
-      "message": "",
+      "message": "Tháng phải nằm trong khoảng từ 1 đến 12",
       "detail": ""
     },
     {
       "code": "4077",
-      "message": "",
+      "message": "Năm phải lớn hơn 0",
       "detail": ""
     },
     {
@@ -416,10 +419,14 @@
       "detail": "Khoa đang có isActive = false (COUNSELLOR + DEPARTMENT_HEAD) kiểm tra trước khi truy cập vào route cụ thể. Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
     },
     {
-      "code": "4082"
+      "code": "4082",
+      "message": "Định dạng file không hỗ trợ",
+      "detail": "Import file .csv để import tư vấn viên"
     },
     {
-      "code": "4083"
+      "code": "4083",
+      "message": "Không tìm thấy file trong Form Data",
+      "detail": ""
     },
     {
       "code": "4084",
@@ -478,12 +485,12 @@
     },
     {
       "code": "4095",
-      "message": "",
+      "message": "Định dạng file không được hỗ trợ",
       "detail": ""
     },
     {
       "code": "4096",
-      "message": "Tháng phải nằm trong khoảng từ 1 đến 12",
+      "message": "Chỉ hổ trợ file tối đa ${maxSize} MB",
       "detail": ""
     },
     {
@@ -518,7 +525,8 @@
     },
     {
       "code": "4103",
-      "message": "Lỗi cập nhật câu hỏi chung. Vui lòng thử lại"
+      "message": "Lỗi cập nhật câu hỏi chung. Vui lòng thử lại",
+      "detail": ""
     },
     {
       "code": "4104",
@@ -559,6 +567,11 @@
       "code": "4111",
       "message": "Lỗi xóa tin tức. Vui lòng thử lại",
       "detail": "Khác department id"
+    },
+    {
+      "code": "4112",
+      "message": "Không tìm thấy phản hồi",
+      "detail": "Không tìm thấy phản hồi thuộc tư vấn viên để xóa theo Id"
     }
   ]
 }

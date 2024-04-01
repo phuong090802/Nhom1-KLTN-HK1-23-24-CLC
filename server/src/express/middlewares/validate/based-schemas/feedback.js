@@ -8,7 +8,7 @@ export const handleValidateFeedbackIdInParams = catchAsyncErrors(
     const feedback = await Feedback.findById(id);
 
     if (!feedback) {
-      return next(new ErrorHandler(404, 'Không tìm thấy phản hồi', 4070));
+      return next(new ErrorHandler(404, 'Không tìm thấy phản hồi', 4112));
     }
 
     req.foundFeedback = feedback;

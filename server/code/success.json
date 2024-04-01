@@ -237,6 +237,7 @@
     },
     {
       "code": "2048",
+      "message": "Thêm tư vấn viên từ file .csv thành công",
       "detail": ""
     },
     {
@@ -333,7 +334,7 @@
     {
       "code": "2064",
       "message": "",
-      "detail": "Lấy danh sách nhân sự trong hệ thống"
+      "detail": "Lấy danh sách nhân sự trong khoa"
     },
     {
       "code": "2065",
