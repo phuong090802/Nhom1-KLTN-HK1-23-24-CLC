@@ -314,8 +314,8 @@
     },
     {
       "code": "4063",
-      "message": "",
-      "detail": ""
+      "message": "Không tìm thấy tin tức",
+      "detail": "Không tìm thấy tin tức bằng Id"
     },
     {
       "code": "4064",
@@ -548,6 +548,16 @@
     {
       "code": "4109",
       "message": "Tư vấn viên không thuộc khoa",
+      "detail": "Khác department id"
+    },
+    {
+      "code": "4110",
+      "message": "Lỗi cập nhật tin tức. Vui lòng thử lại",
+      "detail": "Khác department id"
+    },
+    {
+      "code": "4111",
+      "message": "Lỗi xóa tin tức. Vui lòng thử lại",
       "detail": "Khác department id"
     }
   ]

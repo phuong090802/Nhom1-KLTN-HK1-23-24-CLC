@@ -396,6 +396,26 @@
       "code": "2074",
       "message": "",
       "detail": "Lấy danh sách lĩnh vực của ban thân nếu là counsellor, lấy danh sách lĩnh vực của khoa nếu là department head (những field có isActive = true)"
+    },
+    {
+      "code": "2075",
+      "message": "Tạo tin tức thành công",
+      "detail": ""
+    },
+    {
+      "code": "2076",
+      "message": "Cập nhật tin tức thành công",
+      "detail": ""
+    },
+    {
+      "code": "2077",
+      "message": "Xóa tin tức thành công",
+      "detail": ""
+    },
+    {
+      "code": "2078",
+      "message": "",
+      "detail": "Lấy danh sách tin tức thành công"
     }
   ]
 }

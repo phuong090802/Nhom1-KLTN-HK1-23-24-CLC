@@ -3,7 +3,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/counsellor/fields
 // Method: GET
-// Description: Tư vấn viên kiểm tra có câu hỏi cần trả lời hay không
+// Description: Lấy danh sách lĩnh vực của ban thân nếu là counsellor, lấy danh sách lĩnh vực của khoa nếu là department head (những field có isActive = true)
 export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
 

@@ -93,7 +93,9 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
       await deleteFile(ref);
     } catch (error) {
       // remove new image if error
-      await deleteFile(answerAttachment.ref);
+      if (answerAttachment.ref && answerAttachment.url) {
+        await deleteFile(answerAttachment.ref);
+      }
       const msg = 'Lỗi cập nhật câu hỏi chung. Vui lòng thử lại';
       return next(new ErrorHandler(500, msg, 4103));
     }

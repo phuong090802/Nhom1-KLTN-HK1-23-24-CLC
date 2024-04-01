@@ -4,14 +4,17 @@ import * as counsellorController from '../../controllers/based-roles/admin/couns
 import * as departmentController from '../../controllers/based-roles/admin/department.js';
 import { handleCreateStaff } from '../../controllers/based-roles/admin/staff.js';
 import * as userController from '../../controllers/based-roles/admin/user.js';
+import * as newsController from '../../controllers/based-roles/admin/news.js';
 import {
   handleAuthenticationAndAuthorization,
   handlePreventRoles,
 } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
+  handleOptionalUploadFileToFirebase,
   handleRequiredFileInFormData,
   handleUploadFileCSV,
+  handleUploadImageOrDocument,
 } from '../../middlewares/upload-file.js';
 import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-roles/admin.js';
 import {
@@ -24,10 +27,34 @@ import {
   handleValidateUserIdInParams,
 } from '../../middlewares/validate/based-schemas/user.js';
 import { handleValidateRoleInBody } from '../../middlewares/validate/role.js';
+import { handleValidateNewsIdInParams } from '../../middlewares/validate/based-schemas/news.js';
 
 const router = express.Router();
 
 router.use(handleAuthenticationAndAuthorization('ADMIN'));
+
+router
+  .route('/news/:id')
+  .put(
+    // kiểm tra id của new
+    handleValidateNewsIdInParams,
+    // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+    handleUploadImageOrDocument.single('file'),
+    handleOptionalUploadFileToFirebase('news'),
+    newsController.handleUpdateNews
+  )
+  .delete(
+    // kiểm tra id của new
+    handleValidateNewsIdInParams,
+    newsController.handleDeleteNews
+  );
+
+router.route('/news').post(
+  // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+  handleUploadImageOrDocument.single('file'),
+  handleOptionalUploadFileToFirebase('news'),
+  newsController.handleCreateNews
+);
 
 router
   .route('/users/:id')
