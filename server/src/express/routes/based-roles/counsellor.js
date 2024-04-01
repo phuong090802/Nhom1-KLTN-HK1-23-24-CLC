@@ -26,8 +26,20 @@ import {
   handleValidateQuestionIdInParams,
   handleValidateStatusOfQuestion,
 } from '../../middlewares/validate/based-schemas/question.js';
+import { handleGetFields } from '../../controllers/based-roles/counsellor/field.js';
 
 const router = express.Router();
+
+router.route('/fields').get(
+  // auth
+  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+  // department - counsellor before access
+  handleCheckDepartmentOfCounsellor,
+  handleCheckStatusDepartmentOfCounsellor,
+
+  defaultPaginationParams,
+  handleGetFields
+);
 
 router.route('/questions').get(
   // auth

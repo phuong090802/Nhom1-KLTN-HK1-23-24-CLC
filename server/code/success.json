@@ -391,6 +391,11 @@
       "code": "2073",
       "message": "${newStrStatus} lĩnh vực thành công",
       "detail": "Khóa/mở khóa lĩnh vực thành công"
+    },
+    {
+      "code": "2074",
+      "message": "",
+      "detail": "Lấy danh sách lĩnh vực của ban thân nếu là counsellor, lấy danh sách lĩnh vực của khoa nếu là department head (những field có isActive = true)"
     }
   ]
 }
