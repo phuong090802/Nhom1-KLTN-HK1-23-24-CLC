@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 // Method: GET
 // Description: Lấy danh sách tin tức trong hệ thống, phân trang, tìm kiếm, sắp xếp
 export const handleGetAllNews = catchAsyncErrors(async (req, res, next) => {
-  const query = News.find().select('tile content file.url createdAt').lean();
+  const query = News.find().select('title content file.url createdAt').lean();
 
   const reqSort = req.query.sort?.createdAt;
 
