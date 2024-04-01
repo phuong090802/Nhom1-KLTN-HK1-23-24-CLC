@@ -202,17 +202,19 @@ userSchema.methods.generateResetPasswordToken = async function () {
 userSchema.methods.getUserInformation = function (action) {
   let department = null;
 
+  // console.log(this.counsellor.department);
+
   if (this.counsellor.department) {
     department = this.counsellor.department;
   }
+
+  // console.log(department);
 
   const baseUser = {
     _id: this._id,
     phoneNumber: this.phoneNumber,
     email: this.email,
     role: this.role,
-    occupation: this.occupation,
-    department,
   };
 
   switch (action) {
@@ -223,11 +225,22 @@ userSchema.methods.getUserInformation = function (action) {
         ...baseUser,
         fullName: this.fullName,
         avatar: this.avatar.url,
+        occupation: this.occupation,
+        department,
       };
     case userAction.ADMIN_GET_USER:
       return {
         ...baseUser,
         isEnabled: this.isEnabled,
+        occupation: this.occupation,
+        department,
+      };
+    case userAction.GET_ALL_STAFFS_IN_DEPARTMENT:
+      return {
+        ...baseUser,
+        fullName: this.fullName,
+        avatar: this.avatar.url,
+        department: department.departmentName,
       };
     default:
       return baseUser;

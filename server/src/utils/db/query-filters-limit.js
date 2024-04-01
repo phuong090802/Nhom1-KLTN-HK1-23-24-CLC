@@ -1,11 +1,23 @@
-export default function queryFiltersLimit(requestQuery, filterLimit) {
+export default function queryFiltersLimit(requestQuery, ...filterLimit) {
   // console.log(filterLimit);
 
-  return {
+  let query = {
     ...requestQuery,
     filter: {
       ...requestQuery.filter,
-      ...filterLimit,
     },
   };
+
+  filterLimit.forEach((ft) => {
+    Object.keys(ft).forEach((key) => {
+      const value = ft[key];
+      if (value !== undefined) {
+        query.filter[key] = value;
+      }
+    });
+  });
+
+  // console.log(query);
+
+  return query;
 }

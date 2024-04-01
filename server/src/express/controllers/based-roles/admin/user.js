@@ -50,7 +50,7 @@ export const handleGetUsers = catchAsyncErrors(async (req, res, next) => {
     users,
     page,
     pages,
-    code: 2021,
+    code: 2064,
   });
 });
 

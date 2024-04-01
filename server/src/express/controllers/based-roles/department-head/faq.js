@@ -20,7 +20,7 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
     .select('question answer answerAttachment field createdAt')
     .lean();
 
-  const filterDepartment = { department };
+  const filterDepartment = { department: department._id };
 
   const requestQuery = queryFiltersLimit(req.query, filterDepartment);
 

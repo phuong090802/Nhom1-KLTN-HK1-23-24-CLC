@@ -37,7 +37,7 @@ export const handleCheckCounsellorBelongDepartment = catchAsyncErrors(
     const { department: departmentOfDepartmentHead } = req.user.counsellor;
     const { department: departmentOfCounsellor } = req.foundUser.counsellor;
 
-    if (!departmentOfDepartmentHead.equals(departmentOfCounsellor)) {
+    if (!departmentOfDepartmentHead._id.equals(departmentOfCounsellor)) {
       return next(new ErrorHandler(404, 'Tư vấn viên không thuộc khoa', 4109));
     }
 

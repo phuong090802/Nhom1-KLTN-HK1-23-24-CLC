@@ -17,6 +17,12 @@ router.get(
 );
 
 router.get(
+  '/staff',
+  defaultPaginationParams,
+  departmentController.handleGetStaffsInDepartment
+);
+
+router.get(
   '/',
   defaultPaginationParams,
   departmentController.handleGetDepartments

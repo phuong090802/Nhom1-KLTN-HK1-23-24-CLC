@@ -96,7 +96,8 @@
       "detail": "JWT hết hạn"
     },
     {
-      "code": "4019"
+      "code": "4019",
+      "message": "Không tìm thấy file"
     },
     {
       "code": "4020",
@@ -139,7 +140,8 @@
       "detail": "Kiểm tra email trước khi yêu cầu quên mật khẩu"
     },
     {
-      "code": "4028"
+      "code": "4028",
+      "message": "Định dạng file không hỗ trợ"
     },
     {
       "code": "4029",
@@ -248,7 +250,7 @@
     },
     {
       "code": "4050",
-      "detail": ""
+      "message": "Định dạng file không hỗ trợ"
     },
     {
       "code": "4051",

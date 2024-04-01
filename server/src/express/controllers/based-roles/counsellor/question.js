@@ -20,7 +20,7 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   // .lean()
 
   const filterStatus = { status: 'unanswered' };
-  const filterDepartment = { department };
+  const filterDepartment = { department: department._id };
 
   const requestQuery = queryFiltersLimit(
     req.query,
