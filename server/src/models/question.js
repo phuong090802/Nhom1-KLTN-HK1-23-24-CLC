@@ -72,6 +72,7 @@ const questionSchema = new mongoose.Schema({
 // cách này không tìm chay
 // populate rồi dùng phương thức bên kia
 questionSchema.methods.getQuestionInformation = function (action) {
+  // console.log(this);
   const baseQuestion = {
     _id: this._id,
     title: this.title,
@@ -110,6 +111,7 @@ questionSchema.methods.getQuestionInformation = function (action) {
     case questionAction.HOME_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
+        views: this.views,
         user: {
           fullName: this.user.fullName,
           avatar: this.user.avatar.url,

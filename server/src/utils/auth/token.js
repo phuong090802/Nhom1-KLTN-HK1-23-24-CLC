@@ -1,10 +1,5 @@
 // sendToken when login, refresh token
-export const sendToken = async (
-  res,
-  accessToken,
-  refreshToken,
-  userInformation
-) => {
+export const sendToken = (res, accessToken, refreshToken, userInformation) => {
   const options = {
     expires: refreshToken.expires,
     httpOnly: true,
@@ -12,6 +7,7 @@ export const sendToken = async (
     secure: true,
     // sameSite: 'None',
   };
+
   res.cookie('refreshToken', refreshToken.token, options).json({
     success: true,
     user: userInformation,

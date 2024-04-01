@@ -1,5 +1,5 @@
-export default function queryFiltersLimit(requestQuery, ...filterLimit) {
-  // console.log(...filterLimit);
+export default function queryFiltersLimit(requestQuery, filterLimit) {
+  // console.log(filterLimit);
 
   return {
     ...requestQuery,

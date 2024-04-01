@@ -36,6 +36,8 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
 
   const requestQuery = queryFiltersLimit(req.query, filterStatus);
 
+  // console.log(requestQuery);
+
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;

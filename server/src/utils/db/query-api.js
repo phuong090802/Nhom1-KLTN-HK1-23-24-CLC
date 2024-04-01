@@ -3,6 +3,7 @@ class QueryAPI {
   constructor(query, queryString) {
     this.query = query;
     this.queryString = queryString;
+    // console.log(queryString);
   }
 
   search() {
@@ -29,6 +30,7 @@ class QueryAPI {
       Object.keys(filter).length > 0
     ) {
 
+      // console.log(filter);
       this.query = this.query.find(filter);
     }
     return this;
