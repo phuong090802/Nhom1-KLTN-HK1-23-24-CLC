@@ -10,28 +10,40 @@ import { DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS } from '../../../../con
 // Method: GET
 // Description: Lấy danh sách các câu hỏi chưa được trả lời
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
-  const { department } = req.user.counsellor;
+  const user = req.user;
+  const { department, fields } = user.counsellor;
 
   const query = Question.find()
     .populate({ path: 'user', select: '-_id fullName avatar.url' })
     .populate({ path: 'field', select: '-_id fieldName' })
-    .select('title content file createdAt views user field answer');
+    .select('title content file createdAt views user field');
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
 
   const filterStatus = { status: 'unanswered' };
   const filterDepartment = { department: department._id };
 
+  // console.log(fields);
+
+  // const filterField = {};
+
+  // if (user.role !== 'DEPARTMENT_HEAD') {
+  //   filterField['field'] = { $in: fields };
+  // }
+
   const requestQuery = queryFiltersLimit(
     req.query,
     filterStatus,
-    filterDepartment
+    filterDepartment,
+    user.role === 'COUNSELLOR' && { field: { $in: fields } }
   );
 
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
+  // console.log(questionRecords.length);
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();
+
   const {
     data: retQuestions,
     page,
