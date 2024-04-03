@@ -40,10 +40,7 @@ const handleError = (err, req, res, next) => {
     // Handling Mongoose Validation Error
     if (err.name === 'ValidationError') {
       const message =
-        Object.values(err.errors).map(
-          (error) =>
-            `Giá trị '${error.value}' không hợp lệ cho trường '${error.path}'. Yêu cầu kiểu dữ liệu: '${error.kind}'`
-        ) + '';
+        Object.values(err.errors).map((value) => value.message) + '';
       error = new ErrorHandler(422, message, 4002);
     }
 

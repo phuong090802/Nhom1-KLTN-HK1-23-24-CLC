@@ -4,6 +4,7 @@ import QueryAPI from '../../../utils/db/query-api.js';
 import paginate from '../../../utils/db/paginate.js';
 import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 import queryFiltersLimit from '../../../utils/db/query-filters-limit.js';
+import defaultSortNewest from '../../../utils/db/default-sort.js';
 
 // Endpoint: /api/questions/:id
 // Method: PUT
@@ -34,7 +35,14 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
 
   const filterStatus = { status: 'publicly-answered-and-approved' };
 
-  const requestQuery = queryFiltersLimit(req.query, filterStatus);
+  const requestQueryTransform = queryFiltersLimit(req.query, filterStatus);
+
+  const reqSort = req.query.sort?.createdAt;
+
+  const requestQuery = defaultSortNewest(
+    requestQueryTransform,
+    !reqSort && { createdAt: -1 }
+  );
 
   // console.log(requestQuery);
 

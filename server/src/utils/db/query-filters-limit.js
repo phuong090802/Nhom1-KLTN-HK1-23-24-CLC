@@ -17,7 +17,7 @@ export default function queryFiltersLimit(requestQuery, ...filterLimit) {
     });
   });
 
-  console.log(query);
+  // console.log(query);
 
   return query;
 }
