@@ -129,6 +129,11 @@ const userSchema = new mongoose.Schema({
       },
     ],
   },
+  pushTokens: [
+    {
+      type: String,
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

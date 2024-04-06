@@ -1,6 +1,9 @@
 import express from 'express';
 
-import { handleAuthentication } from '../../middlewares/auth.js';
+import {
+  handleAuthentication,
+  handleAuthorization,
+} from '../../middlewares/auth.js';
 import {
   handleRequiredUploadFileToFirebase,
   handleUploadImage,
@@ -10,6 +13,12 @@ import * as userController from '../../controllers/based-schemas/user.js';
 const router = express.Router();
 
 router.use(handleAuthentication);
+
+router.post(
+  '/push-token',
+  handleAuthorization('USER', 'COUNSELLOR', 'DEPARTMENT_HEAD'),
+  userController.handleAddPushToken
+);
 
 router
   .route('/')

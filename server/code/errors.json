@@ -572,6 +572,16 @@
       "code": "4112",
       "message": "Không tìm thấy phản hồi",
       "detail": "Không tìm thấy phản hồi thuộc tư vấn viên để xóa theo Id"
+    },
+    {
+      "code": "4113",
+      "message": "Push push notification token không hợp lệ",
+      "detail": ""
+    },
+    {
+      "code": "4114",
+      "message": "",
+      "detail": ""
     }
   ]
 }

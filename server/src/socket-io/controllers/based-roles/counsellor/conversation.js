@@ -4,6 +4,7 @@ import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validat
 import Conversation from '../../../../models/conversation.js';
 import Message from '../../../../models/message.js';
 import Question from '../../../../models/question.js';
+import sendNotification from '../../../../utils/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): conversation:create
@@ -50,12 +51,21 @@ export const handleCreateConversation = catchAsyncErrors(
     };
 
     // new conversation is payload
-    socket.emit(`${receiver._id.toString()}:message:read`, response);
 
     callback({
       success: true,
       message: 'Trả lời câu hỏi riêng tư thành công',
       code: 2051,
+    });
+
+    const receiverId = receiver._id.toString();
+
+    socket.emit(`${receiverId}:message:read`, response);
+
+    await sendNotification(receiverId, {
+      // sound: 'default',
+      title: user.fullName,
+      body: message.content,
     });
   }
 );

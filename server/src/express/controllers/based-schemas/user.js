@@ -1,6 +1,36 @@
+import { Expo } from 'expo-server-sdk';
+
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import ErrorHandler from '../../../utils/error/http-error-handler.js';
 import { deleteFile } from '../../../utils/upload-file.js';
+import User from '../../../models/user.js';
+
+// Endpoint: /api/users/push-token
+// Method: POST
+// Description: Thêm token mới của thiết bị bị động
+export const handleAddPushToken = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  const { pushToken } = req.body;
+
+  if (!Expo.isExpoPushToken(pushToken)) {
+    const msg = 'Push push notification token không hợp lệ';
+    return next(new ErrorHandler(400, msg, 4113));
+  }
+
+  await User.updateMany(
+    { pushTokens: { $in: [pushToken] } },
+    { $pull: { pushTokens: pushToken } }
+  );
+
+  user.pushTokens.push(pushToken);
+  await user.save();
+
+  res.status(201).json({
+    success: true,
+    message: 'Thêm push token thành công',
+    code: 2079,
+  });
+});
 
 // Endpoint: /api/users
 // Method: PATCH

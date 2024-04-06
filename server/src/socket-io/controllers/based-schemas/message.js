@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../../utils/error/socket-io-error-handler.js';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
+import ErrorHandler from '../../../utils/error/socket-io-error-handler.js';
+import sendNotification from '../../../utils/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): message:create
@@ -63,6 +64,14 @@ export const handleCreateMessage = catchAsyncErrors(
       code: 2057,
     };
 
-    socket.emit(`${receiver._id.toString()}:message:read`, response);
+    const receiverId = receiver._id.toString();
+
+    socket.emit(`${receiverId}:message:read`, response);
+
+    await sendNotification(receiverId, {
+      // sound: 'default',
+      title: user.fullName,
+      body: message.content,
+    });
   }
 );

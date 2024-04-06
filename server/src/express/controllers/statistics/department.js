@@ -22,9 +22,7 @@ export const handleStatisticDepartment = catchAsyncErrors(
       latestTime
     );
 
-    const departmentStatistic = [];
-
-    await Promise.all(
+    const departmentStatistic = await Promise.all(
       ranges.map(async (range) => {
         const { start, end } = range;
         // console.log(start.toLocaleDateString(), '-', end.toLocaleDateString());
@@ -47,14 +45,14 @@ export const handleStatisticDepartment = catchAsyncErrors(
           ...query,
         });
 
-        departmentStatistic.push({
+        return {
           date: {
             start,
             end,
           },
           countOfQuestions,
           countOfAnsweredQuestions,
-        });
+        };
       })
     );
 
@@ -71,8 +69,6 @@ export const handleStatisticDepartment = catchAsyncErrors(
 // Description: Thông kê tất cả các khoa
 export const handleStatisticDepartments = catchAsyncErrors(
   async (req, res, next) => {
-    const departmentStatistics = [];
-
     // sort, search
 
     const query = Department.find();
@@ -94,7 +90,7 @@ export const handleStatisticDepartments = catchAsyncErrors(
       departmentRecords
     );
 
-    await Promise.all(
+    const departmentStatistics = await Promise.all(
       departments.map(async (department) => {
         const fieldCount = await Field.countDocuments({ department });
         const staffCount = await User.countDocuments({
@@ -102,13 +98,13 @@ export const handleStatisticDepartments = catchAsyncErrors(
         });
         const questionCount = await Question.countDocuments({ department });
 
-        departmentStatistics.push({
+        return {
           _id: department._id,
           departmentName: department.departmentName,
           fieldCount,
           staffCount,
           questionCount,
-        });
+        };
       })
     );
 

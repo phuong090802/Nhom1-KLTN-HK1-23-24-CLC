@@ -417,6 +417,11 @@
       "code": "2078",
       "message": "",
       "detail": "Lấy danh sách tin tức thành công"
+    },
+    {
+      "code": "2079",
+      "message": "Thêm push token thành công",
+      "detail": ""
     }
   ]
 }

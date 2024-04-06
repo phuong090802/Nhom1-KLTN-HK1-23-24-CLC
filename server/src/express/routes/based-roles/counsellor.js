@@ -2,7 +2,10 @@ import express from 'express';
 
 import * as feedbackController from '../../controllers/based-roles/counsellor/feedback.js';
 import * as questionController from '../../controllers/based-roles/counsellor/question.js';
-import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
+import {
+  handleAuthentication,
+  handleAuthorization,
+} from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleCheckDepartmentOfCounsellor,
@@ -30,9 +33,11 @@ import { handleGetFields } from '../../controllers/based-roles/counsellor/field.
 
 const router = express.Router();
 
+router.use(handleAuthentication);
+
 router.route('/fields').get(
   // auth
-  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
   // department - counsellor before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
@@ -43,7 +48,7 @@ router.route('/fields').get(
 
 router.route('/questions').get(
   // auth
-  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
   // department - counsellor before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
@@ -54,7 +59,7 @@ router.route('/questions').get(
 
 router.route('/questions/:id').put(
   // auth
-  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
   // department - counsellor before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
@@ -80,7 +85,7 @@ router.route('/questions/:id').put(
 
 router.route('/questions/unanswered-question').get(
   // auth
-  ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+  handleAuthorization('COUNSELLOR'),
   // department - counsellor before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
@@ -90,7 +95,7 @@ router.route('/questions/unanswered-question').get(
 
 router.route('/feedbacks/:id').delete(
   // auth
-  ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+  handleAuthorization('COUNSELLOR'),
   // department - counsellor before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
@@ -106,7 +111,7 @@ router
   .route('/feedbacks')
   .get(
     // auth
-    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleAuthorization('COUNSELLOR'),
     // department - counsellor before access
     handleCheckDepartmentOfCounsellor,
     handleCheckStatusDepartmentOfCounsellor,
@@ -115,7 +120,7 @@ router
   )
   .delete(
     // auth
-    ...handleAuthenticationAndAuthorization('COUNSELLOR'),
+    handleAuthorization('COUNSELLOR'),
     // department - counsellor before access
     handleCheckDepartmentOfCounsellor,
     handleCheckStatusDepartmentOfCounsellor,
