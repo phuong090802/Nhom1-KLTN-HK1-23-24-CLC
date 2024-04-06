@@ -3,6 +3,7 @@ import { handleAuthorization } from '../../../middlewares/auth.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
 import Question from '../../../../models/question.js';
 import Feedback from '../../../../models/feedback.js';
+import sendNotification from '../../../../utils/send-notification.js';
 
 // namespace: /counsellor
 // listen event (ack): feedback:create
@@ -64,6 +65,14 @@ export const handleCreateFeedback = catchAsyncErrors(
     // console.log(answer.user._id.toString());
 
     // handle emit feedback
-    socket.emit(`${answer.user._id.toString()}:feedback:read`, response);
+    const receiverId = answer.user._id.toString();
+    socket.emit(`${receiverId}:feedback:read`, response);
+
+    await sendNotification(receiverId, {
+      // sound: 'default',
+      title: 'Phản hồi',
+      // body: savedFeedback.content,
+      body: 'Có phản hồi mới từ trưởng khoa',
+    });
   }
 );

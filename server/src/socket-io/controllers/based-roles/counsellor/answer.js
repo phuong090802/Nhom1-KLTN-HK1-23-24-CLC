@@ -5,6 +5,7 @@ import { handleValidateMimetypeAndFileSize } from '../../../middlewares/event/va
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
 import { uploadFileSocketIO } from '../../../../utils/upload-file.js';
+import sendNotification from '../../../../utils/send-notification.js';
 
 // namespace: /counsellor
 // listen event (ack): answer:create
@@ -67,10 +68,15 @@ export const handleCreateAnswer = catchAsyncErrors(
         'counsellor.department': department,
       });
 
-      socket.emit(
-        `${departmentHead._id.toString()}:answer:notification:read`,
-        response
-      );
+      const receiverId = departmentHead._id.toString();
+
+      socket.emit(`${receiverId}:answer:notification:read`, response);
+
+      await sendNotification(receiverId, {
+        // sound: 'default',
+        title: 'Duyệt câu trả lời',
+        body: 'Có câu trả lời mới cần được duyệt',
+      });
     }
   }
 );

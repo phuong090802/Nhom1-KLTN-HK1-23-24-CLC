@@ -8,6 +8,7 @@ import Department from '../../../../models/department.js';
 import Field from '../../../../models/field.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
+import sendNotification from '../../../../utils/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): department:validate-department-name:create
@@ -77,10 +78,15 @@ export const handleCreateQuestion = catchAsyncErrors(
 
     await Promise.all(
       users.map(async (user) => {
-        await socket.emit(
-          `${user._id.toString()}:question:notification:read`,
-          response
-        );
+        const receiverId = user._id.toString();
+        await socket.emit(`${receiverId}:question:notification:read`, response);
+
+        await sendNotification(receiverId, {
+          // sound: 'default',
+          title: 'Câu hỏi',
+          // body: questionData.title,
+          body: 'Có câu hỏi mới vừa được đặt',
+        });
       })
     );
   }

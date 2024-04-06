@@ -3,6 +3,7 @@ import { handleAuthorization } from '../../../middlewares/event/auth.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
 import Question from '../../../../models/question.js';
 import Notification from '../../../../models/notification.js';
+import sendNotification from '../../../../utils/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): notification:create
@@ -46,6 +47,14 @@ export const handleApproveAnswer = catchAsyncErrors(
     };
 
     // emit notification to user
-    socket.emit(`${question.user._id.toString()}:notification:read`, response);
+    const receiverId = question.user._id.toString();
+    socket.emit(`${receiverId}:notification:read`, response);
+
+    await sendNotification(receiverId, {
+      // sound: 'default',
+      title: 'Câu hỏi đã được trả lời',
+      // body: question.answer.content,
+      body: 'Câu hỏi của bạn đã được trả lời',
+    });
   }
 );
