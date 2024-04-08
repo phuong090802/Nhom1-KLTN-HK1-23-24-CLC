@@ -16,7 +16,8 @@ import department from './routes/based-schemas/department.js';
 import conversation from './routes/based-schemas/conversation.js';
 import faq from './routes/based-schemas/faq.js';
 import news from './routes/based-schemas/news.js';
-import statistic from './routes/statistic.js';
+import departmentStatistic from './routes/statistics/department.js';
+import questionStatistic from './routes/statistics/question.js';
 
 const app = express();
 
@@ -50,7 +51,8 @@ app.use('/api/questions', question);
 app.use('/api/conversations', conversation);
 app.use('/api/faqs', faq);
 app.use('/api/news', news);
-app.use('/api/statistic', statistic);
+app.use('/api/statistics/question', questionStatistic);
+app.use('/api/statistics/department', departmentStatistic);
 
 app.use(handleError);
 
