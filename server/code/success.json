@@ -427,6 +427,21 @@
       "code": "2080",
       "message": "",
       "detail": "Thống kê danh sách câu hỏi trong hệ thống thành công"
+    },
+    {
+      "code": "2081",
+      "message": "",
+      "detail": "Đếm số số khoa có isActive: true trong hệ thống. Đếm số số lĩnh vực có isActive: true trong hệ thống. Đếm số người có isEnabled: true dùng trong hệ thống. Đếm số câu hỏi trong hệ thống"
+    },
+    {
+      "code": "2082",
+      "message": "",
+      "detail": "Lấy danh sách thông báo"
+    },
+    {
+      "code": "2083",
+      "message": "",
+      "detail": ""
     }
   ]
 }

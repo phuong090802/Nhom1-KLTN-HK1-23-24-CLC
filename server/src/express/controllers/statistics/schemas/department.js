@@ -1,13 +1,13 @@
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import Department from '../../../models/department.js';
-import Field from '../../../models/field.js';
-import User from '../../../models/user.js';
-import Question from '../../../models/question.js';
-import QueryAPI from '../../../utils/db/query-api.js';
-import paginate from '../../../utils/db/paginate.js';
-import { convertTimeAndGenerateRangesForStatistic } from '../../../utils/generate/time-converter.js';
+import Department from '../../../../models/department.js';
+import Field from '../../../../models/field.js';
+import Question from '../../../../models/question.js';
+import User from '../../../../models/user.js';
+import paginate from '../../../../utils/db/paginate.js';
+import QueryAPI from '../../../../utils/db/query-api.js';
+import { convertTimeAndGenerateRangesForStatistic } from '../../../../utils/generate/time-converter.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
-// Endpoint: /api/statistic/departments/:id
+// Endpoint: /api/statistics/department/:id
 // Method: GET
 // Description: Thông kê khoa bằng id
 export const handleStatisticDepartment = catchAsyncErrors(
@@ -64,7 +64,7 @@ export const handleStatisticDepartment = catchAsyncErrors(
   }
 );
 
-// Endpoint: /api/statistic/departments
+// Endpoint: /api/statistics/department
 // Method: GET
 // Description: Thông kê tất cả các khoa
 export const handleStatisticDepartments = catchAsyncErrors(

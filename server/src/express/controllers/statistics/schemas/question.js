@@ -1,8 +1,11 @@
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import Question from '../../../models/question.js';
-import { convertTimeAndGenerateRangesForStatistic } from '../../../utils/generate/time-converter.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import Question from '../../../../models/question.js';
+import { convertTimeAndGenerateRangesForStatistic } from '../../../../utils/generate/time-converter.js';
 
-export const handleStatisticQuestion = catchAsyncErrors(
+// Endpoint: /api/statistics/question/:id
+// Method: GET
+// Description: Thông kê câu hỏi trong hệ thống
+export const handleStatisticQuestions = catchAsyncErrors(
   async (req, res, next) => {
     // validate
     const { timeUnit, latestTime } = req.body;
