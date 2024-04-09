@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
 import Field from '../../../../models/field.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 
 // trưởng khoa kiểm tra lĩnh vực của thuộc khoa mình trước khi thực hiện các thao tác liên quan
 export const handleValidateFieldIdInParams = catchAsyncErrors(

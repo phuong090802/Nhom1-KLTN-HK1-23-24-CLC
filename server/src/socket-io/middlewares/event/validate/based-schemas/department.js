@@ -1,4 +1,4 @@
-import ErrorHandler from '../../../../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../../../../util/error/socket-io-error-handler.js';
 
 // kiểm tra Id của khoa có tồn tại có tồn tại trong DB không
 export const handleValidateDepartment = (department) => {

@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
 import Question from '../../../../models/question.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import questionStatus from '../../../../constants/mapper/question-status.js';
 
 // kiểm tra id câu hỏi có tồn tại có tồn tại trong DB không

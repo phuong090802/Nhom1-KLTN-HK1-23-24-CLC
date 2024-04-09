@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
 import Department from '../../../../models/department.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 
 // Kiểm tra mã khoa của tư vấn viên, trưởng khoa trước khi truy cập vào các route
 export const handleCheckDepartmentOfCounsellor = catchAsyncErrors(

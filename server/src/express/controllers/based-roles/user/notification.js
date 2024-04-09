@@ -1,8 +1,8 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Notification from '../../../../models/notification.js';
-import defaultSortNewest from '../../../../utils/db/default-sort.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import paginate from '../../../../utils/db/paginate.js';
+import defaultSortNewest from '../../../../util/db/default-sort.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import paginate from '../../../../util/db/paginate.js';
 
 // Endpoint: /api/user/notifications
 // Method: GET
@@ -10,6 +10,7 @@ import paginate from '../../../../utils/db/paginate.js';
 export const handleGetNotifications = catchAsyncErrors(
   async (req, res, next) => {
     const recipient = req.user;
+
     const query = Notification.find({ recipient })
       .select('_id content createdAt')
       .lean();
@@ -36,6 +37,9 @@ export const handleGetNotifications = catchAsyncErrors(
       req.query.size,
       notificationRecords
     );
+
+    // update trạng thái thông báo
+    await Notification.updateMany({ recipient }, { read: true });
 
     res.json({
       success: true,

@@ -3,9 +3,9 @@ import crypto from 'crypto';
 import User from '../../models/user.js';
 import RefreshToken from '../../models/refresh-token.js';
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../utils/error/http-error-handler.js';
-import { sendToken, clearToken } from '../../utils/auth/token.js';
-import { sendVerificationEmail } from '../../utils/auth/email-verify.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
+import { sendToken, clearToken } from '../../util/auth/token.js';
+import { sendVerificationEmail } from '../../util/auth/email-verify.js';
 import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
 
 // Endpoint: /api/auth/email

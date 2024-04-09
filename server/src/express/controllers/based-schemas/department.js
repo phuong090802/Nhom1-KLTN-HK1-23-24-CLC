@@ -2,9 +2,9 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import Department from '../../../models/department.js';
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
-import QueryAPI from '../../../utils/db/query-api.js';
-import queryFiltersLimit from '../../../utils/db/query-filters-limit.js';
-import paginate from '../../../utils/db/paginate.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import paginate from '../../../util/db/paginate.js';
 import { GET_ALL_STAFFS_IN_DEPARTMENT } from '../../../constants/actions/user.js';
 
 // Endpoint: /api/departments/:id/staffs

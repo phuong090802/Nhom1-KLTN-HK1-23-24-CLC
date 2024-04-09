@@ -1,7 +1,7 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Department from '../../../../models/department.js';
 import User from '../../../../models/user.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 
 // Endpoint: /api/admin/staffs
 // Method: POST

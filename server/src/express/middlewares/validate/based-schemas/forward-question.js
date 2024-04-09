@@ -1,4 +1,4 @@
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../catch-async-errors.js';
 
 // Kiểm tra khoa có khác nhau trước khia chuyển tiếp

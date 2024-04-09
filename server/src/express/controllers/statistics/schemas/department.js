@@ -2,9 +2,9 @@ import Department from '../../../../models/department.js';
 import Field from '../../../../models/field.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
-import paginate from '../../../../utils/db/paginate.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import { convertTimeAndGenerateRangesForStatistic } from '../../../../utils/generate/time-converter.js';
+import paginate from '../../../../util/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/statistics/department/:id

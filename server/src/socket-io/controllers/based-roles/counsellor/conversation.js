@@ -4,7 +4,7 @@ import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validat
 import Conversation from '../../../../models/conversation.js';
 import Message from '../../../../models/message.js';
 import Question from '../../../../models/question.js';
-import sendNotification from '../../../../utils/send-notification.js';
+import sendNotification from '../../../../util/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): conversation:create

@@ -1,4 +1,4 @@
-import ErrorHandler from '../../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
 import rolesMapper from '../../../constants/mapper/roles.js';
 
 export const handleAuthorization = (socket, ...roles) => {

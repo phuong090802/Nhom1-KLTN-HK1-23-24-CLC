@@ -6,8 +6,8 @@ import path from 'path';
 import catchAsyncErrors from './catch-async-errors.js';
 import storage from '../../config/firebase-init.js';
 import mimetype from '../../constants/file/mimetype.js';
-import ErrorHandler from '../../utils/error/http-error-handler.js';
-import { isSupportedMimetype } from '../../utils/validation.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
+import { isSupportedMimetype } from '../../util/validation.js';
 
 // handle limit file size and check ext of file (image or document)
 export const handleUploadImageOrDocument = multer({

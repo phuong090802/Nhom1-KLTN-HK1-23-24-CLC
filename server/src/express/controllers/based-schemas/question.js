@@ -1,10 +1,10 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import Question from '../../../models/question.js';
-import QueryAPI from '../../../utils/db/query-api.js';
-import paginate from '../../../utils/db/paginate.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginate from '../../../util/db/paginate.js';
 import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
-import queryFiltersLimit from '../../../utils/db/query-filters-limit.js';
-import defaultSortNewest from '../../../utils/db/default-sort.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import defaultSortNewest from '../../../util/db/default-sort.js';
 
 // Endpoint: /api/questions/:id
 // Method: PUT

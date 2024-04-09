@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Question from '../../../../models/question.js';
-import { convertTimeAndGenerateRangesForStatistic } from '../../../../utils/generate/time-converter.js';
+import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';
 
 // Endpoint: /api/statistics/question/:id
 // Method: GET

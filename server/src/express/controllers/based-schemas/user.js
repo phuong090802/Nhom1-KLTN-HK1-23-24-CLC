@@ -1,8 +1,8 @@
 import { Expo } from 'expo-server-sdk';
 
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../../utils/error/http-error-handler.js';
-import { deleteFile } from '../../../utils/upload-file.js';
+import ErrorHandler from '../../../util/error/http-error-handler.js';
+import { deleteFile } from '../../../util/upload-file.js';
 import User from '../../../models/user.js';
 
 // Endpoint: /api/users/push-token

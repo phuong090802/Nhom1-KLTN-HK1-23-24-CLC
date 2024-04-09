@@ -1,5 +1,5 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import News from '../../../../models/news.js';
 
 // kiểm tra mã của tin tức

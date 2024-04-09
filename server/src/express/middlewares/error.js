@@ -1,4 +1,4 @@
-import ErrorHandler from '../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
 import attribute from '../../constants/mapper/attribute.js';
 
 // middleware handling errors

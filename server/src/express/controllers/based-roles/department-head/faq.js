@@ -1,10 +1,10 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import FAQ from '../../../../models/faq.js';
-import queryFiltersLimit from '../../../../utils/db/query-filters-limit.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import paginate from '../../../../utils/db/paginate.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
-import { deleteFile } from '../../../../utils/upload-file.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import paginate from '../../../../util/db/paginate.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import { deleteFile } from '../../../../util/upload-file.js';
 
 // Endpoint: /api/department-head/faqs
 // Method: GET

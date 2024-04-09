@@ -1,7 +1,7 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Field from '../../../../models/field.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import paginate from '../../../../utils/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import paginate from '../../../../util/db/paginate.js';
 
 // Endpoint: /api/department-head/fields
 // Method: GET

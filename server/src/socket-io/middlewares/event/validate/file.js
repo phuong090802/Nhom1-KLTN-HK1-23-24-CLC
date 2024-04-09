@@ -1,9 +1,9 @@
 import mimetype from '../../../../constants/file/mimetype.js';
-import ErrorHandler from '../../../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
 import {
   isSupportFileSize,
   isSupportedMimetype,
-} from '../../../../utils/validation.js';
+} from '../../../../util/validation.js';
 
 // Kiểm tra định dạng file
 export const handleValidateMimetype = (file) => {

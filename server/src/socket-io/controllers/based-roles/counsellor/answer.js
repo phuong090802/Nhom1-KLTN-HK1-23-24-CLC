@@ -4,8 +4,8 @@ import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validat
 import { handleValidateMimetypeAndFileSize } from '../../../middlewares/event/validate/combine/file.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
-import { uploadFileSocketIO } from '../../../../utils/upload-file.js';
-import sendNotification from '../../../../utils/send-notification.js';
+import { uploadFileSocketIO } from '../../../../util/upload-file.js';
+import sendNotification from '../../../../util/send-notification.js';
 
 // namespace: /counsellor
 // listen event (ack): answer:create

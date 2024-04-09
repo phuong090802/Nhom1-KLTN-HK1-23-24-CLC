@@ -1,4 +1,4 @@
-import ErrorHandler from '../../../../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../../../../util/error/socket-io-error-handler.js';
 
 // kiểm tra lĩnh vực có tồn tại có tồn tại không
 export const handleValidateField = (department) => {

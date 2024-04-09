@@ -1,9 +1,9 @@
 import Question from '../../../../models/question.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import paginate from '../../../../utils/db/paginate.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
+import paginate from '../../../../util/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
 import { USER_GET_ALL_QUESTIONS } from '../../../../constants/actions/question.js';
-import queryFiltersLimit from '../../../../utils/db/query-filters-limit.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 
 // Endpoint: /api/user/questions
 // Method: GET

@@ -1,5 +1,5 @@
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../util/error/socket-io-error-handler.js';
 import User from '../../models/user.js';
 
 // namespace: /auth

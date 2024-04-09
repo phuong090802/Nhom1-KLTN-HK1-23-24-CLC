@@ -1,7 +1,7 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import QueryAPI from '../../../utils/db/query-api.js';
-import paginate from '../../../utils/db/paginate.js';
-import queryFiltersLimit from '../../../utils/db/query-filters-limit.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginate from '../../../util/db/paginate.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 

@@ -1,8 +1,8 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import User from '../../../../models/user.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import paginate from '../../../../utils/db/paginate.js';
-import queryFiltersLimit from '../../../../utils/db/query-filters-limit.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import paginate from '../../../../util/db/paginate.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 import { ADMIN_GET_USER } from '../../../../constants/actions/user.js';
 
 // Endpoint: /api/admin/users

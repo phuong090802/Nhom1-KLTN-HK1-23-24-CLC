@@ -1,5 +1,5 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import FAQ from '../../../../models/faq.js';
 
 export const handleCheckFAQBelongDepartment = catchAsyncErrors(

@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../catch-async-errors.js';
 import User from '../../../../models/user.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import roles from '../../../../constants/mapper/roles.js';
 
 // check role of user by user id in body

@@ -1,5 +1,5 @@
 import questionStatus from '../../../../../constants/mapper/question-status.js';
-import ErrorHandler from '../../../../../utils/error/socket-io-error-handler.js';
+import ErrorHandler from '../../../../../util/error/socket-io-error-handler.js';
 
 // kiểm tra Id câu hỏi có tồn tại có tồn tại trong DB không
 export const handleValidateQuestion = (question) => {

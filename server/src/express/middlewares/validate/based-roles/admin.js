@@ -1,4 +1,4 @@
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../catch-async-errors.js';
 
 // admin kiểm tra trạng thái của khoa trước khi cập nhật (tên, thêm tư vấn viên vào khoa)

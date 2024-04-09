@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import QueryAPI from '../../../utils/db/query-api.js';
-import paginate from '../../../utils/db/paginate.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import paginate from '../../../util/db/paginate.js';
 import FAQ from '../../../models/faq.js';
 
 // Endpoint: /api/faqs

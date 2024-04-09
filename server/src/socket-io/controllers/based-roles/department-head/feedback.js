@@ -3,7 +3,7 @@ import { handleAuthorization } from '../../../middlewares/auth.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
 import Question from '../../../../models/question.js';
 import Feedback from '../../../../models/feedback.js';
-import sendNotification from '../../../../utils/send-notification.js';
+import sendNotification from '../../../../util/send-notification.js';
 
 // namespace: /counsellor
 // listen event (ack): feedback:create

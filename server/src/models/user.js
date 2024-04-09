@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
 import RefreshToken from './refresh-token.js';
-import { generateOTP } from '../utils/auth/email-verify.js';
-import ErrorHandler from '../utils/error/http-error-handler.js';
+import { generateOTP } from '../util/auth/email-verify.js';
+import ErrorHandler from '../util/error/http-error-handler.js';
 import * as userAction from '../constants/actions/user.js';
 
 const userSchema = new mongoose.Schema({

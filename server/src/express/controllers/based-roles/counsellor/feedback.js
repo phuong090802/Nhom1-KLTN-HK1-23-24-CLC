@@ -1,9 +1,9 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Feedback from '../../../../models/feedback.js';
-import QueryAPI from '../../../../utils/db/query-api.js';
-import { deleteFile } from '../../../../utils/upload-file.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
-import queryFiltersLimit from '../../../../utils/db/query-filters-limit.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import { deleteFile } from '../../../../util/upload-file.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 
 // Endpoint: /api/counsellor/feedbacks
 // Method: GET

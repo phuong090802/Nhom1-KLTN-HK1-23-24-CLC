@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import User from '../../../../models/user.js';
-import ErrorHandler from '../../../../utils/error/http-error-handler.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import attribute from '../../../../constants/mapper/attribute.js';
 
 // Endpoint: /api/admin/counsellors/upload
