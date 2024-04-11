@@ -12,7 +12,7 @@ export const handleGetNotifications = catchAsyncErrors(
     const recipient = req.user;
 
     const query = Notification.find({ recipient })
-      .select('_id content createdAt')
+      .select('_id content createdAt read')
       .lean();
 
     const reqSort = req.query.sort?.createdAt;
@@ -38,8 +38,22 @@ export const handleGetNotifications = catchAsyncErrors(
       notificationRecords
     );
 
-    // update trạng thái thông báo
-    await Notification.updateMany({ recipient }, { read: true });
+    // console.log('notificationRecords', notificationRecords);
+
+    // map quả để chỉ lấy thuộc tính id
+    const notificationIds = notificationRecords.map(
+      (notification) => notification._id
+    );
+
+    // console.log(notificationIds);
+
+    // update trạng thái thông báo của notificationIds
+    const updateResponse = await Notification.updateMany(
+      { _id: { $in: notificationIds }, read: false },
+      { read: true }
+    );
+
+    // console.log(updateResponse);
 
     res.json({
       success: true,

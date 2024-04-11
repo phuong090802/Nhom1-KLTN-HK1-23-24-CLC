@@ -7,8 +7,8 @@ import Question from '../../../models/question.js';
 // Endpoint: /api/statistics
 // Method: GET
 // Description:
-// - Đếm số số khoa có isActive: true trong hệ thống
-// - Đếm số số lĩnh vực có isActive: true trong hệ thống
+// - Đếm số khoa có isActive: true trong hệ thống
+// - Đếm số lĩnh vực có isActive: true trong hệ thống
 // - Đếm số người có isEnabled: true dùng trong hệ thống
 // - Đếm số câu hỏi trong hệ thống
 export const handleStatisticCountOfUsersAndDepartmentsAndFieldsAndQuestions =
