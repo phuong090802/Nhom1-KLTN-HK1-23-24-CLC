@@ -29,7 +29,6 @@ class QueryAPI {
       typeof filter === 'object' &&
       Object.keys(filter).length > 0
     ) {
-
       // console.log(filter);
       this.query = this.query.find(filter);
     }

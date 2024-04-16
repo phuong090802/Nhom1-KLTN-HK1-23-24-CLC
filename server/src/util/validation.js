@@ -8,7 +8,7 @@ export function hasArrayMaxLength(array, maxLength) {
   return array.length <= maxLength;
 }
 
-// // check limit file size
+// check limit file size
 export function isSupportFileSize(maxSize, file) {
   return file.size <= maxSize;
 }

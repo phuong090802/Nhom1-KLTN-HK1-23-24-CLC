@@ -249,7 +249,9 @@ export const handleLogout = catchAsyncErrors(async (req, res, next) => {
   // object
   const refreshToken = await RefreshToken.findOne({ token });
 
-  await RefreshToken.deleteMany({ branch: refreshToken.branch });
+  if (refreshToken) {
+    await RefreshToken.deleteMany({ branch: refreshToken.branch });
+  }
   clearToken(res);
 
   res.json({
