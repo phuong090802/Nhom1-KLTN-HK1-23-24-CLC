@@ -26,7 +26,7 @@ import {
   handleValidateUserIdInParams,
 } from '../../middlewares/validate/based-schemas/user.js';
 import { handleCheckUnapprovedAnswerExists } from '../../controllers/based-roles/department-head/answer.js';
-import { handleCheckUnansweredQuestionExits } from '../../controllers/based-roles/department-head/question.js';
+import * as questionController from '../../controllers/based-roles/department-head/question.js';
 import * as counsellorController from '../../controllers/based-roles/department-head/counsellor.js';
 import * as fieldController from '../../controllers/based-roles/department-head/field.js';
 import * as faqController from '../../controllers/based-roles/department-head/faq.js';
@@ -91,7 +91,14 @@ router
 
 router
   .route('/questions/unanswered-question')
-  .get(handleCheckUnansweredQuestionExits);
+  .get(questionController.handleCheckUnansweredQuestionExits);
+
+router
+  .route('/questions')
+  .get(
+    defaultPaginationParams,
+    questionController.handleGetQuestionsIsPendingApproval
+  );
 
 router
   .route('/counsellors/:id')

@@ -61,7 +61,7 @@ export const handleGetConversations = catchAsyncErrors(
       })
       .populate({
         path: 'participates',
-        select: '_id fullName avatar',
+        select: '_id fullName avatar.url',
         match: { _id: { $ne: userId } },
       })
       .select('_id lastMessage createdAt')

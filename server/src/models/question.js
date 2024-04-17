@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 import answerSchema from './embedded/answer.js';
 import * as questionAction from '../constants/actions/question.js';
+import { formatUser } from '../util/format/user.js';
+import { formatAnswer } from '../util/format/answer.js';
 
 const questionSchema = new mongoose.Schema({
   title: {
@@ -85,24 +87,13 @@ questionSchema.methods.getQuestionInformation = function (action) {
     case questionAction.DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
-        user: {
-          fullName: this.user.fullName,
-          avatar: this.user.avatar.url,
-        },
+        user: formatUser(this.user),
         field: this.field.fieldName,
       };
     case questionAction.USER_GET_ALL_QUESTIONS:
       let answer = null;
       if (this.answer) {
-        answer = {
-          content: this.answer.content,
-          fileURL: this.answer.file.url,
-          user: {
-            fullName: this.answer.user.fullName,
-            avatar: this.answer.user.avatar.url,
-          },
-          answeredAt: this.answer.answeredAt,
-        };
+        answer = formatAnswer(this.answer);
       }
       return {
         ...baseQuestion,
@@ -112,19 +103,14 @@ questionSchema.methods.getQuestionInformation = function (action) {
       return {
         ...baseQuestion,
         views: this.views,
-        user: {
-          fullName: this.user.fullName,
-          avatar: this.user.avatar.url,
-        },
-        answer: {
-          content: this.answer.content,
-          fileURL: this.answer.file.url,
-          user: {
-            fullName: this.answer.user.fullName,
-            avatar: this.answer.user.avatar.url,
-          },
-          answeredAt: this.answer.answeredAt,
-        },
+        user: formatUser(this.user),
+        answer: formatAnswer(this.answer),
+      };
+    case questionAction.DEPARTMENT_HEAD_GET_ALL_QUESTIONS:
+      return {
+        ...baseQuestion,
+        user: formatUser(this.user),
+        answer: formatAnswer(this.answer),
       };
     default:
       return baseQuestion;
