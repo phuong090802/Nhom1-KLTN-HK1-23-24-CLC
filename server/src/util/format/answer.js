@@ -1,10 +1,10 @@
-import { formatUser } from './user.js';
+import { formatUserForAnswer } from './user.js';
 
 export function formatAnswer(answer) {
   return {
     content: answer.content,
     fileURL: answer.file.url,
-    user: formatUser(answer.user),
+    user: formatUserForAnswer(answer.user),
     answeredAt: answer.answeredAt,
   };
 }

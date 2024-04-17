@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import answerSchema from './embedded/answer.js';
 import * as questionAction from '../constants/actions/question.js';
-import { formatUser } from '../util/format/user.js';
+import { formatUserForAnswer } from '../util/format/user.js';
 import { formatAnswer } from '../util/format/answer.js';
 
 const questionSchema = new mongoose.Schema({
@@ -87,7 +87,7 @@ questionSchema.methods.getQuestionInformation = function (action) {
     case questionAction.DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
-        user: formatUser(this.user),
+        user: formatUserForAnswer(this.user),
         field: this.field.fieldName,
       };
     case questionAction.USER_GET_ALL_QUESTIONS:
@@ -103,13 +103,13 @@ questionSchema.methods.getQuestionInformation = function (action) {
       return {
         ...baseQuestion,
         views: this.views,
-        user: formatUser(this.user),
+        user: formatUserForAnswer(this.user),
         answer: formatAnswer(this.answer),
       };
     case questionAction.DEPARTMENT_HEAD_GET_ALL_QUESTIONS:
       return {
         ...baseQuestion,
-        user: formatUser(this.user),
+        user: formatUserForAnswer(this.user),
         answer: formatAnswer(this.answer),
       };
     default:
