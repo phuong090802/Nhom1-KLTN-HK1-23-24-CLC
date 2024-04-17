@@ -232,6 +232,7 @@ userSchema.methods.getUserInformation = function (action) {
         avatar: this.avatar.url,
         occupation: this.occupation,
         department,
+        isEmailVerified: this.isEmailVerified,
       };
     case userAction.ADMIN_GET_USER:
       return {

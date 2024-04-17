@@ -2,7 +2,7 @@ import catchAsyncErrors from '../../catch-async-errors.js';
 import Field from '../../../../models/field.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 
-// trưởng khoa kiểm tra lĩnh vực của thuộc khoa mình trước khi thực hiện các thao tác liên quan
+// trưởng khoa kiểm tra lĩnh vực tồn tại
 export const handleValidateFieldIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;

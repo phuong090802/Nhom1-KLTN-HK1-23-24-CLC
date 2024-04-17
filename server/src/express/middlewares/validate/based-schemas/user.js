@@ -8,7 +8,10 @@ export const handleValidateRoleUser = (role) => {
   return catchAsyncErrors((req, res, next) => {
     const user = req.foundUser;
 
-    if (user.role === role) {
+    console.log('role', role);
+    console.log('user', user);
+
+    if (user.role !== role) {
       const msg = `Không tìm thấy tài khoản với vai trò ${roles[
         role
       ].toLowerCase()}`;

@@ -48,7 +48,8 @@ export const handleGetNotifications = catchAsyncErrors(
     // console.log(notificationIds);
 
     // update trạng thái thông báo của notificationIds
-    const updateResponse = await Notification.updateMany(
+    // const updateResponse = 
+    await Notification.updateMany(
       { _id: { $in: notificationIds }, read: false },
       { read: true }
     );

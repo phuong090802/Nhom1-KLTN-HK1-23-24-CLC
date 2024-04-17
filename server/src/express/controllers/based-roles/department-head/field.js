@@ -2,14 +2,21 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Field from '../../../../models/field.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import paginate from '../../../../util/db/paginate.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 
 // Endpoint: /api/department-head/fields
 // Method: GET
-// Description: Lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
+// Description: Trưởng khoa lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
 export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   const query = Field.find().select('-__v -department').lean();
 
-  const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
+  const department = req.foundDepartment;
+
+  const filterDepartment = { department: department._id };
+
+  const requestQuery = queryFiltersLimit(req.query, filterDepartment);
+
+  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
 
   // get all fields in DB
   let fieldsRecords = await queryAPI.query;
@@ -41,8 +48,9 @@ export const handleUpdateStatusOfField = catchAsyncErrors(
     const field = req.foundField;
     const { isActive } = req.body;
     field.isActive = isActive;
-
     const savedField = await field.save();
+
+    console.log(savedField);
 
     const strStatus = savedField.isActive ? 'Mở khóa' : 'Khóa';
 
@@ -57,21 +65,19 @@ export const handleUpdateStatusOfField = catchAsyncErrors(
 // Endpoint: /api/department-head/fields
 // Method: POST
 // Description: Cập nhật lĩnh vực của khoa
-export const handleRenameField = catchAsyncErrors(
-  async (req, res, next) => {
-    const field = req.foundField;
-    const { fieldName } = req.body;
-    field.fieldName = fieldName;
-    // save
-    await field.save();
-    // res
-    res.json({
-      success: true,
-      message: 'Cập nhật tên lĩnh vực thành công',
-      code: 2028,
-    });
-  }
-);
+export const handleRenameField = catchAsyncErrors(async (req, res, next) => {
+  const field = req.foundField;
+  const { fieldName } = req.body;
+  field.fieldName = fieldName;
+  // save
+  await field.save();
+  // res
+  res.json({
+    success: true,
+    message: 'Cập nhật tên lĩnh vực thành công',
+    code: 2028,
+  });
+});
 
 // Endpoint: /api/department-head/fields
 // Method: POST

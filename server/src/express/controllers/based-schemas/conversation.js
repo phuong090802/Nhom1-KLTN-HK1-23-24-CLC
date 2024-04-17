@@ -59,8 +59,13 @@ export const handleGetConversations = catchAsyncErrors(
         path: 'lastMessage',
         select: 'content sender viewed createdAt',
       })
-      .select('lastMessage createdAt')
-      .lean();
+      .populate({
+        path: 'participates',
+        select: '_id fullName avatar',
+        match: { _id: { $ne: userId } },
+      })
+      .select('_id lastMessage createdAt')
+      // .lean();
 
     const filterParticipates = {
       participates: userId,
@@ -79,7 +84,7 @@ export const handleGetConversations = catchAsyncErrors(
     const numberOfConversations = conversationRecords.length;
     conversationRecords = await queryAPI.pagination().query.clone();
     const {
-      data: conversations,
+      data: retConversations,
       page,
       pages,
     } = paginate(
@@ -87,6 +92,12 @@ export const handleGetConversations = catchAsyncErrors(
       req.query.page,
       req.query.size,
       conversationRecords
+    );
+
+    const conversations = await Promise.all(
+      retConversations.map((conversation) =>
+        conversation.getConversationInformation()
+      )
     );
 
     res.json({

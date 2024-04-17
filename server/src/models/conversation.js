@@ -75,6 +75,19 @@ conversationSchema.methods.getLatestConversation = function (message) {
   };
 };
 
+conversationSchema.methods.getConversationInformation = function () {
+  const [{ _id, fullName, avatar }] = this.participates;
+
+  const otherUser = { _id, fullName, avatar: avatar.url };
+
+  return {
+    _id: this._id,
+    lastMessage: this.lastMessage,
+    otherUser,
+    createdAt: this.createdAt,
+  };
+};
+
 const Conversation = mongoose.model('Conversation', conversationSchema);
 
 export default Conversation;
