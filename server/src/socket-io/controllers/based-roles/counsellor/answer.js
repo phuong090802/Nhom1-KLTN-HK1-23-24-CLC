@@ -12,9 +12,12 @@ import sendNotification from '../../../../util/send-notification.js';
 // description: Tư vấn viên, trưởng khoa trả lời câu hỏi
 export const handleCreateAnswer = catchAsyncErrors(
   async (socket, payload, callback) => {
-    const { questionId, file, content } = payload;
+    const { questionId, file, content, isApprovalRequest } = payload;
+
     const user = socket.user;
     const question = await Question.findById(questionId);
+
+    let status = 'publicly-answered-pending-approval';
 
     if (user.role === 'DEPARTMENT_HEAD') {
       status = 'publicly-answered-and-approved';
@@ -23,8 +26,6 @@ export const handleCreateAnswer = catchAsyncErrors(
     }
 
     handleCheckQuestionAndStatus(question, 'unanswered');
-
-    let status = 'publicly-answered-pending-approval';
 
     let answerData = {
       content,
@@ -45,7 +46,9 @@ export const handleCreateAnswer = catchAsyncErrors(
     }
 
     question.answer = answerData;
-    question.status = status;
+    question.status = !isApprovalRequest
+      ? 'publicly-answered-and-approved'
+      : status;
     await question.save();
 
     callback({
@@ -60,7 +63,7 @@ export const handleCreateAnswer = catchAsyncErrors(
       code: 2059,
     };
 
-    if (user.role !== 'DEPARTMENT_HEAD') {
+    if (user.role !== 'DEPARTMENT_HEAD' || !isApprovalRequest) {
       const department = question.department;
 
       const departmentHead = await User.findOne({
