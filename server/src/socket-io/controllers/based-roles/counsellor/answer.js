@@ -80,6 +80,17 @@ export const handleCreateAnswer = catchAsyncErrors(
         title: 'Duyệt câu trả lời',
         body: 'Có câu trả lời mới cần được duyệt',
       });
+    } else {
+      // emit notification to user
+      const receiverId = question.user._id.toString();
+      socket.emit(`${receiverId}:notification:read`, response);
+
+      await sendNotification(receiverId, {
+        // sound: 'default',
+        title: 'Câu hỏi đã được trả lời',
+        // body: question.answer.content,
+        body: 'Câu hỏi của bạn đã được trả lời',
+      });
     }
   }
 );
