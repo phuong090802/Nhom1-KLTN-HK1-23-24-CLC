@@ -24,7 +24,7 @@ export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
     // không sử dụng learn vì method trong được tạo schema
     // .lean()
 
-    const filterStatus = { status: 'publicly-answered-and-approved' };
+    const filterStatus = { status: 'publicly-answered-pending-approval' };
     const filterDepartment = { department: department._id };
 
     const requestQuery = queryFiltersLimit(
