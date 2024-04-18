@@ -12,7 +12,7 @@ import sendNotification from '../../../util/send-notification.js';
 export const handleCreateMessage = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { conversationId, messageContent } = payload;
-    // console.log(conversationId, messageContent);
+    console.log(conversationId, messageContent);
 
     const user = socket.user;
 
