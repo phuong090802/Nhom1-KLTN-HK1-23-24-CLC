@@ -1,6 +1,6 @@
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import { handleAuthorization } from '../../../middlewares/auth.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
+import { handleAuthorization } from '../../../middlewares/event/auth.js';
 import Question from '../../../../models/question.js';
 import Feedback from '../../../../models/feedback.js';
 import sendNotification from '../../../../util/send-notification.js';
@@ -10,7 +10,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // description: Trưởng khoa gửi feedback khi từ chối duyệt
 export const handleCreateFeedback = catchAsyncErrors(
   async (socket, payload, callback) => {
-    handleAuthorization('DEPARTMENT_HEAD')(socket, payload, callback);
+    handleAuthorization(socket, 'DEPARTMENT_HEAD');
 
     const { questionId, content } = payload;
     const question = await Question.findById(questionId);
