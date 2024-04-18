@@ -11,7 +11,7 @@ export default function counsellor(io) {
     .use(departmentValidateMiddleware.handleCheckStatusOfDepartment)
     .on('connection', (socket) => {
       socket.on('feedback:create', (payload, callback) =>
-        handleCreateFeedback(socket, payload, callback)
+        handleCreateFeedback(io, socket, payload, callback)
       );
 
       socket.on('answer:create', (payload, callback) => {

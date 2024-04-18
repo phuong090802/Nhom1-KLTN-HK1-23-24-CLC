@@ -10,6 +10,7 @@ export default function admin(io) {
         'department:validate-department-name:create',
         (payload, callback) => {
           departmentController.handleValidateDepartmentNameForCreate(
+            io,
             socket,
             payload,
             callback

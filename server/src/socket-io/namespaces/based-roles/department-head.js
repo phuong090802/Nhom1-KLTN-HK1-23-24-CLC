@@ -10,11 +10,11 @@ export default function departmentHead(io) {
     .use(departmentValidateMiddleware.handleCheckStatusOfDepartment)
     .on('connection', (socket) => {
       socket.on('field:validate-field-name:create', (payload, callback) =>
-        fieldController.handleValidateFieldNameCreate(socket, payload, callback)
+        fieldController.handleValidateFieldNameCreate(io, socket, payload, callback)
       );
 
       socket.on('field:validate-field-name:update', (payload, callback) =>
-        fieldController.handleValidateFieldNameUpdate(socket, payload, callback)
+        fieldController.handleValidateFieldNameUpdate(io, socket, payload, callback)
       );
     });
 }

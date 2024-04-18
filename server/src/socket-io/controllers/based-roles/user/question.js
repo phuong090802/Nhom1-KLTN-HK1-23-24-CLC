@@ -14,7 +14,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // listen event (ack): department:validate-department-name:create
 // description: Kiểm tra tên khoa trước khi tạo khoa mới
 export const handleCreateQuestion = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     handleAuthorization(socket, 'USER');
     const user = socket.user;
     const { file, departmentId, fieldId, title, content } = payload;

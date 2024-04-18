@@ -10,7 +10,7 @@ import sendNotification from '../../../util/send-notification.js';
 // listen event (ack): message:create
 // description: Gửi tin nhắn
 export const handleCreateMessage = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { conversationId, messageContent } = payload;
     // console.log(conversationId, messageContent);
 
@@ -56,7 +56,8 @@ export const handleCreateMessage = catchAsyncErrors(
       (participate) => !participate.equals(user._id)
     );
 
-    // console.log(receiver);
+    // console.log('receiver', receiver);
+    // console.log('user', user);
 
     const response = {
       success: true,
@@ -66,7 +67,9 @@ export const handleCreateMessage = catchAsyncErrors(
 
     const receiverId = receiver._id.toString();
 
-    socket.emit(`${receiverId}:message:read`, response);
+    // console.log(receiverId);
+
+    io.of('/auth').emit(`${receiverId}:message:read`, response);
 
     await sendNotification(receiverId, {
       // sound: 'default',

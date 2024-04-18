@@ -11,32 +11,32 @@ export default function auth(io) {
     .on('connection', (socket) => {
       // auth validate email
       socket.on('validate-email', (payload, callback) =>
-        handleValidateEmail(socket, payload, callback)
+        handleValidateEmail(io, socket, payload, callback)
       );
 
       // auth verify email
       socket.on('verify-email', (payload, callback) => {
-        handleVerifyEmail(socket, payload, callback);
+        handleVerifyEmail(io, socket, payload, callback);
       });
 
       // message conversation:create
       socket.on('conversation:create', (payload, callback) =>
-        handleCreateConversation(socket, payload, callback)
+        handleCreateConversation(io, socket, payload, callback)
       );
 
       // message message:create
       socket.on('message:create', (payload, callback) =>
-        handleCreateMessage(socket, payload, callback)
+        handleCreateMessage(io, socket, payload, callback)
       );
 
       // approved answer and notification to user
       socket.on('approve-answer:create', (payload, callback) => {
-        handleApproveAnswer(socket, payload, callback);
+        handleApproveAnswer(io, socket, payload, callback);
       });
 
       // create question
       socket.on('question:create', (payload, callback) => {
-        handleCreateQuestion(socket, payload, callback);
+        handleCreateQuestion(io, socket, payload, callback);
       });
     });
 }

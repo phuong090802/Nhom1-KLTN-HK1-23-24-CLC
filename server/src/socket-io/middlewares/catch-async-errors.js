@@ -2,7 +2,7 @@ import attribute from '../../constants/mapper/attribute.js';
 import ErrorHandler from '../../util/error/socket-io-error-handler.js';
 
 // handle error if occurred when handler executing
-const catchAsyncErrors = (handler) => (socket, payload, callback) => {
+const catchAsyncErrors = (handler) => (io, socket, payload, callback) => {
   Promise.resolve(handler(socket, payload, callback)).catch((err) => {
     err.message = err.message || 'Internal Server Error';
     err.code = err.code || 5000;

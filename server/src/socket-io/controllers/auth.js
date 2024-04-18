@@ -6,7 +6,7 @@ import User from '../../models/user.js';
 // listen event (ack): validate-email
 // description: xác thực email (cần xác thực người dùng)
 export const handleValidateEmail = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const user = socket.user;
 
     if (user.isEmailVerified) {
@@ -36,7 +36,7 @@ export const handleValidateEmail = catchAsyncErrors(
 // listen event (ack): verify-email
 // description: xác nhận email (cần xác thực người dùng)
 export const handleVerifyEmail = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const user = socket.user;
     const { otp } = payload;
 
@@ -61,7 +61,7 @@ export const handleVerifyEmail = catchAsyncErrors(
 // listen event (ack): register:validate-email
 // description: Kiểm tra email trước khi tạo tài khoản
 export const handleValidateEmailForRegister = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { email } = payload;
 
     const user = await User.findOne({
@@ -84,7 +84,7 @@ export const handleValidateEmailForRegister = catchAsyncErrors(
 // listen event (ack): register:validate-phone-number
 // description: Kiểm tra số điện thoại trước khi tạo tài khoản
 export const handleValidatePhoneNumberForRegister = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { phoneNumber } = payload;
 
     const user = await User.findOne({ phoneNumber });
@@ -105,7 +105,7 @@ export const handleValidatePhoneNumberForRegister = catchAsyncErrors(
 // listen event (ack): verify-otp
 // description: kiểm tra mã xác thực trước khi nhập mã xác thực để đặt lại mật khẩu
 export const handleVerifyOTP = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { email, otp } = payload;
 
     const user = await User.findOne({
@@ -130,7 +130,7 @@ export const handleVerifyOTP = catchAsyncErrors(
 // listen event (ack): forgot-password:validate-email
 // description: Kiểm tra email trước khi yêu cầu quên mật khẩu
 export const handleValidateEmailForForgotPassword = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { email } = payload;
 
     const user = await User.findOne({

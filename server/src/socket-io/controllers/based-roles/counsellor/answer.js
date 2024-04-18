@@ -11,7 +11,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // listen event (ack): answer:create
 // description: Tư vấn viên, trưởng khoa trả lời câu hỏi
 export const handleCreateAnswer = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { questionId, file, content, isApprovalRequest } = payload;
 
     const user = socket.user;

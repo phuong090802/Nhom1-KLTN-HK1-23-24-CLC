@@ -10,7 +10,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // listen event (ack): conversation:create
 // description: Tư vấn viên/trưởng khoa trả lời câu hỏi riêng tư
 export const handleCreateConversation = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     handleAuthorization(socket, 'COUNSELLOR', 'DEPARTMENT_HEAD');
 
     const { questionId, messageContent } = payload;

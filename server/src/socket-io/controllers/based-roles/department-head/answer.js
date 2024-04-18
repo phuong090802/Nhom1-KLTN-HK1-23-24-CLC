@@ -9,7 +9,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // listen event (ack): notification:create
 // description: Gửi thông báo câu hỏi đã được trả lời (câu trả lời đã được trưởng khoa duyệt)
 export const handleApproveAnswer = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     handleAuthorization(socket, 'COUNSELLOR', 'DEPARTMENT_HEAD');
 
     const { questionId } = payload;

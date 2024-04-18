@@ -6,7 +6,7 @@ import Field from '../../../../models/field.js';
 // listen event (ack): field:validate-field-name:create
 // description: Kiểm tra tên lĩnh vực trước khi tạo lĩnh vực
 export const handleValidateFieldNameCreate = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { fieldName } = payload;
     const department = socket.user.counsellor.department;
 
@@ -31,7 +31,7 @@ export const handleValidateFieldNameCreate = catchAsyncErrors(
 // listen event (ack): field:validate-field-name:create
 // description: Kiểm tra tên lĩnh vực trước khi cập tên mới
 export const handleValidateFieldNameUpdate = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { fieldId, fieldName } = payload;
 
     const department = socket.user.counsellor.department;

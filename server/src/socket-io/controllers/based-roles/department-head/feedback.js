@@ -9,7 +9,7 @@ import sendNotification from '../../../../util/send-notification.js';
 // listen event (ack): feedback:create
 // description: Trưởng khoa gửi feedback khi từ chối duyệt
 export const handleCreateFeedback = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     handleAuthorization(socket, 'DEPARTMENT_HEAD');
 
     const { questionId, content } = payload;

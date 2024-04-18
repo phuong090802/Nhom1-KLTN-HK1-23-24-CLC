@@ -6,7 +6,7 @@ import Department from '../../../../models/department.js';
 // listen event (ack): department:validate-department-name:create
 // description: Kiểm tra tên khoa trước khi tạo khoa mới
 export const handleValidateDepartmentNameForCreate = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { departmentName } = payload;
     
     const department = await Department.findOne({
@@ -29,7 +29,7 @@ export const handleValidateDepartmentNameForCreate = catchAsyncErrors(
 // listen event (ack): department:validate-department-name:update
 // description: Kiểm tra tên khoa trước khi cập nhật tên khoa
 export const handleValidateDepartmentNameForUpdate = catchAsyncErrors(
-  async (socket, payload, callback) => {
+  async (io, socket, payload, callback) => {
     const { departmentId, departmentName } = payload;
 
     const department = await Department.findOne({
