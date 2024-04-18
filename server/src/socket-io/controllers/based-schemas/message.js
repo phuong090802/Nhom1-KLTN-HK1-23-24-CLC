@@ -66,7 +66,7 @@ export const handleCreateMessage = catchAsyncErrors(
 
     const receiverId = receiver._id.toString();
 
-    socket.emit(`${receiverId}:notification:read`, response);
+    socket.emit(`${receiverId}:message:read`, response);
 
     await sendNotification(receiverId, {
       // sound: 'default',
