@@ -48,7 +48,7 @@ export const handleApproveAnswer = catchAsyncErrors(
 
     // emit notification to user
     const receiverId = question.user._id.toString();
-    socket.emit(`${receiverId}:notification:read`, response);
+    io.of('/auth').emit(`${receiverId}:notification:read`, response);
 
     await sendNotification(receiverId, {
       // sound: 'default',

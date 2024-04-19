@@ -66,7 +66,7 @@ export const handleCreateFeedback = catchAsyncErrors(
 
     // handle emit feedback
     const receiverId = answer.user._id.toString();
-    socket.emit(`${receiverId}:feedback:read`, response);
+    io.of('/auth').emit(`${receiverId}:feedback:read`, response);
 
     await sendNotification(receiverId, {
       // sound: 'default',

@@ -79,7 +79,7 @@ export const handleCreateQuestion = catchAsyncErrors(
     await Promise.all(
       users.map(async (user) => {
         const receiverId = user._id.toString();
-        await socket.emit(`${receiverId}:question:notification:read`, response);
+        io.of('/auth').emit(`${receiverId}:question:notification:read`, response);
 
         await sendNotification(receiverId, {
           // sound: 'default',

@@ -12,7 +12,7 @@ import sendNotification from '../../../util/send-notification.js';
 export const handleCreateMessage = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { conversationId, messageContent } = payload;
-    console.log(conversationId, messageContent);
+    // console.log(conversationId, messageContent);
 
     const user = socket.user;
 
@@ -68,6 +68,8 @@ export const handleCreateMessage = catchAsyncErrors(
     const receiverId = receiver._id.toString();
 
     // console.log(receiverId);
+
+    // console.log(socket);
 
     io.of('/auth').emit(`${receiverId}:message:read`, response);
 

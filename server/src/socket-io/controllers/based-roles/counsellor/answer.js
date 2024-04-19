@@ -73,7 +73,7 @@ export const handleCreateAnswer = catchAsyncErrors(
 
       const receiverId = departmentHead._id.toString();
 
-      socket.emit(`${receiverId}:answer:notification:read`, response);
+      io.of('/auth').emit(`${receiverId}:answer:notification:read`, response);
 
       await sendNotification(receiverId, {
         // sound: 'default',
@@ -83,7 +83,7 @@ export const handleCreateAnswer = catchAsyncErrors(
     } else {
       // emit notification to user
       const receiverId = question.user._id.toString();
-      socket.emit(`${receiverId}:notification:read`, response);
+      io.of('/auth').emit(`${receiverId}:notification:read`, response);
 
       await sendNotification(receiverId, {
         // sound: 'default',

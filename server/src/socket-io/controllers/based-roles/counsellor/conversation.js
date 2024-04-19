@@ -60,7 +60,7 @@ export const handleCreateConversation = catchAsyncErrors(
 
     const receiverId = receiver._id.toString();
 
-    socket.emit(`${receiverId}:notification:read`, response);
+    io.of('/auth').emit(`${receiverId}:notification:read`, response);
 
     await sendNotification(receiverId, {
       // sound: 'default',
