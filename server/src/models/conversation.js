@@ -61,7 +61,11 @@ conversationSchema.pre('save', function (next) {
   next();
 });
 
-conversationSchema.methods.getLatestConversation = function (message) {
+conversationSchema.methods.getLatestConversation = function (message, sender) {
+  const { _id, fullName, avatar } = sender;
+
+  const otherUser = { _id, fullName, avatar: avatar.url };
+
   return {
     _id: this._id,
     lastMessage: {
@@ -71,6 +75,7 @@ conversationSchema.methods.getLatestConversation = function (message) {
       view: message.viewed,
       createdAt: message.createdAt,
     },
+    otherUser,
     createdAt: this.createdAt,
   };
 };

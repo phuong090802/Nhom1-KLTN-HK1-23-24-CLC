@@ -46,7 +46,7 @@ export const handleCreateMessage = catchAsyncErrors(
 
     const savedConversation = await conversation.save();
 
-    const latestConversation = savedConversation.getLatestConversation(message);
+    const latestConversation = savedConversation.getLatestConversation(message, user);
 
     // console.log(latestConversation);
 
@@ -67,7 +67,7 @@ export const handleCreateMessage = catchAsyncErrors(
 
     const receiverId = receiver._id.toString();
 
-    // console.log(receiverId);
+    console.log(receiverId);
 
     // console.log(socket);
 
