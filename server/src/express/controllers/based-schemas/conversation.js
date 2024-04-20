@@ -33,19 +33,20 @@ export const handleGetMessagesInConversation = catchAsyncErrors(
       !reqSort && { createdAt: -1 }
     );
 
-    const queryAPI = new QueryAPI(query, requestQuery)
-      .search()
-      .filter()
-      .sort()
-      .skipAndLimit();
+    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
 
-    const foundMessages = await queryAPI.query;
+    let messageRecords = await queryAPI.query;
+
+    const totalMessages = messageRecords.length;
+
+    const foundMessages = await queryAPI.skipAndLimit().query.clone();
 
     const messages = foundMessages.reverse();
 
     res.json({
       success: true,
       messages,
+      totalMessages,
       code: 2054,
     });
   }
