@@ -54,6 +54,13 @@ class QueryAPI {
     this.query = this.query.limit(size).skip(skip);
     return this;
   }
+
+  skipAndLimit() {
+    const { size, skip } = this.queryString;
+    console.log(skip);
+    this.query = this.query.limit(size).skip(skip);
+    return this;
+  }
 }
 
 export default QueryAPI;

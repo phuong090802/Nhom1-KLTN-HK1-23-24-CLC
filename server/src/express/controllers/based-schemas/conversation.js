@@ -2,6 +2,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import paginate from '../../../util/db/paginate.js';
 import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import defaultSortNewest from '../../../util/db/default-sort.js';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 
@@ -20,28 +21,31 @@ export const handleGetMessagesInConversation = catchAsyncErrors(
       conversation: conversation._id,
     };
 
-    const requestQuery = queryFiltersLimit(req.query, filterConversation);
-
-    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
-    let messageRecords = await queryAPI.query;
-    const numberOfMessages = messageRecords.length;
-    messageRecords = await queryAPI.pagination().query.clone();
-    const {
-      data: messages,
-      page,
-      pages,
-    } = paginate(
-      numberOfMessages,
-      req.query.page,
-      req.query.size,
-      messageRecords
+    const requestQueryTransform = queryFiltersLimit(
+      req.query,
+      filterConversation
     );
+
+    const reqSort = req.query.sort?.createdAt;
+
+    const requestQuery = defaultSortNewest(
+      requestQueryTransform,
+      !reqSort && { createdAt: -1 }
+    );
+
+    const queryAPI = new QueryAPI(query, requestQuery)
+      .search()
+      .filter()
+      .sort()
+      .skipAndLimit();
+
+    const foundMessages = await queryAPI.query;
+
+    const messages = foundMessages.reverse();
 
     res.json({
       success: true,
       messages,
-      page,
-      pages,
       code: 2054,
     });
   }
@@ -64,8 +68,8 @@ export const handleGetConversations = catchAsyncErrors(
         select: '_id fullName avatar.url',
         match: { _id: { $ne: userId } },
       })
-      .select('_id lastMessage createdAt')
-      // .lean();
+      .select('_id lastMessage createdAt');
+    // .lean();
 
     const filterParticipates = {
       participates: userId,

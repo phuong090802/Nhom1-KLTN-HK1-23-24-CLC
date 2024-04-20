@@ -6,3 +6,10 @@ export const defaultPaginationParams = catchAsyncErrors((req, res, next) => {
   req.query.size = Number(req.query.size) || 5;
   next();
 });
+
+// set default page and size for size and skip
+export const defaultSizeAndSkip = catchAsyncErrors((req, res, next) => {
+  req.query.size = Number(req.query.size) || 5;
+  req.query.skip = Number(req.query.skip) || 0;
+  next();
+});

@@ -1,7 +1,10 @@
 import express from 'express';
 
 import { handleAuthentication } from '../../middlewares/auth.js';
-import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
+import {
+  defaultPaginationParams,
+  defaultSizeAndSkip,
+} from '../../middlewares/default-value/query.js';
 import {
   handleCheckUserIsInParticipatesConversation,
   handleCheckUserIsNotInDeletedByConversation,
@@ -20,7 +23,7 @@ router.route('/:id').get(
   handleCheckUserIsInParticipatesConversation,
   // user not in deleted by
   handleCheckUserIsNotInDeletedByConversation,
-  defaultPaginationParams,
+  defaultSizeAndSkip,
   conversationController.handleGetMessagesInConversation
 );
 
