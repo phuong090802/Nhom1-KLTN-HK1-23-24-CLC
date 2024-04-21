@@ -1,1 +1,1 @@
-export { default } from './AdminDepartment'
+export { default } from "./AdminDepartment";

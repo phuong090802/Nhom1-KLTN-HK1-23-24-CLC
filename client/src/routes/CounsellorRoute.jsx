@@ -1,10 +1,9 @@
-import { Outlet } from "react-router"
-import useUser from "../hooks/useUser"
-import useMyContext from "../hooks/userMyContext"
+import { useContext } from "react";
+import { DataContext } from "../store";
+import { Outlet } from "react-router-dom";
 
-const CounsellorRoute = () => {
-    const {user} = useMyContext()
-    return (user.role && user.role === 'COUNSELLOR') ? <Outlet /> : <h1>403 Forbiden </h1>
-}
+export const CounsellorRoute = () => {
+  const { user } = useContext(DataContext);
 
-export default CounsellorRoute
+  return user.role === "COUNSELLOR" ? <Outlet></Outlet> : <h1>403 forbiden</h1>;
+};

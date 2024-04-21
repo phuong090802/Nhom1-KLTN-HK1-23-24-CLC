@@ -1,9 +1,9 @@
-import { Outlet } from "react-router"
-import useMyContext from "../hooks/userMyContext"
+import { useContext } from "react";
+import { DataContext } from "../store";
+import { Outlet } from "react-router-dom";
 
-const SupervisorRoute = () => {
-    const {user} = useMyContext()
-    return (user.role && user.role === 'SUPERVISOR') ? <Outlet /> : <h1>403 Forbiden </h1>
-}
+export const SupervisorRoute = () => {
+  const { user } = useContext(DataContext);
 
-export default SupervisorRoute
+  return user.role === "SUPERVISOR" ? <Outlet></Outlet> : <h1>403 forbiden</h1>;
+};

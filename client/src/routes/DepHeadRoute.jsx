@@ -1,9 +1,13 @@
-import { Outlet } from "react-router"
-import useMyContext from "../hooks/userMyContext"
+import { useContext } from "react";
+import { DataContext } from "../store";
+import { Outlet } from "react-router-dom";
 
-const DepHeadRoute = () => {
-    const {user} = useMyContext()
-    return (user.role && user.role === 'DEPARTMENT_HEAD') ? <Outlet /> : <h1>403 Forbiden </h1>
-}
+export const DepheadRoute = () => {
+  const { user } = useContext(DataContext);
 
-export default DepHeadRoute
+  return user.role === "DEPARTMENT_HEAD" ? (
+    <Outlet></Outlet>
+  ) : (
+    <h1>403 forbiden</h1>
+  );
+};
