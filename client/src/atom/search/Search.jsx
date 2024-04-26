@@ -1,18 +1,49 @@
-import MaterialIcon from "../../components/material-icon/MaterialIcon"
+import clsx from "clsx";
+import { CircleX } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-const Search = () => {
-    return <div className="flex">
-        <input
-            type="search"
-            className="outline-none border border-black/10 h-8 pl-4 border-r-transparent rounded-l-2xl" />
-        <div className="h-8 w-8 inline-flex justify-center items-center border border-l-transparent border-black/10 rounded-r-2xl bg-white">
-            <MaterialIcon
-                name='HighlightOffOutlinedIcon'
-                style={'cursor-pointer'}
-                color={'#2785DC'}
-            />
-        </div>
+const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
+  const [key, setKey] = useState("");
+
+  const timeOutId = useRef();
+
+  const handleChange = (e) => {
+    setKey(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (setParams) {
+      clearTimeout(timeOutId.current);
+      timeOutId.current = setTimeout(() => {
+        setParams((prev) => ({ ...prev, keyword: key, page: 1 }));
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [key]);
+
+  return (
+    <div className={clsx("relative z-[1]", boxStyle)}>
+      <input
+        value={key}
+        onChange={(e) => handleChange(e)}
+        type="text"
+        className={clsx(
+          "outline-none h-10 bg-black10 px-4 rounded-2xl text-black75 pr-9",
+          inputStyle
+        )}
+        placeholder={placeholder || "Tìm kiếm"}
+      />
+      <CircleX
+        className={`${
+          key ? "" : "hidden"
+        } absolute right-2 top-2 cursor-pointer`}
+        color="rgba(36, 41, 45, 0.75)"
+        onClick={() => setKey("")}
+      />
     </div>
-}
-
-export default Search
+  );
+};
+export default Search;

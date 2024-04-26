@@ -1,14 +1,24 @@
-import { Outlet } from "react-router";
-import useUser from "../hooks/useUser";
-import useMyContext from "../hooks/userMyContext";
+import { useContext } from "react";
+import { DataContext } from "../store";
+import { Outlet } from "react-router-dom";
+import StaffLayout from "../template/staff-layout";
 
-const ProtectedRoute = () => {
-    const {user} = useMyContext()
-    return (user.role && user.role !== 'GUEST')
-        ?
-        <Outlet />
-        :
-        <h1>404 Error Not Found</h1>
-}
+export const ProtectedRoute = () => {
+  const { user } = useContext(DataContext);
 
-export default ProtectedRoute
+  const staffList = [
+    "USER",
+    "COUNSELLOR",
+    "DEPARTMENT_HEAD",
+    "SUPERVISOR",
+    "ADMIN",
+  ];
+
+  return staffList.includes(user.role) ? (
+    <StaffLayout>
+      <Outlet />
+    </StaffLayout>
+  ) : (
+    <h1>403 forbiden</h1>
+  );
+};

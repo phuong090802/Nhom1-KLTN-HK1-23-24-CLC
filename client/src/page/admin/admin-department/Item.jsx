@@ -1,125 +1,147 @@
-import MaterialIcon from '../../../components/material-icon';
-import IconButton from '../../../atom/icon-button';
-import { useCallback, useContext, useEffect, useState } from 'react';
-import StaffInforBox from './StaffInforBox';
-import { AdminDepartmentContext } from './AdminDepartment';
-import DepartmentInfor from './DepartmentInfor';
-import { toast } from 'sonner';
-import { getDepStaffsSv, setDepHeadSv } from '../../../service/admin/adminDepartment.sv';
-import Sort from '../../../components/sort';
-import Search from '../../../atom/search';
-import Pagination from '../../../atom/pagination';
-import { itemConst } from './const';
+import { Users } from "lucide-react";
+import default_avatar from "../../../assets/image/default_avatar.png";
+import Search from "../../../atom/search/Search";
+import {
+  chooseDepheadSv,
+  getDepCounsellorsSv,
+} from "../../../service/admin/adminDepartment.sv";
+import ItemLayout from "../../../template/item-layout";
+import { StaffInfoBox } from "./StaffInfoBox";
+import { useEffect, useState } from "react";
+import Pagination from "../../../molecule/pagination";
 
-const Item = ({ id, isSelected, setSelected, handleUpdate }) => {
+export const Item = ({
+  isSelected,
+  setSelected,
+  data,
+  status,
+  onStatus,
+  onEdit,
+}) => {
+  const handleExpand = () => {
+    if (isSelected) setSelected(-1);
+    else setSelected(data._id);
+  };
 
-    const { departments } = useContext(AdminDepartmentContext)
+  const initParams = {
+    search: ["fullName"],
+    keyword: "",
+    page: 1,
+    size: 6,
+    filter: {
+      role: "COUNSELLOR",
+    },
+    sort: {
+      fullName: 1,
+    },
+  };
 
-    const data = departments.find(dep => dep._id === id)
+  const [params, setParams] = useState(initParams);
 
-    const [params, setParams] = useState(itemConst.initParams)
+  const [counsellors, setCounsellors] = useState([]);
 
-    const [pages, setPages] = useState(1)
+  const [dephead, setDephead] = useState(null);
 
-    const [staff, setStaff] = useState({})
+  const [pages, setPages] = useState(0);
 
-    const getDepStaffs = async () => {
-        try {
-            const response = await getDepStaffsSv(id, params)
-
-            setPages(response.pages)
-            const temp = response.counsellors
-            let depHead, counsellors
-            depHead = temp.find((staff) => staff.role === 'DEPARTMENT_HEAD')
-            counsellors = temp.filter((staff) => staff.role === 'COUNSELLOR')
-
-            setStaff({ depHead, counsellors })
-        } catch (error) {
-            toast.error(error.message)
-        }
+  const getDephead = async () => {
+    try {
+      const response = await getDepCounsellorsSv(data._id, {
+        filter: {
+          role: "DEPARTMENT_HEAD",
+        },
+      });
+      setDephead(response.counsellors[0]);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const onPageChange = (page) => {
-        setParams((prev) => ({ ...prev, page: page }))
+  const getDepCounsellors = async () => {
+    try {
+      const response = await getDepCounsellorsSv(data._id, params);
+      setCounsellors(response.counsellors);
+      setPages(response.pages);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        getDepStaffs()
-    }, [])
-
-    const setDepHead = async (staffId) => {
-        if (!staffId) return
-        try {
-            const response = await setDepHeadSv({ departmentId: id, userId: staffId })
-            toast.success(response.message)
-            getDepStaffs()
-        } catch (error) {
-            toast.error(error.message)
-        }
+  const chooseDephead = async (userId) => {
+    try {
+      const submitData = { departmentId: data._id, userId: userId };
+      const response = await chooseDepheadSv(submitData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const handleSelect = useCallback(() => {
-        if (isSelected) {
-            setSelected(null);
-        } else {
-            setSelected(id)
-        }
-    })
+  useEffect(() => {
+    getDepCounsellors();
+  }, [params]);
 
-    return <div className="bg-white rounded-t-2xl pt-4 shadow-md mt-2 pb-4 rounded-b-2xl">
-        <div className="flex justify-between items-center px-10">
-            <div className=' flex justify-between items-center w-full'>
-                <h1 className="text-[18px] font-bold text-black/75">{data.departmentName}</h1>
-                <div className='flex gap-2'>
-                    <IconButton
-                        buttonColor='#eab308'
-                        iconColor='#fff'
-                        icon='EditOutlinedIcon'
-                        onClick={handleUpdate} />
-                    <IconButton
-                        iconColor='#fff'
-                        icon='ArrowDropDownOutlinedIcon'
-                        onClick={handleSelect} />
-                </div>
-            </div>
+  useEffect(() => {
+    getDephead();
+  }, []);
+
+  return (
+    <ItemLayout
+      text={data.departmentName}
+      isSelected={isSelected}
+      onExpand={handleExpand}
+      status={status}
+      onStatus={onStatus}
+      onEdit={onEdit}
+    >
+      <div className="mt-2">
+        <div className="flex gap-2">
+          <img
+            src={dephead?.avatar || default_avatar}
+            alt=""
+            className="w-12 h12 border-2 border-primary rounded-2xl "
+          />
+          <div>
+            <h1 className="font-bold">
+              {dephead?.fullName || "Chưa có trưởng khoa"}
+            </h1>
+            <h1 className="font-bold text-black75 text-xs">Trưởng khoa</h1>
+          </div>
         </div>
-        <div className={`overflow-hidden px-10 ${isSelected ? 'max-h-[600px]' : 'max-h-0'} duration-700`}>
-            <div className='pt-2'>
-                <DepartmentInfor data={data} />
-                <p className='text-black/75 flex items-center font-bold'>
-                    <MaterialIcon name='AccessibleForwardOutlinedIcon' style={'mr-1'} />
-                    Trưởng khoa:
-                </p>
-                <StaffInforBox
-                    isDepHead={true}
-                    counsellor={staff.depHead} />
+        <div className="mt-2 flex flex-col border rounded-2xl py-4 px-6">
+          <div className=" flex items-end gap-2 font-semibold">
+            <div className="flex items-center justify-between w-full">
+              <h1 className="flex items-center gap-2">
+                <Users />
+                Nhân viên:
+              </h1>
+              <Search
+                setParams={setParams}
+                placeholder={"Tìm kiếm nhân viên"}
+              />
             </div>
-            <div className='mt-2 border-t-2 pt-2'>
-                <div className='flex justify-between items-center'>
-                    <p className='text-black/75 flex items-center font-bold'>
-                        <MaterialIcon name='GroupsOutlinedIcon' style={'mr-1'} />
-                        Nhân viên:
-                    </p>
-                    <div className='flex items-center gap-4'>
-                        <Sort />
-                        <Search />
-                    </div>
-                </div>
-
-                {(staff?.counsellors && staff.counsellors.length !== 0)
-                    ?
-                    staff.counsellors.map((counsellor) =>
-                        <StaffInforBox
-                            key={counsellor._id}
-                            counsellor={counsellor}
-                            setDepHead={() => setDepHead(counsellor._id)} />) :
-                    <div className='w-full p-8 flex justify-center items-center text-lg font-bold'>Khoa chưa có nhân viên nào !!</div>}
-                <Pagination
-                    page={params.page}
-                    pages={pages}
-                    setPage={onPageChange} />
-            </div>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-2 mt-4 grid-cols-2">
+            {counsellors &&
+              counsellors.map((counsellor) => {
+                return (
+                  <StaffInfoBox
+                    key={counsellor._id}
+                    data={counsellor}
+                    chooseDephead={chooseDephead}
+                  />
+                );
+              })}
+          </div>
+          <div className="w-full flex items-center justify-center mt-4">
+            <Pagination
+              page={params.page}
+              setParams={setParams}
+              pages={pages}
+            />
+          </div>
         </div>
-    </div>
-}
-export default Item
+      </div>
+    </ItemLayout>
+  );
+};

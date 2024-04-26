@@ -1,9 +1,9 @@
-import { Outlet } from "react-router"
-import useMyContext from "../hooks/userMyContext"
+import { useContext } from "react";
+import { DataContext } from "../store";
+import { Outlet } from "react-router-dom";
 
-const AdminRoute = () => {
-    const { user } = useMyContext()
-    return (user?.role && user.role === 'ADMIN') ? <Outlet /> : <h1>403 Forbiden </h1>
-}
+export const AdminRoute = () => {
+  const { user } = useContext(DataContext);
 
-export default AdminRoute
+  return user.role === "ADMIN" ? <Outlet></Outlet> : <h1>403 forbiden</h1>;
+};

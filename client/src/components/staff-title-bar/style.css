@@ -1,7 +1,0 @@
-.title-container {
-    @apply bg-secondary h-11 flex items-center shadow-md rounded-2xl px-10
-}
-
-.staff-title {
-    @apply text-[18px] font-bold
-}
