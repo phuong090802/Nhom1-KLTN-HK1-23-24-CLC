@@ -1,6 +1,6 @@
-import path from 'path';
-import { nanoid } from 'nanoid';
 import { deleteObject, ref } from 'firebase/storage';
+import { nanoid } from 'nanoid';
+import path from 'path';
 
 import storage from '../config/firebase-init.js';
 

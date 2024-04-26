@@ -1,7 +1,7 @@
-import catchAsyncErrors from '../../catch-async-errors.js';
+import questionStatus from '../../../../constants/mapper/question-status.js';
 import Question from '../../../../models/question.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
-import questionStatus from '../../../../constants/mapper/question-status.js';
+import catchAsyncErrors from '../../catch-async-errors.js';
 
 // kiểm tra id câu hỏi có tồn tại có tồn tại trong DB không
 export const handleValidateQuestionIdInParams = catchAsyncErrors(

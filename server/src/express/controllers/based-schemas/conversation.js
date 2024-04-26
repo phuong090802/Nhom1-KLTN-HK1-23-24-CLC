@@ -1,10 +1,10 @@
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
-import QueryAPI from '../../../util/db/query-api.js';
-import paginate from '../../../util/db/paginate.js';
-import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
-import defaultSortNewest from '../../../util/db/default-sort.js';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
+import defaultSortNewest from '../../../util/db/default-sort.js';
+import paginate from '../../../util/db/paginate.js';
+import QueryAPI from '../../../util/db/query-api.js';
+import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/conversations/:id
 // Method: GET

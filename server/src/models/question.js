@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-import answerSchema from './embedded/answer.js';
 import * as questionAction from '../constants/actions/question.js';
-import { formatUserForAnswer } from '../util/format/user.js';
 import { formatAnswer } from '../util/format/answer.js';
+import { formatUserForAnswer } from '../util/format/user.js';
+import answerSchema from './embedded/answer.js';
 
 const questionSchema = new mongoose.Schema({
   title: {

@@ -1,11 +1,11 @@
 import express from 'express';
 
+import * as questionController from '../../controllers/based-schemas/question.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleValidateQuestionIdInParams,
   handleValidateStatusOfQuestion,
 } from '../../middlewares/validate/based-schemas/question.js';
-import * as questionController from '../../controllers/based-schemas/question.js';
 
 const router = express.Router();
 

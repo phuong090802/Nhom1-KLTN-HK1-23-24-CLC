@@ -1,9 +1,9 @@
-import { handleAuthentication } from '../middlewares/auth.js';
 import { handleValidateEmail, handleVerifyEmail } from '../controllers/auth.js';
 import { handleCreateConversation } from '../controllers/based-roles/counsellor/conversation.js';
-import { handleCreateMessage } from '../controllers/based-schemas/message.js';
 import { handleApproveAnswer } from '../controllers/based-roles/department-head/answer.js';
 import { handleCreateQuestion } from '../controllers/based-roles/user/question.js';
+import { handleCreateMessage } from '../controllers/based-schemas/message.js';
+import { handleAuthentication } from '../middlewares/auth.js';
 
 export default function auth(io) {
   io.of('/auth')

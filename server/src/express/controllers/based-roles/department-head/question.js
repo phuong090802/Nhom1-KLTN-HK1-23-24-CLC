@@ -1,9 +1,9 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import { DEPARTMENT_HEAD_GET_ALL_QUESTIONS } from '../../../../constants/actions/question.js';
 import Question from '../../../../models/question.js';
+import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
-import paginate from '../../../../util/db/paginate.js';
-import { DEPARTMENT_HEAD_GET_ALL_QUESTIONS } from '../../../../constants/actions/question.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/questions
 // Method: GET

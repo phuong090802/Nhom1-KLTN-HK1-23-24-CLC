@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../../catch-async-errors.js';
 import Department from '../../../../models/department.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../../catch-async-errors.js';
 
 // validate value id of department in body
 export const handleValidateDepartmentIdInBody = catchAsyncErrors(

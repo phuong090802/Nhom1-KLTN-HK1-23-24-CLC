@@ -1,6 +1,7 @@
 import express from 'express';
 
 import * as feedbackController from '../../controllers/based-roles/counsellor/feedback.js';
+import { handleGetFields } from '../../controllers/based-roles/counsellor/field.js';
 import * as questionController from '../../controllers/based-roles/counsellor/question.js';
 import {
   handleAuthentication,
@@ -29,7 +30,6 @@ import {
   handleValidateQuestionIdInParams,
   handleValidateStatusOfQuestion,
 } from '../../middlewares/validate/based-schemas/question.js';
-import { handleGetFields } from '../../controllers/based-roles/counsellor/field.js';
 
 const router = express.Router();
 

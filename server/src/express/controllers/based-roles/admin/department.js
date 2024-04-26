@@ -1,9 +1,9 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import User from '../../../../models/user.js';
 import Department from '../../../../models/department.js';
-import QueryAPI from '../../../../util/db/query-api.js';
+import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
 import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/departments/:id
 // Method: PATCH

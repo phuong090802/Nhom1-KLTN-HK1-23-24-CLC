@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../catch-async-errors.js';
-import ErrorHandler from '../../../util/error/http-error-handler.js';
 import rolesMapper from '../../../constants/mapper/roles.js';
+import ErrorHandler from '../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../catch-async-errors.js';
 
 export const handleValidateRoleInBody = (...roles) => {
   return catchAsyncErrors((req, res, next) => {

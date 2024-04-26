@@ -1,7 +1,7 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import News from '../../../../models/news.js';
-import { deleteFile } from '../../../../util/upload-file.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import { deleteFile } from '../../../../util/upload-file.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/news
 // Method: POST

@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-import catchAsyncErrors from './catch-async-errors.js';
+import rolesMapper from '../../constants/mapper/roles.js';
 import User from '../../models/user.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
-import rolesMapper from '../../constants/mapper/roles.js';
+import catchAsyncErrors from './catch-async-errors.js';
 
 // handle authentication
 export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
@@ -29,7 +29,7 @@ export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
 export const handleAuthorization = (...roles) => {
   return catchAsyncErrors((req, res, next) => {
     const role = req.user.role;
-
+    // console.log(roles);
     if (!roles.includes(role)) {
       const msg = `${rolesMapper[role]} không được phép truy cập vào tài nguyên này`;
       return next(new ErrorHandler(403, msg, 4016));

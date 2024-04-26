@@ -1,11 +1,11 @@
+import 'dotenv/config.js';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import 'dotenv/config.js';
 
-import app from './express/app.js';
-import connectDB from './config/db.js';
-import socketInit from './socket-io/socket-init.js';
 import { socketCorsOptions } from './config/cors.js';
+import connectDB from './config/db.js';
+import app from './express/app.js';
+import socketInit from './socket-io/socket-init.js';
 
 connectDB();
 

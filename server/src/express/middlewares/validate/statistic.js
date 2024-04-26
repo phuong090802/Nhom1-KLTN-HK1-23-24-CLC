@@ -1,5 +1,5 @@
-import catchAsyncErrors from '../catch-async-errors.js';
 import ErrorHandler from '../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../catch-async-errors.js';
 
 // validate time statistic in body
 export const handleValidateTimeForStatisticInBody = catchAsyncErrors(

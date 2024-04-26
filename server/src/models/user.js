@@ -1,13 +1,13 @@
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import validator from 'validator';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import crypto from 'crypto';
 
-import RefreshToken from './refresh-token.js';
+import * as userAction from '../constants/actions/user.js';
 import { generateOTP } from '../util/auth/email-verify.js';
 import ErrorHandler from '../util/error/http-error-handler.js';
-import * as userAction from '../constants/actions/user.js';
+import RefreshToken from './refresh-token.js';
 
 const userSchema = new mongoose.Schema({
   fullName: {

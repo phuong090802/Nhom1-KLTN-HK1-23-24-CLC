@@ -1,5 +1,5 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Question from '../../../../models/question.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/answers
 // Method: GET

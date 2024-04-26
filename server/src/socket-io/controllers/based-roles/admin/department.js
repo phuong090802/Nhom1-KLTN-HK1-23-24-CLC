@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
 import Department from '../../../../models/department.js';
+import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // namespace: /admin
 // listen event (ack): department:validate-department-name:create

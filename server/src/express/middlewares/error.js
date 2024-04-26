@@ -1,5 +1,5 @@
-import ErrorHandler from '../../util/error/http-error-handler.js';
 import attribute from '../../constants/mapper/attribute.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
 
 // middleware handling errors
 const handleError = (err, req, res, next) => {

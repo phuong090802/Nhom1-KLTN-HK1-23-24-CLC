@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
-import User from '../../models/user.js';
 import rolesMapper from '../../constants/mapper/roles.js';
+import User from '../../models/user.js';
 
 export const handleAuthentication = (socket, next) => {
   const header = socket.handshake.headers['authorization'];

@@ -1,6 +1,6 @@
+import * as fieldController from '../../controllers/based-roles/department-head/field.js';
 import * as authMiddleware from '../../middlewares/auth.js';
 import * as departmentValidateMiddleware from '../../middlewares/validate/based-schemas/department.js';
-import * as fieldController from '../../controllers/based-roles/department-head/field.js';
 
 export default function departmentHead(io) {
   io.of('/department-head')

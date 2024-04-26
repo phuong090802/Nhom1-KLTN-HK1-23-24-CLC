@@ -1,8 +1,8 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Notification from '../../../../models/notification.js';
 import defaultSortNewest from '../../../../util/db/default-sort.js';
-import QueryAPI from '../../../../util/db/query-api.js';
 import paginate from '../../../../util/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/user/notifications
 // Method: GET
@@ -48,7 +48,7 @@ export const handleGetNotifications = catchAsyncErrors(
     // console.log(notificationIds);
 
     // update trạng thái thông báo của notificationIds
-    // const updateResponse = 
+    // const updateResponse =
     await Notification.updateMany(
       { _id: { $in: notificationIds }, read: false },
       { read: true }

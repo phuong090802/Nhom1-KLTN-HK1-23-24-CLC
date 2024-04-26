@@ -1,5 +1,6 @@
 import express from 'express';
 
+import * as conversationController from '../../controllers/based-schemas/conversation.js';
 import { handleAuthentication } from '../../middlewares/auth.js';
 import {
   defaultPaginationParams,
@@ -10,7 +11,6 @@ import {
   handleCheckUserIsNotInDeletedByConversation,
   handleValidateConversationIdInParams,
 } from '../../middlewares/validate/based-schemas/conversation.js';
-import * as conversationController from '../../controllers/based-schemas/conversation.js';
 
 const router = express.Router();
 

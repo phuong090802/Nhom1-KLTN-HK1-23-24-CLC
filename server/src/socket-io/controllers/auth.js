@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../util/error/socket-io-error-handler.js';
 import User from '../../models/user.js';
+import ErrorHandler from '../../util/error/socket-io-error-handler.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
 // namespace: /auth
 // listen event (ack): validate-email

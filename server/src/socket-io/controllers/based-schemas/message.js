@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
 import ErrorHandler from '../../../util/error/socket-io-error-handler.js';
 import sendNotification from '../../../util/send-notification.js';
+import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // namespace: /auth
 // listen event (ack): message:create

@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../../catch-async-errors.js';
 import Conversation from '../../../../models/conversation.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../../catch-async-errors.js';
 
 // validate value id of conversation in params
 export const handleValidateConversationIdInParams = catchAsyncErrors(

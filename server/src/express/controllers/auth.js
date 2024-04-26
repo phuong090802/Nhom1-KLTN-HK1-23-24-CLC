@@ -1,12 +1,12 @@
 import crypto from 'crypto';
 
-import User from '../../models/user.js';
-import RefreshToken from '../../models/refresh-token.js';
-import catchAsyncErrors from '../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../util/error/http-error-handler.js';
-import { sendToken, clearToken } from '../../util/auth/token.js';
-import { sendVerificationEmail } from '../../util/auth/email-verify.js';
 import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
+import RefreshToken from '../../models/refresh-token.js';
+import User from '../../models/user.js';
+import { sendVerificationEmail } from '../../util/auth/email-verify.js';
+import { clearToken, sendToken } from '../../util/auth/token.js';
+import ErrorHandler from '../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/auth/email
 // Method: GET

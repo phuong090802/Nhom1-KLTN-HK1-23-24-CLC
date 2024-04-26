@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import { handleGetAllNews } from '../../controllers/based-schemas/news.js';
+import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 
 const router = express.Router();
 

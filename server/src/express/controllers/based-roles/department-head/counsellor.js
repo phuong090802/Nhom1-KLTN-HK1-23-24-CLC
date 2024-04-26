@@ -1,10 +1,10 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import Field from '../../../../models/field.js';
 import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/counsellors/:id
 // Method: PATCH

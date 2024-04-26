@@ -307,7 +307,7 @@
         },
         {
           "message": "",
-          "detail": ""
+          "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
         }
       ]
     },
@@ -339,7 +339,7 @@
     {
       "code": "2065",
       "message": "",
-      "detail": "Thống kê câu hỏi trong khoa thành công"
+      "detail": "admin thống kê câu hỏi trong khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)"
     },
     {
       "code": "2066",
@@ -442,6 +442,51 @@
       "code": "2083",
       "message": "",
       "detail": "Trưởng khoa lấy danh sách câu trả lời cần duyệt của khoa học"
+    },
+    {
+      "code": "2084",
+      "message": "",
+      "detail": "Admin/supervisor thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực"
+    },
+    {
+      "code": "2085",
+      "message": "",
+      "detail": "Trưởng khoa đếm số tư vấn viên của khoa"
+    },
+    {
+      "code": "2086",
+      "message": "",
+      "detail": "Trưởng khoa đếm số câu hỏi chung trong khoa"
+    },
+    {
+      "code": "2087",
+      "message": "",
+      "detail": "Tư vấn viên đếm số câu hỏi đã trả lời trong một khoảng thời gian"
+    },
+    {
+      "code": "2088",
+      "message": "",
+      "detail": "Admin/supervisor đếm số lượng tài khoản đã tạo trong khoảng thời gian"
+    },
+    {
+      "code": "2089",
+      "message": "",
+      "detail": "department-head thống kê số câu hỏi của trưởng khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)"
+    },
+    {
+      "code": "2090",
+      "message": "",
+      "detail": "Admin/supervisor thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực"
+    },
+    {
+      "code": "2091",
+      "message": "",
+      "detail": "Trưởng khoa thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực trong khoa"
+    },
+    {
+      "code": "2092",
+      "message": "",
+      "detail": "Tư vấn viên thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực trong khoa"
     }
   ]
 }

@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
 import Field from '../../../../models/field.js';
+import ErrorHandler from '../../../../util/error/socket-io-error-handler.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // namespace: /department-head
 // listen event (ack): field:validate-field-name:create

@@ -1,23 +1,24 @@
-import express from 'express';
-import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import express from 'express';
+import morgan from 'morgan';
 
-import handleError from './middlewares/error.js';
 import { apiCorsOptions } from '../config/cors.js';
+import handleError from './middlewares/error.js';
 import auth from './routes/auth.js';
 import admin from './routes/based-roles/admin.js';
-import userRoleBased from './routes/based-roles/user.js';
-import departmentHead from './routes/based-roles/department-head.js';
 import counsellor from './routes/based-roles/counsellor.js';
-import question from './routes/based-schemas/question.js';
-import basedUserSchema from './routes/based-schemas/user.js';
-import department from './routes/based-schemas/department.js';
+import departmentHead from './routes/based-roles/department-head.js';
+import userRoleBased from './routes/based-roles/user.js';
 import conversation from './routes/based-schemas/conversation.js';
+import department from './routes/based-schemas/department.js';
 import faq from './routes/based-schemas/faq.js';
 import news from './routes/based-schemas/news.js';
-import departmentStatistic from './routes/statistics/schemas/department.js';
-import questionStatistic from './routes/statistics/schemas/question.js';
+import question from './routes/based-schemas/question.js';
+import basedUserSchema from './routes/based-schemas/user.js';
+import adminStatistic from './routes/statistics/based-roles/admin.js';
+import counsellorStatistic from './routes/statistics/based-roles/counsellor.js';
+import departmentHeadStatistic from './routes/statistics/based-roles/department-head.js';
 import statistic from './routes/statistics/index.js';
 
 const app = express();
@@ -52,8 +53,9 @@ app.use('/api/questions', question);
 app.use('/api/conversations', conversation);
 app.use('/api/faqs', faq);
 app.use('/api/news', news);
-app.use('/api/statistics/question', questionStatistic);
-app.use('/api/statistics/department', departmentStatistic);
+app.use('/api/admin/statistics', adminStatistic);
+app.use('/api/counsellor/statistics', counsellorStatistic);
+app.use('/api/department-head/statistics', departmentHeadStatistic);
 app.use('/api/statistics', statistic);
 
 app.use(handleError);

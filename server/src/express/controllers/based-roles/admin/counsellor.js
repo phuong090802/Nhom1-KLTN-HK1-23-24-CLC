@@ -1,7 +1,7 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import attribute from '../../../../constants/mapper/attribute.js';
 import User from '../../../../models/user.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
-import attribute from '../../../../constants/mapper/attribute.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/counsellors/upload
 // Method: POST

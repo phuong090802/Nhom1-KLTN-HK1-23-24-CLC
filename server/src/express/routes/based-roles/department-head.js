@@ -1,5 +1,10 @@
 import express from 'express';
 
+import { handleCheckUnapprovedAnswerExists } from '../../controllers/based-roles/department-head/answer.js';
+import * as counsellorController from '../../controllers/based-roles/department-head/counsellor.js';
+import * as faqController from '../../controllers/based-roles/department-head/faq.js';
+import * as fieldController from '../../controllers/based-roles/department-head/field.js';
+import * as questionController from '../../controllers/based-roles/department-head/question.js';
 import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
@@ -11,25 +16,20 @@ import {
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
 } from '../../middlewares/validate/based-roles/counsellor.js';
-import {
-  handleCheckFieldBelongToDepartment,
-  handleValidateFieldIdInBody,
-  handleValidateFieldIdInParams,
-} from '../../middlewares/validate/based-schemas/field.js';
 import { handleCheckStatusOfField } from '../../middlewares/validate/based-roles/department-head.js';
 import {
   handleCheckFAQBelongDepartment,
   handleValidateFAQIdInParams,
 } from '../../middlewares/validate/based-schemas/faq.js';
 import {
+  handleCheckFieldBelongToDepartment,
+  handleValidateFieldIdInBody,
+  handleValidateFieldIdInParams,
+} from '../../middlewares/validate/based-schemas/field.js';
+import {
   handleValidateRoleUser,
   handleValidateUserIdInParams,
 } from '../../middlewares/validate/based-schemas/user.js';
-import { handleCheckUnapprovedAnswerExists } from '../../controllers/based-roles/department-head/answer.js';
-import * as questionController from '../../controllers/based-roles/department-head/question.js';
-import * as counsellorController from '../../controllers/based-roles/department-head/counsellor.js';
-import * as fieldController from '../../controllers/based-roles/department-head/field.js';
-import * as faqController from '../../controllers/based-roles/department-head/faq.js';
 
 const router = express.Router();
 

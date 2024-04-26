@@ -1,5 +1,5 @@
-import catchAsyncErrors from '../../catch-async-errors.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../../catch-async-errors.js';
 
 // Kiểm tra trạng thái của lĩnh vực trước khi trưởng khoa cập nhật lĩnh vực (tên)
 export const handleCheckStatusOfField = catchAsyncErrors((req, res, next) => {

@@ -4,7 +4,7 @@ import catchAsyncErrors from '../catch-async-errors.js';
 export const defaultPayloadDateForStatistic = catchAsyncErrors(
   (req, res, next) => {
     req.body.timeUnit = req.body.timeUnit || 'month';
-    req.body.latestTime = req.body.latestTime || 4;
+    req.body.latestTime = req.body.latestTime || 5;
     next();
   }
 );

@@ -1,9 +1,9 @@
-import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import User from '../../../../models/user.js';
-import QueryAPI from '../../../../util/db/query-api.js';
-import paginate from '../../../../util/db/paginate.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
 import { ADMIN_GET_USER } from '../../../../constants/actions/user.js';
+import User from '../../../../models/user.js';
+import paginate from '../../../../util/db/paginate.js';
+import QueryAPI from '../../../../util/db/query-api.js';
+import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/users
 // Method: GET

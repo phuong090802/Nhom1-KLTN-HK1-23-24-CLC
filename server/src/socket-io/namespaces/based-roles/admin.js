@@ -1,5 +1,5 @@
-import * as authMiddleware from '../../middlewares/auth.js';
 import * as departmentController from '../../controllers/based-roles/admin/department.js';
+import * as authMiddleware from '../../middlewares/auth.js';
 
 export default function admin(io) {
   io.of('/admin')

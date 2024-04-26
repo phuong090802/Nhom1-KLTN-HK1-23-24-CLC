@@ -1,59 +1,24 @@
 import Department from '../../../../models/department.js';
-import Field from '../../../../models/field.js';
 import Question from '../../../../models/question.js';
-import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';
+import { handleCountQuestions } from '../../../../util/statistics/department.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
-// Endpoint: /api/statistics/department/:id
-// Method: GET
-// Description: Thông kê khoa bằng id
-export const handleStatisticDepartment = catchAsyncErrors(
+// Endpoint: /api/admin/statistics/department/:id/question
+// Method: POST
+// Description: admin thống kê câu hỏi trong khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)
+export const handleStatisticQuestions = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
 
     // validate
     const { timeUnit, latestTime } = req.body;
-
-    const ranges = convertTimeAndGenerateRangesForStatistic(
+    const departmentStatistic = await handleCountQuestions(
       timeUnit,
-      latestTime
-    );
-
-    const departmentStatistic = await Promise.all(
-      ranges.map(async (range) => {
-        const { start, end } = range;
-        // console.log(start.toLocaleDateString(), '-', end.toLocaleDateString());
-        // console.log(start, '-', end);
-        const query = {
-          department,
-          createdAt: {
-            $gte: start,
-            $lte: end,
-          },
-        };
-
-        const countOfQuestions = await Question.countDocuments(query);
-
-        const countOfAnsweredQuestions = await Question.countDocuments({
-          $or: [
-            { status: 'publicly-answered-and-approved', answer: { $ne: null } },
-            { status: 'privately-answered' },
-          ],
-          ...query,
-        });
-
-        return {
-          date: {
-            start,
-            end,
-          },
-          countOfQuestions,
-          countOfAnsweredQuestions,
-        };
-      })
+      latestTime,
+      department
     );
 
     res.json({
@@ -64,9 +29,52 @@ export const handleStatisticDepartment = catchAsyncErrors(
   }
 );
 
-// Endpoint: /api/statistics/department
+// Endpoint: /api/admin/statistics/question
+// Method: POST
+// Description: Admin thống kê câu hỏi trong hệ thống
+export const handleCountOfQuestion = catchAsyncErrors(
+  async (req, res, next) => {
+    // validate
+    const { timeUnit, latestTime } = req.body;
+
+    const ranges = convertTimeAndGenerateRangesForStatistic(
+      timeUnit,
+      latestTime
+    );
+
+    const questionStatistic = await Promise.all(
+      ranges.map(async (range) => {
+        const { start, end } = range;
+        const query = {
+          createdAt: {
+            $gte: start,
+            $lte: end,
+          },
+        };
+
+        const countOfQuestions = await Question.countDocuments(query);
+
+        return {
+          date: {
+            start,
+            end,
+          },
+          countOfQuestions,
+        };
+      })
+    );
+
+    res.json({
+      success: true,
+      questionStatistic,
+      code: 2080,
+    });
+  }
+);
+
+// Endpoint: /api/admin/statistics/department
 // Method: GET
-// Description: Thông kê tất cả các khoa
+// Description: Admin thông kê tất cả các khoa
 export const handleStatisticDepartments = catchAsyncErrors(
   async (req, res, next) => {
     // sort, search

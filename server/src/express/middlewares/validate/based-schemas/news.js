@@ -1,6 +1,6 @@
-import catchAsyncErrors from '../../catch-async-errors.js';
-import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import News from '../../../../models/news.js';
+import ErrorHandler from '../../../../util/error/http-error-handler.js';
+import catchAsyncErrors from '../../catch-async-errors.js';
 
 // kiểm tra mã của tin tức
 export const handleValidateNewsIdInParams = catchAsyncErrors(

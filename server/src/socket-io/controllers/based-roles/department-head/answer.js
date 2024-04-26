@@ -1,9 +1,9 @@
+import Notification from '../../../../models/notification.js';
+import Question from '../../../../models/question.js';
+import sendNotification from '../../../../util/send-notification.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import { handleAuthorization } from '../../../middlewares/event/auth.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
-import Question from '../../../../models/question.js';
-import Notification from '../../../../models/notification.js';
-import sendNotification from '../../../../util/send-notification.js';
 
 // namespace: /auth
 // listen event (ack): notification:create
