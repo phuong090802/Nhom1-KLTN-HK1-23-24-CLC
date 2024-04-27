@@ -25,7 +25,7 @@ export const handleStatisticFields = catchAsyncErrors(
   }
 );
 
-// Endpoint: /api/department-head/statistics/department/:id/question
+// Endpoint: /api/department-head/statistics/department/question
 // Method: POST
 // Description: department-head thống kê số câu hỏi của trưởng khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)
 export const handleStatisticQuestions = catchAsyncErrors(

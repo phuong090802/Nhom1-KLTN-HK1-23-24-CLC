@@ -9,17 +9,13 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 // Endpoint: /api/statistics
 // Method: GET
 // Description: Admin/supervisor thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực
-
 export const handleStatisticFields = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
-
     const fields = await Field.find({ department }).select('_id fieldName');
-
     const fieldStatistic = await handleCountQuestionsByFieldsAndDepartment(
       fields
     );
-
     res.json({
       success: true,
       fieldStatistic,
@@ -34,9 +30,7 @@ export const handleStatisticFields = catchAsyncErrors(
 export const handleStatisticUsers = catchAsyncErrors(async (req, res, next) => {
   // validate
   const { timeUnit, latestTime } = req.body;
-
   const ranges = convertTimeAndGenerateRangesForStatistic(timeUnit, latestTime);
-
   const usersStatistic = await Promise.all(
     ranges.map(async (range) => {
       const { start, end } = range;
@@ -47,9 +41,7 @@ export const handleStatisticUsers = catchAsyncErrors(async (req, res, next) => {
           $lte: end,
         },
       };
-
       const countOfUsers = await User.countDocuments(query);
-
       return {
         date: {
           start,
@@ -59,7 +51,6 @@ export const handleStatisticUsers = catchAsyncErrors(async (req, res, next) => {
       };
     })
   );
-
   res.json({
     success: true,
     usersStatistic,
