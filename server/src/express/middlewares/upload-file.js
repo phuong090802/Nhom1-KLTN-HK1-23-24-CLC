@@ -28,7 +28,6 @@ export const handleOptionalUploadFileToFirebase = (folder) => {
       ref: null,
       url: null,
     };
-
     if (req.file) {
       const extension = path.extname(req.file.originalname);
       const filename = nanoid() + extension;
@@ -36,7 +35,6 @@ export const handleOptionalUploadFileToFirebase = (folder) => {
       const storageRef = ref(storage, fileRef);
       await uploadBytes(storageRef, new Uint8Array(req.file.buffer));
       const url = await getDownloadURL(storageRef);
-
       uploadedFile.ref = fileRef;
       uploadedFile.url = url;
     }
@@ -52,14 +50,12 @@ export const handleRequiredUploadFileToFirebase = (folder) => {
       // return next error
       return next(new ErrorHandler(422, 'Không tìm thấy file', 4019));
     }
-
     const extension = path.extname(req.file.originalname);
     const filename = nanoid() + extension;
     const fileRef = `${folder}/${filename}`;
     const storageRef = ref(storage, fileRef);
     await uploadBytes(storageRef, new Uint8Array(req.file.buffer));
     const url = await getDownloadURL(storageRef);
-
     const uploadedFile = {
       ref: fileRef,
       url,

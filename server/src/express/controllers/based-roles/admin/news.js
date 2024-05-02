@@ -9,9 +9,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 export const handleCreateNews = catchAsyncErrors(async (req, res, next) => {
   const { title, content } = req.body;
   const file = req.uploadedFile;
-
   await News.create({ title, content, file });
-
   res.json({
     success: true,
     message: 'Tạo tin tức thành công',
@@ -26,9 +24,7 @@ export const handleUpdateNews = catchAsyncErrors(async (req, res, next) => {
   const news = req.foundNews;
   const { title, content } = req.body;
   const file = req.uploadedFile;
-
   const { ref, url } = news.file;
-
   if (ref && url) {
     try {
       // remove old file
@@ -42,13 +38,10 @@ export const handleUpdateNews = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler(500, msg, 4110));
     }
   }
-
   news.file = file;
   news.title = title;
   news.content = content;
-
   await news.save();
-
   res.json({
     success: true,
     message: 'Cập nhật tin tức thành công',
@@ -62,7 +55,6 @@ export const handleUpdateNews = catchAsyncErrors(async (req, res, next) => {
 export const handleDeleteNews = catchAsyncErrors(async (req, res, next) => {
   const news = req.foundNews;
   const { ref, url } = news.file;
-
   if (ref && url) {
     try {
       // remove file
@@ -73,9 +65,7 @@ export const handleDeleteNews = catchAsyncErrors(async (req, res, next) => {
       );
     }
   }
-
   await News.findByIdAndDelete(news._id);
-
   res.json({
     success: true,
     message: 'Xóa tin tức thành công',

@@ -5,13 +5,11 @@ import catchAsyncErrors from '../../catch-async-errors.js';
 export const handleCheckStatusOfDepartment = catchAsyncErrors(
   (req, res, next) => {
     const department = req.foundDepartment;
-
     if (!department.isActive) {
       const msg =
         'Khoa đang bị khóa. Vui lòng mở khóa trước khi thực hiện các thao tác liên quan';
       return next(new ErrorHandler(400, msg, 4073));
     }
-
     next();
   }
 );

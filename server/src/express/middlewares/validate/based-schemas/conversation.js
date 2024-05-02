@@ -7,11 +7,9 @@ export const handleValidateConversationIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const conversation = await Conversation.findById(id);
-
     if (!conversation) {
       return next(new ErrorHandler(404, 'Không tìm cuộc đối thoại', 4051));
     }
-
     req.foundConversation = conversation;
     next();
   }
@@ -23,11 +21,9 @@ export const handleCheckUserIsInParticipatesConversation = catchAsyncErrors(
     const conversation = req.foundConversation;
     const user = req.user;
     const participates = conversation.participates;
-
     if (!participates.includes(user._id)) {
       throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4054);
     }
-
     next();
   }
 );
@@ -38,7 +34,6 @@ export const handleCheckUserIsNotInDeletedByConversation = catchAsyncErrors(
     const conversation = req.foundConversation;
     const user = req.user;
     const deletedBy = conversation.deletedBy;
-
     if (deletedBy.includes(user._id)) {
       throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4055);
     }

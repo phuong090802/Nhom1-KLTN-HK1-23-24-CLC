@@ -8,22 +8,17 @@ import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 export const handleValidateEmail = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const user = socket.user;
-
     if (user.isEmailVerified) {
       throw new ErrorHandler('Tài khoản đã được xác thực trước đó', 4066);
     }
-
     const { email } = payload;
-
     const foundedUser = await User.findOne({
       _id: { $ne: user._id },
       email: { $regex: new RegExp(email, 'i') },
     });
-
     if (foundedUser) {
       throw new ErrorHandler('Email đã được sử dụng', 4065);
     }
-
     callback({
       success: true,
       message: 'Email khả dụng',
@@ -39,7 +34,6 @@ export const handleVerifyEmail = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const user = socket.user;
     const { otp } = payload;
-
     if (
       !otp ||
       !user.verifyEmail.otp ||
@@ -48,7 +42,6 @@ export const handleVerifyEmail = catchAsyncErrors(
     ) {
       throw new ErrorHandler('Mã xác thực không hợp lệ', 4068);
     }
-
     callback({
       success: true,
       message: 'Mã xác thực hợp lệ',
@@ -63,15 +56,12 @@ export const handleVerifyEmail = catchAsyncErrors(
 export const handleValidateEmailForRegister = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { email } = payload;
-
     const user = await User.findOne({
       email: { $regex: new RegExp(email, 'i') },
     });
-
     if (user) {
       throw new ErrorHandler('Email đã được sử dụng', 4004);
     }
-
     callback({
       success: true,
       message: 'Email khả dụng',
@@ -86,13 +76,10 @@ export const handleValidateEmailForRegister = catchAsyncErrors(
 export const handleValidatePhoneNumberForRegister = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { phoneNumber } = payload;
-
     const user = await User.findOne({ phoneNumber });
-
     if (user) {
       throw new ErrorHandler('Số điện thoại đã được sử dụng', 4005);
     }
-
     callback({
       success: true,
       message: 'Số điện thoại khả dụng',
@@ -107,17 +94,14 @@ export const handleValidatePhoneNumberForRegister = catchAsyncErrors(
 export const handleVerifyOTP = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { email, otp } = payload;
-
     const user = await User.findOne({
       email: { $regex: new RegExp(email, 'i') },
       'forgotPassword.otp': otp,
       'forgotPassword.otpExpiresAt': { $gt: Date.now() },
     });
-
     if (!user) {
       throw new ErrorHandler('Mã xác thực không hợp lệ', 4039);
     }
-
     callback({
       success: true,
       message: 'Mã xác thực hợp lệ',
@@ -132,20 +116,16 @@ export const handleVerifyOTP = catchAsyncErrors(
 export const handleValidateEmailForForgotPassword = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     const { email } = payload;
-
     const user = await User.findOne({
       email: { $regex: new RegExp(email, 'i') },
     });
-
     if (!user) {
       throw new ErrorHandler('Không tìm thấy người dùng với email', 4026);
     }
-
     if (!user.isEmailVerified) {
       const msg = 'Email liên kết với tài khoản chưa được xác thực';
       throw new ErrorHandler(msg, 4027);
     }
-
     callback({
       success: true,
       message: 'Email hợp lệ',

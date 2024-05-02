@@ -9,28 +9,21 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 // Description: Trưởng khoa lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
 export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   const query = Field.find().select('-__v -department').lean();
-
   const department = req.foundDepartment;
-
   const filterDepartment = { department: department._id };
-
   const requestQuery = queryFiltersLimit(req.query, filterDepartment);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
-
   // get all fields in DB
   let fieldsRecords = await queryAPI.query;
   // number of record in db
   const numberOfFields = fieldsRecords.length;
   // get department in page with size
   fieldsRecords = await queryAPI.pagination().query.clone();
-
   const {
     data: fields,
     page,
     pages,
   } = paginate(numberOfFields, req.query.page, req.query.size, fieldsRecords);
-
   res.json({
     success: true,
     fields,
@@ -49,11 +42,7 @@ export const handleUpdateStatusOfField = catchAsyncErrors(
     const { isActive } = req.body;
     field.isActive = isActive;
     const savedField = await field.save();
-
-    console.log(savedField);
-
     const strStatus = savedField.isActive ? 'Mở khóa' : 'Khóa';
-
     res.json({
       success: true,
       message: `${strStatus} lĩnh vực thành công`,
@@ -86,7 +75,6 @@ export const handleCreateField = catchAsyncErrors(async (req, res, next) => {
   const { fieldName } = req.body;
   const department = req.foundDepartment;
   await Field.create({ fieldName, department });
-
   res.status(201).json({
     success: true,
     message: 'Thêm lĩnh vực thành công',

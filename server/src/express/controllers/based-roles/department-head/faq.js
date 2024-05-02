@@ -11,7 +11,6 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 // Description: Trưởng khoa lấy danh sách câu hỏi chung (phân trang, lọc lĩnh vực của khoa, tìm kiếm)
 export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
   const { department } = req.user.counsellor;
-
   const query = FAQ.find()
     .populate({
       path: 'field',
@@ -19,22 +18,17 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
     })
     .select('question answer answerAttachment field createdAt')
     .lean();
-
   const filterDepartment = { department: department._id };
-
   const requestQuery = queryFiltersLimit(req.query, filterDepartment);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let faqRecords = await queryAPI.query;
   const numberOfFAQs = faqRecords.length;
   faqRecords = await queryAPI.pagination().query.clone();
-
   const {
     data: retFAQs,
     page,
     pages,
   } = paginate(numberOfFAQs, req.query.page, req.query.size, faqRecords);
-
   const faqs = retFAQs.map((faq) => ({
     ...faq,
     answerAttachment: faq.answerAttachment.url,
@@ -55,7 +49,6 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
 export const handleDeleteFAQ = catchAsyncErrors(async (req, res, next) => {
   const faq = req.foundFAQ;
   const { ref, url } = faq.answerAttachment;
-
   if (ref && url) {
     try {
       // remove file
@@ -66,9 +59,7 @@ export const handleDeleteFAQ = catchAsyncErrors(async (req, res, next) => {
       );
     }
   }
-
   await FAQ.findByIdAndDelete(faq._id);
-
   res.json({
     success: true,
     message: 'Xóa câu hỏi chung thành công',
@@ -84,7 +75,6 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
   const field = req.foundField;
   const { ref, url } = faq.answerAttachment;
   const answerAttachment = req.uploadedFile;
-
   // check if have news file and it have old attachment remove
   // doing noting
   if (ref && url) {
@@ -102,9 +92,7 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
   }
   faq.field = field;
   faq.answerAttachment = answerAttachment;
-
   await faq.save();
-
   res.json({
     success: true,
     message: 'Cập nhật câu hỏi chung thành công',
@@ -120,9 +108,7 @@ export const handleCreateFAQ = catchAsyncErrors(async (req, res, next) => {
   const field = req.foundField;
   const { question, answer } = req.body;
   const answerAttachment = req.uploadedFile;
-
   await FAQ.create({ question, answer, field, department, answerAttachment });
-
   res.status(201).json({
     success: true,
     message: 'Tạo câu hỏi chung thành công',

@@ -8,16 +8,11 @@ export const handleCheckFAQBelongDepartment = catchAsyncErrors(
     const user = req.user;
     const { department: departmentOfUser } = user.counsellor;
     const departmentOfFAQ = faq.department;
-
-    // console.log('departmentOfUser', departmentOfUser);
-    // console.log('departmentOfFAQ', departmentOfFAQ);
-
     if (!departmentOfUser.equals(departmentOfFAQ)) {
       return next(
         new ErrorHandler(400, 'Câu hỏi chung không thuộc về khoa', 4102)
       );
     }
-
     next();
   }
 );
@@ -27,11 +22,9 @@ export const handleValidateFAQIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const faq = await FAQ.findById(id);
-
     if (!faq) {
       return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi chung', 4101));
     }
-
     req.foundFAQ = faq;
     next();
   }

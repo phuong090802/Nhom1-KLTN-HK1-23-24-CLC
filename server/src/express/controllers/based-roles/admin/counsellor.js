@@ -29,7 +29,6 @@ export const handleCreateCounsellorFromCSV = catchAsyncErrors(
           ) {
             data.Phone_Number = '0' + data.Phone_Number.trim();
           }
-
           counsellors.push({
             fullName: data.FullName,
             email: data.Email,
@@ -81,15 +80,12 @@ export const handleCreateCounsellorFromCSV = catchAsyncErrors(
 export const handlerAddCounsellorDepartmentIsNullToDepartment =
   catchAsyncErrors(async (req, res, next) => {
     const user = req.foundUser;
-
     if (user.counsellor.department) {
       return next(new ErrorHandler(400, 'Tư vấn viên đã được có khoa', 4031));
     }
-
     const department = req.foundDepartment;
     user.counsellor.department = department;
     await user.save();
-
     res.status(201).json({
       success: true,
       message: 'Thêm tư vấn viên vào khoa thành công',

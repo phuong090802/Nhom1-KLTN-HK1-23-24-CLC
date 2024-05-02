@@ -35,5 +35,4 @@ const ForwardedQuestion = mongoose.model(
   'ForwardedQuestion',
   forwardedQuestionSchema
 );
-
 export default ForwardedQuestion;

@@ -19,5 +19,4 @@ const fieldSchema = new mongoose.Schema({
 });
 
 const Field = mongoose.model('Field', fieldSchema);
-
 export default Field;

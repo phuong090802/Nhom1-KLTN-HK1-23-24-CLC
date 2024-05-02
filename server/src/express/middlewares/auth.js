@@ -8,20 +8,20 @@ import catchAsyncErrors from './catch-async-errors.js';
 // handle authentication
 export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
   const headerAuth = req.headers.authorization;
-  // console.log(authHeader);
-
   if (!headerAuth || !headerAuth.startsWith('Bearer ')) {
     const msg = 'Đăng nhập trước khi truy cập vào tài nguyên này';
     return next(new ErrorHandler(401, msg, 4015));
   }
-
   const token = headerAuth.split(' ')[1];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = await User.findById(decoded.id).populate({
+  const user = await User.findById(decoded.id).populate({
     path: 'counsellor.department',
     select: '_id departmentName',
   });
-
+  if (!user.isEnabled) {
+    return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4114));
+  }
+  req.user = user;
   next();
 });
 
@@ -29,12 +29,10 @@ export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
 export const handleAuthorization = (...roles) => {
   return catchAsyncErrors((req, res, next) => {
     const role = req.user.role;
-    // console.log(roles);
     if (!roles.includes(role)) {
       const msg = `${rolesMapper[role]} không được phép truy cập vào tài nguyên này`;
       return next(new ErrorHandler(403, msg, 4016));
     }
-
     next();
   });
 };
@@ -50,12 +48,10 @@ export const handleAuthenticationAndAuthorization = (...roles) => [
 export const handlePreventRoles = (...roles) => {
   return catchAsyncErrors(async (req, res, next) => {
     const user = req.foundUser;
-
     if (roles.includes(user.role)) {
       const msg = 'Thao tác không hợp lệ. Lỗi quyền truy cập';
       return next(new ErrorHandler(404, msg, 4069));
     }
-
     req.foundUser = user;
     next();
   });

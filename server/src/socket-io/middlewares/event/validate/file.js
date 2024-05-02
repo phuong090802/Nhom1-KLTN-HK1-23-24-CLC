@@ -11,7 +11,6 @@ export const handleValidateMimetype = (file) => {
     [...mimetype.image, ...mimetype.document],
     file.mimetype
   );
-
   if (!isSupport) {
     throw new ErrorHandler('Định dạng file không được hỗ trợ', 4095);
   }

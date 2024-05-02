@@ -141,7 +141,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // add method
-
 // compare password
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
@@ -188,40 +187,30 @@ userSchema.methods.generateVerifyEmail = async function () {
 userSchema.methods.generateResetPasswordToken = async function () {
   // generate token
   const resetToken = crypto.randomBytes(20).toString('hex');
-
   // hash and set to resetPassword.token
   this.resetPassword.token = crypto
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
-
   this.resetPassword.resetTokenExpiresAt =
     Date.now() +
     process.env.RESET_PASSWORD_TOKEN_EXPIRATION_TIME_IN_MINUTES * 60 * 1000;
   await this.save();
-
   return resetToken;
 };
 
 // set same structure for ...
 userSchema.methods.getUserInformation = function (action) {
   let department = null;
-
-  // console.log(this.counsellor.department);
-
   if (this.counsellor.department) {
     department = this.counsellor.department;
   }
-
-  // console.log(department);
-
   const baseUser = {
     _id: this._id,
     phoneNumber: this.phoneNumber,
     email: this.email,
     role: this.role,
   };
-
   switch (action) {
     case userAction.LOGIN:
     case userAction.REFRESH_TOKEN:
@@ -260,9 +249,7 @@ userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
   }
-
   const { password, confirmPassword } = JSON.parse(this.password);
-
   // check length of password and confirm password
   if (
     !validator.isLength(password.trim(), { min: 6 }) ||
@@ -276,12 +263,10 @@ userSchema.pre('save', async function (next) {
   if (!validator.equals(password, confirmPassword)) {
     return next(new ErrorHandler(400, 'Nhập lại mật khẩu không khớp', 4003));
   }
-
   // encode password
   this.password = await bcrypt.hash(password, 10);
   next();
 });
 
 const User = mongoose.model('User', userSchema);
-
 export default User;

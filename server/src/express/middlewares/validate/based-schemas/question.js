@@ -8,11 +8,9 @@ export const handleValidateQuestionIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const question = await Question.findById(id);
-
     if (!question) {
       return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi', 4084));
     }
-
     req.foundQuestion = question;
     next();
   }

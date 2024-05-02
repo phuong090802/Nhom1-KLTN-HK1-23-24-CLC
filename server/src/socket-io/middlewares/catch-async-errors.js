@@ -6,10 +6,8 @@ const catchAsyncErrors = (handler) => (io, socket, payload, callback) => {
   Promise.resolve(handler(io, socket, payload, callback)).catch((err) => {
     err.message = err.message || 'Internal Server Error';
     err.code = err.code || 5000;
-
     if (process.env.NODE_ENV === 'DEVELOPMENT') {
       console.log(err);
-
       callback({
         success: false,
         error: err,
@@ -17,18 +15,14 @@ const catchAsyncErrors = (handler) => (io, socket, payload, callback) => {
         stack: err.stack,
       });
     }
-
     if (process.env.NODE_ENV === 'PRODUCTION') {
       let error = err;
-
       // console.log(err);
-
       // Wrong Mongoose Object ID Error
       if (err.name === 'CastError') {
         const message = 'Không tìm thấy tài nguyên với mã được truyền vào';
         error = new ErrorHandler(message, 4089);
       }
-
       // Handling Mongoose duplicate key errors
       if (err.name === 'MongoServerError' && err.code === 11000) {
         const keys = Object.keys(err.keyValue);
@@ -36,7 +30,6 @@ const catchAsyncErrors = (handler) => (io, socket, payload, callback) => {
           keys.map((key) => `'${attribute[key]}' đã được sử dụng`) + '';
         error = new ErrorHandler(message, 4090);
       }
-
       // Handling Mongoose Validation Error
       if (err.name === 'ValidationError') {
         const message =
@@ -46,7 +39,6 @@ const catchAsyncErrors = (handler) => (io, socket, payload, callback) => {
           ) + '';
         error = new ErrorHandler(message, 4091);
       }
-
       callback({
         success: false,
         message: error.message,

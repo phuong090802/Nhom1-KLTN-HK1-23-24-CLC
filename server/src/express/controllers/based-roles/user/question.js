@@ -19,13 +19,10 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     .select('title content file createdAt answer');
   // .lean()
   // không sử dụng learn vì method trong được tạo schema
-
   const filterUser = {
     user: user._id,
   };
-
   const requestQuery = queryFiltersLimit(req.query, filterUser);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
@@ -40,11 +37,9 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     req.query.size,
     questionRecords
   );
-
   const questions = retQuestions.map((question) =>
     question.getQuestionInformation(USER_GET_ALL_QUESTIONS)
   );
-
   res.json({
     success: true,
     questions,

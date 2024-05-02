@@ -6,15 +6,12 @@ export const handleValidateTimeForStatisticInBody = catchAsyncErrors(
   async (req, res, next) => {
     const allowTimeUnits = ['month', 'year'];
     const { timeUnit, latestTime } = req.body;
-
     if (!allowTimeUnits.includes(timeUnit)) {
       return next(new ErrorHandler(400, 'Mốc thời gian không hợp lệ', 4105));
     }
-
     if (!Number.isInteger(latestTime)) {
       return next(new ErrorHandler(400, 'Thời gian không hợp lệ', 4106));
     }
-
     // validate month
     // validate year
     switch (timeUnit) {

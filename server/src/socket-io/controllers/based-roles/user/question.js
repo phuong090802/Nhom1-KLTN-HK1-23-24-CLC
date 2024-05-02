@@ -18,13 +18,10 @@ export const handleCreateQuestion = catchAsyncErrors(
     handleAuthorization(socket, 'USER');
     const user = socket.user;
     const { file, departmentId, fieldId, title, content } = payload;
-
     const department = await Department.findById(departmentId);
     handleCheckDepartmentAndStatus(department);
-
     const field = await Field.findById(fieldId);
     handleCheckFieldAndStatus(field);
-
     let questionData = {
       department,
       field,
@@ -32,7 +29,6 @@ export const handleCreateQuestion = catchAsyncErrors(
       content,
       user,
     };
-
     if (file && file.buffer) {
       // maxSize: 2MB
       handleValidateMimetypeAndFileSize(file, 2);
@@ -45,15 +41,12 @@ export const handleCreateQuestion = catchAsyncErrors(
         },
       };
     }
-
     await Question.create(questionData);
-
     callback({
       success: true,
       message: 'Đặt câu hỏi thành công',
       code: 2030,
     });
-
     // emit new question to department
     const users = await User.find({
       'counsellor.department': department,
@@ -62,12 +55,6 @@ export const handleCreateQuestion = catchAsyncErrors(
         { role: 'DEPARTMENT_HEAD' },
       ],
     });
-
-    // const numberOfQuestions = await Question.countDocuments({
-    //   department,
-    //   field,
-    // });
-
     const response = {
       success: true,
       // hasNewQuestions: numberOfQuestions > 0,
@@ -75,12 +62,10 @@ export const handleCreateQuestion = catchAsyncErrors(
       // change code
       code: 2071,
     };
-
     await Promise.all(
       users.map(async (user) => {
         const receiverId = user._id.toString();
         io.of('/auth').emit(`${receiverId}:question:notification:read`, response);
-
         await sendNotification(receiverId, {
           // sound: 'default',
           title: 'Câu hỏi',

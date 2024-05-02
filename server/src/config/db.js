@@ -2,14 +2,11 @@ import mongoose from 'mongoose';
 
 export default function connectDB() {
   let DB_URI = process.env.DB_LOCAL_URI;
-
   if (process.env.NODE_ENV === 'PRODUCTION') {
     DB_URI = process.env.DB_URI;
   }
-
   // config strictQuery
   mongoose.set('strictQuery', true);
-
   mongoose
     .connect(DB_URI)
     .then((conn) => {

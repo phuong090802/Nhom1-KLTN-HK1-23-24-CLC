@@ -31,5 +31,4 @@ feedbackSchema.pre('validate', function (next) {
 });
 
 const Feedback = mongoose.model('Feedback', feedbackSchema);
-
 export default Feedback;

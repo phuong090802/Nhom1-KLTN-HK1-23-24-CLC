@@ -7,7 +7,6 @@ export const handleValidateNewsIdInParams = catchAsyncErrors(
   async (req, res, next) => {
     const { id } = req.params;
     const news = await News.findById(id);
-
     if (!news) {
       return next(new ErrorHandler(404, 'Không tìm thấy tin tức', 4063));
     }

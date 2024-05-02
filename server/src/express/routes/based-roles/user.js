@@ -10,6 +10,7 @@ const router = express.Router();
 router.use(...handleAuthenticationAndAuthorization('USER'));
 
 router.route('/questions').get(defaultPaginationParams, handleGetQuestions);
+
 router
   .route('/notifications')
   .get(defaultPaginationParams, handleGetNotifications);

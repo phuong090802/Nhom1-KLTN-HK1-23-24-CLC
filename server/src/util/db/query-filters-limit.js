@@ -1,6 +1,4 @@
 export default function queryFiltersLimit(requestQuery, ...filterLimit) {
-  // console.log(filterLimit);
-
   let query = {
     ...requestQuery,
     filter: {
@@ -16,8 +14,5 @@ export default function queryFiltersLimit(requestQuery, ...filterLimit) {
       }
     });
   });
-
-  // console.log(query);
-
   return query;
 }

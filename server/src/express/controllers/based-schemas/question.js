@@ -32,20 +32,13 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     .select('title content file createdAt views user answer');
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
-
   const filterStatus = { status: 'publicly-answered-and-approved' };
-
   const requestQueryTransform = queryFiltersLimit(req.query, filterStatus);
-
   const reqSort = req.query.sort?.createdAt;
-
   const requestQuery = defaultSortNewest(
     requestQueryTransform,
     !reqSort && { createdAt: -1 }
   );
-
-  // console.log(requestQuery);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
@@ -60,11 +53,9 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     req.query.size,
     questionRecords
   );
-
   const questions = retQuestions.map((question) =>
     question.getQuestionInformation(HOME_GET_ALL_QUESTIONS)
   );
-
   res.json({
     success: true,
     questions,

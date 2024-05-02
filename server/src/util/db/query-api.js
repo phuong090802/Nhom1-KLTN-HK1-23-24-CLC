@@ -3,12 +3,10 @@ class QueryAPI {
   constructor(query, queryString) {
     this.query = query;
     this.queryString = queryString;
-    // console.log(queryString);
   }
 
   search() {
     const { keyword, search } = this.queryString;
-
     let keywordSearch = {};
     if (keyword && search && Array.isArray(search) && search.length) {
       const orConditions = search.map((field) => ({
@@ -16,9 +14,7 @@ class QueryAPI {
       }));
       keywordSearch = { $or: orConditions };
     }
-    // console.log(keywordSearch);
     this.query = this.query.find({ ...keywordSearch });
-
     return this;
   }
 
@@ -29,7 +25,6 @@ class QueryAPI {
       typeof filter === 'object' &&
       Object.keys(filter).length > 0
     ) {
-      // console.log(filter);
       this.query = this.query.find(filter);
     }
     return this;
@@ -57,7 +52,6 @@ class QueryAPI {
 
   skipAndLimit() {
     const { size, skip } = this.queryString;
-    // console.log(skip);
     this.query = this.query.limit(size).skip(skip);
     return this;
   }

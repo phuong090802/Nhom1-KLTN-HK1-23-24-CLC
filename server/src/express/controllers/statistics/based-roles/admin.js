@@ -12,7 +12,6 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 export const handleStatisticQuestions = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
-
     // validate
     const { timeUnit, latestTime } = req.body;
     const departmentStatistic = await handleCountQuestions(
@@ -20,7 +19,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
       latestTime,
       department
     );
-
     res.json({
       success: true,
       departmentStatistic,
@@ -36,12 +34,10 @@ export const handleCountOfQuestion = catchAsyncErrors(
   async (req, res, next) => {
     // validate
     const { timeUnit, latestTime } = req.body;
-
     const ranges = convertTimeAndGenerateRangesForStatistic(
       timeUnit,
       latestTime
     );
-
     const questionStatistic = await Promise.all(
       ranges.map(async (range) => {
         const { start, end } = range;
@@ -51,9 +47,7 @@ export const handleCountOfQuestion = catchAsyncErrors(
             $lte: end,
           },
         };
-
         const countOfQuestions = await Question.countDocuments(query);
-
         return {
           date: {
             start,
@@ -63,7 +57,6 @@ export const handleCountOfQuestion = catchAsyncErrors(
         };
       })
     );
-
     res.json({
       success: true,
       questionStatistic,
@@ -78,15 +71,11 @@ export const handleCountOfQuestion = catchAsyncErrors(
 export const handleStatisticDepartments = catchAsyncErrors(
   async (req, res, next) => {
     // sort, search
-
     const query = Department.find();
-
     const queryAPI = new QueryAPI(query, req.query).search().sort();
-
     let departmentRecords = await queryAPI.query;
     const numberOfDepartments = departmentRecords.length;
     departmentRecords = await queryAPI.pagination().query.clone();
-
     const {
       data: departments,
       page,
@@ -97,7 +86,6 @@ export const handleStatisticDepartments = catchAsyncErrors(
       req.query.size,
       departmentRecords
     );
-
     const departmentStatistics = await Promise.all(
       departments.map(async (department) => {
         const fieldCount = await Field.countDocuments({ department });
@@ -105,7 +93,6 @@ export const handleStatisticDepartments = catchAsyncErrors(
           'counsellor.department': department,
         });
         const questionCount = await Question.countDocuments({ department });
-
         return {
           _id: department._id,
           departmentName: department.departmentName,
@@ -115,7 +102,6 @@ export const handleStatisticDepartments = catchAsyncErrors(
         };
       })
     );
-
     res.json({
       success: true,
       departmentStatistics,

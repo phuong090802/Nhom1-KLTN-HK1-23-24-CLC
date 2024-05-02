@@ -10,12 +10,10 @@ export const handleStatisticQuestions = catchAsyncErrors(
     // validate
     const user = req.user;
     const { timeUnit, latestTime } = req.body;
-
     const ranges = convertTimeAndGenerateRangesForStatistic(
       timeUnit,
       latestTime
     );
-
     const questionsStatistic = await Promise.all(
       ranges.map(async (range) => {
         const { start, end } = range;
@@ -26,7 +24,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
             $lte: end,
           },
         };
-
         const countOfAnsweredQuestions = await Question.countDocuments({
           $or: [
             { status: 'publicly-answered-and-approved', answer: { $ne: null } },
@@ -34,7 +31,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
           ],
           ...query,
         });
-
         return {
           date: {
             start,
@@ -44,7 +40,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
         };
       })
     );
-
     res.json({
       success: true,
       questionsStatistic,

@@ -73,7 +73,6 @@ export const handleStatisticCountUsersAndDepartmentsAndFieldsAndQuestions =
     });
     const countOfFields = await Field.countDocuments({ isActive: true });
     const countOfQuestions = await Question.countDocuments();
-
     res.json({
       success: true,
       countOfUsers,

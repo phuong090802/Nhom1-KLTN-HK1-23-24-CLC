@@ -8,12 +8,10 @@ export const handleCheckUnapprovedAnswerExists = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const { department } = user.counsellor;
-
     const numberOfAnswers = await Question.countDocuments({
       department,
       status: 'publicly-answered-pending-approval',
     });
-
     res.json({
       success: true,
       unapprovedAnswerExists: numberOfAnswers > 0,

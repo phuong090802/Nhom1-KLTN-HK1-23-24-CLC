@@ -19,11 +19,9 @@ export const handleValidateFieldIdInBody = catchAsyncErrors(
   async (req, res, next) => {
     const { fieldId } = req.body;
     const field = await Field.findById(fieldId);
-
     if (!field) {
       return next(new ErrorHandler(404, 'Không tìm lĩnh vực', 4108));
     }
-
     req.foundField = field;
     next();
   }
@@ -34,11 +32,9 @@ export const handleCheckFieldBelongToDepartment = catchAsyncErrors(
   (req, res, next) => {
     const field = req.foundField;
     const department = req.foundDepartment;
-
     if (!field.department.equals(department._id)) {
       return next(new ErrorHandler(404, 'Không tìm lĩnh vực thuộc khoa', 4049));
     }
-
     next();
   }
 );

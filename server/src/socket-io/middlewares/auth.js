@@ -40,24 +40,11 @@ export const handleAuthentication = (socket, next) => {
       };
       return next(err);
     }
-    socket.user = await User.findById(decoded.id);
+    const user = await User.findById(decoded.id);
+    if (!user.isEnabled) {
+      return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4115));
+    }
+    socket.user = user;
     next();
   });
-};
-
-export const handleAuthorization = (...roles) => {
-  return (socket, next) => {
-    const role = socket.user.role;
-    if (!roles.includes(role)) {
-      const message = `${rolesMapper[role]} không được phép truy cập vào tài nguyên này`;
-      const err = new Error();
-      err.data = {
-        status: 403,
-        message,
-        code: 4043,
-      };
-      return next(err);
-    }
-    next();
-  };
 };

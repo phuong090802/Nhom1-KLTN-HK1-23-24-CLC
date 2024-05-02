@@ -3,12 +3,10 @@ import { convertTimeAndGenerateRangesForStatistic } from '../generate/time-conve
 
 export async function handleCountQuestions(timeUnit, latestTime, department) {
   const ranges = convertTimeAndGenerateRangesForStatistic(timeUnit, latestTime);
-
   const departmentStatistic = await Promise.all(
     ranges.map(async (range) => {
       const { start, end } = range;
       // console.log(start.toLocaleDateString(), '-', end.toLocaleDateString());
-      // console.log(start, '-', end);
       const query = {
         department,
         createdAt: {
@@ -16,9 +14,7 @@ export async function handleCountQuestions(timeUnit, latestTime, department) {
           $lte: end,
         },
       };
-
       const countOfQuestions = await Question.countDocuments(query);
-
       const countOfAnsweredQuestions = await Question.countDocuments({
         $or: [
           { status: 'publicly-answered-and-approved', answer: { $ne: null } },
@@ -26,7 +22,6 @@ export async function handleCountQuestions(timeUnit, latestTime, department) {
         ],
         ...query,
       });
-
       return {
         date: {
           start,

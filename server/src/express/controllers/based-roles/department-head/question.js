@@ -12,7 +12,6 @@ export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const { department } = user.counsellor;
-
     const query = Question.find()
       .populate({
         path: 'answer',
@@ -23,16 +22,13 @@ export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
       .select('title content file createdAt views user answer');
     // không sử dụng learn vì method trong được tạo schema
     // .lean()
-
     const filterStatus = { status: 'publicly-answered-pending-approval' };
     const filterDepartment = { department: department._id };
-
     const requestQuery = queryFiltersLimit(
       req.query,
       filterDepartment,
       filterStatus
     );
-
     const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
     let questionRecords = await queryAPI.query;
     const numberOfQuestions = questionRecords.length;
@@ -47,11 +43,9 @@ export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
       req.query.size,
       questionRecords
     );
-
     const questions = retQuestions.map((question) =>
       question.getQuestionInformation(DEPARTMENT_HEAD_GET_ALL_QUESTIONS)
     );
-
     res.json({
       success: true,
       questions,
@@ -69,12 +63,10 @@ export const handleCheckUnansweredQuestionExits = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const { department } = user.counsellor;
-
     const numberOfQuestions = await Question.countDocuments({
       department,
       status: 'unanswered',
     });
-
     res.json({
       success: true,
       hasNewQuestions: numberOfQuestions > 0,

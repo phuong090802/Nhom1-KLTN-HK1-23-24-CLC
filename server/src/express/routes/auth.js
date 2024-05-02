@@ -12,7 +12,6 @@ router.post('/register', authController.handleRegister);
 router.post('/login', authController.handleLogin);
 router.post('/refresh-token', authController.handleRefreshToken);
 router.post('/logout', authController.handleLogout);
-
 router.get('/me', handleAuthentication, authController.handleGetMe);
 router.post('/forgot-password', authController.handleForgotPassword);
 router.post('/verify-otp', authController.handleVerifyOTP);
@@ -24,12 +23,14 @@ router.post(
   handleAuthentication,
   authController.handleValidateEmail
 );
+
 router.post(
   '/verify-email',
   // auth
   handleAuthentication,
   authController.handleVerifyEmail
 );
+
 router.put(
   '/password',
   // auth

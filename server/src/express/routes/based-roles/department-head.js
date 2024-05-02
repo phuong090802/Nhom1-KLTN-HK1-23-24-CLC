@@ -44,31 +44,25 @@ router.use(
 
 router
   .route('/faqs/:id')
-  .put(
-    // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
-    handleUploadImageOrDocument.single('file'),
+  .all(
     // faq
     handleValidateFAQIdInParams,
     // faq belong department
-    handleCheckFAQBelongDepartment,
+    handleCheckFAQBelongDepartment
+  )
+  .put(
+    // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
+    handleUploadImageOrDocument.single('file'),
     // new field
     handleValidateFieldIdInBody,
     // new field belong department
     handleCheckFieldBelongToDepartment,
     // status of new field
     handleCheckStatusOfField,
-
     handleOptionalUploadFileToFirebase('faqs'),
     faqController.handleUpdateFAQ
   )
-  .delete(
-    // faq
-    handleValidateFAQIdInParams,
-    // faq belong department
-    handleCheckFAQBelongDepartment,
-
-    faqController.handleDeleteFAQ
-  );
+  .delete(faqController.handleDeleteFAQ);
 
 router
   .route('/faqs')
@@ -80,7 +74,6 @@ router
     handleValidateFieldIdInBody,
     // field belong department
     handleCheckFieldBelongToDepartment,
-
     handleOptionalUploadFileToFirebase('faqs'),
     faqController.handleCreateFAQ
   );
@@ -102,35 +95,17 @@ router
 
 router
   .route('/counsellors/:id')
-  .put(
+  .all(
     // user
     handleValidateUserIdInParams,
     // role counsellor
     handleValidateRoleUser('COUNSELLOR'),
     // counsellor belong department
-    handleCheckCounsellorBelongDepartment,
-
-    counsellorController.handleAddFieldToCounsellor
+    handleCheckCounsellorBelongDepartment
   )
-  .delete(
-    // user
-    handleValidateUserIdInParams,
-    // counsellor
-    handleValidateRoleUser('COUNSELLOR'),
-    // counsellor belong department
-    handleCheckCounsellorBelongDepartment,
-
-    counsellorController.handleRemoveFieldOfCounsellor
-  )
-  .patch(
-    // user
-    handleValidateUserIdInParams,
-    // counsellor
-    handleValidateRoleUser('COUNSELLOR'),
-    // belong department
-    handleCheckCounsellorBelongDepartment,
-    counsellorController.handleUpdateStatusOfCounsellor
-  );
+  .put(counsellorController.handleAddFieldToCounsellor)
+  .delete(counsellorController.handleRemoveFieldOfCounsellor)
+  .patch(counsellorController.handleUpdateStatusOfCounsellor);
 
 router
   .route('/counsellors')
@@ -139,19 +114,18 @@ router
 
 router
   .route('/fields/:id')
-  .put(
+  .all(
     // field
     handleValidateFieldIdInParams,
     // field belong department
-    handleCheckFieldBelongToDepartment,
+    handleCheckFieldBelongToDepartment
+  )
+  .put(
     // status of field
     handleCheckStatusOfField,
     fieldController.handleRenameField
   )
   .patch(
-    // field
-    handleValidateFieldIdInParams,
-    // field belong department
     handleCheckFieldBelongToDepartment,
     fieldController.handleUpdateStatusOfField
   );

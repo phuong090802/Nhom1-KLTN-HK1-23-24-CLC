@@ -12,11 +12,9 @@ export const handleStatisticFields = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
     const fields = await Field.find({ department }).select('_id fieldName');
-
     const fieldStatistic = await handleCountQuestionsByFieldsAndDepartment(
       fields
     );
-
     res.json({
       success: true,
       fieldStatistic,
@@ -31,7 +29,6 @@ export const handleStatisticFields = catchAsyncErrors(
 export const handleStatisticQuestions = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
-
     // validate
     const { timeUnit, latestTime } = req.body;
     const departmentStatistic = await handleCountQuestions(
@@ -39,7 +36,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
       latestTime,
       department
     );
-
     res.json({
       success: true,
       departmentStatistic,
@@ -55,7 +51,6 @@ export const handleCountOfCounsellors = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
     const countOfUsers = await User.countDocuments({ department });
-
     res.json({
       success: true,
       countOfUsers,
@@ -69,9 +64,7 @@ export const handleCountOfCounsellors = catchAsyncErrors(
 // Description: Trưởng khoa đếm số câu hỏi chung trong khoa
 export const handleCountOfFAQs = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
-
   const countOfFAQs = await FAQ.countDocuments({ department });
-
   res.json({
     success: true,
     countOfFAQs,

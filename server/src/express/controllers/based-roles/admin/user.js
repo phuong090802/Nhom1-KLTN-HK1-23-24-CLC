@@ -13,38 +13,23 @@ export const handleGetUsers = catchAsyncErrors(async (req, res, next) => {
     .select('fullName avatar email phoneNumber isEnabled role occupation')
     .lean();
   // không lấy khoa
-
   const reqFilterRole = req.query.filter?.role;
-
-  // console.log(reqFilterRole);
-
   let filterRolesValue = { $ne: 'ADMIN' };
   if (reqFilterRole) {
     filterRolesValue = { ...filterRolesValue, $eq: reqFilterRole };
   }
-
   const filterRoles = { role: filterRolesValue };
-
-  // console.log(filterRoles);
-
   const requestQuery = queryFiltersLimit(req.query, filterRoles);
-
-  // console.log(requestQuery);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
-
   let userRecords = await queryAPI.query;
   const numberOfUsers = userRecords.length;
   userRecords = await queryAPI.pagination().query.clone();
-
   const {
     data: retUsers,
     page,
     pages,
   } = paginate(numberOfUsers, req.query.page, req.query.size, userRecords);
-
   const users = retUsers.map((user) => ({ ...user, avatar: user.avatar.url }));
-
   res.json({
     success: true,
     users,
@@ -62,7 +47,6 @@ export const handleUpdateStatusOfUser = catchAsyncErrors(
     const user = req.foundUser;
     user.isEnabled = req.body.isEnabled;
     const savedUser = await user.save();
-
     const strStatus = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
     res.json({
       success: true,
@@ -77,7 +61,6 @@ export const handleUpdateStatusOfUser = catchAsyncErrors(
 // Description: Xem thông tin của người dùng với cấu trúc được yêu cầu
 export const handleGetUser = catchAsyncErrors(async (req, res, next) => {
   const user = req.foundUser.getUserInformation(ADMIN_GET_USER);
-
   res.json({
     success: true,
     user,

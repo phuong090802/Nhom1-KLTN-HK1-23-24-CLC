@@ -31,23 +31,21 @@ import { handleValidateRoleInBody } from '../../middlewares/validate/role.js';
 
 const router = express.Router();
 
-router.use(handleAuthenticationAndAuthorization('ADMIN'));
+router.use(...handleAuthenticationAndAuthorization('ADMIN'));
 
 router
   .route('/news/:id')
-  .put(
+  .all(
     // kiểm tra id của new
-    handleValidateNewsIdInParams,
+    handleValidateNewsIdInParams
+  )
+  .put(
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
     handleUploadImageOrDocument.single('file'),
     handleOptionalUploadFileToFirebase('news'),
     newsController.handleUpdateNews
   )
-  .delete(
-    // kiểm tra id của new
-    handleValidateNewsIdInParams,
-    newsController.handleDeleteNews
-  );
+  .delete(newsController.handleDeleteNews);
 
 router.route('/news').post(
   // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
@@ -58,10 +56,12 @@ router.route('/news').post(
 
 router
   .route('/users/:id')
-  .get(handleValidateUserIdInParams, userController.handleGetUser)
-  .put(
+  .all(
     // user
-    handleValidateUserIdInParams,
+    handleValidateUserIdInParams
+  )
+  .get(userController.handleGetUser)
+  .put(
     // is not admin
     handlePreventRoles('ADMIN'),
     userController.handleUpdateStatusOfUser
@@ -75,27 +75,22 @@ router.get(
   '/departments/:id/counsellors',
   // department
   handleValidateDepartmentIdInParams,
-
   defaultPaginationParams,
   departmentController.handleGetCounsellorsInDepartment
 );
 
 router
   .route('/departments/:id')
-  .put(
+  .all(
     // department
-    handleValidateDepartmentIdInParams,
+    handleValidateDepartmentIdInParams
+  )
+  .put(
     // status of department
     handleCheckStatusOfDepartment,
-
     departmentController.handleRenameDepartment
   )
-  .patch(
-    // department
-    handleValidateDepartmentIdInParams,
-
-    departmentController.handleUpdateStatusOfDepartment
-  );
+  .patch(departmentController.handleUpdateStatusOfDepartment);
 
 router
   .route('/departments')
@@ -110,14 +105,12 @@ router
     handleValidateUserIdInBody,
     // counsellor
     handleValidateRoleUser('COUNSELLOR'),
-
     departmentController.handleChangeDepartmentHead
   );
 
 router.route('/staffs').post(
   // role
   handleValidateRoleInBody('COUNSELLOR', 'SUPERVISOR'),
-
   handleCreateStaff
 );
 
@@ -126,7 +119,6 @@ router.post(
   // file
   handleUploadFileCSV.single('file'),
   handleRequiredFileInFormData,
-
   counsellorController.handleCreateCounsellorFromCSV
 );
 
@@ -135,12 +127,10 @@ router.route('/counsellors').post(
   handleValidateUserIdInBody,
   // counsellor
   handleValidateRoleUser('COUNSELLOR'),
-
   // department
   handleValidateDepartmentIdInBody,
   // status of department
   handleCheckStatusOfDepartment,
-
   counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
 );
 

@@ -7,11 +7,9 @@ export const handleCheckDepartmentOfCounsellor = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const department = await Department.findById(user.counsellor.department);
-
     if (!department) {
       return next(new ErrorHandler(404, 'Không tìm thấy khoa', 4038));
     }
-
     req.foundDepartment = department;
     next();
   }
@@ -21,7 +19,6 @@ export const handleCheckDepartmentOfCounsellor = catchAsyncErrors(
 export const handleCheckStatusDepartmentOfCounsellor = catchAsyncErrors(
   (req, res, next) => {
     const department = req.foundDepartment;
-
     if (!department.isActive) {
       return next(
         new ErrorHandler(400, 'Không thể truy cập. Khoa đang bị khóa', 4075)
@@ -36,11 +33,9 @@ export const handleCheckCounsellorBelongDepartment = catchAsyncErrors(
   (req, res, next) => {
     const { department: departmentOfDepartmentHead } = req.user.counsellor;
     const { department: departmentOfCounsellor } = req.foundUser.counsellor;
-
     if (!departmentOfDepartmentHead._id.equals(departmentOfCounsellor)) {
       return next(new ErrorHandler(404, 'Tư vấn viên không thuộc khoa', 4109));
     }
-
     next();
   }
 );

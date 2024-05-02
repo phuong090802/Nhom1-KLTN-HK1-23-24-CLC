@@ -30,7 +30,6 @@ conversationSchema.pre('save', function (next) {
   if (!this.isModified('participates')) {
     return next();
   }
-
   if (!hasArrayMaxLength(this.participates, 2)) {
     return next(
       new ErrorHandler(
@@ -40,7 +39,6 @@ conversationSchema.pre('save', function (next) {
       )
     );
   }
-
   next();
 });
 
@@ -48,7 +46,6 @@ conversationSchema.pre('save', function (next) {
   if (!this.isModified('deletedBy')) {
     return next();
   }
-
   if (!hasArrayMaxLength(this.deletedBy, 2)) {
     return next(
       new ErrorHandler(
@@ -63,9 +60,7 @@ conversationSchema.pre('save', function (next) {
 
 conversationSchema.methods.getLatestConversation = function (message, sender) {
   const { _id, fullName, avatar } = sender;
-
   const otherUser = { _id, fullName, avatar: avatar.url };
-
   return {
     _id: this._id,
     lastMessage: {
@@ -82,9 +77,7 @@ conversationSchema.methods.getLatestConversation = function (message, sender) {
 
 conversationSchema.methods.getConversationInformation = function () {
   const [{ _id, fullName, avatar }] = this.participates;
-
   const otherUser = { _id, fullName, avatar: avatar.url };
-
   return {
     _id: this._id,
     lastMessage: this.lastMessage,
@@ -94,5 +87,4 @@ conversationSchema.methods.getConversationInformation = function () {
 };
 
 const Conversation = mongoose.model('Conversation', conversationSchema);
-
 export default Conversation;

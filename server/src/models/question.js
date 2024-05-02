@@ -74,7 +74,6 @@ const questionSchema = new mongoose.Schema({
 // cách này không tìm chay
 // populate rồi dùng phương thức bên kia
 questionSchema.methods.getQuestionInformation = function (action) {
-  // console.log(this);
   const baseQuestion = {
     _id: this._id,
     title: this.title,
@@ -82,7 +81,6 @@ questionSchema.methods.getQuestionInformation = function (action) {
     createdAt: this.createdAt,
     fileURL: this.file.url,
   };
-
   switch (action) {
     case questionAction.DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS:
       return {
@@ -118,5 +116,4 @@ questionSchema.methods.getQuestionInformation = function (action) {
 };
 
 const Question = mongoose.model('Question', questionSchema);
-
 export default Question;

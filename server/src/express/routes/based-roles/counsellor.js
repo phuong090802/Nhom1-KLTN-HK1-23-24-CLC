@@ -35,97 +35,95 @@ const router = express.Router();
 
 router.use(handleAuthentication);
 
-router.route('/fields').get(
-  // auth
-  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
-  // department - counsellor before access
-  handleCheckDepartmentOfCounsellor,
-  handleCheckStatusDepartmentOfCounsellor,
+router
+  .route('/fields')
+  .all(
+    // auth
+    handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+    // department - counsellor before access
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor
+  )
+  .get(defaultPaginationParams, handleGetFields);
 
-  defaultPaginationParams,
-  handleGetFields
-);
+router
+  .route('/questions')
+  .all(
+    // auth
+    handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+    // department - counsellor before access
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor
+  )
+  .get(defaultPaginationParams, questionController.handleGetQuestions);
 
-router.route('/questions').get(
-  // auth
-  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
-  // department - counsellor before access
-  handleCheckDepartmentOfCounsellor,
-  handleCheckStatusDepartmentOfCounsellor,
+router
+  .route('/questions/:id')
+  .all(
+    // auth
+    handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
+    // department - counsellor before access
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor
+  )
+  .put(
+    // question
+    handleValidateQuestionIdInParams,
+    // status of question
+    handleValidateStatusOfQuestion('unanswered'),
+    // question belong department
+    handleCheckQuestionBelongToDepartment,
+    // counsellor have field of question
+    handleCheckCounsellorIncludesFieldOfQuestion,
+    // validate new department
+    handleValidateDepartmentIdInBody,
+    // status of new department
+    handleCheckStatusOfDepartment,
+    // is not same department
+    handleValidateDepartmentIdBeforeForwarding,
+    // field belong new department
+    handleCheckFieldBelongToDepartment,
+    questionController.handleForwardQuestion
+  );
 
-  defaultPaginationParams,
-  questionController.handleGetQuestions
-);
+router
+  .route('/questions/unanswered-question')
+  .all(
+    // auth
+    handleAuthorization('COUNSELLOR'),
+    // department - counsellor before access
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor
+  )
+  .get(questionController.handleCheckUnansweredQuestionExists);
 
-router.route('/questions/:id').put(
-  // auth
-  handleAuthorization('DEPARTMENT_HEAD', 'COUNSELLOR'),
-  // department - counsellor before access
-  handleCheckDepartmentOfCounsellor,
-  handleCheckStatusDepartmentOfCounsellor,
-  // question
-  handleValidateQuestionIdInParams,
-  // status of question
-  handleValidateStatusOfQuestion('unanswered'),
-  // question belong department
-  handleCheckQuestionBelongToDepartment,
-  // counsellor have field of question
-  handleCheckCounsellorIncludesFieldOfQuestion,
-  // validate new department
-  handleValidateDepartmentIdInBody,
-  // status of new department
-  handleCheckStatusOfDepartment,
-  // is not same department
-  handleValidateDepartmentIdBeforeForwarding,
-  // field belong new department
-  handleCheckFieldBelongToDepartment,
-
-  questionController.handleForwardQuestion
-);
-
-router.route('/questions/unanswered-question').get(
-  // auth
-  handleAuthorization('COUNSELLOR'),
-  // department - counsellor before access
-  handleCheckDepartmentOfCounsellor,
-  handleCheckStatusDepartmentOfCounsellor,
-
-  questionController.handleCheckUnansweredQuestionExists
-);
-
-router.route('/feedbacks/:id').delete(
-  // auth
-  handleAuthorization('COUNSELLOR'),
-  // department - counsellor before access
-  handleCheckDepartmentOfCounsellor,
-  handleCheckStatusDepartmentOfCounsellor,
-  // feedback
-  handleValidateFeedbackIdInParams,
-  // belong counsellor
-  handleCheckFeedbackBelongToCounsellor,
-
-  feedbackController.handleDeleteFeedback
-);
+router
+  .route('/feedbacks/:id')
+  .all(
+    // auth
+    handleAuthorization('COUNSELLOR'),
+    // department - counsellor before access
+    handleCheckDepartmentOfCounsellor,
+    handleCheckStatusDepartmentOfCounsellor
+  )
+  .delete(
+    // feedback
+    handleValidateFeedbackIdInParams,
+    // belong counsellor
+    handleCheckFeedbackBelongToCounsellor,
+    feedbackController.handleDeleteFeedback
+  );
 
 router
   .route('/feedbacks')
-  .get(
+  .all(
     // auth
     handleAuthorization('COUNSELLOR'),
     // department - counsellor before access
     handleCheckDepartmentOfCounsellor,
-    handleCheckStatusDepartmentOfCounsellor,
-
-    feedbackController.handleGetFeedbacks
+    handleCheckStatusDepartmentOfCounsellor
   )
-  .delete(
-    // auth
-    handleAuthorization('COUNSELLOR'),
-    // department - counsellor before access
-    handleCheckDepartmentOfCounsellor,
-    handleCheckStatusDepartmentOfCounsellor,
-
-    feedbackController.handleDeleteFeedbacks
-  );
+  .get(feedbackController.handleGetFeedbacks)
+  .delete(feedbackController.handleDeleteFeedbacks);
 
 export default router;

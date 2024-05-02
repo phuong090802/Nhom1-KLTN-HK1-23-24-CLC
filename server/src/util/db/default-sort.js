@@ -6,8 +6,5 @@ export default function defaultSortNewest(requestQuery, sortValue) {
       ...sortValue,
     },
   };
-
-  // console.log(query);
-
   return query;
 }

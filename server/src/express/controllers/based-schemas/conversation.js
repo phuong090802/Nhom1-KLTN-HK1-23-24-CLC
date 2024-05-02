@@ -12,37 +12,26 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 export const handleGetMessagesInConversation = catchAsyncErrors(
   async (req, res, next) => {
     const conversation = req.foundConversation;
-
     const query = Message.find()
       .select('content sender viewed createdAt')
       .lean();
-
     const filterConversation = {
       conversation: conversation._id,
     };
-
     const requestQueryTransform = queryFiltersLimit(
       req.query,
       filterConversation
     );
-
     const reqSort = req.query.sort?.createdAt;
-
     const requestQuery = defaultSortNewest(
       requestQueryTransform,
       !reqSort && { createdAt: -1 }
     );
-
     const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
-
     let messageRecords = await queryAPI.query;
-
     const totalMessages = messageRecords.length;
-
     const foundMessages = await queryAPI.skipAndLimit().query.clone();
-
     const messages = foundMessages.reverse();
-
     res.json({
       success: true,
       messages,
@@ -58,7 +47,6 @@ export const handleGetMessagesInConversation = catchAsyncErrors(
 export const handleGetConversations = catchAsyncErrors(
   async (req, res, next) => {
     const userId = req.user._id;
-
     const query = Conversation.find()
       .populate({
         path: 'lastMessage',
@@ -71,19 +59,15 @@ export const handleGetConversations = catchAsyncErrors(
       })
       .select('_id lastMessage createdAt');
     // .lean();
-
     const filterParticipates = {
       participates: userId,
     };
-
     const filterDeletedBy = { deletedBy: { $ne: userId } };
-
     const requestQuery = queryFiltersLimit(
       req.query,
       filterParticipates,
       filterDeletedBy
     );
-
     const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
     let conversationRecords = await queryAPI.query;
     const numberOfConversations = conversationRecords.length;
@@ -98,13 +82,11 @@ export const handleGetConversations = catchAsyncErrors(
       req.query.size,
       conversationRecords
     );
-
     const conversations = await Promise.all(
       retConversations.map((conversation) =>
         conversation.getConversationInformation()
       )
     );
-
     res.json({
       success: true,
       conversations,

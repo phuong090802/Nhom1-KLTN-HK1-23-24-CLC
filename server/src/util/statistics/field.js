@@ -6,7 +6,6 @@ export async function handleCountQuestionsByFieldsAndDepartment(fields) {
       const countOfQuestions = await Question.countDocuments({
         field,
       });
-
       return {
         field,
         countOfQuestions,

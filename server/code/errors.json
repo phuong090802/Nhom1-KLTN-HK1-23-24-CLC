@@ -217,7 +217,7 @@
     },
     {
       "code": "4043",
-      "message": "Role ${role} không được phép truy cập vào tài nguyên này",
+      "message": "",
       "detail": ""
     },
     {
@@ -411,12 +411,12 @@
     {
       "code": "4080",
       "message": "Không tìm thấy khoa",
-      "detail": "Kiểm tra mã khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
+      "detail": ""
     },
     {
       "code": "4081",
-      "message": "Không thể truy cập. Khoa đang bị khóa",
-      "detail": "Khoa đang có isActive = false (COUNSELLOR + DEPARTMENT_HEAD) kiểm tra trước khi truy cập vào route cụ thể. Kiểm tra trạng thái khoa của tư vấn viên, trưởng khoa trước khi truy cập vào namespace"
+      "message": "",
+      "detail": ""
     },
     {
       "code": "4082",
@@ -580,7 +580,22 @@
     },
     {
       "code": "4114",
-      "message": "",
+      "message": "Tài khoản đã bị khóa",
+      "detail": ""
+    },
+    {
+      "code": "4115",
+      "message": "Tài khoản đã bị khóa",
+      "detail": ""
+    },
+    {
+      "code": "4116",
+      "message": "Không tìm thấy khoa",
+      "detail": ""
+    },
+    {
+      "code": "4117",
+      "message": "Không thể truy cập. Khoa đang bị khóa",
       "detail": ""
     }
   ]

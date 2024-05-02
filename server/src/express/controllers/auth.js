@@ -16,7 +16,6 @@ export const handleEmailIsVerified = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const isVerifiedEmail = user.isEmailVerified;
-
     res.json({
       success: true,
       isVerifiedEmail,
@@ -32,16 +31,11 @@ export const handleEmailIsVerified = catchAsyncErrors(
 export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const { password, confirmPassword } = req.body;
-
   const mergePassword = JSON.stringify({ password, confirmPassword });
-
   user.password = mergePassword;
-
   await user.save();
-
   await RefreshToken.deleteMany({ owner: user });
   clearToken(res);
-
   res.json({
     success: true,
     message: 'Đổi mật khẩu thành công',
@@ -55,7 +49,6 @@ export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
 // Role: All role
 export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
   const { otp } = req.body;
-
   const user = req.user;
   if (
     !otp ||
@@ -66,11 +59,9 @@ export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
     const msg = 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại';
     return next(new ErrorHandler(400, msg, 4062));
   }
-
   user.isEmailVerified = true;
   user.verifyEmail = null;
   await user.save();
-
   res.json({
     success: true,
     message: 'Xác thực email thành công',
@@ -84,36 +75,28 @@ export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
 // Role: All role
 export const handleValidateEmail = catchAsyncErrors(async (req, res, next) => {
   const { email } = req.body;
-
   const user = req.user;
-
   if (user.isEmailVerified) {
     return next(new ErrorHandler(400, 'Email đã được xác thực', 4067));
   }
-
   if (!email) {
     return next(new ErrorHandler(400, 'Vui lòng nhập email', 4060));
   }
-
   const foundedUser = await User.findOne({
     _id: { $ne: user._id },
     email: { $regex: new RegExp(email, 'i') },
   });
-
   if (foundedUser) {
     return next(new ErrorHandler(400, 'Email đã được sử dụng', 4059));
   }
-
   const otp = await user.generateVerifyEmail();
   const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu xác thực email thì hãy bỏ qua nó</strong>`;
-
   try {
     await sendVerificationEmail({
       email,
       subject: 'Xác thực email Tư Vấn Sinh Viên',
       message,
     });
-
     res.json({
       success: true,
       message: `Đã gửi email đến: ${user.email}`,
@@ -138,9 +121,7 @@ export const handleRegister = catchAsyncErrors(async (req, res, next) => {
     confirmPassword,
     occupation,
   } = req.body;
-
   const mergePassword = JSON.stringify({ password, confirmPassword });
-
   await User.create({
     fullName,
     email,
@@ -148,7 +129,6 @@ export const handleRegister = catchAsyncErrors(async (req, res, next) => {
     password: mergePassword,
     occupation,
   });
-
   res.status(201).json({
     success: true,
     message: 'Tạo tài khoản thành công',
@@ -161,37 +141,29 @@ export const handleRegister = catchAsyncErrors(async (req, res, next) => {
 // Description: Đăng nhập
 export const handleLogin = catchAsyncErrors(async (req, res, next) => {
   const { username, password } = req.body;
-
   if (!username || !password) {
     return next(
       new ErrorHandler(422, 'Vui lòng nhập tên đăng nhập và mật khẩu', 4006)
     );
   }
-
   const user = await User.findOne({ phoneNumber: username })
     .select('+password')
     .populate({ path: 'counsellor.department', select: '_id departmentName' });
-
   if (!user) {
     const msg = 'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu';
     return next(new ErrorHandler(401, msg, 4007));
   }
-
   const isPasswordMatched = await user.comparePassword(password);
-
   if (!isPasswordMatched) {
     const msg = 'Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu';
     return next(new ErrorHandler(401, msg, 4008));
   }
-
   if (!user.isEnabled) {
     return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4012));
   }
-
   const accessToken = user.generateAccessToken();
   const refreshToken = await user.generateRefreshToken();
   const userInformation = user.getUserInformation(LOGIN);
-
   sendToken(res, accessToken, refreshToken, userInformation);
 });
 
@@ -201,39 +173,31 @@ export const handleLogin = catchAsyncErrors(async (req, res, next) => {
 export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
-
   if (!token) {
     return next(new ErrorHandler(422, 'Yêu cầu không hợp lệ', 4009));
   }
-
   // object
   const refreshToken = await RefreshToken.findOne({ token });
-
   if (!refreshToken) {
     clearToken(res);
     return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4010));
   }
-
   if (!refreshToken.status) {
     // delete all token in branch
     await RefreshToken.deleteMany({ branch: refreshToken.branch });
     clearToken(res);
     return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4011));
   }
-
   const user = await User.findById(refreshToken.owner).populate({
     path: 'counsellor.department',
     select: '_id departmentName',
   });
-
   if (!user) {
     return next(new ErrorHandler(401, 'Không tìm thấy tài khoản', 4013));
   }
-
   if (!user.isEnabled) {
     return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4014));
   }
-
   const newAccessToken = user.generateAccessToken();
   const newRefreshToken = await refreshToken.generateRefreshToken();
   const userInformation = user.getUserInformation(REFRESH_TOKEN);
@@ -248,12 +212,10 @@ export const handleLogout = catchAsyncErrors(async (req, res, next) => {
   const token = req.cookies.refreshToken;
   // object
   const refreshToken = await RefreshToken.findOne({ token });
-
   if (refreshToken) {
     await RefreshToken.deleteMany({ branch: refreshToken.branch });
   }
   clearToken(res);
-
   res.json({
     success: true,
     message: 'Đăng xuất thành công',
@@ -267,7 +229,6 @@ export const handleLogout = catchAsyncErrors(async (req, res, next) => {
 // Role: All role
 export const handleGetMe = catchAsyncErrors(async (req, res, next) => {
   const user = req.user.getUserInformation(ME);
-
   res.json({
     success: true,
     user,
@@ -280,33 +241,26 @@ export const handleGetMe = catchAsyncErrors(async (req, res, next) => {
 // Description: Yêu cầu đặt lại mật khẩu
 export const handleForgotPassword = catchAsyncErrors(async (req, res, next) => {
   const { email } = req.body;
-
   const user = await User.findOne({
     email: { $regex: new RegExp(email, 'i') },
   });
-
   if (!user) {
     return next(
       new ErrorHandler(404, 'Không tìm thấy người dùng với email', 4020)
     );
   }
-
   if (!user.isEmailVerified) {
     const msg = 'Email liên kết với tài khoản chưa được xác thực';
     return next(new ErrorHandler(400, msg, 4022));
   }
-
   const otp = await user.generateForgotPassword();
-
   const message = `Mã xác thực của bạn là: <span style='font-weight: bold; color: blue; font-size: large'>${otp}</span><br /><strong>Nếu bạn không yêu cầu đặt lại mật khẩu thì hãy bỏ qua nó</strong>`;
-
   try {
     await sendVerificationEmail({
       email: user.email,
       subject: 'Khôi phục mật khẩu Tư Vấn Sinh Viên',
       message,
     });
-
     res.json({
       success: true,
       message: `Đã gửi email đến: ${user.email}`,
@@ -326,24 +280,18 @@ export const handleForgotPassword = catchAsyncErrors(async (req, res, next) => {
 // Description: Xác thực OTP sau khi yêu cầu đặt lại mật khẩu
 export const handleVerifyOTP = catchAsyncErrors(async (req, res, next) => {
   const { email, otp } = req.body;
-
   const user = await User.findOne({
     email: { $regex: new RegExp(email, 'i') },
     'forgotPassword.otp': otp,
     'forgotPassword.otpExpiresAt': { $gt: Date.now() },
   });
-
   if (!user) {
     const msg = 'Mã xác thực không hợp lệ. Vui lòng kiểm tra lại';
     return next(new ErrorHandler(400, msg, 4023));
   }
-
   const resetPasswordToken = await user.generateResetPasswordToken();
-
   user.forgotPassword = null;
-
   await user.save();
-
   res.json({
     success: true,
     resetPasswordToken,
@@ -361,29 +309,21 @@ export const handleResetPassword = catchAsyncErrors(async (req, res, next) => {
     .createHash('sha256')
     .update(req.params.token)
     .digest('hex');
-
   const user = await User.findOne({
     'resetPassword.token': resetPasswordToken,
     'resetPassword.resetTokenExpiresAt': { $gt: Date.now() },
   });
-
   if (!user) {
     const msg = 'Đặt lại mật khẩu không thành công. Vui lòng thử lại';
     return next(new ErrorHandler(400, msg, 4024));
   }
-
   const { password, confirmPassword } = req.body;
-
   const mergePassword = JSON.stringify({ password, confirmPassword });
-
   user.password = mergePassword;
   user.resetPassword = null;
-
   await user.save();
-
   await RefreshToken.deleteMany({ owner: user });
   clearToken(res);
-
   res.json({
     success: true,
     message: 'Đặt lại mật khẩu thành công',

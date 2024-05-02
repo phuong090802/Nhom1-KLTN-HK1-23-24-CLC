@@ -18,14 +18,10 @@ export const handleGetFeedbacks = catchAsyncErrors(async (req, res, next) => {
       select: '-_id title content',
     })
     .select('content createdAt answer.content answer.answeredAt question');
-
   const filterUser = { 'answer.user': user._id };
-
   const requestQuery = queryFiltersLimit(req.query, filterUser);
-
   const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
   let feedbacks = await queryAPI.query;
-
   res.json({
     success: true,
     feedbacks,
@@ -40,7 +36,6 @@ export const handleDeleteFeedbacks = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
     const feedbacks = await Feedback.find({ 'answer.user': user });
-
     // xóa file ở firebase
     await Promise.all(
       feedbacks.map(async (feedback) => {
@@ -57,7 +52,6 @@ export const handleDeleteFeedbacks = catchAsyncErrors(
         await feedback.deleteOne();
       })
     );
-
     res.json({
       success: true,
       message: 'Xóa danh sách phản hồi thành công',
@@ -72,9 +66,7 @@ export const handleDeleteFeedbacks = catchAsyncErrors(
 export const handleDeleteFeedback = catchAsyncErrors(async (req, res, next) => {
   const feedback = req.foundFeedback;
   // xóa file ở firebase
-
   const fileRef = feedback.answer.file.ref;
-
   if (fileRef) {
     try {
       // remove file
@@ -85,9 +77,7 @@ export const handleDeleteFeedback = catchAsyncErrors(async (req, res, next) => {
       );
     }
   }
-
   await feedback.deleteOne();
-
   res.json({
     success: true,
     message: 'Xóa phản hồi thành công',

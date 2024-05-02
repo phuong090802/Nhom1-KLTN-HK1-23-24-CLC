@@ -11,20 +11,16 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 export const handleAddPushToken = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const { pushToken } = req.body;
-
   if (!Expo.isExpoPushToken(pushToken)) {
     const msg = 'Push push notification token không hợp lệ';
     return next(new ErrorHandler(400, msg, 4113));
   }
-
   await User.updateMany(
     { pushTokens: { $in: [pushToken] } },
     { $pull: { pushTokens: pushToken } }
   );
-
   user.pushTokens.push(pushToken);
   await user.save();
-
   res.status(201).json({
     success: true,
     message: 'Thêm push token thành công',
@@ -39,7 +35,6 @@ export const handleUpdateAvatar = catchAsyncErrors(async (req, res, next) => {
   const avatar = req.uploadedFile;
   const user = req.user;
   const { ref, url } = user.avatar;
-
   if (ref && url) {
     try {
       // remove old avatar
@@ -51,10 +46,8 @@ export const handleUpdateAvatar = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler(500, msg, 4036));
     }
   }
-
   user.avatar = avatar;
   await user.save();
-
   res.json({
     success: true,
     message: 'Cập nhật ảnh đại diện thành công',
@@ -69,11 +62,9 @@ export const handleUpdateAvatar = catchAsyncErrors(async (req, res, next) => {
 export const handleUpdateProfile = catchAsyncErrors(async (req, res, next) => {
   const { fullName, occupation } = req.body;
   const user = req.user;
-
   user.fullName = fullName;
   user.occupation = occupation;
   await user.save();
-
   res.json({
     success: true,
     message: 'Cập nhật thông tin thành công',
