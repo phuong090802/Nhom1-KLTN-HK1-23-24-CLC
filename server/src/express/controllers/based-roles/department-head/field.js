@@ -1,7 +1,7 @@
 import Field from '../../../../models/field.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/fields
@@ -10,9 +10,13 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   const query = Field.find().select('-__v -department').lean();
   const department = req.foundDepartment;
-  const filterDepartment = { department: department._id };
-  const requestQuery = queryFiltersLimit(req.query, filterDepartment);
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryTransform = new QueryTransform(req.query).applyFilters({
+    department: department._id,
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   // get all fields in DB
   let fieldsRecords = await queryAPI.query;
   // number of record in db

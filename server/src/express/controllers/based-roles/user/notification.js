@@ -1,5 +1,5 @@
 import Notification from '../../../../models/notification.js';
-import defaultSortNewest from '../../../../util/db/default-sort.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -14,11 +14,10 @@ export const handleGetNotifications = catchAsyncErrors(
       .select('_id content createdAt read')
       .lean();
     const reqSort = req.query.sort?.createdAt;
-    const requestQuery = defaultSortNewest(
-      req.query,
-      !reqSort && { createdAt: -1 }
-    );
-    const queryAPI = new QueryAPI(query, requestQuery).sort();
+    const queryTransform = new QueryTransform(req.query).defaultSortNewest({
+      ...(!reqSort && { createdAt: -1 }),
+    });
+    const queryAPI = new QueryAPI(query, queryTransform.query).sort();
     let notificationRecords = await queryAPI.query;
     const numberOfNotifications = notificationRecords.length;
     notificationRecords = await queryAPI.pagination().query.clone();

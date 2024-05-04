@@ -2,7 +2,7 @@ import Field from '../../../../models/field.js';
 import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
@@ -122,16 +122,14 @@ export const handleGetCounsellors = catchAsyncErrors(async (req, res, next) => {
       'fullName role avatar email phoneNumber counsellor.fields isEnabled'
     )
     .lean();
-  const filterRolesValue = {
+  const queryTransform = new QueryTransform(req.query).applyFilters({
     role: { $ne: 'DEPARTMENT_HEAD', $eq: 'COUNSELLOR' },
-  };
-  const filterDepartment = { 'counsellor.department': department._id };
-  const requestQuery = queryFiltersLimit(
-    req.query,
-    filterRolesValue,
-    filterDepartment
-  );
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+    'counsellor.department': department._id,
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let counsellorRecords = await queryAPI.query;
   const numberOfCounsellors = counsellorRecords.length;
   counsellorRecords = await queryAPI.pagination().query.clone();

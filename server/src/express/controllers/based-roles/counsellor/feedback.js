@@ -1,6 +1,6 @@
 import Feedback from '../../../../models/feedback.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import { deleteFile } from '../../../../util/upload-file.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -18,9 +18,13 @@ export const handleGetFeedbacks = catchAsyncErrors(async (req, res, next) => {
       select: '-_id title content',
     })
     .select('content createdAt answer.content answer.answeredAt question');
-  const filterUser = { 'answer.user': user._id };
-  const requestQuery = queryFiltersLimit(req.query, filterUser);
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryTransform = new QueryTransform(req.query).applyFilters({
+    'answer.user': user._id,
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let feedbacks = await queryAPI.query;
   res.json({
     success: true,

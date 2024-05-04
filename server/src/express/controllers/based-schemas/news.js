@@ -1,5 +1,5 @@
 import News from '../../../models/news.js';
-import defaultSortNewest from '../../../util/db/default-sort.js';
+import QueryTransform from '../../../util/db/query-transform.js';
 import paginate from '../../../util/db/paginate.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
@@ -10,11 +10,13 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 export const handleGetAllNews = catchAsyncErrors(async (req, res, next) => {
   const query = News.find().select('title content file.url createdAt').lean();
   const reqSort = req.query.sort?.createdAt;
-  const requestQuery = defaultSortNewest(
-    req.query,
-    !reqSort && { createdAt: -1 }
+  const queryTransform = new QueryTransform(req.query).defaultSortNewest(
+    ...(!reqSort && { createdAt: -1 })
   );
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let newsRecords = await queryAPI.query;
   const numberOfNews = newsRecords.length;
   newsRecords = await queryAPI.pagination().query.clone();

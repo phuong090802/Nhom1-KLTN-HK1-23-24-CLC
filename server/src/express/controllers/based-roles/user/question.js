@@ -2,7 +2,7 @@ import { USER_GET_ALL_QUESTIONS } from '../../../../constants/actions/question.j
 import Question from '../../../../models/question.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/user/questions
@@ -19,11 +19,13 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     .select('title content file createdAt answer');
   // .lean()
   // không sử dụng learn vì method trong được tạo schema
-  const filterUser = {
+  const queryTransform = new QueryTransform(req.query).applyFilters({
     user: user._id,
-  };
-  const requestQuery = queryFiltersLimit(req.query, filterUser);
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();

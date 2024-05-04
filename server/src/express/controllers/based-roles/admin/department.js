@@ -2,7 +2,7 @@ import Department from '../../../../models/department.js';
 import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/departments/:id
@@ -120,9 +120,13 @@ export const handleGetCounsellorsInDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
     const query = User.find().select('fullName avatar role').lean();
-    const filterDepartment = { 'counsellor.department': department._id };
-    const requestQuery = queryFiltersLimit(req.query, filterDepartment);
-    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+    const queryTransform = new QueryTransform(req.query).applyFilters({
+      'counsellor.department': department._id,
+    });
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
     let counsellorRecords = await queryAPI.query;
     const numberOfCounsellors = counsellorRecords.length;
     counsellorRecords = await queryAPI.pagination().query.clone();

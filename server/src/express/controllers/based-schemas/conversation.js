@@ -1,9 +1,8 @@
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
-import defaultSortNewest from '../../../util/db/default-sort.js';
 import paginate from '../../../util/db/paginate.js';
 import QueryAPI from '../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/conversations/:id
@@ -15,19 +14,19 @@ export const handleGetMessagesInConversation = catchAsyncErrors(
     const query = Message.find()
       .select('content sender viewed createdAt')
       .lean();
-    const filterConversation = {
-      conversation: conversation._id,
-    };
-    const requestQueryTransform = queryFiltersLimit(
-      req.query,
-      filterConversation
-    );
     const reqSort = req.query.sort?.createdAt;
-    const requestQuery = defaultSortNewest(
-      requestQueryTransform,
-      !reqSort && { createdAt: -1 }
-    );
-    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+    const queryTransform = new QueryTransform(req.query)
+      .applyFilters({
+        conversation: conversation._id,
+      })
+      .defaultSortNewest({
+        ...(!reqSort && { createdAt: -1 }),
+      });
+
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
     let messageRecords = await queryAPI.query;
     const totalMessages = messageRecords.length;
     const foundMessages = await queryAPI.skipAndLimit().query.clone();
@@ -59,16 +58,14 @@ export const handleGetConversations = catchAsyncErrors(
       })
       .select('_id lastMessage createdAt');
     // .lean();
-    const filterParticipates = {
+    const queryTransform = new QueryTransform(req.query).applyFilters({
       participates: userId,
-    };
-    const filterDeletedBy = { deletedBy: { $ne: userId } };
-    const requestQuery = queryFiltersLimit(
-      req.query,
-      filterParticipates,
-      filterDeletedBy
-    );
-    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+      deletedBy: { $ne: userId },
+    });
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
     let conversationRecords = await queryAPI.query;
     const numberOfConversations = conversationRecords.length;
     conversationRecords = await queryAPI.pagination().query.clone();

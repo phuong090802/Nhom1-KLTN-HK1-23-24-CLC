@@ -2,7 +2,7 @@ import { DEPARTMENT_HEAD_GET_ALL_QUESTIONS } from '../../../../constants/actions
 import Question from '../../../../models/question.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/questions
@@ -22,14 +22,14 @@ export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
       .select('title content file createdAt views user answer');
     // không sử dụng learn vì method trong được tạo schema
     // .lean()
-    const filterStatus = { status: 'publicly-answered-pending-approval' };
-    const filterDepartment = { department: department._id };
-    const requestQuery = queryFiltersLimit(
-      req.query,
-      filterDepartment,
-      filterStatus
-    );
-    const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+    const queryTransform = new QueryTransform(req.query).applyFilters({
+      status: 'publicly-answered-pending-approval',
+      department: department._id,
+    });
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
     let questionRecords = await queryAPI.query;
     const numberOfQuestions = questionRecords.length;
     questionRecords = await queryAPI.pagination().query.clone();

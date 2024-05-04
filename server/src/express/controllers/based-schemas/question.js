@@ -1,9 +1,8 @@
 import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
 import Question from '../../../models/question.js';
-import defaultSortNewest from '../../../util/db/default-sort.js';
+import QueryTransform from '../../../util/db/query-transform.js';
 import paginate from '../../../util/db/paginate.js';
 import QueryAPI from '../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../util/db/query-filters-limit.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/questions/:id
@@ -32,14 +31,18 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     .select('title content file createdAt views user answer');
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
-  const filterStatus = { status: 'publicly-answered-and-approved' };
-  const requestQueryTransform = queryFiltersLimit(req.query, filterStatus);
   const reqSort = req.query.sort?.createdAt;
-  const requestQuery = defaultSortNewest(
-    requestQueryTransform,
-    !reqSort && { createdAt: -1 }
-  );
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryTransform = new QueryTransform(req.query)
+    .applyFilters({
+      status: 'publicly-answered-and-approved',
+    })
+    .defaultSortNewest({
+      ...(!reqSort && { createdAt: -1 }),
+    });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let questionRecords = await queryAPI.query;
   const numberOfQuestions = questionRecords.length;
   questionRecords = await queryAPI.pagination().query.clone();

@@ -1,7 +1,7 @@
 import FAQ from '../../../../models/faq.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import { deleteFile } from '../../../../util/upload-file.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -18,9 +18,13 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
     })
     .select('question answer answerAttachment field createdAt')
     .lean();
-  const filterDepartment = { department: department._id };
-  const requestQuery = queryFiltersLimit(req.query, filterDepartment);
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryTransform = new QueryTransform(req.query).applyFilters({
+    department: department._id,
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let faqRecords = await queryAPI.query;
   const numberOfFAQs = faqRecords.length;
   faqRecords = await queryAPI.pagination().query.clone();

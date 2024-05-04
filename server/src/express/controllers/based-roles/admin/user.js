@@ -2,7 +2,7 @@ import { ADMIN_GET_USER } from '../../../../constants/actions/user.js';
 import User from '../../../../models/user.js';
 import paginate from '../../../../util/db/paginate.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import queryFiltersLimit from '../../../../util/db/query-filters-limit.js';
+import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/users
@@ -18,9 +18,13 @@ export const handleGetUsers = catchAsyncErrors(async (req, res, next) => {
   if (reqFilterRole) {
     filterRolesValue = { ...filterRolesValue, $eq: reqFilterRole };
   }
-  const filterRoles = { role: filterRolesValue };
-  const requestQuery = queryFiltersLimit(req.query, filterRoles);
-  const queryAPI = new QueryAPI(query, requestQuery).search().filter().sort();
+  const queryTransform = new QueryTransform(req.query).applyFilters({
+    role: filterRolesValue,
+  });
+  const queryAPI = new QueryAPI(query, queryTransform.query)
+    .search()
+    .filter()
+    .sort();
   let userRecords = await queryAPI.query;
   const numberOfUsers = userRecords.length;
   userRecords = await queryAPI.pagination().query.clone();
