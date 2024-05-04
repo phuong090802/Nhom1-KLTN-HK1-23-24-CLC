@@ -1,6 +1,6 @@
 import Notification from '../../../../models/notification.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
@@ -18,19 +18,11 @@ export const handleGetNotifications = catchAsyncErrors(
       ...(!reqSort && { createdAt: -1 }),
     });
     const queryAPI = new QueryAPI(query, queryTransform.query).sort();
-    let notificationRecords = await queryAPI.query;
-    const numberOfNotifications = notificationRecords.length;
-    notificationRecords = await queryAPI.pagination().query.clone();
     const {
-      data: notifications,
+      records: notifications,
       page,
       pages,
-    } = paginate(
-      numberOfNotifications,
-      req.query.page,
-      req.query.size,
-      notificationRecords
-    );
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
     // map quả để chỉ lấy thuộc tính id
     const notificationIds = notificationRecords.map(
       (notification) => notification._id

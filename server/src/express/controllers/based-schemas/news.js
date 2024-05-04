@@ -1,6 +1,6 @@
 import News from '../../../models/news.js';
 import QueryTransform from '../../../util/db/query-transform.js';
-import paginate from '../../../util/db/paginate.js';
+import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
@@ -17,14 +17,11 @@ export const handleGetAllNews = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .sort();
-  let newsRecords = await queryAPI.query;
-  const numberOfNews = newsRecords.length;
-  newsRecords = await queryAPI.pagination().query.clone();
   const {
-    data: retListNews,
+    records: retListNews,
     page,
     pages,
-  } = paginate(numberOfNews, req.query.page, req.query.size, newsRecords);
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   const listNews = retListNews.map((news) => ({
     ...news,
     file: news.file.url,

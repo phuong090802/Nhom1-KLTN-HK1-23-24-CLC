@@ -1,7 +1,7 @@
 import { DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS } from '../../../../constants/actions/question.js';
 import ForwardedQuestion from '../../../../models/forwarded-question.js';
 import Question from '../../../../models/question.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -27,19 +27,11 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .sort();
-  let questionRecords = await queryAPI.query;
-  const numberOfQuestions = questionRecords.length;
-  questionRecords = await queryAPI.pagination().query.clone();
   const {
-    data: retQuestions,
+    records: retQuestions,
     page,
     pages,
-  } = paginate(
-    numberOfQuestions,
-    req.query.page,
-    req.query.size,
-    questionRecords
-  );
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   const questions = retQuestions.map((question) =>
     question.getQuestionInformation(
       DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS

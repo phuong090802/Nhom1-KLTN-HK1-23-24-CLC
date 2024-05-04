@@ -1,6 +1,6 @@
 import Department from '../../../../models/department.js';
 import User from '../../../../models/user.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -57,22 +57,11 @@ export const handleChangeDepartmentHead = catchAsyncErrors(
 export const handleGetDepartments = catchAsyncErrors(async (req, res, next) => {
   const query = Department.find().select('-__v').lean();
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
-  // get all departments in DB
-  let departmentRecords = await queryAPI.query;
-  // number of record in db
-  const numberOfDepartments = departmentRecords.length;
-  // get department in page with size
-  departmentRecords = await queryAPI.pagination().query.clone();
   const {
-    data: departments,
+    records: departments,
     page,
     pages,
-  } = paginate(
-    numberOfDepartments,
-    req.query.page,
-    req.query.size,
-    departmentRecords
-  );
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   res.json({
     success: true,
     departments,
@@ -127,19 +116,11 @@ export const handleGetCounsellorsInDepartment = catchAsyncErrors(
       .search()
       .filter()
       .sort();
-    let counsellorRecords = await queryAPI.query;
-    const numberOfCounsellors = counsellorRecords.length;
-    counsellorRecords = await queryAPI.pagination().query.clone();
     const {
-      data: retCounsellors,
+      records: retCounsellors,
       page,
       pages,
-    } = paginate(
-      numberOfCounsellors,
-      req.query.page,
-      req.query.size,
-      counsellorRecords
-    );
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
     const counsellors = retCounsellors.map((counsellor) => ({
       ...counsellor,
       avatar: counsellor.avatar.url,

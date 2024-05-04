@@ -1,25 +1,19 @@
 class QueryTransform {
   constructor(requestQuery) {
-    this.requestQuery = requestQuery;
+    this.query = { ...requestQuery };
   }
 
   defaultSortNewest(sortValue) {
-    this.query = {
-      ...this.requestQuery,
-      sort: {
-        ...this.requestQuery.sort,
-        ...sortValue,
-      },
+    this.query.sort = {
+      ...this.query.sort,
+      ...sortValue,
     };
     return this;
   }
 
   applyFilters(filterObject) {
-    const filter = { ...this.requestQuery.filter, ...filterObject };
-    this.query = {
-      ...this.requestQuery,
-      filter,
-    };
+    const filter = { ...this.query.filter, ...filterObject };
+    this.query.filter = filter;
     return this;
   }
 }

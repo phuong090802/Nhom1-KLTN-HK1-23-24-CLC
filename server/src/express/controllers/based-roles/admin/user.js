@@ -1,6 +1,6 @@
 import { ADMIN_GET_USER } from '../../../../constants/actions/user.js';
 import User from '../../../../models/user.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -25,14 +25,11 @@ export const handleGetUsers = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .sort();
-  let userRecords = await queryAPI.query;
-  const numberOfUsers = userRecords.length;
-  userRecords = await queryAPI.pagination().query.clone();
   const {
-    data: retUsers,
+    records: retUsers,
     page,
     pages,
-  } = paginate(numberOfUsers, req.query.page, req.query.size, userRecords);
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   const users = retUsers.map((user) => ({ ...user, avatar: user.avatar.url }));
   res.json({
     success: true,

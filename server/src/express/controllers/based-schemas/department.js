@@ -2,7 +2,7 @@ import { GET_ALL_STAFFS_IN_DEPARTMENT } from '../../../constants/actions/user.js
 import Department from '../../../models/department.js';
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
-import paginate from '../../../util/db/paginate.js';
+import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import QueryTransform from '../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
@@ -52,14 +52,11 @@ export const handleGetStaffsInDepartment = catchAsyncErrors(
       .search()
       .filter()
       .sort();
-    let staffRecords = await queryAPI.query;
-    const numberOfStaffs = staffRecords.length;
-    staffRecords = await queryAPI.pagination().query.clone();
     const {
-      data: retStaffs,
+      records: retStaffs,
       page,
       pages,
-    } = paginate(numberOfStaffs, req.query.page, req.query.size, staffRecords);
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
     const staffs = retStaffs.map((staff) =>
       staff.getUserInformation(GET_ALL_STAFFS_IN_DEPARTMENT)
     );

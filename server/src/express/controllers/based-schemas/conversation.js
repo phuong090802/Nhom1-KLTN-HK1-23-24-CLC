@@ -1,6 +1,6 @@
 import Conversation from '../../../models/conversation.js';
 import Message from '../../../models/message.js';
-import paginate from '../../../util/db/paginate.js';
+import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import QueryTransform from '../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
@@ -66,19 +66,11 @@ export const handleGetConversations = catchAsyncErrors(
       .search()
       .filter()
       .sort();
-    let conversationRecords = await queryAPI.query;
-    const numberOfConversations = conversationRecords.length;
-    conversationRecords = await queryAPI.pagination().query.clone();
     const {
-      data: retConversations,
+      records: retConversations,
       page,
       pages,
-    } = paginate(
-      numberOfConversations,
-      req.query.page,
-      req.query.size,
-      conversationRecords
-    );
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
     const conversations = await Promise.all(
       retConversations.map((conversation) =>
         conversation.getConversationInformation()

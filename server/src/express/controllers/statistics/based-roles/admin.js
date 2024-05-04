@@ -1,6 +1,6 @@
 import Department from '../../../../models/department.js';
 import Question from '../../../../models/question.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';
 import { handleCountQuestions } from '../../../../util/statistics/department.js';
@@ -73,19 +73,12 @@ export const handleStatisticDepartments = catchAsyncErrors(
     // sort, search
     const query = Department.find();
     const queryAPI = new QueryAPI(query, req.query).search().sort();
-    let departmentRecords = await queryAPI.query;
-    const numberOfDepartments = departmentRecords.length;
-    departmentRecords = await queryAPI.pagination().query.clone();
     const {
-      data: departments,
+      records: departments,
       page,
       pages,
-    } = paginate(
-      numberOfDepartments,
-      req.query.page,
-      req.query.size,
-      departmentRecords
-    );
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
+
     const departmentStatistics = await Promise.all(
       departments.map(async (department) => {
         const fieldCount = await Field.countDocuments({ department });

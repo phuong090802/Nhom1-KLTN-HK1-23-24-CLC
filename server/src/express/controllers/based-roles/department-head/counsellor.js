@@ -1,6 +1,6 @@
 import Field from '../../../../models/field.js';
 import User from '../../../../models/user.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
@@ -130,19 +130,11 @@ export const handleGetCounsellors = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .sort();
-  let counsellorRecords = await queryAPI.query;
-  const numberOfCounsellors = counsellorRecords.length;
-  counsellorRecords = await queryAPI.pagination().query.clone();
   const {
-    data: retCounsellors,
+    records: retCounsellors,
     page,
     pages,
-  } = paginate(
-    numberOfCounsellors,
-    req.query.page,
-    req.query.size,
-    counsellorRecords
-  );
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   const counsellors = retCounsellors.map((user) => {
     user.avatar = user.avatar.url;
     user.fields = user.counsellor.fields;

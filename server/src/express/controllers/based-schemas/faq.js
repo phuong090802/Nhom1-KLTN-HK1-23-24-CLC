@@ -1,5 +1,5 @@
 import FAQ from '../../../models/faq.js';
-import paginate from '../../../util/db/paginate.js';
+import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
@@ -13,14 +13,11 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
     .select('question answer answerAttachment field department createdAt')
     .lean();
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
-  let faqRecords = await queryAPI.query;
-  const numberOfFAQs = faqRecords.length;
-  faqRecords = await queryAPI.pagination().query.clone();
   const {
-    data: retFAQs,
+    records: retFAQs,
     page,
     pages,
-  } = paginate(numberOfFAQs, req.query.page, req.query.size, faqRecords);
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   const faqs = retFAQs.map((faq) => ({
     ...faq,
     answerAttachment: faq.answerAttachment.url,

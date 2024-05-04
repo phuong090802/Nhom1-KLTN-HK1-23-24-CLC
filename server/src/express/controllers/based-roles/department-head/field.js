@@ -1,5 +1,5 @@
 import Field from '../../../../models/field.js';
-import paginate from '../../../../util/db/paginate.js';
+import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -17,17 +17,11 @@ export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .sort();
-  // get all fields in DB
-  let fieldsRecords = await queryAPI.query;
-  // number of record in db
-  const numberOfFields = fieldsRecords.length;
-  // get department in page with size
-  fieldsRecords = await queryAPI.pagination().query.clone();
   const {
-    data: fields,
+    records: fields,
     page,
     pages,
-  } = paginate(numberOfFields, req.query.page, req.query.size, fieldsRecords);
+  } = await handlePagination(queryAPI, req.query.size, req.query.page);
   res.json({
     success: true,
     fields,
