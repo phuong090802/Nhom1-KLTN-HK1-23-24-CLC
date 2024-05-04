@@ -15,8 +15,6 @@ export const uploadFileSocketIO = async (folder, file) => {
   const fileRef = `${folder}/${filename}`;
   const storageRef = ref(storage, fileRef);
   await uploadBytes(storageRef, new Uint8Array(file.buffer));
-
   const url = await getDownloadURL(storageRef);
-
   return { ref: fileRef, url };
 };

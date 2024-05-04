@@ -410,7 +410,7 @@
     },
     {
       "code": "4080",
-      "message": "Không tìm thấy khoa",
+      "message": "",
       "detail": ""
     },
     {
@@ -545,7 +545,7 @@
     },
     {
       "code": "4107",
-      "message": "Tuần phải nằm trong khoảng từ 1 đến 4",
+      "message": "",
       "detail": ""
     },
     {
@@ -596,7 +596,7 @@
     {
       "code": "4117",
       "message": "Không thể truy cập. Khoa đang bị khóa",
-      "detail": ""
+      "detail": "4043, 4081, 4080, 4107"
     }
   ]
 }

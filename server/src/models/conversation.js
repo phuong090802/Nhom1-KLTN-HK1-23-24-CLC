@@ -31,13 +31,8 @@ conversationSchema.pre('save', function (next) {
     return next();
   }
   if (!hasArrayMaxLength(this.participates, 2)) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
-        4056
-      )
-    );
+    const msg = 'Không thể vượt quá 2 người trong một cuộc trò chuyện';
+    return next(new ErrorHandler(400, msg, 4056));
   }
   next();
 });
@@ -47,13 +42,8 @@ conversationSchema.pre('save', function (next) {
     return next();
   }
   if (!hasArrayMaxLength(this.deletedBy, 2)) {
-    return next(
-      new ErrorHandler(
-        400,
-        'Không thể vượt quá 2 người trong một cuộc trò chuyện',
-        4053
-      )
-    );
+    const msg = 'Không thể vượt quá 2 người trong một cuộc trò chuyện';
+    return next(new ErrorHandler(400, msg, 4053));
   }
   next();
 });
