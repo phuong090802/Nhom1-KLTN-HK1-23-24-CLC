@@ -1,5 +1,6 @@
 class QueryTransform {
   constructor(requestQuery) {
+    this.requestQuery = requestQuery;
     this.query = { ...requestQuery };
   }
 

@@ -1,5 +1,6 @@
-import 'dotenv/config.js';
 import { createServer } from 'http';
+
+import 'dotenv/config.js';
 import { Server } from 'socket.io';
 
 import { socketCorsOptions } from './config/cors.js';
