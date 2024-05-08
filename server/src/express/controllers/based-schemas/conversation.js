@@ -3,6 +3,7 @@ import Message from '../../../models/message.js';
 import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import QueryTransform from '../../../util/db/query-transform.js';
+import handleSkipAndLimit from '../../../util/db/skip-and-limit.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/conversations/:id
@@ -22,14 +23,8 @@ export const handleGetMessagesInConversation = catchAsyncErrors(
       .defaultSortNewest({
         ...(!reqSort && { createdAt: -1 }),
       });
-
-    const queryAPI = new QueryAPI(query, queryTransform.query)
-      .search()
-      .filter()
-      .sort();
-    let messageRecords = await queryAPI.query;
-    const totalMessages = messageRecords.length;
-    const foundMessages = await queryAPI.skipAndLimit().query.clone();
+    const { records: foundMessages, totals: totalMessages } =
+      await handleSkipAndLimit(query, queryTransform.query);
     const messages = foundMessages.reverse();
     res.json({
       success: true,

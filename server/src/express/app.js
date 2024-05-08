@@ -20,6 +20,7 @@ import adminStatistic from './routes/statistics/based-roles/admin.js';
 import counsellorStatistic from './routes/statistics/based-roles/counsellor.js';
 import departmentHeadStatistic from './routes/statistics/based-roles/department-head.js';
 import statistic from './routes/statistics/index.js';
+import questionRouteForMobile from './routes/based-schemas/mobile/question.js';
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use('/api/admin/statistics', adminStatistic);
 app.use('/api/counsellor/statistics', counsellorStatistic);
 app.use('/api/department-head/statistics', departmentHeadStatistic);
 app.use('/api/statistics', statistic);
+app.use('/api/mobile/questions', questionRouteForMobile);
 
 app.use(handleError);
 
