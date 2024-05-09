@@ -7,9 +7,9 @@ import QueryAPI from '../../../util/db/query-api.js';
 import QueryTransform from '../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
-// Endpoint: /api/departments/:id/staffs
+// Endpoint: /api/departments/staffs
 // Method: GET
-// Description: Lấy danh sách nhân sự của khoa bằng id
+// Description: Lấy danh sách nhân sự của khoa
 export const handleGetStaffsInDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const departmentId = req.query.filter?.['counsellor.department'];
@@ -22,7 +22,6 @@ export const handleGetStaffsInDepartment = catchAsyncErrors(
       const departmentIds = await Department.find({ isActive: true }).select(
         '-departmentName -isActive -__v'
       );
-
       filterDepartment = {
         'counsellor.department': { $in: departmentIds },
       };

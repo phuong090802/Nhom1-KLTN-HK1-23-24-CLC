@@ -30,7 +30,7 @@ export const handleUpdateStatusOfCounsellor = catchAsyncErrors(
 export const handleRemoveFieldOfCounsellor = catchAsyncErrors(
   async (req, res, next) => {
     const field = req.foundField;
-    const updateCounsellor = req.foundCounsellor;
+    const updateCounsellor = req.foundUser;
     const updatedField = updateCounsellor.counsellor.fields.filter(
       (fieldId) => !fieldId.equals(field._id)
     );
@@ -94,7 +94,7 @@ export const handleAddFieldToCounsellor = catchAsyncErrors(
     const fieldIdsNotInDepartment = fieldIds.filter(
       (fieldId) => !strFieldIds.includes(fieldId)
     );
-    const updateCounsellor = req.foundCounsellor;
+    const updateCounsellor = req.foundUser;
     // lọc những fieldIds chưa được thêm vào counsellor để tiến hành thêm vào counsellor (tránh trùng lập)
     const newFieldIds = activeFieldIds.filter(
       (fieldId) => !updateCounsellor.counsellor.fields.includes(fieldId)

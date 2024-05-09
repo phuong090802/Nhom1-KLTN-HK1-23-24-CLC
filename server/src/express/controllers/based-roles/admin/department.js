@@ -92,7 +92,8 @@ export const handleCreateDepartment = catchAsyncErrors(
 export const handleRenameDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
-    department.departmentName = req.body.departmentName;
+    const { departmentName } = req.body;
+    department.departmentName = departmentName;
     await department.save();
     res.json({
       success: true,

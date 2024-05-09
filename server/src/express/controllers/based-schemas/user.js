@@ -39,6 +39,8 @@ export const handleUpdateAvatar = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove old avatar
       await deleteFile(ref);
+      user.avatar = avatar;
+      await user.save();
     } catch (error) {
       // remove new image if error
       await deleteFile(avatar.ref);
@@ -46,8 +48,6 @@ export const handleUpdateAvatar = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler(500, msg, 4036));
     }
   }
-  user.avatar = avatar;
-  await user.save();
   res.json({
     success: true,
     message: 'Cập nhật ảnh đại diện thành công',

@@ -47,13 +47,14 @@ export const handleDeleteFeedbacks = catchAsyncErrors(
           try {
             // remove file
             await deleteFile(feedback.answer.file.ref);
+            // Không xóa all vì nêú xóa file bị lỗi nó sẽ chỉ xóa file
+            await Feedback.deleteOne({ _id: feedback._id });
             // remove feedback in DB
           } catch (error) {
             const msg = 'Lỗi khi xóa tất cả phản hồi. Vui lòng thử lại';
             return next(new ErrorHandler(500, msg, 4072));
           }
         }
-        await feedback.deleteOne();
       })
     );
     res.json({
@@ -75,13 +76,13 @@ export const handleDeleteFeedback = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove file
       await deleteFile(fileRef);
+      await Feedback.deleteOne({ _id: feedback._id });
     } catch (error) {
       return next(
         new ErrorHandler(500, 'Lỗi khi xóa phản hồi. Vui lòng thử lại', 4071)
       );
     }
   }
-  await feedback.deleteOne();
   res.json({
     success: true,
     message: 'Xóa phản hồi thành công',

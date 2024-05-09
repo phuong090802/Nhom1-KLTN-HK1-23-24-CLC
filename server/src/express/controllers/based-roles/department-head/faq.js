@@ -54,13 +54,13 @@ export const handleDeleteFAQ = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove file
       await deleteFile(ref);
+      await FAQ.deleteOne({ _id: faq._id });
     } catch (error) {
       return next(
         new ErrorHandler(500, 'Lỗi xóa câu hỏi chung. Vui lòng thử lại', 4104)
       );
     }
   }
-  await FAQ.findByIdAndDelete(faq._id);
   res.json({
     success: true,
     message: 'Xóa câu hỏi chung thành công',
@@ -82,6 +82,9 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove file
       await deleteFile(ref);
+      faq.field = field;
+      faq.answerAttachment = answerAttachment;
+      await faq.save();
     } catch (error) {
       // remove new image if error
       if (answerAttachment.ref && answerAttachment.url) {
@@ -91,9 +94,7 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler(500, msg, 4103));
     }
   }
-  faq.field = field;
-  faq.answerAttachment = answerAttachment;
-  await faq.save();
+
   res.json({
     success: true,
     message: 'Cập nhật câu hỏi chung thành công',

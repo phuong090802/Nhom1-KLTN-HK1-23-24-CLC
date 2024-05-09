@@ -103,7 +103,11 @@ router
     handleCheckCounsellorBelongDepartment
   )
   .put(counsellorController.handleAddFieldToCounsellor)
-  .delete(counsellorController.handleRemoveFieldOfCounsellor)
+  .delete(
+    handleValidateFieldId('body', 'fieldId'),
+    handleCheckFieldBelongToDepartment,
+    counsellorController.handleRemoveFieldOfCounsellor
+  )
   .patch(counsellorController.handleUpdateStatusOfCounsellor);
 
 router

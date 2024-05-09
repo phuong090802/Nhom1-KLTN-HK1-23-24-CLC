@@ -14,7 +14,9 @@ export const handleValidateDepartmentIdBeforeForwarding = catchAsyncErrors(
   }
 );
 
-// Kiểm tra khoa có khác nhau trước khia chuyển tiếp
+// Kiểm tra counsellor có sở hữu lĩnh vực của question trước khi chuyển tiếp không
+// Nếu có có thể chuyến tiếp, ngược lại không
+// Nếu là department head thì chuyển được tất cả 
 export const handleCheckCounsellorIncludesFieldOfQuestion = catchAsyncErrors(
   (req, res, next) => {
     const user = req.user;
