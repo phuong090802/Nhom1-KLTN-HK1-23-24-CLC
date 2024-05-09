@@ -9,7 +9,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/departments/staffs
 // Method: GET
-// Description: Lấy danh sách nhân sự của khoa
+// Description: Lấy danh sách nhân sự của khoa (lọc, sắp xếp, tìm kiếp, phân trang)
 export const handleGetStaffsInDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const departmentId = req.query.filter?.['counsellor.department'];

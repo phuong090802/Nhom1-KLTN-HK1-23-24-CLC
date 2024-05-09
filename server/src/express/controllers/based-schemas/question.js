@@ -7,7 +7,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/questions/:id
 // Method: PUT
-// Description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+// Description: Tăng view cho câu hỏi đã trả lời
 export const handleUpdateViewsOfQuestion = catchAsyncErrors(
   async (req, res, next) => {
     const question = req.foundQuestion;
@@ -19,7 +19,7 @@ export const handleUpdateViewsOfQuestion = catchAsyncErrors(
 
 // Endpoint: /api/questions
 // Method: GET
-// Description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt
+// Description: Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt (sắp xếp, tìm kiếm, lọc, phân trang)
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const query = Question.find()
     .populate({

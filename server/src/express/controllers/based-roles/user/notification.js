@@ -6,7 +6,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/user/notifications
 // Method: GET
-// Description: Lấy danh sách thông báo
+// Description: Lấy danh sách thông báo (sắp xếp)
 export const handleGetNotifications = catchAsyncErrors(
   async (req, res, next) => {
     const recipient = req.user;

@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/conversations/:id
 // Method: GET
-// Description: Lấy danh sách tin nhắn trong cuộc trò chuyện bằng Id
+// Description: Lấy danh sách tin nhắn trong cuộc trò chuyện bằng Id (tìm kiếm)
 export const handleGetMessagesInConversation = catchAsyncErrors(
   async (req, res, next) => {
     const conversation = req.foundConversation;
