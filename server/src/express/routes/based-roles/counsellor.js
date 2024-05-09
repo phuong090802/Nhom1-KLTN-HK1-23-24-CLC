@@ -20,7 +20,10 @@ import {
   handleCheckFeedbackBelongToCounsellor,
   handleValidateFeedbackId,
 } from '../../middlewares/validate/based-schemas/feedback.js';
-import { handleCheckFieldBelongToDepartment } from '../../middlewares/validate/based-schemas/field.js';
+import {
+  handleCheckFieldBelongToDepartment,
+  handleValidateFieldId,
+} from '../../middlewares/validate/based-schemas/field.js';
 import {
   handleCheckCounsellorIncludesFieldOfQuestion,
   handleValidateDepartmentIdBeforeForwarding,
@@ -81,6 +84,8 @@ router
     handleCheckStatusOfDepartment,
     // is not same department
     handleValidateDepartmentIdBeforeForwarding,
+    // validate field in body
+    handleValidateFieldId('body', 'fieldId'),
     // field belong new department
     handleCheckFieldBelongToDepartment,
     questionController.handleForwardQuestion

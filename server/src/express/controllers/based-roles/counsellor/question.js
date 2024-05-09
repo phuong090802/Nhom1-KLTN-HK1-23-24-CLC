@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/counsellor/questions
 // Method: GET
-// Description: Lấy danh sách các câu hỏi chưa được trả lời
+// Description: Lấy danh sách các câu hỏi chưa được trả lời (lọc, tìm kiếm, phân trang, sắp xếp)
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const { department, fields } = user.counsellor;

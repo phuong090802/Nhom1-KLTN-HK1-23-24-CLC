@@ -7,7 +7,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/counsellor/feedbacks
 // Method: GET
-// Description: Tư vấn viên load danh sách feedback của họ (không phân trang)
+// Description: Tư vấn viên load danh sách feedback của họ (không phân trang) (tìm kiếm, lọc, sắp xếp)
 export const handleGetFeedbacks = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const query = Feedback.find()
@@ -65,7 +65,7 @@ export const handleDeleteFeedbacks = catchAsyncErrors(
   }
 );
 
-// Endpoint: /api/counsellor/feedbacks
+// Endpoint: /api/counsellor/feedbacks/:id
 // Method: DELETE
 // Description: Xóa feedback bằng id
 export const handleDeleteFeedback = catchAsyncErrors(async (req, res, next) => {

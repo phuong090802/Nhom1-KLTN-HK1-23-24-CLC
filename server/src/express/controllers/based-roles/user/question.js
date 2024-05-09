@@ -7,7 +7,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/user/questions
 // Method: GET
-// Description: Lấy danh sách câu hỏi bản thân đã đặt
+// Description: Lấy danh sách câu hỏi bản thân đã đặt (sắp xếp, tìm kiếm, lọc, phân trang)
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
   const query = Question.find()
