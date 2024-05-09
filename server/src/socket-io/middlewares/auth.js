@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import User from '../../models/user.js';
+import ErrorHandler from '../../util/error/socket-io-error-handler.js';
 
 export const handleAuthentication = (socket, next) => {
   const header = socket.handshake.headers['authorization'];

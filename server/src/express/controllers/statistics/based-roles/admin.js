@@ -1,5 +1,7 @@
 import Department from '../../../../models/department.js';
 import Question from '../../../../models/question.js';
+import User from '../../../../models/user.js';
+import Field from '../../../../models/field.js';
 import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';

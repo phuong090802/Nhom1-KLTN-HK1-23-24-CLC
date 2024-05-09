@@ -18,7 +18,7 @@ export const handleCreateStaff = catchAsyncErrors(async (req, res, next) => {
     role,
   } = req.body;
 
-  // check department Id
+  // check department id
   let department;
   const mergePassword = JSON.stringify({ password, confirmPassword });
   let userData = {

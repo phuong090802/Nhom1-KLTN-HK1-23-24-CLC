@@ -1,4 +1,9 @@
-import { deleteObject, ref } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 import { nanoid } from 'nanoid';
 import path from 'path';
 

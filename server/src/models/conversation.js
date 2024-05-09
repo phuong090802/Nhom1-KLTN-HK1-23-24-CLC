@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 import { hasArrayMaxLength } from '../util/validation.js';
+import ErrorHandler from '../util/error/http-error-handler.js';
 
 const conversationSchema = new mongoose.Schema({
   participates: [
