@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/faqs
 // Method: GET
-// Description: Trưởng khoa lấy danh sách câu hỏi chung (phân trang, lọc lĩnh vực của khoa, tìm kiếm)
+// Description: Trưởng khoa lấy danh sách câu hỏi chung (phân trang, lọc lĩnh vực của khoa, tìm kiếm, sắp xếp)
 export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
   const { department } = req.user.counsellor;
   const query = FAQ.find()

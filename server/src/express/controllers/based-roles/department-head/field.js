@@ -6,7 +6,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/fields
 // Method: GET
-// Description: Trưởng khoa lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc)
+// Description: Trưởng khoa lấy danh sách lĩnh vực của khoa (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   const query = Field.find().select('-__v -department').lean();
   const department = req.foundDepartment;
@@ -50,8 +50,8 @@ export const handleUpdateStatusOfField = catchAsyncErrors(
 );
 
 // Endpoint: /api/department-head/fields
-// Method: POST
-// Description: Cập nhật lĩnh vực của khoa
+// Method: PUT
+// Description: Cập nhật tên lĩnh vực của khoa
 export const handleRenameField = catchAsyncErrors(async (req, res, next) => {
   const field = req.foundField;
   const { fieldName } = req.body;

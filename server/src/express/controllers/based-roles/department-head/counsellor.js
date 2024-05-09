@@ -111,7 +111,7 @@ export const handleAddFieldToCounsellor = catchAsyncErrors(
 
 // Endpoint: /api/department-head/counsellors
 // Method: GET
-// Description: Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc)
+// Description: Lấy danh tư vấn viên dùng trong khoa (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetCounsellors = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
   const query = User.find()

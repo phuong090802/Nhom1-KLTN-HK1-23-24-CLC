@@ -7,7 +7,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/questions
 // Method: GET
-// Description: Trưởng khoa lấy danh sách câu hỏi có trả lời cầu duyệt
+// Description: Trưởng khoa lấy danh sách câu hỏi có trả lời cầu duyệt (lọc, phân trang, tìm kiếm, sắp xếp)
 export const handleGetQuestionsIsPendingApproval = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;
