@@ -45,7 +45,7 @@ export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
 
 // Endpoint: /api/auth/verify-email
 // Method: POST
-// Description: xác nhận email
+// Description: Xác nhận email
 // Role: All role
 export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
   const { otp } = req.body;

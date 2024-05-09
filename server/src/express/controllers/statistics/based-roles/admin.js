@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/statistics/department/:id/question
 // Method: POST
-// Description: admin thống kê câu hỏi trong khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)
+// Description: Admin thống kê câu hỏi trong khoa (trả lời công khai và đã được duyệt, trả lời riêng tư)
 export const handleStatisticQuestions = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
@@ -67,7 +67,7 @@ export const handleCountOfQuestion = catchAsyncErrors(
 
 // Endpoint: /api/admin/statistics/department
 // Method: GET
-// Description: Admin thông kê tất cả các khoa
+// Description: Admin thông kê tất cả các khoa (tìm kiếm, phân)
 export const handleStatisticDepartments = catchAsyncErrors(
   async (req, res, next) => {
     // sort, search

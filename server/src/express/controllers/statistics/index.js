@@ -6,7 +6,7 @@ import { convertTimeAndGenerateRangesForStatistic } from '../../../util/generate
 import { handleCountQuestionsByFieldsAndDepartment } from '../../../util/statistics/field.js';
 import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 
-// Endpoint: /api/statistics
+// Endpoint: /api/statistics/department/:id/field
 // Method: GET
 // Description: Admin/supervisor thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực
 export const handleStatisticFields = catchAsyncErrors(
