@@ -53,7 +53,7 @@ export const handleChangeDepartmentHead = catchAsyncErrors(
 
 // Endpoint: /api/admin/departments
 // Method: GET
-// Description: Lấy danh sách khoa (phân trang, tìm kiếm, lọc)
+// Description: Lấy danh sách khoa (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetDepartments = catchAsyncErrors(async (req, res, next) => {
   const query = Department.find().select('-__v').lean();
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
@@ -105,7 +105,7 @@ export const handleRenameDepartment = catchAsyncErrors(
 
 // Endpoint: /api/admin/departments/:id/counsellors
 // Method: GET
-// Description: Lấy danh sách tư vấn viên trong 1 khoa cụ thể bằng id (phân trang, tìm kiếm, lọc)
+// Description: Lấy danh sách tư vấn viên trong 1 khoa cụ thể bằng id (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetCounsellorsInDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;

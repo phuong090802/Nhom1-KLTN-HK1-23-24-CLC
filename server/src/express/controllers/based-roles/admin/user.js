@@ -7,7 +7,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/users
 // Method: GET
-// Description: Lấy danh sách người dùng trong hệ thống (phân trang, tìm kiếm, lọc)
+// Description: Lấy danh sách người dùng trong hệ thống (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetUsers = catchAsyncErrors(async (req, res, next) => {
   const query = User.find()
     .select('fullName avatar email phoneNumber isEnabled role occupation')

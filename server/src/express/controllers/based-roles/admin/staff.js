@@ -5,7 +5,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/admin/staffs
 // Method: POST
-// Description: thêm nhân sự vào hệ thống (COUNSELLOR/SUPERVISOR)
+// Description: Thêm nhân sự vào hệ thống (COUNSELLOR/SUPERVISOR)
 // nếu là tự vấn viên mã khoa là tùy chọn
 export const handleCreateStaff = catchAsyncErrors(async (req, res, next) => {
   const {
