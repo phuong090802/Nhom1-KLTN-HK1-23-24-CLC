@@ -61,6 +61,7 @@ export default function auth(io) {
         'department:validate-department-name:update',
         (payload, callback) => {
           departmentController.handleValidateDepartmentNameForUpdate(
+            io,
             socket,
             payload,
             callback
@@ -75,7 +76,7 @@ export default function auth(io) {
 
       // department head + counsellor create answer
       socket.on('answer:create', (payload, callback) => {
-        handleCreateAnswer(socket, payload, callback);
+        handleCreateAnswer(io, socket, payload, callback);
       });
 
       // department head validate field when create

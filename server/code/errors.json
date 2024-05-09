@@ -172,8 +172,8 @@
     },
     {
       "code": "4034",
-      "message": "Không tìm thấy khoa",
-      "detail": "Không tìm thấy khoa được truyền với id trong params"
+      "message": "",
+      "detail": ""
     },
     {
       "code": "4035",
@@ -187,8 +187,8 @@
     },
     {
       "code": "4037",
-      "message": "Không tìm thấy tài khoản",
-      "detail": "kiểm tra id người dùng có tồn tại trong DB không"
+      "message": "",
+      "detail": ""
     },
     {
       "code": "4038",
@@ -381,7 +381,7 @@
     {
       "code": "4074",
       "message": "Không tìm thấy tài khoản",
-      "detail": "Không tìm thấy tài khoản với userId trong body"
+      "detail": "Không tìm thấy tài khoản với userId"
     },
     {
       "code": "4075",
@@ -550,8 +550,8 @@
     },
     {
       "code": "4108",
-      "message": "Không tìm lĩnh vực",
-      "detail": "Không tìm lĩnh vực trong body"
+      "message": "",
+      "detail": ""
     },
     {
       "code": "4109",

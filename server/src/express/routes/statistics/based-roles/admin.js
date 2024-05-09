@@ -4,7 +4,7 @@ import * as adminStatistic from '../../../controllers/statistics/based-roles/adm
 import { handleAuthenticationAndAuthorization } from '../../../middlewares/auth.js';
 import { defaultPayloadDateForStatistic } from '../../../middlewares/default-value/body.js';
 import { defaultPaginationParams } from '../../../middlewares/default-value/query.js';
-import { handleValidateDepartmentIdInParams } from '../../../middlewares/validate/based-schemas/department.js';
+import { handleValidateDepartmentId } from '../../../middlewares/validate/based-schemas/department.js';
 import { handleValidateTimeForStatisticInBody } from '../../../middlewares/validate/statistic.js';
 
 const router = express.Router();
@@ -20,7 +20,7 @@ router.post(
 
 router.post(
   '/department/:id/question',
-  handleValidateDepartmentIdInParams,
+  handleValidateDepartmentId(),
   defaultPayloadDateForStatistic,
   handleValidateTimeForStatisticInBody,
   adminStatistic.handleStatisticQuestions

@@ -19,16 +19,15 @@ import {
 import { handleCheckStatusOfField } from '../../middlewares/validate/based-roles/department-head.js';
 import {
   handleCheckFAQBelongDepartment,
-  handleValidateFAQIdInParams,
+  handleValidateFAQId,
 } from '../../middlewares/validate/based-schemas/faq.js';
 import {
   handleCheckFieldBelongToDepartment,
-  handleValidateFieldIdInBody,
-  handleValidateFieldIdInParams,
+  handleValidateFieldId,
 } from '../../middlewares/validate/based-schemas/field.js';
 import {
   handleValidateRoleUser,
-  handleValidateUserIdInParams,
+  handleValidateUserId,
 } from '../../middlewares/validate/based-schemas/user.js';
 
 const router = express.Router();
@@ -46,7 +45,7 @@ router
   .route('/faqs/:id')
   .all(
     // faq
-    handleValidateFAQIdInParams,
+    handleValidateFAQId(),
     // faq belong department
     handleCheckFAQBelongDepartment
   )
@@ -54,7 +53,7 @@ router
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
     handleUploadImageOrDocument.single('file'),
     // new field
-    handleValidateFieldIdInBody,
+    handleValidateFieldId('body', 'fieldId'),
     // new field belong department
     handleCheckFieldBelongToDepartment,
     // status of new field
@@ -71,7 +70,7 @@ router
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
     handleUploadImageOrDocument.single('file'),
     // field
-    handleValidateFieldIdInBody,
+    handleValidateFieldId('body', 'fieldId'),
     // field belong department
     handleCheckFieldBelongToDepartment,
     handleOptionalUploadFileToFirebase('faqs'),
@@ -97,7 +96,7 @@ router
   .route('/counsellors/:id')
   .all(
     // user
-    handleValidateUserIdInParams,
+    handleValidateUserId(),
     // role counsellor
     handleValidateRoleUser('COUNSELLOR'),
     // counsellor belong department
@@ -116,7 +115,7 @@ router
   .route('/fields/:id')
   .all(
     // field
-    handleValidateFieldIdInParams,
+    handleValidateFieldId(),
     // field belong department
     handleCheckFieldBelongToDepartment
   )

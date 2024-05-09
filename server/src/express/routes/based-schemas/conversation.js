@@ -9,7 +9,7 @@ import {
 import {
   handleCheckUserIsInParticipatesConversation,
   handleCheckUserIsNotInDeletedByConversation,
-  handleValidateConversationIdInParams,
+  handleValidateConversationId,
 } from '../../middlewares/validate/based-schemas/conversation.js';
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router.use(handleAuthentication);
 
 router.route('/:id').get(
   // conversation
-  handleValidateConversationIdInParams,
+  handleValidateConversationId(),
   // user in participates
   handleCheckUserIsInParticipatesConversation,
   // user not in deleted by

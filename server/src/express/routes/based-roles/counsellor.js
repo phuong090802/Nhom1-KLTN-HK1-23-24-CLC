@@ -14,11 +14,11 @@ import {
 } from '../../middlewares/validate/based-roles/counsellor.js';
 import {
   handleCheckStatusOfDepartment,
-  handleValidateDepartmentIdInBody,
+  handleValidateDepartmentId,
 } from '../../middlewares/validate/based-schemas/department.js';
 import {
   handleCheckFeedbackBelongToCounsellor,
-  handleValidateFeedbackIdInParams,
+  handleValidateFeedbackId,
 } from '../../middlewares/validate/based-schemas/feedback.js';
 import { handleCheckFieldBelongToDepartment } from '../../middlewares/validate/based-schemas/field.js';
 import {
@@ -27,7 +27,7 @@ import {
 } from '../../middlewares/validate/based-schemas/forward-question.js';
 import {
   handleCheckQuestionBelongToDepartment,
-  handleValidateQuestionIdInParams,
+  handleValidateQuestionId,
   handleValidateStatusOfQuestion,
 } from '../../middlewares/validate/based-schemas/question.js';
 
@@ -68,7 +68,7 @@ router
   )
   .put(
     // question
-    handleValidateQuestionIdInParams,
+    handleValidateQuestionId(),
     // status of question
     handleValidateStatusOfQuestion('unanswered'),
     // question belong department
@@ -76,7 +76,7 @@ router
     // counsellor have field of question
     handleCheckCounsellorIncludesFieldOfQuestion,
     // validate new department
-    handleValidateDepartmentIdInBody,
+    handleValidateDepartmentId('body', 'departmentId'),
     // status of new department
     handleCheckStatusOfDepartment,
     // is not same department
@@ -108,7 +108,7 @@ router
   )
   .delete(
     // feedback
-    handleValidateFeedbackIdInParams,
+    handleValidateFeedbackId(),
     // belong counsellor
     handleCheckFeedbackBelongToCounsellor,
     feedbackController.handleDeleteFeedback

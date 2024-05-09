@@ -18,14 +18,14 @@ export const handleCheckFAQBelongDepartment = catchAsyncErrors(
 );
 
 // Kiểm tra faq có tồn tại trong db không bằng id được truyền vào
-export const handleValidateFAQIdInParams = catchAsyncErrors(
-  async (req, res, next) => {
-    const { id } = req.params;
+export const handleValidateFAQId = (location = 'params', key = 'id') => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const id = req[location][key];
     const faq = await FAQ.findById(id);
     if (!faq) {
       return next(new ErrorHandler(404, 'Không tìm thấy câu hỏi chung', 4101));
     }
     req.foundFAQ = faq;
     next();
-  }
-);
+  });
+};

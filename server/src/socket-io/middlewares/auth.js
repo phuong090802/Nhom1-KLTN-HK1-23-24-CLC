@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 
-import rolesMapper from '../../constants/mapper/roles.js';
 import User from '../../models/user.js';
 
 export const handleAuthentication = (socket, next) => {

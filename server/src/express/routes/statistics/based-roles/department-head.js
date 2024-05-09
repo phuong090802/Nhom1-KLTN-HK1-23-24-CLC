@@ -6,6 +6,7 @@ import {
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
 } from '../../../middlewares/validate/based-roles/counsellor.js';
+import { handleValidateTimeForStatisticInBody } from '../../../middlewares/validate/statistic.js';
 
 const router = express.Router();
 
@@ -18,6 +19,10 @@ router.use(
 router.get('/faq', departmentHeadStatistic.handleCountOfFAQs);
 router.get('/counsellor', departmentHeadStatistic.handleCountOfCounsellors);
 router.get('/field', departmentHeadStatistic.handleStatisticFields);
-router.post('/question', departmentHeadStatistic.handleStatisticQuestions);
+router.post(
+  '/question',
+  handleValidateTimeForStatisticInBody,
+  departmentHeadStatistic.handleStatisticQuestions
+);
 
 export default router;

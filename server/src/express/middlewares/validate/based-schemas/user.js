@@ -18,27 +18,14 @@ export const handleValidateRoleUser = (role) => {
 };
 
 // kiểm tra id người dùng có tồn tại trong DB không
-export const handleValidateUserIdInBody = catchAsyncErrors(
-  async (req, res, next) => {
-    const { userId } = req.body;
-    const user = await User.findById(userId);
+export const handleValidateUserId = (location = 'params', key = 'id') => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const id = req[location][key];
+    const user = await User.findById(id);
     if (!user) {
       return next(new ErrorHandler(404, 'Không tìm thấy tài khoản', 4074));
     }
     req.foundUser = user;
     next();
-  }
-);
-
-// kiểm tra id người dùng có tồn tại trong DB không
-export const handleValidateUserIdInParams = catchAsyncErrors(
-  async (req, res, next) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    if (!user) {
-      return next(new ErrorHandler(404, 'Không tìm thấy tài khoản', 4037));
-    }
-    req.foundUser = user;
-    next();
-  }
-);
+  });
+};

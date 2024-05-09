@@ -12,7 +12,7 @@ import { handleValidateMimetypeAndFileSize } from '../../../middlewares/event/va
 
 // namespace: /auth
 // listen event (ack): department:validate-department-name:create
-// description: Kiểm tra tên khoa trước khi tạo khoa mới
+// description: Đặt câu hỏi
 export const handleCreateQuestion = catchAsyncErrors(
   async (io, socket, payload, callback) => {
     handleAuthorization(socket, 'USER');

@@ -6,6 +6,7 @@ import {
   handleCheckStatusDepartmentOfCounsellor,
 } from '../../../middlewares/validate/based-roles/counsellor.js';
 import * as counsellorStatistic from '../../../controllers/statistics/based-roles/counsellor.js';
+import { handleValidateTimeForStatisticInBody } from '../../../middlewares/validate/statistic.js';
 
 const router = express.Router();
 
@@ -15,6 +16,10 @@ router.use(
   handleCheckStatusDepartmentOfCounsellor
 );
 
-router.post('/question', counsellorStatistic.handleStatisticQuestions);
+router.post(
+  '/question',
+  handleValidateTimeForStatisticInBody,
+  counsellorStatistic.handleStatisticQuestions
+);
 
 export default router;

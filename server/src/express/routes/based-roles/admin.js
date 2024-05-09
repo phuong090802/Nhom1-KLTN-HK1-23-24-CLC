@@ -17,17 +17,13 @@ import {
   handleUploadImageOrDocument,
 } from '../../middlewares/upload-file.js';
 import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-roles/admin.js';
-import {
-  handleValidateDepartmentIdInBody,
-  handleValidateDepartmentIdInParams,
-} from '../../middlewares/validate/based-schemas/department.js';
-import { handleValidateNewsIdInParams } from '../../middlewares/validate/based-schemas/news.js';
+import { handleValidateDepartmentId } from '../../middlewares/validate/based-schemas/department.js';
+import { handleValidateNewsId } from '../../middlewares/validate/based-schemas/news.js';
 import {
   handleValidateRoleUser,
-  handleValidateUserIdInBody,
-  handleValidateUserIdInParams,
+  handleValidateUserId,
 } from '../../middlewares/validate/based-schemas/user.js';
-import { handleValidateRoleInBody } from '../../middlewares/validate/role.js';
+import { handleValidateRole } from '../../middlewares/validate/role.js';
 
 const router = express.Router();
 
@@ -37,7 +33,7 @@ router
   .route('/news/:id')
   .all(
     // kiểm tra id của new
-    handleValidateNewsIdInParams
+    handleValidateNewsId()
   )
   .put(
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
@@ -58,7 +54,7 @@ router
   .route('/users/:id')
   .all(
     // user
-    handleValidateUserIdInParams
+    handleValidateUserId()
   )
   .get(userController.handleGetUser)
   .put(
@@ -74,7 +70,7 @@ router
 router.get(
   '/departments/:id/counsellors',
   // department
-  handleValidateDepartmentIdInParams,
+  handleValidateDepartmentId(),
   defaultPaginationParams,
   departmentController.handleGetCounsellorsInDepartment
 );
@@ -83,7 +79,7 @@ router
   .route('/departments/:id')
   .all(
     // department
-    handleValidateDepartmentIdInParams
+    handleValidateDepartmentId()
   )
   .put(
     // status of department
@@ -98,11 +94,11 @@ router
   .get(defaultPaginationParams, departmentController.handleGetDepartments)
   .put(
     // department
-    handleValidateDepartmentIdInBody,
+    handleValidateDepartmentId('body', 'departmentId'),
     // status of department
     handleCheckStatusOfDepartment,
     // user
-    handleValidateUserIdInBody,
+    handleValidateUserId('body', 'userId'),
     // counsellor
     handleValidateRoleUser('COUNSELLOR'),
     departmentController.handleChangeDepartmentHead
@@ -110,7 +106,7 @@ router
 
 router.route('/staffs').post(
   // role
-  handleValidateRoleInBody('COUNSELLOR', 'SUPERVISOR'),
+  handleValidateRole('body', 'COUNSELLOR', 'SUPERVISOR'),
   handleCreateStaff
 );
 
@@ -124,11 +120,11 @@ router.post(
 
 router.route('/counsellors').post(
   // user
-  handleValidateUserIdInBody,
+  handleValidateUserId('body', 'userId'),
   // counsellor
   handleValidateRoleUser('COUNSELLOR'),
   // department
-  handleValidateDepartmentIdInBody,
+  handleValidateDepartmentId('body', 'departmentId'),
   // status of department
   handleCheckStatusOfDepartment,
   counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment

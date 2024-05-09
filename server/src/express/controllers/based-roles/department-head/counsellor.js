@@ -11,8 +11,9 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 // Description: Khóa/mở khóa tư vấn viên
 export const handleUpdateStatusOfCounsellor = catchAsyncErrors(
   async (req, res, next) => {
-    const counsellor = req.foundCounsellor;
-    counsellor.isEnabled = req.body.isEnabled;
+    const counsellor = req.foundUser;
+    const { isEnabled } = req.body;
+    counsellor.isEnabled = isEnabled;
     const savedUser = await counsellor.save();
     const strStatus = savedUser.isEnabled ? 'Mở khóa' : 'Khóa';
     res.json({
