@@ -24,7 +24,7 @@ export const handleGetNotifications = catchAsyncErrors(
       pages,
     } = await handlePagination(queryAPI, req.query.size, req.query.page);
     // map quả để chỉ lấy thuộc tính id
-    const notificationIds = notificationRecords.map(
+    const notificationIds = notifications.map(
       (notification) => notification._id
     );
     // update trạng thái thông báo của notificationIds
