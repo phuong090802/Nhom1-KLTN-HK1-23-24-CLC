@@ -102,6 +102,7 @@ router
     // counsellor belong department
     handleCheckCounsellorBelongDepartment
   )
+  .get(counsellorController.handleGetFieldsNoneExistYetOfCounsellor)
   .put(counsellorController.handleAddFieldToCounsellor)
   .delete(
     handleValidateFieldId('body', 'fieldId'),

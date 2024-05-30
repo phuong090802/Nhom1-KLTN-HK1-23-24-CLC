@@ -487,6 +487,11 @@
       "code": "2092",
       "message": "",
       "detail": "Lấy danh sách các câu hỏi đã được trả lời công khai và đã được duyệt (cho di động)"
+    },
+    {
+      "code": "2093",
+      "message": "",
+      "detail": "Lấy những lĩnh vực tư vấn viên chưa có (thuộc khoa) và sau đó để thêm vào cho họ"
     }
   ]
 }

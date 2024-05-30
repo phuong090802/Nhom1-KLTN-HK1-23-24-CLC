@@ -7,6 +7,26 @@ import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/counsellors/:id
+// Method: GET
+// Description: Lấy những lĩnh vực tư vấn viên chưa có (thuộc khoa) và sau đó để thêm vào cho họ
+export const handleGetFieldsNoneExistYetOfCounsellor = catchAsyncErrors(
+  async (req, res, next) => {
+    const counsellor = req.foundUser;
+    const counsellorsFieldIds = counsellor.counsellor.fields;
+    const departmentId = counsellor.counsellor.department;
+    const fields = await Field.find({
+      department: departmentId,
+      _id: { $nin: counsellorsFieldIds },
+    }).sort({ fieldName: 1 });
+    res.json({
+      success: true,
+      fields,
+      code: 2093,
+    });
+  }
+);
+
+// Endpoint: /api/department-head/counsellors/:id
 // Method: PATCH
 // Description: Khóa/mở khóa tư vấn viên
 export const handleUpdateStatusOfCounsellor = catchAsyncErrors(

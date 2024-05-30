@@ -18,7 +18,9 @@ export const handleCreateConversation = catchAsyncErrors(
     const user = socket.user;
     const receiver = question.user;
     const participates = [user, receiver];
-    let conversation = await Conversation.findOne({ participates });
+    let conversation = await Conversation.findOne({
+      participates: { $all: participates },
+    });
     if (!conversation) {
       conversation = await Conversation.create({ participates });
     }
