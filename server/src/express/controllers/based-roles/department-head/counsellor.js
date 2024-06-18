@@ -121,10 +121,18 @@ export const handleAddFieldToCounsellor = catchAsyncErrors(
     );
     updateCounsellor.counsellor.fields.push(...newFieldIds);
     await updateCounsellor.save();
+    const failedFieldIds = [...inactiveFieldIds, ...fieldIdsNotInDepartment];
+    const failedFields = await Field.find({
+      _id: { $in: failedFieldIds },
+      department,
+    });
     res.json({
       success: true,
-      message: 'Thêm lĩnh vực cho tư vấn viên thành công',
-      failedFieldIds: [...inactiveFieldIds, ...fieldIdsNotInDepartment],
+      message:
+        fieldIds.length === failedFieldIds.length
+          ? 'Thêm lĩnh vực không thành công'
+          : 'Thêm lĩnh vực cho tư vấn viên thành công',
+      failedFields,
     });
   }
 );
