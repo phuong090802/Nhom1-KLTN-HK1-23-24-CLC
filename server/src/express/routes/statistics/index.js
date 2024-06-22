@@ -8,7 +8,7 @@ import { handleValidateTimeForStatisticInBody } from '../../middlewares/validate
 const router = express.Router();
 
 // Dành cho ADMIN, SUPERVISOR
-router.use(...handleAuthenticationAndAuthorization('ADMIN', 'SUPERVISOR'));
+router.use(handleAuthenticationAndAuthorization('ADMIN', 'SUPERVISOR'));
 
 router.get(
   '/department/:id/field',

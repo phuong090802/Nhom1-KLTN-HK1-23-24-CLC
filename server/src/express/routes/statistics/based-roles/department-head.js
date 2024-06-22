@@ -11,7 +11,7 @@ import { handleValidateTimeForStatisticInBody } from '../../../middlewares/valid
 const router = express.Router();
 
 router.use(
-  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD'),
+  handleAuthenticationAndAuthorization('DEPARTMENT_HEAD'),
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor
 );

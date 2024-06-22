@@ -61,6 +61,12 @@ const questionSchema = new mongoose.Schema({
     ref: 'Field',
     required: [true, 'Vui lòng nhập mã lĩnh vực'],
   },
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

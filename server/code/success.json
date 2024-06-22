@@ -492,6 +492,26 @@
       "code": "2093",
       "message": "",
       "detail": "Lấy những lĩnh vực tư vấn viên chưa có (thuộc khoa) và sau đó để thêm vào cho họ"
+    },
+    {
+      "code": "2094",
+      "message": "",
+      "detail": "Like thành công"
+    },
+    {
+      "code": "2095",
+      "message": "",
+      "detail": "Bỏ like thành công"
+    },
+    {
+      "code": "2096",
+      "message": "",
+      "detail": "Lấy danh sách câu hỏi đã thích (sắp xếp, tìm kiếm, lọc, phân trang) thành công"
+    },
+    {
+      "code": "2097",
+      "message": "",
+      "detail": "Đếm số lượng câu hỏi đã thích thành công"
     }
   ]
 }

@@ -19,6 +19,7 @@ import basedUserSchema from './routes/based-schemas/user.js';
 import adminStatistic from './routes/statistics/based-roles/admin.js';
 import counsellorStatistic from './routes/statistics/based-roles/counsellor.js';
 import departmentHeadStatistic from './routes/statistics/based-roles/department-head.js';
+import userStatistic from './routes/statistics/based-roles/user.js';
 import statistic from './routes/statistics/index.js';
 import questionRouteForMobile from './routes/based-schemas/mobile/question.js';
 
@@ -58,6 +59,7 @@ app.use('/api/news', news);
 app.use('/api/admin/statistics', adminStatistic);
 app.use('/api/counsellor/statistics', counsellorStatistic);
 app.use('/api/department-head/statistics', departmentHeadStatistic);
+app.use('/api/user/statistics', userStatistic);
 app.use('/api/statistics', statistic);
 app.use('/api/mobile/questions', questionRouteForMobile);
 

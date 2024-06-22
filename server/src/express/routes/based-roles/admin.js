@@ -27,7 +27,7 @@ import { handleValidateRole } from '../../middlewares/validate/role.js';
 
 const router = express.Router();
 
-router.use(...handleAuthenticationAndAuthorization('ADMIN'));
+router.use(handleAuthenticationAndAuthorization('ADMIN'));
 
 router
   .route('/news/:id')

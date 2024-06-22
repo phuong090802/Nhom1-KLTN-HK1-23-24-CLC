@@ -41,7 +41,7 @@ router.put(
 router.get(
   '/is-verified-email',
   // auth
-  ...handleAuthenticationAndAuthorization(
+  handleAuthenticationAndAuthorization(
     'USER',
     'COUNSELLOR',
     'DEPARTMENT_HEAD',

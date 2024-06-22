@@ -9,7 +9,7 @@ import { handleValidateTimeForStatisticInBody } from '../../../middlewares/valid
 
 const router = express.Router();
 
-router.use(...handleAuthenticationAndAuthorization('ADMIN'));
+router.use(handleAuthenticationAndAuthorization('ADMIN'));
 
 router.post(
   '/question',

@@ -35,7 +35,7 @@ const router = express.Router();
 // check status
 router.use(
   // auth
-  ...handleAuthenticationAndAuthorization('DEPARTMENT_HEAD'),
+  handleAuthenticationAndAuthorization('DEPARTMENT_HEAD'),
   // department - department head before access
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor
