@@ -8,7 +8,10 @@ import {
 } from '../../controllers/based-roles/user/question.js';
 import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
-import { handleValidateQuestionId } from '../../middlewares/validate/based-schemas/question.js';
+import {
+  handleValidateQuestionId,
+  handleValidateStatusOfQuestion,
+} from '../../middlewares/validate/based-schemas/question.js';
 
 const router = express.Router();
 
@@ -20,7 +23,11 @@ router
 
 router
   .route('/questions/:id')
-  .post(handleValidateQuestionId(), handleLikeQuestion);
+  .post(
+    handleValidateQuestionId(),
+    handleValidateStatusOfQuestion('publicly-answered-and-approved'),
+    handleLikeQuestion
+  );
 
 router.route('/questions').get(defaultPaginationParams, handleGetQuestions);
 
