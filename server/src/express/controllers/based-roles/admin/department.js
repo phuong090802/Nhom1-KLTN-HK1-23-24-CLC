@@ -55,7 +55,7 @@ export const handleChangeDepartmentHead = catchAsyncErrors(
 // Method: GET
 // Description: Lấy danh sách khoa (phân trang, tìm kiếm, lọc, sắp xếp)
 export const handleGetDepartments = catchAsyncErrors(async (req, res, next) => {
-  const query = Department.find().select('-__v').lean();
+  const query = Department.find().select('-__v -lastRemindedAt').lean();
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   const {
     records: departments,

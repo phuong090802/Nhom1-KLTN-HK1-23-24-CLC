@@ -16,6 +16,10 @@ const departmentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  lastRemindedAt: {
+    type: Date,
+    default: null,
+  },
 });
 
 const Department = mongoose.model('Department', departmentSchema);

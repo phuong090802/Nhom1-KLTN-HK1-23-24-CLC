@@ -92,6 +92,12 @@ router
     questionController.handleGetQuestionsIsPendingApproval
   );
 
+router.get(
+  '/counsellors/reminder',
+  defaultPaginationParams,
+  counsellorController.handleGetCounsellorsHaveOverDueQuestion
+);
+
 router
   .route('/counsellors/:id')
   .all(

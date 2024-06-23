@@ -20,7 +20,7 @@ export const handleGetStaffsInDepartment = catchAsyncErrors(
     let filterDepartment = {};
     if (!department) {
       const departmentIds = await Department.find({ isActive: true }).select(
-        '-departmentName -isActive -__v'
+        '-departmentName -isActive -__v -lastRemindedAt'
       );
       filterDepartment = {
         'counsellor.department': { $in: departmentIds },

@@ -296,7 +296,7 @@
     {
       "code": "2058",
       "message": "",
-      "detail": "Gửi thông báo câu hỏi đã được trả lời (câu trả lời đã được trưởng khoa duyệt)"
+      "detail": "Gửi thông báo socket"
     },
     {
       "code": "2059",
@@ -512,6 +512,26 @@
       "code": "2097",
       "message": "",
       "detail": "Đếm số lượng câu hỏi đã thích thành công"
+    },
+    {
+      "code": "2098",
+      "message": "",
+      "detail": "Admin/supervisor lấy danh sách khoa cần nhắc nhở thành công"
+    },
+    {
+      "code": "2099",
+      "message": "",
+      "detail": "Admin/supervisor gửi tới khoa nhắc nhở thành công"
+    },
+    {
+      "code": "2100",
+      "message": "",
+      "detail": "Trưởng khoa lấy danh sách khoa tư vấn viên cần nhắc nhở thành công"
+    },
+    {
+      "code": "2101",
+      "message": "",
+      "detail": "Trưởng khoa gửi nhắc nhở tới tư vấn viên thành công"
     }
   ]
 }

@@ -1,13 +1,15 @@
+import * as administratorController from '../controllers/administrator.js';
 import { handleValidateEmail, handleVerifyEmail } from '../controllers/auth.js';
 import * as departmentController from '../controllers/based-roles/admin/department.js';
 import { handleCreateAnswer } from '../controllers/based-roles/counsellor/answer.js';
 import { handleCreateConversation } from '../controllers/based-roles/counsellor/conversation.js';
 import { handleApproveAnswer } from '../controllers/based-roles/department-head/answer.js';
+import * as counsellorController from '../controllers/based-roles/department-head/counsellor.js';
 import { handleCreateFeedback } from '../controllers/based-roles/department-head/feedback.js';
+import * as fieldController from '../controllers/based-roles/department-head/field.js';
 import { handleCreateQuestion } from '../controllers/based-roles/user/question.js';
 import { handleCreateMessage } from '../controllers/based-schemas/message.js';
 import { handleAuthentication } from '../middlewares/auth.js';
-import * as fieldController from '../controllers/based-roles/department-head/field.js';
 
 export default function auth(io) {
   io.of('/auth')
@@ -92,6 +94,26 @@ export default function auth(io) {
       // department head validate field when update
       socket.on('field:validate-field-name:update', (payload, callback) =>
         fieldController.handleValidateFieldNameUpdate(
+          io,
+          socket,
+          payload,
+          callback
+        )
+      );
+
+      // Admin/supervisor thông báo tới trưởng khoa, khoa có câu hỏi quá hạn
+      socket.on('department:reminder:create', (payload, callback) =>
+        administratorController.handleReminderToDepartment(
+          io,
+          socket,
+          payload,
+          callback
+        )
+      );
+
+      // Trưởng khoa thông báo tới tư vấn viên có câu hỏi quá hạn thuộc lĩnh vực của họ
+      socket.on('counsellor:reminder:create', (payload, callback) =>
+        counsellorController.handleReminderToCounsellor(
           io,
           socket,
           payload,

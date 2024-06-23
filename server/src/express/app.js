@@ -7,6 +7,7 @@ import { apiCorsOptions } from '../config/cors.js';
 import handleError from './middlewares/error.js';
 import auth from './routes/auth.js';
 import admin from './routes/based-roles/admin.js';
+import administrator from './routes/administrator.js';
 import counsellor from './routes/based-roles/counsellor.js';
 import departmentHead from './routes/based-roles/department-head.js';
 import userRoleBased from './routes/based-roles/user.js';
@@ -20,7 +21,7 @@ import adminStatistic from './routes/statistics/based-roles/admin.js';
 import counsellorStatistic from './routes/statistics/based-roles/counsellor.js';
 import departmentHeadStatistic from './routes/statistics/based-roles/department-head.js';
 import userStatistic from './routes/statistics/based-roles/user.js';
-import statistic from './routes/statistics/index.js';
+import statistic from './routes/statistics/administrator.js';
 import questionRouteForMobile from './routes/based-schemas/mobile/question.js';
 
 const app = express();
@@ -46,6 +47,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/auth', auth);
+app.use('/api/administrator', administrator);
 app.use('/api/admin', admin);
 app.use('/api/department-head', departmentHead);
 app.use('/api/counsellor', counsellor);

@@ -1,10 +1,75 @@
 import Field from '../../../../models/field.js';
 import User from '../../../../models/user.js';
-import handlePagination from '../../../../util/db/pagination.js';
+import Question from '../../../../models/question.js';
+import handlePagination, {
+  handleReminderPagination,
+} from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import { OVERDUE } from '../../../../constants/reminder.js';
+
+// Endpoint: /api/department-head/counsellors/reminder
+// Method: GET
+// Description: Lấy những tư vấn viên có câu hỏi quá hạn (3 ngày chưa trả lời) thuộc lĩnh vực của họ (phân trang, tìm kiếm)
+export const handleGetCounsellorsHaveOverDueQuestion = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const department = user.counsellor.department;
+    const query = User.find({
+      role: 'COUNSELLOR',
+      department,
+      'counsellor.fields': { $ne: [] }, //  'counsellor.fields' is not empty
+      $or: [
+        { lastRemindedAt: { $lte: new Date(Date.now() - OVERDUE) } },
+        { lastRemindedAt: { $eq: null } },
+      ],
+    })
+      .select('fullName counsellor.fields')
+      .lean();
+
+    const queryAPI = new QueryAPI(query, req.query).search();
+    const users = await queryAPI.query;
+
+    const { page, size } = req.query;
+
+    const fetchOverDueQuestionsHandler = async (u) => {
+      const totalOverDueQuestion = await Question.countDocuments({
+        createdAt: { $lte: new Date(Date.now() - OVERDUE) },
+        department,
+        field: { $in: u.counsellor.fields },
+      });
+      if (totalOverDueQuestion > 0) {
+        return {
+          _id: u._id,
+          fullName: u.fullName,
+          totalOverDueQuestion,
+        };
+      }
+      return null;
+    };
+
+    const {
+      records: usersWithOverDueQuestion,
+      page: _,
+      pages,
+    } = await handleReminderPagination({
+      data: users,
+      page,
+      size,
+      handler: fetchOverDueQuestionsHandler,
+    });
+
+    res.json({
+      success: true,
+      usersWithOverDueQuestion,
+      page,
+      pages,
+      code: 2100,
+    });
+  }
+);
 
 // Endpoint: /api/department-head/counsellors/:id
 // Method: GET
