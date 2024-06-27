@@ -9,7 +9,7 @@ import {
 export const handleValidateMimetype = (file) => {
   const isSupport = isSupportedMimetype(
     [...mimetype.image, ...mimetype.document],
-    file.mimetype
+    file
   );
   if (!isSupport) {
     throw new ErrorHandler('Định dạng file không được hỗ trợ', 4095);
