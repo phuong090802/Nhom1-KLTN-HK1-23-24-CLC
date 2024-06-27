@@ -1,7 +1,7 @@
 import express from 'express';
 
 import * as conversationController from '../../controllers/based-schemas/conversation.js';
-import { handleAuthentication } from '../../middlewares/auth.js';
+import { handleOptionalAuthentication } from '../../middlewares/auth.js';
 import {
   defaultPaginationParams,
   defaultSizeAndSkip,
@@ -14,7 +14,7 @@ import {
 
 const router = express.Router();
 
-router.use(handleAuthentication);
+router.use(handleOptionalAuthentication());
 
 router.route('/:id').get(
   // conversation

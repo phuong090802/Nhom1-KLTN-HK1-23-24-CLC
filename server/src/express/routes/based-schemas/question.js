@@ -6,6 +6,7 @@ import {
   handleValidateQuestionId,
   handleValidateStatusOfQuestion,
 } from '../../middlewares/validate/based-schemas/question.js';
+import { handleOptionalAuthentication } from '../../middlewares/auth.js';
 
 const router = express.Router();
 
@@ -19,6 +20,10 @@ router.route('/:id').put(
 
 router
   .route('/')
-  .get(defaultPaginationParams, questionController.handleGetQuestions);
+  .get(
+    handleOptionalAuthentication(false),
+    defaultPaginationParams,
+    questionController.handleGetQuestions
+  );
 
 export default router;

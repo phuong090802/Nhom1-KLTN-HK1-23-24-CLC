@@ -79,7 +79,10 @@ const questionSchema = new mongoose.Schema({
 
 // cách này không tìm chay
 // populate rồi dùng phương thức bên kia
-questionSchema.methods.getQuestionInformation = function (action) {
+questionSchema.methods.getQuestionInformation = function (
+  action,
+  userId = null // string
+) {
   const baseQuestion = {
     _id: this._id,
     title: this.title,
@@ -104,11 +107,17 @@ questionSchema.methods.getQuestionInformation = function (action) {
         answer,
       };
     case questionAction.HOME_GET_ALL_QUESTIONS:
+      const convertedUserIdInLikes = this.likes.map((userId) =>
+        userId.toString()
+      );
+      const likesSet = new Set(convertedUserIdInLikes);
       return {
         ...baseQuestion,
         views: this.views,
         user: formatUserForAnswer(this.user),
         answer: formatAnswer(this.answer),
+        likes: likesSet.size,
+        isLiked: likesSet.has(userId),
       };
     case questionAction.DEPARTMENT_HEAD_GET_ALL_QUESTIONS:
       return {

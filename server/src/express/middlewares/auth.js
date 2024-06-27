@@ -5,25 +5,32 @@ import User from '../../models/user.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import catchAsyncErrors from './catch-async-errors.js';
 
-// handle authentication
-export const handleAuthentication = catchAsyncErrors(async (req, res, next) => {
-  const headerAuth = req.headers.authorization;
-  if (!headerAuth || !headerAuth.startsWith('Bearer ')) {
-    const msg = 'Đăng nhập trước khi truy cập vào tài nguyên này';
-    return next(new ErrorHandler(401, msg, 4015));
-  }
-  const token = headerAuth.split(' ')[1];
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  const user = await User.findById(decoded.id).populate({
-    path: 'counsellor.department',
-    select: '_id departmentName',
+// handle optional authentication
+export const handleOptionalAuthentication = (isRequired = true) => {
+  return catchAsyncErrors(async (req, res, next) => {
+    const headerAuth = req.headers.authorization;
+    if (!headerAuth || !headerAuth.startsWith('Bearer ')) {
+      if (isRequired) {
+        const msg = 'Đăng nhập trước khi truy cập vào tài nguyên này';
+        return next(new ErrorHandler(401, msg, 4015));
+      }
+      return next();
+    }
+    const token = headerAuth.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).populate({
+      path: 'counsellor.department',
+      select: '_id departmentName',
+    });
+    if (!user.isEnabled) {
+      return isRequired
+        ? next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4114))
+        : next();
+    }
+    req.user = user;
+    next();
   });
-  if (!user.isEnabled) {
-    return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4114));
-  }
-  req.user = user;
-  next();
-});
+};
 
 // handleAuthorization
 export const handleAuthorization = (...roles) => {
@@ -38,7 +45,7 @@ export const handleAuthorization = (...roles) => {
 };
 
 export const handleAuthenticationAndAuthorization = (...roles) => [
-  handleAuthentication,
+  handleOptionalAuthentication(),
   handleAuthorization(...roles),
 ];
 

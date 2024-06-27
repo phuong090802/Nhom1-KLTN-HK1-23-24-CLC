@@ -4,7 +4,7 @@ import * as feedbackController from '../../controllers/based-roles/counsellor/fe
 import { handleGetFields } from '../../controllers/based-roles/counsellor/field.js';
 import * as questionController from '../../controllers/based-roles/counsellor/question.js';
 import {
-  handleAuthentication,
+  handleOptionalAuthentication,
   handleAuthorization,
 } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
@@ -36,7 +36,7 @@ import {
 
 const router = express.Router();
 
-router.use(handleAuthentication);
+router.use(handleOptionalAuthentication());
 
 router
   .route('/fields')

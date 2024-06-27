@@ -2,7 +2,7 @@ import express from 'express';
 
 import * as userController from '../../controllers/based-schemas/user.js';
 import {
-  handleAuthentication,
+  handleOptionalAuthentication,
   handleAuthorization,
 } from '../../middlewares/auth.js';
 import {
@@ -12,7 +12,7 @@ import {
 
 const router = express.Router();
 
-router.use(handleAuthentication);
+router.use(handleOptionalAuthentication());
 
 router.post(
   '/push-token',
