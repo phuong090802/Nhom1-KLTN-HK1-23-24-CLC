@@ -32,7 +32,7 @@ export const handleCheckQuestionBelongToDepartment = catchAsyncErrors(
   (req, res, next) => {
     const user = req.user;
     const question = req.foundQuestion;
-    if (!question.department.equals(user.counsellor.department)) {
+    if (!question.department.equals(user.counsellor.department._id)) {
       const msg = 'Không tìm thấy câu hỏi thuộc về khoa';
       return next(new ErrorHandler(404, msg, 4098));
     }
