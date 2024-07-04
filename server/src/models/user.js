@@ -82,12 +82,12 @@ const userSchema = new mongoose.Schema({
     uppercase: true,
     default: 'USER',
     // check if role USER, occupation is required
-    validate: {
-      validator: function (v) {
-        return !(v === 'USER' && this.occupation === undefined);
-      },
-      message: 'Vui lòng nhập nghề nghiệp',
-    },
+    // validate: {
+    //   validator: function (v) {
+    //     return !(v === 'USER' && this.occupation === undefined);
+    //   },
+    //   message: 'Vui lòng nhập nghề nghiệp',
+    // },
     enum: {
       values: ['USER', 'COUNSELLOR', 'DEPARTMENT_HEAD', 'SUPERVISOR', 'ADMIN'],
       message: '{VALUE} không được hổ trợ',
@@ -96,6 +96,7 @@ const userSchema = new mongoose.Schema({
   occupation: {
     type: String,
     trim: true,
+    default: 'Khác',
     enum: {
       values: ['Học sinh', 'Sinh viên', 'Cựu sinh viên', 'Phụ huynh', 'Khác'],
       message: `'{VALUE}' không được hổ trợ`,
