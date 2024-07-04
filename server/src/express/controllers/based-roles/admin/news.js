@@ -29,19 +29,19 @@ export const handleUpdateNews = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove old file
       await deleteFile(ref);
-      news.file = file;
-      news.title = title;
-      news.content = content;
-      await news.save();
     } catch (error) {
       // remove new image if error
-      if (file.ref && file.url) {
+      if (file.ref) {
         await deleteFile(file.ref);
       }
       const msg = 'Lỗi cập nhật tin tức. Vui lòng thử lại';
       return next(new ErrorHandler(500, msg, 4110));
     }
   }
+  news.file = file;
+  news.title = title;
+  news.content = content;
+  await news.save();
   res.json({
     success: true,
     message: 'Cập nhật tin tức thành công',

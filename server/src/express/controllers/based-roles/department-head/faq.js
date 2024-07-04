@@ -82,18 +82,18 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove file
       await deleteFile(ref);
-      faq.field = field;
-      faq.answerAttachment = answerAttachment;
-      await faq.save();
     } catch (error) {
       // remove new image if error
-      if (answerAttachment.ref && answerAttachment.url) {
+      if (answerAttachment.ref) {
         await deleteFile(answerAttachment.ref);
       }
       const msg = 'Lỗi cập nhật câu hỏi chung. Vui lòng thử lại';
       return next(new ErrorHandler(500, msg, 4103));
     }
   }
+  faq.field = field;
+  faq.answerAttachment = answerAttachment;
+  await faq.save();
 
   res.json({
     success: true,
