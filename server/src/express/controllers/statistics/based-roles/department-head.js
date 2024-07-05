@@ -49,7 +49,7 @@ export const handleStatisticQuestions = catchAsyncErrors(
 // Description: Trưởng khoa đếm số tư vấn viên của khoa
 export const handleCountOfCounsellors = catchAsyncErrors(
   async (req, res, next) => {
-    const department = req.foundDepartment;
+    const department = req.user.counsellor.department._id;
     const countOfUsers = await User.countDocuments({ department });
     res.json({
       success: true,
