@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import csvParser from 'csv-parser';
 import streamifier from 'streamifier';
 import attribute from '../../../../constants/mapper/attribute.js';
