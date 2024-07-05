@@ -29,8 +29,18 @@ export const handleEmailIsVerified = catchAsyncErrors(
 // Description: Đổi mật khẩu
 // Role: All role
 export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
-  const user = req.user;
-  const { password, confirmPassword } = req.body;
+  const reqUser = req.user;
+  const { currentPassword, password, confirmPassword } = req.body;
+  if (!currentPassword) {
+    const msg = 'Vui lòng nhập mật khẩu hiện tại';
+    return next(new ErrorHandler(400, msg, 4120));
+  }
+  const user = await User.findById(reqUser._id).select('+password');
+  const isPasswordMatched = await user.comparePassword(currentPassword);
+  if (!isPasswordMatched) {
+    const msg = 'Mật khẩu hiện tại không chính xác';
+    return next(new ErrorHandler(400, msg, 4118));
+  }
   const mergePassword = JSON.stringify({ password, confirmPassword });
   user.password = mergePassword;
   await user.save();

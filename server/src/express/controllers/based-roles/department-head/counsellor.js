@@ -130,6 +130,27 @@ export const handleRemoveFieldOfCounsellor = catchAsyncErrors(
 );
 
 // Endpoint: /api/department-head/counsellors
+// Method: PUT
+// Description: Đặt lại mật khẩu COUNSELLOR trong khoa
+export const handleResetCounsellorPassword = catchAsyncErrors(
+  async (req, res, next) => {
+    const counsellor = req.foundUser;
+    const { password } = req.body;
+    const mergePassword = JSON.stringify({
+      password,
+      confirmPassword: password,
+    });
+    counsellor.password = mergePassword;
+    await counsellor.save();
+    res.json({
+      success: true,
+      message: 'Đặt lại mật khẩu cho tư vấn viên thành công',
+      code: 2104,
+    });
+  }
+);
+
+// Endpoint: /api/department-head/counsellors
 // Method: POST
 // Description: Thêm tư vấn viên cho khoa
 export const handleCreateCounsellor = catchAsyncErrors(

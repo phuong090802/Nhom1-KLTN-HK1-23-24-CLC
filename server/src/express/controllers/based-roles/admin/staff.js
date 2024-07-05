@@ -2,6 +2,28 @@ import Department from '../../../../models/department.js';
 import User from '../../../../models/user.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import roles from '../../../../constants/mapper/roles.js';
+
+// Endpoint: /api/admin/staffs
+// Method: PUT
+// Description: Đặt lại mật khẩu cho SUPERVISOR/DEPARTMENT_HEAD/COUNSELLOR
+export const handleResetStaffPassword = catchAsyncErrors(
+  async (req, res, next) => {
+    const staff = req.foundUser;
+    const { password } = req.body;
+    const mergePassword = JSON.stringify({
+      password,
+      confirmPassword: password,
+    });
+    staff.password = mergePassword;
+    await staff.save();
+    res.json({
+      success: true,
+      message: `Đặt lại mật khẩu cho ${roles[staff.role]} thành công`,
+      code: 2103,
+    });
+  }
+);
 
 // Endpoint: /api/admin/staffs
 // Method: POST
