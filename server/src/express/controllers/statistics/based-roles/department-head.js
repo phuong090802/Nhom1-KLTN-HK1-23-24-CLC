@@ -50,7 +50,9 @@ export const handleStatisticQuestions = catchAsyncErrors(
 export const handleCountOfCounsellors = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.user.counsellor.department._id;
-    const countOfUsers = await User.countDocuments({ department });
+    const countOfUsers = await User.countDocuments({
+      'counsellor.department': department,
+    });
     res.json({
       success: true,
       countOfUsers,
