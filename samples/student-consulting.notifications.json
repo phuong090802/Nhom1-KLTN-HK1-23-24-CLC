@@ -1,0 +1,140 @@
+[{
+  "_id": {
+    "$oid": "66212c2aff18a356e80f7ae0"
+  },
+  "recipient": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-04-18T14:20:26.639Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c4638716290091ad6e84e"
+  },
+  "recipient": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-05-09T03:42:48.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c5276716290091ad6ef1f"
+  },
+  "recipient": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-05-09T04:35:02.871Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6661e729e773b875c8f95d9a"
+  },
+  "recipient": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-06T16:43:21.527Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6676e2d71e240e34ad619c43"
+  },
+  "recipient": {
+    "$oid": "65e961a2df861b306b78faf7"
+  },
+  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-22T14:42:31.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6676e32b1e240e34ad619c4a"
+  },
+  "recipient": {
+    "$oid": "65e961a2df861b306b78faf7"
+  },
+  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-22T14:43:55.296Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6676e483c0c76c986755198a"
+  },
+  "recipient": {
+    "$oid": "65e961a2df861b306b78faf7"
+  },
+  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-22T14:49:39.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6676e49bc0c76c9867551990"
+  },
+  "recipient": {
+    "$oid": "65e961a2df861b306b78faf7"
+  },
+  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-22T14:50:03.632Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6676e5e1b5b036f82340529c"
+  },
+  "recipient": {
+    "$oid": "65e961a2df861b306b78faf7"
+  },
+  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-22T14:55:29.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66779c4c5fce6b6b353cd1a3"
+  },
+  "recipient": {
+    "$oid": "65e014bffb896bbbd6da11be"
+  },
+  "content": "Trưởng khoa nhắc nhở bạn trả lời các câu hỏi quá hạn.",
+  "read": false,
+  "createdAt": {
+    "$date": "2024-06-23T03:53:48.355Z"
+  },
+  "__v": 0
+}]

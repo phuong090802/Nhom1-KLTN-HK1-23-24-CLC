@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "661f371bb3791d006e48d026"
+  },
+  "participates": [
+    {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    {
+      "$oid": "65e31fc4f7eb589dd941ab6c"
+    }
+  ],
+  "lastMessage": {
+    "$oid": "662506355aff072f709fe21e"
+  },
+  "deletedBy": [
+    {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    {
+      "$oid": "65e31fc4f7eb589dd941ab6c"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-04-17T02:42:35.953Z"
+  },
+  "__v": 0
+}]

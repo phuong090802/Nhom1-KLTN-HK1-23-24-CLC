@@ -1,0 +1,1404 @@
+[{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e2c"
+  },
+  "title": "Thời gian hết hạn học chính quy ",
+  "content": "Thời gian hết hạn học chính quy ",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [
+    {
+      "$oid": "65e31fc4f7eb589dd941ab6c"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e2d"
+  },
+  "title": "Về cách xét học bổng KKHT HKI 2019-2020",
+  "content": "Về cách xét học bổng KKHT HKI 2019-2020",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e2e"
+  },
+  "title": "Nhận bằng tốt nghiệp",
+  "content": "Nhận bằng tốt nghiệp",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e31"
+  },
+  "title": "Xem xét cảnh báo học tập",
+  "content": "Xem xét cảnh báo học tập",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3f"
+  },
+  "title": "Chứng chỉ sư phạm",
+  "content": "Chứng chỉ sư phạm",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e98727b2ddce84501f66ef"
+  },
+  "title": "Nhận học bổng qua thẻ ngân hàng",
+  "content": "Nhận học bổng qua thẻ ngân hàng",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T09:21:43.804Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e9907be1bd254424bc01c8"
+  },
+  "title": "Báo cáo thực tập tốt nghiệp",
+  "content": "Báo cáo thực tập tốt nghiệp",
+  "file": {
+    "ref": "questions/7awSH_gizkwf0dYhg_4s-.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2F7awSH_gizkwf0dYhg_4s-.pdf?alt=media&token=816cc2ab-71e4-4ded-adb7-e9bc3d7e05a0"
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T10:01:31.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e990cde1bd254424bc01cd"
+  },
+  "title": "Test đặt câu hỏi không có file",
+  "content": "Test đặt câu hỏi không có file",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T10:02:53.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e2f"
+  },
+  "title": "Câu hỏi về thể dục thể thao ",
+  "content": "Câu hỏi về thể dục thể thao ",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e30"
+  },
+  "title": "Tư vấn sức khỏe",
+  "content": "Tư vấn sức khỏe",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e34"
+  },
+  "title": "Về xét học bổng",
+  "content": "Về xét học bổng",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e35"
+  },
+  "title": "Tư vấn sinh viên sức khỏe",
+  "content": "Tư vấn sinh viên sức khỏe",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e37"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e38"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-04-18T14:20:26.571Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e39"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-06-06T16:43:21.455Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3a"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e014bffb896bbbd6da11be"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e29a87bd06a693b43bfe7d"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": "questions/Ih-YEpChzOUAV__oQn6nJ.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FIh-YEpChzOUAV__oQn6nJ.pdf?alt=media&token=aa66c55e-d70e-487c-bb81-a458985e5078"
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "<p>&nbsp;Phan hoi ne :D</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    "answeredAt": {
+      "$date": "2024-04-18T13:57:57.358Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e9b9f3ea250cc123780dce"
+  },
+  "title": "Test đặt câu hỏi không có file",
+  "content": "Test đặt câu hỏi không có file",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "<p>Demo response</p>",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    "answeredAt": {
+      "$date": "2024-05-09T04:35:32.781Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T12:58:27.192Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e2b"
+  },
+  "title": "Test đặt câu hỏi không có file",
+  "content": "Test đặt câu hỏi không có file",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:24:04.143Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e32"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e33"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3b"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3c"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-05-09T04:35:02.821Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e40"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e987a2b2ddce84501f66f4"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": "questions/LoiUwfjdy44vNZwloRIIQ.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FLoiUwfjdy44vNZwloRIIQ.pdf?alt=media&token=7e096b9c-9ce5-4537-91e6-3ef21fa49c3d"
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T09:23:46.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e9ba38ea250cc123780dd3"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": "questions/fB2_YO4y61JOf0DS6YTqj.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FfB2_YO4y61JOf0DS6YTqj.pdf?alt=media&token=80cd72bc-4c9d-4158-a6e4-90fb1153e76a"
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": "answers/H6O9r4F4fg7w8N4_4HXs_.jpg",
+      "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/answers%2FH6O9r4F4fg7w8N4_4HXs_.jpg?alt=media&token=0383ffa2-349f-4d5b-9e32-f7669eef99a0"
+    },
+    "user": {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T13:24:24.307Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-07T12:59:36.822Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e36"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3d"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-05-09T03:42:48.597Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2f17c07ae0a9e32e92e3e"
+  },
+  "title": "Test đặt câu hỏi",
+  "content": "Test đặt câu hỏi",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-03-02T03:18:31.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660b57e147d256f75b52c3f7"
+  },
+  "title": "Test dat cau hoi qua socket",
+  "content": "<p>Test dat cau hoi vang socket</p><p>Test dat cau hoi bang socket</p><p><br></p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T00:57:05.782Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660b64dc8859153819a1f0e4"
+  },
+  "title": "Test dat cau hoi",
+  "content": "<p>Test dat cau hoi</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T01:52:28.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660b661d8859153819a1f0fd"
+  },
+  "title": "Cong Nghe Thong tin",
+  "content": "<p>Cong nghe thong tin</p><p>Cong ngghe thong tin</p><p>Cong nghe thong tin</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T01:57:49.268Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660b80bb8859153819a1f4f3"
+  },
+  "title": "Test dat cau hoi",
+  "content": "<p>Trest dat cau hoi</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T03:51:23.015Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660b817a8859153819a1f4fe"
+  },
+  "title": "Test dat cau hoi",
+  "content": "<p>Trest dat cau hoiaaa</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "field": {
+    "$oid": "65e197b89eefc7138b7dbe6f"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T03:54:34.594Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660bf517c47b630cef765756"
+  },
+  "title": "Test socket dat cau hoi",
+  "content": "<p>Test socket dat cau hoi</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-02T12:07:51.566Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661401e1584750231cdce6f6"
+  },
+  "title": "Tesst dat cau hoi",
+  "content": "<p>Test dat cau hoi</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd91"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-08T14:40:33.540Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6614a420db8cde160e733f69"
+  },
+  "title": "Tu van sinh vien",
+  "content": "<p>Tu van sinh vien</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "privately-answered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd94"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-09T02:12:48.254Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661df7613b7a8d270d540b34"
+  },
+  "title": "<p>Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi&nbsp;</p>\n<p>Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi&nbsp;</p>\n",
+  "content": "Tran Nhat Hao demo dat cau hoi ",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "privately-answered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd91"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-04-16T03:58:25.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c28a53edebf4bcdff8aa4"
+  },
+  "title": "Test dat cau hoi",
+  "content": "<p>Test dat cau hoi</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e31fc4f7eb589dd941ab6c"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": null,
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-05-09T01:36:37.328Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c4e94716290091ad6ebaa"
+  },
+  "title": "Demo dat cau hoi 05/09/2024",
+  "content": "<p>Demo dat cau hoi 05/09/2024</p>",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "65e0143efb896bbbd6da11b4"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "answer": {
+    "content": "<p>Demo Phan hoi cau hoi</p>",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e961a2df861b306b78faf7"
+    },
+    "answeredAt": {
+      "$date": "2024-05-09T04:34:28.734Z"
+    }
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2024-05-09T04:18:28.145Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,302 @@
+[{
+  "_id": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "departmentName": "Khoa Công Nghệ Thông Tin",
+  "isActive": true,
+  "lastRemindedAt": {
+    "$date": "2024-06-22T14:55:29.460Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "departmentName": "Khoa Điện - Điện Tử",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93843a43bf67107ca57f"
+  },
+  "departmentName": "Khoa Công Nghệ May & Thời Trang",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc94053a43bf67107ca591"
+  },
+  "departmentName": "Khoa In - Truyền Thông",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93e63a43bf67107ca587"
+  },
+  "departmentName": "Viện Sư Phạm Kỹ Thuật",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93eb3a43bf67107ca589"
+  },
+  "departmentName": "Khoa Công Nghệ Hóa - Thực Phẩm",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93fe3a43bf67107ca58f"
+  },
+  "departmentName": "Trung Tâm Dịch Vụ Sinh Viên - Tư vấn học đường",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc940b3a43bf67107ca593"
+  },
+  "departmentName": "Khoa Khoa Học Ứng Dụng",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc941b3a43bf67107ca599"
+  },
+  "departmentName": "Phòng  Đào tạo",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc94253a43bf67107ca59d"
+  },
+  "departmentName": "Đoàn Trường Đại Học Sư Phạm KTp.HCMỹ Thuật",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc942b3a43bf67107ca59f"
+  },
+  "departmentName": "Khoa In Truyền Thông",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93ab3a43bf67107ca581"
+  },
+  "departmentName": "Đoàn - Hội Trường Đại Học Sư Phạm Kỹ Thuật Tp.HCM",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93d93a43bf67107ca583"
+  },
+  "departmentName": "Khoa Cơ Khí Chế Tạo Máy",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93e03a43bf67107ca585"
+  },
+  "departmentName": "Khoa Ngoại Ngữ",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93f03a43bf67107ca58b"
+  },
+  "departmentName": "Phòng Tuyển sinh và Công Tác Sinh Viên - Chế độ chính sách",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc94163a43bf67107ca597"
+  },
+  "departmentName": "Khoa Cơ Khí Động Lực",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc94213a43bf67107ca59b"
+  },
+  "departmentName": "Khoa Xây Dựng",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc93f83a43bf67107ca58d"
+  },
+  "departmentName": "Khoa Kinh Tế",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dc94103a43bf67107ca595"
+  },
+  "departmentName": "Khoa Đào Tạo Chất Lượng Cao",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663a3404e8e16b2cb50bff2d"
+  },
+  "departmentName": "Demo add khoa",
+  "isActive": false,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663a3459e8e16b2cb50bff4c"
+  },
+  "departmentName": "Demo theem khoa",
+  "isActive": false,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663a34b6e8e16b2cb50bff76"
+  },
+  "departmentName": "Demo add khoa 2",
+  "isActive": false,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663a34d2e8e16b2cb50bff95"
+  },
+  "departmentName": "Demo add khoa 3",
+  "isActive": false,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663a34f8e8e16b2cb50bff98"
+  },
+  "departmentName": "Demo theem khoa 5 edited",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "663c505b716290091ad6eca0"
+  },
+  "departmentName": "Demo Khoa 09/05/2024",
+  "isActive": true,
+  "lastRemindedAt": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-07-02T08:17:15.590Z"
+  }
+}]

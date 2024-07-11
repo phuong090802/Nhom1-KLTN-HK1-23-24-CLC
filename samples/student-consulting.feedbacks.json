@@ -1,0 +1,364 @@
+[{
+  "_id": {
+    "$oid": "65eb223147b7110afc50b510"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e2c"
+  },
+  "createdAt": {
+    "$date": "2024-03-08T14:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e51"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e2d"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T14:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e52"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e2e"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T15:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e53"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e2f"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T16:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e54"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e30"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T17:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e55"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e31"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T18:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e56"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e32"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T19:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e57"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e33"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T20:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e58"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e34"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T21:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e59"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e35"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T22:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ec88e8a6e0cd4073c35e5a"
+  },
+  "content": "Nội dung feedback",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e014bffb896bbbd6da11be"
+    },
+    "answeredAt": {
+      "$date": "2024-03-07T14:57:39.370Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e36"
+  },
+  "createdAt": {
+    "$date": "2024-03-09T23:35:29.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66212c3cff18a356e80f7ae5"
+  },
+  "content": "<p>AAAA</p>\n",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e3b"
+  },
+  "createdAt": {
+    "$date": "2024-04-18T14:20:44.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c469c716290091ad6e86c"
+  },
+  "content": "Câu trả lời không phù hợp! Kiểm tra lại",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e3f"
+  },
+  "createdAt": {
+    "$date": "2024-05-09T03:44:28.693Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663c527c716290091ad6ef2e"
+  },
+  "content": "Câu trả lời không phù hợp! Kiểm tra lại",
+  "answer": {
+    "content": "Đây là nộ dung câu trả lời",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "65e01936d43672e10c14b379"
+    },
+    "answeredAt": {
+      "$date": "2024-03-02T09:01:24.283Z"
+    }
+  },
+  "question": {
+    "$oid": "65e2f17c07ae0a9e32e92e3e"
+  },
+  "createdAt": {
+    "$date": "2024-05-09T04:35:08.448Z"
+  },
+  "__v": 0
+}]

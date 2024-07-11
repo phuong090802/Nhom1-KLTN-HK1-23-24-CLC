@@ -1,0 +1,273 @@
+[{
+  "_id": {
+    "$oid": "660a0ac0beb1112d670f62db"
+  },
+  "question": "Test tạo câu hỏi chung 1",
+  "answer": "Test tạo câu hỏi chung 1",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:15:44.524Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660a0acabeb1112d670f62e7"
+  },
+  "question": "Test tạo câu hỏi chung 3",
+  "answer": "Test tạo câu hỏi chung 3",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:15:54.491Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660a0ad1beb1112d670f62ed"
+  },
+  "question": "Test tạo câu hỏi chung 4",
+  "answer": "Test tạo câu hỏi chung 4",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:16:01.427Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660a0ad5beb1112d670f62f3"
+  },
+  "question": "Test tạo câu hỏi chung 5",
+  "answer": "Test tạo câu hỏi chung 5",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:16:05.411Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660a0adabeb1112d670f62f9"
+  },
+  "question": "Test tạo câu hỏi chung 6",
+  "answer": "Test tạo câu hỏi chung 6",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:16:10.301Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660a0adebeb1112d670f62ff"
+  },
+  "question": "Test tạo câu hỏi chung 7",
+  "answer": "Test tạo câu hỏi chung 7",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8b"
+  },
+  "createdAt": {
+    "$date": "2024-04-01T01:16:14.971Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ecf7f6e43018b266b0552"
+  },
+  "question": "Test đặt câu hỏi chung",
+  "answer": "<p>Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung&nbsp;</p>\r\n<p>Test đặt câu hỏi chung Test đặt câu hỏi chung&nbsp;</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/8sw8SW_zd8ySLx0PfWDvN.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F8sw8SW_zd8ySLx0PfWDvN.jpg?alt=media&token=245c173a-c950-44ea-bb5b-b61defc2eb74"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T16:04:15.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ed1336e43018b266b0bc2"
+  },
+  "question": "Test dat cau hoi ",
+  "answer": "<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/99BLdxCd_oSEfJuNdyYr5.png",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F99BLdxCd_oSEfJuNdyYr5.png?alt=media&token=2897037c-30f0-478d-a597-a1f05335d6ec"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T16:11:31.851Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ed1786e43018b266b0bec"
+  },
+  "question": "Tét dat cau hoi",
+  "answer": "<p>Tét dat cau hoi Tét dat cau hoi Tét dat cau hoi Tét dat cau hoi</p>\r\n<p></p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p></p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/DQPFY_bJCMirql-wf1K70.png",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2FDQPFY_bJCMirql-wf1K70.png?alt=media&token=29ce6b06-2f3e-4134-bcef-4cf89b98a0a9"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T16:12:40.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ed25f6e43018b266b0c61"
+  },
+  "question": "Test dat cau hoi ",
+  "answer": "<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi&nbsp;</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/2eathjnKNHwoZivDkFIju.png",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F2eathjnKNHwoZivDkFIju.png?alt=media&token=6af6ade7-695d-4b10-a70b-e228eb93e602"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T16:16:31.421Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ed2806e43018b266b0c6b"
+  },
+  "question": "Dat cau hoi",
+  "answer": "<p>Test dat cau hoi</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/i2zu-qDp7i52hu7tUlSYf.png",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2Fi2zu-qDp7i52hu7tUlSYf.png?alt=media&token=3997a09a-5830-4b09-ad0d-5bdb1c607704"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T16:17:04.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660ee1a46e43018b266b0d23"
+  },
+  "question": "Test dat cau hoi chung ",
+  "answer": "<p>Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung&nbsp;</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8c"
+  },
+  "createdAt": {
+    "$date": "2024-04-04T17:21:40.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66572f4414b3ad710a9bddcd"
+  },
+  "question": "Test dat cau hoi co file",
+  "answer": "<p>Test dat cau hoi co file</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/5f6outlc8wn2zvQAPII3S.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F5f6outlc8wn2zvQAPII3S.pdf?alt=media&token=8c734185-8121-42c3-a57e-9895a2577af0"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "65e195829eefc7138b7dbd8e"
+  },
+  "createdAt": {
+    "$date": "2024-05-29T13:36:04.915Z"
+  },
+  "__v": 0
+}]
