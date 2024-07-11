@@ -69,7 +69,7 @@ export const handleCountOfQuestion = catchAsyncErrors(
 
 // Endpoint: /api/admin/statistics/department
 // Method: GET
-// Description: Admin thông kê tất cả các khoa (tìm kiếm, phân)
+// Description: Admin thống kê tất cả các khoa (tìm kiếm, phân trang)
 export const handleStatisticDepartments = catchAsyncErrors(
   async (req, res, next) => {
     // sort, search
