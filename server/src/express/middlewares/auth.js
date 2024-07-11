@@ -22,6 +22,12 @@ export const handleOptionalAuthentication = (isRequired = true) => {
       path: 'counsellor.department',
       select: '_id departmentName',
     });
+
+    if (isRequired && !user) {
+      const msg = 'Đăng nhập trước khi truy cập vào tài nguyên này';
+      return next(new ErrorHandler(403, msg, 4121));
+    }
+
     if (!user.isEnabled) {
       return isRequired
         ? next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4114))

@@ -5,6 +5,7 @@ import attribute from '../../../../constants/mapper/attribute.js';
 import User from '../../../../models/user.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import { ADMIN_GET_USER } from '../../../../constants/actions/user.js';
 
 // Endpoint: /api/admin/counsellors/upload
 // Method: POST
@@ -77,7 +78,7 @@ export const handleCreateCounsellorFromCSV = catchAsyncErrors(
   }
 );
 
-// Endpoint: /api/admin/counsellor
+// Endpoint: /api/admin/counsellors
 // Method: POST
 // Description: Thêm tư vấn viên chưa có khoa vào 1 khoa cụ thể
 export const handlerAddCounsellorDepartmentIsNullToDepartment =
@@ -93,5 +94,25 @@ export const handlerAddCounsellorDepartmentIsNullToDepartment =
       success: true,
       message: 'Thêm tư vấn viên vào khoa thành công',
       code: 2013,
+    });
+  });
+
+// Endpoint: /api/admin/counsellors
+// Method: GET
+// Description: Lấy danh sách tư vấn viên chưa thuộc khoa
+export const handlerGetCounsellorDepartmentIsNullToDepartment =
+  catchAsyncErrors(async (req, res, next) => {
+    const counsellors = await User.find({
+      role: 'COUNSELLOR',
+      $or: [
+        { 'counsellor.department': null },
+        { 'counsellor.department': { $exists: false } },
+      ],
+    }).select('_id fullName');
+    
+    res.json({
+      success: true,
+      counsellors,
+      code: 2105,
     });
   });

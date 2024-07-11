@@ -547,6 +547,11 @@
       "code": "2104",
       "message": "",
       "detail": "Đặt lại mật khẩu cho tư vấn viên thành công"
+    },
+    {
+      "code": "2105",
+      "message": "",
+      "detail": "Lấy danh sách tư vấn viên chưa thuộc khoa thành công"
     }
   ]
 }

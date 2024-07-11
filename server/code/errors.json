@@ -612,6 +612,11 @@
       "code": "4120",
       "message": "Thiếu nhập mật khẩu hiện tại",
       "detail": ""
+    },
+    {
+      "code": "4121",
+      "message": "Đăng nhập trước khi truy cập vào tài nguyên này",
+      "detail": ""
     }
   ]
 }

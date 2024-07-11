@@ -129,16 +129,19 @@ router.post(
   counsellorController.handleCreateCounsellorFromCSV
 );
 
-router.route('/counsellors').post(
-  // user
-  handleValidateUserId('body', 'userId'),
-  // counsellor
-  handleValidateRoleUser('COUNSELLOR'),
-  // department
-  handleValidateDepartmentId('body', 'departmentId'),
-  // status of department
-  handleCheckStatusOfDepartment,
-  counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
-);
+router
+  .route('/counsellors')
+  .get(counsellorController.handlerGetCounsellorDepartmentIsNullToDepartment)
+  .post(
+    // user
+    handleValidateUserId('body', 'userId'),
+    // counsellor
+    handleValidateRoleUser('COUNSELLOR'),
+    // department
+    handleValidateDepartmentId('body', 'departmentId'),
+    // status of department
+    handleCheckStatusOfDepartment,
+    counsellorController.handlerAddCounsellorDepartmentIsNullToDepartment
+  );
 
 export default router;
