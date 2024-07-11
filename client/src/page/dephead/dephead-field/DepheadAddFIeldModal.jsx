@@ -1,21 +1,27 @@
 import React, { useContext } from "react";
 import { DepheadFieldContext } from "./DepheadFieldStore";
 import ModalLayout from "../../../template/modal-layout";
+import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
 import MyForm from "../../../molecule/my-form";
 import { initAddFieldForm } from "./constance";
 
 export const DepheadAddFIeldModal = () => {
-  const { hiddenAddField, setHiddenAddField } = useContext(DepheadFieldContext);
+  const { hiddenAddField, setHiddenAddField, addField } =
+    useContext(DepheadFieldContext);
 
   return (
-    <ModalLayout
+    <ModalLayout2
       hidden={hiddenAddField}
-      onClose={() => setHiddenAddField(true)}
-      title={"Thêm lĩnh vực"}
+      setHidden={setHiddenAddField}
+      text={"Thêm lĩnh vực"}
     >
       <div className="mt-4 w-80 flex flex-col justify-center items-center">
-        <MyForm formInitData={initAddFieldForm} submitTitle={"Thêm"} />
+        <MyForm
+          formInitData={initAddFieldForm}
+          submitTitle={"Thêm"}
+          onSubmit={addField}
+        />
       </div>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };

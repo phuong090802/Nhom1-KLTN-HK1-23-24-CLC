@@ -1,6 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { AdminRoute, DepheadRoute, ProtectedRoute, UserRoute } from "./routes";
+import {
+  AdminRoute,
+  DepheadRoute,
+  ProtectedRoute,
+  UserRoute,
+  CounsellorRoute,
+} from "./routes";
 
 import HeaderLayout from "./template/header-layout";
 import AppLayout from "./template/app-layout";
@@ -12,6 +18,7 @@ import Login from "./page/public/login";
 import NewsPage from "./page/public/news-page";
 import Register from "./page/public/register";
 import UserLayout from "./template/user-layout";
+import ForgotPassword from "./page/public/forgot-password";
 
 import AdminDepartment from "./page/admin/admin-department";
 import AdminHome from "./page/admin/admin-home";
@@ -25,6 +32,8 @@ import DepheadFaq from "./page/dephead/dephead-faq";
 import DepheadAnswer from "./page/dephead/dephead-answer";
 
 import CounsellorQuestion from "./page/counsellor/counsellor-question";
+import CounsellorHome from "./page/counsellor/counsellor-home";
+import CounsellorFeedback from "./page/counsellor/counsellor-feedback";
 
 import UserProfile from "./page/user/user-profile";
 import PasswordChange from "./page/user/password-change";
@@ -62,6 +71,7 @@ const App = () => {
 
           <Route path="/dang-ky" element={<Register />} />
           <Route path="/dang-nhap" element={<Login />} />
+          <Route path="/quen-mat-khau" element={<ForgotPassword />} />
 
           <Route element={<ProtectedRoute />}>
             <Route element={<AdminRoute />}>
@@ -80,6 +90,17 @@ const App = () => {
               <Route
                 path="/dephead/duyet-cau-tra-loi"
                 element={<DepheadAnswer />}
+              />
+            </Route>
+            <Route element={<CounsellorRoute />}>
+              <Route path="/counsellor" element={<CounsellorHome />} />
+              <Route
+                path="/counsellor/cau-hoi"
+                element={<CounsellorQuestion />}
+              />
+              <Route
+                path="/counsellor/phan-hoi"
+                element={<CounsellorFeedback />}
               />
             </Route>
           </Route>

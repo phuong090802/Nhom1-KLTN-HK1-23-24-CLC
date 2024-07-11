@@ -1,11 +1,10 @@
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 import React, { createContext, useEffect, useState } from "react";
+import { useAuthSocket } from "../../../hooks/useAuthSocket";
 import { getWaitingQuestionsSv } from "../../../service/dephead/depheadAnswer.sv";
 import { initParams } from "./constance";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import { EditorState, convertToRaw } from "draft-js";
-import { data } from "autoprefixer";
-import { useCounsellorSocket } from "../../../hooks/useCounsellorSocket";
-import draftToHtml from "draftjs-to-html";
+import { toast } from "sonner";
 
 export const DepheadAnswerContext = createContext({
   waitingQuestions: Array,
@@ -20,12 +19,12 @@ export const DepheadAnswerContext = createContext({
   setHiddenFeedback: Function,
   feedbackContent: EditorState,
   setFeedbackContent: Function,
+  hiddenDetailAnswerModal: Boolean,
+  setHiddenDetailAnswerModal: Function,
 });
 
 export const DepheadAnswerStore = ({ children }) => {
   const { authSocket } = useAuthSocket();
-
-  const { counsellorSocket } = useCounsellorSocket();
 
   const [waitingQuestions, setWaitingQuestions] = useState([]);
 
@@ -33,9 +32,11 @@ export const DepheadAnswerStore = ({ children }) => {
 
   const [params, setParams] = useState(initParams);
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(null);
 
   const [hiddenFeedback, setHiddenFeedback] = useState(true);
+
+  const [hiddenDetailAnswerModal, setHiddenDetailAnswerModal] = useState(true);
 
   const [feedbackContent, setFeedbackContent] = useState(
     EditorState.createEmpty()
@@ -44,7 +45,6 @@ export const DepheadAnswerStore = ({ children }) => {
   const getWaitingQuestions = async () => {
     try {
       const response = await getWaitingQuestionsSv(params);
-      console.log(response.questions);
       setWaitingQuestions(response.questions);
       setPages(response.pages);
     } catch (error) {}
@@ -56,20 +56,27 @@ export const DepheadAnswerStore = ({ children }) => {
         questionId: questionId,
       });
       console.log(response);
+      toast.success(response?.message || "Duyệt câu trả lời thành công");
+      setHiddenDetailAnswerModal(true);
+      getWaitingQuestions();
     } catch (error) {
-      console.log(error);
+      toast.error(error?.message || "Lỗi khi duyệt câu trả lời");
     }
   };
 
   const FeedbackAnswer = async () => {
     try {
-      const response = await counsellorSocket.emitWithAck("feedback:create", {
+      const response = await authSocket.emitWithAck("feedback:create", {
         questionId: selected,
         content: draftToHtml(convertToRaw(feedbackContent.getCurrentContent())),
       });
       console.log(response);
+      toast.success(response?.message || "Phản hồi câu trả lời thành công");
+      setHiddenDetailAnswerModal(true);
+      setHiddenFeedback(true);
+      getWaitingQuestions();
     } catch (error) {
-      console.log(error);
+      toast.error(response?.message || "Lỗi khi phản hồi câu trả lời");
     }
   };
 
@@ -92,6 +99,8 @@ export const DepheadAnswerStore = ({ children }) => {
         feedbackContent,
         setFeedbackContent,
         FeedbackAnswer,
+        hiddenDetailAnswerModal,
+        setHiddenDetailAnswerModal,
       }}
     >
       {children}

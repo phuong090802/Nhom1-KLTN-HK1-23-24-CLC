@@ -1,3 +1,5 @@
+import { ruleList } from "../../../molecule/my-form";
+
 const initParams = {
   search: ["fullName", "email", "phoneNumber"],
   keyword: "",
@@ -44,7 +46,6 @@ const initFilter = [
       { key: "Giám sát viên", value: "SUPERVISOR" },
     ],
   },
-  
 ];
 
 const initSort = [
@@ -58,4 +59,40 @@ const initSort = [
   },
 ];
 
-export { initParams, initFilter, initSort };
+const formAddStaff = {
+  id: "add-department-form",
+  inputs: [
+    {
+      label: "Họ & Tên",
+      name: "fullName",
+      type: "text",
+      rules: [ruleList.isRequired()],
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      rules: [ruleList.isRequired(), ruleList.isEmail],
+    },
+    {
+      label: "Số điện thoại",
+      name: "phoneNumber",
+      type: "tel",
+      rules: [ruleList.isRequired(), ruleList.isMobilePhone],
+    },
+    {
+      label: "Mật khẩu",
+      name: "password",
+      type: "password",
+      rules: [ruleList.isRequired(), ruleList.minLength(6)],
+    },
+    {
+      label: "Xác nhận mật khẩu",
+      name: "confirmPassword",
+      type: "password",
+      rules: [ruleList.isRequired(), ruleList.isConfirm("password")],
+    },
+  ],
+};
+
+export { initParams, initFilter, initSort, formAddStaff };

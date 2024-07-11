@@ -9,6 +9,8 @@ import draftToHtml from "draftjs-to-html";
 import { toast } from "sonner";
 import { DataContext } from "../../store";
 import { initParams } from "./constance";
+import { getNotificationSv } from "../../service/user/userNotification.sv";
+import { data } from "autoprefixer";
 
 export const AppLayoutContext = createContext({
   params: Object,
@@ -27,31 +29,37 @@ export const AppLayoutContext = createContext({
   setMessageContent: Function,
   sendMessage: Function,
   loadMessage: Function,
+  notifications: Array,
+  setNotification: Function,
 });
 
 export const AppLayoutStore = ({ children }) => {
-  const { user, isLoggedIn } = useContext(DataContext);
+  const { user, isLoggedIn, setNewMessage, setNewNoti } =
+    useContext(DataContext);
 
   const { authSocket, connected } = useAuthSocket();
 
-  const [showingModal, setShowingModal] = useState("");
+  const [showingModal, setShowingModal] = useState(""); // modal đang hiển thị
 
-  const [conversations, setConversations] = useState([]);
+  const [conversations, setConversations] = useState([]); // chứa những cuộc hội thoại
 
-  const [messageBoxHidden, setMessageBoxHidden] = useState(true);
+  const [notifications, setNotification] = useState([]); // chứa danh sách thông báo
 
-  const [selectedConversation, setSelectedConversation] = useState({});
+  const [messageBoxHidden, setMessageBoxHidden] = useState(true); // show messageBox
 
-  const [conversationContent, setConversationContent] = useState([]);
+  const [selectedConversation, setSelectedConversation] = useState({}); // Hội thoại đang xem
 
-  const [params, setParams] = useState({});
+  const [conversationContent, setConversationContent] = useState([]); // nội dung conversation được chọn
 
-  const [totalMessages, setTotalMessages] = useState(0);
+  const [params, setParams] = useState({}); //
+
+  const [totalMessages, setTotalMessages] = useState(0); // số lượng tin nhắn
 
   const [messageContent, setMessageContent] = useState(
     EditorState.createEmpty()
   );
 
+  // lấy danh sách các cuộc hội thoại
   const getConversations = async () => {
     try {
       const response = await getConversationsSv();
@@ -61,6 +69,7 @@ export const AppLayoutStore = ({ children }) => {
     }
   };
 
+  // Lấy nội dung của cuộc hội thoại
   const getConversationContents = async () => {
     try {
       const response = await getMessagesSv(selectedConversation._id, params);
@@ -70,12 +79,14 @@ export const AppLayoutStore = ({ children }) => {
     } catch (error) {}
   };
 
+  //
   const loadMessage = () => {
     if (totalMessages !== conversationContent?.length) {
       setParams((prev) => ({ ...prev, skip: conversationContent?.length }));
     }
   };
 
+  // Gửi tin nhắn
   const sendMessage = async () => {
     if (
       draftToHtml(convertToRaw(messageContent.getCurrentContent())).trim() ===
@@ -116,6 +127,7 @@ export const AppLayoutStore = ({ children }) => {
     }
   };
 
+  //
   function updateConversations(newConversation) {
     const index = conversations.findIndex(
       (obj) => obj._id === newConversation._id
@@ -131,11 +143,22 @@ export const AppLayoutStore = ({ children }) => {
     }
   }
 
+  //Lấy danh sách thông báo
+  const getNotifications = async () => {
+    try {
+      const response = await getNotificationSv();
+      console.log(response);
+      setNotification(response.notifications);
+    } catch (error) {
+      toast(error.message || "Lỗi khi lấy thông báo");
+    }
+  };
+
   useEffect(() => {
     if (connected && isLoggedIn) {
       authSocket.on(`${user._id}:message:read`, (data) => {
+        setNewMessage(true);
         updateConversations(data?.latestConversation);
-        console.log(data);
         if (data?.latestConversation?._id === selectedConversation._id) {
           console.log(data);
           setConversationContent((prev) => [
@@ -148,8 +171,21 @@ export const AppLayoutStore = ({ children }) => {
   }, [connected, isLoggedIn, selectedConversation]);
 
   useEffect(() => {
-    if (isLoggedIn) getConversations();
-    else setConversations([]);
+    if (connected && isLoggedIn) {
+      authSocket.on(`${user._id}:notification:read`, (data) => {
+        setNewNoti(true);
+        setNotification((prev) => ({ ...data.lastNotification, ...prev }));
+      });
+    }
+  }, [connected, isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (user.role === "USER") getNotifications();
+      getConversations();
+    } else {
+      setConversations([]);
+    }
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -179,6 +215,8 @@ export const AppLayoutStore = ({ children }) => {
         setMessageContent,
         sendMessage,
         loadMessage,
+        notifications,
+        setNotification,
       }}
     >
       {children}

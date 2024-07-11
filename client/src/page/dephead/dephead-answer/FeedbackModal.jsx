@@ -3,6 +3,7 @@ import ModalLayout from "../../../template/modal-layout";
 import { DepheadAnswerContext } from "./DepheadAnswerStore";
 import MyRichText from "../../../atom/my-rich-text";
 import MyButton from "../../../atom/my-button";
+import ModalLayout2 from "../../../template/modal-layout-2";
 
 export const FeedbackModal = () => {
   const {
@@ -14,10 +15,10 @@ export const FeedbackModal = () => {
   } = useContext(DepheadAnswerContext);
 
   return (
-    <ModalLayout
+    <ModalLayout2
       hidden={hiddenFeedback}
-      onClose={() => setHiddenFeedback(true)}
-      title={"Feedback"}
+      setHidden={setHiddenFeedback}
+      text={"Feedback cho tư vấn viên"}
     >
       <div className="w-72 mt-2">
         <MyRichText
@@ -34,6 +35,6 @@ export const FeedbackModal = () => {
           Từ chối
         </MyButton>
       </div>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };

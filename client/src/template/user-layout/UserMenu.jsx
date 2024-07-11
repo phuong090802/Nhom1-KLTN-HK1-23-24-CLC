@@ -20,12 +20,12 @@ import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import default_avatar from "../../assets/image/default_avatar.png";
-import { colors, links } from "../../constance";
+import { colors, darkModeCss, links } from "../../constance";
 import { logoutSv } from "../../service/public/auth.sv";
 import { DataContext } from "../../store/DataProvider";
 
 export const UserMenu = () => {
-  const { user, removeUserData } = useContext(DataContext);
+  const { user, removeUserData, darkMode } = useContext(DataContext);
   const navigate = useNavigate();
 
   const itemList = {
@@ -122,6 +122,7 @@ export const UserMenu = () => {
         icon: <Newspaper color={colors.primary} />,
       },
     ],
+    SUPERVISOR: [],
   };
 
   const handleLogout = async () => {
@@ -137,33 +138,45 @@ export const UserMenu = () => {
   };
 
   return (
-    <div className="pt-4 rounded-xl shadow-black50 shadow-lg h-full border overflow-hidden">
-      <div className="flex w-full gap-2 items-center flex-col h-full justify-between">
+    <div
+      className={clsx(
+        "pt-4 rounded-xl shadow-black50 shadow-lg min-h-[87vh] border overflow-hidden",
+        darkMode && darkModeCss
+      )}
+    >
+      <div className="flex w-full gap-2 items-center flex-col min-h-[87vh] justify-between">
         <div className="w-full px-4 flex flex-col gap-4">
           <div className="py-2 px-4 flex items-center gap-2 bg-primary/20 rounded-xl">
             <img
-              src={default_avatar}
+              src={user?.avatar || default_avatar}
               alt="user_avatar"
               className="w-12 h-12 rounded-full"
             />
             <div className="w-3/4 break-words">
               <p className="font-bold ">{user.fullName}</p>
-              <p className="text-xs text-ellipsis">{user.email}</p>
+              <p className="text-xs text-ellipsis">
+                {user.role === "USER"
+                  ? user.email
+                  : user?.department?.departmentName}
+              </p>
             </div>
           </div>
           {itemList.USER.map((item) => {
             return (
-              <MenuButton
-                key={item.link}
-                icon={item.icon}
-                text={item.title}
-                link={item.link}
-              />
+              (user.role === "USER" || item.link !== links.user.history) && (
+                <MenuButton
+                  key={item.link}
+                  icon={item.icon}
+                  text={item.title}
+                  link={item.link}
+                />
+              )
             );
           })}
           <span className="border"></span>
-          {user.role &&
-            user.role !== "USER" &&
+          {user.role && user.role === "USER" ? (
+            <></>
+          ) : (
             itemList[user.role].map((item) => {
               return (
                 <MenuButton
@@ -173,7 +186,8 @@ export const UserMenu = () => {
                   link={item.link}
                 />
               );
-            })}
+            })
+          )}
         </div>
         <div className="w-full">
           <div className="mx-4 py-2 mb-2 border-y border-primary/20 ">

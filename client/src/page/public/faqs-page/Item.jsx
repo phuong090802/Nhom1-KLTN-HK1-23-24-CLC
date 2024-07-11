@@ -20,7 +20,9 @@ export const Item = ({ data }) => {
       isSelected={data._id === selected}
     >
       <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-        <MessageCircleReply color={colors.black75} />
+        <div>
+          <MessageCircleReply color={colors.black75} />
+        </div>
         <div>
           <h1 className="font-bold text-black75">Phản hồi</h1>
           <p dangerouslySetInnerHTML={{ __html: data?.answer }}></p>

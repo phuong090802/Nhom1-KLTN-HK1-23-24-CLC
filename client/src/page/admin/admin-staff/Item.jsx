@@ -4,14 +4,18 @@ import { colors } from "../../../constance";
 import ItemLayout from "../../../template/item-layout";
 import { getRoleName } from "../../../util/user.util";
 import { AdminStaffContext } from "./AdminStaffStore";
+import { DataContext } from "../../../store";
+import clsx from "clsx";
 
 export const Item = ({ text, data }) => {
   const { selectedUser, setSelectedUser, updateUser } =
     useContext(AdminStaffContext);
 
+  const { darkMode } = useContext(DataContext);
+
   const cells = useMemo(() => {
     const iconProps = {
-      color: colors.black75,
+      color: darkMode ? "#fff" : colors.black75,
       size: 18,
     };
     return [
@@ -31,7 +35,7 @@ export const Item = ({ text, data }) => {
         content: data.role ? getRoleName(data.role) : "Chưa cập nhật",
       },
     ];
-  }, [data]);
+  }, [data, darkMode]);
 
   const handleExpand = () => {
     const isExpanded = selectedUser === data._id;
@@ -65,13 +69,29 @@ export const Item = ({ text, data }) => {
 };
 
 const Cell = ({ icon, title, content }) => {
+  const { darkMode } = useContext(DataContext);
+
   return (
     <div className="flex flex-row gap-16">
       <span className="flex flex-row items-center w-40">
-        {icon}{" "}
-        <p className="text-base ml-1 font-semibold text-black75">{title}</p>
+        {icon}
+        <p
+          className={clsx(
+            "text-base ml-1 font-semibold",
+            darkMode ? "text-white" : " text-black75"
+          )}
+        >
+          {title}
+        </p>
       </span>
-      <p className="text-base font-semibold text-black75">{content}</p>
+      <p
+        className={clsx(
+          "text-base font-semibold text-black75",
+          darkMode ? "text-white" : " text-black75"
+        )}
+      >
+        {content}
+      </p>
     </div>
   );
 };

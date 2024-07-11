@@ -1,4 +1,11 @@
+import { AdminHomeContent } from "./AdminHomeContent";
+import { AdminHomeStore } from "./AdminHomeStore";
+
 const AdminHome = () => {
-  return <div className="bg-red-200">AdminHome</div>;
+  return (
+    <AdminHomeStore>
+      <AdminHomeContent />
+    </AdminHomeStore>
+  );
 };
 export default AdminHome;

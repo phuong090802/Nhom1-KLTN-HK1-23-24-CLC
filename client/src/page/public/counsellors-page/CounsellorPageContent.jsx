@@ -6,11 +6,16 @@ import Pagination from "../../../molecule/pagination";
 import useDepartmentField from "../../../hooks/useDepartmentField";
 import { initSort } from "./constance";
 import { Building2 } from "lucide-react";
+import clsx from "clsx";
+import { darkModeCss } from "../../../constance";
+import { DataContext } from "../../../store";
 
 export const CounsellorPageContent = () => {
   const { counsellors, pages, params, setParams } = useContext(
     CounsellorPageContext
   );
+
+  const { darkMode } = useContext(DataContext);
 
   const [sortFilterData, setSortFilterData] = useState({ sort: initSort });
 
@@ -40,9 +45,20 @@ export const CounsellorPageContent = () => {
         sortFilterData={sortFilterData}
       />
       <div className="mt-2 flex flex-col gap-2">
-        {counsellors.map((counsellor) => (
-          <Item key={counsellor._id} data={counsellor} />
-        ))}
+        {counsellors?.length === 0 ? (
+          <div
+            className={clsx(
+              "px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center",
+              darkMode ? darkModeCss : "bg-white"
+            )}
+          >
+            <p className="text-black50">Không có dữ liệu !!!</p>
+          </div>
+        ) : (
+          counsellors.map((counsellor) => (
+            <Item key={counsellor._id} data={counsellor} />
+          ))
+        )}
       </div>
       <div className=" mt-2 flex justify-center">
         <Pagination page={params.page} pages={pages} setParams={setParams} />

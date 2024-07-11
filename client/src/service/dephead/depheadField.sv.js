@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import API from "../api.sv";
 import { authorHeader } from "../serviceHeader";
 
@@ -14,5 +15,10 @@ const depheadUpdateFieldStatusSv = (fieldId, data) => {
   });
 };
 
+const depheadAddFieldSv = (data) => {
+  return API.post("department-head/fields", data, {
+    headers: authorHeader(),
+  });
+};
 
-export { depheadGetFieldsSv, depheadUpdateFieldStatusSv };
+export { depheadGetFieldsSv, depheadUpdateFieldStatusSv, depheadAddFieldSv };

@@ -77,10 +77,12 @@ export const AddFaqForm = () => {
           value={submitData.question}
           onChange={(e) => handleQuestionChange(e.target.value)}
           icon={<Type size={24} color={colors.black50} />}
+          className=""
         />
         <MyRichText
           editorState={submitAnswer}
           setEditorState={setSubmitAnswer}
+          className={"border-2 h-[150px] px-0"}
         />
         <MyFileInput onChange={handleFileChange} value={submitData.file} />
       </div>

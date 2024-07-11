@@ -6,9 +6,14 @@ import Pagination from "../../../molecule/pagination";
 import useDepartmentField from "../../../hooks/useDepartmentField";
 import { Building2 } from "lucide-react";
 import { initSort } from "./constance";
+import clsx from "clsx";
+import { darkModeCss } from "../../../constance";
+import { DataContext } from "../../../store";
 
 export const FaqsPageContent = () => {
   const { faqs, params, setParams, pages } = useContext(FaqsPageContext);
+
+  const { darkMode } = useContext(DataContext);
 
   const [sortFilterData, setSortFilterData] = useState({ sort: initSort });
 
@@ -38,9 +43,22 @@ export const FaqsPageContent = () => {
         sortFilterData={sortFilterData}
       />
       <div className="mt-2 flex flex-col gap-2">
-        {faqs.map((faq) => (
-          <Item key={faq._id} data={faq} />
-        ))}
+        {faqs?.length === 0 ? (
+          <div
+            className={clsx(
+              "px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center",
+              darkMode ? darkModeCss : "bg-white"
+            )}
+          >
+            <p className="text-black50">Không có câu hỏi nào !!!</p>
+          </div>
+        ) : (
+          faqs.map((faq) => (
+            <>
+              <Item key={faq._id} data={faq} />
+            </>
+          ))
+        )}
       </div>
       <div className="flex justify-center items-center mt-2 mb-4">
         <Pagination page={params.page} pages={pages} setParams={setParams} />

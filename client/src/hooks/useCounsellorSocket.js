@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { counsellorSocket } from "../socket/cousellor.socket";
 import { refreshTokenSv } from "../service/public/auth.sv";
 import Cookies from "js-cookie";
-export const useCounsellorSocket = () => {
+const useCounsellorSocket = () => {
   const [connected, setConnected] = useState(counsellorSocket.connected);
 
   useEffect(() => {
@@ -55,3 +55,5 @@ export const useCounsellorSocket = () => {
     counsellorSocket,
   };
 };
+
+export { useCounsellorSocket };

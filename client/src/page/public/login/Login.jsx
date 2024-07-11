@@ -23,7 +23,12 @@ const Login = () => {
           >
             Đăng ký
           </p>
-          <p className="hover:text-primary/75 cursor-pointer">Quên mật khẩu</p>
+          <p
+            className="hover:text-primary/75 cursor-pointer"
+            onClick={() => navigate(links.public.forgotPassword)}
+          >
+            Quên mật khẩu
+          </p>
         </div>
       </div>
     </div>

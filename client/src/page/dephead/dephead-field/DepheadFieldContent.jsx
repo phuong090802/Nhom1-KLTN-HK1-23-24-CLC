@@ -5,6 +5,7 @@ import { DepheadFieldContext } from "./DepheadFieldStore";
 import Pagination from "../../../molecule/pagination";
 import SortFilterModal from "../../../organism/sort-filter-modal";
 import { DepheadAddFIeldModal } from "./DepheadAddFIeldModal";
+import { DepheadFieldTable } from "./DepheadFieldTable";
 
 export const DepheadFieldContent = () => {
   const {
@@ -31,6 +32,7 @@ export const DepheadFieldContent = () => {
         setParams={setParams}
         sorts={sort}
         filters={filter}
+        modalTitle={"Lọc & Sắp xếp"}
       />
       <StaffTitleBar
         title={"Quản lý lĩnh vực"}
@@ -39,19 +41,25 @@ export const DepheadFieldContent = () => {
         onAdd={() => setHiddenAddField(false)}
       />
       <div className="mt-2 grid gap-2">
-        {fields &&
-          fields.map((field) => {
-            return (
-              <Item
-                key={field._id}
-                fieldName={field.fieldName}
-                status={field.isActive}
-                onStatus={() =>
-                  updateFieldStatus(field._id, { isActive: !field.isActive })
-                }
-              />
-            );
-          })}
+        {fields?.length === 0 ? (
+          <div className="flex w-full justify-center border py-20 rounded-xl bg-white shadow-lg shadow-black75 text-lg font-bold">
+            Không có dữ liệu!!
+          </div>
+        ) : (
+          // fields.map((field) => {
+          //   return (
+          //     <Item
+          //       key={field._id}
+          //       fieldName={field.fieldName}
+          //       status={field.isActive}
+                // onStatus={() =>
+                //   updateFieldStatus(field._id, { isActive: !field.isActive })
+                // }
+          //     />
+          //   );
+          // })
+          <DepheadFieldTable />
+        )}
       </div>
       <div className="flex justify-center mt-4">
         <Pagination page={params.page} setParams={setParams} pages={pages} />

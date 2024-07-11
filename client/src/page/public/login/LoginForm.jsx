@@ -54,7 +54,7 @@ const LoginForm = () => {
 
   return (
     <div className="px-8 pb-8 w-96">
-      <MyForm formInitData={formInitData} onSubmit={loginSubmit} />
+      <MyForm formInitData={formInitData} onSubmit={loginSubmit} submitTitle={"Đăng nhập"}/>
     </div>
   );
 };

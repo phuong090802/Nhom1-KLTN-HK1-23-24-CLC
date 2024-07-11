@@ -1,26 +1,34 @@
 import MyButton from "../../atom/my-button";
 import { CirclePlus } from "lucide-react";
-import { colors } from "../../constance";
+import { colors, darkModeCss } from "../../constance";
 import Search from "../../atom/search/Search";
 import { ListFilter } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
+import { DataContext } from "../../store";
+import clsx from "clsx";
 
 const StaffTitleBar = ({ title, setParams, onSearchFilter, onAdd }) => {
   const handleSortFilter = useCallback(() => {
     if (onSearchFilter) onSearchFilter();
   }, [onSearchFilter]);
 
+  const { darkMode } = useContext(DataContext);
   const handleAdd = useCallback(() => {
     if (onAdd) onAdd();
   }, [onAdd]);
 
   return (
-    <div className="h-12 bg-primary/10 rounded-2xl px-4 text-black flex justify-between items-center shadow-black50 shadow-lg">
+    <div
+      className={clsx(
+        "h-12 rounded-2xl px-4 text-black75 flex justify-between items-center shadow-black50 shadow-lg",
+        darkMode ? darkModeCss : "bg-gray-100"
+      )}
+    >
       <h1 className=" text-lg font-bold ">{title || "Tiêu đề"}</h1>
       <div className="flex items-center justify-center gap-2">
         <div>
           <ListFilter
-            color={colors.black75}
+            color={darkMode ? "#fff" : colors.black75}
             onClick={handleSortFilter}
             className="cursor-pointer"
           />

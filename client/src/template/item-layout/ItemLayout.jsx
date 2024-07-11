@@ -5,12 +5,14 @@ import {
   LockKeyhole,
   Pencil,
   Trash2,
+  Info,
 } from "lucide-react";
 import default_avatar from "../../assets/image/default_avatar.png";
 import MyButton from "../../atom/my-button";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import clsx from "clsx";
 import { darkModeCss } from "../../constance";
+import { DataContext } from "../../store";
 
 const ItemLayout = ({
   children,
@@ -23,9 +25,22 @@ const ItemLayout = ({
   onStatus,
   onEdit,
   onDelete,
+  onInfor,
   extraInforComponent,
-  darkMode,
+  
 }) => {
+  const { darkMode } = useContext(DataContext);
+  const inforButton = useMemo(() => {
+    const props = {
+      className: "bg-primary hover:bg-primary/75 duration-500",
+      size: "icon",
+    };
+    return (
+      <MyButton {...props} onClick={onInfor}>
+        <Info color="#fff" />
+      </MyButton>
+    );
+  }, [onInfor]);
   const editButton = useMemo(() => {
     const props = {
       className: "bg-warning hover:bg-warning/75 duration-500",
@@ -85,8 +100,8 @@ const ItemLayout = ({
   return (
     <div
       className={clsx(
-        "bg-white px-4 shadow-black50 shadow-lg py-4 rounded-2xl",
-        darkMode && darkModeCss
+        "px-4 shadow-black50 shadow-lg py-4 rounded-2xl",
+        darkMode ? darkModeCss : "bg-white"
       )}
     >
       <div className=" flex justify-between">
@@ -124,6 +139,7 @@ const ItemLayout = ({
         </div>
         <div className="flex items-center gap-2">
           {onEdit && editButton}
+          {onInfor && inforButton}
           {status !== undefined && statusButton}
           {onExpand && expandButton}
           {onDelete && deleteButton}

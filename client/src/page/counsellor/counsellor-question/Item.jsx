@@ -4,6 +4,8 @@ import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import { MessageCircleQuestion } from "lucide-react";
 import { colors } from "../../../constance";
 import MyButton from "../../../atom/my-button";
+import { DataContext } from "../../../store";
+import clsx from "clsx";
 
 export const Item = ({ data }) => {
   const {
@@ -13,6 +15,8 @@ export const Item = ({ data }) => {
     setHiddenForwardModal,
     setSelectedQuestion,
   } = useContext(CounsellorQuestionContext);
+
+  const { darkMode } = useContext(DataContext);
 
   const handleExpand = () => {
     if (selected !== data._id) setSelected(data._id);
@@ -37,10 +41,14 @@ export const Item = ({ data }) => {
     >
       <div>
         <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-          <MessageCircleQuestion color={colors.black75} />
+          <MessageCircleQuestion color={darkMode ? "#fff" : colors.black75} />
           <div>
-            <h1 className="font-bold text-black75">Câu hỏi</h1>
-            <p>{data.content}</p>
+            <h1
+              className={clsx("font-bold", darkMode ? "#fff" : "text-black75")}
+            >
+              Câu hỏi
+            </h1>
+            <p dangerouslySetInnerHTML={{ __html: data.content }} />
           </div>
         </div>
         <div className="mt-2 w-full flex flex-row-reverse gap-2">

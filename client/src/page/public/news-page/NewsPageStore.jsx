@@ -9,6 +9,10 @@ export const NewsPageContext = createContext({
   params: Number,
   setParams: Function,
   pages: Number,
+  hiddenDetailNewsModal: Boolean,
+  setHiddenDetailNewsModal: Function,
+  selectedNews: Object,
+  setSelectedNews: Function,
 });
 
 export const NewsPageStore = ({ children }) => {
@@ -19,6 +23,10 @@ export const NewsPageStore = ({ children }) => {
   const [pages, setPages] = useState(0);
 
   const [params, setParams] = useState(initParams);
+
+  const [hiddenDetailNewsModal, setHiddenDetailNewsModal] = useState(true);
+
+  const [selectedNews, setSelectedNews] = useState(null);
 
   const getNews = async () => {
     try {
@@ -36,7 +44,18 @@ export const NewsPageStore = ({ children }) => {
 
   return (
     <NewsPageContext.Provider
-      value={{ listNews, selected, setSelected, pages, params, setParams }}
+      value={{
+        listNews,
+        selected,
+        setSelected,
+        pages,
+        params,
+        setParams,
+        hiddenDetailNewsModal,
+        setHiddenDetailNewsModal,
+        selectedNews,
+        setSelectedNews,
+      }}
     >
       {children}
     </NewsPageContext.Provider>

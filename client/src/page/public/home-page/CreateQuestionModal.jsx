@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import MyFileInput from "../../../atom/my-file-input";
 
 export const CreateQuestionModal = ({ hidden }) => {
-  const { hiddenCreateQuestion, setHiddenCreateQuestion } =
+  const { hiddenCreateQuestion, setHiddenCreateQuestion, file, setFile } =
     useContext(HomePageContext);
 
   const [submitQuestion, setSubmitQuestion] = useState(
@@ -24,6 +24,10 @@ export const CreateQuestionModal = ({ hidden }) => {
   const { authSocket, connected } = useAuthSocket();
 
   const [title, setTitle] = useState("");
+
+  // useEffect(() => {
+  //   console.log(file?.type || null);
+  // }, [file]);
 
   const {
     deps,
@@ -36,13 +40,35 @@ export const CreateQuestionModal = ({ hidden }) => {
 
   const createQuestion = async () => {
     try {
-      const response = await authSocket.emitWithAck("question:create", {
-        departmentId: selectedDep,
-        fieldId: selectedField,
-        title: draftToHtml(convertToRaw(submitQuestion.getCurrentContent())),
-        content: title,
-      });
-      console.log(response);
+      const submit = file
+        ? {
+            departmentId: selectedDep,
+            fieldId: selectedField,
+            title: title,
+            content: draftToHtml(
+              convertToRaw(submitQuestion.getCurrentContent())
+            ),
+            file: {
+              buffer: file || null,
+              size: file ? file.size : null,
+              mimetype: file ? file.type : null,
+              originalname: file ? file.name : null,
+            },
+          }
+        : {
+            departmentId: selectedDep,
+            fieldId: selectedField,
+            title: title,
+            content: draftToHtml(
+              convertToRaw(submitQuestion.getCurrentContent())
+            ),
+          };
+      const response = await authSocket.emitWithAck("question:create", submit);
+      setTitle("");
+      setSubmitQuestion(EditorState.createEmpty());
+      setSelectedDep(null);
+      setSelectedField(null);
+      setFile(null);
       toast.success(response.message || "Đặt câu hỏi thành công");
     } catch (error) {
       toast.error(error.message || "Lỗi khi đặt câu hỏi");
@@ -88,21 +114,32 @@ export const CreateQuestionModal = ({ hidden }) => {
           </div>
         </div>
       </div>
-      <div className="mt-2 border-y py-2 w-96">
-        <MyInput
-          className="border-x-0 border-t-0 rounded-none border-b pb-2 font-semibold text-black75"
-          placeholder="Tiêu đề câu hỏi"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <MyRichText
-          editorState={submitQuestion}
-          setEditorState={setSubmitQuestion}
-          className={"border-none px-4 h-[150px]"}
-        />
-        {/* <div className="pt-2 px-4 border-t">
-          <MyFileInput />
-        </div> */}
+      <div className="mt-2 py-2 w-[28rem]">
+        <div className="px-4">
+          <MyInput
+            className="font-semibold text-black75 rounded-none border-0 border-b-2 px-0"
+            placeholder="Tiêu đề câu hỏi"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="px-4 mt-2">
+          <MyRichText
+            editorState={submitQuestion}
+            setEditorState={setSubmitQuestion}
+            className={"border-2 h-[150px] px-0"}
+            placeholder={"Nhập nội dung câu hỏi ..."}
+          />
+        </div>
+        <div className="pt-2 px-4">
+          <MyFileInput
+            value={file}
+            onChange={(file) => {
+              setFile(file);
+            }}
+            accept="image/png, image/gif, image/jpeg"
+          />
+        </div>
       </div>
       <div className="p-2">
         <MyButton

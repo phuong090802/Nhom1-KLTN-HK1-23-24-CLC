@@ -23,9 +23,9 @@ const useDepartmentField = () => {
           value: data._id,
         };
       });
-      setDeps([{ key: "Chọn khoa", value: "null" }, ...convertData]);
+      setDeps([{ key: "Chọn khoa", value: null }, ...convertData]);
     } catch (error) {
-      console.log(error);
+      console.log("error", error);
     }
   };
 

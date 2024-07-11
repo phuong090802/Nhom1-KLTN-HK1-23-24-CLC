@@ -21,8 +21,8 @@ const MyFileInput: FC<InputProps> = ({ type, onChange, value, ...props }) => {
 
   return (
     <div className="border-2 border-black10 flex justify-between rounded-lg overflow-hidden">
-      <div className="py-1 text-md pl-4">{fileName}</div>
-      <div
+      <p className="py-1 text-md pl-4 truncate max-w-72">{fileName}</p>
+      <button
         className="bg-primary text-white py-1 px-2 text-md hover:cursor-pointer"
         onClick={() => {
           inputRef.current?.click();
@@ -36,7 +36,7 @@ const MyFileInput: FC<InputProps> = ({ type, onChange, value, ...props }) => {
           onChange={handleChange}
           {...props}
         />
-      </div>
+      </button>
     </div>
   );
 };

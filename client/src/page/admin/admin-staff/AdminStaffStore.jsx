@@ -22,6 +22,8 @@ export const AdminStaffContext = createContext({
   setFilter: Function,
   sort: Array,
   setSort: Function,
+  hiddenAddStaffModal: Boolean,
+  setHiddenAddStaffModal: Function,
 });
 
 export const AdminStaffStore = ({ children }) => {
@@ -38,6 +40,8 @@ export const AdminStaffStore = ({ children }) => {
   const [filter, setFilter] = useState(initFilter);
 
   const [sort, setSort] = useState(initSort);
+
+  const [hiddenAddStaffModal, setHiddenAddStaffModal] = useState(true);
 
   const getUser = async () => {
     try {
@@ -80,6 +84,8 @@ export const AdminStaffStore = ({ children }) => {
         setFilter,
         sort,
         setSort,
+        hiddenAddStaffModal,
+        setHiddenAddStaffModal,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import ModalLayout from "../../../template/modal-layout/ModalLayout";
+import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
 import { DepheadFaqContext } from "./DepheadFaqStore";
 import { AddFaqForm } from "./AddFaqForm";
 import { getMyFieldsSv } from "../../../service/counsellor/counsellorField.sv";
@@ -31,14 +31,14 @@ export const AddFaqModal = () => {
   }, []);
 
   return (
-    <ModalLayout
+    <ModalLayout2
       hidden={hiddenAddFaq}
-      onClose={() => setHiddenAddFaq(true)}
-      title={"Thêm Faq"}
+      setHidden={setHiddenAddFaq}
+      text={"Thêm Faq"}
     >
       <AddFaqModalContext.Provider value={{ fieldData }}>
         <AddFaqForm />
       </AddFaqModalContext.Provider>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };

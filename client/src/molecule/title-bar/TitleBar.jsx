@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Search from "../../atom/search";
 import { SortFilter } from "./SortFilter";
+import { DataContext } from "../../store";
+import clsx from "clsx";
+import { darkModeCss } from "../../constance";
 
 const TitleBar = ({ title, sortFilterData, setParams }) => {
+  const { darkMode } = useContext(DataContext);
   return (
-    <div className="px-4 py-1 bg-white rounded-xl border shadow-lg shadow-black50 flex flex-row justify-between items-center">
+    <div
+      className={clsx(
+        "px-4 py-1 rounded-xl shadow-lg border flex flex-row justify-between items-center",
+        darkMode ? darkModeCss : "bg-white"
+      )}
+    >
       <p className="text-lg font-bold ">{title || "Title"}</p>
       <div className="inline-flex items-center gap-2">
         {sortFilterData && (

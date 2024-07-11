@@ -1,10 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
+  depheadAddFieldSv,
   depheadGetFieldsSv,
-  depheadUpdateFieldStatusSv,
+  depheadUpdateFieldStatusSv
 } from "../../../service/dephead/depheadField.sv";
 import { initFilter, initParams, initSort } from "./constance";
-import { toast } from "sonner";
 
 export const DepheadFieldContext = createContext({
   fields: Array,
@@ -22,6 +23,7 @@ export const DepheadFieldContext = createContext({
   setFilter: Function,
   hiddenAddField: Boolean,
   setHiddenAddField: Function,
+  addField: Function
 });
 export const DepheadFieldStore = ({ children }) => {
   const [fields, setFields] = useState([]);
@@ -58,6 +60,16 @@ export const DepheadFieldStore = ({ children }) => {
     }
   };
 
+  const addField = async (data) => {
+    try {
+      const response = await depheadAddFieldSv(data);
+      toast.success(response?.message || "Thêm lĩnh vực thành công");
+      getFields();
+    } catch (error) {
+      toast.error(error?.message || "Lỗi khi thêm lĩnh vực");
+    }
+  };
+
   useEffect(() => {
     getFields();
   }, [params]);
@@ -80,6 +92,7 @@ export const DepheadFieldStore = ({ children }) => {
         setFilter,
         hiddenAddField,
         setHiddenAddField,
+        addField
       }}
     >
       {children}

@@ -51,7 +51,7 @@ const FloatInput: FC<InputProps> = ({
           value={value}
           name={name}
           id={name}
-          className={`absolute w-full outline-none text-base border-2 rounded-lg bg-transparent transition-all h-10 px-4 `}
+          className={`absolute w-full outline-none text-base border-2 rounded-lg bg-transparent transition-all h-10 px-4`}
           onFocus={() => setFocused(true)}
           onBlur={(e) => handleBlur(e)}
         />

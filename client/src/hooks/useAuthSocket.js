@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authSocket } from "../socket/auth.socket";
 import { refreshTokenSv } from "../service/public/auth.sv";
 import Cookies from "js-cookie";
+import { DataContext } from "../store";
 
 export const useAuthSocket = () => {
   const [connected, setConnected] = useState(authSocket.connected);
 
+  const { isLoggedIn } = useContext(DataContext);
+
+
   useEffect(() => {
-    if (!connected) {
+    if (!connected && isLoggedIn) {
       authSocket.connect();
+    } else if (!isLoggedIn) {
+      authSocket.close();
+      setConnected(false)
     }
-  }, [connected]);
+  }, [connected, isLoggedIn]);
 
   useEffect(() => {
     const onConnect = () => {
@@ -47,7 +54,7 @@ export const useAuthSocket = () => {
       authSocket.off("connect", onConnect);
       authSocket.off("disconnect", onDisconnect);
     };
-  }, []);
+  }, [isLoggedIn]);
 
   return {
     connected,

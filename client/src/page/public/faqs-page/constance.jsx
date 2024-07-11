@@ -3,7 +3,6 @@ import { Clock } from "lucide-react";
 const initParams = {
   search: ["question"],
   keyword: "",
-  keyword: null,
   page: 1,
   size: 5,
   filter: {

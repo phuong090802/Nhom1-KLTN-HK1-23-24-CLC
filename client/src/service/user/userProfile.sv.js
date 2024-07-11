@@ -1,6 +1,6 @@
 import { data } from "autoprefixer";
 import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import { authorHeader, createHeader } from "../serviceHeader";
 
 const updateProfileSv = (data) => {
   return API.put("users", data, {
@@ -26,4 +26,16 @@ const requestVerifySv = (data) => {
   });
 };
 
-export { updateProfileSv, passwordChangeSv, verifyOtpSv, requestVerifySv };
+const changeAvatarSv = (data) => {
+  return API.patch("users", data, {
+    headers: createHeader(["authorization", "formDataType"]),
+  });
+};
+
+export {
+  updateProfileSv,
+  passwordChangeSv,
+  verifyOtpSv,
+  requestVerifySv,
+  changeAvatarSv,
+};

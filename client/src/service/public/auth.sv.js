@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import API from "../api.sv";
 import { authorHeader } from "../serviceHeader";
 
@@ -5,6 +6,10 @@ const loginSv = (data) => {
   return API.post("auth/login", data, {
     withCredentials: true,
   });
+};
+
+const registerSv = (data) => {
+  return API.post("auth/register", data, {});
 };
 
 const getMeSv = () => {
@@ -24,7 +29,34 @@ const refreshTokenSv = () => {
 };
 
 const logoutSv = () => {
-  return API.post("auth/logout");
+  return API.post(
+    "auth/logout",
+    {},
+    {
+      withCredentials: true,
+    }
+  );
 };
 
-export { loginSv, getMeSv, refreshTokenSv, logoutSv };
+const forgotPasswordSv = (data) => {
+  return API.post("auth/forgot-password", data, {});
+};
+
+const OTPConfirmSv = (data) => {
+  return API.post("auth/verify-otp", data, {});
+};
+
+const resetPasswordSv = (token, data) => {
+  return API.post(`auth/reset-password/${token}`, data, {});
+};
+
+export {
+  loginSv,
+  getMeSv,
+  refreshTokenSv,
+  logoutSv,
+  registerSv,
+  forgotPasswordSv,
+  OTPConfirmSv,
+  resetPasswordSv,
+};

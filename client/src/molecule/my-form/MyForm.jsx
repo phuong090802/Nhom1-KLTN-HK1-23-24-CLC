@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useImperativeHandle, useState } from "react";
 import FloatInput from "../../atom/float-input";
 import MyButton from "../../atom/my-button";
 import { createFormInitData, ruleValidators } from "./constance";
-import { toast } from "sonner";
 
 const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
   const [loading, setLoading] = useState(false);
@@ -64,7 +63,8 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
       //Submit
       if (isValid) {
         try {
-          await onSubmit(formData);
+          const response = await onSubmit(formData);
+          console.log(response);
           setFormData(initData);
         } catch (error) {}
       }
@@ -75,8 +75,12 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
     }
   };
 
+  // useImperativeHandle(ref, () => ({
+  //   resetFormData: () => setFormData(initData),
+  // }));
+
   return (
-    <form className="w-full" id={formInitData.id}>
+    <form className="w-full" id={formInitData.id} >
       {formInitData.inputs.map((input) => {
         return (
           <FloatInput

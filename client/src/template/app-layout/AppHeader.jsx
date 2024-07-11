@@ -16,6 +16,7 @@ import { colors, darkModeCss, links } from "../../constance";
 import { getMeSv } from "../../service/public/auth.sv";
 import { DataContext } from "../../store";
 import { ConversationsButton } from "./ConversationsButton";
+import { NotiButton } from "./NotiButton";
 
 export const AppHeader = () => {
   const { isLoggedIn, setIsLoggedIn, setUser, darkMode } =
@@ -37,8 +38,8 @@ export const AppHeader = () => {
   return (
     <div
       className={clsx(
-        "bg-white border-b border-black10 grid grid-cols-3 px-4",
-        darkMode && darkModeCss
+        "border-b border-black10 grid grid-cols-3 px-4",
+        darkMode ? darkModeCss : "bg-white "
       )}
     >
       <Logo />
@@ -130,37 +131,23 @@ const NotiMessageArea = () => {
       <div className="flex items-center flex-row-reverse gap-2">
         {isLoggedIn ? (
           <>
-            <div
-              className={clsx(
-                "w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer",
-                darkMode && "bg-white/10"
-              )}
-            >
-              <Bell />
-            </div>
+            <NotiButton />
             <ConversationsButton />
-            <div
+            {/* <div
               className={clsx(
                 "w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer",
                 darkMode && "bg-white/10"
               )}
             >
-              {darkMode ? (
-                <Sun
-                  onClick={() => {
-                    console.log(darkMode);
-                    setDarkMode((prev) => !prev);
-                  }}
-                />
-              ) : (
-                <Moon
-                  onClick={() => {
-                    console.log(darkMode);
-                    setDarkMode((prev) => !prev);
-                  }}
-                />
-              )}
-            </div>
+              <button
+                onClick={() => {
+                  console.log(darkMode);
+                  setDarkMode((prev) => !prev);
+                }}
+              >
+                {darkMode ? <Sun /> : <Moon />}
+              </button>
+            </div> */}
           </>
         ) : (
           <div className="flex justify-end gap-2 items-center">

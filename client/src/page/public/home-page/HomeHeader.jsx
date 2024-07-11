@@ -2,9 +2,22 @@ import React, { useContext } from "react";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import MyButton from "../../../atom/my-button";
 import { HomePageContext } from "./HomePageStore";
+import { DataContext } from "../../../store";
+import { toast } from "sonner";
 
 export const HomeHeader = () => {
   const { setHiddenCreateQuestion } = useContext(HomePageContext);
+  const { isLoggedIn, user } = useContext(DataContext);
+
+  const handleCreateButtonClick = () => {
+    if (!isLoggedIn) {
+      toast.warning("Vui lòng đăng nhập để đặt câu hỏi !!");
+    } else if (user.role !== "USER") {
+      toast.warning("Chỉ có người dùng mới được đặt câu hỏi");
+    } else {
+      setHiddenCreateQuestion(false);
+    }
+  };
 
   return (
     <div className="px-4 py-4 rounded-xl shadow-black50 shadow-lg mt-2 border">
@@ -20,7 +33,7 @@ export const HomeHeader = () => {
         <MyButton
           className="bg-primary hover:bg-primary/75"
           size={"md"}
-          onClick={() => setHiddenCreateQuestion(false)}
+          onClick={handleCreateButtonClick}
         >
           <p className="font-bold">Đặt câu hỏi</p>
         </MyButton>

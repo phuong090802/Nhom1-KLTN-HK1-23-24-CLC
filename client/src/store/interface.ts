@@ -8,6 +8,10 @@ export interface iContextValue {
   removeUserData: Function;
   darkMode: Boolean;
   setDarkMode: Function;
+  setNewMessage: Function;
+  newMessage: Boolean;
+  setNewNoti: Function;
+  newNoti: Boolean;
 }
 
 export interface iUser {

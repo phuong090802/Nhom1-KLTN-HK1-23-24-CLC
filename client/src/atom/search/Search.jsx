@@ -1,17 +1,21 @@
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { DataContext } from "../../store";
 
 const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
   const [key, setKey] = useState("");
 
   const timeOutId = useRef();
 
+  const { darkMode } = useContext(DataContext);
+
   const handleChange = (e) => {
     setKey(e.target.value);
   };
 
   const handleSearch = () => {
+    console.log(key);
     if (setParams) {
       clearTimeout(timeOutId.current);
       timeOutId.current = setTimeout(() => {
@@ -25,14 +29,15 @@ const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
   }, [key]);
 
   return (
-    <div className={clsx("relative z-[1]", boxStyle)}>
+    <div className={clsx("relative z-[1] ", boxStyle)}>
       <input
         value={key}
         onChange={(e) => handleChange(e)}
         type="text"
         className={clsx(
-          "outline-none h-10 bg-black10 px-4 rounded-2xl text-black75 pr-9",
-          inputStyle
+          "outline-none h-10 px-4 rounded-2xl text-black75 pr-9  overflow-hidden",
+          inputStyle,
+          darkMode ? "bg-white" : "bg-black10"
         )}
         placeholder={placeholder || "Tìm kiếm"}
       />

@@ -9,12 +9,18 @@ import {
   getFieldListSv,
 } from "../../../service/public/department.sv";
 import ModalLayout from "../../../template/modal-layout";
+import ModalLayout2 from "../../../template/modal-layout-2";
 import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import { forwardQuestionSv } from "../../../service/counsellor/counsellorQuestion.sv";
 
 export const ForwardQuestionModal = () => {
-  const { hiddenForwardModal, setHiddenForwardModal, selectedQuestion } =
-    useContext(CounsellorQuestionContext);
+  const {
+    hiddenForwardModal,
+    setHiddenForwardModal,
+    selectedQuestion,
+    setHiddenDetailQuestionModal,
+    getQuestions,
+  } = useContext(CounsellorQuestionContext);
 
   const [depList, setDepList] = useState([]);
 
@@ -66,9 +72,13 @@ export const ForwardQuestionModal = () => {
         departmentId: selectedDep,
         fieldId: selectedField,
       });
-      console.log(response);
+      setHiddenDetailQuestionModal(true);
+      setHiddenForwardModal(true);
+      getQuestions();
+      toast.success(response?.message || "Chuyển tiếp câu trả lời thành công");
     } catch (error) {
       console.log(error);
+      toast.error(error?.message || "Lỗi khi chuyển tiếp câu hỏi");
     }
   };
 
@@ -81,52 +91,32 @@ export const ForwardQuestionModal = () => {
   }, [selectedDep]);
 
   return (
-    <ModalLayout
-      onClose={() => setHiddenForwardModal(true)}
-      hidden={hiddenForwardModal}
-      title={"Chuyển tiếp câu hỏi"}
-    >
+    <ModalLayout2 setHidden={setHiddenForwardModal} hidden={hiddenForwardModal}>
       <div className="w-96 mt-2">
-        <div className="overflow-hidden rounded-xl border mb-2">
-          <div className="px-4 py-2 max-h-40 overflow-y-auto flex flex-col gap-2">
-            <div className="flex flex-row">
-              <MessageCircleQuestion color={colors.black75} />
-              <h1 className="font-bold text-black75 ml-2">Câu hỏi</h1>
-            </div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: selectedQuestion.content || "Question Not Found",
-              }}
+        <div className="flex flex-col gap-2 border p-4 rounded-lg">
+          <h2 className="text-xl font-semibold text-gray-800">Chuyển đến</h2>
+          <div className="flex-col flex gap-4 h-56">
+            <MySelect
+              variant={"default"}
+              boxHeight={40}
+              placeholder="Chọn khoa"
+              className="w-full "
+              value={selectedDep}
+              data={depList}
+              onChange={(value) => setSelectedDep(value)}
             />
-            <div className="">
-              <p className="text-xs border inline-block px-2 rounded-md bg-light_gray text-black75">
-                {selectedQuestion.field || "unknow field"}
-              </p>
-            </div>
+            <MySelect
+              variant={"default"}
+              boxHeight={40}
+              placeholder="Chọn lĩnh vực"
+              className="w-full"
+              value={selectedField}
+              data={fieldList}
+              onChange={(value) => setSelectedField(value)}
+            />
           </div>
-        </div>
-        <div className="flex flex-col gap-2 border p-4 rounded-lg ">
-          <h1 className="font-semibold text-lg">Chuyển đến:</h1>
-          <MySelect
-            variant={"default"}
-            boxHeight={40}
-            placeholder="Chọn khoa"
-            className="w-full"
-            value={selectedDep}
-            data={depList}
-            onChange={(value) => setSelectedDep(value)}
-          />
-          <MySelect
-            variant={"default"}
-            boxHeight={40}
-            placeholder="Chọn lĩnh vực"
-            className="w-full"
-            value={selectedField}
-            data={fieldList}
-            onChange={(value) => setSelectedField(value)}
-          />
           <MyButton
-            className="bg-warning hover:bg-warning/75 float-right mt-1"
+            className="bg-primary hover:bg-primary/75 float-right mt-1"
             size={"md"}
             onClick={handleFoward}
           >
@@ -137,6 +127,6 @@ export const ForwardQuestionModal = () => {
           </MyButton>
         </div>
       </div>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };

@@ -4,9 +4,12 @@ import { colors } from "../../../constance";
 import { MessageCircleReply, Paperclip, Calendar } from "lucide-react";
 import { NewsPageContext } from "./NewsPageStore";
 import { convertDateTimeToDate } from "../../../util/convert.util";
+import { DataContext } from "../../../store";
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(NewsPageContext);
+
+  const { darkMode } = useContext(DataContext);
 
   const handleExpand = () => {
     if (selected === data._id) setSelected("");
@@ -19,7 +22,7 @@ export const Item = ({ data }) => {
       onExpand={handleExpand}
       extraInforComponent={
         <div className="flex items-center gap-1">
-          <Calendar size={20} color={colors.black75} />
+          <Calendar size={20} color={darkMode ? "#fff" : colors.black75} />
           <p className="text-sm">
             {data?.createdAt
               ? convertDateTimeToDate(data.createdAt)

@@ -7,7 +7,7 @@ const AppLayout = ({ children }) => {
   return (
     <AppLayoutStore>
       <AppLayoutContent />
-      <Toaster position="top-right" duration={5000} richColors closeButton />
+      <Toaster position="bottom-right" duration={5000} richColors closeButton />
       {children}
     </AppLayoutStore>
   );

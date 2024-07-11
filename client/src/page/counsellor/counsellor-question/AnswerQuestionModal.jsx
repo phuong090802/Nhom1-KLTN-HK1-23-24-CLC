@@ -7,6 +7,7 @@ import MyFileInput from "../../../atom/my-file-input";
 import { colors } from "../../../constance";
 import { useCounsellorSocket } from "../../../hooks/useCounsellorSocket";
 import ModalLayout from "../../../template/modal-layout";
+import ModalLayout2 from "../../../template/modal-layout-2";
 import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import draftToHtml from "draftjs-to-html";
 import { toast } from "sonner";
@@ -20,13 +21,13 @@ export const AnswerQuestionModal = () => {
     getQuestions,
   } = useContext(CounsellorQuestionContext);
 
-  const { counsellorSocket } = useCounsellorSocket();
-
   const { authSocket } = useAuthSocket();
 
   const [submitAnswer, setSubmitAnswer] = useState(EditorState.createEmpty());
 
   const [isPrivate, setIsPrivate] = useState(false);
+
+  const [file, setFile] = useState(null);
 
   const handleResponse = async () => {
     if (!isPrivate) normalResponse();
@@ -34,17 +35,25 @@ export const AnswerQuestionModal = () => {
   };
 
   const normalResponse = async () => {
+    const submitFile = file && {
+      buffer: file || null,
+      size: file ? file.size : null,
+      mimetype: file ? file.type : null,
+      originalname: file ? file.name : null,
+    };
+
     const responseData = {
       content: draftToHtml(convertToRaw(submitAnswer.getCurrentContent())),
       questionId: selectedQuestion?._id,
+      file: submitFile,
     };
     try {
-      const response = await counsellorSocket.emitWithAck(
+      const response = await authSocket.emitWithAck(
         "answer:create",
         responseData
       );
       toast.success(response.message || "Phản hồi câu hỏi thành công");
-      setSubmitAnswer(EditorState.createEmpty())
+      setSubmitAnswer(EditorState.createEmpty());
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
@@ -66,7 +75,7 @@ export const AnswerQuestionModal = () => {
         responseData
       );
       toast.success(response.message || "Phản hồi câu hỏi thành công");
-      setSubmitAnswer(EditorState.createEmpty())
+      setSubmitAnswer(EditorState.createEmpty());
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
@@ -79,10 +88,10 @@ export const AnswerQuestionModal = () => {
   }, [selectedQuestion]);
 
   return (
-    <ModalLayout
+    <ModalLayout2
+      setHidden={setHiddenAnswerModal}
       hidden={hiddenAnswerModal}
-      onClose={() => setHiddenAnswerModal(true)}
-      title={"Trả lời câu hỏi"}
+      text={"Trả lời câu hỏi"}
     >
       <div className="w-96 mt-2">
         <div className="overflow-hidden rounded-xl border mb-2">
@@ -127,7 +136,7 @@ export const AnswerQuestionModal = () => {
               setEditorState={setSubmitAnswer}
               placeholder={"Nhập nội dung phản hồi..."}
             />
-            {!isPrivate && <MyFileInput />}
+            {!isPrivate && <MyFileInput onChange={setFile} value={file} />}
           </div>
         </div>
         <div className="flex flex-row-reverse">
@@ -136,6 +145,6 @@ export const AnswerQuestionModal = () => {
           </MyButton>
         </div>
       </div>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };

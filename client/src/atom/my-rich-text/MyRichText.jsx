@@ -8,6 +8,7 @@ const MyRichText = ({
   setEditorState,
   placeholder,
   className,
+  disable,
 }) => {
   const editorRef = useRef();
 
@@ -28,6 +29,7 @@ const MyRichText = ({
         editorState={editorState}
         onChange={setEditorState}
         placeholder={placeholder || "Nhập nội dung ..."}
+        readOnly={disable}
       />
     </div>
   );

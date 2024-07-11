@@ -6,7 +6,7 @@ const initParams = {
   page: 1,
   size: 5,
   filter: {
-    isActive: true,
+    isActive: null,
   },
   sort: {
     // -1 z -> a

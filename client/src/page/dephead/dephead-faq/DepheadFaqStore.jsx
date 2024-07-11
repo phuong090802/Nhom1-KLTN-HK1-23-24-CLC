@@ -18,6 +18,8 @@ export const DepheadFaqContext = createContext({
   hiddenAddFaq: Boolean,
   setHiddenAddFaq: Function,
   depheadGetFaqs: Function,
+  hiddenDetailFaqModal: Boolean,
+  setHiddenDetailFaqModal: Function,
 });
 export const DepheadFaqStore = ({ children }) => {
   const [faqs, setFaqs] = useState([]);
@@ -29,6 +31,8 @@ export const DepheadFaqStore = ({ children }) => {
   const [pages, setPages] = useState(0);
 
   const [hiddenAddFaq, setHiddenAddFaq] = useState(true);
+
+  const [hiddenDetailFaqModal, setHiddenDetailFaqModal] = useState(true);
 
   const depheadGetFaqs = async () => {
     try {
@@ -58,6 +62,8 @@ export const DepheadFaqStore = ({ children }) => {
         hiddenAddFaq,
         setHiddenAddFaq,
         depheadGetFaqs,
+        hiddenDetailFaqModal,
+        setHiddenDetailFaqModal,
       }}
     >
       {children}

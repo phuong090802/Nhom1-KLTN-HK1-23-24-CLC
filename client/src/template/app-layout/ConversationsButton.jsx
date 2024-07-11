@@ -14,11 +14,14 @@ export const ConversationsButton = () => {
     setSelectedConversation,
   } = useContext(AppLayoutContext);
 
-  const { user, darkMode } = useContext(DataContext);
+  const { user, darkMode, newMessage, setNewMessage } = useContext(DataContext);
 
   const handleClick = useCallback(() => {
     if (showingModal === "message") setShowingModal("");
-    else setShowingModal("message");
+    else {
+      setShowingModal("message");
+      setNewMessage(false);
+    }
   }, [setShowingModal, showingModal]);
 
   const handleConversationClick = useCallback(
@@ -39,46 +42,57 @@ export const ConversationsButton = () => {
           darkMode && "bg-white/10"
         )}
       >
-        <MessageCircle className="cursor-pointer" onClick={handleClick} />
+        <button className="cursor-pointer relative" onClick={handleClick}>
+          <MessageCircle />
+          {newMessage && (
+            <span className="border-red-500 border-[4px] inline-block absolute rounded-full -top-0 right-[2px]" />
+          )}
+        </button>
       </div>
       <div
         className={clsx(
-          "w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-8 py-4 overflow-y-auto cursor-pointer",
+          "w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-2 py-4 overflow-y-auto cursor-pointer",
           showingModal !== "message" && "hidden"
         )}
       >
         <h1 className="text-2xl font-bold text-black75 mb-4 px-4">Đoạn chat</h1>
-        {conversations.map((conversation) => {
-          return (
-            <div
-              className="flex items-center gap-2 hover:bg-black10 py-2 px-4 rounded-lg"
-              key={conversation._id}
-              onClick={() => handleConversationClick(conversation)}
-            >
-              <img
-                src={conversation?.otherUser?.avatar || default_avatar}
-                alt="user avatar"
-                className="w-14 h-14 rounded-full"
-              />
-              <div>
-                <p className="font-bold text-black75">
-                  {conversation?.otherUser?.fullName || "User Name"}
-                </p>
-                <div className="text-sm font-semibold text-black50 ">
-                  {user?._id === conversation?.lastMessage?.sender && (
-                    <p className="inline-block">Bạn: </p>
-                  )}
-                  <span
-                    className="inline-block"
-                    dangerouslySetInnerHTML={{
-                      __html: conversation?.lastMessage?.content,
-                    }}
-                  ></span>
+        {conversations?.length !== 0 ? (
+          conversations.map((conversation) => {
+            return (
+              <div
+                className="flex items-center gap-2 hover:bg-black10 py-2 px-4 rounded-lg"
+                key={conversation._id}
+                onClick={() => handleConversationClick(conversation)}
+              >
+                <img
+                  src={conversation?.otherUser?.avatar || default_avatar}
+                  alt="user avatar"
+                  className="w-14 h-14 rounded-full"
+                />
+                <div>
+                  <p className="font-bold text-black75">
+                    {conversation?.otherUser?.fullName || "User Name"}
+                  </p>
+                  <div className="text-sm font-semibold text-black50 ">
+                    {user?._id === conversation?.lastMessage?.sender && (
+                      <p className="inline-block">Bạn: </p>
+                    )}
+                    <span
+                      className="inline-block"
+                      dangerouslySetInnerHTML={{
+                        __html: conversation?.lastMessage?.content,
+                      }}
+                    ></span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className="flex justify-center items-center pb-6 text-lg text-black50">
+            Chưa có tin nhắn nào
+          </div>
+        )}
       </div>
     </div>
   );

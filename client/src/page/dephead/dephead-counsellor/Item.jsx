@@ -12,11 +12,38 @@ import {
 import { colors } from "../../../constance";
 import { DepheadCounsellorContext } from "./DepheadCounsellorStore";
 import MyButton from "../../../atom/my-button";
+import { DataContext } from "../../../store";
+import clsx from "clsx";
+import { deleteFieldsForCounSv } from "../../../service/dephead/depheadCounsellor.sv";
+import { toast } from "sonner";
 
 export const Item = ({ data }) => {
-  const { selected, setSelected, depheadUpdateCounsellorStatus } = useContext(
-    DepheadCounsellorContext
-  );
+  const {
+    selected,
+    setSelected,
+    depheadUpdateCounsellorStatus,
+    setHiddenAddCounField,
+    setCounsellors,
+    counsellors,
+  } = useContext(DepheadCounsellorContext);
+
+  const { darkMode } = useContext(DataContext);
+
+  const deleteFieldForCoun = async (fieldId) => {
+    try {
+      const response = await deleteFieldsForCounSv(data._id, fieldId);
+      setCounsellors((prev) => {
+        const tempField = data.fields.filter((field) => field._id !== fieldId);
+        return prev.map((coun) => {
+          if (coun._id === data._id) return { ...data, fields: tempField };
+          else return data;
+        });
+      });
+      toast.success(response?.message || "Xóa lĩnh vực thành công");
+    } catch (error) {
+      toast.success(error?.message || "Lỗi khi xóa lĩnh vực cho tư vấn viên");
+    }
+  };
 
   const handleExpand = () => {
     const isExpanded = selected === data._id;
@@ -26,9 +53,13 @@ export const Item = ({ data }) => {
 
   const cells = useMemo(() => {
     const iconProps = {
-      color: colors.black75,
+      color: darkMode ? "#fff" : colors.black75,
       size: 18,
     };
+    const handleAddFieldClick = () => {
+      setHiddenAddCounField(false);
+    };
+
     return [
       {
         icon: <Phone {...iconProps} />,
@@ -50,33 +81,50 @@ export const Item = ({ data }) => {
         title: "Lĩnh vực:",
         content: (
           <>
-            <div>
-              {data.fields.map((field) => {
-                return (
-                  <p key={field._id} className="inline-flex">
-                    {field.fieldName}{" "}
-                    <CircleMinus
-                      className="inline-block mx-1 bg-error rounded-full cursor-pointer"
-                      size={20}
-                      color="#fff"
-                    />
-                    ,
-                  </p>
-                );
-              })}
-              <MyButton size={"sm"} className="bg-primary hover:bg-primary/75">
-                <CirclePlus
-                  className="mx-1 rounded-full cursor-pointer"
-                  size={16}
-                  color="#fff"
-                />
-              </MyButton>
+            <div
+              className={clsx(
+                "border rounded-lg overflow-hidden",
+                darkMode ? "border-white" : "border-black25 "
+              )}
+            >
+              <div className="max-h-32 overflow-auto px-8 py-1">
+                {data?.fields?.length !== 0 ? (
+                  data.fields.map((field) => {
+                    return (
+                      <p key={field._id} className="truncate">
+                        {field.fieldName}
+                        <button onClick={() => deleteFieldForCoun(field._id)}>
+                          <CircleMinus
+                            className="inline-block mx-1 bg-error rounded-full cursor-pointer"
+                            size={20}
+                            color="#fff"
+                          />
+                        </button>
+                        ,
+                      </p>
+                    );
+                  })
+                ) : (
+                  <p className="truncate">Chưa có lĩnh vực nào !!</p>
+                )}
+              </div>
             </div>
+            <MyButton
+              size={"sm"}
+              className="bg-primary hover:bg-primary/75 mt-1"
+              onClick={handleAddFieldClick}
+            >
+              <CirclePlus
+                className="mx-1 rounded-full cursor-pointer"
+                size={16}
+                color="#fff"
+              />
+            </MyButton>
           </>
         ),
       },
     ];
-  }, [data]);
+  }, [data, setHiddenAddCounField, darkMode]);
 
   return (
     <ItemLayout
@@ -105,13 +153,20 @@ export const Item = ({ data }) => {
 };
 
 const Cell = ({ icon, title, content }) => {
+  const { darkMode } = useContext(DataContext);
+
   return (
-    <div className="flex flex-row gap-16">
+    <div
+      className={clsx(
+        "flex flex-row gap-16",
+        darkMode ? "text-white" : "text-black75"
+      )}
+    >
       <span className="flex flex-row items-center w-40 self-start">
-        {icon}{" "}
-        <p className="text-base ml-1 font-semibold text-black75 ">{title}</p>
+        {icon}
+        <p className="text-base ml-1 font-semibold">{title}</p>
       </span>
-      <div className="text-base font-semibold text-black75">{content}</div>
+      <div className="text-base font-semibold">{content}</div>
     </div>
   );
 };

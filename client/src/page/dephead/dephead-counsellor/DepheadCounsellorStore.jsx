@@ -22,6 +22,9 @@ export const DepheadCounsellorContext = createContext({
   setHiddenAddCounsellor: Function,
   depheadAddCounsellor: (data) => {},
   depheadUpdateCounsellorStatus: (counsellorId, data) => {},
+  hiddenAddCounField: Boolean,
+  setHiddenAddCounField: Function,
+  depheadGetCounsellors: Function
 });
 
 export const DepheadCounsellorStore = ({ children }) => {
@@ -36,6 +39,8 @@ export const DepheadCounsellorStore = ({ children }) => {
   const [hiddenSortFilter, setHiddenSortFilter] = useState(true);
 
   const [hiddenAddCounsellor, setHiddenAddCounsellor] = useState(true);
+
+  const [hiddenAddCounField, setHiddenAddCounField] = useState(true);
 
   const depheadGetCounsellors = async () => {
     try {
@@ -93,6 +98,9 @@ export const DepheadCounsellorStore = ({ children }) => {
         setHiddenAddCounsellor,
         depheadAddCounsellor,
         depheadUpdateCounsellorStatus,
+        hiddenAddCounField,
+        setHiddenAddCounField,
+        depheadGetCounsellors
       }}
     >
       {children}

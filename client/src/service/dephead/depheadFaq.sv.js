@@ -14,4 +14,10 @@ const depheadCreateFaqSv = (data) => {
   });
 };
 
-export { depheadGetFaqsSv, depheadCreateFaqSv };
+const depheadDeleteFaqSv = (id) => {
+  return API.delete(`department-head/faqs/${id}`, {
+    headers: authorHeader(),
+  });
+};
+
+export { depheadGetFaqsSv, depheadCreateFaqSv, depheadDeleteFaqSv };

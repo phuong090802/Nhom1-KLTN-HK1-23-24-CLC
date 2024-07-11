@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 export const AdminDepartmentContext = createContext({
   deps: Array,
-  setDep: Function,
+  setDeps: Function,
   selectedDep: String | Number,
   setSelectedDep: Function,
   params: Object,
@@ -35,12 +35,14 @@ export const AdminDepartmentContext = createContext({
   hiddenUpdateDep: Boolean,
   setHiddenUpdateDep: Function,
   addDeparment: Function,
+  hiddenDetailDepModal: Boolean,
+  setHiddenDetailDepModal: Function,
 });
 
 const AdminDepartmentStore = ({ children }) => {
   const [deps, setDeps] = useState([]);
 
-  const [selectedDep, setSelectedDep] = useState(-1);
+  const [selectedDep, setSelectedDep] = useState(null);
 
   const [params, setParams] = useState(initParams);
 
@@ -54,9 +56,9 @@ const AdminDepartmentStore = ({ children }) => {
 
   const [hiddenAddDep, setHiddenAddDep] = useState(true);
 
-  const [hiddenUpdateDep, setHiddenUpdateDep] = useState(true);
-
   const [chosenDep, setChosenDep] = useState(null);
+
+  const [hiddenDetailDepModal, setHiddenDetailDepModal] = useState(true);
 
   const getDepartment = async () => {
     try {
@@ -76,15 +78,9 @@ const AdminDepartmentStore = ({ children }) => {
     }
   };
 
-
   useEffect(() => {
     getDepartment();
   }, [params]);
-
-  const handleEditClick = (depId) => {
-    setChosenDep(deps.find((dep) => dep._id === depId));
-    setHiddenUpdateDep(false);
-  };
 
   return (
     <AdminDepartmentContext.Provider
@@ -109,9 +105,8 @@ const AdminDepartmentStore = ({ children }) => {
         setHiddenAddDep,
         chosenDep,
         setChosenDep,
-        handleEditClick,
-        hiddenUpdateDep,
-        setHiddenUpdateDep,
+        hiddenDetailDepModal,
+        setHiddenDetailDepModal,
       }}
     >
       {children}

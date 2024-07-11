@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import ItemLayout from "../../../template/item-layout";
 import { MessageCircleQuestion, MessageCircleReply } from "lucide-react";
-import { colors } from "../../../constance";
+import { colors, darkModeCss } from "../../../constance";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import { DepheadAnswerContext } from "./DepheadAnswerStore";
 import MyButton from "../../../atom/my-button";
+import { DataContext } from "../../../store";
+import clsx from "clsx";
 
 export const Item = ({ data }) => {
   const { selected, setSelected, ApproveAnswer, setHiddenFeedback } =
     useContext(DepheadAnswerContext);
+
+  const { darkMode } = useContext(DataContext);
 
   const handleExpand = () => {
     if (selected === data._id) {
@@ -24,17 +28,31 @@ export const Item = ({ data }) => {
     >
       <div>
         <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-          <MessageCircleQuestion color={colors.black75} />
+          <MessageCircleQuestion color={darkMode ? "#fff" : colors.black75} />
           <div>
-            <h1 className="font-bold text-black75">Câu hỏi</h1>
+            <h1
+              className={clsx(
+                "font-bold",
+                darkMode ? "text-white" : "text-black75"
+              )}
+            >
+              Câu hỏi
+            </h1>
             <p>{data.content}</p>
           </div>
         </div>
         <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-          <MessageCircleReply color={colors.black75} />
+          <MessageCircleReply color={darkMode ? "#fff" : colors.black75} />
           <div>
-            <h1 className="font-bold text-black75">Phản hồi</h1>
-            <p>{data?.answer?.content}</p>
+            <h1
+              className={clsx(
+                "font-bold",
+                darkMode ? "text-white" : "text-black75"
+              )}
+            >
+              Phản hồi
+            </h1>
+            <p dangerouslySetInnerHTML={{ __html: data?.answer?.content }} />
             <div className="flex items-center gap-1">
               <p className="text-sm">Phản hồi từ</p>
               <img

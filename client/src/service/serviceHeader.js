@@ -2,7 +2,9 @@ import Cookies from "js-cookie";
 
 const jsonHeader = { "Content-Type": "application/json" };
 const authorHeader = () => {
-  return { authorization: `Bearer ${Cookies.get("accessToken")}` };
+  if (Cookies.get("accessToken") === undefined) {
+    return null;
+  } else return { authorization: `Bearer ${Cookies.get("accessToken")}` };
 };
 
 const createHeader = (configs) => {

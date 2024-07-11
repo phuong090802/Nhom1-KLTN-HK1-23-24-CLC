@@ -8,7 +8,7 @@ const getConversationsSv = () => {
 };
 
 const getMessagesSv = (conversationId, params) => {
-  return API.get(`conversations/${conversationId}`, {
+  return API.get(`conversations/${conversationId}?size=10&skip=10`, {
     headers: authorHeader(),
     params: params,
   });

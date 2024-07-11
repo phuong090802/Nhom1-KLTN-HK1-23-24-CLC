@@ -22,6 +22,7 @@ const links = {
     register: "/dang-ky",
     login: "/dang-nhap",
     feedback: "/phan-hoi",
+    forgotPassword: "/quen-mat-khau"
   },
 
   user: {
@@ -33,6 +34,7 @@ const links = {
   counsellor: {
     home: "/counsellor",
     questions: "/counsellor/cau-hoi",
+    feedback: "/counsellor/phan-hoi"
   },
   dephead: {
     home: "/dephead",
@@ -71,6 +73,6 @@ const validate = {
   },
 };
 
-const darkModeCss = "bg-[#3d3d3d] text-white";
+const darkModeCss = "bg-[#3d3d3d] text-white duration-500";
 
 export { colors, links, validate, darkModeCss };

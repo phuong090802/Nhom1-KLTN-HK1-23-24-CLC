@@ -10,12 +10,18 @@ export const DataContext = createContext<iContextValue>({
   removeUserData: () => {},
   darkMode: false,
   setDarkMode: () => {},
+  newMessage: false,
+  setNewMessage: () => {},
+  newNoti: false,
+  setNewNoti: () => {},
 });
 
 const DataProvider: FC<iDataProviderProps> = ({ children }) => {
   const [user, setUser] = useState<iUser>(initUser);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [newMessage, setNewMessage] = useState(false);
+  const [newNoti, setNewNoti] = useState(false);
 
   const removeUserData = () => {
     setUser(initUser);
@@ -32,6 +38,10 @@ const DataProvider: FC<iDataProviderProps> = ({ children }) => {
         removeUserData,
         darkMode,
         setDarkMode,
+        newMessage,
+        setNewMessage,
+        newNoti,
+        setNewNoti,
       }}
     >
       {children}

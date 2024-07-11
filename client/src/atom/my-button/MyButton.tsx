@@ -11,6 +11,7 @@ export const buttonVariants = cva("inline-flex items-center justify-center", {
     size: {
       fullWidth: "h-12 w-full font-semibold",
       lg: "h-12 w-40 font-semibold",
+      xl: "h-14 w-60 font-semibold",
       default: "h-10 w-20",
       md: "h-10 px-8",
       sm: "py-1 px-2",

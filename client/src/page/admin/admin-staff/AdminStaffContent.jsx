@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AdminStaffContext } from "./AdminStaffStore";
 import Pagination from "../../../molecule/pagination";
 import SortFilterModal from "../../../organism/sort-filter-modal";
+import { AddStaffModal } from "./AddStaffModal";
 
 export const AdminStaffContent = () => {
   const {
@@ -15,12 +16,12 @@ export const AdminStaffContent = () => {
     hiddenSortFilter,
     filter,
     sort,
+    setHiddenAddStaffModal
   } = useContext(AdminStaffContext);
-
-
 
   return (
     <>
+      <AddStaffModal />
       <SortFilterModal
         hidden={hiddenSortFilter}
         modalTitle={""}
@@ -34,7 +35,7 @@ export const AdminStaffContent = () => {
         title={"Quản lý người dùng"}
         setParams={setParams}
         onSearchFilter={() => setHiddenSortFilter(false)}
-        // onAdd={() => setHiddenAddDep(false)}
+        onAdd={() => setHiddenAddStaffModal(false)}
       />
       <div className="mt-2 grid gap-2">
         {users &&

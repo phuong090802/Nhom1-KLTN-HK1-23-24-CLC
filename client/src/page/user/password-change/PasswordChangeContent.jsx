@@ -74,7 +74,7 @@ export const PasswordChangeContent = () => {
         <p className="font-bold text-2xl mb-2 px-4 text-black75">
           Đổi mật khẩu
         </p>
-        <div className="mt-4 px-4 hidden">
+        <div className="mt-4 px-4">
           <p className="font-bold text-primary text-xl mb-2">
             Mật khẩu hiện tại
           </p>

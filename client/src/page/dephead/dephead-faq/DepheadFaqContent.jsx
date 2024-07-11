@@ -4,6 +4,8 @@ import { DepheadFaqContext } from "./DepheadFaqStore";
 import { Item } from "./Item";
 import Pagination from "../../../molecule/pagination";
 import { AddFaqModal } from "./AddFaqModal";
+import { DepheadFaqTable } from "./DepheadFaqTable";
+import { DetailFaqModal } from "./DetailFaqModal";
 
 export const DepheadFaqContent = () => {
   const { faqs, params, setParams, pages, setHiddenAddFaq } =
@@ -11,6 +13,7 @@ export const DepheadFaqContent = () => {
 
   return (
     <>
+      <DetailFaqModal />
       <AddFaqModal />
       <StaffTitleBar
         title={"Quản lý câu hỏi chung"}
@@ -18,9 +21,13 @@ export const DepheadFaqContent = () => {
         setParams={setParams}
       />
       <div className="mt-2 grid gap-2">
-        {faqs.map((faq) => (
-          <Item key={faq._id} data={faq} />
-        ))}
+        {faqs?.length === 0 ? (
+          <div className="flex w-full justify-center border py-20 rounded-xl bg-white shadow-lg shadow-black75 text-lg font-bold">
+            Không có dữ liệu!!
+          </div>
+        ) : (
+          <DepheadFaqTable />
+        )}
       </div>
       <div className="flex justify-center mt-2">
         <Pagination

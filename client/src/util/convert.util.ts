@@ -36,4 +36,9 @@ function convertDateTimeToDate(DateTime: any) {
   return formattedDateTime;
 }
 
-export { depListConvert, truncateText, convertDateTimeToDate };
+function getMonth(DateTimeString: string) {
+  const date = new Date(DateTimeString);
+  return date.getMonth() + 1;
+}
+
+export { depListConvert, truncateText, convertDateTimeToDate, getMonth };

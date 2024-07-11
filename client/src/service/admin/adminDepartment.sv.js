@@ -38,11 +38,18 @@ const chooseDepheadSv = (data) => {
   });
 };
 
+const getCounsellorsToAddSv = (id) => {
+  return API.get(`admin/departments/${id}/counsellors`, {
+    headers: authorHeader(),
+  });
+};
+
 export {
   getDepartmentsSv,
   updateDepStatusSv,
   addDepSv,
   updateDepSv,
   getDepCounsellorsSv,
-  chooseDepheadSv
+  chooseDepheadSv,
+  getCounsellorsToAddSv
 };

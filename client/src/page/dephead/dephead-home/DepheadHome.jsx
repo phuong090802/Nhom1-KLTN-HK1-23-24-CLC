@@ -1,5 +1,12 @@
+import { DepheadHomeContent } from "./DepheadHomeContent";
+import { DepheadHomeStore } from "./DepheadHomeStore";
+
 const DepheadHome = () => {
-  return <>DepheadHome</>;
+  return (
+    <DepheadHomeStore>
+      <DepheadHomeContent />
+    </DepheadHomeStore>
+  );
 };
 
 export default DepheadHome;

@@ -22,6 +22,8 @@ export const CounsellorQuestionContext = createContext({
   hiddenForwardModal: Boolean,
   setHiddenForwardModal: Function,
   getQuestions: Function,
+  hiddenDetailQuestionModal: Boolean,
+  setHiddenDetailQuestionModal: Function,
 });
 
 export const CounsellorQuestionStore = ({ children }) => {
@@ -40,6 +42,9 @@ export const CounsellorQuestionStore = ({ children }) => {
   const [hiddenSortFilter, setHiddenSortFilter] = useState(true);
 
   const [selectedQuestion, setSelectedQuestion] = useState({});
+
+  const [hiddenDetailQuestionModal, setHiddenDetailQuestionModal] =
+    useState(true);
 
   const getQuestions = async () => {
     try {
@@ -74,7 +79,9 @@ export const CounsellorQuestionStore = ({ children }) => {
         setSelectedQuestion,
         hiddenForwardModal,
         setHiddenForwardModal,
-        getQuestions
+        getQuestions,
+        hiddenDetailQuestionModal,
+        setHiddenDetailQuestionModal,
       }}
     >
       {children}

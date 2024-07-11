@@ -20,8 +20,34 @@ const depheadUpdateCounsellorStatusSv = (counsellorId, data) => {
   });
 };
 
+const getFieldToAddForCounSv = (counsellorId) => {
+  return API.get(`department-head/counsellors/${counsellorId}`, {
+    headers: authorHeader(),
+  });
+};
+
+const addFieldsForCounSv = (counsellorId, fieldIds) => {
+  return API.put(
+    `department-head/counsellors/${counsellorId}`,
+    { fieldIds },
+    {
+      headers: authorHeader(),
+    }
+  );
+};
+
+const deleteFieldsForCounSv = (counsellorId, fieldId) => {
+  return API.delete(`department-head/counsellors/${counsellorId}`, {
+    headers: authorHeader(),
+    data: { fieldId },
+  });
+};
+
 export {
   depheadGetCounsellorsSv,
   depheadAddCounsellorSv,
   depheadUpdateCounsellorStatusSv,
+  getFieldToAddForCounSv,
+  addFieldsForCounSv,
+  deleteFieldsForCounSv,
 };

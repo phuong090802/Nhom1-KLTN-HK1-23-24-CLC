@@ -2,6 +2,7 @@ import { useState } from "react";
 import MyButton from "../../atom/my-button";
 import MySelect from "../../atom/my-select";
 import ModalLayout from "../../template/modal-layout";
+import ModalLayout2 from "../../template/modal-layout-2";
 import { Sort } from "./Sort";
 
 const SortFilterModal = ({
@@ -13,7 +14,6 @@ const SortFilterModal = ({
   params,
   setParams,
 }) => {
-
   const [tempFilter, setTempFilter] = useState(params.filter);
 
   const [tempSort, setTempSort] = useState(params.sort);
@@ -36,47 +36,54 @@ const SortFilterModal = ({
   };
 
   return (
-    <ModalLayout hidden={hidden} onClose={onClose} title={modalTitle}>
+    <ModalLayout2
+      hidden={hidden}
+      onClose={onClose}
+      text={modalTitle}
+      setHidden={onClose}
+    >
       <div className="border px-4 rounded-lg mt-2 pb-2">
         <div className="">
           <h1 className="font-bold text-black75">Lọc kết quả</h1>
-          {filters && filters.map((filter, index) => {
-            return (
-              <div key={filter.label.value || index}>
-                <label className="text-xs font-semibold text-black75">
-                  {filter.label.key + ":"}
-                </label>
-                <MySelect
-                  data={filter.data}
-                  name={filter.label.value}
-                  value={tempFilter[filter.label.value]}
-                  onChange={(value) =>
-                    handleFilterChange(value, filter.label.value)
-                  }
-                />
-              </div>
-            );
-          })}
+          {filters &&
+            filters.map((filter, index) => {
+              return (
+                <div key={filter.label.value || index}>
+                  <label className="text-xs font-semibold text-black75">
+                    {filter.label.key + ":"}
+                  </label>
+                  <MySelect
+                    data={filter.data}
+                    name={filter.label.value}
+                    value={tempFilter[filter.label.value]}
+                    onChange={(value) =>
+                      handleFilterChange(value, filter.label.value)
+                    }
+                  />
+                </div>
+              );
+            })}
         </div>
         <div className="mt-4 border-t-2">
           <h1 className="font-bold text-black75">Sắp xếp</h1>
           <div className="grid grid-cols-2">
-            {sorts && sorts.map((sort, index) => {
-              return (
-                <Sort
-                  key={sort.label.value || index}
-                  data={sort.data}
-                  label={sort.label}
-                  value={tempSort[sort.label.value]}
-                  onChange={() =>
-                    handleSortChange(
-                      sort.label.value,
-                      tempSort[sort.label.value]
-                    )
-                  }
-                />
-              );
-            })}
+            {sorts &&
+              sorts.map((sort, index) => {
+                return (
+                  <Sort
+                    key={sort.label.value || index}
+                    data={sort.data}
+                    label={sort.label}
+                    value={tempSort[sort.label.value]}
+                    onChange={() =>
+                      handleSortChange(
+                        sort.label.value,
+                        tempSort[sort.label.value]
+                      )
+                    }
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
@@ -94,7 +101,7 @@ const SortFilterModal = ({
           Lọc
         </MyButton>
       </div>
-    </ModalLayout>
+    </ModalLayout2>
   );
 };
 

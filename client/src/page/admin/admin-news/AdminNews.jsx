@@ -1,5 +1,12 @@
+import { AdmiNewsContent } from "./AdmiNewsContent";
+import { AdminNewsStore } from "./AdminNewsStore";
+
 const AdminNews = () => {
-  return <>AdminNew</>;
+  return (
+    <AdminNewsStore>
+      <AdmiNewsContent />
+    </AdminNewsStore>
+  );
 };
 
 export default AdminNews;

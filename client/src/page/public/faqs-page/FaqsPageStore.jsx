@@ -22,6 +22,7 @@ export const FaqsPageStore = ({ children }) => {
   const [selected, setSelected] = useState("");
 
   const getFaqs = async () => {
+    console.log(params);
     try {
       const response = await getFaqsSv(params);
       setFaqs(response.faqs);
