@@ -30,7 +30,10 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const { records: retQuestions, totals: totalQuestions } =
     await handleSkipAndLimit(query, queryTransform.query);
   const questions = retQuestions.map((question) =>
-    question.getQuestionInformation(HOME_GET_ALL_QUESTIONS)
+    question.getQuestionInformation(
+      HOME_GET_ALL_QUESTIONS,
+      req?.user?._id?.toString()
+    )
   );
   res.json({
     success: true,
