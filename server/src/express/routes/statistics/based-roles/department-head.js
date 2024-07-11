@@ -18,6 +18,7 @@ router.use(
 
 router.get('/faq', departmentHeadStatistic.handleCountOfFAQs);
 router.get('/counsellor', departmentHeadStatistic.handleCountOfCounsellors);
+router.get('/field/count', departmentHeadStatistic.handleCountOfFields);
 router.get('/field', departmentHeadStatistic.handleStatisticFields);
 router.post(
   '/question',

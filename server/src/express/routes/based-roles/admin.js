@@ -3,7 +3,10 @@ import express from 'express';
 import * as counsellorController from '../../controllers/based-roles/admin/counsellor.js';
 import * as departmentController from '../../controllers/based-roles/admin/department.js';
 import * as newsController from '../../controllers/based-roles/admin/news.js';
-import { handleCreateStaff } from '../../controllers/based-roles/admin/staff.js';
+import {
+  handleCreateStaff,
+  handleResetStaffPassword,
+} from '../../controllers/based-roles/admin/staff.js';
 import * as userController from '../../controllers/based-roles/admin/user.js';
 import {
   handleAuthenticationAndAuthorization,
@@ -20,6 +23,7 @@ import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-
 import { handleValidateDepartmentId } from '../../middlewares/validate/based-schemas/department.js';
 import { handleValidateNewsId } from '../../middlewares/validate/based-schemas/news.js';
 import {
+  handleValidateIsStaff,
   handleValidateRoleUser,
   handleValidateUserId,
 } from '../../middlewares/validate/based-schemas/user.js';
@@ -104,11 +108,18 @@ router
     departmentController.handleChangeDepartmentHead
   );
 
-router.route('/staffs').post(
-  // role
-  handleValidateRole('body', 'COUNSELLOR', 'SUPERVISOR'),
-  handleCreateStaff
-);
+router
+  .route('/staffs')
+  .post(
+    // role
+    handleValidateRole('body', 'COUNSELLOR', 'SUPERVISOR'),
+    handleCreateStaff
+  )
+  .put(
+    handleValidateUserId('body', 'staffId'),
+    handleValidateIsStaff('SUPERVISOR', 'DEPARTMENT_HEAD', 'COUNSELLOR'),
+    handleResetStaffPassword
+  );
 
 router.post(
   '/counsellors/upload',

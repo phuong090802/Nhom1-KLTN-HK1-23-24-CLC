@@ -597,6 +597,21 @@
       "code": "4117",
       "message": "Không thể truy cập. Khoa đang bị khóa",
       "detail": "4043, 4081, 4080, 4107"
+    },
+    {
+      "code": "4118",
+      "message": "Mật khẩu hiện tại không chính xác",
+      "detail": ""
+    },
+    {
+      "code": "4119",
+      "message": "Không tìm thấy tài khoản với vai trò là nhân viên trong hệ thống",
+      "detail": ""
+    },
+    {
+      "code": "4120",
+      "message": "Thiếu nhập mật khẩu hiện tại",
+      "detail": ""
     }
   ]
 }

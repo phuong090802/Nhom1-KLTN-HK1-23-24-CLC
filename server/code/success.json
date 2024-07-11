@@ -532,6 +532,21 @@
       "code": "2101",
       "message": "",
       "detail": "Trưởng khoa gửi nhắc nhở tới tư vấn viên thành công"
+    },
+    {
+      "code": "2102",
+      "message": "",
+      "detail": "Trưởng khoa đếm số lượng lĩnh vực trong khoa của họ thành công"
+    },
+    {
+      "code": "2103",
+      "message": "",
+      "detail": "Đặt lại mật khẩu cho ${roles[staff.role]} thành công"
+    },
+    {
+      "code": "2104",
+      "message": "",
+      "detail": "Đặt lại mật khẩu cho tư vấn viên thành công"
     }
   ]
 }

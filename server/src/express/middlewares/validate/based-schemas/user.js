@@ -3,6 +3,19 @@ import User from '../../../../models/user.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../catch-async-errors.js';
 
+// check role of staff by staff id in body
+export const handleValidateIsStaff = (...roles) => {
+  return catchAsyncErrors((req, res, next) => {
+    const user = req.foundUser;
+    if (!roles.includes(user.role)) {
+      const msg =
+        'Không tìm thấy tài khoản với vai trò là nhân viên trong hệ thống';
+      return next(new ErrorHandler(404, msg, 4032));
+    }
+    next();
+  });
+};
+
 // check role of user by user id in body
 export const handleValidateRoleUser = (role) => {
   return catchAsyncErrors((req, res, next) => {

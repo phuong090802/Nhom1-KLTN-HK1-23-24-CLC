@@ -63,7 +63,7 @@ export const handleCreateAnswer = catchAsyncErrors(
         'counsellor.department': department,
       });
       const receiverId = departmentHead._id.toString();
-      io.of('/auth').emit(`${receiverId}:answer:notification:read`, response);
+      io.of('/auth').emit(`${receiverId}:notification:read`, response);
       await sendNotification(receiverId, {
         // sound: 'default',
         title: 'Duyệt câu trả lời',

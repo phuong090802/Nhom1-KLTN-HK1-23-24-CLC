@@ -5,6 +5,19 @@ import { handleCountQuestions } from '../../../../util/statistics/department.js'
 import { handleCountQuestionsByFieldsAndDepartment } from '../../../../util/statistics/field.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
+// Endpoint: /api/department-head/statistics/field/count
+// Method: GET
+// Description: Trưởng khoa đếm số lượng lĩnh vực trong khoa của họ
+export const handleCountOfFields = catchAsyncErrors(async (req, res, next) => {
+  const department = req.foundDepartment;
+  const countOfFields = await Field.countDocuments({ department });
+  res.json({
+    success: true,
+    countOfFields,
+    code: 2102,
+  });
+});
+
 // Endpoint: /api/department-head/statistics/field
 // Method: GET
 // Description: Trưởng khoa thống kê lĩnh vực và số câu hỏi thuộc lĩnh vực trong khoa
@@ -49,7 +62,7 @@ export const handleStatisticQuestions = catchAsyncErrors(
 // Description: Trưởng khoa đếm số tư vấn viên của khoa
 export const handleCountOfCounsellors = catchAsyncErrors(
   async (req, res, next) => {
-    const department = req.user.counsellor.department._id;
+    const department = req.foundDepartment;
     const countOfUsers = await User.countDocuments({
       'counsellor.department': department,
     });

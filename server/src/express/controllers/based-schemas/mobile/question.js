@@ -15,7 +15,7 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
       populate: { path: 'user', select: '-_id fullName avatar.url' },
     })
     .populate({ path: 'user', select: '-_id fullName avatar.url' })
-    .select('title content file createdAt views user answer');
+    .select('title content file createdAt views user answer likes');
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
   const reqSort = req.query.sort?.createdAt;
@@ -27,10 +27,13 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
       ...(!reqSort && { createdAt: -1 }),
     });
 
-  const { records: retQuestions, totals: totalQuestions } =
+  const { totals: totalQuestions, records: retQuestions } =
     await handleSkipAndLimit(query, queryTransform.query);
   const questions = retQuestions.map((question) =>
-    question.getQuestionInformation(HOME_GET_ALL_QUESTIONS)
+    question.getQuestionInformation(
+      HOME_GET_ALL_QUESTIONS,
+      req?.user?._id?.toString()
+    )
   );
   res.json({
     success: true,

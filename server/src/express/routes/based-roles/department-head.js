@@ -120,7 +120,14 @@ router
 router
   .route('/counsellors')
   .get(defaultPaginationParams, counsellorController.handleGetCounsellors)
-  .post(counsellorController.handleCreateCounsellor);
+  .post(counsellorController.handleCreateCounsellor)
+  .put(
+    handleValidateUserId('body', 'counsellorId'),
+    // role counsellor
+    handleValidateRoleUser('COUNSELLOR'),
+    handleCheckCounsellorBelongDepartment,
+    counsellorController.handleResetCounsellorPassword
+  );
 
 router
   .route('/fields/:id')
