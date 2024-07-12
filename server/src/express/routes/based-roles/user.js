@@ -6,7 +6,7 @@ import {
   handleGetQuestions,
   handleLikeQuestion,
 } from '../../controllers/based-roles/user/question.js';
-import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
+import { handleAuthenticationAndAuthorization, handleAuthorization, handleOptionalAuthentication } from '../../middlewares/auth.js';
 import { defaultPaginationParams } from '../../middlewares/default-value/query.js';
 import {
   handleValidateQuestionId,
@@ -15,14 +15,16 @@ import {
 
 const router = express.Router();
 
+router.use(handleOptionalAuthentication())
+
 router
   .route('/questions/liked')
-  .all(handleAuthenticationAndAuthorization('USER'))
+  .all(handleAuthorization('USER'))
   .get(defaultPaginationParams, handleGetLikedQuestions);
 
 router
   .route('/questions/:id')
-  .all(handleAuthenticationAndAuthorization('USER'))
+  .all(handleAuthorization('USER'))
   .post(
     handleValidateQuestionId(),
     handleValidateStatusOfQuestion('publicly-answered-and-approved'),
@@ -31,7 +33,7 @@ router
 
 router
   .route('/questions')
-  .all(handleAuthenticationAndAuthorization('USER'))
+  .all(handleAuthorization('USER'))
   .get(defaultPaginationParams, handleGetQuestions);
 
 router
