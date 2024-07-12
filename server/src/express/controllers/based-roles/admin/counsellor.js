@@ -104,12 +104,9 @@ export const handlerGetCounsellorDepartmentIsNullToDepartment =
   catchAsyncErrors(async (req, res, next) => {
     const counsellors = await User.find({
       role: 'COUNSELLOR',
-      $or: [
-        { 'counsellor.department': null },
-        { 'counsellor.department': { $exists: false } },
-      ],
-    }).select('_id fullName');
-    
+      'counsellor.department': null,
+    }).select('fullName');
+
     res.json({
       success: true,
       counsellors,
