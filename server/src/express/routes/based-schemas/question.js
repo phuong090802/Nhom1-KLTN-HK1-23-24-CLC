@@ -11,8 +11,9 @@ import { handleOptionalAuthentication } from '../../middlewares/auth.js';
 const router = express.Router();
 
 router
-  .route(
-    '/:id', // question
+  .route('/:id')
+  .all(
+    // question
     handleValidateQuestionId(),
     // status of question
     handleValidateStatusOfQuestion('publicly-answered-and-approved')
