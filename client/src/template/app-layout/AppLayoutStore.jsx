@@ -147,16 +147,17 @@ export const AppLayoutStore = ({ children }) => {
   const getNotifications = async () => {
     try {
       const response = await getNotificationSv();
-      console.log(response);
+      console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
-      toast(error.message || "Lỗi khi lấy thông báo");
+      toast.error(error.message || "Lỗi khi lấy thông báo");
     }
   };
 
   useEffect(() => {
     if (connected && isLoggedIn) {
       authSocket.on(`${user._id}:message:read`, (data) => {
+        console.log(data);
         setNewMessage(true);
         updateConversations(data?.latestConversation);
         if (data?.latestConversation?._id === selectedConversation._id) {
@@ -173,19 +174,26 @@ export const AppLayoutStore = ({ children }) => {
   useEffect(() => {
     if (connected && isLoggedIn) {
       authSocket.on(`${user._id}:notification:read`, (data) => {
+        console.log(data);
         setNewNoti(true);
-        setNotification((prev) => ({ ...data.lastNotification, ...prev }));
+        setNotification((prev) => [data.lastNotification, ...prev]);
       });
     }
   }, [connected, isLoggedIn]);
 
   useEffect(() => {
     if (isLoggedIn) {
-      if (user.role === "USER") getNotifications();
-      getConversations();
+      if (user.role !== "ADMIN" && user.role !== "SUPERVISOR") {
+        getNotifications();
+        getConversations();
+      }
     } else {
       setConversations([]);
     }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    setShowingModal("");
   }, [isLoggedIn]);
 
   useEffect(() => {

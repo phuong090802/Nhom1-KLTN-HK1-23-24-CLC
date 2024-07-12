@@ -21,3 +21,8 @@ export const getLikeHistorySv = (params) => {
     params: params,
   });
 };
+
+export const getQuestionByIdSv = (id) => {
+  console.log(id);
+  return API.get(`/questions/${id}`);
+};

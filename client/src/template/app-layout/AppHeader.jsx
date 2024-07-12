@@ -131,8 +131,14 @@ const NotiMessageArea = () => {
       <div className="flex items-center flex-row-reverse gap-2">
         {isLoggedIn ? (
           <>
-            <NotiButton />
-            <ConversationsButton />
+            {user?.role === "SUPERVISOR" || user?.role === "ADMIN" ? (
+              <></>
+            ) : (
+              <>
+                <NotiButton />
+                <ConversationsButton />
+              </>
+            )}
             {/* <div
               className={clsx(
                 "w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer",

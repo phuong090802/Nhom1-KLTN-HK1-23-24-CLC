@@ -64,7 +64,7 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
       if (isValid) {
         try {
           const response = await onSubmit(formData);
-          console.log(response);
+          // console.log(response);
           setFormData(initData);
         } catch (error) {}
       }

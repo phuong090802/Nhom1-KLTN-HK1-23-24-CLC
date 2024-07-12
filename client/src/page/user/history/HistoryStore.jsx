@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
   getLikeHistorySv,
+  getQuestionByIdSv,
   getQuestionHistorySv,
 } from "../../../service/user/userQuestion.sv";
 import { toast } from "sonner";
@@ -17,6 +18,10 @@ export const HistoryContext = createContext({
   setLikedParams: Function,
   historyPages: Number,
   likePages: Number,
+  selectedQuestion: Object,
+  setSelectedQuestion: Function,
+  hiddenDetailQuestionModal: Object,
+  setHiddenDetailQuestionModal: Function,
 });
 
 export const HistoryStore = ({ children }) => {
@@ -31,6 +36,10 @@ export const HistoryStore = ({ children }) => {
   const [likedParams, setLikedParams] = useState(initParams);
 
   const [likePages, setLikePages] = useState(1);
+
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+
+  const [hiddenDetailQuestionModal, setHiddenDetailQuestionModal] = useState(true);
 
   const getQuestionHistory = async () => {
     try {
@@ -53,6 +62,8 @@ export const HistoryStore = ({ children }) => {
     }
   };
 
+
+
   useEffect(() => {
     getQuestionHistory();
   }, [historyParams]);
@@ -60,6 +71,8 @@ export const HistoryStore = ({ children }) => {
   useEffect(() => {
     getLikeHistory();
   }, [likedParams]);
+
+
 
   return (
     <HistoryContext.Provider
@@ -74,6 +87,8 @@ export const HistoryStore = ({ children }) => {
         setLikedParams,
         likePages,
         historyPages,
+        selectedQuestion,
+        setSelectedQuestion,hiddenDetailQuestionModal, setHiddenDetailQuestionModal
       }}
     >
       {children}

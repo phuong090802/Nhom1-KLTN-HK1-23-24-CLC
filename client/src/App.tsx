@@ -6,9 +6,9 @@ import {
   ProtectedRoute,
   UserRoute,
   CounsellorRoute,
+  SupervisorRoute,
 } from "./routes";
 
-import HeaderLayout from "./template/header-layout";
 import AppLayout from "./template/app-layout";
 
 import CounsellorsPage from "./page/public/counsellors-page";
@@ -79,6 +79,10 @@ const App = () => {
               <Route path="/admin/khoa" element={<AdminDepartment />} />
               <Route path="/admin/nhan-su" element={<AdminStaff />} />
               <Route path="/admin/tin-tuc" element={<AdminNews />} />
+            </Route>
+
+            <Route element={<SupervisorRoute />}>
+              <Route path="/supervisor" element={<AdminHome />} />
             </Route>
 
             <Route element={<DepheadRoute />}>

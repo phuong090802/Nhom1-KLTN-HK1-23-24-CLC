@@ -19,7 +19,7 @@ const LoginForm = () => {
         navigate(links.public.home);
         break;
       case "COUNSELLOR":
-        navigate(links.counsellor.home);
+        navigate(links.counsellor.questions);
         break;
       case "DEPARTMENT_HEAD":
         navigate(links.dephead.home);

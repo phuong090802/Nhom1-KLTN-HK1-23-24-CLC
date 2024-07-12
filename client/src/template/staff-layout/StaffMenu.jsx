@@ -123,11 +123,11 @@ export const StaffMenu = () => {
       },
     ],
     COUNSELLOR: [
-      {
-        title: "Dashboard",
-        link: links.counsellor.home,
-        icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
-      },
+      // {
+      //   title: "Dashboard",
+      //   link: links.counsellor.home,
+      //   icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
+      // },
       {
         title: "Danh sách câu hỏi",
         link: links.counsellor.questions,
@@ -195,7 +195,13 @@ export const StaffMenu = () => {
         icon: <Newspaper color={darkMode ? "#fff" : colors.primary} />,
       },
     ],
-    SUPERVISOR: [],
+    SUPERVISOR: [
+      {
+        title: "Thống kê",
+        link: links.supervisor.home,
+        icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
+      },
+    ],
   };
 
   const handleLogout = async () => {

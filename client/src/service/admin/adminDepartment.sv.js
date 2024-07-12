@@ -38,10 +38,14 @@ const chooseDepheadSv = (data) => {
   });
 };
 
-const getCounsellorsToAddSv = (id) => {
-  return API.get(`admin/departments/${id}/counsellors`, {
+const getCounsellorsToAddSv = () => {
+  return API.get(`admin/counsellors`, {
     headers: authorHeader(),
   });
+};
+
+const addCounsellorToDep = (data) => {
+  return API.post("admin/counsellors", data, { headers: authorHeader() });
 };
 
 export {
@@ -51,5 +55,6 @@ export {
   updateDepSv,
   getDepCounsellorsSv,
   chooseDepheadSv,
-  getCounsellorsToAddSv
+  getCounsellorsToAddSv,
+  addCounsellorToDep,
 };

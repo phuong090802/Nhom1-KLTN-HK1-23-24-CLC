@@ -4,8 +4,20 @@ import { convertDateTimeToDate } from "../../../util/convert.util";
 import Pagination from "../../../molecule/pagination";
 
 export const LikeHistoryTable = () => {
-  const { likedQuestions, likedParams, setLikedParams, likePages } =
-    useContext(HistoryContext);
+  const {
+    likedQuestions,
+    likedParams,
+    setLikedParams,
+    likePages,
+    setSelectedQuestion,
+    setHiddenDetailQuestionModal,
+  } = useContext(HistoryContext);
+
+  const onDetail = (questionId) => {
+    // console.log("questionId", questionId);
+    setSelectedQuestion(questionId);
+    setHiddenDetailQuestionModal(false);
+  };
 
   return (
     <>
@@ -45,7 +57,12 @@ export const LikeHistoryTable = () => {
                 {question?.title}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                <button className="hover:text-primary hover:underline duration-200">
+                <button
+                  className="hover:text-primary hover:underline duration-200"
+                  onClick={() => {
+                    onDetail(question);
+                  }}
+                >
                   Xem chi tiết
                 </button>
               </td>

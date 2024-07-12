@@ -4,8 +4,20 @@ import { HistoryContext } from "./HistoryStore";
 import Pagination from "../../../molecule/pagination";
 
 export const QuestionsHistoryTable = () => {
-  const { historyQuestions, historyParams, setHistoryParams, historyPages } =
-    useContext(HistoryContext);
+  const {
+    historyQuestions,
+    historyParams,
+    setHistoryParams,
+    historyPages,
+    setSelectedQuestion,
+    setHiddenDetailQuestionModal,
+  } = useContext(HistoryContext);
+
+  const onDetail = (questionId) => {
+    // console.log("questionId", questionId);
+    setSelectedQuestion(questionId);
+    setHiddenDetailQuestionModal(false);
+  };
 
   return (
     <>
@@ -46,7 +58,10 @@ export const QuestionsHistoryTable = () => {
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {question?.answer ? (
-                  <button className="hover:text-primary hover:underline duration-200">
+                  <button
+                    className="hover:text-primary hover:underline duration-200"
+                    onClick={() => onDetail(question)}
+                  >
                     Xem chi tiết
                   </button>
                 ) : (

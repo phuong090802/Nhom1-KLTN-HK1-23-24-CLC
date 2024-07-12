@@ -557,6 +557,11 @@
       "code": "2106",
       "message": "",
       "detail": "Lấy cụ thể một câu hỏi đã trả lời bằng Id thành công"
+    },
+    {
+      "code": "2107",
+      "message": "",
+      "detail": "Thông báo câu hỏi của bạn đã được trả lời"
     }
   ]
 }

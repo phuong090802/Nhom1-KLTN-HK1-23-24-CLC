@@ -5,14 +5,14 @@ import { HistoryContext } from "./HistoryStore";
 import { QuestionsHistoryTable } from "./QuestionsHistoryTable";
 import clsx from "clsx";
 import { LikeHistoryTable } from "./LikeHistoryTable";
+import { DetailQuestionModal } from "./DetailQuestionModal";
 
 export const HistoryContent = () => {
   const [showingContent, setShowingContent] = useState("questionHistory");
 
-  const { historyQuestions } = useContext(HistoryContext);
-
   return (
     <div className="mt-2 mb-4">
+      <DetailQuestionModal />
       <div className="bg-white px-4 shadow-black50 shadow-lg py-4 rounded-2xl border">
         <p className="font-bold text-2xl mb-2 px-4 text-black75">
           Lịch sử tư vấn

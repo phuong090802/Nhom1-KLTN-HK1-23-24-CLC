@@ -52,11 +52,11 @@ export const UserMenu = () => {
       },
     ],
     COUNSELLOR: [
-      {
-        title: "Dashboard",
-        link: links.counsellor.home,
-        icon: <LayoutDashboard color={colors.primary} />,
-      },
+      // {
+      //   title: "Dashboard",
+      //   link: links.counsellor.home,
+      //   icon: <LayoutDashboard color={colors.primary} />,
+      // },
       {
         title: "Danh sách câu hỏi",
         link: links.counsellor.questions,

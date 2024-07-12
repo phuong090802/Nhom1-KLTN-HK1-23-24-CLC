@@ -9,13 +9,14 @@ export const useAuthSocket = () => {
 
   const { isLoggedIn } = useContext(DataContext);
 
-
   useEffect(() => {
     if (!connected && isLoggedIn) {
       authSocket.connect();
-    } else if (!isLoggedIn) {
+    }
+    if (connected && !isLoggedIn) {
       authSocket.close();
-      setConnected(false)
+      console.log("Disconnected");
+      setConnected(false);
     }
   }, [connected, isLoggedIn]);
 

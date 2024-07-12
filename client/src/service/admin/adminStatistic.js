@@ -8,7 +8,7 @@ const getStatisticSv = () => {
 };
 
 const getQuestionStatisticSv = (data) => {
-  return API.post("admin/statistics/question", data, {
+  return API.post("/statistics/question", data, {
     headers: authorHeader(),
   });
 };
@@ -20,4 +20,17 @@ const getDepartmentStatisticSv = ({ params }) => {
   });
 };
 
-export { getStatisticSv, getQuestionStatisticSv, getDepartmentStatisticSv };
+
+const getOverDueQuestionsSv = (params) => {
+  return API.get("administrator/departments/reminder", {
+    headers: authorHeader(),
+    params,
+  });
+};
+
+export {
+  getStatisticSv,
+  getQuestionStatisticSv,
+  getDepartmentStatisticSv,
+  getOverDueQuestionsSv,
+};

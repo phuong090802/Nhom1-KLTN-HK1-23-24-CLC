@@ -2,14 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import ModalLayout2 from "../../../template/modal-layout-2";
 import { AdminDepartmentContext } from "./AdminDepartmentStore";
 import default_avatar from "../../../assets/image/default_avatar.png";
-import { Plus, Star } from "lucide-react";
-import { getCounsellorsToAddSv } from "../../../service/admin/adminDepartment.sv";
+import { Check, Plus, Star } from "lucide-react";
+import {
+  addCounsellorToDep,
+  getCounsellorsToAddSv,
+} from "../../../service/admin/adminDepartment.sv";
 import { toast } from "sonner";
 
 export const AddCounsellorModal = ({ hidden, setHidden }) => {
   const { selectedDep } = useContext(AdminDepartmentContext);
 
   const [counsellorList, setCounsellorList] = useState([]);
+
+  const [addedList, setAddedList] = useState([]);
 
   const getCounsellorToAdd = async () => {
     try {
@@ -18,6 +23,18 @@ export const AddCounsellorModal = ({ hidden, setHidden }) => {
       setCounsellorList(response?.counsellors || []);
     } catch (error) {
       toast.error("Lỗi khi lấy danh sách tư vấn viên");
+    }
+  };
+
+  const addCounsellor = async (userId) => {
+    try {
+      const response = await addCounsellorToDep({
+        departmentId: selectedDep._id,
+        userId,
+      });
+      setAddedList((prev) => [...prev, userId]);
+    } catch (error) {
+      toast.error("Lỗi khi thêm nhân viên vào khoa");
     }
   };
 
@@ -55,26 +72,36 @@ export const AddCounsellorModal = ({ hidden, setHidden }) => {
               </tr>
             </thead>
             <tbody>
-              {employees.map((employee, index) => (
+              {counsellorList.map((counsellor, index) => (
                 <tr key={index} className="border-t">
                   <td className="py-2 min-w-40">
                     <div className="flex items-center gap-2">
                       <img
                         src={default_avatar}
-                        alt={`${employee.name} avatar`}
+                        alt={`${counsellor?.fullName} avatar`}
                         className="object-cover size-14 rounded-full"
                       />
-                      <p>{employee.name}</p>
+                      <p>{counsellor?.fullName}</p>
                     </div>
                   </td>
                   <td className="py-2">
                     <div className="flex">
-                      <button
-                        className="text-blue-500 hover:text-blue-700 mx-auto"
-                        title="Chỉnh sửa"
-                      >
-                        <Plus size={20} />
-                      </button>
+                      {addedList.includes(counsellor._id) ? (
+                        <button
+                          className="text-green-500 hover:text-blue-700 mx-auto"
+                          title="Chỉnh sửa"
+                        >
+                          <Check size={20} />
+                        </button>
+                      ) : (
+                        <button
+                          className="text-blue-500 hover:text-blue-700 mx-auto"
+                          title="Chỉnh sửa"
+                          onClick={() => addCounsellor(counsellor._id)}
+                        >
+                          <Plus size={20} />
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
