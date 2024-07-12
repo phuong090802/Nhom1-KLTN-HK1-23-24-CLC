@@ -1,31 +1,31 @@
-import Question from "../../../../models/question.js";
-import User from "../../../../models/user.js";
-import Notification from "../../../../models/notification.js";
-import sendNotification from "../../../../util/send-notification.js";
-import { uploadFileSocketIO } from "../../../../util/upload-file.js";
-import catchAsyncErrors from "../../../middlewares/catch-async-errors.js";
-import { handleAuthorization } from "../../../middlewares/event/auth.js";
-import * as validateCounsellor from "../../../middlewares/event/validate/based-roles/counsellor.js";
-import { handleValidateMimetypeAndFileSize } from "../../../middlewares/event/validate/combine/file.js";
-import { handleCheckQuestionAndStatus } from "../../../middlewares/event/validate/combine/question.js";
+import Question from '../../../../models/question.js';
+import User from '../../../../models/user.js';
+import Notification from '../../../../models/notification.js';
+import sendNotification from '../../../../util/send-notification.js';
+import { uploadFileSocketIO } from '../../../../util/upload-file.js';
+import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+import { handleAuthorization } from '../../../middlewares/event/auth.js';
+import * as validateCounsellor from '../../../middlewares/event/validate/based-roles/counsellor.js';
+import { handleValidateMimetypeAndFileSize } from '../../../middlewares/event/validate/combine/file.js';
+import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
 
 // namespace: /counsellor
 // listen event (ack): answer:create
 // description: Tư vấn viên, trưởng khoa trả lời câu hỏi
 export const handleCreateAnswer = catchAsyncErrors(
   async (io, socket, payload, callback) => {
-    handleAuthorization(socket, "COUNSELLOR", "DEPARTMENT_HEAD");
+    handleAuthorization(socket, 'COUNSELLOR', 'DEPARTMENT_HEAD');
     await validateCounsellor.handleCheckBeforeAccessDepartment(socket);
     const { questionId, file, content, isApprovalRequest } = payload;
     const user = socket.user;
     const question = await Question.findById(questionId);
-    let status = "publicly-answered-pending-approval";
-    if (user.role === "DEPARTMENT_HEAD") {
-      status = "publicly-answered-and-approved";
+    let status = 'publicly-answered-pending-approval';
+    if (user.role === 'DEPARTMENT_HEAD') {
+      status = 'publicly-answered-and-approved';
     } else {
       validateCounsellor.handleValidateFieldOfCounsellor(question.field, user);
     }
-    handleCheckQuestionAndStatus(question, "unanswered");
+    handleCheckQuestionAndStatus(question, 'unanswered');
     let answerData = {
       content,
       user,
@@ -33,7 +33,7 @@ export const handleCreateAnswer = catchAsyncErrors(
     if (file && file.buffer) {
       // maxSize: 2MB
       handleValidateMimetypeAndFileSize(file, 2);
-      const { ref, url } = await uploadFileSocketIO("answers", file);
+      const { ref, url } = await uploadFileSocketIO('answers', file);
       answerData = {
         ...answerData,
         file: {
@@ -44,23 +44,23 @@ export const handleCreateAnswer = catchAsyncErrors(
     }
     question.answer = answerData;
     question.status = !isApprovalRequest
-      ? "publicly-answered-and-approved"
+      ? 'publicly-answered-and-approved'
       : status;
     await question.save();
     callback({
       success: true,
-      message: "Trả lời câu hỏi thành công",
+      message: 'Trả lời câu hỏi thành công',
       code: 2031,
     });
 
     if (
-      user.role !== "DEPARTMENT_HEAD" ||
-      (user.role === "COUNSELLOR" && !isApprovalRequest)
+      user.role !== 'DEPARTMENT_HEAD' ||
+      (user.role === 'COUNSELLOR' && !isApprovalRequest)
     ) {
       const department = question.department;
       const departmentHead = await User.findOne({
-        role: "DEPARTMENT_HEAD",
-        "counsellor.department": department,
+        role: 'DEPARTMENT_HEAD',
+        'counsellor.department': department,
       });
       const receiverId = departmentHead._id.toString();
       const response = {
@@ -68,16 +68,16 @@ export const handleCreateAnswer = catchAsyncErrors(
         unapprovedAnswerExists: true,
         code: 2059,
       };
-      io.of("/auth").emit(`${receiverId}:notification:read`, response);
+      io.of('/auth').emit(`${receiverId}:notification:read`, response);
       await sendNotification(receiverId, {
         // sound: 'default',
-        title: "Duyệt câu trả lời",
-        body: "Có câu trả lời mới cần được duyệt",
+        title: 'Duyệt câu trả lời',
+        body: 'Có câu trả lời mới cần được duyệt',
       });
     } else {
       // emit notification to user
       const receiverId = question.user._id.toString();
-      const content = "Câu hỏi của bạn đã được trả lời";
+      const content = 'Câu hỏi của bạn đã được trả lời';
       const lastNotification = await Notification.create({
         recipient: receiverId,
         content,
@@ -87,12 +87,12 @@ export const handleCreateAnswer = catchAsyncErrors(
         lastNotification,
         code: 2107,
       };
-      io.of("/auth").emit(`${receiverId}:notification:read`, response);
+      io.of('/auth').emit(`${receiverId}:notification:read`, response);
       await sendNotification(receiverId, {
         // sound: 'default',
-        title: "Câu hỏi đã được trả lời",
+        title: 'Câu hỏi đã được trả lời',
         // body: question.answer.content,
-        body: "Câu hỏi của bạn đã được trả lời",
+        body: 'Câu hỏi của bạn đã được trả lời',
       });
     }
   }

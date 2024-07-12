@@ -8,27 +8,6 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 // Endpoint: /api/questions/:id
 // Method: PUT
 // Description: Tăng view cho câu hỏi đã trả lời
-export const handleGetQuestion = catchAsyncErrors(async (req, res, next) => {
-  const foundQuestion = await Question.findById(req.foundQuestion._id)
-    .populate({
-      path: 'answer',
-      select: 'content file.url answeredAt',
-      populate: { path: 'user', select: '-_id fullName avatar.url' },
-    })
-    .populate({ path: 'user', select: '-_id fullName avatar.url' })
-    .select('title content file createdAt views user answer likes status');
-
-  const question = foundQuestion.getQuestionInformation(HOME_GET_ALL_QUESTIONS);
-  res.json({
-    success: true,
-    question,
-    code: 2106,
-  });
-});
-
-// Endpoint: /api/questions/:id
-// Method: PUT
-// Description: Tăng view cho câu hỏi đã trả lời
 export const handleUpdateViewsOfQuestion = catchAsyncErrors(
   async (req, res, next) => {
     const question = req.foundQuestion;
