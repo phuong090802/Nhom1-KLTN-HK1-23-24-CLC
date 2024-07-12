@@ -1,10 +1,9 @@
 import Department from '../../../../models/department.js';
+import Field from '../../../../models/field.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
-import Field from '../../../../models/field.js';
 import handlePagination from '../../../../util/db/pagination.js';
 import QueryAPI from '../../../../util/db/query-api.js';
-import { convertTimeAndGenerateRangesForStatistic } from '../../../../util/generate/time-converter.js';
 import { handleCountQuestions } from '../../../../util/statistics/department.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
@@ -25,44 +24,6 @@ export const handleStatisticQuestions = catchAsyncErrors(
       success: true,
       departmentStatistic,
       code: 2065,
-    });
-  }
-);
-
-// Endpoint: /api/admin/statistics/question
-// Method: POST
-// Description: Admin thống kê câu hỏi trong hệ thống
-export const handleCountOfQuestion = catchAsyncErrors(
-  async (req, res, next) => {
-    // validate
-    const { timeUnit, latestTime } = req.body;
-    const ranges = convertTimeAndGenerateRangesForStatistic(
-      timeUnit,
-      latestTime
-    );
-    const questionStatistic = await Promise.all(
-      ranges.map(async (range) => {
-        const { start, end } = range;
-        const query = {
-          createdAt: {
-            $gte: start,
-            $lte: end,
-          },
-        };
-        const countOfQuestions = await Question.countDocuments(query);
-        return {
-          date: {
-            start,
-            end,
-          },
-          countOfQuestions,
-        };
-      })
-    );
-    res.json({
-      success: true,
-      questionStatistic,
-      code: 2080,
     });
   }
 );

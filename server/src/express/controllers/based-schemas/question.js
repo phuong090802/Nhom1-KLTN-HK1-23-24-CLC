@@ -8,6 +8,20 @@ import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
 // Endpoint: /api/questions/:id
 // Method: PUT
 // Description: Tăng view cho câu hỏi đã trả lời
+export const handleGetQuestion = catchAsyncErrors(async (req, res, next) => {
+  const question = req.foundQuestion.getQuestionInformation(
+    HOME_GET_ALL_QUESTIONS
+  );
+  res.json({
+    success: true,
+    question,
+    code: 2106,
+  });
+});
+
+// Endpoint: /api/questions/:id
+// Method: PUT
+// Description: Tăng view cho câu hỏi đã trả lời
 export const handleUpdateViewsOfQuestion = catchAsyncErrors(
   async (req, res, next) => {
     const question = req.foundQuestion;

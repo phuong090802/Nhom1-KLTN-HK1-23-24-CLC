@@ -552,6 +552,11 @@
       "code": "2105",
       "message": "",
       "detail": "Lấy danh sách tư vấn viên chưa thuộc khoa thành công"
+    },
+    {
+      "code": "2106",
+      "message": "",
+      "detail": "Lấy cụ thể một câu hỏi đã trả lời bằng Id thành công"
     }
   ]
 }

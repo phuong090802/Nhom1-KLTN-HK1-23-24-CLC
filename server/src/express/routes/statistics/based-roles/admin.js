@@ -12,13 +12,6 @@ const router = express.Router();
 router.use(handleAuthenticationAndAuthorization('ADMIN'));
 
 router.post(
-  '/question',
-  defaultPayloadDateForStatistic,
-  handleValidateTimeForStatisticInBody,
-  adminStatistic.handleCountOfQuestion
-);
-
-router.post(
   '/department/:id/question',
   handleValidateDepartmentId(),
   defaultPayloadDateForStatistic,

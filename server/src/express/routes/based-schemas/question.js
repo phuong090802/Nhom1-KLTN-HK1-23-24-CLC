@@ -10,13 +10,15 @@ import { handleOptionalAuthentication } from '../../middlewares/auth.js';
 
 const router = express.Router();
 
-router.route('/:id').put(
-  // question
-  handleValidateQuestionId(),
-  // status of question
-  handleValidateStatusOfQuestion('publicly-answered-and-approved'),
-  questionController.handleUpdateViewsOfQuestion
-);
+router
+  .route(
+    '/:id', // question
+    handleValidateQuestionId(),
+    // status of question
+    handleValidateStatusOfQuestion('publicly-answered-and-approved')
+  )
+  .get(questionController.handleGetQuestion)
+  .put(questionController.handleUpdateViewsOfQuestion);
 
 router
   .route('/')

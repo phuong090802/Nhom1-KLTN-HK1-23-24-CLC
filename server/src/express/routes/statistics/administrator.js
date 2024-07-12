@@ -2,6 +2,7 @@ import express from 'express';
 
 import * as statistic from '../../controllers/statistics/index.js';
 import { handleAuthenticationAndAuthorization } from '../../middlewares/auth.js';
+import { defaultPayloadDateForStatistic } from '../../middlewares/default-value/body.js';
 import { handleValidateDepartmentId } from '../../middlewares/validate/based-schemas/department.js';
 import { handleValidateTimeForStatisticInBody } from '../../middlewares/validate/statistic.js';
 
@@ -25,6 +26,13 @@ router.post(
 router.get(
   '/',
   statistic.handleStatisticCountUsersAndDepartmentsAndFieldsAndQuestions
+);
+
+router.post(
+  '/question',
+  defaultPayloadDateForStatistic,
+  handleValidateTimeForStatisticInBody,
+  statistic.handleCountOfQuestion
 );
 
 export default router;
