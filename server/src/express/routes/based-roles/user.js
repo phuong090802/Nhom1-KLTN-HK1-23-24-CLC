@@ -15,21 +15,24 @@ import {
 
 const router = express.Router();
 
-router.use(handleAuthenticationAndAuthorization('USER'));
-
 router
   .route('/questions/liked')
+  .all(handleAuthenticationAndAuthorization('USER'))
   .get(defaultPaginationParams, handleGetLikedQuestions);
 
 router
   .route('/questions/:id')
+  .all(handleAuthenticationAndAuthorization('USER'))
   .post(
     handleValidateQuestionId(),
     handleValidateStatusOfQuestion('publicly-answered-and-approved'),
     handleLikeQuestion
   );
 
-router.route('/questions').get(defaultPaginationParams, handleGetQuestions);
+router
+  .route('/questions')
+  .all(handleAuthenticationAndAuthorization('USER'))
+  .get(defaultPaginationParams, handleGetQuestions);
 
 router
   .route('/notifications')

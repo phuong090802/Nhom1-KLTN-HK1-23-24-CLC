@@ -21,7 +21,7 @@ import adminStatistic from './routes/statistics/based-roles/admin.js';
 import counsellorStatistic from './routes/statistics/based-roles/counsellor.js';
 import departmentHeadStatistic from './routes/statistics/based-roles/department-head.js';
 import userStatistic from './routes/statistics/based-roles/user.js';
-import statistic from './routes/statistics/administrator.js';
+import statistic from './routes/statistics/index.js';
 import questionRouteForMobile from './routes/based-schemas/mobile/question.js';
 
 const app = express();
