@@ -1,7 +1,7 @@
-import API from "../api";
+import API from '../api';
 
 const getFaqsSv = (params) => {
-  return API.get("faqs", {
+  return API.get('faqs', {
     params: params,
   });
 };

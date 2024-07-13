@@ -1,13 +1,13 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useContext, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import IconInput from '../../../molecule/icon-input';
 
-import { formStyle, initLoginData } from './const';
+import { colors } from '../../../../constant';
 import MyButton from '../../../atom/my-button';
 import { loginSv } from '../../../services/guest/author.sv';
 import { DataContext } from '../../../store/Store';
-import { colors } from '../../../../constant';
+import { formStyle, initLoginData } from './const';
 
 const LoginForm = ({ navigation }) => {
   const { setUser } = useContext(DataContext);
@@ -19,7 +19,7 @@ const LoginForm = ({ navigation }) => {
 
   const login = async () => {
     try {
-      console.log(loginData);
+      console.log('loginData', loginData);
       const response = await loginSv(loginData);
       await AsyncStorage.setItem('accessToken', response.token);
       setUser({ ...response.user, isLoggedIn: true });

@@ -1,28 +1,28 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useFonts } from "expo-font";
-import { useCallback } from "react";
-import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import AppHome from "./src/screens/common/app-home";
-import ForgotPassword from "./src/screens/common/forgot-password";
-import Login from "./src/screens/common/login";
-import Register from "./src/screens/common/register";
-import temp from "./src/screens/temp";
-import askedQuestionScreen from "./src/screens/user/asked-question-screen";
-import MenuScreen from "./src/screens/user/menu-screen/MenuScreen";
-import Store from "./src/store/Store";
-import NotiScreen from "./src/screens/user/noti-screen";
+import AppHome from './src/screens/common/app-home';
+import ForgotPassword from './src/screens/common/forgot-password';
+import Login from './src/screens/common/login';
+import Register from './src/screens/common/register';
+import temp from './src/screens/temp';
+import askedQuestionScreen from './src/screens/user/asked-question-screen';
+import MenuScreen from './src/screens/user/menu-screen/MenuScreen';
+import NotiScreen from './src/screens/user/noti-screen';
+import Store from './src/store/Store';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  console.log("App is running");
+  console.log('App is running');
 
   const [fontsLoaded, fontsError] = useFonts({
-    BahnschriftBold: require("./assets/fonts/BahnschriftBold.ttf"),
-    BahnschriftRegular: require("./assets/fonts/BahnschriftRegular.ttf"),
-    Bungee: require("./assets/fonts/Bungee.ttf"),
+    BahnschriftBold: require('./assets/fonts/BahnschriftBold.ttf'),
+    BahnschriftRegular: require('./assets/fonts/BahnschriftRegular.ttf'),
+    Bungee: require('./assets/fonts/Bungee.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {

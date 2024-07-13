@@ -3,7 +3,7 @@ function dateTimeToDate(dateTime) {
   let day = dateObject.getDate();
   let month = dateObject.getMonth() + 1;
   let year = dateObject.getFullYear();
-  return day + "/" + month + "/" + year;
+  return day + '/' + month + '/' + year;
 }
 
 export function convertDateTime(dateTimeStr) {
@@ -19,31 +19,37 @@ export function convertDateTime(dateTimeStr) {
 
 export function transformDepartments(departments) {
   const retDepartments = departments.map((department) => ({
-    value: department.departmentName || "unknow Department",
+    value: department.departmentName || 'unknow Department',
     key: department._id,
   }));
-  retDepartments.unshift({ key: "null", value: "Tất cả" });
+  retDepartments.unshift({ key: 'null', value: 'Tất cả' });
   return retDepartments;
 }
 
 export function transformsFields(fields) {
-  const retFields = fields.map((field) => ({
+  const retFields = [
+    {
+      key: 'null',
+      value: 'Tất cả',
+    },
+  ];
+  const transformedFields = fields.map((field) => ({
     value: field.fieldName,
     key: field._id,
   }));
-  retFields.unshift({ key: "null", value: "Tất cả" });
-  return retFields;
+
+  return [...retFields, ...transformedFields];
 }
 
 export const getRoleName = (role) => {
   const roleList = {
-    USER: "Người dùng",
-    COUNSELLOR: "Tư vấn viên",
-    DEPARTMENT_HEAD: "Trưởng khoa",
-    SUPERVISOR: "Giám sát viên",
-    ADMIN: "Quản trị viên",
+    USER: 'Người dùng',
+    COUNSELLOR: 'Tư vấn viên',
+    DEPARTMENT_HEAD: 'Trưởng khoa',
+    SUPERVISOR: 'Giám sát viên',
+    ADMIN: 'Quản trị viên',
   };
-  return roleList[role] || "Khách";
+  return roleList[role] || 'Khách';
 };
 
 export { dateTimeToDate };

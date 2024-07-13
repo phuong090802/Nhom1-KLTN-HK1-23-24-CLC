@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-import Octicon from '../../../../atom/octicon';
-import { colors, fonts } from '../../../../../constant';
-import { dropdownContentStyles } from './const';
 import user_avatar from '../../../../../assets/images/user_avatar.jpg';
+import { colors, fonts } from '../../../../../constant';
+import Octicon from '../../../../atom/octicon';
+import { dropdownContentStyles } from './const';
 
 const AnswerBox = ({ data }) => {
   return (

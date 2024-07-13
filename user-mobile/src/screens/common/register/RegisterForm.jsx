@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
 
-import IconInput from '../../../molecule/icon-input';
 import MyButton from '../../../atom/my-button';
+import IconInput from '../../../molecule/icon-input';
 import MySelect from '../../../molecule/my-select';
 import { registerSv } from '../../../services/guest/author.sv';
 import { formStyle, initRegisterData, selectData } from './const';
@@ -17,14 +17,15 @@ import {
 const RegisterForm = ({ step, setStep, navigation }) => {
   const handleStepChange = useCallback(
     (value) => {
-      if (!setStep) return;
+      if (!setStep) {
+        return;
+      }
       setStep(value);
     },
     [setStep]
   );
 
   const [error, setError] = useState({});
-
   const [registerData, setRegisterData] = useState(initRegisterData);
 
   const handleInputChange = (name, value) => {
@@ -42,13 +43,13 @@ const RegisterForm = ({ step, setStep, navigation }) => {
     ) {
       try {
         const response = await registerSv(registerData);
-        console.log(response);
+        console.log('register', response);
         Alert.alert(response.message || 'Tạo tài khoản thành công');
         navigation.navigate('Login');
         setRegisterData(initRegisterData);
         setError({});
       } catch (error) {
-        console.log(error);
+        console.log('register', error);
         Alert.alert(error.message || 'Tạo tài khoản không thành công');
       }
     }

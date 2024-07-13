@@ -1,7 +1,7 @@
-import { io } from "socket.io-client";
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import { io } from 'socket.io-client';
 
 export const useAuthorSocketHook = () => {
   const [authorSocket, setAuthorSocket] = useState(null);
@@ -10,11 +10,11 @@ export const useAuthorSocketHook = () => {
   useEffect(() => {
     const getToken = async () => {
       try {
-        const token = await AsyncStorage.getItem("accessToken");
-        console.log(token);
+        const token = await AsyncStorage.getItem('accessToken');
+        console.log('getToken', token);
         initializeSocket(token);
       } catch (error) {
-        console.error("Token error:", error);
+        console.error('Token error:', error);
       }
     };
     getToken();
@@ -22,7 +22,7 @@ export const useAuthorSocketHook = () => {
 
   const initializeSocket = (token) => {
     try {
-      const socket = io(process.env.EXPO_PUBLIC_HOST_SOCKET_URL + "auth", {
+      const socket = io(`${process.env.EXPO_PUBLIC_API_URL}/auth`, {
         withCredentials: true,
         autoConnect: false,
         extraHeaders: {
@@ -31,45 +31,51 @@ export const useAuthorSocketHook = () => {
       });
       setAuthorSocket(socket);
     } catch (error) {
-      console.error("Error initializing socket:", error);
+      console.error('Error initializing socket:', error);
     }
   };
 
   useEffect(() => {
     if (authorSocket) {
       const handleConnect = () => {
-        console.log("connected");
+        console.log('connected');
         setConnected(true);
       };
 
       const handleDisconnect = () => {
-        console.log("disconnected");
+        console.log('disconnected');
         setConnected(false);
       };
 
-      authorSocket.on("connect", handleConnect);
-      authorSocket.on("disconnect", handleDisconnect);
-      authorSocket.on("connect_error", (error) => console.log(error.data));
+      authorSocket.on('connect', handleConnect);
+      authorSocket.on('disconnect', handleDisconnect);
+      authorSocket.on('connect_error', (error) =>
+        console.log('connect_error', error.data)
+      );
 
       return () => {
-        authorSocket.off("connect", handleConnect);
-        authorSocket.off("disconnect", handleDisconnect);
+        authorSocket.off('connect', handleConnect);
+        authorSocket.off('disconnect', handleDisconnect);
       };
     }
   }, [authorSocket]);
 
   const createQuestion = async (data) => {
-    if (!authorSocket) return;
+    if (!authorSocket) {
+      return;
+    }
     try {
-      const response = await authorSocket.emitWithAck("question:create", data);
-      Alert.alert("Đặt câu hỏi thành công");
+      const response = await authorSocket.emitWithAck('question:create', data);
+      Alert.alert('Đặt câu hỏi thành công');
     } catch (error) {
-      console.log(error);
+      console.log('createQuestion', error);
     }
   };
 
   useEffect(() => {
-    if (!authorSocket) return;
+    if (!authorSocket) {
+      return;
+    }
     if (!connected) {
       authorSocket.connect();
     }
@@ -79,6 +85,6 @@ export const useAuthorSocketHook = () => {
     connected,
     setConnected,
     authorSocket,
-    createQuestion
+    createQuestion,
   };
 };

@@ -1,7 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-import {
-  getMyQuestionsSv
-} from "../../../services/guest/question.sv";
+import { createContext, useEffect, useState } from 'react';
+import { getMyQuestionsSv } from '../../../services/guest/question.sv';
 
 export const AskedQuestionContext = createContext({
   selected: String | Number,
@@ -9,17 +7,15 @@ export const AskedQuestionContext = createContext({
 });
 
 export const AskedQuestionStore = ({ children }) => {
-  const [myQuestions, setMyQuestions] = useState();
-
   const [selected, setSelected] = useState(-1);
 
   const getMyQuestions = async () => {
-    console.log("getMyQuestions");
+    console.log('getMyQuestions');
     try {
       const response = await getMyQuestionsSv();
-      console.log(response);
+      console.log('getMyQuestions', response);
     } catch (error) {
-      console.log(error);
+      console.log('getMyQuestions', error);
     }
   };
 

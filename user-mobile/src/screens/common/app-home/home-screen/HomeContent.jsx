@@ -29,7 +29,8 @@ const HomeContent = () => {
   function setQuestions(questions) {
     // deleteAllQuestions();
     let mergeQuestions;
-    homeContext.setQuestions((prev) => {r
+    homeContext.setQuestions((prev) => {
+      r;
       if (homeContext.params.keyword === '') {
         mergeQuestions = [...questions];
       } else {
@@ -78,7 +79,9 @@ const HomeContent = () => {
 
   // getHomeScreen data
   const getQuestions = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       const response = await getQuestionsSv(homeContext.params);

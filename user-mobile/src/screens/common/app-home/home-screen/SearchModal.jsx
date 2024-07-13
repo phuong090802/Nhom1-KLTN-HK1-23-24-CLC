@@ -47,7 +47,7 @@ const SearchModal = () => {
 
   const searchHandle = () => {
     let tempFilter = { ...params.filter };
-    console.log(tempFilter);
+    console.log('searchHandle', tempFilter);
     if (!chosenDep) tempFilter = {};
     else {
       tempFilter.department = chosenDep;

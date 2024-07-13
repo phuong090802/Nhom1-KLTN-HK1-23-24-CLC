@@ -20,4 +20,5 @@ const getMeSv = async () => {
   });
 };
 
-export { registerSv, loginSv, refreshTokenSv, getMeSv };
+export { getMeSv, loginSv, refreshTokenSv, registerSv };
+

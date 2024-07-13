@@ -1,17 +1,16 @@
-import React, { useContext, useMemo } from "react";
-import { ItemLayout } from "../../../template/item-layout/ItemLayout";
+import React, { useContext, useMemo } from 'react';
 import {
+  Image,
+  Linking,
   StyleSheet,
   Text,
-  View,
-  Linking,
-  Touchable,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { convertDateTime } from "../../../util/convert.util";
-import { NewsScreenContext } from "./NewsScreenStore";
-import { colors, fonts } from "../../../../constant";
+  View
+} from 'react-native';
+
+import { colors, fonts } from '../../../../constant';
+import { ItemLayout } from '../../../template/item-layout/ItemLayout';
+import { convertDateTime } from '../../../util/convert.util';
+import { NewsScreenContext } from './NewsScreenStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(NewsScreenContext);
@@ -23,17 +22,17 @@ export const Item = ({ data }) => {
 
   const openLink = () => {
     Linking.openURL(data.file).catch((err) =>
-      console.error("Không thể mở liên kết:", err)
+      console.error('Không thể mở liên kết:', err)
     );
   };
 
   const fileComponent = useMemo(() => {
     const returnComponent = (
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: 'row' }}>
         {/* <Text>Xem thông tin chi tiết: </Text> */}
         <Image
           source={{ uri: data.file }}
-          style={{ flex: 1, resizeMode: "contain", width: null, height: 150 }}
+          style={{ flex: 1, resizeMode: 'contain', width: null, height: 150 }}
         />
         {/* <TouchableOpacity onPress={openLink}>
           <Text

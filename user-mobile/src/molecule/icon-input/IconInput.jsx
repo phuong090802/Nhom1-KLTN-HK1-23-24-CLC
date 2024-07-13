@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { useCallback } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { colors, fonts } from "../../../constant";
-import MyIcon from "../../atom/my-icon";
+import { colors, fonts } from '../../../constant';
+import MyIcon from '../../atom/my-icon';
 
 const IconInput = ({
   name,
@@ -21,15 +21,18 @@ const IconInput = ({
 }) => {
   const handleTextChange = useCallback(
     (text) => {
-      if (!onChange) return;
-      else if (!name) onChange(text);
+      if (!onChange) {
+        return;
+      } else if (!name) onChange(text);
       else onChange(name, text);
     },
     [onChange, name]
   );
 
   const handleBlur = useCallback(() => {
-    if (!onBlur) return;
+    if (!onBlur) {
+      return;
+    }
     onBlur();
   }, [onBlur]);
 
@@ -45,14 +48,14 @@ const IconInput = ({
       </View>
       <TextInput
         style={style.iconInput}
-        placeholder={placeholder || ""}
-        keyboardType={keyboardType || "default"}
+        placeholder={placeholder || ''}
+        keyboardType={keyboardType || 'default'}
         secureTextEntry={secureTextEntry}
         defaultValue={value}
         onChangeText={handleTextChange}
         onBlur={handleBlur}
       />
-      {errorMessage && errorMessage !== "" && (
+      {errorMessage && errorMessage !== '' && (
         <Text style={style.errorMessage}>{errorMessage}</Text>
       )}
     </View>
@@ -61,18 +64,18 @@ const IconInput = ({
 
 const style = StyleSheet.create({
   container: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
     // overflow: "hidden",
-    position: "relative",
+    position: 'relative',
   },
   default: { borderWidth: 1, borderColor: colors.black10, borderRadius: 16 },
   icon: {
     height: 44,
-    display: "flex",
-    backgroundColor: "#fff",
-    justifyContent: "center",
+    display: 'flex',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
     paddingHorizontal: 8,
     borderTopLeftRadius: 16,
     borderBottomLeftRadius: 16,
@@ -80,7 +83,7 @@ const style = StyleSheet.create({
   iconInput: {
     flex: 1,
     height: 44,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     fontFamily: fonts.BahnschriftRegular,
     fontSize: 16,
     paddingRight: 24,
@@ -88,7 +91,7 @@ const style = StyleSheet.create({
     borderBottomRightRadius: 16,
   },
   errorMessage: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     bottom: -18,
     fontSize: 13,

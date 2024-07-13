@@ -31,7 +31,6 @@ const HomeStore = ({ children }) => {
   const [params, setParams] = useState(initParams);
   const [searchVisible, setSearchVisible] = useState(false);
   const [sortVisible, setSortVisible] = useState(false);
-
   const [depData, setDepData] = useState([]);
   const [fieldData, setFieldData] = useState([]);
   const [chosenDep, setChosenDep] = useState(null);

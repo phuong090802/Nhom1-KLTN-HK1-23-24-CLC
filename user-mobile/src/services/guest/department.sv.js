@@ -8,4 +8,4 @@ const getDepFieldsSv = (depId) => {
   return API.get(`departments/${depId}/fields`);
 };
 
-export { getDepsSv, getDepFieldsSv };
+export { getDepFieldsSv, getDepsSv };

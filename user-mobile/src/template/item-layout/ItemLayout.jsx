@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../constant";
-import user_avatar from "../../../assets/images/user_avatar.jpg";
-import IconButton from "../../atom/icon-button";
+import { Image, StyleSheet, Text, View } from 'react-native';
+import user_avatar from '../../../assets/images/user_avatar.jpg';
+import { colors, fonts } from '../../../constant';
+import IconButton from '../../atom/icon-button';
 
 export const ItemLayout = ({
   image,
@@ -14,14 +14,14 @@ export const ItemLayout = ({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: 'row' }}>
           {image !== undefined && (
             <View style={{ marginRight: 8 }}>
               <Image source={user_avatar} style={styles.image} />
             </View>
           )}
           <View style={styles.headerInfor}>
-            <Text style={styles.title}>{text || "Không có tiêu đề"}</Text>
+            <Text style={styles.title}>{text || 'Không có tiêu đề'}</Text>
             {/* {!!infor && <Text style={styles.inforBox}>{infor}</Text>} */}
             {infor && (
               <View style={styles.inforContainer}>
@@ -33,8 +33,8 @@ export const ItemLayout = ({
         {onExpand && (
           <View>
             <IconButton
-              iconName={"triangle-down"}
-              iconColor={"#fff"}
+              iconName={'triangle-down'}
+              iconColor={'#fff'}
               onClick={onExpand}
             />
           </View>
@@ -61,7 +61,7 @@ export const ItemLayout = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     paddingHorizontal: 16,
     paddingVertical: 16,
     borderRadius: 16,
@@ -75,14 +75,14 @@ const styles = StyleSheet.create({
     color: colors.black75,
   },
   header: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   inforContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     marginTop: 4,
   },
@@ -103,16 +103,16 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   headerInfor: {
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   dropdownContainer: {
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   h_0: {
     height: 0,
   },
   h_auto: {
-    height: "auto",
+    height: 'auto',
   },
 });

@@ -109,4 +109,4 @@ const initParams = {
     createdAt: 1,
   },
 };
-export { styles, dropdownContentStyles, dropdownItemStyles, initParams };
+export { dropdownContentStyles, dropdownItemStyles, initParams, styles };

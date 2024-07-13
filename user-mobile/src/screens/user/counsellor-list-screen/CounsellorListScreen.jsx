@@ -1,5 +1,5 @@
-import { CounsellorListContent } from "./CounsellorListContent";
-import { CounsellorListStore } from "./CounsellorListStore";
+import { CounsellorListContent } from './CounsellorListContent';
+import { CounsellorListStore } from './CounsellorListStore';
 
 const CounsellorListScreen = () => {
   return (

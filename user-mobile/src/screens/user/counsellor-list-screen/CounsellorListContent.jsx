@@ -1,16 +1,16 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import TitleBar from "../../../molecule/title-bar";
-import { colors } from "../../../../constant";
-import { useContext } from "react";
-import { CounsellorListContext } from "./CounsellorListStore";
-import { Item } from "./Item";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { colors } from '../../../../constant';
+import TitleBar from '../../../molecule/title-bar';
+import { CounsellorListContext } from './CounsellorListStore';
+import { Item } from './Item';
 
 export const CounsellorListContent = () => {
   const { counsellors, handleLazy } = useContext(CounsellorListContext);
 
   return (
     <View style={styles.containner}>
-      <TitleBar title={"Danh sách tư vấn viên"} />
+      <TitleBar title={'Danh sách tư vấn viên'} />
       <ScrollView
         style={{ marginTop: 8 }}
         showsVerticalScrollIndicator={false}

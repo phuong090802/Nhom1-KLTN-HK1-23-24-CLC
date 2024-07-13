@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["question"],
-  keyword: "",
+  search: ['question'],
+  keyword: '',
   keyword: null,
   page: 1,
   size: 10,

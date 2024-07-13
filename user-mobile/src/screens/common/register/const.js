@@ -21,10 +21,22 @@ const formStyle = StyleSheet.create({
 });
 
 const selectData = [
-  { key: 'Sinh viên', value: 'Sinh viên' },
-  { key: 'Cựu sinh viên', value: 'Cựu sinh viên' },
-  { key: 'Học sinh', value: 'Học sinh' },
-  { key: 'Phụ huynh', value: 'Phụ huynh' },
+  {
+    key: 'Sinh viên',
+    value: 'Sinh viên',
+  },
+  {
+    key: 'Cựu sinh viên',
+    value: 'Cựu sinh viên',
+  },
+  {
+    key: 'Học sinh',
+    value: 'Học sinh',
+  },
+  {
+    key: 'Phụ huynh',
+    value: 'Phụ huynh',
+  },
 ];
 
 const initRegisterData = {

@@ -1,48 +1,44 @@
-import { createContext, useEffect, useState } from "react";
-import { getFaqsSv } from "../../../services/guest/faqs.sv";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { getFaqsSv } from '../../../services/guest/faqs.sv';
+import { initParams } from './constance';
 
 export const FaqsStoreContext = createContext({
-  faqs: Array,
-  setFaqs: Function,
-  params: Object,
-  setParams: Function,
-  selected: String | Number,
-  setSelected: Function,
-  pages: Number,
-  endReached: Boolean,
-  setEndReached: Function,
+  faqs: [],
+  setFaqs: faqs,
+  params: {},
+  setParams: (params) => {},
+  selected: '',
+  setSelected: (value) => {},
+  pages: 0,
+  endReached: false,
+  setEndReached: isEndReached,
   handleLazy: (nativeEvent) => {},
-  loading: Boolean,
-  setLoading: Function,
+  loading: false,
+  setLoading: lisLoading,
 });
 
 export const FaqsScreenStore = ({ children }) => {
   const [faqs, setFaqs] = useState([]);
-
   const [params, setParams] = useState(initParams);
-
   const [selected, setSelected] = useState(-1);
-
   const [pages, setPages] = useState(0);
-
   const [endReached, setEndReached] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
   const getFaqs = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     try {
       setLoading(true);
       const response = await getFaqsSv(params);
       setFaqs((prev) => [...prev, ...response.faqs]);
       setPages(response.pages);
     } catch (error) {
-      console.log(error.message || "Lỗi lấy câu hỏi chung !");
-    } finally {
-      setEndReached(false);
-      setLoading(false);
+      console.log('getFaqs', error.message || 'Lỗi lấy câu hỏi chung !');
     }
+    setEndReached(false);
+    setLoading(false);
   };
 
   const handleLazy = (nativeEvent) => {
@@ -67,21 +63,21 @@ export const FaqsScreenStore = ({ children }) => {
     getFaqs();
   }, [params]);
 
+  const values = {
+    faqs,
+    setFaqs,
+    params,
+    setFaqs,
+    selected,
+    setSelected,
+    pages,
+    handleLazy,
+    loading,
+    setLoading,
+  };
+
   return (
-    <FaqsStoreContext.Provider
-      value={{
-        faqs,
-        setFaqs,
-        params,
-        setFaqs,
-        selected,
-        setSelected,
-        pages,
-        handleLazy,
-        loading,
-        setLoading,
-      }}
-    >
+    <FaqsStoreContext.Provider value={values}>
       {children}
     </FaqsStoreContext.Provider>
   );

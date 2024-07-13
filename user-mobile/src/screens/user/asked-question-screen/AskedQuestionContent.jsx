@@ -1,11 +1,11 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import TitleBar from "../../../molecule/title-bar";
-import { colors, fonts } from "../../../../constant";
-import { useNavigation } from "@react-navigation/native";
-import { FakeData } from "./const";
-import { DropdownItem } from "./DropDownItem";
-import { useContext } from "react";
-import { AskedQuestionContext } from "./AskedQuestionStore";
+import { useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { colors } from '../../../../constant';
+import TitleBar from '../../../molecule/title-bar';
+import { AskedQuestionContext } from './AskedQuestionStore';
+import { FakeData } from './const';
+import { DropdownItem } from './DropDownItem';
 
 export const AskedQuestionContent = () => {
   const context = useContext(AskedQuestionContext);
@@ -23,9 +23,9 @@ export const AskedQuestionContent = () => {
   return (
     <View style={{ marginTop: 16, paddingHorizontal: 16 }}>
       <TitleBar
-        title={"Câu hỏi đã hỏi"}
+        title={'Câu hỏi đã hỏi'}
         onBack={() => {
-          navigation.navigate("UserMenu");
+          navigation.navigate('UserMenu');
         }}
       />
       <View style={{ marginTop: 8 }}>

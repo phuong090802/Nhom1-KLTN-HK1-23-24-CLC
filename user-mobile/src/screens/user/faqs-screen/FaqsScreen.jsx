@@ -1,5 +1,5 @@
-import { FaqsScreenContent } from "./FaqsScreenContent";
-import { FaqsScreenStore, FaqsStoreContext } from "./FaqsScreenStore";
+import { FaqsScreenContent } from './FaqsScreenContent';
+import { FaqsScreenStore } from './FaqsScreenStore';
 
 const FaqsScreen = () => {
   return (

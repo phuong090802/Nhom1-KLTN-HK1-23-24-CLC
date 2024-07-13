@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
-import { ItemLayout } from "../../../template/item-layout/ItemLayout";
-import { useContext, useMemo } from "react";
-import { CounsellorListContext } from "./CounsellorListStore";
-import MyIcon from "../../../atom/my-icon/MyIcon";
-import { fonts } from "../../../../constant";
-import { getRoleName } from "../../../util/convert.util";
+import { useContext, useMemo } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { fonts } from '../../../../constant';
+import MyIcon from '../../../atom/my-icon/MyIcon';
+import { ItemLayout } from '../../../template/item-layout/ItemLayout';
+import { getRoleName } from '../../../util/convert.util';
+import { CounsellorListContext } from './CounsellorListStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(CounsellorListContext);
@@ -23,24 +23,24 @@ export const Item = ({ data }) => {
     >
       <View style={styles.container}>
         <InforBox
-          title={"Số điện thoại"}
+          title={'Số điện thoại'}
           content={data.phoneNumber}
-          icon={<MyIcon iconPackage={"Feather"} name={"phone"} size={20} />}
+          icon={<MyIcon iconPackage={'Feather'} name={'phone'} size={20} />}
         />
         <InforBox
-          title={"Email"}
+          title={'Email'}
           content={data.email}
-          icon={<MyIcon iconPackage={"Feather"} name={"mail"} size={20} />}
+          icon={<MyIcon iconPackage={'Feather'} name={'mail'} size={20} />}
         />
         <InforBox
-          title={"Chức vụ"}
+          title={'Chức vụ'}
           content={getRoleName(data.role)}
-          icon={<MyIcon iconPackage={"Octicons"} name={"id-badge"} size={20} />}
+          icon={<MyIcon iconPackage={'Octicons'} name={'id-badge'} size={20} />}
         />
         <InforBox
-          title={"Khoa"}
+          title={'Khoa'}
           content={data.department}
-          icon={<MyIcon iconPackage={"Feather"} name={"layers"} size={20} />}
+          icon={<MyIcon iconPackage={'Feather'} name={'layers'} size={20} />}
         />
       </View>
     </ItemLayout>
@@ -53,8 +53,8 @@ const InforBox = ({ title, content, icon }) => {
       <View style={styles.inforBox}>
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "start",
+            flexDirection: 'row',
+            alignItems: 'start',
             minWidth: 150,
             gap: 8,
           }}
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   inforBox: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   text: {
     fontSize: 16,
     fontFamily: fonts.BahnschriftRegular,
     flex: 1,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
 });

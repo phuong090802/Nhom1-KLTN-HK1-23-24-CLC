@@ -2,7 +2,7 @@ import API from '../api';
 import { authHeader } from '../requestHeader';
 
 const getQuestionsSv = (params) => {
-  console.log(params.skip);
+  console.log('getQuestionsSv', params.skip);
   return API.get('mobile/questions', {
     params: params,
   });
@@ -22,4 +22,4 @@ const getMyQuestionsSv = (params) => {
   });
 };
 
-export { getQuestionsSv, createQuestionSv, getMyQuestionsSv };
+export { createQuestionSv, getMyQuestionsSv, getQuestionsSv };

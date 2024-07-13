@@ -1,1 +1,1 @@
-export { default } from "./NotiScreen";
+export { default } from './NotiScreen';

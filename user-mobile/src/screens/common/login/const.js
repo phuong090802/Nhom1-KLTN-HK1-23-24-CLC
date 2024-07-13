@@ -60,4 +60,3 @@ const initLoginData = {
 };
 
 export { formStyle, initLoginData, style };
-

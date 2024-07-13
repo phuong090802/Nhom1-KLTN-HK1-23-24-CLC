@@ -1,6 +1,6 @@
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-import { colors, fonts } from "../../../constant";
+import { colors, fonts } from '../../../constant';
 
 const MyButton = ({ title, onPress, color }) => {
   return (
@@ -17,8 +17,8 @@ export default MyButton;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 44,
     borderRadius: 16,
     paddingHorizontal: 8,
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.BahnschriftBold,
     fontSize: 20,
-    color: "#fff",
+    color: '#fff',
   },
 });

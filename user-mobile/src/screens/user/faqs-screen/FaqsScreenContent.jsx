@@ -1,17 +1,17 @@
-import { useContext } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import { colors } from "../../../../constant";
-import TitleBar from "../../../molecule/title-bar";
-import { FaqsStoreContext } from "./FaqsScreenStore";
-import { Item } from "./Item";
-import { FaqsSkeletons } from "./FaqsSkeletons";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { colors } from '../../../../constant';
+import TitleBar from '../../../molecule/title-bar';
+import { FaqsStoreContext } from './FaqsScreenStore';
+import { FaqsSkeletons } from './FaqsSkeletons';
+import { Item } from './Item';
 
 export const FaqsScreenContent = () => {
   const { faqs, handleLazy, loading } = useContext(FaqsStoreContext);
 
   return (
     <View style={styles.containner}>
-      <TitleBar title={"Thư viện câu hỏi"} />
+      <TitleBar title={'Thư viện câu hỏi'} />
       <ScrollView
         style={{ marginTop: 8 }}
         showsVerticalScrollIndicator={false}

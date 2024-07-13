@@ -55,4 +55,5 @@ const headerStyles = StyleSheet.create({
   },
 });
 
-export { styles, headerStyles };
+export { headerStyles, styles };
+

@@ -1,8 +1,8 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import { formStyle } from './const';
-import IconInput from '../../../molecule/icon-input';
-import MyButton from '../../../atom/my-button';
 import { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import MyButton from '../../../atom/my-button';
+import IconInput from '../../../molecule/icon-input';
+import { formStyle } from './const';
 
 const ForgotPasswordForm = ({ navigation }) => {
   const [step, setStep] = useState(1);

@@ -62,7 +62,7 @@ const passwordValidate = (password, setError) => {
 };
 
 const confirmPasswordValidate = (password, confirmPassword, setError) => {
-  console.log(password, confirmPassword);
+  console.log('confirmPasswordValidate', password, confirmPassword);
   if (confirmPassword === '') {
     setError((prev) => ({
       ...prev,
@@ -82,9 +82,9 @@ const confirmPasswordValidate = (password, confirmPassword, setError) => {
 };
 
 export {
-  phoneNumberValidate,
-  fullNameValidate,
-  emailValidate,
-  passwordValidate,
   confirmPasswordValidate,
+  emailValidate,
+  fullNameValidate,
+  passwordValidate,
+  phoneNumberValidate,
 };

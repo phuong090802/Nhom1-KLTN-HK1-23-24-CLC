@@ -1,6 +1,6 @@
-import Layout from "../../../template/layout";
-import { NotiScreenContent } from "./NotiScreenContent";
-import { NotiScreenStore } from "./NotiScreenStore";
+import Layout from '../../../template/layout';
+import { NotiScreenContent } from './NotiScreenContent';
+import { NotiScreenStore } from './NotiScreenStore';
 
 const NotiScreen = () => {
   return (

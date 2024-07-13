@@ -1,16 +1,16 @@
-import { createContext, useEffect, useState } from "react";
-import { getCounsellorListSv } from "../../../services/guest/counsellor.sv";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { getCounsellorListSv } from '../../../services/guest/counsellor.sv';
+import { initParams } from './constance';
 
 export const CounsellorListContext = createContext({
-  counsellors: Array,
-  setCounsellors: Function,
-  pages: Number,
-  setPages: Function,
-  selected: Number,
-  setSelected: Function,
-  params: Object,
-  setParams: Function,
+  counsellors: [],
+  setCounsellors: (counsellors) => {},
+  pages: 0,
+  setPages: (pages) => {},
+  selected: 0,
+  setSelected: (selected) => {},
+  params: {},
+  setParams: (params) => {},
   handleLazy: (nativeEvent) => {},
 });
 
@@ -31,7 +31,7 @@ export const CounsellorListStore = ({ children }) => {
       setCounsellors(response.staffs);
       setPages(response.pages);
     } catch (error) {
-      console.log("Lỗi lấy danh sách tư vấn viên", error);
+      console.log('Lỗi lấy danh sách tư vấn viên', error);
     }
   };
 
@@ -57,20 +57,20 @@ export const CounsellorListStore = ({ children }) => {
     getCounsellors();
   }, []);
 
+  const values = {
+    counsellors,
+    setCounsellors,
+    pages,
+    setPages,
+    selected,
+    setSelected,
+    params,
+    setParams,
+    handleLazy,
+  };
+
   return (
-    <CounsellorListContext.Provider
-      value={{
-        counsellors,
-        setCounsellors,
-        pages,
-        setPages,
-        selected,
-        setSelected,
-        params,
-        setParams,
-        handleLazy,
-      }}
-    >
+    <CounsellorListContext.Provider value={values}>
       {children}
     </CounsellorListContext.Provider>
   );

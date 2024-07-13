@@ -1,1 +1,1 @@
-export { default } from "./AskedQuestionScreen";
+export { default } from './AskedQuestionScreen';

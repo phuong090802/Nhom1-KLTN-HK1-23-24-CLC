@@ -10,13 +10,15 @@ import TitleLogo from '../../atom/title-logo/TitleLogo';
 
 const AuthLayout = ({ title, children, onBack }) => {
   const handleBack = useCallback(() => {
-    if (!onBack) return;
+    if (!onBack) {
+      return;
+    }
     onBack();
   }, [onBack]);
 
   return (
     <>
-      <StatusBar style='dark' />
+      <StatusBar style="dark" />
       <SafeAreaView style={{ flex: 1 }}>
         <LinearGradient
           colors={['#2785DC', '#1DDBD2']}
@@ -25,7 +27,11 @@ const AuthLayout = ({ title, children, onBack }) => {
           style={styles.container}
         >
           <View
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
             <TitleLogo />
           </View>

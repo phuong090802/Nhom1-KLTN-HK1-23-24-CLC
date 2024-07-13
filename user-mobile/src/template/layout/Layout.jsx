@@ -1,10 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Header from "./Header";
-import { styles as headerStyles } from "./const";
-import { colors } from "../../../constant";
+import Header from './Header';
+import { styles as headerStyles } from './const';
 
 const Layout = ({ children }) => {
   return (

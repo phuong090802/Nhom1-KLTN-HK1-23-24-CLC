@@ -1,16 +1,12 @@
-import { useCallback } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useCallback } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import user_avatar from "../../../../assets/images/user_avatar.jpg";
-
-import IconButton from "../../../atom/icon-button";
-import Octicon from "../../../atom/octicon";
-
-import { dateTimeToDate } from "../../../util/convert.util";
-
-import AnswerBox from "./AnswerBox";
-import QuestionBox from "./QuestionBox";
-import { colors, fonts } from "../../../../constant";
+import { colors, fonts } from '../../../../constant';
+import IconButton from '../../../atom/icon-button';
+import Octicon from '../../../atom/octicon';
+import { dateTimeToDate } from '../../../util/convert.util';
+import AnswerBox from './AnswerBox';
+import QuestionBox from './QuestionBox';
 
 export const DropdownItem = ({ data, isOpen, onSelect }) => {
   const handleSelect = useCallback(() => {
@@ -34,18 +30,18 @@ export const DropdownItem = ({ data, isOpen, onSelect }) => {
                 {/* <Text style={dropdownItemStyles.inforText}>
                   {data.user.fullName}
                 </Text> */}
-                <Octicon name={"clock"} size={16} />
+                <Octicon name={'clock'} size={16} />
                 <Text style={dropdownItemStyles.inforText}>
                   {dateTimeToDate(data.createdAt)}
                 </Text>
-                <Octicon name={"eye"} size={16} />
+                <Octicon name={'eye'} size={16} />
                 <Text style={dropdownItemStyles.inforText}>{data.views}</Text>
               </View>
             </View>
             <View style={dropdownItemStyles.icon}>
               <IconButton
-                iconName={"triangle-down"}
-                iconColor={"#fff"}
+                iconName={'triangle-down'}
+                iconColor={'#fff'}
                 iconSize={20}
                 onClick={handleSelect}
               />
@@ -68,9 +64,9 @@ export const DropdownItem = ({ data, isOpen, onSelect }) => {
 
 const dropdownItemStyles = StyleSheet.create({
   container: {
-    display: "flex",
-    backgroundColor: "#fff",
-    flexDirection: "column",
+    display: 'flex',
+    backgroundColor: '#fff',
+    flexDirection: 'column',
     paddingVertical: 16,
     borderWidth: 0.5,
     borderColor: colors.black10,
@@ -79,14 +75,14 @@ const dropdownItemStyles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
   },
   questionInfor: {
-    width: "85%",
+    width: '85%',
   },
   title: {
     fontSize: 18,
@@ -95,9 +91,9 @@ const dropdownItemStyles = StyleSheet.create({
   },
   inforContainer: {
     marginTop: 4,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 4,
   },
   authorImage: {
@@ -114,8 +110,8 @@ const dropdownItemStyles = StyleSheet.create({
   icon: {},
   dropDownContainer: {
     paddingTop: 8,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
-  open: { height: "auto" },
+  open: { height: 'auto' },
   close: { height: 0 },
 });

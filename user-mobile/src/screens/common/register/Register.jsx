@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import RegisterForm from './RegisterForm';
 import AuthLayout from '../../../template/auth-layout/AuthLayout';
+import RegisterForm from './RegisterForm';
 
 const Register = ({ navigation }) => {
   const [step, setStep] = useState(1);

@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import Layout from "../../../template/layout/Layout";
-import { AskedQuestionStore } from "./AskedQuestionStore";
-import { AskedQuestionContent } from "./AskedQuestionContent";
+import Layout from '../../../template/layout/Layout';
+import { AskedQuestionContent } from './AskedQuestionContent';
+import { AskedQuestionStore } from './AskedQuestionStore';
 
 const AskedQuestionScreen = () => {
   return (
@@ -13,5 +12,4 @@ const AskedQuestionScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
 export default AskedQuestionScreen;

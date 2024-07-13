@@ -1,9 +1,9 @@
-import { useCallback } from "react";
-import { StyleSheet, View } from "react-native";
-import { SelectList } from "react-native-dropdown-select-list";
+import { useCallback } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { SelectList } from 'react-native-dropdown-select-list';
 
-import { colors, fonts } from "../../../constant";
-import MyIcon from "../../atom/my-icon";
+import { colors, fonts } from '../../../constant';
+import MyIcon from '../../atom/my-icon';
 
 const MySelect = ({
   name,
@@ -17,10 +17,11 @@ const MySelect = ({
   placeholder,
   width,
 }) => {
-
   const handleSelect = useCallback(
     (value) => {
-      if (!onChange) return;
+      if (!onChange) {
+        return;
+      }
       if (!name) {
         onChange(value);
       } else {
@@ -39,8 +40,8 @@ const MySelect = ({
         boxStyles={[styles.boxStyles, iconName && { paddingLeft: 40 }]}
         inputStyles={styles.inputStyles}
         dropdownStyles={styles.dropdownStyles}
-        defaultOption={defaultOption || { key: "null", value: "Tất cả" }}
-        placeholder={placeholder || "Select options"}
+        defaultOption={defaultOption || { key: 'null', value: 'Tất cả' }}
+        placeholder={placeholder || 'Select options'}
         search={false}
       />
       <View style={styles.icon}>
@@ -49,7 +50,7 @@ const MySelect = ({
             name={iconName}
             iconPackage={iconPackage}
             size={iconSize || 24}
-            color={iconColor || "#000"}
+            color={iconColor || '#000'}
           />
         )}
       </View>
@@ -59,26 +60,26 @@ const MySelect = ({
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    alignItems: "center",
-    position: "relative",
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
   },
   icon: {
-    position: "absolute",
+    position: 'absolute',
     height: 44,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     left: 9,
   },
   boxStyles: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     height: 44,
     borderWidth: 1,
     borderColor: colors.black10,
     borderRadius: 16,
     marginTop: 0,
-    width: "100%",
+    width: '100%',
   },
   inputStyles: {
     fontFamily: fonts.BahnschriftRegular,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     color: colors.black75,
   },
   dropdownStyles: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 });
 

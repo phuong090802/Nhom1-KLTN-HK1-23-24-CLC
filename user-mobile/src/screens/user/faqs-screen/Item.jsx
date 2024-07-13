@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
-import { ItemLayout } from "../../../template/item-layout/ItemLayout";
-import { useContext } from "react";
-import { FaqsStoreContext } from "./FaqsScreenStore";
-import Octicon from "../../../atom/octicon";
-import { colors, fonts } from "../../../../constant";
+import { useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fonts } from '../../../../constant';
+import Octicon from '../../../atom/octicon';
+import { ItemLayout } from '../../../template/item-layout/ItemLayout';
+import { FaqsStoreContext } from './FaqsScreenStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(FaqsStoreContext);
@@ -24,8 +24,8 @@ export const Item = ({ data }) => {
       infor={data.department}
     >
       <View style={styles.container}>
-        <Octicon name={"comment-discussion"} size={24} color={colors.primary} />
-        <View style={{ width: "85%" }}>
+        <Octicon name={'comment-discussion'} size={24} color={colors.primary} />
+        <View style={{ width: '85%' }}>
           <Text style={styles.title}>Phản hồi</Text>
           <Text style={styles.text}>{data.answer}</Text>
         </View>
@@ -35,7 +35,11 @@ export const Item = ({ data }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginTop: 8, flexDirection: "row", gap: 8 },
+  container: {
+    marginTop: 8,
+    flexDirection: 'row',
+    gap: 8,
+  },
   title: {
     fontFamily: fonts.BahnschriftBold,
     fontSize: 18,
@@ -43,6 +47,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: fonts.BahnschriftRegular,
-    fontSize: 16
+    fontSize: 16,
   },
 });
