@@ -3,9 +3,9 @@ import { getNewsSv } from '../../../services/guest/news.sv';
 
 export const NewsScreenContext = createContext({
   news: [],
-  setNews: news,
+  setNews: (news) => {},
   pages: 0,
-  setPages: pages,
+  setPages: (pages) => {},
   params: {},
   setParams: (params) => {},
   selected: '',

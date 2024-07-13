@@ -4,17 +4,17 @@ import { initParams } from './constance';
 
 export const FaqsStoreContext = createContext({
   faqs: [],
-  setFaqs: faqs,
+  setFaqs: (faqs) => {},
   params: {},
   setParams: (params) => {},
   selected: '',
   setSelected: (value) => {},
   pages: 0,
   endReached: false,
-  setEndReached: isEndReached,
+  setEndReached: (isEndReached) => {},
   handleLazy: (nativeEvent) => {},
   loading: false,
-  setLoading: lisLoading,
+  setLoading: (isLoading) => {},
 });
 
 export const FaqsScreenStore = ({ children }) => {
