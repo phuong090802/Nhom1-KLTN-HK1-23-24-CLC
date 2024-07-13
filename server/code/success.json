@@ -556,13 +556,17 @@
     {
       "code": "2106",
       "message": "",
-      "detail": ""
+      "detail": "Trưởng khoa xếp hạng lĩnh vực (theo số lượng câu hỏi) thành công"
     },
     {
       "code": "2107",
       "message": "",
       "detail": "Thông báo câu hỏi của bạn đã được trả lời"
     },
-    ["2106"]
+    {
+      "code": "2108",
+      "message": "",
+      "detail": "Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi) thành công"
+    }
   ]
 }

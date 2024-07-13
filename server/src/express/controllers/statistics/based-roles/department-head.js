@@ -1,9 +1,84 @@
 import FAQ from '../../../../models/faq.js';
 import Field from '../../../../models/field.js';
+import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
 import { handleCountQuestions } from '../../../../util/statistics/department.js';
 import { handleCountQuestionsByFieldsAndDepartment } from '../../../../util/statistics/field.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
+
+// Endpoint: /api/department-head/statistics/counsellor/ranking
+// Method: GET
+// Description: Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi)
+export const handleCounsellorRanking = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const department = user.counsellor.department._id;
+    const counsellors = await User.find({
+      'counsellor.department': department,
+    }).select('avatar.url fullName');
+
+    const returnedCounsellors = await Promise.all(
+      counsellors.map(async (counsellor) => {
+        const countOfAnsweredQuestions = await Question.countDocuments({
+          'answer.user': counsellor._id,
+          $or: [
+            { status: 'publicly-answered-and-approved', answer: { $ne: null } },
+            { status: 'privately-answered' },
+          ],
+        });
+
+        counsellor.avatar = counsellor.avatar.url;
+        delete counsellor.avatar.url;
+
+        return {
+          counsellor,
+          countOfAnsweredQuestions,
+        };
+      })
+    );
+
+    const rankingCounsellor = returnedCounsellors.sort((a, b) => {
+      if (b.countOfAnsweredQuestions !== a.countOfAnsweredQuestions) {
+        return b.countOfAnsweredQuestions - a.countOfAnsweredQuestions; // Sort by countOfAnsweredQuestions descending
+      } else {
+        return a.counsellor.fullName.localeCompare(b.counsellor.fullName); // Sort by fullName ascending
+      }
+    });
+
+    res.json({
+      success: true,
+      rankingCounsellor,
+      code: 2108,
+    });
+  }
+);
+
+// Endpoint: /api/department-head/statistics/field/ranking
+// Method: GET
+// Description: Trưởng khoa xếp hạng lĩnh vực (theo số lượng câu hỏi)
+export const handleFieldRanking = catchAsyncErrors(async (req, res, next) => {
+  const user = req.user;
+  const department = user.counsellor.department._id;
+  const fields = await Field.find({ department, isActive: true }).select(
+    '_id fieldName'
+  );
+  const returnedFields = await handleCountQuestionsByFieldsAndDepartment(
+    fields
+  );
+  const rankingCounsellor = returnedFields.sort((a, b) => {
+    if (b.countOfQuestions !== a.countOfQuestions) {
+      return b.countOfQuestions - a.countOfQuestions; // Sort by countOfQuestions descending
+    } else {
+      return a.field.fieldName.localeCompare(b.field.fieldName); // Sort by fieldName ascending
+    }
+  });
+
+  res.json({
+    success: true,
+    rankingCounsellor,
+    code: 2106,
+  });
+});
 
 // Endpoint: /api/department-head/statistics/field/count
 // Method: GET

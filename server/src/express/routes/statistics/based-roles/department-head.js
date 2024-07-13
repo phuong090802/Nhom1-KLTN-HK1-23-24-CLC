@@ -17,7 +17,12 @@ router.use(
 );
 
 router.get('/faq', departmentHeadStatistic.handleCountOfFAQs);
+router.get(
+  '/counsellor/ranking',
+  departmentHeadStatistic.handleCounsellorRanking
+);
 router.get('/counsellor', departmentHeadStatistic.handleCountOfCounsellors);
+router.get('/field/ranking', departmentHeadStatistic.handleFieldRanking);
 router.get('/field/count', departmentHeadStatistic.handleCountOfFields);
 router.get('/field', departmentHeadStatistic.handleStatisticFields);
 router.post(
