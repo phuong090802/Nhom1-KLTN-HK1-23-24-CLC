@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
   AdminRoute,
-  DepheadRoute,
+  DepartmentHeadRoute,
   ProtectedRoute,
   UserRoute,
   CounsellorRoute,
@@ -83,7 +83,7 @@ const App = () => {
               <Route path="/supervisor" element={<AdminHome />} />
             </Route>
 
-            <Route element={<DepheadRoute />}>
+            <Route element={<DepartmentHeadRoute />}>
               <Route path="/dephead" element={<DepheadHome />} />
               <Route path="/dephead/linh-vuc" element={<DepheadField />} />
               <Route path="/dephead/nhan-su" element={<DepheadCounsellor />} />

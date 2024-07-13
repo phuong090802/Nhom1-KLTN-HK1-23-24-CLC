@@ -8,7 +8,7 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/department-head/statistics/counsellor/ranking
 // Method: GET
-// Description: Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi)
+// Description: Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi đã trả lời) thành công
 export const handleCounsellorRanking = catchAsyncErrors(
   async (req, res, next) => {
     const user = req.user;

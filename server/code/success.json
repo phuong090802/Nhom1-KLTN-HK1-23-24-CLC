@@ -566,7 +566,7 @@
     {
       "code": "2108",
       "message": "",
-      "detail": "Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi) thành công"
+      "detail": "Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi đã trả lời) thành công"
     }
   ]
 }
