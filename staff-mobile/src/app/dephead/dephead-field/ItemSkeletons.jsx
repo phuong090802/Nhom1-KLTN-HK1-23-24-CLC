@@ -1,8 +1,8 @@
-import { useContext, useMemo } from "react";
-import { StyleSheet, View } from "react-native";
-import { colors } from "../../../../constance";
-import SkeletonLoader from "../../../component/atomic/skeleton-loader";
-import { DepheadFieldContext } from "./DepheadFieldProvider";
+import { useContext, useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { colors } from '../../../../constance';
+import SkeletonLoader from '../../../component/atomic/skeleton-loader';
+import { DepheadFieldContext } from './DepheadFieldProvider';
 
 export const ItemSkeletons = () => {
   const { loading } = useContext(DepheadFieldContext);
@@ -19,7 +19,7 @@ export const ItemSkeletons = () => {
                 borderRadius: 8,
               }}
             />
-            <View style={{ flexDirection: "row", gap: 8 }}>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
               <SkeletonLoader
                 height={36}
                 width={36}
@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
     borderColor: colors.lightGray,
     borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,

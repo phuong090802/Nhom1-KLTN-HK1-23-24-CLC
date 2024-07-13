@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import { Text } from "react-native";
-import ItemLayout from "../../../component/molecule/item-layout/ItemLayout";
-import { DepheadAproveContext } from "./DepheadAproveProvider";
+import { useContext } from 'react';
+import ItemLayout from '../../../component/molecule/item-layout/ItemLayout';
+import { DepheadAproveContext } from './DepheadAproveProvider';
 
 export const Item = ({ data }) => {
   const { setShowDetailModal, setSelectedAnswer } =

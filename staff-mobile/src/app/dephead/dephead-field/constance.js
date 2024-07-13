@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["fieldName"],
-  keyword: "",
+  search: ['fieldName'],
+  keyword: '',
   page: 1,
   size: 10,
   filter: {
@@ -12,29 +12,35 @@ const initParams = {
 };
 
 const sortData = [
-  { text: "Tên lĩnh vực A-z", value: { fieldName: 1 } },
-  { text: "Tên lĩnh vực Z-a", value: { fieldName: -1 } },
+  {
+    text: 'Tên lĩnh vực A-z',
+    value: { fieldName: 1 },
+  },
+  {
+    text: 'Tên lĩnh vực Z-a',
+    value: { fieldName: -1 },
+  },
 ];
 
 const filterData = [
   {
-    name: "isActive",
-    label: "Hoạt động",
+    name: 'isActive',
+    label: 'Hoạt động',
     data: [
       {
-        key: "Tất cả",
+        key: 'Tất cả',
         value: null,
       },
       {
-        key: "Hoạt động",
+        key: 'Hoạt động',
         value: true,
       },
       {
-        key: "Không hoạt động",
+        key: 'Không hoạt động',
         value: false,
       },
     ],
   },
 ];
 
-export { initParams, sortData, filterData };
+export { filterData, initParams, sortData };

@@ -1,29 +1,29 @@
-import React, { createRef, useContext, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadFaqContext } from "./DepheadFaqProvider";
+import { getDocumentAsync } from 'expo-document-picker';
+import { createRef, useContext, useState } from 'react';
 import {
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
-import MyButton from "../../../component/atomic/my-button";
-import MyRichText from "../../../component/atomic/my-rich-text";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon";
-import MySelect from "../../../component/atomic/my-select";
-import { getDocumentAsync } from "expo-document-picker";
-import { depheadAddFaqSv } from "../../../service/dephead/depheadFaq.sv";
+} from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import MyIcon from '../../../component/atomic/my-icon';
+import MyRichText from '../../../component/atomic/my-rich-text';
+import MySelect from '../../../component/atomic/my-select';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { depheadAddFaqSv } from '../../../service/dephead/depheadFaq.sv';
+import { DepheadFaqContext } from './DepheadFaqProvider';
 
 export const AddFaqModal = () => {
   const { showAddFaqModal, setShowAddFaqModal, filterData } =
     useContext(DepheadFaqContext);
 
   const initFaqData = {
-    fieldId: "",
-    question: "",
-    answer: "",
+    fieldId: '',
+    question: '',
+    answer: '',
     file: null,
   };
 
@@ -52,27 +52,27 @@ export const AddFaqModal = () => {
   const AddFaq = async () => {
     console.log(faqData);
     if (!faqData.question) {
-      alert("Chưa nhập câu hỏi!!");
+      alert('Chưa nhập câu hỏi!!');
       return;
     }
     if (!faqData.answer) {
-      alert("Chưa nhập nội dung!!");
+      alert('Chưa nhập nội dung!!');
       return;
     }
     if (!faqData.fieldId) {
-      alert("Chưa chọn lĩnh vực");
+      alert('Chưa chọn lĩnh vực');
       return;
     }
     try {
       const response = await depheadAddFaqSv(faqData);
       // console.log(response);
-      alert(response?.message || "Thêm tin tức thành công");
+      alert(response?.message || 'Thêm tin tức thành công');
       setFaqData(initFaqData);
-      _editor.current.setContents([{ insert: "" }]);
-      alert(response?.message || "Thêm tin tức thành công");
+      _editor.current.setContents([{ insert: '' }]);
+      alert(response?.message || 'Thêm tin tức thành công');
     } catch (error) {
-      console.log(error);
-      alert(error?.message || "Lỗi khi thêm tin tức");
+      console.log('AddFaq', error);
+      alert(error?.message || 'Lỗi khi thêm tin tức');
     }
   };
 
@@ -80,7 +80,7 @@ export const AddFaqModal = () => {
     <ModalLayout
       visible={showAddFaqModal}
       onClose={() => setShowAddFaqModal(false)}
-      title={"Thêm Faq"}
+      title={'Thêm Faq'}
     >
       <View style={styles.container}>
         <Text style={styles.label}>Câu hỏi</Text>
@@ -102,18 +102,18 @@ export const AddFaqModal = () => {
           <MyRichText setValue={onHtmlChange} editorRef={_editor} />
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
               borderTopWidth: 0.2,
             }}
           >
             <Text numberOfLines={1} style={styles.fileNameText}>
-              {faqData?.file?.name || "Chọn File"}
+              {faqData?.file?.name || 'Chọn File'}
             </Text>
             <TouchableOpacity style={styles.button} onPress={onFilePicker}>
               <MyIcon
                 iconPackage="MaterialIcons"
-                name={!!faqData?.file?.name ? "delete-outline" : "attach-file"}
+                name={!!faqData?.file?.name ? 'delete-outline' : 'attach-file'}
                 color={colors.primary}
                 size={32}
               />
@@ -127,8 +127,13 @@ export const AddFaqModal = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginTop: 16 },
-  label: { fontFamily: fonts.BahnschriftBold, fontSize: 16 },
+  container: {
+    marginTop: 16,
+  },
+  label: {
+    fontFamily: fonts.BahnschriftBold,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,
@@ -139,36 +144,39 @@ const styles = StyleSheet.create({
   },
   richTextContainer: {
     paddingVertical: 0,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
     borderRadius: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 3,
   },
   button: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingBottom: 6,
     paddingHorizontal: 6,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
     borderRadius: 8,
     marginTop: 8,
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 16,
-    textAlign: "center",
+    textAlign: 'center',
   },
   fileNameText: {
-    textAlignVertical: "center",
+    textAlignVertical: 'center',
     fontFamily: fonts.BahnschriftRegular,
     fontSize: 16,
     paddingHorizontal: 8,
-    maxWidth: "80%",
+    maxWidth: '80%',
   },
 });

@@ -1,9 +1,9 @@
-import React, { useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BackArrow from "../back-arrow";
-import Search from "../search";
-import MyIcon from "../../atomic/my-icon";
-import { colors, fonts } from "../../../../constance";
+import { useMemo } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
+import BackArrow from '../back-arrow';
+import Search from '../search';
 
 const ScreenHeader = ({ params, setParams, onAdd, title }) => {
   const addButtonComponent = useMemo(() => {
@@ -15,7 +15,7 @@ const ScreenHeader = ({ params, setParams, onAdd, title }) => {
             if (onAdd) onAdd();
           }}
         >
-          <MyIcon iconPackage="Feather" name={"plus-circle"} size={32} />
+          <MyIcon iconPackage="Feather" name={'plus-circle'} size={32} />
         </TouchableOpacity>
       )
     );
@@ -23,9 +23,9 @@ const ScreenHeader = ({ params, setParams, onAdd, title }) => {
 
   return (
     <View style={styles.container}>
-      <BackArrow text={"Quản lý khoa"} />
-      <Text style={styles.text}>{title || "Title"}</Text>
-      <View style={{ flexDirection: "row", gap: 8 }}>
+      <BackArrow text={'Quản lý khoa'} />
+      <Text style={styles.text}>{title || 'Title'}</Text>
+      <View style={{ flexDirection: 'row', gap: 8 }}>
         <Search params={params} setParams={setParams} />
         {addButtonComponent}
       </View>
@@ -35,9 +35,9 @@ const ScreenHeader = ({ params, setParams, onAdd, title }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   text: {
     fontSize: 24,

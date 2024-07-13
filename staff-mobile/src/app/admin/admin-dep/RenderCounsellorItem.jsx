@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { IconButton } from "react-native-paper";
-import { colors, fonts } from "../../../../constance";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import { chooseDepheadSv } from "../../../service/admin/adminDepartment.sv";
-import { AdminDepContext } from "./AdminDepProvider";
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { IconButton } from 'react-native-paper';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import { colors, fonts } from '../../../../constance';
 
 export const RenderCounsellorItem = ({ item, onPress }) => {
   return (
@@ -26,13 +23,13 @@ export const RenderCounsellorItem = ({ item, onPress }) => {
 
 const styles = StyleSheet.create({
   staffItem: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 12,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 8,
     borderRadius: 4,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,

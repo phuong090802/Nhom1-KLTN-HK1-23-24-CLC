@@ -1,14 +1,13 @@
-import { Modal, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
-import { router } from "expo-router";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 const ModalLayout = ({ visible, onClose, title, children }) => {
   return (
     <Modal visible={visible} transparent>
       <View style={styles.container}>
         <View style={styles.content} activeOpacity={0.9}>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <TouchableOpacity
               activeOpacity={0.4}
               onPress={() => {
@@ -22,7 +21,7 @@ const ModalLayout = ({ visible, onClose, title, children }) => {
                 color={colors.black75}
               />
             </TouchableOpacity>
-            <Text style={styles.text}>{title || "Text Required"}</Text>
+            <Text style={styles.text}>{title || 'Text Required'}</Text>
           </View>
           {children}
         </View>
@@ -33,7 +32,7 @@ const ModalLayout = ({ visible, onClose, title, children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column-reverse",
+    flexDirection: 'column-reverse',
     backgroundColor: colors.black10,
     flex: 1,
   },

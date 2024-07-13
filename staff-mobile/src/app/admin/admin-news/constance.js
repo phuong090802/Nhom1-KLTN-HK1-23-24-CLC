@@ -1,6 +1,6 @@
 const initParams = {
   // search: ["departmentName"],
-  keyword: "",
+  keyword: '',
   page: 1,
   size: 10,
   filter: {},

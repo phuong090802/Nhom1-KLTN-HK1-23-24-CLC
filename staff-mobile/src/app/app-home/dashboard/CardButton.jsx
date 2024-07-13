@@ -1,8 +1,8 @@
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useCallback, useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon";
+import { LinearGradient } from 'expo-linear-gradient';
+import { useCallback, useMemo } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
 
 export const CardButton = ({ title, iconPackage, iconName, onPress, text }) => {
   const handlePress = useCallback(() => {
@@ -31,7 +31,7 @@ export const CardButton = ({ title, iconPackage, iconName, onPress, text }) => {
   return (
     <View style={styles.buttonStyle}>
       <View style={{ gap: 8 }}>
-        <View style={{ flexDirection: "row" }}>{iconComponent}</View>
+        <View style={{ flexDirection: 'row' }}>{iconComponent}</View>
         <Text
           style={[
             styles.fontSize18,
@@ -39,14 +39,14 @@ export const CardButton = ({ title, iconPackage, iconName, onPress, text }) => {
             styles.colorBlack75,
           ]}
         >
-          {title || "Card Title"}
+          {title || 'Card Title'}
         </Text>
       </View>
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
           marginTop: 8,
         }}
       >
@@ -57,19 +57,19 @@ export const CardButton = ({ title, iconPackage, iconName, onPress, text }) => {
             styles.colorBlack50,
           ]}
         >
-          {text || "unknow text"}
+          {text || 'unknow text'}
         </Text>
         {onPress && (
           <TouchableOpacity activeOpacity={0.5} onPress={handlePress}>
             <LinearGradient
               style={[{ borderRadius: 999, padding: 2 }]}
-              colors={["#ABDCFF", "#0396FF"]}
+              colors={['#ABDCFF', '#0396FF']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
             >
               <MyIcon
                 iconPackage="Entypo"
-                name={"chevron-with-circle-right"}
+                name={'chevron-with-circle-right'}
                 size={30}
                 color={colors.white}
               />
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 16,
     backgroundColor: colors.white,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     gap: 8,
     flex: 1,
     // shadowColor: "#000",

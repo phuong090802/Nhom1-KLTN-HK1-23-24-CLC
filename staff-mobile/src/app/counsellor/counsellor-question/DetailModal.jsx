@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { CounsellorQuestionContext } from "./CounsellorQuestionProvider";
+import { useContext } from 'react';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
   useWindowDimensions,
-} from "react-native";
-import { colors, fonts } from "../../../../constance";
-import RenderHTML from "react-native-render-html";
-import { AnswerQuestionModal } from "./AnswerQuestionModal";
-import MyIcon from "../../../component/atomic/my-icon";
+} from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { AnswerQuestionModal } from './AnswerQuestionModal';
+import { CounsellorQuestionContext } from './CounsellorQuestionProvider';
 
 export const DetailModal = () => {
   const {
@@ -21,9 +21,7 @@ export const DetailModal = () => {
     setShowAnswerModal,
     setShowForwardModal,
   } = useContext(CounsellorQuestionContext);
-
-  console.log(selectedQuestion._id);
-
+  console.log('selectedQuestion._id', selectedQuestion._id);
   const { width } = useWindowDimensions();
 
   const onForwardClick = () => {
@@ -35,11 +33,11 @@ export const DetailModal = () => {
     <ModalLayout
       visible={showDetailModal}
       onClose={() => setShowDetailModal(false)}
-      title={"Chi tiết câu hỏi"}
+      title={'Chi tiết câu hỏi'}
     >
       <AnswerQuestionModal />
       <View style={styles.container}>
-        <View style={{ width: "100%" }}>
+        <View style={{ width: '100%' }}>
           <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
             Câu hỏi:
           </Text>
@@ -49,14 +47,14 @@ export const DetailModal = () => {
           />
         </View>
         {selectedQuestion?.fileURL !== null && (
-          <View style={{ width: "100%", marginTop: 8 }}>
+          <View style={{ width: '100%', marginTop: 8 }}>
             <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
               Đính kèm:
             </Text>
             <File link={selectedQuestion?.fileURL} />
           </View>
         )}
-        <View style={{ width: "100%", flexDirection: "row-reverse", gap: 8 }}>
+        <View style={{ width: '100%', flexDirection: 'row-reverse', gap: 8 }}>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: colors.success }]}
             onPress={() => setShowAnswerModal(true)}
@@ -98,7 +96,7 @@ const File = ({ link }) => {
         }}
       >
         <MyIcon
-          name={"paperclip"}
+          name={'paperclip'}
           iconPackage="Feather"
           color={colors.black75}
           size={24}
@@ -117,23 +115,29 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   fileContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 4,
     paddingHorizontal: 16,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     backgroundColor: colors.primary20,
     borderColor: colors.black10,
-    alignItems: "center",
+    alignItems: 'center',
   },
-  text: { color: colors.black75 },
-  bold: { fontFamily: fonts.BahnschriftBold },
-  regular: { fontFamily: fonts.BahnschriftRegular },
+  text: {
+    color: colors.black75,
+  },
+  bold: {
+    fontFamily: fonts.BahnschriftBold,
+  },
+  regular: {
+    fontFamily: fonts.BahnschriftRegular,
+  },
   button: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,

@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadAproveContext } from "./DepheadAproveProvider";
+import { useContext } from 'react';
 import {
   Linking,
   StyleSheet,
@@ -9,38 +7,37 @@ import {
   TouchableOpacity,
   View,
   useWindowDimensions,
-} from "react-native";
-import { colors, fonts } from "../../../../constance";
-import RenderHTML from "react-native-render-html";
-import MyIcon from "../../../component/atomic/my-icon";
-import { depheadAproveAnswer } from "../../../service/dephead/depheadAprove.sv";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
+} from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import { DepheadAproveContext } from './DepheadAproveProvider';
 
 export const AproveDetailModal = () => {
   const { width } = useWindowDimensions();
-
   const { authSocket } = useAuthSocket();
-
   const { showDetailModal, setShowDetailModal, selectedAnswer, getAnswers } =
     useContext(DepheadAproveContext);
 
   const handleAprove = async () => {
     try {
       // const response = await depheadAproveAnswer(selectedAnswer._id);
-      const response = await authSocket.emitWithAck("approve-answer:create", {
+      const response = await authSocket.emitWithAck('approve-answer:create', {
         questionId: selectedAnswer._id,
       });
-      console.log(response);
+      console.log('handleAprove ', response);
       ToastAndroid.show(
-        response.message || "Đã duyệt câu trả lời",
+        response.message || 'Đã duyệt câu trả lời',
         ToastAndroid.SHORT
       );
       getAnswers();
       setShowDetailModal(false);
     } catch (error) {
-      console.log(error);
+      console.log('handleAprove', error);
       ToastAndroid.show(
-        error.message || "Lỗi khi duyệt câu trả lời",
+        error.message || 'Lỗi khi duyệt câu trả lời',
         ToastAndroid.SHORT
       );
     }
@@ -48,21 +45,21 @@ export const AproveDetailModal = () => {
 
   const handleFeedback = async () => {
     try {
-      const response = await authSocket.emitWithAck("feedback:create", {
+      const response = await authSocket.emitWithAck('feedback:create', {
         questionId: selectedAnswer._id,
-        content: "",
+        content: '',
       });
-      console.log(response);
+      console.log('handleFeedback', response);
       ToastAndroid.show(
-        response.message || "Đã từ chối câu trả lời",
+        response.message || 'Đã từ chối câu trả lời',
         ToastAndroid.SHORT
       );
       getAnswers();
       setShowDetailModal(false);
     } catch (error) {
-      console.log(error);
+      console.log('handleFeedback', error);
       ToastAndroid.show(
-        error.message || "Lỗi khi từ chối câu trả lời",
+        error.message || 'Lỗi khi từ chối câu trả lời',
         ToastAndroid.SHORT
       );
     }
@@ -74,10 +71,10 @@ export const AproveDetailModal = () => {
       onClose={() => {
         setShowDetailModal(false);
       }}
-      title={"Duyệt câu trả lời"}
+      title={'Duyệt câu trả lời'}
     >
       <View style={styles.container}>
-        <View style={{ width: "100%" }}>
+        <View style={{ width: '100%' }}>
           <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
             Câu hỏi:
           </Text>
@@ -86,14 +83,14 @@ export const AproveDetailModal = () => {
             contentWidth={width}
           />
         </View>
-        <View style={{ width: "100%" }}>
+        <View style={{ width: '100%' }}>
           <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
             Phản hồi:
           </Text>
           <Text
             style={[
               styles.text,
-              { fontSize: 16, textAlign: "justify" },
+              { fontSize: 16, textAlign: 'justify' },
               styles.regular,
             ]}
           >
@@ -104,14 +101,14 @@ export const AproveDetailModal = () => {
           </Text>
         </View>
         {selectedAnswer?.answer?.fileUrl !== null && (
-          <View style={{ width: "100%" }}>
+          <View style={{ width: '100%' }}>
             <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
               Đính kèm:
             </Text>
             <File link={selectedAnswer?.answer?.fileUrl} />
           </View>
         )}
-        <View style={{ width: "100%", flexDirection: "row-reverse", gap: 8 }}>
+        <View style={{ width: '100%', flexDirection: 'row-reverse', gap: 8 }}>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: colors.error }]}
             onPress={handleFeedback}
@@ -152,7 +149,7 @@ const File = ({ link }) => {
         }}
       >
         <MyIcon
-          name={"paperclip"}
+          name={'paperclip'}
           iconPackage="Feather"
           color={colors.black75}
           size={24}
@@ -170,24 +167,30 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
   },
-  text: { color: colors.black75 },
-  bold: { fontFamily: fonts.BahnschriftBold },
-  regular: { fontFamily: fonts.BahnschriftRegular },
+  text: {
+    color: colors.black75,
+  },
+  bold: {
+    fontFamily: fonts.BahnschriftBold,
+  },
+  regular: {
+    fontFamily: fonts.BahnschriftRegular,
+  },
   fileContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 4,
     paddingHorizontal: 16,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     backgroundColor: colors.primary20,
     borderColor: colors.black10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   button: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,

@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { AppContext } from "../../AppProvider";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
+import { useContext } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import { AppContext } from '../../AppProvider';
 
 const WelcomeView = ({ name, avatar }) => (
   <View style={styles.welcomeContainer}>
@@ -29,16 +29,16 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     marginTop: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
   },
   welcomeContainer: {
     // width: "80%",
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
     // borderRadius: 10,
     padding: 20,
-    alignItems: "center",
+    alignItems: 'center',
     // shadowColor: "#000",
     // shadowOffset: { width: 0, height: 2 },
     // shadowOpacity: 0.1,
@@ -48,20 +48,20 @@ const styles = StyleSheet.create({
   avatarWrapper: {
     marginBottom: 15,
     borderRadius: 50,
-    overflow: "hidden",
+    overflow: 'hidden',
     width: 100,
     height: 100,
     borderWidth: 3,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
   },
   avatar: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   welcomeText: {
     fontSize: 22,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
+    fontWeight: 'bold',
+    color: '#333',
+    textAlign: 'center',
   },
 });

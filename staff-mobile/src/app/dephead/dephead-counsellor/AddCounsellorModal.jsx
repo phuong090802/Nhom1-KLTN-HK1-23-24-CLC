@@ -1,26 +1,24 @@
-import React, { useContext, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadCounsellorContext } from "./DepheadCounsellorProvider";
-import { StyleSheet, Text, TextInput, ToastAndroid, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyButton from "../../../component/atomic/my-button";
-import { depheadAddCounsellorSv } from "../../../service/dephead/depheadCounsellor.sv";
-import { initParams } from "./constance";
+import { useContext, useState } from 'react';
+import { StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { depheadAddCounsellorSv } from '../../../service/dephead/depheadCounsellor.sv';
+import { DepheadCounsellorContext } from './DepheadCounsellorProvider';
 
 export const AddCounsellorModal = () => {
   const { showAddCounsellorModal, setShowAddCounsellorModal, getCounsellors } =
     useContext(DepheadCounsellorContext);
 
   const initCounsellorData = {
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    role: "",
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    role: '',
   };
 
   const [counsellorData, setCounsellorData] = useState(initCounsellorData);
-
   const [loading, setLoading] = useState(false);
 
   const handleOnChange = (value, name) => {
@@ -28,7 +26,9 @@ export const AddCounsellorModal = () => {
   };
 
   const handleAddCounsellor = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       const response = await depheadAddCounsellorSv({
@@ -36,14 +36,14 @@ export const AddCounsellorModal = () => {
         confirmPassword: counsellorData.password,
       });
       ToastAndroid.show(
-        response?.message || "Thêm tư vấn viên thành công",
+        response?.message || 'Thêm tư vấn viên thành công',
         ToastAndroid.SHORT
       );
       setCounsellorData(initCounsellorData);
       getCounsellors();
     } catch (error) {
       ToastAndroid.show(
-        error?.message || "Lỗi khi thêm tư vấn viên",
+        error?.message || 'Lỗi khi thêm tư vấn viên',
         ToastAndroid.SHORT
       );
     }
@@ -53,7 +53,7 @@ export const AddCounsellorModal = () => {
     <ModalLayout
       visible={showAddCounsellorModal}
       onClose={() => setShowAddCounsellorModal(false)}
-      title={"Thêm tư vấn viên"}
+      title={'Thêm tư vấn viên'}
     >
       <View style={styles.container}>
         <Text style={styles.label}>Họ & Tên</Text>
@@ -61,21 +61,21 @@ export const AddCounsellorModal = () => {
           style={styles.textInput}
           placeholder="Aa"
           value={counsellorData.fullName}
-          onChangeText={(value) => handleOnChange(value, "fullName")}
+          onChangeText={(value) => handleOnChange(value, 'fullName')}
         />
         <Text style={styles.label}>Email</Text>
         <TextInput
           style={styles.textInput}
           placeholder="Aa"
           value={counsellorData.email}
-          onChangeText={(value) => handleOnChange(value, "email")}
+          onChangeText={(value) => handleOnChange(value, 'email')}
         />
         <Text style={styles.label}>Số điện thoại</Text>
         <TextInput
           style={styles.textInput}
           placeholder="Aa"
           value={counsellorData.phoneNumber}
-          onChangeText={(value) => handleOnChange(value, "phoneNumber")}
+          onChangeText={(value) => handleOnChange(value, 'phoneNumber')}
         />
         <Text style={styles.label}>Mật khẩu</Text>
         <TextInput
@@ -83,7 +83,7 @@ export const AddCounsellorModal = () => {
           placeholder="Aa"
           secureTextEntry
           value={counsellorData.password}
-          onChangeText={(value) => handleOnChange(value, "password")}
+          onChangeText={(value) => handleOnChange(value, 'password')}
         />
 
         <MyButton
@@ -94,7 +94,7 @@ export const AddCounsellorModal = () => {
               backgroundColor: false ? colors.lightGray : colors.black,
             },
           ]}
-          buttonText={"Thêm"}
+          buttonText={'Thêm'}
           onPress={handleAddCounsellor}
         />
       </View>
@@ -104,7 +104,10 @@ export const AddCounsellorModal = () => {
 
 const styles = StyleSheet.create({
   container: { marginTop: 16 },
-  label: { fontFamily: fonts.BahnschriftRegular, fontSize: 16 },
+  label: {
+    fontFamily: fonts.BahnschriftRegular,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,

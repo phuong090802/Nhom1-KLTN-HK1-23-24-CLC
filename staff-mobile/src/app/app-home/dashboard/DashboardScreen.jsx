@@ -1,12 +1,11 @@
-import { router } from "expo-router";
-import React, { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { colors, fonts, paths } from "../../../../constance";
-import DepModal from "../../admin/statistic/department-statistic/DepModal";
-import { CardButton } from "./CardButton";
-import { Chart } from "./Chart";
-import { DashboardContext } from "./DashboardProvider";
-import AppProvider, { AppContext } from "../../AppProvider";
+import { router } from 'expo-router';
+import { useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fonts, paths } from '../../../../constance';
+import { AppContext } from '../../AppProvider';
+import { CardButton } from './CardButton';
+import { Chart } from './Chart';
+import { DashboardContext } from './DashboardProvider';
 
 export const DashboardScreen = () => {
   const { systemStatictis } = useContext(DashboardContext);
@@ -16,77 +15,77 @@ export const DashboardScreen = () => {
     <View style={styles.container}>
       {isLoggedIn && (
         <Text style={styles.title}>
-          {user.role === "COUNSELLOR"
-            ? "Câu hỏi đã trả lời"
-            : "Biểu đồ câu hỏi"}
+          {user.role === 'COUNSELLOR'
+            ? 'Câu hỏi đã trả lời'
+            : 'Biểu đồ câu hỏi'}
         </Text>
       )}
       <Chart />
-      {user.role === "ADMIN" && (
+      {user.role === 'ADMIN' && (
         <>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               gap: 8,
               borderRadius: 16,
-              overflow: "hidden",
+              overflow: 'hidden',
             }}
           >
             <CardButton
-              iconPackage={"MaterialIcons"}
-              iconName={"business"}
-              title={"Thống kê khoa"}
+              iconPackage={'MaterialIcons'}
+              iconName={'business'}
+              title={'Thống kê khoa'}
               text={`${systemStatictis.countOfDepartments} khoa`}
               onPress={() => {
                 router.push(paths.adminDepartmentStatistic);
               }}
             />
             <CardButton
-              iconPackage={"Feather"}
-              iconName={"layers"}
-              title={"Thống kê lĩnh vực"}
+              iconPackage={'Feather'}
+              iconName={'layers'}
+              title={'Thống kê lĩnh vực'}
               text={`${systemStatictis.countOfFields} lĩnh vực`}
             />
           </View>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               gap: 8,
             }}
           >
             <CardButton
-              iconPackage={"Octicons"}
-              iconName={"question"}
-              title={"Thống kê câu hỏi"}
+              iconPackage={'Octicons'}
+              iconName={'question'}
+              title={'Thống kê câu hỏi'}
               text={`${systemStatictis.countOfQuestions} câu hỏi`}
             />
             <CardButton
-              iconPackage={"Feather"}
-              iconName={"users"}
-              title={"Thống kê Người dùng"}
+              iconPackage={'Feather'}
+              iconName={'users'}
+              title={'Thống kê Người dùng'}
               text={`${systemStatictis.countOfUsers} người dùng`}
             />
           </View>
         </>
       )}
-      {user.role === "DEPARTMENT_HEAD" && (
+      {user.role === 'DEPARTMENT_HEAD' && (
         <>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               gap: 8,
             }}
           >
             <CardButton
-              iconPackage={"Octicons"}
-              iconName={"question"}
-              title={"Thống kê câu hỏi"}
+              iconPackage={'Octicons'}
+              iconName={'question'}
+              title={'Thống kê câu hỏi'}
               text={`${systemStatictis.countOfFAQs} câu hỏi`}
             />
             <CardButton
-              iconPackage={"Feather"}
-              iconName={"users"}
-              title={"Thống kê Người dùng"}
+              iconPackage={'Feather'}
+              iconName={'users'}
+              title={'Thống kê Người dùng'}
               text={`${systemStatictis.countOfUsers} người dùng`}
             />
           </View>

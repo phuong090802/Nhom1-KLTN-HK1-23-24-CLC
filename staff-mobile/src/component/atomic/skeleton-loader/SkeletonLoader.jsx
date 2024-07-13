@@ -1,7 +1,6 @@
-import { LinearGradient } from "expo-linear-gradient";
-import { useEffect, useRef } from "react";
-import { Animated, StyleSheet, View } from "react-native";
-import { colors } from "../../../../constance";
+import { LinearGradient } from 'expo-linear-gradient';
+import { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 
 const SkeletonLoader = ({ width, height, style }) => {
   const translateX = useRef(new Animated.Value(-width)).current;
@@ -21,18 +20,18 @@ const SkeletonLoader = ({ width, height, style }) => {
         {
           width: width,
           height: height,
-          backgroundColor: "rgba(0,0,0,0.12)",
-          overflow: "hidden",
+          backgroundColor: 'rgba(0,0,0,0.12)',
+          overflow: 'hidden',
         },
         style,
       ])}
     >
       <Animated.View
-        style={{ height: "100%", width: "100%", transform: [{ translateX }] }}
+        style={{ height: '100%', width: '100%', transform: [{ translateX }] }}
       >
         <LinearGradient
-          style={{ height: "100%", width: "100%" }}
-          colors={["transparent", "rgba(0, 0, 0, 0.15)", "transparent"]}
+          style={{ height: '100%', width: '100%' }}
+          colors={['transparent', 'rgba(0, 0, 0, 0.15)', 'transparent']}
           start={{ x: 1, y: 1 }}
         />
       </Animated.View>

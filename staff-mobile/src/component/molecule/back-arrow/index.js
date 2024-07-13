@@ -1,1 +1,1 @@
-export { default } from "./BackArrow";
+export { default } from './BackArrow';

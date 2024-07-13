@@ -1,8 +1,6 @@
 const initLoginData = {
-  username: "",
-  password: "",
+  username: '',
+  password: '',
 };
-
-
 
 export { initLoginData };

@@ -1,8 +1,6 @@
-import React from "react";
-import { Modal, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
-import sort from ".";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 export const SortModal = ({ visible, onClose, data, setParams }) => {
   return (
@@ -11,8 +9,8 @@ export const SortModal = ({ visible, onClose, data, setParams }) => {
         <View style={styles.content}>
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
               borderBottomWidth: 2,
               paddingBottom: 8,
               paddingHorizontal: 16,
@@ -23,7 +21,7 @@ export const SortModal = ({ visible, onClose, data, setParams }) => {
             <TouchableOpacity activeOpacity={0.4} onPress={onClose}>
               <MyIcon
                 iconPackage="Fontisto"
-                name={"close"}
+                name={'close'}
                 size={32}
                 color={colors.black75}
               />
@@ -42,7 +40,7 @@ export const SortModal = ({ visible, onClose, data, setParams }) => {
                       }
                     >
                       <Text style={styles.text}>
-                        {option.text || "Thứ tự sắp xếp"}
+                        {option.text || 'Thứ tự sắp xếp'}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -59,16 +57,16 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black10,
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   content: {
     backgroundColor: colors.white,
     paddingTop: 16,
     borderRadius: 8,
-    width: "80%",
-    overflow: "hidden",
-    shadowColor: "#000",
+    width: '80%',
+    overflow: 'hidden',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -84,8 +82,8 @@ const styles = StyleSheet.create({
   },
   option: {
     paddingVertical: 8,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontFamily: fonts.BahnschriftRegular,

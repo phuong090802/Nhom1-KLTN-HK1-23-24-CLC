@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from 'react';
 import {
   Linking,
   StyleSheet,
@@ -6,27 +6,26 @@ import {
   TouchableOpacity,
   View,
   useWindowDimensions,
-} from "react-native";
-import RenderHTML from "react-native-render-html";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadFaqContext } from "./DepheadFaqProvider";
+} from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { DepheadFaqContext } from './DepheadFaqProvider';
 
 export const FaqDetailModal = () => {
   const { showFaqDetailModal, setShowFaqDetailModal, selectedFaq } =
     useContext(DepheadFaqContext);
-
   const { width } = useWindowDimensions();
 
   return (
     <ModalLayout
       visible={showFaqDetailModal}
       onClose={() => setShowFaqDetailModal(false)}
-      title={"Chi tiết Faq"}
+      title={'Chi tiết Faq'}
     >
       <View style={styles.container}>
-        <View style={{ width: "100%" }}>
+        <View style={{ width: '100%' }}>
           <Text style={[styles.title]}>{selectedFaq?.question}</Text>
         </View>
         <RenderHTML
@@ -34,7 +33,7 @@ export const FaqDetailModal = () => {
           contentWidth={width}
         />
         {selectedFaq.answerAttachment !== null && (
-          <View style={{ width: "100%", marginTop: 8 }}>
+          <View style={{ width: '100%', marginTop: 8 }}>
             <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
               Đính kèm:
             </Text>
@@ -65,7 +64,7 @@ const File = ({ link }) => {
         }}
       >
         <MyIcon
-          name={"paperclip"}
+          name={'paperclip'}
           iconPackage="Feather"
           color={colors.black75}
           size={24}
@@ -83,20 +82,26 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
   },
-  text: { color: colors.black75 },
-  bold: { fontFamily: fonts.BahnschriftBold },
-  regular: { fontFamily: fonts.BahnschriftRegular },
+  text: {
+    color: colors.black75,
+  },
+  bold: {
+    fontFamily: fonts.BahnschriftBold,
+  },
+  regular: {
+    fontFamily: fonts.BahnschriftRegular,
+  },
   fileContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 4,
     paddingHorizontal: 16,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     backgroundColor: colors.primary20,
     borderColor: colors.black10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   title: {
     fontFamily: fonts.BahnschriftBold,

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { colors, fonts } from "../../../../../constance";
-import MyIcon from "../../../../component/atomic/my-icon";
-import { DepartmentStatisticContext } from "./DepartmentStatisticProvider";
-import { Chart } from "./Chart";
+import { useContext } from 'react';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../../constance';
+import MyIcon from '../../../../component/atomic/my-icon';
+import { Chart } from './Chart';
+import { DepartmentStatisticContext } from './DepartmentStatisticProvider';
 // import { DashboardContext } from "../../../app-home/dashboard/DashboardProvider";
 
 const DepModal = () => {
@@ -11,7 +11,7 @@ const DepModal = () => {
     DepartmentStatisticContext
   );
 
-  console.log(chosenDep);
+  console.log('chosenDep', chosenDep);
 
   return (
     <Modal
@@ -26,11 +26,11 @@ const DepModal = () => {
             style={styles.closeArea}
             onPress={() => setVisibleDepModal(false)}
           >
-            <MyIcon iconPackage="Octicons" name={"chevron-down"} />
+            <MyIcon iconPackage="Octicons" name={'chevron-down'} />
           </TouchableOpacity>
           <View style={styles.content}>
             <Text style={styles.departmentName}>
-              {chosenDep.departmentName || "Tên khoa"}
+              {chosenDep.departmentName || 'Tên khoa'}
             </Text>
             <Chart />
           </View>
@@ -45,21 +45,21 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     // backgroundColor: colors.black25,
-    flexDirection: "column-reverse",
+    flexDirection: 'column-reverse',
   },
   contentContainer: {
-    height: "45%",
+    height: '45%',
     backgroundColor: colors.white,
     borderRadius: 24,
     borderWidth: 0.5,
     borderColor: colors.black25,
-    overflow: "hidden",
+    overflow: 'hidden',
     // paddingHorizontal: 16,
   },
   closeArea: {
     borderBottomWidth: 0.5,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: colors.primary20,
     paddingVertical: 2,
   },

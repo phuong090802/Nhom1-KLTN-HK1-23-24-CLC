@@ -1,6 +1,5 @@
-import React from "react";
-import { AdminNewsProvider } from "./AdminNewsProvider";
-import { AdminNewsContent } from "./AdminNewsContent";
+import { AdminNewsContent } from './AdminNewsContent';
+import { AdminNewsProvider } from './AdminNewsProvider';
 
 const AdminNews = () => {
   return (

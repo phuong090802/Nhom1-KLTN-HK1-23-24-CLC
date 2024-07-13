@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { router } from 'expo-router';
+import { useContext, useEffect, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -6,45 +7,42 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
-import MyIcon from "../../../component/atomic/my-icon";
-import { colors, fonts } from "../../../../constance";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import { router } from "expo-router";
-import { Message } from "./Message";
-import { getConversationDetailSv } from "../../../service/cousellor/counsellorConversation.sv";
-import { CounsellorConversationContext } from "./CounsellorConversationProvider";
-import { AppContext } from "../../AppProvider";
-import MyRichText from "../../../component/atomic/my-rich-text";
+} from 'react-native';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import MyRichText from '../../../component/atomic/my-rich-text';
+import { getConversationDetailSv } from '../../../service/cousellor/counsellorConversation.sv';
+import { AppContext } from '../../AppProvider';
+import { Message } from './Message';
 
 const ConversationDetail = () => {
   const { selectedConversation, user } = useContext(AppContext);
-
   const [messages, setMessages] = useState([]);
 
   const getConversationDetail = async () => {
     try {
       const response = await getConversationDetailSv(selectedConversation);
-      console.log(response?.messages);
+      console.log('getConversationDetail', response?.messages);
       setMessages(response.messages);
     } catch (error) {
-      console.log(error);
+      console.log('getConversationDetail', error);
     }
   };
 
   useEffect(() => {
-    if (selectedConversation !== "") getConversationDetail();
+    if (selectedConversation !== '') {
+      getConversationDetail();
+    }
   }, [selectedConversation]);
 
-  useEffect(() => {}, []);
-
   return (
-    <View style={{ justifyContent: "space-between", flex: 1 }}>
+    <View style={{ justifyContent: 'space-between', flex: 1 }}>
       <View style={styles.header}>
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
         >
           <TouchableOpacity
@@ -54,8 +52,8 @@ const ConversationDetail = () => {
           >
             <MyIcon
               iconPackage="Ionicons"
-              name={"chevron-back"}
-              color={"#fff"}
+              name={'chevron-back'}
+              color={'#fff'}
               size={32}
             />
           </TouchableOpacity>
@@ -64,8 +62,8 @@ const ConversationDetail = () => {
         </View>
         <MyIcon
           iconPackage="Ionicons"
-          name={"search"}
-          color={"#fff"}
+          name={'search'}
+          color={'#fff'}
           size={32}
         />
       </View>
@@ -82,7 +80,7 @@ const ConversationDetail = () => {
       </ScrollView>
       <View
         style={{
-          flexDirection: "row",
+          flexDirection: 'row',
           borderWidth: 1,
           borderColor: colors.primary,
         }}
@@ -90,17 +88,17 @@ const ConversationDetail = () => {
         <MyRichText minHeight={48} />
         <TouchableOpacity
           style={{
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: 'center',
+            alignItems: 'center',
             width: 48,
             borderLeftWidth: 1,
             borderLeftColor: colors.primary,
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
           }}
         >
           <MyIcon
             iconPackage="Feather"
-            name={"send"}
+            name={'send'}
             size={30}
             color={colors.primary}
           />
@@ -115,9 +113,9 @@ export default ConversationDetail;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.primary,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 8,
     paddingVertical: 8,
   },

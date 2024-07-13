@@ -1,26 +1,26 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { filterInitData, initParams } from "./constance";
-import { depheadGetFaqSv } from "../../../service/dephead/depheadFaq.sv";
-import { AppContext } from "../../AppProvider";
-import { getDepartmentFieldSv } from "../../../service/dephead/depheadField.sv";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { filterInitData, initParams } from './constance';
+import { depheadGetFaqSv } from '../../../service/dephead/depheadFaq.sv';
+import { AppContext } from '../../AppProvider';
+import { getDepartmentFieldSv } from '../../../service/dephead/depheadField.sv';
 
 export const DepheadFaqContext = createContext({
-  faqs: Array,
-  setFaqs: Function,
-  loading: Boolean,
-  setLoading: Function,
-  params: Object,
-  setParams: Function,
-  pages: Number,
-  setPages: Function,
-  showFaqDetailModal: Boolean,
-  setShowFaqDetailModal: Function,
-  selectedFaq: Object,
-  setSelectedFaq: Function,
-  filterData: Array,
-  showAddFaqModal: Boolean,
-  setShowAddFaqModal: Function,
-  getFaqs: Function,
+  faqs: [],
+  setFaqs: (faqs) => {},
+  loading: false,
+  setLoading: (isLoading) => {},
+  params: {},
+  setParams: (params) => {},
+  pages: 0,
+  setPages: (pages) => {},
+  showFaqDetailModal: false,
+  setShowFaqDetailModal: (isShowFaqDetailModal) => {},
+  selectedFaq: {},
+  setSelectedFaq: (faq) => {},
+  filterData: [],
+  showAddFaqModal: false,
+  setShowAddFaqModal: (isShowAddFaqModal) => {},
+  getFaqs: () => {},
 });
 
 export const DepheadFaqProvider = ({ children }) => {
@@ -43,9 +43,9 @@ export const DepheadFaqProvider = ({ children }) => {
       setFaqs(response.faqs);
       setPages(response.pages);
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log('getFaqs', error);
     }
+    setLoading(false);
   };
 
   const getFields = async () => {
@@ -56,16 +56,16 @@ export const DepheadFaqProvider = ({ children }) => {
       });
       setFilterData((prev) => {
         return prev.map((option) => {
-          if (option.name === "field")
+          if (option.name === 'field')
             return {
               ...option,
-              data: [{ key: "Tất cả", value: null }, ...tempField],
+              data: [{ key: 'Tất cả', value: null }, ...tempField],
             };
           else return option;
         });
       });
     } catch (error) {
-      console.log(error);
+      console.log('getFields', error);
     }
   };
 
@@ -77,27 +77,27 @@ export const DepheadFaqProvider = ({ children }) => {
     if (user) getFields();
   }, [user]);
 
+  const values = {
+    faqs,
+    setFaqs,
+    loading,
+    setLoading,
+    params,
+    setParams,
+    pages,
+    setPages,
+    showFaqDetailModal,
+    setShowFaqDetailModal,
+    selectedFaq,
+    setSelectedFaq,
+    filterData,
+    showAddFaqModal,
+    setShowAddFaqModal,
+    getFaqs,
+  };
+
   return (
-    <DepheadFaqContext.Provider
-      value={{
-        faqs,
-        setFaqs,
-        loading,
-        setLoading,
-        params,
-        setParams,
-        pages,
-        setPages,
-        showFaqDetailModal,
-        setShowFaqDetailModal,
-        selectedFaq,
-        setSelectedFaq,
-        filterData,
-        showAddFaqModal,
-        setShowAddFaqModal,
-        getFaqs,
-      }}
-    >
+    <DepheadFaqContext.Provider value={values}>
       {children}
     </DepheadFaqContext.Provider>
   );

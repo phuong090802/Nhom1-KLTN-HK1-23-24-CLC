@@ -1,6 +1,5 @@
-import { Text } from "react-native";
-import { DepheadFieldProvider } from "./DepheadFieldProvider";
-import { DepheadFieldContent } from "./DepheadFieldContent";
+import { DepheadFieldContent } from './DepheadFieldContent';
+import { DepheadFieldProvider } from './DepheadFieldProvider';
 
 const DepheadField = () => {
   return (

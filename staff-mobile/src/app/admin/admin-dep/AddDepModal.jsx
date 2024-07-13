@@ -1,31 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyButton from "../../../component/atomic/my-button";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { adminAddDepSv } from "../../../service/admin/adminDepartment.sv";
-import { AdminDepContext } from "./AdminDepProvider";
+import { useContext, useEffect, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { AdminDepContext } from './AdminDepProvider';
 
 export const AddDepModal = () => {
   const { showAddDepModal, setShowAddDepModal, addDep } =
     useContext(AdminDepContext);
-  const [departmentName, setDepartmentName] = useState("");
+  const [departmentName, setDepartmentName] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleAddDep = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       await addDep(departmentName);
-      setDepartmentName("");
+      setDepartmentName('');
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log('handleAddDep', error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
-    setDepartmentName("");
+    setDepartmentName('');
   }, [showAddDepModal]);
 
   return (
@@ -50,7 +51,7 @@ export const AddDepModal = () => {
               backgroundColor: loading ? colors.lightGray : colors.black,
             },
           ]}
-          buttonText={"Thêm"}
+          buttonText={'Thêm'}
           onPress={handleAddDep}
         />
       </View>
@@ -62,7 +63,10 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 16,
   },
-  label: { fontFamily: fonts.BahnschriftRegular, fontSize: 16 },
+  label: {
+    fontFamily: fonts.BahnschriftRegular,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,

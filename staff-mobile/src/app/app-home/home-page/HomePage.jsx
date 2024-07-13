@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { Text, View } from "react-native";
-import { AppContext } from "../../AppProvider";
-import { HomePageProvider } from "./HomePageProvider";
-import { HomePageContent } from "./HomePageContent";
+import { useContext } from 'react';
+import { AppContext } from '../../AppProvider';
+import { HomePageContent } from './HomePageContent';
+import { HomePageProvider } from './HomePageProvider';
 
 const HomePage = () => {
   const {} = useContext(AppContext);

@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
-import SelectDropdown from "react-native-select-dropdown";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
+import { StyleSheet, Text, View } from 'react-native';
+import SelectDropdown from 'react-native-select-dropdown';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 export const MySelect = ({ data, onSelect }) => {
   return (
@@ -21,11 +21,11 @@ const renderButton = (selectedItem, isOpen) => {
     <View>
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonLabbel}>
-          {selectedItem?.key || "Select your option"}
+          {selectedItem?.key || 'Select your option'}
         </Text>
         <View style={styles.dropDownIcon}>
           <MyIcon
-            name={isOpen ? "chevron-small-up" : "chevron-small-down"}
+            name={isOpen ? 'chevron-small-up' : 'chevron-small-down'}
             iconPackage="Entypo"
           />
         </View>
@@ -50,7 +50,7 @@ const renderItem = (item, index, isSelected) => {
 
 const styles = StyleSheet.create({
   dropdownMenuStyle: {
-    backgroundColor: "#E9ECEF",
+    backgroundColor: '#E9ECEF',
     borderRadius: 8,
   },
   buttonLabbel: {
@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
     color: colors.black75,
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     borderBottomWidth: 1,
     paddingVertical: 8,
     paddingHorizontal: 8,

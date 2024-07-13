@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import ScreenHeader from "../../../component/molecule/screen-header";
-import SortFilter from "../../../component/organism/sort-filter";
-import { ItemSkeletons } from "./ItemSkeletons";
-import Pagination from "../../../component/molecule/pagination";
-import { AdminUserContext } from "./AdminUserProvider";
-import { Item } from "./Item";
-import { filterData, sortData } from "./constance";
-import { DetailUserModal } from "./DetailUserModal";
-import { AddUserModal } from "./AddUserModal";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Pagination from '../../../component/molecule/pagination';
+import ScreenHeader from '../../../component/molecule/screen-header';
+import SortFilter from '../../../component/organism/sort-filter';
+import { AddUserModal } from './AddUserModal';
+import { AdminUserContext } from './AdminUserProvider';
+import { filterData, sortData } from './constance';
+import { DetailUserModal } from './DetailUserModal';
+import { Item } from './Item';
+import { ItemSkeletons } from './ItemSkeletons';
 
 export const AdminUserContent = () => {
   const { pages, users, params, setParams, setShowAddUserModal } =
@@ -18,7 +18,7 @@ export const AdminUserContent = () => {
       <DetailUserModal />
       <AddUserModal />
       <ScreenHeader
-        title={"Quản lý người dùng"}
+        title={'Quản lý người dùng'}
         params={params}
         setParams={setParams}
         onAdd={() => setShowAddUserModal(true)}
@@ -43,6 +43,12 @@ export const AdminUserContent = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: 8, paddingTop: 8 },
-  contentContaier: { marginTop: 8, marginBottom: 96 },
+  container: {
+    paddingHorizontal: 8,
+    paddingTop: 8,
+  },
+  contentContaier: {
+    marginTop: 8,
+    marginBottom: 96,
+  },
 });

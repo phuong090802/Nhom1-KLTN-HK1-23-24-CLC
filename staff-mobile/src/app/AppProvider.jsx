@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createHeader } from "../util/service.util";
-import { getMeSv } from "../service/author/author.sv";
-import { router } from "expo-router";
-import { paths } from "../../constance";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
+import { createContext, useEffect, useState } from 'react';
+import { paths } from '../../constance';
+import { getMeSv } from '../service/author/author.sv';
+
 export const AppContext = createContext({
   saveUserData: (userData) => {},
   user: Object,
@@ -21,12 +21,12 @@ const AppProvider = ({ children }) => {
     email: null,
     fullName: null,
     phoneNumber: null,
-    role: "GUEST",
+    role: 'GUEST',
   };
 
   const [user, setUser] = useState(initUser);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [selectedConversation, setSelectedConversation] = useState("aaaaa");
+  const [selectedConversation, setSelectedConversation] = useState('aaaaa');
 
   const getMe = async () => {
     try {
@@ -48,7 +48,7 @@ const AppProvider = ({ children }) => {
   };
 
   const deleteUserData = async () => {
-    await AsyncStorage.removeItem("accessToken");
+    await AsyncStorage.removeItem('accessToken');
     setUser(initUser);
     setIsLoggedIn(false);
   };

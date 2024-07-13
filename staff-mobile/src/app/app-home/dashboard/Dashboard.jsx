@@ -1,7 +1,5 @@
-import React from "react";
-import { DashboardProvider } from "./DashboardProvider";
-import { DashboardScreen } from "./DashboardScreen";
-import DepModal from "../../admin/statistic/department-statistic/DepModal";
+import { DashboardProvider } from './DashboardProvider';
+import { DashboardScreen } from './DashboardScreen';
 
 const Dashboard = () => {
   return (

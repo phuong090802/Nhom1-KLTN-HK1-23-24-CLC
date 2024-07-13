@@ -1,15 +1,15 @@
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import { useCallback } from "react";
-import { StatusBar, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import AppProvider from "./AppProvider";
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import { useCallback } from 'react';
+import { StatusBar, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AppProvider from './AppProvider';
 
 const AppLayout = () => {
   const [fontsLoaded, fontsError] = useFonts({
-    BahnschriftBold: require("../../assets/fonts/BahnschriftBold.ttf"),
-    BahnschriftRegular: require("../../assets/fonts/BahnschriftRegular.ttf"),
-    Bungee: require("../../assets/fonts/Bungee.ttf"),
+    BahnschriftBold: require('../../assets/fonts/BahnschriftBold.ttf'),
+    BahnschriftRegular: require('../../assets/fonts/BahnschriftRegular.ttf'),
+    Bungee: require('../../assets/fonts/Bungee.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {

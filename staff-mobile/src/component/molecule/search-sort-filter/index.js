@@ -1,1 +1,1 @@
-export { default } from "./SearchSortFilter";
+export { default } from './SearchSortFilter';

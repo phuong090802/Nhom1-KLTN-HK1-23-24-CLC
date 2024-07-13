@@ -1,16 +1,15 @@
-import React from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
+import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 export const SearchArea = ({ onClose, keyword, setKeyword }) => {
   return (
     <View>
-      <View style={{ position: "relative" }}>
+      <View style={{ position: 'relative' }}>
         <View style={styles.searchIcon}>
           <MyIcon
             iconPackage="Ionicons"
-            name={"search"}
+            name={'search'}
             size={32}
             color={colors.black75}
           />
@@ -25,7 +24,7 @@ export const SearchArea = ({ onClose, keyword, setKeyword }) => {
           <TouchableOpacity activeOpacity={0.4} onPress={onClose}>
             <MyIcon
               iconPackage="MaterialIcons"
-              name={"exit-to-app"}
+              name={'exit-to-app'}
               size={32}
               color={colors.primary}
             />
@@ -47,13 +46,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.BahnschriftRegular,
   },
   searchIcon: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 5,
     left: 12,
     zIndex: 2,
   },
   exitIcon: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 5,
     right: 12,
     zIndex: 2,

@@ -1,6 +1,5 @@
-import React from "react";
-import { AdminUserContent } from "./AdminUserContent";
-import { AdminUserProvider } from "./AdminUserProvider";
+import { AdminUserContent } from './AdminUserContent';
+import { AdminUserProvider } from './AdminUserProvider';
 
 const AdminUser = () => {
   return (

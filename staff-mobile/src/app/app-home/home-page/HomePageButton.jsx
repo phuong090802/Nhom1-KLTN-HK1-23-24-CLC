@@ -1,8 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon/MyIcon";
-import { router } from "expo-router";
+import { router } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon/MyIcon';
 
 export const HomePageButton = ({ item }) => {
   return (
@@ -11,18 +10,18 @@ export const HomePageButton = ({ item }) => {
       activeOpacity={0.4}
       onPress={() => {
         if (item.link) {
-          console.log(item.link);
+          console.log('item.link', item.link);
           router.push(item.link);
         }
       }}
     >
       <MyIcon
-        iconPackage={item.iconPackage || "Ionicons"}
-        name={item.iconName || "business-outline"}
+        iconPackage={item.iconPackage || 'Ionicons'}
+        name={item.iconName || 'business-outline'}
         size={36}
         color={colors.primary}
       />
-      <Text style={styles.text}>{item?.text || "Title"}</Text>
+      <Text style={styles.text}>{item?.text || 'Title'}</Text>
     </TouchableOpacity>
   );
 };
@@ -41,5 +40,3 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 });
-
-

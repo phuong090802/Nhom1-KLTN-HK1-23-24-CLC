@@ -1,7 +1,6 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import RenderHTML, { useContentWidth } from "react-native-render-html";
+import { StyleSheet, View } from 'react-native';
+import RenderHTML, { useContentWidth } from 'react-native-render-html';
+import { colors, fonts } from '../../../../constance';
 
 export const Message = ({ sender, content }) => {
   const width = useContentWidth();
@@ -9,7 +8,7 @@ export const Message = ({ sender, content }) => {
   return (
     <View style={[styles.wrapper, sender ? styles.sender : styles.receiver]}>
       <RenderHTML
-        source={{ html: content || "<p></p>" }}
+        source={{ html: content || '<p></p>' }}
         contentWidth={width}
       />
     </View>
@@ -18,7 +17,7 @@ export const Message = ({ sender, content }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    maxWidth: "75%",
+    maxWidth: '75%',
     paddingVertical: 8,
     paddingHorizontal: 8,
     marginBottom: 4,
@@ -27,14 +26,14 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     borderBottomRightRadius: 16,
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     backgroundColor: colors.primary20,
   },
   receiver: {
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     borderBottomLeftRadius: 16,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
     backgroundColor: colors.success10,
   },
   text: {

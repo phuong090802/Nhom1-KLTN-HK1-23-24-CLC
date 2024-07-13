@@ -95,14 +95,13 @@
 //   },
 // });
 
-import React, { useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import MyIcon from "../../../component/atomic/my-icon";
-import { colors, fonts, paths } from "../../../../constance";
-import { AppContext } from "../../AppProvider";
-import { Welcome } from "./Welcome";
-import { router } from "expo-router";
+import { router } from 'expo-router';
+import { useContext } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts, paths } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import { AppContext } from '../../AppProvider';
+import { Welcome } from './Welcome';
 
 const Card = ({ name, content, icon, iconPackage, link }) => (
   <TouchableOpacity
@@ -129,77 +128,77 @@ export const HomePageContent = () => {
   const data = {
     ADMIN: [
       {
-        id: "admin_1",
-        text: "Khoa",
-        iconName: "business-outline",
-        iconPackage: "Ionicons",
+        id: 'admin_1',
+        text: 'Khoa',
+        iconName: 'business-outline',
+        iconPackage: 'Ionicons',
         link: paths.admin.department,
       },
       {
-        id: "admin_2",
-        text: "Người dùng",
-        iconName: "users",
-        iconPackage: "Feather",
+        id: 'admin_2',
+        text: 'Người dùng',
+        iconName: 'users',
+        iconPackage: 'Feather',
         link: paths.admin.user,
       },
       {
-        id: "admin_3",
-        text: "Tin tức",
-        iconName: "newspaper-outline",
-        iconPackage: "Ionicons",
+        id: 'admin_3',
+        text: 'Tin tức',
+        iconName: 'newspaper-outline',
+        iconPackage: 'Ionicons',
         link: paths.admin.news,
       },
     ],
     DEPARTMENT_HEAD: [
       {
-        id: "dep_4",
-        text: "Lĩnh vực",
-        iconName: "layers",
-        iconPackage: "Feather",
+        id: 'dep_4',
+        text: 'Lĩnh vực',
+        iconName: 'layers',
+        iconPackage: 'Feather',
         link: paths.dephead.field,
       },
       {
-        id: "dep_3",
-        text: "Tư vấn viên",
-        iconName: "users",
-        iconPackage: "Feather",
+        id: 'dep_3',
+        text: 'Tư vấn viên',
+        iconName: 'users',
+        iconPackage: 'Feather',
         link: paths.dephead.counsellor,
       },
       {
-        id: "dep_6",
-        text: "FAQs",
-        iconName: "question",
-        iconPackage: "Octicons",
+        id: 'dep_6',
+        text: 'FAQs',
+        iconName: 'question',
+        iconPackage: 'Octicons',
         link: paths.dephead.faq,
       },
       {
-        id: "dep_7",
-        text: "Câu hỏi",
-        iconName: "question",
-        iconPackage: "Octicons",
+        id: 'dep_7',
+        text: 'Câu hỏi',
+        iconName: 'question',
+        iconPackage: 'Octicons',
         link: paths.counsellor.question,
       },
       {
-        id: "dep_5",
-        text: "Duyệt câu hỏi",
-        iconName: "question",
-        iconPackage: "Octicons",
+        id: 'dep_5',
+        text: 'Duyệt câu hỏi',
+        iconName: 'question',
+        iconPackage: 'Octicons',
         link: paths.dephead.aprove,
       },
     ],
     COUNSELLOR: [
       {
-        id: "coun_10",
-        text: "Câu hỏi",
-        iconName: "question",
-        iconPackage: "Octicons",
+        id: 'coun_10',
+        text: 'Câu hỏi',
+        iconName: 'question',
+        iconPackage: 'Octicons',
         link: paths.counsellor.question,
       },
       {
-        id: "coun_11",
-        text: "Feedback",
-        iconName: "question",
-        iconPackage: "Octicons",
+        id: 'coun_11',
+        text: 'Feedback',
+        iconName: 'question',
+        iconPackage: 'Octicons',
         link: paths.counsellor.question,
       },
     ],
@@ -227,38 +226,41 @@ export const HomePageContent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     padding: 10,
   },
   cardWrapper: {
-    width: "48%", // Hai cột, mỗi cột chiếm 48% chiều rộng để có khoảng cách giữa hai card
+    width: '48%', // Hai cột, mỗi cột chiếm 48% chiều rộng để có khoảng cách giữa hai card
     marginBottom: 10,
   },
   card: {
-    backgroundColor: "#f8f8f8",
+    backgroundColor: '#f8f8f8',
     borderRadius: 10,
     padding: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 5,
   },
   cardName: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 10,
     color: colors.primary,
     fontFamily: fonts.BahnschriftBold,
   },
   cardContent: {
     fontSize: 14,
-    color: "#555",
+    color: '#555',
     marginTop: 5,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

@@ -1,1 +1,1 @@
-export { default } from "./MyRichText";
+export { default } from './MyRichText';

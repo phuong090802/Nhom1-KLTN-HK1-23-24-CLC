@@ -1,8 +1,7 @@
-import { Modal, StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
-import { TouchableOpacity } from "react-native";
-import { useMemo } from "react";
+import { useMemo } from 'react';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 export const OptionMenu = ({
   visible,
@@ -18,7 +17,7 @@ export const OptionMenu = ({
           <View style={styles.content}>
             {onEdit && (
               <OptionButton
-                title={"Chỉnh sửa"}
+                title={'Chỉnh sửa'}
                 onClick={() => {
                   setVisible(false);
                   if (onEdit) onEdit();
@@ -27,33 +26,33 @@ export const OptionMenu = ({
             )}
             {onDetail && (
               <OptionButton
-                title={"Chi tiết"}
+                title={'Chi tiết'}
                 onClick={() => {
                   setVisible(false);
                   if (onDetail) onDetail();
                 }}
                 icon={{
-                  package: "Ionicons",
-                  name: "information-circle-outline",
+                  package: 'Ionicons',
+                  name: 'information-circle-outline',
                 }}
               />
             )}
             {onDelete && (
               <OptionButton
-                title={"Xóa"}
+                title={'Xóa'}
                 onClick={() => {
                   setVisible(false);
                   if (onDelete) onDelete();
                 }}
                 icon={{
-                  package: "Ionicons",
-                  name: "close",
+                  package: 'Ionicons',
+                  name: 'close',
                 }}
               />
             )}
             <OptionButton
-              icon={{ package: "MaterialIcons", name: "exit-to-app" }}
-              title={"Trở về"}
+              icon={{ package: 'MaterialIcons', name: 'exit-to-app' }}
+              title={'Trở về'}
               onClick={() => setVisible((prev) => false)}
             />
           </View>
@@ -75,10 +74,10 @@ const OptionButton = ({ icon, title, onClick }) => {
       }}
     >
       <MyIcon
-        iconPackage={icon?.package || "Feather"}
-        name={icon?.name || "edit-2"}
+        iconPackage={icon?.package || 'Feather'}
+        name={icon?.name || 'edit-2'}
       />
-      <Text style={styles.buttonTitle}>{title || "Option"}</Text>
+      <Text style={styles.buttonTitle}>{title || 'Option'}</Text>
     </TouchableOpacity>
   );
 };
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black5,
     flex: 1,
-    flexDirection: "column-reverse",
+    flexDirection: 'column-reverse',
   },
   content: {
     backgroundColor: colors.white,
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
   },
   buttonContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     paddingHorizontal: 16,
     paddingVertical: 16,

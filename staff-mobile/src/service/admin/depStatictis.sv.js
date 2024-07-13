@@ -1,42 +1,42 @@
-import { createHeader } from "../../util/service.util";
-import API from "../api";
+import { createHeader } from '../../util/service.util';
+import API from '../api';
 
 const getDepStatisticsSv = async (params) => {
-  const header = await createHeader(["author"]);
-  return API.get("admin/statistics/department", {
+  const header = await createHeader(['author']);
+  return API.get('admin/statistics/department', {
     headers: header,
-    params: params,
+    params,
   });
 };
 
 const getSystemStatictisSv = async () => {
-  const header = await createHeader(["author"]);
-  return API.get("statistics", {
+  const header = await createHeader(['author']);
+  return API.get('statistics', {
     headers: header,
   });
 };
 
 const getQuesStatisticDataSv = async (data, params) => {
-  const header = await createHeader(["author"]);
+  const header = await createHeader(['author']);
   return API.post(
-    "admin/statistics/question",
+    'admin/statistics/question',
     {
-      timeUnit: "month", //year
+      timeUnit: 'month', // year
       latestTime: 4,
     },
     {
       headers: header,
-      params: params,
+      params,
     }
   );
 };
 
 const getDepStatisticById = async (depId, params) => {
-  const header = await createHeader(["author"]);
+  const header = await createHeader(['author']);
   return API.post(
     `admin/statistics/department/${depId}/question`,
     {
-      timeUnit: "month", //year
+      timeUnit: 'month', //year
       latestTime: 4,
     },
     {
@@ -47,8 +47,8 @@ const getDepStatisticById = async (depId, params) => {
 };
 
 export {
-  getDepStatisticsSv,
+  getDepStatisticById, getDepStatisticsSv,
   getQuesStatisticDataSv,
-  getSystemStatictisSv,
-  getDepStatisticById,
+  getSystemStatictisSv
 };
+

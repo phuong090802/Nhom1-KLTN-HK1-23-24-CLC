@@ -1,9 +1,9 @@
-import React, { useCallback, useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { colors, fonts } from "../../../../../constance";
-import MyIcon from "../../../../component/atomic/my-icon";
-import { LinearGradient } from "expo-linear-gradient";
-import { DepartmentStatisticContext } from "./DepartmentStatisticProvider";
+import { LinearGradient } from 'expo-linear-gradient';
+import { useCallback, useContext } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../../constance';
+import MyIcon from '../../../../component/atomic/my-icon';
+import { DepartmentStatisticContext } from './DepartmentStatisticProvider';
 
 export const InforBox = ({ data }) => {
   const { setChosenDep, setVisibleDepModal } = useContext(
@@ -18,40 +18,37 @@ export const InforBox = ({ data }) => {
   return (
     <LinearGradient
       style={[styles.container]}
-      colors={["#0396FF", "#ABDCFF"]}
+      colors={['#0396FF', '#ABDCFF']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
     >
       <View style={{ flex: 10 }}>
-        <Text style={styles.title}>{data.departmentName || "Tên khoa"} </Text>
-        <View style={{ flexDirection: "column", gap: 8, marginLeft: 16 }}>
+        <Text style={styles.title}>{data.departmentName || 'Tên khoa'} </Text>
+        <View style={{ flexDirection: 'column', gap: 8, marginLeft: 16 }}>
           <Infor
-            iconPackage={"Feather"}
-            name={"layers"}
+            iconPackage={'Feather'}
+            name={'layers'}
             infor={`${data.fieldCount || 0} lĩnh vực`}
           />
           <Infor
-            iconPackage={"Feather"}
-            name={"users"}
+            iconPackage={'Feather'}
+            name={'users'}
             infor={`${data.staffCount || 0} nhân viên`}
           />
           <Infor
-            iconPackage={"Octicons"}
-            name={"question"}
+            iconPackage={'Octicons'}
+            name={'question'}
             infor={`${data.questionCount || 0} câu hỏi`}
           />
         </View>
       </View>
       <View
-        style={{ flex: 1, justifyContent: "center", alignItems: "flex-end" }}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}
       >
-        <TouchableOpacity
-          activeOpacity={0.5}
-          onPress={handleInforBox}
-        >
+        <TouchableOpacity activeOpacity={0.5} onPress={handleInforBox}>
           <MyIcon
             iconPackage="FontAwesome"
-            name={"chevron-right"}
+            name={'chevron-right'}
             color={colors.white}
           />
         </TouchableOpacity>
@@ -64,8 +61,8 @@ const Infor = ({ iconPackage, name, infor }) => {
   return (
     <View
       style={{
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
         gap: 8,
         borderRadius: 16,
       }}
@@ -94,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     padding: 16,
     borderRadius: 16,
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 8,
   },
   title: {

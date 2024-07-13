@@ -1,25 +1,23 @@
-import { useContext, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { AdminUserContext } from "./AdminUserProvider";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MySelect from "../../../component/atomic/my-select/MySelect";
-import MyButton from "../../../component/atomic/my-button";
-import MyInput from "../../../component/atomic/my-input";
+import { useContext, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import MySelect from '../../../component/atomic/my-select/MySelect';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { AdminUserContext } from './AdminUserProvider';
 
 export const AddUserModal = () => {
   const { setShowAddUserModal, showAddUserModal, AddUser } =
     useContext(AdminUserContext);
   const initUserData = {
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    role: "",
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    role: '',
   };
 
   const [userData, setUserData] = useState(initUserData);
-
   const [loading, setLoading] = useState(false);
 
   const handleOnChange = (value, name) => {
@@ -34,9 +32,9 @@ export const AddUserModal = () => {
       await AddUser({ ...userData, confirmPassword });
       setUserData(initUserData);
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log('handleAddUser', error);
     }
+    setLoading(false);
   };
 
   return (
@@ -45,7 +43,7 @@ export const AddUserModal = () => {
       onClose={() => {
         setShowAddUserModal(false);
       }}
-      title={"Thêm nhân sự"}
+      title={'Thêm nhân sự'}
     >
       <View style={styles.container}>
         <Text style={styles.label}>Họ & Tên</Text>
@@ -53,16 +51,16 @@ export const AddUserModal = () => {
           style={styles.textInput}
           placeholder="Aa"
           value={userData.fullName}
-          onChangeText={(value) => handleOnChange(value, "fullName")}
+          onChangeText={(value) => handleOnChange(value, 'fullName')}
         />
         <Text style={styles.label}>Chức vụ</Text>
         <MySelect
           data={[
-            { key: "Tư vấn viên", value: "COUNSELLOR" },
-            { key: "Giám sát viên", value: "SUPERVISOR" },
+            { key: 'Tư vấn viên', value: 'COUNSELLOR' },
+            { key: 'Giám sát viên', value: 'SUPERVISOR' },
           ]}
           onSelect={(selectedItem) =>
-            handleOnChange(selectedItem.value, "role")
+            handleOnChange(selectedItem.value, 'role')
           }
         />
         <Text style={styles.label}>Email</Text>
@@ -70,14 +68,14 @@ export const AddUserModal = () => {
           style={styles.textInput}
           placeholder="Aa"
           value={userData.email}
-          onChangeText={(value) => handleOnChange(value, "email")}
+          onChangeText={(value) => handleOnChange(value, 'email')}
         />
         <Text style={styles.label}>Số điện thoại</Text>
         <TextInput
           style={styles.textInput}
           placeholder="Aa"
           value={userData.phoneNumber}
-          onChangeText={(value) => handleOnChange(value, "phoneNumber")}
+          onChangeText={(value) => handleOnChange(value, 'phoneNumber')}
         />
         <Text style={styles.label}>Mật khẩu</Text>
         <TextInput
@@ -85,7 +83,7 @@ export const AddUserModal = () => {
           placeholder="Aa"
           secureTextEntry
           value={userData.password}
-          onChangeText={(value) => handleOnChange(value, "password")}
+          onChangeText={(value) => handleOnChange(value, 'password')}
         />
         <MyButton
           activeOpacity={0.5}
@@ -95,7 +93,7 @@ export const AddUserModal = () => {
               backgroundColor: false ? colors.lightGray : colors.black,
             },
           ]}
-          buttonText={"Thêm"}
+          buttonText={'Thêm'}
           onPress={handleAddUser}
         />
       </View>

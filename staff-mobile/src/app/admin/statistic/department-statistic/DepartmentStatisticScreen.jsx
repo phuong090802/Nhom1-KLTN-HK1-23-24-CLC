@@ -1,17 +1,17 @@
-import { router } from "expo-router";
-import React, { useContext } from "react";
+import { router } from 'expo-router';
+import { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
-import { colors, fonts } from "../../../../../constance";
-import MyIcon from "../../../../component/atomic/my-icon";
-import { InforBox } from "./InforBox";
-import { DepartmentStatisticContext } from "./DepartmentStatisticProvider";
-import DepModal from "./DepModal";
+} from 'react-native';
+import { colors, fonts } from '../../../../../constance';
+import MyIcon from '../../../../component/atomic/my-icon';
+import { DepartmentStatisticContext } from './DepartmentStatisticProvider';
+import DepModal from './DepModal';
+import { InforBox } from './InforBox';
 
 export const DepartmentStatisticScreen = () => {
   const { depStatictis } = useContext(DepartmentStatisticContext);
@@ -26,7 +26,7 @@ export const DepartmentStatisticScreen = () => {
       >
         <MyIcon
           iconPackage="Feather"
-          name={"arrow-left"}
+          name={'arrow-left'}
           size={30}
           color={colors.black75}
         />

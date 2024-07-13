@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
+import { useContext } from 'react';
 import {
   Linking,
   StyleSheet,
@@ -7,11 +6,12 @@ import {
   TouchableOpacity,
   useWindowDimensions,
   View,
-} from "react-native";
-import { AdminNewsContext } from "./AdminNewsProvider";
-import RenderHTML, { useContentWidth } from "react-native-render-html";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon";
+} from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../../component/atomic/my-icon';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { AdminNewsContext } from './AdminNewsProvider';
 
 export const DetailNewsModal = () => {
   const { showDetailModal, setShowDetailModal, selectedNews } =
@@ -27,7 +27,7 @@ export const DetailNewsModal = () => {
     <ModalLayout
       visible={showDetailModal}
       onClose={onModalClose}
-      title={"Tin tức"}
+      title={'Tin tức'}
     >
       <View style={styles.container}>
         <Text style={styles.title}>{selectedNews?.title}</Text>
@@ -36,7 +36,7 @@ export const DetailNewsModal = () => {
           contentWidth={width}
         />
         {selectedNews?.file !== null && (
-          <View style={{ width: "100%", marginTop: 8 }}>
+          <View style={{ width: '100%', marginTop: 8 }}>
             <Text style={[styles.text, { fontSize: 18 }, styles.bold]}>
               Đính kèm:
             </Text>
@@ -67,7 +67,7 @@ const File = ({ link }) => {
         }}
       >
         <MyIcon
-          name={"paperclip"}
+          name={'paperclip'}
           iconPackage="Feather"
           color={colors.black75}
           size={24}
@@ -78,7 +78,9 @@ const File = ({ link }) => {
 };
 
 const styles = StyleSheet.create({
-  text: { color: colors.black75 },
+  text: {
+    color: colors.black75,
+  },
   container: {
     marginTop: 8,
     gap: 8,
@@ -86,21 +88,23 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
   },
-  bold: { fontFamily: fonts.BahnschriftBold },
+  bold: {
+    fontFamily: fonts.BahnschriftBold,
+  },
   title: {
     fontFamily: fonts.BahnschriftBold,
     fontSize: 18,
   },
   fileContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 4,
     paddingHorizontal: 16,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     backgroundColor: colors.primary20,
     borderColor: colors.black10,
-    alignItems: "center",
+    alignItems: 'center',
   },
 });

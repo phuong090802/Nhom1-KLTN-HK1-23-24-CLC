@@ -1,35 +1,18 @@
-import { FC, useMemo } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-} from "react-native";
-import { colors, fonts } from "../../../../constance";
+import { useMemo } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
 
-interface iButtonProps extends TouchableOpacityProps {
-  buttonText: String;
-  variant: "default" | "outline";
-}
-
-const MyButton: FC<iButtonProps> = ({
-  buttonText,
-  variant,
-  style,
-  onPress,
-  ...props
-}) => {
+const MyButton = ({ buttonText, variant, style, onPress, ...props }) => {
   const myButtonComponent = useMemo(() => {
     const buttonStyle = [
-      styles[!!variant && !!styles[variant] ? variant : "default"],
+      styles[!!variant && !!styles[variant] ? variant : 'default'],
       style,
     ];
 
     return (
       <View style={styles.container}>
         <TouchableOpacity {...props} style={buttonStyle} onPress={onPress}>
-          <Text style={styles.titleDefault}>{buttonText || "Button"}</Text>
+          <Text style={styles.titleDefault}>{buttonText || 'Button'}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -39,11 +22,13 @@ const MyButton: FC<iButtonProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: { width: "100%" },
+  container: {
+    width: '100%',
+  },
   default: {
     backgroundColor: colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 16,
     borderRadius: 32,
   },

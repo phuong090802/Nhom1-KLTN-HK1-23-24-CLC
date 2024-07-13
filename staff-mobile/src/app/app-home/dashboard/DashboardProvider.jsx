@@ -1,16 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
 import {
   getQuesStatisticDataSv,
   getSystemStatictisSv,
-} from "../../../service/admin/depStatictis.sv";
-import { getMonth } from "../../../util/convert.util";
-import { AppContext } from "../../AppProvider";
+} from '../../../service/admin/depStatictis.sv';
+import { counsellorGetQuestionStatistic } from '../../../service/cousellor/counsellorStatistic';
 import {
   depheadGetCounsellorCount,
   depheadGetFaqCount,
   depheadGetQuestionStatistic,
-} from "../../../service/dephead/depheadStatistic.sv";
-import { counsellorGetQuestionStatistic } from "../../../service/cousellor/counsellorStatistic";
+} from '../../../service/dephead/depheadStatistic.sv';
+import { getMonth } from '../../../util/convert.util';
+import { AppContext } from '../../AppProvider';
 
 export const DashboardContext = createContext({
   chartData: Object,
@@ -19,9 +19,7 @@ export const DashboardContext = createContext({
 
 export const DashboardProvider = ({ children }) => {
   const [chartData, setChartData] = useState(null);
-
   const [systemStatictis, setSystemStatictis] = useState({});
-
   const { isLoggedIn, user } = useContext(AppContext);
 
   const adminGetChartData = async () => {
@@ -43,7 +41,7 @@ export const DashboardProvider = ({ children }) => {
       };
       setChartData(transformedData);
     } catch (error) {
-      console.log(error);
+      console.log('adminGetChartData', error);
     }
   };
 
@@ -59,7 +57,7 @@ export const DashboardProvider = ({ children }) => {
       }));
       console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log('adminGetStatictis', error);
     }
   };
 
@@ -82,7 +80,7 @@ export const DashboardProvider = ({ children }) => {
       };
       setChartData(transformedData);
     } catch (error) {
-      console.log(error);
+      console.log('depheadGetChartData', error);
     }
   };
 
@@ -92,14 +90,14 @@ export const DashboardProvider = ({ children }) => {
       const { countOfUsers } = await depheadGetCounsellorCount();
       setSystemStatictis({ countOfFAQs, countOfUsers });
     } catch (error) {
-      console.log(error);
+      console.log('depheadGetStatistic', error);
     }
   };
 
   const counsellorGetChartData = async () => {
     try {
       const response = await counsellorGetQuestionStatistic();
-      console.log(response);
+      console.log('counsellorGetChartData response', response);
       const labels = response.questionsStatistic.map(
         (data) => `T. ${getMonth(data.date.start)}`
       );
@@ -116,22 +114,22 @@ export const DashboardProvider = ({ children }) => {
       };
       setChartData(transformedData);
     } catch (error) {
-      console.log(error);
+      console.log('counsellorGetChartData', error);
     }
   };
 
   useEffect(() => {
     if (!isLoggedIn) return;
     switch (user.role) {
-      case "ADMIN":
+      case 'ADMIN':
         adminGetChartData();
         adminGetStatictis();
         break;
-      case "DEPARTMENT_HEAD":
+      case 'DEPARTMENT_HEAD':
         depheadGetChartData();
         depheadGetStatistic();
         break;
-      case "COUNSELLOR":
+      case 'COUNSELLOR':
         counsellorGetChartData();
         break;
       default:

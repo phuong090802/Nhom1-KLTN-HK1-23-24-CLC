@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { DepheadAproveContext } from "./DepheadAproveProvider";
-import ScreenHeader from "../../../component/molecule/screen-header";
-import ItemSkeleton from "../../../component/molecule/item-skeleton";
-import { Item } from "./Item";
-import Pagination from "../../../component/molecule/pagination";
-import { AproveDetailModal } from "./AproveDetailModal";
-import { colors, fonts } from "../../../../constance";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import ItemSkeleton from '../../../component/molecule/item-skeleton';
+import Pagination from '../../../component/molecule/pagination';
+import ScreenHeader from '../../../component/molecule/screen-header';
+import { AproveDetailModal } from './AproveDetailModal';
+import { DepheadAproveContext } from './DepheadAproveProvider';
+import { Item } from './Item';
 
 export const DepheadAproveContent = () => {
   const { pages, params, setParams, answers, loading } =
@@ -17,7 +17,7 @@ export const DepheadAproveContent = () => {
       <ScreenHeader
         params={params}
         setParams={setParams}
-        title={"Duyệt câu trả lời"}
+        title={'Duyệt câu trả lời'}
       />
       <ScrollView
         style={styles.contentContaier}
@@ -27,9 +27,9 @@ export const DepheadAproveContent = () => {
         {answers?.length === 0 && loading === false ? (
           <View
             style={{
-              justifyContent: "center",
+              justifyContent: 'center',
               height: 100,
-              alignItems: "center",
+              alignItems: 'center',
               borderWidth: 1,
               borderRadius: 16,
               borderColor: colors.primary,
@@ -51,8 +51,14 @@ export const DepheadAproveContent = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: 8, paddingTop: 8 },
-  contentContaier: { marginTop: 8, marginBottom: 96 },
+  container: {
+    paddingHorizontal: 8,
+    paddingTop: 8,
+  },
+  contentContaier: {
+    marginTop: 8,
+    marginBottom: 96,
+  },
   text: {
     fontFamily: fonts.BahnschriftBold,
     fontSize: 16,

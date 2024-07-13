@@ -1,6 +1,5 @@
-import React from "react";
-import { DepheadAproveProvider } from "./DepheadAproveProvider";
-import { DepheadAproveContent } from "./DepheadAproveContent";
+import { DepheadAproveContent } from './DepheadAproveContent';
+import { DepheadAproveProvider } from './DepheadAproveProvider';
 
 const DepheadAprove = () => {
   return (

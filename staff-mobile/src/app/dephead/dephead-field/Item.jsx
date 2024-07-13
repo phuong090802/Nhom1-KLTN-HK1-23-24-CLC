@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import ItemLayout from "../../../component/molecule/item-layout/ItemLayout";
-import { DepheadFieldContext } from "./DepheadFieldProvider";
+import { useContext } from 'react';
+import ItemLayout from '../../../component/molecule/item-layout/ItemLayout';
+import { DepheadFieldContext } from './DepheadFieldProvider';
 
 export const Item = ({ data }) => {
   const { updateFieldStatus, setShowUpdateFieldModal, setSelectedField } =

@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { Modal, StyleSheet, View } from "react-native";
-import { colors } from "../../../../constance";
-import { SearchArea } from "./SearchArea";
+import { useEffect, useRef, useState } from 'react';
+import { Modal, StyleSheet, View } from 'react-native';
+import { colors } from '../../../../constance';
+import { SearchArea } from './SearchArea';
 
 export const SearchModal = ({ visible, onClose, params, setParams }) => {
   const [keyword, setKeyword] = useState(false);

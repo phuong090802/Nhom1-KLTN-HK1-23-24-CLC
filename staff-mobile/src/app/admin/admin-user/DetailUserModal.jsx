@@ -1,19 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { AdminUserContext } from "./AdminUserProvider";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons';
+import { useContext } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { colors } from '../../../../constance';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { AdminUserContext } from './AdminUserProvider';
 
 const user = {
   avatar: null, // Đường dẫn đến ảnh avatar của người dùng, null nếu không có
-  email: "vinhlv@hcmute.edu.vn",
-  fullName: "TS. Lê Văn Vinh",
+  email: 'vinhlv@hcmute.edu.vn',
+  fullName: 'TS. Lê Văn Vinh',
   isEnabled: true,
-  occupation: "Khác",
-  phoneNumber: "0915755166",
-  role: "COUNSELLOR",
+  occupation: 'Khác',
+  phoneNumber: '0915755166',
+  role: 'COUNSELLOR',
 };
 
 const UserProfile = ({ user }) => (
@@ -58,7 +57,7 @@ export const DetailUserModal = () => {
     <ModalLayout
       visible={showDetailUserModal}
       onClose={() => setShowDetailUserModal(false)}
-      title={"Thông tin người dùng"}
+      title={'Thông tin người dùng'}
     >
       <View style={styles.container}>
         <UserProfile user={selectUser} />
@@ -148,20 +147,20 @@ export const DetailUserModal = () => {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 20,
     marginTop: 8,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
     borderWidth: 1,
-    borderColor: colors.black25
+    borderColor: colors.black25,
   },
   profileContainer: {
-    width: "100%",
+    width: '100%',
     // backgroundColor: '#ffffff',
     borderRadius: 20,
     padding: 20,
-    alignItems: "center",
+    alignItems: 'center',
     // shadowColor: '#000',
     // shadowOffset: { width: 0, height: 2 },
     // shadowOpacity: 0.1,
@@ -171,38 +170,38 @@ const styles = StyleSheet.create({
   avatarWrapper: {
     marginBottom: 20,
     borderRadius: 60,
-    overflow: "hidden",
+    overflow: 'hidden',
     width: 120,
     height: 120,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 3,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
   },
   avatar: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   userName: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
   infoContainer: {
-    width: "100%",
+    width: '100%',
     paddingHorizontal: 20,
   },
   infoRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 15,
     paddingVertical: 10,
     paddingHorizontal: 15,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: '#f9f9f9',
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
@@ -210,7 +209,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 18,
-    color: "#555",
+    color: '#555',
     marginLeft: 10,
   },
 });

@@ -1,37 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadCounsellorContext } from "./DepheadCounsellorProvider";
+import { useContext, useEffect, useState } from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
   ToastAndroid,
-} from "react-native";
+  TouchableOpacity,
+} from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import MyIcon from '../../../component/atomic/my-icon';
+import ModalLayout from '../../../component/molecule/modal-layout';
 import {
   depheadAddFieldsForCounSv,
   depheadGetFieldsToAddSv,
-} from "../../../service/dephead/depheadCounsellor.sv";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../../component/atomic/my-icon";
-import MyButton from "../../../component/atomic/my-button";
+} from '../../../service/dephead/depheadCounsellor.sv';
+import { DepheadCounsellorContext } from './DepheadCounsellorProvider';
 
 export const AddFieldsModal = () => {
   const {
     setShowAddFieldsModal,
     showAddFieldsModal,
     selectedCounsellor,
-    getCounsellors,
     setSelectedCounsellor,
   } = useContext(DepheadCounsellorContext);
-
   //Mảng chứa các fields có thể thêm
   const [fields, setFields] = useState([]);
-
   //Những field đã được chọn
   const [selectedFields, setSelectedFields] = useState([]);
-
 
   //xử lý việc ấn vào một field
   const handleItemPress = (id) => {
@@ -53,14 +48,14 @@ export const AddFieldsModal = () => {
       const response = await depheadGetFieldsToAddSv(selectedCounsellor._id);
       setFields(response.fields);
     } catch (error) {
-      // console.log(error);
+      console.log('getFieldToAddForCounsellor', error);
     }
   };
 
   //Hàm nối tên các lĩnh vực trong một mảng
   function joinFieldNames(failedFields) {
     const fieldNames = failedFields.map((field) => field.fieldName);
-    return fieldNames.join(", ");
+    return fieldNames.join(', ');
   }
 
   //Hàm kiểm kiểm tra id lĩnh vực có trong mảng không
@@ -72,7 +67,7 @@ export const AddFieldsModal = () => {
   const handleAddFields = async () => {
     if (selectedFields.length === 0) {
       ToastAndroid.show(
-        "Chưa có lĩnh vực nào được chọn!!!",
+        'Chưa có lĩnh vực nào được chọn!!!',
         ToastAndroid.SHORT
       );
       return;
@@ -83,13 +78,11 @@ export const AddFieldsModal = () => {
         selectedCounsellor._id,
         selectedFields
       );
-
       setSelectedFields([]);
-      
       //Nếu tất cả lĩnh vực được thêm thành công
       if (response?.failedFields?.length === 0) {
         ToastAndroid.show(
-          response?.message || "Thêm lĩnh vực cho tư vấn viên thành công",
+          response?.message || 'Thêm lĩnh vực cho tư vấn viên thành công',
           ToastAndroid.SHORT
         );
         setSelectedCounsellor((prev) => {
@@ -101,7 +94,7 @@ export const AddFieldsModal = () => {
         setFields((prev) =>
           prev.filter((item) => !selectedFields.includes(item._id))
         );
-      } 
+      }
       //Nếu có ít nhất một trong các lĩnh vực thêm thất bại
       else {
         ToastAndroid.show(
@@ -131,7 +124,7 @@ export const AddFieldsModal = () => {
     } catch (error) {
       //Lỗi khi thêm
       ToastAndroid.show(
-        error?.message || "Lỗi khi thêm lĩnh vực cho tư vấn viên!!",
+        error?.message || 'Lỗi khi thêm lĩnh vực cho tư vấn viên!!',
         ToastAndroid.SHORT
       );
     }
@@ -148,7 +141,7 @@ export const AddFieldsModal = () => {
     <ModalLayout
       visible={showAddFieldsModal}
       onClose={() => setShowAddFieldsModal(false)}
-      title={"Thêm lĩnh vực cho tư vấn viên"}
+      title={'Thêm lĩnh vực cho tư vấn viên'}
     >
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {fields.map((field, index) => {
@@ -163,14 +156,14 @@ export const AddFieldsModal = () => {
               ]}
             >
               <Text
-                style={[styles.text, { maxWidth: "80%", paddingVertical: 6 }]}
+                style={[styles.text, { maxWidth: '80%', paddingVertical: 6 }]}
               >
                 {field?.fieldName}
               </Text>
               {selectedFields?.includes(field._id) && (
                 <MyIcon
                   iconPackage="Octicons"
-                  name={"check-circle"}
+                  name={'check-circle'}
                   color={colors.success}
                 />
               )}
@@ -198,9 +191,9 @@ const styles = StyleSheet.create({
     maxHeight: 400,
   },
   itemContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 16,
   },
   selected: {

@@ -1,20 +1,10 @@
-import React, { FC, useCallback, useMemo, useState } from "react";
-import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
+import { useCallback, useMemo } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
 
-interface iInputProps extends TextInputProps {
-  variants: "default" | "underline";
-  name: String;
-}
-
-const MyInput: FC<iInputProps> = ({
-  onChangeText,
-  name,
-  variants,
-  ...props
-}) => {
+const MyInput = ({ onChangeText, name, variants, ...props }) => {
   const handleChange = useCallback(
-    (value: String) => {
+    (value) => {
       onChangeText(value, name);
     },
     [onChangeText]
@@ -38,7 +28,7 @@ const MyInput: FC<iInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: '100%',
   },
   default: {
     backgroundColor: colors.black5,

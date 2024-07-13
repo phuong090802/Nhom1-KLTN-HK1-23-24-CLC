@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["fullName", "email", "phoneNumber"],
-  keyword: "",
+  search: ['fullName', 'email', 'phoneNumber'],
+  keyword: '',
   page: 1,
   size: 10,
   filter: {
@@ -14,58 +14,64 @@ const initParams = {
 };
 
 const sortData = [
-  { text: "Tên người dùng A-z", value: { fullName: 1 } },
-  { text: "Tên người dùng Z-a", value: { fullName: -1 } },
+  {
+    text: 'Tên người dùng A-z',
+    value: { fullName: 1 },
+  },
+  {
+    text: 'Tên người dùng Z-a',
+    value: { fullName: -1 },
+  },
 ];
 
 const filterData = [
   {
-    name: "isEnabled",
-    label: "Hoạt động",
+    name: 'isEnabled',
+    label: 'Hoạt động',
     data: [
       {
-        key: "Hoạt động",
+        key: 'Hoạt động',
         value: true,
       },
       {
-        key: "Không hoạt động",
+        key: 'Không hoạt động',
         value: false,
       },
     ],
   },
   {
-    name: "role",
-    label: "Chức vụ",
+    name: 'role',
+    label: 'Chức vụ',
     data: [
       {
-        key: "Tất cả",
+        key: 'Tất cả',
         value: null,
       },
       {
-        key: "Người dùng",
-        value: "USER",
+        key: 'Người dùng',
+        value: 'USER',
       },
       {
-        key: "Tư vấn viên",
-        value: "COUNSELLOR",
+        key: 'Tư vấn viên',
+        value: 'COUNSELLOR',
       },
       {
-        key: "Trưởng khoa",
-        value: "DEPARTMENT_HEAD",
+        key: 'Trưởng khoa',
+        value: 'DEPARTMENT_HEAD',
       },
     ],
   },
   {
-    name: "Occupation",
-    label: "Nghề nghiệp",
+    name: 'Occupation',
+    label: 'Nghề nghiệp',
     data: [
       {
-        key: "Tất cả",
+        key: 'Tất cả',
         value: null,
       },
       {
-        key: "Sinh viên",
-        value: "Sinh viên",
+        key: 'Sinh viên',
+        value: 'Sinh viên',
       },
     ],
   },

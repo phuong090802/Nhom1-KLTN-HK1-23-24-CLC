@@ -1,5 +1,5 @@
-import API from "../api";
+import API from '../api';
 
 export const getDepartmentSv = () => {
-  return API.get("departments");
+  return API.get('departments');
 };

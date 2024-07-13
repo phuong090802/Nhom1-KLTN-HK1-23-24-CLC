@@ -1,29 +1,28 @@
-import React, { createRef, useContext, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { AdminNewsContext } from "./AdminNewsProvider";
+import { getDocumentAsync } from 'expo-document-picker';
+import { createRef, useContext, useState } from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyRichText from "../../../component/atomic/my-rich-text";
-import { getDocumentAsync } from "expo-document-picker";
-import MyIcon from "../../../component/atomic/my-icon";
-import MyButton from "../../../component/atomic/my-button";
-import { addNewsSv } from "../../../service/admin/adminNews.sv";
+} from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import MyIcon from '../../../component/atomic/my-icon';
+import MyRichText from '../../../component/atomic/my-rich-text';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { addNewsSv } from '../../../service/admin/adminNews.sv';
+import { AdminNewsContext } from './AdminNewsProvider';
 
 export const AddNewsModal = () => {
   const { setShowAddNewsModal, showAddNewsModal } =
     useContext(AdminNewsContext);
 
   const initNewsData = {
-    title: "",
+    title: '',
     file: null,
-    content: "",
+    content: '',
   };
 
   const [newsData, setNewsData] = useState(initNewsData);
@@ -35,7 +34,7 @@ export const AddNewsModal = () => {
   const onFilePicker = async () => {
     if (!newsData?.file) {
       const file = await getDocumentAsync();
-      console.log(file.assets[0]);
+      console.log('onFilePicker', file.assets[0]);
       setNewsData((prev) => ({ ...prev, file: file.assets[0] }));
     } else {
       setNewsData((prev) => ({ ...prev, file: null }));
@@ -48,21 +47,21 @@ export const AddNewsModal = () => {
 
   const AddNews = async () => {
     if (!newsData.title) {
-      alert("Chưa nhập tiêu đề!!");
+      alert('Chưa nhập tiêu đề!!');
       return;
     }
     if (!newsData.content) {
-      alert("Chưa nhập nội dung!!");
+      alert('Chưa nhập nội dung!!');
       return;
     }
     try {
       const response = await addNewsSv(newsData);
-      console.log(response);
-      alert(response?.message || "Thêm tin tức thành công");
+      console.log('AddNews', response);
+      alert(response?.message || 'Thêm tin tức thành công');
       setNewsData(initNewsData);
     } catch (error) {
-      console.log(error);
-      alert(error?.message || "Lỗi khi thêm tin tức");
+      console.log('AddNews', error);
+      alert(error?.message || 'Lỗi khi thêm tin tức');
     }
   };
 
@@ -77,7 +76,7 @@ export const AddNewsModal = () => {
     <ModalLayout
       visible={showAddNewsModal}
       onClose={modalOnClose}
-      title={"Thêm tin tức"}
+      title={'Thêm tin tức'}
     >
       <View style={styles.container}>
         <Text style={styles.label}>Tiêu đề</Text>
@@ -92,18 +91,18 @@ export const AddNewsModal = () => {
           <MyRichText setValue={onHtmlChange} editorRef={_editor} />
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
               borderTopWidth: 0.2,
             }}
           >
             <Text numberOfLines={1} style={styles.fileNameText}>
-              {newsData?.file?.name || "Chọn File"}
+              {newsData?.file?.name || 'Chọn File'}
             </Text>
             <TouchableOpacity style={styles.button} onPress={onFilePicker}>
               <MyIcon
                 iconPackage="MaterialIcons"
-                name={!!newsData?.file?.name ? "delete-outline" : "attach-file"}
+                name={!!newsData?.file?.name ? 'delete-outline' : 'attach-file'}
                 color={colors.primary}
                 size={32}
               />
@@ -118,7 +117,10 @@ export const AddNewsModal = () => {
 
 const styles = StyleSheet.create({
   container: { marginTop: 16 },
-  label: { fontFamily: fonts.BahnschriftBold, fontSize: 16 },
+  label: {
+    fontFamily: fonts.BahnschriftBold,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,
@@ -129,36 +131,36 @@ const styles = StyleSheet.create({
   },
   richTextContainer: {
     paddingVertical: 0,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
     borderRadius: 8,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 3,
   },
   button: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingBottom: 6,
     paddingHorizontal: 6,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
     borderRadius: 8,
     marginTop: 8,
   },
   buttonText: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 16,
-    textAlign: "center",
+    textAlign: 'center',
   },
   fileNameText: {
-    textAlignVertical: "center",
+    textAlignVertical: 'center',
     fontFamily: fonts.BahnschriftRegular,
     fontSize: 16,
     paddingHorizontal: 8,
-    maxWidth: "80%",
+    maxWidth: '80%',
   },
 });

@@ -1,6 +1,5 @@
-import React from "react";
-import { AdminDepProvider } from "./AdminDepProvider";
-import { AdminDepContent } from "./AdminDepContent";
+import { AdminDepProvider } from './AdminDepProvider';
+import { AdminDepContent } from './AdminDepContent';
 
 const AdminDep = () => {
   return (

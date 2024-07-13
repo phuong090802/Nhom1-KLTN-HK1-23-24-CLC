@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
-import { OptionMenu } from "./OptionMenu";
+import { useMemo, useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
+import { OptionMenu } from './OptionMenu';
 
 const ItemLayout = ({
   text,
@@ -28,9 +28,9 @@ const ItemLayout = ({
         />
         <View
           style={{
-            width: "65%",
-            flexDirection: "row",
-            alignItems: "center",
+            width: '65%',
+            flexDirection: 'row',
+            alignItems: 'center',
             gap: 8,
           }}
         >
@@ -39,16 +39,16 @@ const ItemLayout = ({
               <Image style={styles.image} source={image} />
             )}
           </View>
-          <View style={{ width: "100%" }}>
-            <Text style={styles.text}>{text || "ItemLayout"}</Text>
+          <View style={{ width: '100%' }}>
+            <Text style={styles.text}>{text || 'ItemLayout'}</Text>
             {extraText && (
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                 }}
               >
                 <Text style={styles.extraText}>
-                  {extraText || "ItemLayout"}
+                  {extraText || 'ItemLayout'}
                 </Text>
               </View>
             )}
@@ -68,7 +68,7 @@ const ItemLayout = ({
             >
               <MyIcon
                 iconPackage="Octicons"
-                name={status ? "unlock" : "lock"}
+                name={status ? 'unlock' : 'lock'}
                 color={colors.black75}
               />
             </TouchableOpacity>
@@ -82,7 +82,7 @@ const ItemLayout = ({
           >
             <MyIcon
               iconPackage="Feather"
-              name={"more-horizontal"}
+              name={'more-horizontal'}
               color={colors.black75}
             />
           </TouchableOpacity>
@@ -103,11 +103,11 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
     borderColor: colors.primary,
     borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontFamily: fonts.BahnschriftRegular,
-    width: "100%",
+    width: '100%',
   },
   buttonArea: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
   },
   button: {
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     height: 36,
     width: 36,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
     width: 40,

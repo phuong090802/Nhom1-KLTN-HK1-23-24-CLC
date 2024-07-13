@@ -1,7 +1,5 @@
-import React from "react";
-import { Text } from "react-native";
-import { DepheadFaqProvider } from "./DepheadFaqProvider";
-import { DepheadFaqContent } from "./DepheadFaqContent";
+import { DepheadFaqContent } from './DepheadFaqContent';
+import { DepheadFaqProvider } from './DepheadFaqProvider';
 
 const DepheadFaq = () => {
   return (

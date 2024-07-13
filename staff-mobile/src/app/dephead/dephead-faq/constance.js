@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["question"],
-  keyword: "",
+  search: ['question'],
+  keyword: '',
   keyword: null,
   page: 1,
   size: 5,
@@ -13,15 +13,21 @@ const initParams = {
 };
 
 const sortData = [
-  { text: "Mới nhất", value: { createdAt: 1 } },
-  { text: "Cũ nhất", value: { createdAt: -1 } },
+  {
+    text: 'Mới nhất',
+    value: { createdAt: 1 },
+  },
+  {
+    text: 'Cũ nhất',
+    value: { createdAt: -1 },
+  },
 ];
 
 const filterInitData = [
   {
-    name: "field",
-    label: "Lĩnh vực",
+    name: 'field',
+    label: 'Lĩnh vực',
     data: [],
   },
 ];
-export { initParams, sortData, filterInitData };
+export { filterInitData, initParams, sortData };

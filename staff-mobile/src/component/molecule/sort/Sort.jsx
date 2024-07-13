@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { TouchableOpacity, View } from "react-native";
-import MyIcon from "../../atomic/my-icon";
-import { colors } from "../../../../constance";
-import { SortModal } from "./SortModal";
+import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { colors } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
+import { SortModal } from './SortModal';
 
 const Sort = ({ data, setParams }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +21,7 @@ const Sort = ({ data, setParams }) => {
       >
         <MyIcon
           iconPackage="FontAwesome5"
-          name={"sort"}
+          name={'sort'}
           size={28}
           color={colors.black75}
         />

@@ -1,12 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { ToastAndroid } from 'react-native';
 import {
   depheadAddFieldSv,
   depheadGetFieldSv,
   depheadUpdateFieldStatusSv,
   depheadUpdateFieldSv,
-} from "../../../service/dephead/depheadField.sv";
-import { ToastAndroid } from "react-native";
+} from '../../../service/dephead/depheadField.sv';
+import { initParams } from './constance';
 
 export const DepheadFieldContext = createContext({
   loading: Boolean,
@@ -46,16 +46,14 @@ export const DepheadFieldProvider = ({ children }) => {
       setFields(response.fields);
       setPages(response.pages);
     } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      console.log('getFields', error);
     }
+    setLoading(false);
   };
 
   const updateFieldStatus = async (fieldId, data) => {
     try {
       const response = await depheadUpdateFieldStatusSv(fieldId, data);
-
       setFields((prev) => {
         return prev.map((field) => {
           if (field._id === fieldId)
@@ -63,15 +61,15 @@ export const DepheadFieldProvider = ({ children }) => {
           else return field;
         });
       });
-      console.log(response);
+      console.log('updateFieldStatus', response);
       ToastAndroid.show(
-        response?.message || "Cập nhật trạng thái lĩnh vực thàng công",
+        response?.message || 'Cập nhật trạng thái lĩnh vực thàng công',
         ToastAndroid.SHORT
       );
     } catch (error) {
-      console.log(error);
+      console.log('updateFieldStatus', error);
       ToastAndroid.show(
-        error?.message || "Lỗi khi cập nhật trạng thái lĩnh vực",
+        error?.message || 'Lỗi khi cập nhật trạng thái lĩnh vực',
         ToastAndroid.SHORT
       );
     }
@@ -80,16 +78,16 @@ export const DepheadFieldProvider = ({ children }) => {
   const addField = async (fieldName) => {
     try {
       const response = await depheadAddFieldSv(fieldName);
-      console.log(response);
+      console.log('addField', response);
       ToastAndroid.show(
-        response?.message || "Thêm lĩnh vực thàng công",
+        response?.message || 'Thêm lĩnh vực thàng công',
         ToastAndroid.SHORT
       );
       setParams(initParams);
     } catch (error) {
-      console.log(error);
+      console.log('addField', error);
       ToastAndroid.show(
-        error?.message || "Lỗi khi thêm lĩnh vực",
+        error?.message || 'Lỗi khi thêm lĩnh vực',
         ToastAndroid.SHORT
       );
     }
@@ -98,9 +96,9 @@ export const DepheadFieldProvider = ({ children }) => {
   const updateField = async (fieldName) => {
     try {
       const response = await depheadUpdateFieldSv(selectedField._id, fieldName);
-      console.log(response);
+      console.log('updateField', response);
       ToastAndroid.show(
-        response?.message || "Cập nhật lĩnh vực thàng công",
+        response?.message || 'Cập nhật lĩnh vực thàng công',
         ToastAndroid.SHORT
       );
       setFields((prev) => {
@@ -111,9 +109,9 @@ export const DepheadFieldProvider = ({ children }) => {
       });
       setSelectedField((prev) => ({ ...prev, fieldName }));
     } catch (error) {
-      console.log(error);
+      console.log('updateField', error);
       ToastAndroid.show(
-        error?.message || "Lỗi khi cập nhật lĩnh vực",
+        error?.message || 'Lỗi khi cập nhật lĩnh vực',
         ToastAndroid.SHORT
       );
     }
@@ -123,28 +121,28 @@ export const DepheadFieldProvider = ({ children }) => {
     getFields();
   }, [params]);
 
+  const values = {
+    loading,
+    setLoading,
+    fields,
+    setFields,
+    params,
+    setParams,
+    pages,
+    setPages,
+    updateFieldStatus,
+    showAddFieldModal,
+    setShowAddFieldModal,
+    showUpdateFieldModal,
+    setShowUpdateFieldModal,
+    addField,
+    selectedField,
+    setSelectedField,
+    updateField,
+  };
+
   return (
-    <DepheadFieldContext.Provider
-      value={{
-        loading,
-        setLoading,
-        fields,
-        setFields,
-        params,
-        setParams,
-        pages,
-        setPages,
-        updateFieldStatus,
-        showAddFieldModal,
-        setShowAddFieldModal,
-        showUpdateFieldModal,
-        setShowUpdateFieldModal,
-        addField,
-        selectedField,
-        setSelectedField,
-        updateField,
-      }}
-    >
+    <DepheadFieldContext.Provider value={values}>
       {children}
     </DepheadFieldContext.Provider>
   );

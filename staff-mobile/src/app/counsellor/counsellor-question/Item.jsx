@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import ItemLayout from "../../../component/molecule/item-layout/ItemLayout";
-import { CounsellorQuestionContext } from "./CounsellorQuestionProvider";
+import { useContext } from 'react';
+import ItemLayout from '../../../component/molecule/item-layout/ItemLayout';
+import { CounsellorQuestionContext } from './CounsellorQuestionProvider';
 
 export const Item = ({ data }) => {
   const { setShowDetailModal, setSelectedQuestion } = useContext(

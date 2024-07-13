@@ -1,12 +1,12 @@
-import { createHeader } from "../../util/service.util";
-import API from "../api";
+import { createHeader } from '../../util/service.util';
+import API from '../api';
 
 export const counsellorGetQuestionStatistic = async () => {
-  const header = await createHeader(["author"]);
+  const header = await createHeader(['author']);
   return API.post(
-    "counsellor/statistics/question",
+    'counsellor/statistics/question',
     {
-      timeUnit: "month", //year
+      timeUnit: 'month', //year
       latestTime: 4,
     },
     {

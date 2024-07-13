@@ -1,8 +1,7 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import MyIcon from "../../atomic/my-icon";
-import { colors, fonts } from "../../../../constance";
-import { router } from "expo-router";
+import { router } from 'expo-router';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { colors } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 const BackArrow = ({ text }) => {
   return (
@@ -22,10 +21,9 @@ const BackArrow = ({ text }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-
 });
 
 export default BackArrow;

@@ -1,23 +1,24 @@
-import React, { createContext, useEffect, useState } from "react";
-import { initParams } from "./constance";
-import { counsellorGetQUestionsSv } from "../../../service/cousellor/counsellorQuestion";
+import { createContext, useEffect, useState } from 'react';
+import { initParams } from './constance';
+import { counsellorGetQUestionsSv } from '../../../service/cousellor/counsellorQuestion';
+
 export const CounsellorQuestionContext = createContext({
-  loading: Boolean,
-  setLoading: Function,
-  question: Array,
-  setQuestion: Function,
-  params: Object,
-  setParams: Function,
-  pages: Number,
-  setPages: Function,
-  showDetailModal: Boolean,
-  setShowDetailModal: Function,
-  selectedQuestion: Boolean,
-  setSelectedQuestion: Function,
-  showAnswerModal: Boolean,
-  setShowAnswerModal: Function,
-  showForwardModal: Boolean,
-  setShowForwardModal: Function,
+  loading: false,
+  setLoading: (isLoading) => {},
+  question: [],
+  setQuestion: (questions) => {},
+  params: {},
+  setParams: (params) => {},
+  pages: 0,
+  setPages: (pages) => {},
+  showDetailModal: false,
+  setShowDetailModal: (isShowDetailModal) => {},
+  selectedQuestion: {},
+  setSelectedQuestion: (question) => {},
+  showAnswerModal: false,
+  setShowAnswerModal: (isShowAnswerModal) => {},
+  showForwardModal: false,
+  setShowForwardModal: (isShowForwardModal) => {},
 });
 
 export const CounsellorQuestionProvider = ({ children }) => {
@@ -31,7 +32,9 @@ export const CounsellorQuestionProvider = ({ children }) => {
   const [showForwardModal, setShowForwardModal] = useState(false);
 
   const getQuestions = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     setQuestion([]);
     try {
@@ -39,37 +42,36 @@ export const CounsellorQuestionProvider = ({ children }) => {
       setQuestion(response?.questions);
       setPages(response?.pages);
     } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      console.log('getQuestions', error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     getQuestions();
   }, [params]);
 
+  const values = {
+    loading,
+    setLoading,
+    question,
+    setQuestion,
+    params,
+    setParams,
+    pages,
+    setPages,
+    showDetailModal,
+    setShowDetailModal,
+    selectedQuestion,
+    setSelectedQuestion,
+    showAnswerModal,
+    setShowAnswerModal,
+    showForwardModal,
+    setShowForwardModal,
+  };
+
   return (
-    <CounsellorQuestionContext.Provider
-      value={{
-        loading,
-        setLoading,
-        question,
-        setQuestion,
-        params,
-        setParams,
-        pages,
-        setPages,
-        showDetailModal,
-        setShowDetailModal,
-        selectedQuestion,
-        setSelectedQuestion,
-        showAnswerModal,
-        setShowAnswerModal,
-        showForwardModal,
-        setShowForwardModal,
-      }}
-    >
+    <CounsellorQuestionContext.Provider value={values}>
       {children}
     </CounsellorQuestionContext.Provider>
   );

@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { DepheadFaqContext } from "./DepheadFaqProvider";
-import ScreenHeader from "../../../component/molecule/screen-header";
-import ItemSkeleton from "../../../component/molecule/item-skeleton";
-import Pagination from "../../../component/molecule/pagination";
-import SortFilter from "../../../component/organism/sort-filter";
-import { Item } from "./Item";
-import { FaqDetailModal } from "./FaqDetailModal";
-import { sortData } from "./constance";
-import { AddFaqModal } from "./AddFaqModal";
-import { colors } from "../../../../constance";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { colors } from '../../../../constance';
+import ItemSkeleton from '../../../component/molecule/item-skeleton';
+import Pagination from '../../../component/molecule/pagination';
+import ScreenHeader from '../../../component/molecule/screen-header';
+import SortFilter from '../../../component/organism/sort-filter';
+import { AddFaqModal } from './AddFaqModal';
+import { DepheadFaqContext } from './DepheadFaqProvider';
+import { FaqDetailModal } from './FaqDetailModal';
+import { Item } from './Item';
+import { sortData } from './constance';
 
 export const DepheadFaqContent = () => {
   const {
@@ -27,7 +27,7 @@ export const DepheadFaqContent = () => {
       <FaqDetailModal />
       <AddFaqModal />
       <ScreenHeader
-        title={"Quản lý Faq"}
+        title={'Quản lý Faq'}
         params={params}
         setParams={setParams}
         onAdd={() => setShowAddFaqModal(true)}
@@ -45,8 +45,8 @@ export const DepheadFaqContent = () => {
         {!loading && faqs.length === 0 ? (
           <View
             style={{
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: 'center',
+              alignItems: 'center',
               height: 100,
               borderWidth: 1,
               borderRadius: 8,
@@ -65,6 +65,12 @@ export const DepheadFaqContent = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: 8, paddingTop: 8 },
-  contentContaier: { marginTop: 8, marginBottom: 96 },
+  container: {
+    paddingHorizontal: 8,
+    paddingTop: 8,
+  },
+  contentContaier: {
+    marginTop: 8,
+    marginBottom: 96,
+  },
 });

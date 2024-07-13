@@ -1,1 +1,1 @@
-export { default } from "./ItemSkeleton";
+export { default } from './ItemSkeleton';

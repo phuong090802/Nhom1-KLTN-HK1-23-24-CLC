@@ -1,12 +1,12 @@
-import { createHeader } from "../../util/service.util";
-import API from "../api";
+import { createHeader } from '../../util/service.util';
+import API from '../api';
 
 export const depheadGetQuestionStatistic = async () => {
-  const header = await createHeader(["author"]);
+  const header = await createHeader(['author']);
   return API.post(
-    "department-head/statistics/question",
+    'department-head/statistics/question',
     {
-      timeUnit: "month", //year
+      timeUnit: 'month', // year
       latestTime: 4,
     },
     {
@@ -16,10 +16,10 @@ export const depheadGetQuestionStatistic = async () => {
 };
 
 export const depheadGetFaqCount = async () => {
-  const header = await createHeader(["author"]);
-  return API.get("department-head/statistics/faq", { headers: header });
+  const header = await createHeader(['author']);
+  return API.get('department-head/statistics/faq', { headers: header });
 };
 export const depheadGetCounsellorCount = async () => {
-  const header = await createHeader(["author"]);
-  return API.get("department-head/statistics/counsellor", { headers: header });
+  const header = await createHeader(['author']);
+  return API.get('department-head/statistics/counsellor', { headers: header });
 };

@@ -1,11 +1,8 @@
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const refreshTokenCode = [4015, 4018, 4017];
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const API = axios.create({
-  // baseURL: process.env.EXPO_PUBLIC_LOCAL_API_URL,
-  baseURL: process.env.EXPO_PUBLIC_HOST_API_URL,
+  baseURL: `${process.env.EXPO_PUBLIC_API_URL}/api/`,
   timeout: 10000,
 });
 
@@ -15,31 +12,32 @@ API.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    if (
+    const refreshTokenCode = [4015, 4018, 4017];
+    const isGetNewToken =
       error.response?.status === 401 &&
       refreshTokenCode.includes(error.response?.data.code) &&
-      !originalRequest._retry
-    ) {
-      console.log("get new Token");
+      !originalRequest._retry;
+    if (isGetNewToken) {
+      console.log('Get new token');
       originalRequest._retry = true;
       try {
         const response = await API.post(
-          "auth/refresh-token",
+          'auth/refresh-token',
           {},
           { withCredentials: true }
         );
         const token = response.token;
-        await AsyncStorage.removeItem("accessToken");
-        await AsyncStorage.setItem("accessToken", token);
+        await AsyncStorage.removeItem('accessToken');
+        await AsyncStorage.setItem('accessToken', token);
         originalRequest.headers.Authorization = `Bearer ${token}`;
         return API(originalRequest);
       } catch (refreshError) {
         AsyncStorage.clear();
-        console.log("get new Token Fail");
+        console.log('Get new Token Fail');
         return Promise.reject(refreshError);
       }
     }
-    // console.log(error.response.data);
+    // console.log('Get new Token Fail', error.response.data);
     return Promise.reject(error.response?.data);
   }
 );

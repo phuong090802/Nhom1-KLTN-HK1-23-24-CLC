@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import ScreenHeader from "../../../component/molecule/screen-header";
-import SortFilter from "../../../component/organism/sort-filter";
-import { useContentWidth } from "react-native-render-html";
-import { AdminNewsContext } from "./AdminNewsProvider";
-import { AddNewsModal } from "./AddNewsModal";
-import { Item } from "./Item";
-import Pagination from "../../../component/molecule/pagination";
-import { DetailNewsModal } from "./DetailNewsModal";
-import { ItemSkeletons } from "./ItemSkeletons";
+import { useContext } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Pagination from '../../../component/molecule/pagination';
+import ScreenHeader from '../../../component/molecule/screen-header';
+import SortFilter from '../../../component/organism/sort-filter';
+import { AddNewsModal } from './AddNewsModal';
+import { AdminNewsContext } from './AdminNewsProvider';
+import { DetailNewsModal } from './DetailNewsModal';
+import { Item } from './Item';
+import { ItemSkeletons } from './ItemSkeletons';
 
 export const AdminNewsContent = () => {
   const { setShowAddNewsModal, newsList, params, setParams, pages } =
@@ -21,7 +20,7 @@ export const AdminNewsContent = () => {
 
       <View style={styles.container}>
         <ScreenHeader
-          title={"Quản lý tin tức"}
+          title={'Quản lý tin tức'}
           onAdd={() => {
             setShowAddNewsModal(true);
           }}
@@ -43,6 +42,12 @@ export const AdminNewsContent = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: 8, paddingTop: 8 },
-  contentContainer: { marginTop: 8, marginBottom: 96 },
+  container: {
+    paddingHorizontal: 8,
+    paddingTop: 8,
+  },
+  contentContainer: {
+    marginTop: 8,
+    marginBottom: 96,
+  },
 });

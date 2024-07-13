@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { Dimensions, Text, View } from "react-native";
-import { StackedBarChart } from "react-native-chart-kit";
-import { colors, fonts } from "../../../../../constance";
-import { DepartmentStatisticContext } from "./DepartmentStatisticProvider";
+import { useContext, useEffect, useState } from 'react';
+import { Dimensions, Text, View } from 'react-native';
+import { StackedBarChart } from 'react-native-chart-kit';
+import { colors, fonts } from '../../../../../constance';
+import { DepartmentStatisticContext } from './DepartmentStatisticProvider';
 
 export const Chart = () => {
   const { chartData, loading } = useContext(DepartmentStatisticContext);
@@ -26,16 +26,16 @@ export const Chart = () => {
   return (
     !loading &&
     !!chartData && (
-      <View style={{ borderRadius: 16, overflow: "hidden" }}>
+      <View style={{ borderRadius: 16, overflow: 'hidden' }}>
         {!noThingToShow ? (
           <StackedBarChart
             data={chartData}
-            width={Dimensions.get("window").width - 32} // from react-native
+            width={Dimensions.get('window').width - 32} // from react-native
             height={220}
             chartConfig={{
-              backgroundColor: "#fff",
-              backgroundGradientFrom: "#ABDCFF",
-              backgroundGradientTo: "#0396FF",
+              backgroundColor: '#fff',
+              backgroundGradientFrom: '#ABDCFF',
+              backgroundGradientTo: '#0396FF',
               decimalPlaces: 0, // optional, defaults to 2dp
               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
               labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -43,8 +43,8 @@ export const Chart = () => {
                 borderRadius: 16,
               },
               propsForDots: {
-                r: "6",
-                strokeWidth: "2",
+                r: '6',
+                strokeWidth: '2',
                 stroke: colors.primary,
               },
             }}
@@ -52,12 +52,12 @@ export const Chart = () => {
         ) : (
           <View
             style={{
-              height: "90%",
-              justifyContent: "center",
-              alignItems: "center",
+              height: '90%',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
-            <Text style={{ fontFamily: fonts.BahnschriftBold, fontSize: 20}}>
+            <Text style={{ fontFamily: fonts.BahnschriftBold, fontSize: 20 }}>
               Khoa chưa nhận được câu hỏi nào
             </Text>
           </View>

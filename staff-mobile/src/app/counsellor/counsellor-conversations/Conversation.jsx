@@ -1,5 +1,5 @@
-import { router } from "expo-router";
-import React, { useContext } from "react";
+import { router } from 'expo-router';
+import { useContext } from 'react';
 import {
   Image,
   StyleSheet,
@@ -7,12 +7,11 @@ import {
   TouchableOpacity,
   View,
   useWindowDimensions,
-} from "react-native";
-import RenderHTML from "react-native-render-html";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import { colors, fonts, paths } from "../../../../constance";
-import { AppContext } from "../../AppProvider";
-import { CounsellorConversationContext } from "./CounsellorConversationProvider";
+} from 'react-native';
+import RenderHTML from 'react-native-render-html';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import { colors, fonts, paths } from '../../../../constance';
+import { AppContext } from '../../AppProvider';
 
 export const Conversation = ({ data }) => {
   const { width } = useWindowDimensions();
@@ -31,11 +30,11 @@ export const Conversation = ({ data }) => {
       }}
     >
       <Image source={blank_avatar} style={styles.avatar} />
-      <View style={{ justifyContent: "center" }}>
+      <View style={{ justifyContent: 'center' }}>
         <Text style={[styles.fontBahnschriftBold, { fontSize: 18 }]}>
-          {data.otherUser?.fullName || "Người dùng"}
+          {data.otherUser?.fullName || 'Người dùng'}
         </Text>
-        <View style={{ flexDirection: "row", gap: 4 }}>
+        <View style={{ flexDirection: 'row', gap: 4 }}>
           {user?._id === data.lastMessage.sender && (
             <Text style={[styles.fontBahnschrifd, { fontSize: 16 }]}>Bạn:</Text>
           )}
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     paddingVertical: 8,
     paddingHorizontal: 8,
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
     borderBottomWidth: 0.2,
   },

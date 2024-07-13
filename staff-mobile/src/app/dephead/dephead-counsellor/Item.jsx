@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { Text } from "react-native";
-import ItemLayout from "../../../component/molecule/item-layout/ItemLayout";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import { DepheadCounsellorContext } from "./DepheadCounsellorProvider";
+import { useContext } from 'react';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import ItemLayout from '../../../component/molecule/item-layout/ItemLayout';
+import { DepheadCounsellorContext } from './DepheadCounsellorProvider';
 
 export const Item = ({ data }) => {
   const {

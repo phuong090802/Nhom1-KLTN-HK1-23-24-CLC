@@ -1,76 +1,71 @@
-import React, { createContext, useEffect, useState } from "react";
-import { getNewsSv } from "../../../service/admin/adminNews.sv";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { getNewsSv } from '../../../service/admin/adminNews.sv';
+import { initParams } from './constance';
 
 export const AdminNewsContext = createContext({
-  showAddNewsModal: Boolean,
-  setShowAddNewsModal: Function,
-  params: Object,
-  setParams: Function,
-  newsList: Array,
-  setNewsList: Function,
-  pages: Number,
-  setPages: Function,
-  showDetailModal: Boolean,
-  setShowDetailModal: Function,
-  selectedNews: Object,
-  setSelectedNews: Function,
-  loading: Boolean,
-  setLoading: Function,
+  showAddNewsModal: false,
+  setShowAddNewsModal: (isShowAddNewsModal) => {},
+  params: {},
+  setParams: (params) => {},
+  newsList: [],
+  setNewsList: (news) => {},
+  pages: 0,
+  setPages: (pages) => {},
+  showDetailModal: false,
+  setShowDetailModal: (isShowDetailModal) => {},
+  selectedNews: {},
+  setSelectedNews: (news) => {},
+  loading: false,
+  setLoading: (isLoading) => {},
 });
 
 export const AdminNewsProvider = ({ children }) => {
   const [newsList, setNewsList] = useState([]);
-
   const [showAddNewsModal, setShowAddNewsModal] = useState(false);
-
   const [params, setParams] = useState(initParams);
-
   const [pages, setPages] = useState(0);
-
   const [showDetailModal, setShowDetailModal] = useState(false);
-
   const [selectedNews, setSelectedNews] = useState(null);
-
   const [loading, setLoading] = useState(false);
 
   const getNews = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       const response = await getNewsSv();
       setNewsList(response.listNews);
       setPages(response?.pages || 0);
     } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      console.log('getNews', error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     getNews();
   }, [params]);
 
+  const values = {
+    showAddNewsModal,
+    setShowAddNewsModal,
+    params,
+    setParams,
+    newsList,
+    setNewsList,
+    pages,
+    setPages,
+    showDetailModal,
+    setShowDetailModal,
+    selectedNews,
+    setSelectedNews,
+    loading,
+    setLoading,
+  };
+
   return (
-    <AdminNewsContext.Provider
-      value={{
-        showAddNewsModal,
-        setShowAddNewsModal,
-        params,
-        setParams,
-        newsList,
-        setNewsList,
-        pages,
-        setPages,
-        showDetailModal,
-        setShowDetailModal,
-        selectedNews,
-        setSelectedNews,
-        loading,
-        setLoading,
-      }}
-    >
+    <AdminNewsContext.Provider value={values}>
       {children}
     </AdminNewsContext.Provider>
   );

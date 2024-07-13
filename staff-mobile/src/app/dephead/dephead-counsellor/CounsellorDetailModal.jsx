@@ -1,30 +1,30 @@
-import { useContext, useState } from "react";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { DepheadCounsellorContext } from "./DepheadCounsellorProvider";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import blank_avatar from "../../../../assets/images/blank_avatar.jpg";
-import MyButton from "../../../component/atomic/my-button";
+import { useContext } from 'react';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import blank_avatar from '../../../../assets/images/blank_avatar.jpg';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { DepheadCounsellorContext } from './DepheadCounsellorProvider';
 
 export const CounsellorDetailModal = () => {
   const {
     showCounsellorDetailModal,
     setShowCounsellorDetailModal,
     selectedCounsellor,
-    setShowAddFieldsModal
+    setShowAddFieldsModal,
   } = useContext(DepheadCounsellorContext);
 
   return (
     <ModalLayout
-      title={"Thông tin tư vấn viên"}
+      title={'Thông tin tư vấn viên'}
       visible={showCounsellorDetailModal}
       onClose={() => setShowCounsellorDetailModal(false)}
     >
       <View style={styles.container}>
         <View
           style={{
-            width: "100%",
-            alignItems: "center",
+            width: '100%',
+            alignItems: 'center',
           }}
         >
           <View
@@ -32,9 +32,9 @@ export const CounsellorDetailModal = () => {
               borderWidth: 2,
               borderRadius: 16,
               borderColor: colors.primary,
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
             }}
           >
             <Image
@@ -52,7 +52,7 @@ export const CounsellorDetailModal = () => {
             Họ & Tên:
           </Text>
           <Text style={styles.text}>
-            {selectedCounsellor?.fullName || "Tên người dùng"}
+            {selectedCounsellor?.fullName || 'Tên người dùng'}
           </Text>
         </View>
         <View style={styles.infor}>
@@ -60,7 +60,7 @@ export const CounsellorDetailModal = () => {
             Email:
           </Text>
           <Text style={styles.text}>
-            {selectedCounsellor?.email || "Email người dùng"}
+            {selectedCounsellor?.email || 'Email người dùng'}
           </Text>
         </View>
         <View style={styles.infor}>
@@ -68,10 +68,10 @@ export const CounsellorDetailModal = () => {
             Số điện thoại:
           </Text>
           <Text style={styles.text}>
-            {selectedCounsellor?.phoneNumber || "Số điện thoại"}
+            {selectedCounsellor?.phoneNumber || 'Số điện thoại'}
           </Text>
         </View>
-        <View style={[{ flexDirection: "column" }]}>
+        <View style={[{ flexDirection: 'column' }]}>
           <Text style={[styles.text, { fontFamily: fonts.BahnschriftBold }]}>
             Lĩnh vực:
           </Text>
@@ -86,7 +86,7 @@ export const CounsellorDetailModal = () => {
                 style={{
                   gap: 8,
                   paddingBottom: 8,
-                  flexDirection: "column",
+                  flexDirection: 'column',
                   maxHeight: 200,
                 }}
               >
@@ -118,7 +118,7 @@ export const CounsellorDetailModal = () => {
                 backgroundColor: colors.black,
               },
             ]}
-            buttonText={"Thêm lĩnh vực"}
+            buttonText={'Thêm lĩnh vực'}
             onPress={() => {
               setShowAddFieldsModal(true);
             }}
@@ -137,8 +137,14 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 16,
   },
-  infor: { flexDirection: "row", gap: 8 },
-  text: { fontFamily: fonts.BahnschriftRegular, fontSize: 18 },
+  infor: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  text: {
+    fontFamily: fonts.BahnschriftRegular,
+    fontSize: 18,
+  },
   fieldsContainer: {
     borderWidth: 1,
     borderRadius: 16,

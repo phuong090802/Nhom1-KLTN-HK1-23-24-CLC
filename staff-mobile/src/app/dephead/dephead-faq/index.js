@@ -1,1 +1,1 @@
-export { default } from "./DepheadFaq";
+export { default } from './DepheadFaq';

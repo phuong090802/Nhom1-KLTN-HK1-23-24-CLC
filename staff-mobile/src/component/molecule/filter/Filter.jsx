@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { TouchableOpacity, View } from "react-native";
-import MyIcon from "../../atomic/my-icon";
-import { colors } from "../../../../constance";
-import { FilterModal } from "./FilterModal";
+import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { colors } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
+import { FilterModal } from './FilterModal';
 
 const Filter = ({ data, setParams }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +21,7 @@ const Filter = ({ data, setParams }) => {
       >
         <MyIcon
           iconPackage="Foundation"
-          name={"filter"}
+          name={'filter'}
           size={28}
           color={colors.black75}
         />

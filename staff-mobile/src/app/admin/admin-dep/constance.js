@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["departmentName"],
-  keyword: "",
+  search: ['departmentName'],
+  keyword: '',
   page: 1,
   size: 10,
   filter: {
@@ -14,21 +14,27 @@ const initParams = {
 };
 
 const sortData = [
-  { text: "Tên khoa A-z", value: { departmentName: 1 } },
-  { text: "Tên khoa Z-a", value: { departmentName: -1 } },
+  {
+    text: 'Tên khoa A-z',
+    value: { departmentName: 1 },
+  },
+  {
+    text: 'Tên khoa Z-a',
+    value: { departmentName: -1 },
+  },
 ];
 
 const filterData = [
   {
-    name: "isActive",
-    label: "Hoạt động",
+    name: 'isActive',
+    label: 'Hoạt động',
     data: [
       {
-        key: "Hoạt động",
+        key: 'Hoạt động',
         value: true,
       },
       {
-        key: "Không hoạt động",
+        key: 'Không hoạt động',
         value: false,
       },
     ],

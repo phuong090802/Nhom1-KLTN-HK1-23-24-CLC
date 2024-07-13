@@ -1,30 +1,32 @@
-import React, { useContext, useState } from "react";
-import { DepheadFieldContext } from "./DepheadFieldProvider";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyButton from "../../../component/atomic/my-button";
+import { useContext, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { DepheadFieldContext } from './DepheadFieldProvider';
 
 export const AddFieldModal = () => {
   const { showAddFieldModal, setShowAddFieldModal, addField } =
     useContext(DepheadFieldContext);
   const [loading, setLoading] = useState(false);
-  const [fieldName, setFieldName] = useState("");
+  const [fieldName, setFieldName] = useState('');
 
   const handleAddField = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       await addField(fieldName);
-      setFieldName("");
+      setFieldName('');
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log('handleAddField', error);
     }
+    setLoading(false);
   };
   return (
     <ModalLayout
-      title={"Thêm lĩnh vực"}
+      title={'Thêm lĩnh vực'}
       visible={showAddFieldModal}
       onClose={() => setShowAddFieldModal(false)}
     >
@@ -44,7 +46,7 @@ export const AddFieldModal = () => {
               backgroundColor: colors.black,
             },
           ]}
-          buttonText={"Thêm"}
+          buttonText={'Thêm'}
           onPress={handleAddField}
         />
       </View>
@@ -56,7 +58,10 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 16,
   },
-  label: { fontFamily: fonts.BahnschriftRegular, fontSize: 16 },
+  label: {
+    fontFamily: fonts.BahnschriftRegular,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,

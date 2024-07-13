@@ -1,24 +1,24 @@
-import React, { useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyIcon from "../../atomic/my-icon";
+import { useMemo } from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyIcon from '../../atomic/my-icon';
 
 const PaginationButton = ({ isSelected, page, onClick }) => {
   const buttonDisplay = useMemo(() => {
     switch (page) {
-      case "first":
+      case 'first':
         return (
           <MyIcon
             iconPackage="Octicons"
-            name={"chevron-left"}
+            name={'chevron-left'}
             color={colors.white}
           />
         );
-      case "last":
+      case 'last':
         return (
           <MyIcon
             iconPackage="Octicons"
-            name={"chevron-right"}
+            name={'chevron-right'}
             color={colors.white}
           />
         );
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
     width: 36,
     height: 36,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 8,
   },
 });

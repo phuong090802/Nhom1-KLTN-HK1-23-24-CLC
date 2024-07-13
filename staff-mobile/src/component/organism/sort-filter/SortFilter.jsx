@@ -1,8 +1,7 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import Filter from "../../molecule/filter";
-import Sort from "../../molecule/sort";
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import Filter from '../../molecule/filter';
+import Sort from '../../molecule/sort';
 
 const SortFilter = ({ setParams, sortData, filterData }) => {
   return (
@@ -22,19 +21,19 @@ const SortFilter = ({ setParams, sortData, filterData }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 12,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   text: {
     fontSize: 18,
     fontFamily: fonts.BahnschriftRegular,
   },
   button: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     gap: 12,
-    width: "49%",
+    width: '49%',
     paddingTop: 8,
     paddingHorizontal: 16,
     // backgroundColor: colors.primary20,

@@ -1,12 +1,10 @@
-import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
-import QuillEditor from "react-native-cn-quill";
-// import { fonts } from "../../../../constance";
+import { ScrollView, StyleSheet } from 'react-native';
+import QuillEditor from 'react-native-cn-quill';
 
 const MyRichText = ({ editorRef, setValue, minHeight }) => {
   const customFonts = [
     {
-      name: "Roboto",
+      name: 'Roboto',
       css: `
         @font-face {
           font-family: 'Roboto';
@@ -36,12 +34,12 @@ const MyRichText = ({ editorRef, setValue, minHeight }) => {
 const styles = StyleSheet.create({
   root: {
     // flex: 1,
-    backgroundColor: "#eaeaea",
+    backgroundColor: '#eaeaea',
     // height: 400,
   },
   editor: {
     padding: 0,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flex: 1,
     // fontFamily: fonts.BahnschriftRegular,
   },

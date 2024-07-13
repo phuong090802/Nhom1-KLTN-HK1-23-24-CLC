@@ -1,6 +1,6 @@
 export const initParams = {
-  search: ["title", "content"],
-  keyword: "",
+  search: ['title', 'content'],
+  keyword: '',
   page: 1,
   size: 10,
   filter: {

@@ -1,6 +1,5 @@
-import React from "react";
-import { CounsellorQuestionProvider } from "./CounsellorQuestionProvider";
 import { CounsellorQuestionContent } from "./CounsellorQuestionContent";
+import { CounsellorQuestionProvider } from "./CounsellorQuestionProvider";
 
 const CounsellorQuestion = () => {
   return (

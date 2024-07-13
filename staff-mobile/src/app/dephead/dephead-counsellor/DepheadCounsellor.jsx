@@ -1,6 +1,5 @@
-import React from "react";
-import { DepheadCounsellorContent } from "./DepheadCounsellorContent";
-import { DepheadCounsellorProvider } from "./DepheadCounsellorProvider";
+import { DepheadCounsellorContent } from './DepheadCounsellorContent';
+import { DepheadCounsellorProvider } from './DepheadCounsellorProvider';
 
 const DepheadCounsellor = () => {
   return (

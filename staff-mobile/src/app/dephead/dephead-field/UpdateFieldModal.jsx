@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { DepheadFieldContext } from "./DepheadFieldProvider";
-import ModalLayout from "../../../component/molecule/modal-layout";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colors, fonts } from "../../../../constance";
-import MyButton from "../../../component/atomic/my-button";
+import { useContext, useEffect, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, fonts } from '../../../../constance';
+import MyButton from '../../../component/atomic/my-button';
+import ModalLayout from '../../../component/molecule/modal-layout';
+import { DepheadFieldContext } from './DepheadFieldProvider';
 
 export const UpdateFieldModal = () => {
   const {
@@ -13,17 +13,19 @@ export const UpdateFieldModal = () => {
     selectedField,
   } = useContext(DepheadFieldContext);
   const [loading, setLoading] = useState(false);
-  const [fieldName, setFieldName] = useState("");
+  const [fieldName, setFieldName] = useState('');
 
   const hanldeUpdate = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       await updateField(fieldName);
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log('hanldeUpdate', error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export const UpdateFieldModal = () => {
 
   return (
     <ModalLayout
-      title={"Cập nhật lĩnh vực"}
+      title={'Cập nhật lĩnh vực'}
       visible={showUpdateFieldModal}
       onClose={() => setShowUpdateFieldModal(false)}
     >
@@ -52,7 +54,7 @@ export const UpdateFieldModal = () => {
               backgroundColor: colors.black,
             },
           ]}
-          buttonText={"Cập nhật"}
+          buttonText={'Cập nhật'}
           onPress={hanldeUpdate}
         />
       </View>
@@ -64,7 +66,10 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 16,
   },
-  label: { fontFamily: fonts.BahnschriftRegular, fontSize: 16 },
+  label: {
+    fontFamily: fonts.BahnschriftRegular,
+    fontSize: 16,
+  },
   textInput: {
     borderBottomWidth: 1,
     paddingVertical: 8,

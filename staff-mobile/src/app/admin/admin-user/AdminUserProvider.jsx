@@ -1,26 +1,26 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { ToastAndroid } from 'react-native';
 import {
   addUserSv,
   adminGetUsersSv,
   updateUserStatusSv,
-} from "../../../service/admin/adminUser.sv";
-import { initParams } from "./constance";
-import { ToastAndroid } from "react-native";
+} from '../../../service/admin/adminUser.sv';
+import { initParams } from './constance';
 
 export const AdminUserContext = createContext({
-  loading: Boolean,
-  users: Array,
-  setUsers: Function,
-  params: Object,
-  setParams: Function,
-  pages: Number,
+  loading: false,
+  users: [],
+  setUsers: (users) => {},
+  params: {},
+  setParams: (params) => {},
+  pages: 0,
   updateUserStatus: (userId, data) => {},
-  showDetailUserModal: Boolean,
-  setShowDetailUserModal: Function,
-  selectUser: Object,
-  setSelectedUser: Function,
-  showAddUserModal: Object,
-  setShowAddUserModal: Function,
+  showDetailUserModal: false,
+  setShowDetailUserModal: (isShowDetailUserModal) => {},
+  selectUser: {},
+  setSelectedUser: (user) => {},
+  showAddUserModal: false,
+  setShowAddUserModal: (isShowAddUserModal) => {},
   AddUser: async (data) => {},
 });
 
@@ -42,10 +42,9 @@ export const AdminUserProvider = ({ children }) => {
       setUsers(response.users);
       setPages(response.pages);
     } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      console.log('getUsers', error);
     }
+    setLoading(false);
   };
 
   const updateUserStatus = async (userId, data) => {
@@ -60,32 +59,31 @@ export const AdminUserProvider = ({ children }) => {
         });
       });
       ToastAndroid.show(
-        response?.message || "Cập nhật trạng thái người dùng thàng công",
+        response?.message || 'Cập nhật trạng thái người dùng thàng công',
         ToastAndroid.SHORT
       );
-
     } catch (error) {
       ToastAndroid.show(
-        error?.message || "Lỗi khi cập nhật trạng thái người dùng",
+        error?.message || 'Lỗi khi cập nhật trạng thái người dùng',
         ToastAndroid.SHORT
       );
     }
   };
 
   const AddUser = async (data) => {
-    console.log(data);
+    console.log('AddUser', data);
     try {
       const response = await addUserSv(data);
-      console.log(response);
+      console.log('AddUser response', response);
       ToastAndroid.show(
-        response?.message || "Thêm người dùng thành công",
+        response?.message || 'Thêm người dùng thành công',
         ToastAndroid.SHORT
       );
       setParams(initParams);
     } catch (error) {
-      console.log(error);
+      console.log('AddUser', error);
       ToastAndroid.show(
-        error?.message || "Lỗi khi thêm người dùng",
+        error?.message || 'Lỗi khi thêm người dùng',
         ToastAndroid.SHORT
       );
     }
@@ -95,25 +93,25 @@ export const AdminUserProvider = ({ children }) => {
     getUsers();
   }, [params]);
 
+  const values = {
+    loading,
+    users,
+    setUsers,
+    params,
+    setParams,
+    pages,
+    updateUserStatus,
+    showDetailUserModal,
+    setShowDetailUserModal,
+    selectUser,
+    setSelectedUser,
+    showAddUserModal,
+    setShowAddUserModal,
+    AddUser,
+  };
+
   return (
-    <AdminUserContext.Provider
-      value={{
-        loading,
-        users,
-        setUsers,
-        params,
-        setParams,
-        pages,
-        updateUserStatus,
-        showDetailUserModal,
-        setShowDetailUserModal,
-        selectUser,
-        setSelectedUser,
-        showAddUserModal,
-        setShowAddUserModal,
-        AddUser,
-      }}
-    >
+    <AdminUserContext.Provider value={values}>
       {children}
     </AdminUserContext.Provider>
   );

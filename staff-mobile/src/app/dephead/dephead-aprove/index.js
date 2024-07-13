@@ -1,1 +1,1 @@
-export { default } from "./DepheadAprove";
+export { default } from './DepheadAprove';

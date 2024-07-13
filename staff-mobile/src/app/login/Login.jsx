@@ -1,13 +1,13 @@
-import { router } from "expo-router";
-import React, { useContext, useEffect, useState } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
-import { colors, fonts, paths, validate } from "../../../constance";
-import MyButton from "../../component/atomic/my-button";
-import MyInput from "../../component/atomic/my-input";
-import { initLoginData } from "./constance";
-import { loginSv } from "../../service/author/author.sv";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AppContext } from "../AppProvider";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
+import { useContext, useEffect, useState } from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import { colors, fonts, paths, validate } from '../../../constance';
+import MyButton from '../../component/atomic/my-button';
+import MyInput from '../../component/atomic/my-input';
+import { loginSv } from '../../service/author/author.sv';
+import { AppContext } from '../AppProvider';
+import { initLoginData } from './constance';
 
 const Login = () => {
   const { saveUserData, isLoggedIn } = useContext(AppContext);
@@ -17,7 +17,6 @@ const Login = () => {
   }, [isLoggedIn]);
 
   const [loginData, setLoginData] = useState(initLoginData);
-
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (value, name) => {
@@ -28,25 +27,26 @@ const Login = () => {
     // router.push(paths.dashboard);
     // return;
     if (validate.required(loginData.username)) {
-      Alert.alert(validate.required(loginData.username, "Số điện thoại"));
+      Alert.alert(validate.required(loginData.username, 'Số điện thoại'));
       return;
     }
     if (validate.required(loginData.password)) {
-      Alert.alert(validate.required(loginData.password, "Mật khẩu"));
+      Alert.alert(validate.required(loginData.password, 'Mật khẩu'));
       return;
     }
-    if (loading) return;
+    if (loading) {
+      return;
+    }
     setLoading(true);
     try {
       const response = await loginSv(loginData);
-      AsyncStorage.setItem("accessToken", response?.token);
+      AsyncStorage.setItem('accessToken', response?.token);
       saveUserData(response?.user);
       router.push(paths.dashboard);
     } catch (error) {
-      Alert.alert(error?.message || "Đăng nhập không thành công");
-    } finally {
-      setLoading(false);
+      Alert.alert(error?.message || 'Đăng nhập không thành công');
     }
+    setLoading(false);
   };
 
   return (
@@ -70,22 +70,22 @@ const Login = () => {
             variants="default"
             placeholder="Số điện thoại"
             onChangeText={handleInputChange}
-            name={"username"}
+            name={'username'}
           />
           <MyInput
             variants="default"
             placeholder="Mật khẩu"
             secureTextEntry
             onChangeText={handleInputChange}
-            name={"password"}
+            name={'password'}
           />
-          <Text style={[{ alignSelf: "flex-end" }, styles.text]}>
+          <Text style={[{ alignSelf: 'flex-end' }, styles.text]}>
             Quên mật khẩu
           </Text>
           <MyButton
             activeOpacity={0.5}
-            style={{ backgroundColor: "#000" }}
-            buttonText={"Đăng nhập"}
+            style={{ backgroundColor: '#000' }}
+            buttonText={'Đăng nhập'}
             onPress={handleSubmit}
           />
         </View>
@@ -97,9 +97,9 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-end",
-    backgroundColor: "#ADD8E6",
-    height: "100%",
+    justifyContent: 'flex-end',
+    backgroundColor: '#ADD8E6',
+    height: '100%',
   },
   title: {
     fontFamily: fonts.Bungee,
@@ -116,13 +116,13 @@ const styles = StyleSheet.create({
   },
   loginformcontainer: {
     paddingBottom: 128,
-    width: "100%",
+    width: '100%',
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: '#F5F5F5',
     paddingTop: 32,
     paddingHorizontal: 16,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 12,
