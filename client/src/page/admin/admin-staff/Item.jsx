@@ -1,7 +1,7 @@
 import { Mail, Phone, Tag } from "lucide-react";
 import { useContext, useMemo } from "react";
 import { colors } from "../../../constance";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { getRoleName } from "../../../util/user.util";
 import { AdminStaffContext } from "./AdminStaffStore";
 import { DataContext } from "../../../store";

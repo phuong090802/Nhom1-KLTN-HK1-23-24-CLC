@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import { DepheadCounsellorContext } from "./DepheadCounsellorStore";
 import {
   addFieldsForCounSv,

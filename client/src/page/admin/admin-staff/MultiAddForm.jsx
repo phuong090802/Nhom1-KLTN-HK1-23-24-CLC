@@ -20,7 +20,7 @@ export const MultiAddForm = () => {
       toast.success(response.message || "Tải file lên thành công");
       setFile(null);
     } catch (error) {
-      toast.error(error.message || "Lỗi khi tải file lên");
+      toast.error(error?.message || "Lỗi khi tải file lên");
     }
   };
 

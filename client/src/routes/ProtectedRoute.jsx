@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DataContext } from "../store";
 import { Outlet } from "react-router-dom";
-import StaffLayout from "../template/staff-layout";
+import StaffLayout from "../layout/staff-layout";
 
 export const ProtectedRoute = () => {
   const { user } = useContext(DataContext);

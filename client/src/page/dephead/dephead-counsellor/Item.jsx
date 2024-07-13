@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { getRoleName } from "../../../util/user.util";
 import {
   Mail,

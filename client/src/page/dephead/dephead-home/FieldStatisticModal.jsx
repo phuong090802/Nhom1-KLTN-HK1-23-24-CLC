@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DepheadHomeContext } from "./DepheadHomeStore";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 
 export const FieldStatisticModal = () => {
   const {

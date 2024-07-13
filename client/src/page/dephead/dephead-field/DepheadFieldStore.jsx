@@ -56,7 +56,7 @@ export const DepheadFieldStore = ({ children }) => {
       );
       getFields();
     } catch (error) {
-      toast.error(error.message || "Lỗi cập nhật trạng thái lĩnh vực");
+      toast.error(error?.message || "Lỗi cập nhật trạng thái lĩnh vực");
     }
   };
 

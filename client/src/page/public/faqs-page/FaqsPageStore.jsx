@@ -28,7 +28,7 @@ export const FaqsPageStore = ({ children }) => {
       setFaqs(response.faqs);
       setPages(response.pages);
     } catch (error) {
-      toast.warning(error.message || "Lỗi khi lấy dữ liệu");
+      toast.warning(error?.message || "Lỗi khi lấy dữ liệu");
     }
   };
 

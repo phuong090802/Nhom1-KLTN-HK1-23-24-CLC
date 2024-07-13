@@ -5,9 +5,8 @@ import MyButton from "../../../atom/my-button";
 import MyRichText from "../../../atom/my-rich-text/MyRichText";
 import MyFileInput from "../../../atom/my-file-input";
 import { colors } from "../../../constance";
-import { useCounsellorSocket } from "../../../hooks/useCounsellorSocket";
-import ModalLayout from "../../../template/modal-layout";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout from "../../../layout/modal-layout";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import draftToHtml from "draftjs-to-html";
 import { toast } from "sonner";
@@ -57,7 +56,7 @@ export const AnswerQuestionModal = () => {
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
     }
   };
 
@@ -79,7 +78,7 @@ export const AnswerQuestionModal = () => {
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
     }
   };
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { HistoryContext } from "./HistoryStore";
 import { getQuestionByIdSv } from "../../../service/user/userQuestion.sv";
 import FileComponent from "../../../atom/file-component/FileComponent";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { Calendar, Eye } from "lucide-react";
 import default_avatar from "../../../assets/image/default_avatar.png"
 import { convertDateTimeToDate } from "../../../util/convert.util";

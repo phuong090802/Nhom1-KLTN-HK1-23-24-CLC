@@ -48,7 +48,7 @@ export const HomePageStore = ({ children }) => {
       // console.log(response);
     } catch (error) {
       console.log("error", error);
-      toast.warning(error.message || "Lỗi khi tải trang chủ");
+      toast.warning(error?.message || "Lỗi khi tải trang chủ");
     }
   };
 

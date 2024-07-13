@@ -59,7 +59,7 @@ export const AdminStaffStore = ({ children }) => {
       );
       getUser();
     } catch (error) {
-      toast.success(error.message || "Xảy ra lỗi khi cập nhật");
+      toast.success(error?.message || "Xảy ra lỗi khi cập nhật");
     }
   };
 

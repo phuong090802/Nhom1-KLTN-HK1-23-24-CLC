@@ -48,7 +48,7 @@ const LoginForm = () => {
         forwardLoggedInUser(response.user.role || "GUEST");
       }, 1000);
     } catch (error) {
-      toast.error(error.message || "Đăng nhập không thành công");
+      toast.error(error?.message || "Đăng nhập không thành công");
     }
   };
 

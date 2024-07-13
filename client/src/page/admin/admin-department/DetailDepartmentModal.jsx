@@ -9,7 +9,7 @@ import {
   getDepCounsellorsSv,
   updateDepSv,
 } from "../../../service/admin/adminDepartment.sv";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { AdminDepartmentContext } from "./AdminDepartmentStore";
 import { initParams } from "./constance";
 import { toast } from "sonner";
@@ -99,7 +99,7 @@ export const DetailDepartmentModal = () => {
       });
     } catch (error) {
       setDepartmentName(selectedDep.departmentName);
-      toast.error(error.message || "Xảy ra lỗi khi cập nhật khoa");
+      toast.error(error?.message || "Xảy ra lỗi khi cập nhật khoa");
     }
   };
 

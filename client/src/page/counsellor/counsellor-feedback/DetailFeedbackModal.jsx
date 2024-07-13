@@ -1,4 +1,4 @@
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import { useContext } from "react";
 import { CounsellorFeedbackContext } from "./CounsellorFeedbackStore";

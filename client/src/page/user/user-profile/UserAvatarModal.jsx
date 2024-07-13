@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { UserProfileContext } from "./UserProfileStore";
 import { DataContext } from "../../../store";
 import default_avatar from "../../../assets/image/default_avatar.png";

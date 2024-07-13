@@ -37,7 +37,7 @@ export const AddFaqForm = () => {
       depheadGetFaqs();
       setSubmitData(initFaqData);
     } catch (error) {
-      toast.error(error.message || "Có lỗi xảy ra khi tạo câu");
+      toast.error(error?.message || "Có lỗi xảy ra khi tạo câu");
     }
   };
 

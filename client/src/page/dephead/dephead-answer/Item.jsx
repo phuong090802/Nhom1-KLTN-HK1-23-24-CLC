@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { MessageCircleQuestion, MessageCircleReply } from "lucide-react";
 import { colors, darkModeCss } from "../../../constance";
 import default_avatar from "../../../assets/image/default_avatar.png";

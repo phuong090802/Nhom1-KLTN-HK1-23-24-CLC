@@ -9,7 +9,6 @@ import {
   useMemo,
   useState,
 } from "react";
-import { truncateText } from "../../util/convert.util";
 import { cn } from "../../util/css.util";
 import { getKeyByValue } from "../../util/object.util";
 import { Option } from "./Option";

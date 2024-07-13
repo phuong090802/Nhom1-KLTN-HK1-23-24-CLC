@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MyButton from "../../atom/my-button";
 import MySelect from "../../atom/my-select";
-import ModalLayout from "../../template/modal-layout";
-import ModalLayout2 from "../../template/modal-layout-2";
+import ModalLayout from "../../layout/modal-layout";
+import ModalLayout2 from "../../layout/modal-layout-2";
 import { Sort } from "./Sort";
 
 const SortFilterModal = ({

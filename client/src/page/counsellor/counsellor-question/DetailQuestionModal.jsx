@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import MyFileInput from "../../../atom/my-file-input";
 import MyRichText from "../../../atom/my-rich-text";
@@ -68,7 +68,7 @@ export const DetailQuestionModal = () => {
       getQuestions();
       toast.success(response.message || "Phản hồi câu hỏi thành công");
     } catch (error) {
-      toast.error(error.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
     }
   };
 
@@ -89,7 +89,7 @@ export const DetailQuestionModal = () => {
       setHiddenDetailQuestionModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
     }
   };
 

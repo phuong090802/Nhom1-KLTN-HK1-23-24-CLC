@@ -1,7 +1,7 @@
 import { BriefcaseBusiness, Building2, Mail, Phone } from "lucide-react";
 import { useContext, useMemo } from "react";
 import default_avatar from "../../../assets/image/default_avatar.png";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { CounsellorPageContext } from "./CounsellorPageStore";
 import { getRoleName } from "../../../util/user.util";
 export const Item = ({ data }) => {

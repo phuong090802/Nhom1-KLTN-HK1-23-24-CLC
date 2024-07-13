@@ -212,7 +212,7 @@ export const StaffMenu = () => {
       toast.success(response.message || "Đăng xuất thành công");
       navigate(links.public.home);
     } catch (error) {
-      toast.error(error.message || "Đăng xuất không thành công");
+      toast.error(error?.message || "Đăng xuất không thành công");
     }
   };
 

@@ -8,8 +8,8 @@ import {
   getDepartmentsListSv,
   getFieldListSv,
 } from "../../../service/public/department.sv";
-import ModalLayout from "../../../template/modal-layout";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout from "../../../layout/modal-layout";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
 import { forwardQuestionSv } from "../../../service/counsellor/counsellorQuestion.sv";
 

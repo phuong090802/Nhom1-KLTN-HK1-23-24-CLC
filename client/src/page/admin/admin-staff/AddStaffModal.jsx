@@ -1,12 +1,12 @@
 import React, { useContext, useMemo, useState } from "react";
-import BottomModalLayout from "../../../template/bottom-modal-layout/BottomModalLayout";
+import BottomModalLayout from "../../../layout/bottom-modal-layout/BottomModalLayout";
 import { AdminStaffContext } from "./AdminStaffStore";
 import MyButton from "../../../atom/my-button";
 import { ArrowLeft, FileUp, UserPlus } from "lucide-react";
 import { colors } from "../../../constance";
 import { SingleAddForm } from "./SingleAddForm";
 import { MultiAddForm } from "./MultiAddForm";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 
 export const AddStaffModal = () => {
   const { hiddenAddStaffModal, setHiddenAddStaffModal } =

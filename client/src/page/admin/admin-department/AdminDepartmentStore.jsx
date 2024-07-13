@@ -74,7 +74,7 @@ const AdminDepartmentStore = ({ children }) => {
       toast.success(response.message || "Cập nhật trạng thái khoa thành công");
       getDepartment();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi cập nhật trạng thái khoa");
+      toast.error(error?.message || "Lỗi khi cập nhật trạng thái khoa");
     }
   };
 

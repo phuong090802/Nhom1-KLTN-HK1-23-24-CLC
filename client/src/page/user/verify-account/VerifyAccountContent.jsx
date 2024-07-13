@@ -33,7 +33,7 @@ export const VerifyAccountContent = () => {
       setStep(2);
       startTimer();
     } catch (error) {
-      toast.error(error.message || "Lỗi xảy ra");
+      toast.error(error?.message || "Lỗi xảy ra");
     }
   };
   const verifyOtp = async () => {
@@ -42,7 +42,7 @@ export const VerifyAccountContent = () => {
       toast.success(response.message || "Xác thực tài khoản thành công");
       setStep(1);
     } catch (error) {
-      toast.error(error.message || "Lỗi xảy ra");
+      toast.error(error?.message || "Lỗi xảy ra");
     }
   };
 

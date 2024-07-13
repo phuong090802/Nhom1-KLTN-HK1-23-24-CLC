@@ -1,8 +1,8 @@
 import { toast } from "sonner";
 import MyForm from "../../../molecule/my-form";
 import { addDepSv } from "../../../service/admin/adminDepartment.sv";
-import ModalLayout from "../../../template/modal-layout";
-import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
+import ModalLayout from "../../../layout/modal-layout";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import { formAddDep, formUpdateDep } from "./constance";
 import { useContext, useRef } from "react";
 import { AdminDepartmentContext } from "./AdminDepartmentStore";
@@ -20,7 +20,7 @@ export const AddDeparmentModal = ({ title }) => {
       toast.success(response.message || "Thêm khoa thành công");
       getDepartment();
     } catch (error) {
-      toast.error(error.message || "Xảy ra lỗi trong quá trình thêm khoa");
+      toast.error(error?.message || "Xảy ra lỗi trong quá trình thêm khoa");
     }
   };
 

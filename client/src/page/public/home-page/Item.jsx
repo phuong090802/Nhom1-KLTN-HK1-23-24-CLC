@@ -7,7 +7,7 @@ import {
 import React, { useCallback, useContext, useMemo } from "react";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import { colors, darkModeCss } from "../../../constance";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { convertDateTimeToDate } from "../../../util/convert.util";
 import { HomePageContext } from "./HomePageStore";
 import { DataContext } from "../../../store";

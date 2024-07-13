@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import no_image from "../../../assets/image/no_image.jpg";
 import { NewsPageContext } from "./NewsPageStore";
 import { convertDateTimeToDate } from "../../../util/convert.util";

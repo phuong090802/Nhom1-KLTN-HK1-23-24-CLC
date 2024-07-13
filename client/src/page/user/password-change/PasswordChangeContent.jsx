@@ -32,7 +32,7 @@ export const PasswordChangeContent = () => {
       toast.success(response.message || "Đổi mật khẩu thành công");
     } catch (error) {
       console.log(error);
-      toast.error(error.message || "Đổi mật khẩu thất bại");
+      toast.error(error?.message || "Đổi mật khẩu thất bại");
     }
   };
 

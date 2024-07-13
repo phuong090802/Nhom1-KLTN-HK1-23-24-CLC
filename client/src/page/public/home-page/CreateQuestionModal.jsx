@@ -71,7 +71,7 @@ export const CreateQuestionModal = ({ hidden }) => {
       setFile(null);
       toast.success(response.message || "Đặt câu hỏi thành công");
     } catch (error) {
-      toast.error(error.message || "Lỗi khi đặt câu hỏi");
+      toast.error(error?.message || "Lỗi khi đặt câu hỏi");
     }
   };
 

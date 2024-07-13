@@ -40,7 +40,7 @@ export const DepheadFaqStore = ({ children }) => {
       setFaqs(response.faqs);
       setPages(response.pages);
     } catch (error) {
-      toast.error(error.message || "Lỗi lấy dữ liệu faqs");
+      toast.error(error?.message || "Lỗi lấy dữ liệu faqs");
     }
   };
 

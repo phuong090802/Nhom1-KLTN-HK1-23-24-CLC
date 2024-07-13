@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import { DepheadFaqContext } from "./DepheadFaqStore";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import MyButton from "../../../atom/my-button";

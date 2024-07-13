@@ -23,7 +23,7 @@ export const SingleAddForm = () => {
       toast.success(response.message || "Thêm nhân viên thành công");
       // setSelectedDepartment(null)
     } catch (error) {
-      toast.error(error.message || "Lỗi xảy ra khi thêm nhân viên");
+      toast.error(error?.message || "Lỗi xảy ra khi thêm nhân viên");
     }
   };
 

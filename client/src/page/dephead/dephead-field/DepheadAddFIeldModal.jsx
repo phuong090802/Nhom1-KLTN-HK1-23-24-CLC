@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { DepheadFieldContext } from "./DepheadFieldStore";
-import ModalLayout from "../../../template/modal-layout";
-import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
+import ModalLayout from "../../../layout/modal-layout";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import MyForm from "../../../molecule/my-form";
 import { initAddFieldForm } from "./constance";
 

@@ -9,7 +9,7 @@ import {
   SupervisorRoute,
 } from "./routes";
 
-import AppLayout from "./template/app-layout";
+import AppLayout from "./layout/app-layout";
 
 import CounsellorsPage from "./page/public/counsellors-page";
 import FaqsPage from "./page/public/faqs-page/FaqsPage";
@@ -17,7 +17,7 @@ import HomePage from "./page/public/home-page";
 import Login from "./page/public/login";
 import NewsPage from "./page/public/news-page";
 import Register from "./page/public/register";
-import UserLayout from "./template/user-layout";
+import UserLayout from "./layout/user-layout";
 import ForgotPassword from "./page/public/forgot-password";
 
 import AdminDepartment from "./page/admin/admin-department";
@@ -40,8 +40,6 @@ import PasswordChange from "./page/user/password-change";
 import VerifyAccount from "./page/user/verify-account";
 import History from "./page/user/history";
 
-import TempComponent from "./TempComponent";
-
 import { links } from "./constance";
 
 const App = () => {
@@ -49,7 +47,7 @@ const App = () => {
     <BrowserRouter>
       <AppLayout>
         <Routes>
-          <Route path="/temp" element={<TempComponent />} />
+          {/* <Route path="/temp" element={<TempComponent />} /> */}
           <Route element={<UserLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/thu-vien-cau-hoi" element={<FaqsPage />} />

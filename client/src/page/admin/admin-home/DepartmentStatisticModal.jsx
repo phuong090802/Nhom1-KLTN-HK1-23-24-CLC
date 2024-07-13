@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { AdminHomeContext } from "./AdminHomeStore";
 import { getOverDueQuestionsSv } from "../../../service/admin/adminStatistic";
 import { convertDateTimeToDate } from "../../../util/convert.util";

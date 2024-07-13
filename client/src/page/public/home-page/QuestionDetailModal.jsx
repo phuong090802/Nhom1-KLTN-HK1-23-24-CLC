@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import { likeSv } from "../../../service/user/userQuestion.sv";
 import { DataContext } from "../../../store/DataProvider";
-import ModalLayout2 from "../../../template/modal-layout-2";
+import ModalLayout2 from "../../../layout/modal-layout-2";
 import { convertDateTimeToDate } from "../../../util/convert.util";
 import { HomePageContext } from "./HomePageStore";
 import { colors } from "../../../constance";

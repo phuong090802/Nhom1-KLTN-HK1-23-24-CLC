@@ -52,7 +52,7 @@ export const CounsellorQuestionStore = ({ children }) => {
       setQuestions(response.questions);
       setPages(response.pages);
     } catch (error) {
-      toast.error(error.message || "Lỗi khi lấy danh sách câu hỏi");
+      toast.error(error?.message || "Lỗi khi lấy danh sách câu hỏi");
     }
   };
 

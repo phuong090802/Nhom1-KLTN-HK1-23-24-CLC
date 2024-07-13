@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import ModalLayout from "../../../template/modal-layout";
-import ModalLayout2 from "../../../template/modal-layout-2/ModalLayout2";
+import ModalLayout from "../../../layout/modal-layout";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import { DepheadCounsellorContext } from "./DepheadCounsellorStore";
 import MyForm from "../../../molecule/my-form";
 import { initAddCounsellorForm } from "./constance";

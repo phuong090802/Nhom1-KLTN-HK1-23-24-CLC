@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { colors } from "../../../constance";
 import { MessageCircleReply, Paperclip, Calendar } from "lucide-react";
 import { NewsPageContext } from "./NewsPageStore";

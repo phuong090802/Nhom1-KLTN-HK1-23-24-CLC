@@ -39,7 +39,7 @@ export const UserProfileContent = () => {
       setUser((prev) => ({ ...prev, ...profileData }));
       setUpdating(false);
     } catch (error) {
-      toast.success(error.message || "Lỗi khi cập nhật thông tin");
+      toast.success(error?.message || "Lỗi khi cập nhật thông tin");
     }
   };
 

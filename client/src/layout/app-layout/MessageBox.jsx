@@ -92,7 +92,7 @@ const MessageBoxBody = () => {
         className="flex w-full flex-col gap-1 overflow-y-scroll h-96 px-2 py-4"
         onScroll={hanldeScroll}
       >
-        {conversationContent?.map((message, index) => (
+        {conversationContent?.length !== 0 && conversationContent?.map((message, index) => (
           <MessageBubble
             key={message?._id || index}
             content={message.content}

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ItemLayout from "../../../template/item-layout";
+import ItemLayout from "../../../layout/item-layout";
 import { DepheadFaqContext } from "./DepheadFaqStore";
 import { MessageCircleQuestion } from "lucide-react";
 import { colors } from "../../../constance";

@@ -10,7 +10,6 @@ import { toast } from "sonner";
 import { DataContext } from "../../store";
 import { initParams } from "./constance";
 import { getNotificationSv } from "../../service/user/userNotification.sv";
-import { data } from "autoprefixer";
 
 export const AppLayoutContext = createContext({
   params: Object,
@@ -150,7 +149,7 @@ export const AppLayoutStore = ({ children }) => {
       console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
-      toast.error(error.message || "Lỗi khi lấy thông báo");
+      toast.error(error?.message || "Lỗi khi lấy thông báo");
     }
   };
 

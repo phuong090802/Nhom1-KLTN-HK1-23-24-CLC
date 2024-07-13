@@ -27,7 +27,7 @@ export const CounsellorPageStore = ({ children }) => {
       setCounsellors(response.staffs);
       setPages(response.pages);
     } catch (error) {
-      toast.warning(error.message || "Lỗi khi lấy dữ liệu");
+      toast.warning(error?.message || "Lỗi khi lấy dữ liệu");
     }
   };
 

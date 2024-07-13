@@ -48,7 +48,7 @@ export const DepheadCounsellorStore = ({ children }) => {
       setCounsellors(response.counsellors);
       setPages(response.pages);
     } catch (error) {
-      console.log(error.message || "Lỗi trưởng khoa lấy danh sách nhân viên");
+      console.log(error?.message || "Lỗi trưởng khoa lấy danh sách nhân viên");
     }
   };
 
@@ -58,7 +58,7 @@ export const DepheadCounsellorStore = ({ children }) => {
       toast.success(response.message || "Thêm tư vấn viên thành công");
       depheadGetCounsellors();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi thêm tư vấn viên");
+      toast.error(error?.message || "Lỗi khi thêm tư vấn viên");
     }
   };
 
@@ -73,7 +73,7 @@ export const DepheadCounsellorStore = ({ children }) => {
       );
       depheadGetCounsellors();
     } catch (error) {
-      toast.error(error.message || "Lỗi khi cập nhật trạng thái tư vấn viên");
+      toast.error(error?.message || "Lỗi khi cập nhật trạng thái tư vấn viên");
     }
   };
 
