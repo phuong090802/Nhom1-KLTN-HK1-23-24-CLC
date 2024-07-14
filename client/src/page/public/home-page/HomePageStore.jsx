@@ -50,7 +50,7 @@ export const HomePageStore = ({ children }) => {
       setPages(response.pages);
       // console.log(response);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
       // toast.warning(error?.message || "Lỗi khi tải trang chủ");
     }
   };

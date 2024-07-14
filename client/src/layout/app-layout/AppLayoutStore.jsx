@@ -50,7 +50,7 @@ export const AppLayoutStore = ({ children }) => {
 
   const [conversationContent, setConversationContent] = useState([]); // nội dung conversation được chọn
 
-  const [params, setParams] = useState({}); //
+  const [params, setParams] = useState(initParams); //
 
   const [totalMessages, setTotalMessages] = useState(0); // số lượng tin nhắn
 
@@ -64,19 +64,18 @@ export const AppLayoutStore = ({ children }) => {
       const response = await getConversationsSv();
       setConversations(response.conversations);
     } catch (error) {
-      toast.error("Lỗi lấy dữ liệu tin nhắn");
+      // toast.error("Lỗi lấy dữ liệu tin nhắn");
     }
   };
 
   // Lấy nội dung của cuộc hội thoại
   const getConversationContents = async () => {
     try {
-      // console.log("getConversationContents");
+      console.log("getConversationContents");
       const response = await getMessagesSv(selectedConversation._id, params);
       const newMessages = response.messages;
       setConversationContent((prev) => {
         const ids = prev.map((data) => data._id);
-        console.log(ids);
         const tempContent = newMessages.filter(
           (message) => !ids.includes(message._id)
         );
@@ -88,7 +87,7 @@ export const AppLayoutStore = ({ children }) => {
 
   //
   const loadMessage = () => {
-    if (totalMessages !== conversationContent?.length) {
+    if (totalMessages > conversationContent?.length) {
       setParams((prev) => ({ ...prev, skip: conversationContent?.length }));
     }
   };
@@ -136,18 +135,19 @@ export const AppLayoutStore = ({ children }) => {
 
   //
   function updateConversations(newConversation) {
-    const index = conversations.findIndex(
-      (obj) => obj._id === newConversation._id
-    );
-    if (index !== -1) {
-      const newState = [...conversations];
-      newState[index] = newConversation;
-      const [updatedConversation] = newState.splice(index, 1);
-      newState.unshift(updatedConversation);
-      setConversations(newState);
-    } else {
-      setConversations([...conversations, newConversation]);
-    }
+    setConversations((prev) => {
+      const foundConversation = prev.filter(
+        (conversation) => conversation._id === newConversation._id
+      );
+      if (!foundConversation) {
+        return [newConversation, ...prev];
+      } else {
+        const tempConversation = prev.filter(
+          (conversation) => conversation._id !== newConversation._id
+        );
+        return [newConversation, ...tempConversation];
+      }
+    });
   }
 
   //Lấy danh sách thông báo
@@ -157,7 +157,7 @@ export const AppLayoutStore = ({ children }) => {
       // console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi lấy thông báo");
+      // toast.error(error?.message || "Lỗi khi lấy thông báo");
     }
   };
 
@@ -166,7 +166,7 @@ export const AppLayoutStore = ({ children }) => {
       authSocket.on(`${user._id}:message:read`, (data) => {
         console.log(data);
         setNewMessage(true);
-        updateConversations(data?.latestConversation);
+        updateConversations(data.latestConversation);
         if (data?.latestConversation?._id === selectedConversation._id) {
           console.log(data);
           setConversationContent((prev) => [
@@ -206,9 +206,10 @@ export const AppLayoutStore = ({ children }) => {
   useEffect(() => {
     if (!selectedConversation?._id) return;
     getConversationContents();
-  }, [params]);
+  }, [params, selectedConversation]);
 
   useEffect(() => {
+    setConversationContent([]);
     if (selectedConversation?._id) setParams(initParams);
   }, [selectedConversation]);
 

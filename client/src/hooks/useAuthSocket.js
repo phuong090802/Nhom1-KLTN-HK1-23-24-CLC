@@ -23,7 +23,6 @@ export const useAuthSocket = () => {
       return;
     }
     const onConnect = () => {
-      console.log(authSocket.extraHeaders);
       console.log('socket "/auth" connected');
       setConnected(true);
     };
@@ -32,7 +31,6 @@ export const useAuthSocket = () => {
       setConnected(false);
     };
     const onConnectError = async (error) => {
-      console.log(error.data);
       console.log('socket "/auth" connectError');
       // authSocket.close();
       if (
@@ -45,7 +43,6 @@ export const useAuthSocket = () => {
         try {
           console.log('socket rf token');
           const response = await refreshTokenSv();
-          console.log(response);
           Cookies.set('accessToken', response.token);
           authSocket._opts.extraHeaders.authorization = `bearer ${response.token}`;
           authSocket.connect();

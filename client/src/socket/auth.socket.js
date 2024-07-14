@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const socketUrl = `${import.meta.env.VITE_API_BASE_URL}/auth`;
 
-console.log('connecting to', socketUrl);
+// console.log('connecting to', socketUrl);
 
 const authSocket = io(socketUrl, {
   withCredentials: true,
