@@ -20,7 +20,7 @@ import { NotiButton } from "./NotiButton";
 import Cookies from "js-cookie";
 
 export const AppHeader = () => {
-  const { isLoggedIn, setIsLoggedIn, setUser, darkMode } =
+  const { isLoggedIn, setIsLoggedIn, setUser, darkMode, removeUserData } =
     useContext(DataContext);
 
   const getMe = async () => {
@@ -28,7 +28,9 @@ export const AppHeader = () => {
       const response = await getMeSv();
       setUser(response.user);
       setIsLoggedIn(true);
-    } catch (error) {}
+    } catch (error) {
+      removeUserData();
+    }
   };
 
   useEffect(() => {
