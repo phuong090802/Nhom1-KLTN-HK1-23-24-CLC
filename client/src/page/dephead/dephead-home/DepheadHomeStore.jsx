@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 import {
   depheadGetFaqsCountSv,
   depheadGetFieldStatistic,
   depheadGetQuestionStatisticSv,
   depheadGetUserCountSv,
-} from "../../../service/dephead/depheadStatistic.sv";
-import { getMonth } from "../../../util/convert.util";
+} from '../../../service/dephead/depheadStatistic.sv';
+import { getMonth } from '../../../util/convert.util';
 
 export const DepheadHomeContext = createContext({
   dashboardData: Object,
@@ -63,7 +63,7 @@ export const DepheadHomeStore = ({ children }) => {
   const getQuestionStatistic = async () => {
     try {
       const response = await depheadGetQuestionStatisticSv({
-        timeUnit: "month", //year
+        timeUnit: 'month', //year
         latestTime: 2,
       });
 
@@ -73,20 +73,20 @@ export const DepheadHomeStore = ({ children }) => {
         ),
         datasets: [
           {
-            label: "Câu hỏi đã trả lời",
+            label: 'Câu hỏi đã trả lời',
             data: response?.departmentStatistic?.map(
               (statistic) => statistic?.countOfAnsweredQuestions
             ),
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
           {
-            label: "Câu hỏi chưa trả lời",
+            label: 'Câu hỏi chưa trả lời',
             data: response?.departmentStatistic?.map(
               (statistic) =>
                 statistic?.countOfQuestions -
                 statistic?.countOfAnsweredQuestions
             ),
-            backgroundColor: "rgba(75, 192, 192, 0.5)",
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
           },
         ],
       };

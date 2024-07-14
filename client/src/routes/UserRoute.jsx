@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import { DataContext } from "../store";
-import { Outlet } from "react-router-dom";
+import { useContext } from 'react';
+import { Outlet } from 'react-router-dom';
+import { DataContext } from '../store';
 
 export const UserRoute = () => {
   const { user } = useContext(DataContext);

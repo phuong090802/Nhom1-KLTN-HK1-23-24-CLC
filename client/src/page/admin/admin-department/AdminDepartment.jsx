@@ -1,5 +1,5 @@
-import { AdminDepartmentContent } from "./AdminDepartmentContent";
-import AdminDepartmentStore from "./AdminDepartmentStore";
+import { AdminDepartmentContent } from './AdminDepartmentContent';
+import AdminDepartmentStore from './AdminDepartmentStore';
 
 const AdminDepartment = () => {
   return (

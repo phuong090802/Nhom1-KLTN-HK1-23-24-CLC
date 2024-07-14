@@ -1,1 +1,1 @@
-export { default } from "./StaffLayout";
+export { default } from './StaffLayout';

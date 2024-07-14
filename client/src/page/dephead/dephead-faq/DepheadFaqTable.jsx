@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { DepheadFaqContext } from "./DepheadFaqStore";
+import { useContext } from 'react';
+import { DepheadFaqContext } from './DepheadFaqStore';
 
 export const DepheadFaqTable = () => {
   const { faqs, setSelected, selected, setHiddenDetailFaqModal } =
@@ -41,7 +41,7 @@ export const DepheadFaqTable = () => {
               </td>
               <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                 <button
-                    onClick={() => onDetail(faq)}
+                  onClick={() => onDetail(faq)}
                   className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 hover:bg-green-200"
                 >
                   Xem chi tiết

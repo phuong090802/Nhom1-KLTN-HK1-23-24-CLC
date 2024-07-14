@@ -1,10 +1,9 @@
-import React, { Children, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
   deleteFeedbackSv,
   getFeedbacksSv,
-} from "../../../service/counsellor/counsellorFeedback.sv";
-import { toast } from "sonner";
-import { initParams } from "./constance";
+} from '../../../service/counsellor/counsellorFeedback.sv';
 
 export const CounsellorFeedbackContext = createContext({
   feedbacks: Array,
@@ -34,7 +33,7 @@ export const CounsellorFeedbackStore = ({ children }) => {
   const getFeedbacks = async () => {
     try {
       const response = await getFeedbacksSv();
-      console.log(response)
+      console.log(response);
       // setPages(response?.pages || 0);
       setFeedbacks(response?.feedbacks);
     } catch (error) {
@@ -50,9 +49,9 @@ export const CounsellorFeedbackStore = ({ children }) => {
       });
       setSelectedFeedback([]);
       setHiddenDetailFeedbackModal(true);
-      toast.success(response?.message || "Xóa feedback thành công");
+      toast.success(response?.message || 'Xóa feedback thành công');
     } catch (error) {
-      toast.success(error?.message || "Lỗi khi xóa feedback");
+      toast.success(error?.message || 'Lỗi khi xóa feedback');
     }
   };
 

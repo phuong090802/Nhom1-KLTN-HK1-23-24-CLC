@@ -1,26 +1,27 @@
-import { VariantProps, cva } from "class-variance-authority";
-import { ButtonHTMLAttributes, forwardRef } from "react";
-import { cn } from "../../util/css.util";
-import clsx from "clsx";
-export const buttonVariants = cva("inline-flex items-center justify-center", {
+import { VariantProps, cva } from 'class-variance-authority';
+import clsx from 'clsx';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { cn } from '../../util/css.util';
+
+export const buttonVariants = cva('inline-flex items-center justify-center', {
   variants: {
     variant: {
-      default: "rounded-lg text-white duration-200",
-      outline: "bg-transparent rounded-lg text-primary duration-200",
+      default: 'rounded-lg text-white duration-200',
+      outline: 'bg-transparent rounded-lg text-primary duration-200',
     },
     size: {
-      fullWidth: "h-12 w-full font-semibold",
-      lg: "h-12 w-40 font-semibold",
-      xl: "h-14 w-60 font-semibold",
-      default: "h-10 w-20",
-      md: "h-10 px-8",
-      sm: "py-1 px-2",
-      icon: "w-8 h-8",
+      fullWidth: 'h-12 w-full font-semibold',
+      lg: 'h-12 w-40 font-semibold',
+      xl: 'h-14 w-60 font-semibold',
+      default: 'h-10 w-20',
+      md: 'h-10 px-8',
+      sm: 'py-1 px-2',
+      icon: 'w-8 h-8',
     },
   },
   defaultVariants: {
-    variant: "default",
-    size: "default",
+    variant: 'default',
+    size: 'default',
   },
 });
 
@@ -36,7 +37,7 @@ const MyButton = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     return (
-      <div className={clsx(hidden && "hidden")}>
+      <div className={clsx(hidden && 'hidden')}>
         <button
           ref={ref}
           className={cn(buttonVariants({ variant, size, className }))}

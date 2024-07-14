@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+
 import {
   getDepartmentsListSv,
   getFieldListSv,
-} from "../service/public/department.sv";
+} from '../service/public/department.sv';
 
 const useDepartmentField = () => {
-  const [selectedDep, setSelectedDep] = useState("");
-
-  const [selectedField, setSelectedField] = useState("");
-
+  const [selectedDep, setSelectedDep] = useState('');
+  const [selectedField, setSelectedField] = useState('');
   const [deps, setDeps] = useState([]);
-
   const [fields, setFields] = useState([]);
 
   const getDeps = async () => {
@@ -19,13 +17,13 @@ const useDepartmentField = () => {
       const rawData = response.departments;
       const convertData = rawData.map((data) => {
         return {
-          key: data.departmentName || "unknow department",
+          key: data.departmentName || 'unknow department',
           value: data._id,
         };
       });
-      setDeps([{ key: "Chọn khoa", value: null }, ...convertData]);
+      setDeps([{ key: 'Chọn khoa', value: null }, ...convertData]);
     } catch (error) {
-      console.log("error", error);
+      console.log('getDeps', error);
     }
   };
 
@@ -35,13 +33,13 @@ const useDepartmentField = () => {
       const rawData = response.fields;
       const convertData = rawData.map((data) => {
         return {
-          key: data.fieldName || "unknow field",
+          key: data.fieldName || 'unknow field',
           value: data._id,
         };
       });
       setFields(convertData);
     } catch (error) {
-      console.log(error);
+      console.log('getFields', error);
     }
   };
 
@@ -50,7 +48,9 @@ const useDepartmentField = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedDep) getFields();
+    if (selectedDep) {
+      getFields();
+    }
   }, [selectedDep]);
 
   return {

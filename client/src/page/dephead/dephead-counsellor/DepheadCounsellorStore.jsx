@@ -1,11 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
   depheadAddCounsellorSv,
   depheadGetCounsellorsSv,
   depheadUpdateCounsellorStatusSv,
-} from "../../../service/dephead/depheadCounsellor.sv";
-import { initParams } from "./constance";
-import { toast } from "sonner";
+} from '../../../service/dephead/depheadCounsellor.sv';
+import { initParams } from './constance';
 
 export const DepheadCounsellorContext = createContext({
   counsellors: Array,
@@ -24,7 +24,7 @@ export const DepheadCounsellorContext = createContext({
   depheadUpdateCounsellorStatus: (counsellorId, data) => {},
   hiddenAddCounField: Boolean,
   setHiddenAddCounField: Function,
-  depheadGetCounsellors: Function
+  depheadGetCounsellors: Function,
 });
 
 export const DepheadCounsellorStore = ({ children }) => {
@@ -48,17 +48,17 @@ export const DepheadCounsellorStore = ({ children }) => {
       setCounsellors(response.counsellors);
       setPages(response.pages);
     } catch (error) {
-      console.log(error?.message || "Lỗi trưởng khoa lấy danh sách nhân viên");
+      console.log(error?.message || 'Lỗi trưởng khoa lấy danh sách nhân viên');
     }
   };
 
   const depheadAddCounsellor = async (data) => {
     try {
       const response = await depheadAddCounsellorSv(data);
-      toast.success(response.message || "Thêm tư vấn viên thành công");
+      toast.success(response.message || 'Thêm tư vấn viên thành công');
       depheadGetCounsellors();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi thêm tư vấn viên");
+      toast.error(error?.message || 'Lỗi khi thêm tư vấn viên');
     }
   };
 
@@ -69,11 +69,11 @@ export const DepheadCounsellorStore = ({ children }) => {
         data
       );
       toast.success(
-        response.message || "Cập nhật trạng thái tư vấn viên thành công"
+        response.message || 'Cập nhật trạng thái tư vấn viên thành công'
       );
       depheadGetCounsellors();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi cập nhật trạng thái tư vấn viên");
+      toast.error(error?.message || 'Lỗi khi cập nhật trạng thái tư vấn viên');
     }
   };
 
@@ -100,7 +100,7 @@ export const DepheadCounsellorStore = ({ children }) => {
         depheadUpdateCounsellorStatus,
         hiddenAddCounField,
         setHiddenAddCounField,
-        depheadGetCounsellors
+        depheadGetCounsellors,
       }}
     >
       {children}

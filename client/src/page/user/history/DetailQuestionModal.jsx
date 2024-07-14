@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { HistoryContext } from "./HistoryStore";
-import { getQuestionByIdSv } from "../../../service/user/userQuestion.sv";
-import FileComponent from "../../../atom/file-component/FileComponent";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { Calendar, Eye } from "lucide-react";
-import default_avatar from "../../../assets/image/default_avatar.png"
-import { convertDateTimeToDate } from "../../../util/convert.util";
+import { Calendar, Eye } from 'lucide-react';
+import { useContext } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import FileComponent from '../../../atom/file-component/FileComponent';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { HistoryContext } from './HistoryStore';
 
 export const DetailQuestionModal = () => {
   const {
@@ -14,25 +13,25 @@ export const DetailQuestionModal = () => {
     selectedQuestion,
   } = useContext(HistoryContext);
 
-//   const [questionDetail, setQuestionDetail] = useState(null);
+  //   const [questionDetail, setQuestionDetail] = useState(null);
 
-//   const getQuestionById = async () => {
-//     try {
-//       console.log(selectedQuestion);
-//       const response = await getQuestionByIdSv(selectedQuestion._id);
-//       console.log(response);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+  //   const getQuestionById = async () => {
+  //     try {
+  //       console.log(selectedQuestion);
+  //       const response = await getQuestionByIdSv(selectedQuestion._id);
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-//   useEffect(() => {
-//     getQuestionById();
-//   }, [selectedQuestion]);
+  //   useEffect(() => {
+  //     getQuestionById();
+  //   }, [selectedQuestion]);
 
-//   useEffect(() => {
-//     if (selectedQuestion) getQuestionById();
-//   }, [selectedQuestion]);
+  //   useEffect(() => {
+  //     if (selectedQuestion) getQuestionById();
+  //   }, [selectedQuestion]);
 
   return (
     <ModalLayout2
@@ -51,7 +50,7 @@ export const DetailQuestionModal = () => {
               <p>
                 {selectedQuestion?.createdAt
                   ? convertDateTimeToDate(selectedQuestion.createdAt)
-                  : "createdAt"}
+                  : 'createdAt'}
               </p>
             </div>
             <div className="flex items-center gap-1 text-sm text-black75">
@@ -72,8 +71,8 @@ export const DetailQuestionModal = () => {
             <div className="mt-2">
               {!selectedQuestion?.fileURL ? (
                 <></>
-              ) : selectedQuestion.fileURL.includes("png") ||
-                selectedQuestion.fileURL.includes("jpg") ? (
+              ) : selectedQuestion.fileURL.includes('png') ||
+                selectedQuestion.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selectedQuestion?.fileURL}
@@ -91,7 +90,7 @@ export const DetailQuestionModal = () => {
               />
 
               <p className="text-sm text-gray-500">
-                Tác giả:{" "}
+                Tác giả:{' '}
                 <span className="font-medium text-gray-800">
                   {selectedQuestion?.user?.fullName}
                 </span>
@@ -114,8 +113,8 @@ export const DetailQuestionModal = () => {
             <div className="mt-2">
               {!selectedQuestion?.answer?.fileURL ? (
                 <></>
-              ) : selectedQuestion.answer.fileURL.includes("png") ||
-                selectedQuestion.answer.fileURL.includes("jpg") ? (
+              ) : selectedQuestion.answer.fileURL.includes('png') ||
+                selectedQuestion.answer.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selectedQuestion?.answer.fileURL}
@@ -126,7 +125,7 @@ export const DetailQuestionModal = () => {
               )}
             </div>
             <p className="mt-2 text-sm text-gray-500">
-              Được trả lời bởi:{" "}
+              Được trả lời bởi:{' '}
               <span className="font-medium text-gray-800">
                 {selectedQuestion?.answer?.user?.fullName}
               </span>

@@ -1,6 +1,6 @@
-import { VariantProps, cva } from "class-variance-authority";
-import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
+import { VariantProps, cva } from 'class-variance-authority';
+import clsx from 'clsx';
+import { ChevronDown } from 'lucide-react';
 import {
   FC,
   InputHTMLAttributes,
@@ -8,25 +8,25 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import { cn } from "../../util/css.util";
-import { getKeyByValue } from "../../util/object.util";
-import { Option } from "./Option";
+} from 'react';
+import { cn } from '../../util/css.util';
+import { getKeyByValue } from '../../util/object.util';
+import { Option } from './Option';
 
-export const selectVariants = cva("outline-none px-4 text-left w-[300px] ", {
+export const selectVariants = cva('outline-none px-4 text-left w-[300px] ', {
   variants: {
     variant: {
-      default: "border-2 border-black25 rounded-lg",
-      underline: "border-b-2 border-black-25",
+      default: 'border-2 border-black25 rounded-lg',
+      underline: 'border-b-2 border-black-25',
     },
     boxHeight: {
-      32: "h-8",
-      40: "h-[40px]",
-      48: "h-[48px]",
+      32: 'h-8',
+      40: 'h-[40px]',
+      48: 'h-[48px]',
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
     boxHeight: 32,
   },
 });
@@ -67,22 +67,22 @@ const MySelect: FC<SelectProps> = ({
     let boxH, dropDowmPosition, chevronPosition, optionH;
     switch (boxHeight) {
       case 40:
-        boxH = "h-10";
-        dropDowmPosition = "top-10";
-        chevronPosition = "top-[10px]";
-        optionH = "min-h-10";
+        boxH = 'h-10';
+        dropDowmPosition = 'top-10';
+        chevronPosition = 'top-[10px]';
+        optionH = 'min-h-10';
         break;
       case 48:
-        boxH = "h-12";
-        dropDowmPosition = "top-12";
-        chevronPosition = "top-[14px]";
-        optionH = "min-h-12";
+        boxH = 'h-12';
+        dropDowmPosition = 'top-12';
+        chevronPosition = 'top-[14px]';
+        optionH = 'min-h-12';
         break;
       default:
-        boxH = "h-8";
-        dropDowmPosition = "top-8";
-        chevronPosition = "top-[6px]";
-        optionH = "min-h-8";
+        boxH = 'h-8';
+        dropDowmPosition = 'top-8';
+        chevronPosition = 'top-[6px]';
+        optionH = 'min-h-8';
         break;
     }
 
@@ -94,14 +94,14 @@ const MySelect: FC<SelectProps> = ({
   }, [disabled]);
 
   return (
-    <div className={"relative w-full "}>
+    <div className={'relative w-full '}>
       <input
         {...props}
-        value={getKeyByValue(data, value) || placeholder || "Không có"}
+        value={getKeyByValue(data, value) || placeholder || 'Không có'}
         // value={getKeyByValue(data, value)}
         className={cn(
           selectVariants({ className, variant, boxHeight }),
-          "truncate"
+          'truncate'
           // dropDown && "border-success"
         )}
         type="button"
@@ -109,13 +109,13 @@ const MySelect: FC<SelectProps> = ({
 
       <div
         className={clsx(
-          dropDown ? "max-h-40" : "max-h-0",
-          "absolute bg-transparent w-full z-20 rounded-lg overflow-hidden duration-700 bg-white"
+          dropDown ? 'max-h-40' : 'max-h-0',
+          'absolute bg-transparent w-full z-20 rounded-lg overflow-hidden duration-700 bg-white'
         )}
       >
         <div
           className={clsx(
-            "overflow-y-scroll w-full max-h-40 border border-black25 rounded-lg",
+            'overflow-y-scroll w-full max-h-40 border border-black25 rounded-lg',
             heighCalculate.dropDowmPosition
           )}
         >
@@ -126,21 +126,21 @@ const MySelect: FC<SelectProps> = ({
                 optionKey={option.key}
                 optionValue={option.value}
                 onClick={() => handleClick(option.value)}
-                className={clsx(heighCalculate.optionH, "cursor-pointer")}
+                className={clsx(heighCalculate.optionH, 'cursor-pointer')}
               />
             ))
           ) : (
             <Option
-              optionKey={"Không có"}
-              optionValue={"null"}
-              className={clsx(heighCalculate.optionH, "cursor-pointer")}
+              optionKey={'Không có'}
+              optionValue={'null'}
+              className={clsx(heighCalculate.optionH, 'cursor-pointer')}
             />
           )}
         </div>
       </div>
       <ChevronDown
         className={cn(
-          "absolute right-2 hover:bg-primary/20 rounded-full p-1 cursor-pointer",
+          'absolute right-2 hover:bg-primary/20 rounded-full p-1 cursor-pointer',
           heighCalculate.chevronPosition
         )}
         size={20}

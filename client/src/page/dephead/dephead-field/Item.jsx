@@ -1,4 +1,4 @@
-import ItemLayout from "../../../layout/item-layout";
+import ItemLayout from '../../../layout/item-layout';
 
 export const Item = ({ fieldName, status, onStatus, onDelete }) => {
   return (

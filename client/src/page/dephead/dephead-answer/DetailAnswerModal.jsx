@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { DepheadAnswerContext } from "./DepheadAnswerStore";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import FileComponent from "../../../atom/file-component";
-import MyButton from "../../../atom/my-button";
-import { FeedbackModal } from "./FeedbackModal";
+import { useContext } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import FileComponent from '../../../atom/file-component';
+import MyButton from '../../../atom/my-button';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { DepheadAnswerContext } from './DepheadAnswerStore';
+import { FeedbackModal } from './FeedbackModal';
 
 export const DetailAnswerModal = () => {
   const {
@@ -39,8 +39,8 @@ export const DetailAnswerModal = () => {
             <div className="mt-2">
               {!selected?.fileURL ? (
                 <></>
-              ) : selected.fileURL.includes("png") ||
-                selected.fileURL.includes("jpg") ? (
+              ) : selected.fileURL.includes('png') ||
+                selected.fileURL.includes('jpg') ? (
                 <img className="size-24" src={selected?.fileURL} alt="image" />
               ) : (
                 <FileComponent link={selected?.fileURL} />
@@ -53,7 +53,7 @@ export const DetailAnswerModal = () => {
                 alt="Avatar tác giả"
               />
               <p className="text-sm text-gray-500">
-                Tác giả:{" "}
+                Tác giả:{' '}
                 <span className="font-medium text-gray-800">
                   {selected?.user?.fullName}
                 </span>
@@ -75,8 +75,8 @@ export const DetailAnswerModal = () => {
             <div className="mt-2">
               {!selected?.answer?.fileURL ? (
                 <></>
-              ) : selected.answer.fileURL.includes("png") ||
-                selected.answer.fileURL.includes("jpg") ? (
+              ) : selected.answer.fileURL.includes('png') ||
+                selected.answer.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selected?.answer?.fileURL}
@@ -87,7 +87,7 @@ export const DetailAnswerModal = () => {
               )}
             </div>
             <p className="mt-2 text-sm text-gray-500">
-              Được trả lời bởi:{" "}
+              Được trả lời bởi:{' '}
               <span className="font-medium text-gray-800">
                 {selected?.user?.fullName}
               </span>
@@ -97,14 +97,14 @@ export const DetailAnswerModal = () => {
         <div className="flex flex-row-reverse mt-2 gap-2">
           <MyButton
             className="bg-success hover:opacity-75"
-            size={"md"}
+            size={'md'}
             onClick={() => ApproveAnswer(selected._id)}
           >
             Duyệt
           </MyButton>
           <MyButton
             className="bg-error hover:opacity-75"
-            size={"md"}
+            size={'md'}
             onClick={() => setHiddenFeedback(false)}
           >
             Từ chối

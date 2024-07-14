@@ -1,11 +1,11 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const CounsellorHomeContext = createContext();
 
 export const CounsellorHomeStore = ({ children }) => {
   return (
     <CounsellorHomeContext.Provider value={{}}>
-      { children }
+      {children}
     </CounsellorHomeContext.Provider>
   );
 };

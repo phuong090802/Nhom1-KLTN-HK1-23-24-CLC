@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import React, { useContext, useEffect, useState } from "react";
-import MyButton from "../../../atom/my-button";
-import MyInput from "../../../atom/my-input";
-import MySelect from "../../../atom/my-select";
-import { DataContext } from "../../../store/DataProvider";
-import { getRoleName } from "../../../util/user.util";
-import { occupationData } from "./constance";
-import { updateProfileSv } from "../../../service/user/userProfile.sv";
-import { toast } from "sonner";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { UserAvatarModal } from "./UserAvatarModal";
-import { UserProfileContext } from "./UserProfileStore";
+import clsx from 'clsx';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import MyButton from '../../../atom/my-button';
+import MyInput from '../../../atom/my-input';
+import MySelect from '../../../atom/my-select';
+import { updateProfileSv } from '../../../service/user/userProfile.sv';
+import { DataContext } from '../../../store/DataProvider';
+import { getRoleName } from '../../../util/user.util';
+import { occupationData } from './constance';
+import { UserAvatarModal } from './UserAvatarModal';
+import { UserProfileContext } from './UserProfileStore';
 
 export const UserProfileContent = () => {
   const { user, setUser } = useContext(DataContext);
@@ -35,11 +35,11 @@ export const UserProfileContent = () => {
   const updateProfile = async () => {
     try {
       const response = await updateProfileSv(profileData);
-      toast.success(response.message || "Cập nhật thông tin thành công");
+      toast.success(response.message || 'Cập nhật thông tin thành công');
       setUser((prev) => ({ ...prev, ...profileData }));
       setUpdating(false);
     } catch (error) {
-      toast.success(error?.message || "Lỗi khi cập nhật thông tin");
+      toast.success(error?.message || 'Lỗi khi cập nhật thông tin');
     }
   };
 
@@ -78,7 +78,7 @@ export const UserProfileContent = () => {
               inputHeight={48}
               value={profileData.fullName}
               disabled={!updating}
-              className={clsx(updating && "border-black")}
+              className={clsx(updating && 'border-black')}
               onChange={(e) => handleFullNameChange(e.target.value)}
             />
           </div>
@@ -88,8 +88,8 @@ export const UserProfileContent = () => {
               value={profileData.occupation}
               disabled={!updating}
               className={clsx(
-                "w-full border-black20",
-                updating && "border-black"
+                'w-full border-black20',
+                updating && 'border-black'
               )}
               boxHeight={48}
               data={occupationData}
@@ -112,17 +112,17 @@ export const UserProfileContent = () => {
             <MyButton
               className={clsx(
                 updating
-                  ? "bg-error hover:bg-error/75"
-                  : "bg-primary hover:bg-primary/75"
+                  ? 'bg-error hover:bg-error/75'
+                  : 'bg-primary hover:bg-primary/75'
               )}
-              size={"lg"}
+              size={'lg'}
               onClick={() => setUpdating(!updating)}
             >
-              {updating ? "Hủy" : "Chỉnh sửa"}
+              {updating ? 'Hủy' : 'Chỉnh sửa'}
             </MyButton>
             <MyButton
-              className={clsx("bg-success hover:bg-success/75")}
-              size={"lg"}
+              className={clsx('bg-success hover:bg-success/75')}
+              size={'lg'}
               onClick={updateProfile}
               hidden={!updating}
             >

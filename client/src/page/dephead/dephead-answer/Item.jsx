@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import ItemLayout from "../../../layout/item-layout";
-import { MessageCircleQuestion, MessageCircleReply } from "lucide-react";
-import { colors, darkModeCss } from "../../../constance";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { DepheadAnswerContext } from "./DepheadAnswerStore";
-import MyButton from "../../../atom/my-button";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { MessageCircleQuestion, MessageCircleReply } from 'lucide-react';
+import { useContext } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import MyButton from '../../../atom/my-button';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { DataContext } from '../../../store';
+import { DepheadAnswerContext } from './DepheadAnswerStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected, ApproveAnswer, setHiddenFeedback } =
@@ -16,7 +16,7 @@ export const Item = ({ data }) => {
 
   const handleExpand = () => {
     if (selected === data._id) {
-      setSelected("");
+      setSelected('');
     } else setSelected(data._id);
   };
 
@@ -28,12 +28,12 @@ export const Item = ({ data }) => {
     >
       <div>
         <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-          <MessageCircleQuestion color={darkMode ? "#fff" : colors.black75} />
+          <MessageCircleQuestion color={darkMode ? '#fff' : colors.black75} />
           <div>
             <h1
               className={clsx(
-                "font-bold",
-                darkMode ? "text-white" : "text-black75"
+                'font-bold',
+                darkMode ? 'text-white' : 'text-black75'
               )}
             >
               Câu hỏi
@@ -42,12 +42,12 @@ export const Item = ({ data }) => {
           </div>
         </div>
         <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-          <MessageCircleReply color={darkMode ? "#fff" : colors.black75} />
+          <MessageCircleReply color={darkMode ? '#fff' : colors.black75} />
           <div>
             <h1
               className={clsx(
-                "font-bold",
-                darkMode ? "text-white" : "text-black75"
+                'font-bold',
+                darkMode ? 'text-white' : 'text-black75'
               )}
             >
               Phản hồi
@@ -61,7 +61,7 @@ export const Item = ({ data }) => {
                 className="w-6 h-6 rounded-full border-2 border-primary"
               />
               <p className="text-sm font-semibold">
-                {data?.answer?.user?.fullName || "counsellor name"}
+                {data?.answer?.user?.fullName || 'counsellor name'}
               </p>
             </div>
           </div>
@@ -69,14 +69,14 @@ export const Item = ({ data }) => {
         <div className="flex flex-row-reverse mt-2 gap-2">
           <MyButton
             className="bg-success hover:opacity-75"
-            size={"md"}
+            size={'md'}
             onClick={() => ApproveAnswer(data._id)}
           >
             Duyệt
           </MyButton>
           <MyButton
             className="bg-error hover:opacity-75"
-            size={"md"}
+            size={'md'}
             onClick={() => setHiddenFeedback(false)}
           >
             Từ chối

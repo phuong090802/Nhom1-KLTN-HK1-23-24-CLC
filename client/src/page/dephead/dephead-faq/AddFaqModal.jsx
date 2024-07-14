@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
-import { DepheadFaqContext } from "./DepheadFaqStore";
-import { AddFaqForm } from "./AddFaqForm";
-import { getMyFieldsSv } from "../../../service/counsellor/counsellorField.sv";
+import { createContext, useContext, useEffect, useState } from 'react';
+import ModalLayout2 from '../../../layout/modal-layout-2/ModalLayout2';
+import { getMyFieldsSv } from '../../../service/counsellor/counsellorField.sv';
+import { AddFaqForm } from './AddFaqForm';
+import { DepheadFaqContext } from './DepheadFaqStore';
 
 export const AddFaqModalContext = createContext({
   fieldData: Array,
@@ -34,7 +34,7 @@ export const AddFaqModal = () => {
     <ModalLayout2
       hidden={hiddenAddFaq}
       setHidden={setHiddenAddFaq}
-      text={"Thêm Faq"}
+      text={'Thêm Faq'}
     >
       <AddFaqModalContext.Provider value={{ fieldData }}>
         <AddFaqForm />

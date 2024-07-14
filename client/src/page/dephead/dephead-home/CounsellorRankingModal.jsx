@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { DepheadHomeContext } from "./DepheadHomeStore";
-import { modalName } from "./const";
-import { deleteValueFromArray } from "../../../util/object.util";
-import { getRankingCounsellorSv } from "../../../service/dephead/depheadStatistic.sv";
-import default_avatar from "../../../assets/image/default_avatar.png";
+import { useContext, useEffect, useState } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { getRankingCounsellorSv } from '../../../service/dephead/depheadStatistic.sv';
+import { deleteValueFromArray } from '../../../util/object.util';
+import { DepheadHomeContext } from './DepheadHomeStore';
+import { modalName } from './const';
 
 export const CounsellorRankingModal = () => {
   const { showingModals, setShowingModals } = useContext(DepheadHomeContext);
@@ -30,9 +30,9 @@ export const CounsellorRankingModal = () => {
   }, []);
 
   const rankingData = [
-    { name: "Alice", score: 95 },
-    { name: "Bob", score: 85 },
-    { name: "Charlie", score: 80 },
+    { name: 'Alice', score: 95 },
+    { name: 'Bob', score: 85 },
+    { name: 'Charlie', score: 80 },
     // more data...
   ];
 
@@ -40,7 +40,7 @@ export const CounsellorRankingModal = () => {
     <ModalLayout2
       hidden={!showingModals?.includes(modalName.counsellorRanking)}
       onClose={onModalClose}
-      text={"Xếp hạng tư vấn viên"}
+      text={'Xếp hạng tư vấn viên'}
     >
       <div className="flex flex-col">
         <div className="overflow-x-auto">

@@ -1,13 +1,12 @@
-import React from "react";
-import TitleBar from "../../../molecule/title-bar";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import "./FlipCard.css";
+import default_avatar from '../../../assets/image/default_avatar.png';
+import TitleBar from '../../../molecule/title-bar';
+import './FlipCard.css';
 
 export const TemporyCounsellorPageUi = () => {
   return (
     <div className="mt-2">
       <TitleBar
-        title={"Danh sách tư vấn viên"}
+        title={'Danh sách tư vấn viên'}
         // setParams={setParams}
         // sortFilterData={sortFilterData}
       />

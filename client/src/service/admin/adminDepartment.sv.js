@@ -1,15 +1,15 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const getDepartmentsSv = (params) => {
-  return API.get("admin/departments", {
+  return API.get('admin/departments', {
     headers: authorHeader(),
     params: params,
   });
 };
 
 const addDepSv = (data) => {
-  return API.post("admin/departments", data, { headers: authorHeader() });
+  return API.post('admin/departments', data, { headers: authorHeader() });
 };
 
 const updateDepStatusSv = (depId, data) => {
@@ -32,7 +32,7 @@ const getDepCounsellorsSv = (depId, params) => {
 };
 
 const chooseDepheadSv = (data) => {
-  return API.put("admin/departments", data, {
+  return API.put('admin/departments', data, {
     headers: authorHeader(),
   });
 };
@@ -44,10 +44,17 @@ const getCounsellorsToAddSv = () => {
 };
 
 const addCounsellorToDep = (data) => {
-  return API.post("admin/counsellors", data, { headers: authorHeader() });
+  return API.post('admin/counsellors', data, { headers: authorHeader() });
 };
 
 export {
-  addCounsellorToDep, addDepSv, chooseDepheadSv,
-  getCounsellorsToAddSv, getDepartmentsSv, getDepCounsellorsSv, updateDepStatusSv, updateDepSv
+  addCounsellorToDep,
+  addDepSv,
+  chooseDepheadSv,
+  getCounsellorsToAddSv,
+  getDepartmentsSv,
+  getDepCounsellorsSv,
+  updateDepStatusSv,
+  updateDepSv
 };
+

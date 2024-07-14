@@ -1,9 +1,8 @@
-import { FileInput } from "lucide-react";
-import React, { useState } from "react";
-import MyFileInput from "../../../atom/my-file-input";
-import MyButton from "../../../atom/my-button/MyButton";
-import { importStaffSv } from "../../../service/admin/adminUser.sv";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button/MyButton';
+import MyFileInput from '../../../atom/my-file-input';
+import { importStaffSv } from '../../../service/admin/adminUser.sv';
 
 export const MultiAddForm = () => {
   const [file, setFile] = useState(null);
@@ -15,12 +14,12 @@ export const MultiAddForm = () => {
   const handleUploadFile = async () => {
     try {
       const submitData = new FormData();
-      submitData.append("file", file);
+      submitData.append('file', file);
       const response = await importStaffSv(submitData);
-      toast.success(response.message || "Tải file lên thành công");
+      toast.success(response.message || 'Tải file lên thành công');
       setFile(null);
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi tải file lên");
+      toast.error(error?.message || 'Lỗi khi tải file lên');
     }
   };
 
@@ -29,7 +28,7 @@ export const MultiAddForm = () => {
       <MyFileInput accept="text/csv" value={file} onChange={handleFileChange} />
       <MyButton
         className="bg-primary hover:bg-primary/75 mt-2"
-        size={"fullWidth"}
+        size={'fullWidth'}
         onClick={handleUploadFile}
       >
         Tải lên

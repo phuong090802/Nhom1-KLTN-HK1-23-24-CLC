@@ -1,8 +1,8 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const depheadGetFieldsSv = (params) => {
-  return API.get("department-head/fields", {
+  return API.get('department-head/fields', {
     headers: authorHeader(),
     params: params,
   });
@@ -15,9 +15,10 @@ const depheadUpdateFieldStatusSv = (fieldId, data) => {
 };
 
 const depheadAddFieldSv = (data) => {
-  return API.post("department-head/fields", data, {
+  return API.post('department-head/fields', data, {
     headers: authorHeader(),
   });
 };
 
 export { depheadAddFieldSv, depheadGetFieldsSv, depheadUpdateFieldStatusSv };
+

@@ -1,10 +1,10 @@
-import clsx from "clsx";
-import { CircleX } from "lucide-react";
-import { useContext, useEffect, useRef, useState } from "react";
-import { DataContext } from "../../store";
+import clsx from 'clsx';
+import { CircleX } from 'lucide-react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { DataContext } from '../../store';
 
 const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
-  const [key, setKey] = useState("");
+  const [key, setKey] = useState('');
 
   const timeOutId = useRef();
 
@@ -28,24 +28,24 @@ const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
   }, [key]);
 
   return (
-    <div className={clsx("relative z-[1] ", boxStyle)}>
+    <div className={clsx('relative z-[1] ', boxStyle)}>
       <input
         value={key}
         onChange={(e) => handleChange(e)}
         type="text"
         className={clsx(
-          "outline-none h-10 px-4 rounded-2xl text-black75 pr-9  overflow-hidden",
+          'outline-none h-10 px-4 rounded-2xl text-black75 pr-9  overflow-hidden',
           inputStyle,
-          darkMode ? "bg-white" : "bg-black10"
+          darkMode ? 'bg-white' : 'bg-black10'
         )}
-        placeholder={placeholder || "Tìm kiếm"}
+        placeholder={placeholder || 'Tìm kiếm'}
       />
       <CircleX
         className={`${
-          key ? "" : "hidden"
+          key ? '' : 'hidden'
         } absolute right-2 top-2 cursor-pointer`}
         color="rgba(36, 41, 45, 0.75)"
-        onClick={() => setKey("")}
+        onClick={() => setKey('')}
       />
     </div>
   );

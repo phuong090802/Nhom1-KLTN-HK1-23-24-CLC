@@ -1,6 +1,5 @@
-import React from "react";
-import { CounsellorFeedbackStore } from "./CounsellorFeedbackStore";
-import { CounsellorFeedbackContent } from "./CounsellorFeedbackContent";
+import { CounsellorFeedbackContent } from './CounsellorFeedbackContent';
+import { CounsellorFeedbackStore } from './CounsellorFeedbackStore';
 
 const CounsellorFeedback = () => {
   return (

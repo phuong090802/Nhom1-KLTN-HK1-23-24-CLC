@@ -1,8 +1,8 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 export const getFeedbacksSv = (params) => {
-  return API.get("counsellor/feedbacks", {
+  return API.get('counsellor/feedbacks', {
     headers: authorHeader(),
     params: params,
   });

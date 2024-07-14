@@ -1,49 +1,50 @@
-import isEmail from "validator/lib/isemail";
-import isMobilePhone from "validator/lib/isMobilePhone";
+import isEmail from 'validator/lib/isemail';
+import isMobilePhone from 'validator/lib/isMobilePhone';
 
 const createFormInitData = (array) => {
   const initData = {};
   array.forEach((item) => {
-    initData[item.name] = "";
+    initData[item.name] = '';
   });
   return initData;
 };
 
 const ruleValidators = {
   isRequired: (value) => {
-    return !value ? "Trường này không được để trống" : "";
+    return !value ? 'Trường này không được để trống' : '';
   },
   isEmail: (value) => {
-    return isEmail(value) ? "" : "Email không hợp lệ";
+    return isEmail(value) ? '' : 'Email không hợp lệ';
   },
   isMobilePhone: (value) => {
-    return isMobilePhone(value) ? "" : "Số điện thoại không hợp lệ";
+    return isMobilePhone(value) ? '' : 'Số điện thoại không hợp lệ';
   },
   minLength: (value, length) => {
-    return value.length >= length ? "" : `Yêu cầu tối thiểu ${length} ký tự `;
+    return value.length >= length ? '' : `Yêu cầu tối thiểu ${length} ký tự `;
   },
   isConfirm: (value, confirmValue) => {
     console.log(value, confirmValue);
-    return value === confirmValue ? "" : "Xác nhận không đúng";
+    return value === confirmValue ? '' : 'Xác nhận không đúng';
   },
 };
 
 const ruleList = {
   isRequired: () => {
-    return { name: "isRequired" };
+    return { name: 'isRequired' };
   },
   isMobilePhone: () => {
-    return { name: "isMobilePhone" };
+    return { name: 'isMobilePhone' };
   },
   isEmail: () => {
-    return { name: "isEmail" };
+    return { name: 'isEmail' };
   },
   minLength: (length) => {
-    return { name: "minLength", value: length };
+    return { name: 'minLength', value: length };
   },
   isConfirm: (value) => {
-    return { name: "isConfirm", value: value };
+    return { name: 'isConfirm', value: value };
   },
 };
 
-export { createFormInitData, ruleValidators, ruleList };
+export { createFormInitData, ruleList, ruleValidators };
+

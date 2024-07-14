@@ -1,10 +1,10 @@
-import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import React, { createContext, useEffect, useState } from "react";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import { getWaitingQuestionsSv } from "../../../service/dephead/depheadAnswer.sv";
-import { initParams } from "./constance";
-import { toast } from "sonner";
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import { getWaitingQuestionsSv } from '../../../service/dephead/depheadAnswer.sv';
+import { initParams } from './constance';
 
 export const DepheadAnswerContext = createContext({
   waitingQuestions: Array,
@@ -52,31 +52,31 @@ export const DepheadAnswerStore = ({ children }) => {
 
   const ApproveAnswer = async (questionId) => {
     try {
-      const response = await authSocket.emitWithAck("approve-answer:create", {
+      const response = await authSocket.emitWithAck('approve-answer:create', {
         questionId: questionId,
       });
       console.log(response);
-      toast.success(response?.message || "Duyệt câu trả lời thành công");
+      toast.success(response?.message || 'Duyệt câu trả lời thành công');
       setHiddenDetailAnswerModal(true);
       getWaitingQuestions();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi duyệt câu trả lời");
+      toast.error(error?.message || 'Lỗi khi duyệt câu trả lời');
     }
   };
 
   const FeedbackAnswer = async () => {
     try {
-      const response = await authSocket.emitWithAck("feedback:create", {
+      const response = await authSocket.emitWithAck('feedback:create', {
         questionId: selected,
         content: draftToHtml(convertToRaw(feedbackContent.getCurrentContent())),
       });
       console.log(response);
-      toast.success(response?.message || "Phản hồi câu trả lời thành công");
+      toast.success(response?.message || 'Phản hồi câu trả lời thành công');
       setHiddenDetailAnswerModal(true);
       setHiddenFeedback(true);
       getWaitingQuestions();
     } catch (error) {
-      toast.error(response?.message || "Lỗi khi phản hồi câu trả lời");
+      toast.error(response?.message || 'Lỗi khi phản hồi câu trả lời');
     }
   };
 

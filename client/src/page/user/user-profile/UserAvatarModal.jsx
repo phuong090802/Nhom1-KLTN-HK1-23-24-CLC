@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { UserProfileContext } from "./UserProfileStore";
-import { DataContext } from "../../../store";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import MyFileInput from "../../../atom/my-file-input";
-import MyButton from "../../../atom/my-button";
-import { changeAvatarSv } from "../../../service/user/userProfile.sv";
-import { toast } from "sonner";
+import { useContext, useState } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { changeAvatarSv } from '../../../service/user/userProfile.sv';
+import { DataContext } from '../../../store';
+import { UserProfileContext } from './UserProfileStore';
 
 export const UserAvatarModal = () => {
   const { hiddenAvatarModal, setHiddenAvatarModal } =
@@ -17,16 +17,16 @@ export const UserAvatarModal = () => {
   const changeAvatar = async () => {
     try {
       const submitData = new FormData();
-      submitData.append("file", file);
+      submitData.append('file', file);
       const response = await changeAvatarSv(submitData);
       console.log(response);
       setUser((prev) => ({ ...prev, avatar: URL.createObjectURL(file) }));
-      toast.success("Thay đổi avatar thành công");
+      toast.success('Thay đổi avatar thành công');
       setFile(null);
       setHiddenAvatarModal(true);
     } catch (error) {
       console.log(error);
-      toast.error("Lỗi khi thay đổi avatar");
+      toast.error('Lỗi khi thay đổi avatar');
     }
   };
 
@@ -51,7 +51,7 @@ export const UserAvatarModal = () => {
       <MyButton
         onClick={changeAvatar}
         className="bg-primary mt-4"
-        size={"fullWidth"}
+        size={'fullWidth'}
       >
         Thay đổi avatar
       </MyButton>

@@ -1,7 +1,6 @@
 const initParams = {
-  search: ["question"],
-  keyword: "",
-  keyword: null,
+  search: ['question'],
+  keyword: '',
   page: 1,
   size: 5,
   filter: {
@@ -15,9 +14,9 @@ const initParams = {
 };
 
 const initFaqData = {
-  fieldId: "",
-  question: "",
+  fieldId: '',
+  question: '',
   file: null,
 };
 
-export { initParams, initFaqData };
+export { initFaqData, initParams };

@@ -1,7 +1,6 @@
-import React from "react";
-import { AppLayoutStore } from "./AppLayoutStore";
-import { AppLayoutContent } from "./AppLayoutContent";
-import { Toaster } from "sonner";
+import { Toaster } from 'sonner';
+import { AppLayoutContent } from './AppLayoutContent';
+import { AppLayoutStore } from './AppLayoutStore';
 
 const AppLayout = ({ children }) => {
   return (

@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import { CircleX } from "lucide-react";
-import { useContext } from "react";
-import { DataContext } from "../../store";
-import { getRoleName } from "../../util/user.util";
+import clsx from 'clsx';
+import { CircleX } from 'lucide-react';
+import { useContext } from 'react';
+import { DataContext } from '../../store';
+import { getRoleName } from '../../util/user.util';
 
 const ModalLayout = ({ children, hidden, title, onClose }) => {
   const { user } = useContext(DataContext);
   return (
     <div
       className={clsx(
-        "fixed top-0 right-0 left-0 bottom-0 bg-black10 backdrop-blur-sm z-10 flex justify-center items-center",
-        hidden && "hidden"
+        'fixed top-0 right-0 left-0 bottom-0 bg-black10 backdrop-blur-sm z-10 flex justify-center items-center',
+        hidden && 'hidden'
       )}
     >
       <div className="bg-white p-4 rounded-2xl min-w-52">
@@ -20,11 +20,11 @@ const ModalLayout = ({ children, hidden, title, onClose }) => {
               {getRoleName(user.role)}
             </p>
             <p className="font-semibold text-black75 text-sm">
-              {title || "Không có tiêu đề"}
+              {title || 'Không có tiêu đề'}
             </p>
           </div>
           <CircleX
-            color={"#fff"}
+            color={'#fff'}
             className="cursor-pointer bg-primary hover:bg-primary/75 rounded-full"
             onClick={onClose}
           />

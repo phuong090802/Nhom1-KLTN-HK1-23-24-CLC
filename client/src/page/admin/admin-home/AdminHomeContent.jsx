@@ -1,7 +1,6 @@
-import React from "react";
-import { Dashboard } from "./Dashboard";
-import { QuestionChart } from "./QuestionChart";
-import { DepartmentStatisticModal } from "./DepartmentStatisticModal";
+import { Dashboard } from './Dashboard';
+import { DepartmentStatisticModal } from './DepartmentStatisticModal';
+import { QuestionChart } from './QuestionChart';
 
 export const AdminHomeContent = () => {
   return (

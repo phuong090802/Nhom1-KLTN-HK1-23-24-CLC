@@ -1,1 +1,2 @@
-export { default } from "./DepheadHome";
+export { default } from './DepheadHome';
+

@@ -1,21 +1,21 @@
-import { useContext, useMemo } from "react";
-import ItemLayout from "../../../layout/item-layout";
-import { getRoleName } from "../../../util/user.util";
+import clsx from 'clsx';
 import {
+  CircleMinus,
+  CirclePlus,
+  Layers,
   Mail,
   Phone,
   Tag,
-  Layers,
-  CircleMinus,
-  CirclePlus,
-} from "lucide-react";
-import { colors } from "../../../constance";
-import { DepheadCounsellorContext } from "./DepheadCounsellorStore";
-import MyButton from "../../../atom/my-button";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { deleteFieldsForCounSv } from "../../../service/dephead/depheadCounsellor.sv";
-import { toast } from "sonner";
+} from 'lucide-react';
+import { useContext, useMemo } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { deleteFieldsForCounSv } from '../../../service/dephead/depheadCounsellor.sv';
+import { DataContext } from '../../../store';
+import { getRoleName } from '../../../util/user.util';
+import { DepheadCounsellorContext } from './DepheadCounsellorStore';
 
 export const Item = ({ data }) => {
   const {
@@ -39,9 +39,9 @@ export const Item = ({ data }) => {
           else return coun;
         });
       });
-      toast.success(response?.message || "Xóa lĩnh vực thành công");
+      toast.success(response?.message || 'Xóa lĩnh vực thành công');
     } catch (error) {
-      toast.success(error?.message || "Lỗi khi xóa lĩnh vực cho tư vấn viên");
+      toast.success(error?.message || 'Lỗi khi xóa lĩnh vực cho tư vấn viên');
     }
   };
 
@@ -53,7 +53,7 @@ export const Item = ({ data }) => {
 
   const cells = useMemo(() => {
     const iconProps = {
-      color: darkMode ? "#fff" : colors.black75,
+      color: darkMode ? '#fff' : colors.black75,
       size: 18,
     };
     const handleAddFieldClick = () => {
@@ -63,28 +63,28 @@ export const Item = ({ data }) => {
     return [
       {
         icon: <Phone {...iconProps} />,
-        title: "Số điện thoại:",
-        content: data.phoneNumber || "Chưa cập nhật",
+        title: 'Số điện thoại:',
+        content: data.phoneNumber || 'Chưa cập nhật',
       },
       {
         icon: <Mail {...iconProps} />,
-        title: "Email:",
-        content: data.email || "Chưa cập nhật",
+        title: 'Email:',
+        content: data.email || 'Chưa cập nhật',
       },
       {
         icon: <Tag {...iconProps} />,
-        title: "Chức vụ:",
-        content: data.role ? getRoleName(data.role) : "Chưa cập nhật",
+        title: 'Chức vụ:',
+        content: data.role ? getRoleName(data.role) : 'Chưa cập nhật',
       },
       {
         icon: <Layers {...iconProps} />,
-        title: "Lĩnh vực:",
+        title: 'Lĩnh vực:',
         content: (
           <>
             <div
               className={clsx(
-                "border rounded-lg overflow-hidden",
-                darkMode ? "border-white" : "border-black25 "
+                'border rounded-lg overflow-hidden',
+                darkMode ? 'border-white' : 'border-black25 '
               )}
             >
               <div className="max-h-32 overflow-auto px-8 py-1">
@@ -110,7 +110,7 @@ export const Item = ({ data }) => {
               </div>
             </div>
             <MyButton
-              size={"sm"}
+              size={'sm'}
               className="bg-primary hover:bg-primary/75 mt-1"
               onClick={handleAddFieldClick}
             >
@@ -158,8 +158,8 @@ const Cell = ({ icon, title, content }) => {
   return (
     <div
       className={clsx(
-        "flex flex-row gap-16",
-        darkMode ? "text-white" : "text-black75"
+        'flex flex-row gap-16',
+        darkMode ? 'text-white' : 'text-black75'
       )}
     >
       <span className="flex flex-row items-center w-40 self-start">

@@ -1,9 +1,9 @@
-import { Bell } from "lucide-react";
-import { DataContext } from "../../store";
-import { useContext } from "react";
-import clsx from "clsx";
-import { AppLayoutContext } from "./AppLayoutStore";
-import { convertDateTimeToDate } from "../../util/convert.util";
+import clsx from 'clsx';
+import { Bell } from 'lucide-react';
+import { useContext } from 'react';
+import { DataContext } from '../../store';
+import { convertDateTimeToDate } from '../../util/convert.util';
+import { AppLayoutContext } from './AppLayoutStore';
 
 export const NotiButton = () => {
   const { user, darkMode, newNoti, setNewNoti } = useContext(DataContext);
@@ -12,11 +12,11 @@ export const NotiButton = () => {
     useContext(AppLayoutContext);
 
   const handleClick = () => {
-    if (showingModal === "noti") {
-      setShowingModal("");
+    if (showingModal === 'noti') {
+      setShowingModal('');
     } else {
       setNewNoti(false);
-      setShowingModal("noti");
+      setShowingModal('noti');
     }
   };
 
@@ -24,8 +24,8 @@ export const NotiButton = () => {
     <div className="relative">
       <div
         className={clsx(
-          "w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer",
-          darkMode && "bg-white/10"
+          'w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer',
+          darkMode && 'bg-white/10'
         )}
       >
         <button className="cursor-pointer relative" onClick={handleClick}>
@@ -37,8 +37,8 @@ export const NotiButton = () => {
       </div>
       <div
         className={clsx(
-          "w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-2 py-4 overflow-y-auto cursor-pointer",
-          showingModal !== "noti" && "hidden"
+          'w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-2 py-4 overflow-y-auto cursor-pointer',
+          showingModal !== 'noti' && 'hidden'
         )}
       >
         <h1 className="text-2xl font-bold text-black75 mb-4 px-4">Thông báo</h1>

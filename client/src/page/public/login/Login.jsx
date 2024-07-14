@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import LoginForm from "./LoginForm";
-import { links } from "../../../constance";
+import { useNavigate } from 'react-router-dom';
+import { links } from '../../../constance';
+import LoginForm from './LoginForm';
 
 const Login = () => {
   const navigate = useNavigate();

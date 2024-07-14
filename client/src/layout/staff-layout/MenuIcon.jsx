@@ -1,15 +1,15 @@
-import { useMemo } from "react";
 import {
-  LayoutDashboard,
   CircleHelp,
-  MessageCircleReply,
-  Layers,
-  Users,
-  MessageCircleQuestion,
   ClipboardCheck,
+  Layers,
+  LayoutDashboard,
+  MessageCircleQuestion,
+  MessageCircleReply,
+  Newspaper,
   Store,
-  Newspaper
-} from "lucide-react";
+  Users,
+} from 'lucide-react';
+import { useMemo } from 'react';
 
 export const MenuIcon = ({
   name,
@@ -21,28 +21,28 @@ export const MenuIcon = ({
   const icon = useMemo(() => {
     const iconProps = {
       size: size || 24,
-      color: color || "#000",
+      color: color || '#000',
       strokeWidth: strokeWidth || 2,
       absoluteStrokeWidth: absoluteStrokeWidth || false,
     };
     switch (name) {
-      case "LayoutDashboard":
+      case 'LayoutDashboard':
         return <LayoutDashboard {...iconProps} />;
-      case "Newspaper":
+      case 'Newspaper':
         return <Newspaper {...iconProps} />;
-      case "CircleHelp":
+      case 'CircleHelp':
         return <CircleHelp {...iconProps} />;
-      case "MessageCircleReply":
+      case 'MessageCircleReply':
         return <MessageCircleReply {...iconProps} />;
-      case "Layers":
+      case 'Layers':
         return <Layers {...iconProps} />;
-      case "Users":
+      case 'Users':
         return <Users {...iconProps} />;
-      case "MessageCircleQuestion":
+      case 'MessageCircleQuestion':
         return <MessageCircleQuestion {...iconProps} />;
-      case "ClipboardCheck":
+      case 'ClipboardCheck':
         return <ClipboardCheck {...iconProps} />;
-      case "Store":
+      case 'Store':
         return <Store {...iconProps} />;
       default:
         break;

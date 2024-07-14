@@ -1,11 +1,11 @@
-import { Mail, Phone, Tag } from "lucide-react";
-import { useContext, useMemo } from "react";
-import { colors } from "../../../constance";
-import ItemLayout from "../../../layout/item-layout";
-import { getRoleName } from "../../../util/user.util";
-import { AdminStaffContext } from "./AdminStaffStore";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { Mail, Phone, Tag } from 'lucide-react';
+import { useContext, useMemo } from 'react';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { DataContext } from '../../../store';
+import { getRoleName } from '../../../util/user.util';
+import { AdminStaffContext } from './AdminStaffStore';
 
 export const Item = ({ text, data }) => {
   const { selectedUser, setSelectedUser, updateUser } =
@@ -15,24 +15,24 @@ export const Item = ({ text, data }) => {
 
   const cells = useMemo(() => {
     const iconProps = {
-      color: darkMode ? "#fff" : colors.black75,
+      color: darkMode ? '#fff' : colors.black75,
       size: 18,
     };
     return [
       {
         icon: <Phone {...iconProps} />,
-        title: "Số điện thoại",
-        content: data.phoneNumber || "Chưa cập nhật",
+        title: 'Số điện thoại',
+        content: data.phoneNumber || 'Chưa cập nhật',
       },
       {
         icon: <Mail {...iconProps} />,
-        title: "Email",
-        content: data.email || "Chưa cập nhật",
+        title: 'Email',
+        content: data.email || 'Chưa cập nhật',
       },
       {
         icon: <Tag {...iconProps} />,
-        title: "Chức vụ",
-        content: data.role ? getRoleName(data.role) : "Chưa cập nhật",
+        title: 'Chức vụ',
+        content: data.role ? getRoleName(data.role) : 'Chưa cập nhật',
       },
     ];
   }, [data, darkMode]);
@@ -77,8 +77,8 @@ const Cell = ({ icon, title, content }) => {
         {icon}
         <p
           className={clsx(
-            "text-base ml-1 font-semibold",
-            darkMode ? "text-white" : " text-black75"
+            'text-base ml-1 font-semibold',
+            darkMode ? 'text-white' : ' text-black75'
           )}
         >
           {title}
@@ -86,8 +86,8 @@ const Cell = ({ icon, title, content }) => {
       </span>
       <p
         className={clsx(
-          "text-base font-semibold text-black75",
-          darkMode ? "text-white" : " text-black75"
+          'text-base font-semibold text-black75',
+          darkMode ? 'text-white' : ' text-black75'
         )}
       >
         {content}

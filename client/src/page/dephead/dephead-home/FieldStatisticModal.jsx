@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import { DepheadHomeContext } from "./DepheadHomeStore";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { modalName } from "./const";
-import { deleteValueFromArray } from "../../../util/object.util";
+import { useContext } from 'react';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { deleteValueFromArray } from '../../../util/object.util';
+import { modalName } from './const';
+import { DepheadHomeContext } from './DepheadHomeStore';
 
 export const FieldStatisticModal = () => {
   const { fieldSatisticData, showingModals, setShowingModals } =
@@ -16,7 +16,7 @@ export const FieldStatisticModal = () => {
           deleteValueFromArray(prev, modalName.fieldStatistic)
         )
       }
-      text={"Thống kê lĩnh vực"}
+      text={'Thống kê lĩnh vực'}
     >
       <div className="flex flex-col">
         <div className="overflow-x-auto">

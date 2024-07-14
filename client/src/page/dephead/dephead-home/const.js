@@ -1,5 +1,5 @@
 export const modalName = {
-  overDue: "overDueQuestionModal",
-  fieldStatistic: "fieldStatisticModal",
-  counsellorRanking: "counsellorRankingModal",
+  overDue: 'overDueQuestionModal',
+  fieldStatistic: 'fieldStatisticModal',
+  counsellorRanking: 'counsellorRankingModal',
 };

@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { createContext } from "react";
-import { getQuestionsSv } from "../../../service/public/question.sv";
-import { toast } from "sonner";
-import { initParams } from "./constance";
-import { DataContext } from "../../../store";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getQuestionsSv } from '../../../service/public/question.sv';
+import { DataContext } from '../../../store';
+import { initParams } from './constance';
 export const HomePageContext = createContext({
   questions: Array,
   setQuestions: Function,
@@ -28,7 +26,7 @@ export const HomePageStore = ({ children }) => {
 
   // const [selected, setSelected] = useState("");
 
-  const {isLoggedIn} = useContext(DataContext)
+  const { isLoggedIn } = useContext(DataContext);
 
   const [selectedData, setSelectedData] = useState(null);
 
@@ -50,7 +48,7 @@ export const HomePageStore = ({ children }) => {
       setPages(response.pages);
       // console.log(response);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
       // toast.warning(error?.message || "Lỗi khi tải trang chủ");
     }
   };

@@ -1,5 +1,5 @@
-import { RegisterContent } from "./RegisterContent";
-import { RegisterStore } from "./RegisterStore";
+import { RegisterContent } from './RegisterContent';
+import { RegisterStore } from './RegisterStore';
 
 const Register = () => {
   return (

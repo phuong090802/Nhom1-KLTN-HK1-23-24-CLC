@@ -1,22 +1,23 @@
-import { VariantProps, cva } from "class-variance-authority";
-import clsx from "clsx";
-import { InputHTMLAttributes, forwardRef, useMemo } from "react";
-import { cn } from "../../util/css.util";
+import { VariantProps, cva } from 'class-variance-authority';
+import clsx from 'clsx';
+import { InputHTMLAttributes, forwardRef, useMemo } from 'react';
 
-export const inputVariants = cva("w-full outline-none", {
+import { cn } from '../../util/css.util';
+
+export const inputVariants = cva('w-full outline-none', {
   variants: {
     variant: {
-      default: "border-2 border-black10 rounded-md px-4",
-      icon: "border-2 border-black10 rounded-md pl-10 pr-4",
+      default: 'border-2 border-black10 rounded-md px-4',
+      icon: 'border-2 border-black10 rounded-md pl-10 pr-4',
     },
     inputHeight: {
-      32: "h-8",
-      40: "h-10",
-      48: "h-12",
+      32: 'h-8',
+      40: 'h-10',
+      48: 'h-12',
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: 'default',
     inputHeight: 32,
   },
 });
@@ -33,16 +34,16 @@ const MyInput = forwardRef<HTMLInputElement, InputProps>(
       let iconPosition;
       switch (inputHeight) {
         case 32:
-          iconPosition = "top-[4px]";
+          iconPosition = 'top-[4px]';
           break;
         case 40:
-          iconPosition = "top-[8px]";
+          iconPosition = 'top-[8px]';
           break;
         case 48:
-          iconPosition = "top-[12px]";
+          iconPosition = 'top-[12px]';
           break;
         default:
-          iconPosition = "top-[4px]";
+          iconPosition = 'top-[4px]';
           break;
       }
       return { iconPosition };
@@ -56,7 +57,7 @@ const MyInput = forwardRef<HTMLInputElement, InputProps>(
           className={cn(inputVariants({ variant, inputHeight, className }))}
           {...props}
         />
-        <div className={clsx("absolute left-4", heightCalculate.iconPosition)}>
+        <div className={clsx('absolute left-4', heightCalculate.iconPosition)}>
           {!!icon && icon}
         </div>
       </div>

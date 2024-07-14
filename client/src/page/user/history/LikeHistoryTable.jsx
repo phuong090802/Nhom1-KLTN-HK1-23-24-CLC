@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { HistoryContext } from "./HistoryStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import Pagination from "../../../molecule/pagination";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { HistoryContext } from './HistoryStore';
 
 export const LikeHistoryTable = () => {
   const {
@@ -48,7 +48,7 @@ export const LikeHistoryTable = () => {
           {likedQuestions?.map((question, index) => (
             <tr
               key={question?._id || index}
-              className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+              className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
             >
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {convertDateTimeToDate(question?.createdAt)}

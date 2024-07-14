@@ -1,5 +1,5 @@
-import { FaqsPageContent } from "./FaqsPageContent";
-import { FaqsPageStore } from "./FaqsPageStore";
+import { FaqsPageContent } from './FaqsPageContent';
+import { FaqsPageStore } from './FaqsPageStore';
 
 const FaqsPage = () => {
   return (

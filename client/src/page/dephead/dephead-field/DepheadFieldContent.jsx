@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import { Item } from "./Item";
-import { DepheadFieldContext } from "./DepheadFieldStore";
-import Pagination from "../../../molecule/pagination";
-import SortFilterModal from "../../../organism/sort-filter-modal";
-import { DepheadAddFIeldModal } from "./DepheadAddFIeldModal";
-import { DepheadFieldTable } from "./DepheadFieldTable";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import SortFilterModal from '../../../organism/sort-filter-modal';
+import { DepheadAddFIeldModal } from './DepheadAddFIeldModal';
+import { DepheadFieldContext } from './DepheadFieldStore';
+import { DepheadFieldTable } from './DepheadFieldTable';
 
 export const DepheadFieldContent = () => {
   const {
@@ -32,10 +31,10 @@ export const DepheadFieldContent = () => {
         setParams={setParams}
         sorts={sort}
         filters={filter}
-        modalTitle={"Lọc & Sắp xếp"}
+        modalTitle={'Lọc & Sắp xếp'}
       />
       <StaffTitleBar
-        title={"Quản lý lĩnh vực"}
+        title={'Quản lý lĩnh vực'}
         onSearchFilter={() => setHiddenFilterSort(false)}
         setParams={setParams}
         onAdd={() => setHiddenAddField(false)}
@@ -52,9 +51,9 @@ export const DepheadFieldContent = () => {
           //       key={field._id}
           //       fieldName={field.fieldName}
           //       status={field.isActive}
-                // onStatus={() =>
-                //   updateFieldStatus(field._id, { isActive: !field.isActive })
-                // }
+          // onStatus={() =>
+          //   updateFieldStatus(field._id, { isActive: !field.isActive })
+          // }
           //     />
           //   );
           // })

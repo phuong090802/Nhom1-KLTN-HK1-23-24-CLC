@@ -1,7 +1,6 @@
-import React from "react";
-import { RegisterForm } from "./RegisterForm";
-import { links } from "../../../constance";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { links } from '../../../constance';
+import { RegisterForm } from './RegisterForm';
 
 export const RegisterContent = () => {
   const navigate = useNavigate();

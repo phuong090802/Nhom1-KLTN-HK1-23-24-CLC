@@ -1,12 +1,12 @@
 import Cookies from 'js-cookie';
 import { useContext, useEffect, useState } from 'react';
+
 import { refreshTokenSv } from '../service/public/auth.sv';
 import { authSocket } from '../socket/auth.socket';
 import { DataContext } from '../store';
 
 export const useAuthSocket = () => {
   const [connected, setConnected] = useState(authSocket.connected);
-
   const { isLoggedIn } = useContext(DataContext);
 
   useEffect(() => {
@@ -32,9 +32,7 @@ export const useAuthSocket = () => {
       setConnected(false);
     };
     const onConnectError = async (error) => {
-      console.log(error.data);
       console.log('socket "/auth" connectError');
-      // authSocket.close();
       if (
         error?.data?.code === 4040 ||
         error?.data?.code === 4041 ||

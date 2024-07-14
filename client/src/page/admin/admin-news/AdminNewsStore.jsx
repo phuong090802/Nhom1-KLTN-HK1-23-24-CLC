@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from "react";
-import { addNewsSv, getNewsSv } from "../../../service/admin/adminNews.sv";
-import { toast } from "sonner";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { getNewsSv } from '../../../service/admin/adminNews.sv';
+import { initParams } from './constance';
 
 export const AdminNewsContext = createContext({
   news: Array,
@@ -37,11 +37,9 @@ export const AdminNewsStore = ({ children }) => {
       setNews(response?.listNews);
       setPages(response?.pages || 0);
     } catch (error) {
-      toast.error("Lỗi khi lấy danh sách tin tức");
+      toast.error('Lỗi khi lấy danh sách tin tức');
     }
   };
-
- 
 
   useEffect(() => {
     getNews();

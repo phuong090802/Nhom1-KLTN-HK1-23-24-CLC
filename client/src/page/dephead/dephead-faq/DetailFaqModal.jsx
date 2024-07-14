@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
-import { DepheadFaqContext } from "./DepheadFaqStore";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import MyButton from "../../../atom/my-button";
-import { depheadDeleteFaqSv } from "../../../service/dephead/depheadFaq.sv";
-import { toast } from "sonner";
-import FileComponent from "../../../atom/file-component";
+import { useContext } from 'react';
+import { toast } from 'sonner';
+import FileComponent from '../../../atom/file-component';
+import MyButton from '../../../atom/my-button';
+import ModalLayout2 from '../../../layout/modal-layout-2/ModalLayout2';
+import { depheadDeleteFaqSv } from '../../../service/dephead/depheadFaq.sv';
+import { DepheadFaqContext } from './DepheadFaqStore';
 
 export const DetailFaqModal = () => {
   const {
@@ -19,12 +18,12 @@ export const DetailFaqModal = () => {
   const deleteFaq = async () => {
     try {
       const response = await depheadDeleteFaqSv(selected._id);
-      toast.success(response?.message || "Xóa FAQ thành công");
+      toast.success(response?.message || 'Xóa FAQ thành công');
       depheadGetFaqs();
       setHiddenDetailFaqModal(true);
       setSelected(null);
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi xóa FAQ");
+      toast.error(error?.message || 'Lỗi khi xóa FAQ');
     }
   };
 
@@ -65,8 +64,8 @@ export const DetailFaqModal = () => {
             />
             {!selected?.answerAttachment ? (
               <></>
-            ) : selected.answerAttachment.includes("png") ||
-              selected.answerAttachment.includes("jpg") ? (
+            ) : selected.answerAttachment.includes('png') ||
+              selected.answerAttachment.includes('jpg') ? (
               <img
                 className="size-24"
                 src={selected?.answerAttachment}

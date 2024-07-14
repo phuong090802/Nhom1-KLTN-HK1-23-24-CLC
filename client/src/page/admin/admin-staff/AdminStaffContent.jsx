@@ -1,10 +1,10 @@
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import { Item } from "./Item";
-import { useContext } from "react";
-import { AdminStaffContext } from "./AdminStaffStore";
-import Pagination from "../../../molecule/pagination";
-import SortFilterModal from "../../../organism/sort-filter-modal";
-import { AddStaffModal } from "./AddStaffModal";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import SortFilterModal from '../../../organism/sort-filter-modal';
+import { AddStaffModal } from './AddStaffModal';
+import { AdminStaffContext } from './AdminStaffStore';
+import { Item } from './Item';
 
 export const AdminStaffContent = () => {
   const {
@@ -16,7 +16,7 @@ export const AdminStaffContent = () => {
     hiddenSortFilter,
     filter,
     sort,
-    setHiddenAddStaffModal
+    setHiddenAddStaffModal,
   } = useContext(AdminStaffContext);
 
   return (
@@ -24,7 +24,7 @@ export const AdminStaffContent = () => {
       <AddStaffModal />
       <SortFilterModal
         hidden={hiddenSortFilter}
-        modalTitle={""}
+        modalTitle={''}
         setParams={setParams}
         params={params}
         onClose={() => setHiddenSortFilter(true)}
@@ -32,7 +32,7 @@ export const AdminStaffContent = () => {
         sorts={sort}
       />
       <StaffTitleBar
-        title={"Quản lý người dùng"}
+        title={'Quản lý người dùng'}
         setParams={setParams}
         onSearchFilter={() => setHiddenSortFilter(false)}
         onAdd={() => setHiddenAddStaffModal(false)}

@@ -1,9 +1,8 @@
-import { useState } from "react";
-import MyButton from "../../atom/my-button";
-import MySelect from "../../atom/my-select";
-import ModalLayout from "../../layout/modal-layout";
-import ModalLayout2 from "../../layout/modal-layout-2";
-import { Sort } from "./Sort";
+import { useState } from 'react';
+import MyButton from '../../atom/my-button';
+import MySelect from '../../atom/my-select';
+import ModalLayout2 from '../../layout/modal-layout-2';
+import { Sort } from './Sort';
 
 const SortFilterModal = ({
   modalTitle,
@@ -28,7 +27,7 @@ const SortFilterModal = ({
   };
 
   const handleFilterChange = (value, filterName) => {
-    if (value === "null")
+    if (value === 'null')
       filterName
         ? setTempFilter(delete tempFilter[filterName])
         : setTempFilter(null);
@@ -50,7 +49,7 @@ const SortFilterModal = ({
               return (
                 <div key={filter.label.value || index}>
                   <label className="text-xs font-semibold text-black75">
-                    {filter.label.key + ":"}
+                    {filter.label.key + ':'}
                   </label>
                   <MySelect
                     data={filter.data}

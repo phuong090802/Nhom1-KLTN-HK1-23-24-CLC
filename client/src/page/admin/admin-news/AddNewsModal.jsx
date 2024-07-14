@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { AdminNewsContext } from "./AdminNewsStore";
-import MyButton from "../../../atom/my-button";
-import MyFileInput from "../../../atom/my-file-input";
-import MyRichText from "../../../atom/my-rich-text";
-import MyInput from "../../../atom/my-input";
-import { convertToRaw, EditorState } from "draft-js";
-import { addNewsSv } from "../../../service/admin/adminNews.sv";
-import draftToHtml from "draftjs-to-html";
-import { toast } from "sonner";
+import { convertToRaw, EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { useContext, useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import MyInput from '../../../atom/my-input';
+import MyRichText from '../../../atom/my-rich-text';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { addNewsSv } from '../../../service/admin/adminNews.sv';
+import { AdminNewsContext } from './AdminNewsStore';
 
 export const AddNewsModal = () => {
   const { hiddenAddNewsModal, setHiddenAddNewsModal, getNews } =
@@ -17,7 +17,7 @@ export const AddNewsModal = () => {
   const [newsContent, setNewsContent] = useState(EditorState.createEmpty());
 
   const [newsData, setNewsData] = useState({
-    title: "",
+    title: '',
     file: null,
   });
 
@@ -28,15 +28,15 @@ export const AddNewsModal = () => {
         content: draftToHtml(convertToRaw(newsContent.getCurrentContent())),
       });
       console.log(response);
-      toast.success(response?.message || "Tạo tin tức thành công");
+      toast.success(response?.message || 'Tạo tin tức thành công');
       setNewsContent(EditorState.createEmpty());
       setNewsData({
-        title: "",
+        title: '',
         file: null,
       });
       getNews();
     } catch (error) {
-      toast.error(error?.message || "Lỗi xảy ra khi tạo tin tức");
+      toast.error(error?.message || 'Lỗi xảy ra khi tạo tin tức');
     }
   };
 
@@ -44,7 +44,7 @@ export const AddNewsModal = () => {
     <ModalLayout2
       hidden={hiddenAddNewsModal}
       setHidden={setHiddenAddNewsModal}
-      text={"Thêm tin tức"}
+      text={'Thêm tin tức'}
     >
       <div className="mt-2 py-2 w-[28rem]">
         <div className="px-4">
@@ -61,8 +61,8 @@ export const AddNewsModal = () => {
           <MyRichText
             editorState={newsContent}
             setEditorState={setNewsContent}
-            className={"border-2 h-[150px] px-0"}
-            placeholder={"Nhập nội dung câu hỏi ..."}
+            className={'border-2 h-[150px] px-0'}
+            placeholder={'Nhập nội dung câu hỏi ...'}
           />
         </div>
         <div className="pt-2 px-4">
@@ -75,7 +75,7 @@ export const AddNewsModal = () => {
         </div>
       </div>
       <div className="p-2">
-        <MyButton className="bg-primary" size={"fullWidth"} onClick={addNews}>
+        <MyButton className="bg-primary" size={'fullWidth'} onClick={addNews}>
           Tạo tin tức
         </MyButton>
       </div>

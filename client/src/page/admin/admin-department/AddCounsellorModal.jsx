@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { AdminDepartmentContext } from "./AdminDepartmentStore";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { Check, Plus, Star } from "lucide-react";
+import { Check, Plus } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import ModalLayout2 from '../../../layout/modal-layout-2';
 import {
   addCounsellorToDep,
   getCounsellorsToAddSv,
-} from "../../../service/admin/adminDepartment.sv";
-import { toast } from "sonner";
+} from '../../../service/admin/adminDepartment.sv';
+import { AdminDepartmentContext } from './AdminDepartmentStore';
 
 export const AddCounsellorModal = ({ hidden, setHidden }) => {
   const { selectedDep } = useContext(AdminDepartmentContext);
@@ -19,10 +19,10 @@ export const AddCounsellorModal = ({ hidden, setHidden }) => {
   const getCounsellorToAdd = async () => {
     try {
       const response = await getCounsellorsToAddSv(selectedDep._id);
-      console.log("getCounsellorToAdd", response);
+      console.log('getCounsellorToAdd', response);
       setCounsellorList(response?.counsellors || []);
     } catch (error) {
-      toast.error("Lỗi khi lấy danh sách tư vấn viên");
+      toast.error('Lỗi khi lấy danh sách tư vấn viên');
     }
   };
 
@@ -34,7 +34,7 @@ export const AddCounsellorModal = ({ hidden, setHidden }) => {
       });
       setAddedList((prev) => [...prev, userId]);
     } catch (error) {
-      toast.error("Lỗi khi thêm nhân viên vào khoa");
+      toast.error('Lỗi khi thêm nhân viên vào khoa');
     }
   };
 
@@ -44,16 +44,16 @@ export const AddCounsellorModal = ({ hidden, setHidden }) => {
 
   const employees = [
     {
-      avatar: "https://example.com/avatar1.jpg",
-      name: "Ưu Tú",
+      avatar: 'https://example.com/avatar1.jpg',
+      name: 'Ưu Tú',
     },
     {
-      avatar: "https://example.com/avatar2.jpg",
-      name: "Nguyễn Văn B",
+      avatar: 'https://example.com/avatar2.jpg',
+      name: 'Nguyễn Văn B',
     },
     {
-      avatar: "https://example.com/avatar3.jpg",
-      name: "Trần Thị C",
+      avatar: 'https://example.com/avatar3.jpg',
+      name: 'Trần Thị C',
     },
   ];
 

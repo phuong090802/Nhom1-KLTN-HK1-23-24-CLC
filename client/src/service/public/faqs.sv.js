@@ -1,9 +1,10 @@
-import API from "../api.sv";
+import API from '../api.sv';
 
 const getFaqsSv = (params) => {
-  return API.get("faqs", {
+  return API.get('faqs', {
     params: params,
   });
 };
 
 export { getFaqsSv };
+

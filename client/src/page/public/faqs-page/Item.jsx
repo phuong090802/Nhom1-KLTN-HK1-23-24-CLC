@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { MessageCircleReply } from "lucide-react";
+import { useContext } from "react";
+import { colors } from "../../../constance";
 import ItemLayout from "../../../layout/item-layout";
 import { FaqsPageContext } from "./FaqsPageStore";
-import { MessageCircleReply } from "lucide-react";
-import { colors } from "../../../constance";
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(FaqsPageContext);

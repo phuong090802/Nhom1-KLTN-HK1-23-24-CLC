@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import MyInput from "../../../atom/my-input";
-import MyButton from "../../../atom/my-button";
-import { passwordChangeSv } from "../../../service/user/userProfile.sv";
-import { validate } from "../../../constance";
-import clsx from "clsx";
-import { toast } from "sonner";
+import React, { useEffect, useState } from 'react';
+import MyInput from '../../../atom/my-input';
+import MyButton from '../../../atom/my-button';
+import { passwordChangeSv } from '../../../service/user/userProfile.sv';
+import { validate } from '../../../constance';
+import clsx from 'clsx';
+import { toast } from 'sonner';
 
 export const PasswordChangeContent = () => {
   const [passwordChangeData, setPasswordChangeData] = useState({
-    password: "",
-    confirmPassword: "",
+    password: '',
+    confirmPassword: '',
   });
 
-  const [error, setError] = useState({ password: "", confirmPassword: "" });
+  const [error, setError] = useState({ password: '', confirmPassword: '' });
 
   const [updating, setUpdating] = useState(false);
 
@@ -29,17 +29,17 @@ export const PasswordChangeContent = () => {
     try {
       const response = await passwordChangeSv(passwordChangeData);
       setUpdating(false);
-      toast.success(response.message || "Đổi mật khẩu thành công");
+      toast.success(response.message || 'Đổi mật khẩu thành công');
     } catch (error) {
       console.log(error);
-      toast.error(error?.message || "Đổi mật khẩu thất bại");
+      toast.error(error?.message || 'Đổi mật khẩu thất bại');
     }
   };
 
   const validatePassword = () => {
     const errorMessage =
-      validate.required(passwordChangeData.password, "Mật khẩu") ||
-      validate.minLength(passwordChangeData.password, 6, "Mật khẩu");
+      validate.required(passwordChangeData.password, 'Mật khẩu') ||
+      validate.minLength(passwordChangeData.password, 6, 'Mật khẩu');
     setError((prev) => ({ ...prev, password: errorMessage }));
     return !!errorMessage ? false : true;
   };
@@ -47,12 +47,12 @@ export const PasswordChangeContent = () => {
     const errorMessage =
       validate.required(
         passwordChangeData.confirmPassword,
-        "Xác nhận mật khẩu"
+        'Xác nhận mật khẩu'
       ) ||
       validate.confirm(
         passwordChangeData.confirmPassword,
         passwordChangeData.password,
-        "mật khẩu"
+        'mật khẩu'
       );
     setError((prev) => ({ ...prev, confirmPassword: errorMessage }));
     return !!errorMessage ? false : true;
@@ -60,10 +60,10 @@ export const PasswordChangeContent = () => {
 
   useEffect(() => {
     if (!updating) {
-      setError({ password: "", confirmPassword: "" });
+      setError({ password: '', confirmPassword: '' });
       setPasswordChangeData({
-        password: "",
-        confirmPassword: "",
+        password: '',
+        confirmPassword: '',
       });
     }
   }, [updating]);
@@ -122,17 +122,17 @@ export const PasswordChangeContent = () => {
           <MyButton
             className={clsx(
               updating
-                ? "bg-error hover:bg-error/75"
-                : "bg-primary hover:bg-primary/75"
+                ? 'bg-error hover:bg-error/75'
+                : 'bg-primary hover:bg-primary/75'
             )}
-            size={"lg"}
+            size={'lg'}
             onClick={() => setUpdating(!updating)}
           >
-            {updating ? "Hủy" : "Chỉnh sửa"}
+            {updating ? 'Hủy' : 'Chỉnh sửa'}
           </MyButton>
           <MyButton
-            className={clsx("bg-success hover:bg-success/75")}
-            size={"lg"}
+            className={clsx('bg-success hover:bg-success/75')}
+            size={'lg'}
             onClick={passwordChange}
             hidden={!updating}
           >

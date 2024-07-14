@@ -1,19 +1,19 @@
-import clsx from "clsx";
-import { ArrowBigUpDash, Check, Pencil, UserRoundPlus, X } from "lucide-react";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import Search from "../../../atom/search/Search";
-import Pagination from "../../../molecule/pagination";
+import clsx from 'clsx';
+import { ArrowBigUpDash, Check, Pencil, UserRoundPlus, X } from 'lucide-react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import Search from '../../../atom/search/Search';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import Pagination from '../../../molecule/pagination';
 import {
   chooseDepheadSv,
   getDepCounsellorsSv,
   updateDepSv,
-} from "../../../service/admin/adminDepartment.sv";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { AdminDepartmentContext } from "./AdminDepartmentStore";
-import { initParams } from "./constance";
-import { toast } from "sonner";
-import { AddCounsellorModal } from "./AddCounsellorModal";
+} from '../../../service/admin/adminDepartment.sv';
+import { AddCounsellorModal } from './AddCounsellorModal';
+import { AdminDepartmentContext } from './AdminDepartmentStore';
+import { initParams } from './constance';
 
 export const DetailDepartmentModal = () => {
   const {
@@ -29,7 +29,7 @@ export const DetailDepartmentModal = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const [departmentName, setDepartmentName] = useState("");
+  const [departmentName, setDepartmentName] = useState('');
 
   const [hiddenAddCounsellorModal, setHiddenAddCounsellorModal] =
     useState(true);
@@ -38,7 +38,7 @@ export const DetailDepartmentModal = () => {
     ...initParams,
     size: 6,
     filter: {
-      role: "COUNSELLOR",
+      role: 'COUNSELLOR',
     },
   });
 
@@ -50,7 +50,7 @@ export const DetailDepartmentModal = () => {
     try {
       const response = await getDepCounsellorsSv(selectedDep._id, {
         filter: {
-          role: "DEPARTMENT_HEAD",
+          role: 'DEPARTMENT_HEAD',
         },
       });
       setDephead(
@@ -77,16 +77,16 @@ export const DetailDepartmentModal = () => {
       const response = await chooseDepheadSv(submitData);
       getDephead();
       getDepCounsellors();
-      toast.success(response?.message || "Chọn trưởng khoa thành công");
+      toast.success(response?.message || 'Chọn trưởng khoa thành công');
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi chọn trưởng khoa");
+      toast.error(error?.message || 'Lỗi khi chọn trưởng khoa');
     }
   };
 
   const updateDepartment = async () => {
     try {
       const response = await updateDepSv(selectedDep._id, { departmentName });
-      toast.success(response.message || "Cập nhật tên khoa thành công");
+      toast.success(response.message || 'Cập nhật tên khoa thành công');
       setIsEditing(false);
       setDeps((prev) => {
         return prev.map((dep) => {
@@ -99,7 +99,7 @@ export const DetailDepartmentModal = () => {
       });
     } catch (error) {
       setDepartmentName(selectedDep.departmentName);
-      toast.error(error?.message || "Xảy ra lỗi khi cập nhật khoa");
+      toast.error(error?.message || 'Xảy ra lỗi khi cập nhật khoa');
     }
   };
 
@@ -128,8 +128,8 @@ export const DetailDepartmentModal = () => {
             <input
               ref={departmentNameRef}
               className={clsx(
-                "text-3xl font-bold mb-2 text-black75 outline-none border-black75",
-                isEditing && "border-b-2"
+                'text-3xl font-bold mb-2 text-black75 outline-none border-black75',
+                isEditing && 'border-b-2'
               )}
               size={departmentName?.length || 0}
               value={departmentName}
@@ -182,7 +182,7 @@ export const DetailDepartmentModal = () => {
             />
             <div>
               <h2 className="text-lg font-semibold">
-                {dephead ? dephead?.fullName : "Chưa có trưởng khoa"}
+                {dephead ? dephead?.fullName : 'Chưa có trưởng khoa'}
               </h2>
               <p className="text-gray-600">Trưởng khoa</p>
             </div>
@@ -195,7 +195,7 @@ export const DetailDepartmentModal = () => {
               {counsellors?.length !== 0 && (
                 <Search
                   setParams={setParams}
-                  placeholder={"Tìm kiếm nhân viên"}
+                  placeholder={'Tìm kiếm nhân viên'}
                 />
               )}
             </div>

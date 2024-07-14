@@ -1,8 +1,8 @@
-import { ruleList } from "../../../molecule/my-form";
+import { ruleList } from '../../../molecule/my-form';
 
 const initParams = {
-  search: ["fieldName"],
-  keyword: "",
+  search: ['fieldName'],
+  keyword: '',
   page: 1,
   size: 5,
   filter: {
@@ -17,31 +17,32 @@ const initParams = {
 
 const initFilter = [
   {
-    label: { key: "Trạng thái", value: "isActive" },
+    label: { key: 'Trạng thái', value: 'isActive' },
     data: [
-      { key: "Không có", value: null },
-      { key: "Hoạt động", value: true },
-      { key: "Không hoạt động", value: false },
+      { key: 'Không có', value: null },
+      { key: 'Hoạt động', value: true },
+      { key: 'Không hoạt động', value: false },
     ],
   },
 ];
 
 const initSort = [
   {
-    label: { key: "Tên lĩnh vực", value: "fieldName" },
+    label: { key: 'Tên lĩnh vực', value: 'fieldName' },
     data: [1, -1],
   },
 ];
 
 const initAddFieldForm = {
-  id: "dephead-add-field-form",
+  id: 'dephead-add-field-form',
   inputs: [
     {
-      label: "Tên lĩnh vực",
-      name: "fieldName",
-      type: "text",
+      label: 'Tên lĩnh vực',
+      name: 'fieldName',
+      type: 'text',
       rules: [ruleList.isRequired()],
     },
   ],
 };
-export { initParams, initFilter, initSort, initAddFieldForm };
+export { initAddFieldForm, initFilter, initParams, initSort };
+

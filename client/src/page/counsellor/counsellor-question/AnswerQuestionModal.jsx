@@ -1,16 +1,15 @@
-import { EditorState, convertToRaw } from "draft-js";
-import { MessageCircleQuestion, MessageCircleReply } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
-import MyButton from "../../../atom/my-button";
-import MyRichText from "../../../atom/my-rich-text/MyRichText";
-import MyFileInput from "../../../atom/my-file-input";
-import { colors } from "../../../constance";
-import ModalLayout from "../../../layout/modal-layout";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
-import draftToHtml from "draftjs-to-html";
-import { toast } from "sonner";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { MessageCircleQuestion, MessageCircleReply } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import MyRichText from '../../../atom/my-rich-text/MyRichText';
+import { colors } from '../../../constance';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { CounsellorQuestionContext } from './CounsellorQuestionStore';
 
 export const AnswerQuestionModal = () => {
   const {
@@ -48,20 +47,20 @@ export const AnswerQuestionModal = () => {
     };
     try {
       const response = await authSocket.emitWithAck(
-        "answer:create",
+        'answer:create',
         responseData
       );
-      toast.success(response.message || "Phản hồi câu hỏi thành công");
+      toast.success(response.message || 'Phản hồi câu hỏi thành công');
       setSubmitAnswer(EditorState.createEmpty());
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
   const privateResponse = async () => {
-    console.log("private Response");
+    console.log('private Response');
     const responseData = {
       messageContent: draftToHtml(
         convertToRaw(submitAnswer.getCurrentContent())
@@ -70,15 +69,15 @@ export const AnswerQuestionModal = () => {
     };
     try {
       const response = await authSocket.emitWithAck(
-        "conversation:create",
+        'conversation:create',
         responseData
       );
-      toast.success(response.message || "Phản hồi câu hỏi thành công");
+      toast.success(response.message || 'Phản hồi câu hỏi thành công');
       setSubmitAnswer(EditorState.createEmpty());
       setHiddenAnswerModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
@@ -90,7 +89,7 @@ export const AnswerQuestionModal = () => {
     <ModalLayout2
       setHidden={setHiddenAnswerModal}
       hidden={hiddenAnswerModal}
-      text={"Trả lời câu hỏi"}
+      text={'Trả lời câu hỏi'}
     >
       <div className="w-96 mt-2">
         <div className="overflow-hidden rounded-xl border mb-2">
@@ -101,12 +100,12 @@ export const AnswerQuestionModal = () => {
             </div>
             <div
               dangerouslySetInnerHTML={{
-                __html: selectedQuestion.content || "Question Not Found",
+                __html: selectedQuestion.content || 'Question Not Found',
               }}
             />
             <div className="">
               <p className="text-xs border inline-block px-2 rounded-md bg-light_gray text-black75">
-                {selectedQuestion.field || "unknow field"}
+                {selectedQuestion.field || 'unknow field'}
               </p>
             </div>
           </div>
@@ -130,16 +129,16 @@ export const AnswerQuestionModal = () => {
             <MyRichText
               editorState={submitAnswer}
               className={
-                "max-h-96 w-full overflow-y-auto py-0 flex-1 px-0 overflow-auto rounded-none border-none"
+                'max-h-96 w-full overflow-y-auto py-0 flex-1 px-0 overflow-auto rounded-none border-none'
               }
               setEditorState={setSubmitAnswer}
-              placeholder={"Nhập nội dung phản hồi..."}
+              placeholder={'Nhập nội dung phản hồi...'}
             />
             {!isPrivate && <MyFileInput onChange={setFile} value={file} />}
           </div>
         </div>
         <div className="flex flex-row-reverse">
-          <MyButton className="bg-primary" size={"md"} onClick={handleResponse}>
+          <MyButton className="bg-primary" size={'md'} onClick={handleResponse}>
             Phản hồi
           </MyButton>
         </div>

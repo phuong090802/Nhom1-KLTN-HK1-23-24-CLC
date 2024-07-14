@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes, useCallback, useMemo, useRef } from "react";
+import { FC, InputHTMLAttributes, useCallback, useMemo, useRef } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -6,7 +6,7 @@ const MyFileInput: FC<InputProps> = ({ type, onChange, value, ...props }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const fileName = useMemo(() => {
-    if (!value && !value?.name) return "Chọn file";
+    if (!value && !value?.name) return 'Chọn file';
     else return value.name;
   }, [value]);
 

@@ -1,5 +1,5 @@
 const initParams = {
-  search: ["content"],
+  search: ['content'],
   keyword: null,
   page: 1,
   size: 5,
@@ -10,3 +10,4 @@ const initParams = {
 };
 
 export { initParams };
+

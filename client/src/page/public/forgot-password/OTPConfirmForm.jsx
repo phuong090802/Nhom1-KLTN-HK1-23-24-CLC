@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import MyForm from "../../../molecule/my-form";
-import { OTPformInitData } from "./constance";
-import { ForgotPasswordContext } from "./ForgotPasswordStore";
-import { OTPConfirmSv } from "../../../service/public/auth.sv";
-import useTimer from "../../../hooks/useTimer";
+import React, { useContext, useEffect } from 'react';
+import MyForm from '../../../molecule/my-form';
+import { OTPformInitData } from './constance';
+import { ForgotPasswordContext } from './ForgotPasswordStore';
+import { OTPConfirmSv } from '../../../service/public/auth.sv';
+import useTimer from '../../../hooks/useTimer';
 
 export const OTPConfirmForm = () => {
   const { setStep, setResetPasswordToken, email } = useContext(
@@ -19,7 +19,7 @@ export const OTPConfirmForm = () => {
       setResetPasswordToken(response?.resetPasswordToken);
       setStep(3);
     } catch (error) {
-      toast.error(error?.message || "Lỗi xảy ra khi xác thực OTP");
+      toast.error(error?.message || 'Lỗi xảy ra khi xác thực OTP');
     }
   };
 

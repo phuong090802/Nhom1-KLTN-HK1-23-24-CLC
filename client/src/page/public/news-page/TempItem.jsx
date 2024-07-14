@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import no_image from "../../../assets/image/no_image.jpg";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { darkModeCss } from "../../../constance";
-import { NewsPageContext } from "./NewsPageStore";
+import clsx from 'clsx';
+import { useContext } from 'react';
+import no_image from '../../../assets/image/no_image.jpg';
+import { darkModeCss } from '../../../constance';
+import { DataContext } from '../../../store';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { NewsPageContext } from './NewsPageStore';
 
 export const TempItem = ({ data }) => {
   const { darkMode } = useContext(DataContext);
@@ -20,8 +20,8 @@ export const TempItem = ({ data }) => {
   return (
     <div
       className={clsx(
-        "rounded-md overflow-hidden shadow-lg border cursor-pointer",
-        darkMode ? darkModeCss : " hover:bg-primary/5 "
+        'rounded-md overflow-hidden shadow-lg border cursor-pointer',
+        darkMode ? darkModeCss : ' hover:bg-primary/5 '
       )}
       key={data?._id || index}
       onClick={handleClick}
@@ -29,7 +29,7 @@ export const TempItem = ({ data }) => {
       <img
         className="w-full h-40"
         src={
-          data?.file?.includes("png") || data?.file?.includes("jpg")
+          data?.file?.includes('png') || data?.file?.includes('jpg')
             ? data.file
             : no_image
         }
@@ -38,18 +38,18 @@ export const TempItem = ({ data }) => {
       <div className="px-6 py-4">
         <div
           className={clsx(
-            "font-bold text-lg mb-2 ",
-            darkMode ? "text-white" : "text-black75"
+            'font-bold text-lg mb-2 ',
+            darkMode ? 'text-white' : 'text-black75'
           )}
         >
-          {data?.title || "Title content"}
+          {data?.title || 'Title content'}
         </div>
         <p
           className={clsx(
-            "text-sm line-clamp-2",
-            darkMode ? "text-gray-200" : "text-gray-700"
+            'text-sm line-clamp-2',
+            darkMode ? 'text-gray-200' : 'text-gray-700'
           )}
-          dangerouslySetInnerHTML={{ __html: data?.content || "Title content" }}
+          dangerouslySetInnerHTML={{ __html: data?.content || 'Title content' }}
         />
       </div>
       <div className="px-6 pt-4 pb-2">

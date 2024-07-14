@@ -1,6 +1,5 @@
-import React from "react";
-import { UserProfileStore } from "./UserProfileStore";
-import { UserProfileContent } from "./UserProfileContent";
+import { UserProfileContent } from './UserProfileContent';
+import { UserProfileStore } from './UserProfileStore';
 
 const UserProfile = () => {
   return (

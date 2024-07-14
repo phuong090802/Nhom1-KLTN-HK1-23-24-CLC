@@ -1,46 +1,46 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import {
   AdminRoute,
+  CounsellorRoute,
   DepartmentHeadRoute,
   ProtectedRoute,
-  UserRoute,
-  CounsellorRoute,
   SupervisorRoute,
-} from "./routes";
+  UserRoute,
+} from './routes';
 
-import AppLayout from "./layout/app-layout";
+import AppLayout from './layout/app-layout';
 
-import CounsellorsPage from "./page/public/counsellors-page";
-import FaqsPage from "./page/public/faqs-page/FaqsPage";
-import HomePage from "./page/public/home-page";
-import Login from "./page/public/login";
-import NewsPage from "./page/public/news-page";
-import Register from "./page/public/register";
-import UserLayout from "./layout/user-layout";
-import ForgotPassword from "./page/public/forgot-password";
+import UserLayout from './layout/user-layout';
+import CounsellorsPage from './page/public/counsellors-page';
+import FaqsPage from './page/public/faqs-page/FaqsPage';
+import ForgotPassword from './page/public/forgot-password';
+import HomePage from './page/public/home-page';
+import Login from './page/public/login';
+import NewsPage from './page/public/news-page';
+import Register from './page/public/register';
 
-import AdminDepartment from "./page/admin/admin-department";
-import AdminHome from "./page/admin/admin-home";
-import AdminNews from "./page/admin/admin-news";
-import AdminStaff from "./page/admin/admin-staff";
+import AdminDepartment from './page/admin/admin-department';
+import AdminHome from './page/admin/admin-home';
+import AdminNews from './page/admin/admin-news';
+import AdminStaff from './page/admin/admin-staff';
 
-import DepheadHome from "./page/dephead/dephead-home";
-import DepheadField from "./page/dephead/dephead-field";
-import DepheadCounsellor from "./page/dephead/dephead-counsellor";
-import DepheadFaq from "./page/dephead/dephead-faq";
-import DepheadAnswer from "./page/dephead/dephead-answer";
+import DepheadAnswer from './page/dephead/dephead-answer';
+import DepheadCounsellor from './page/dephead/dephead-counsellor';
+import DepheadFaq from './page/dephead/dephead-faq';
+import DepheadField from './page/dephead/dephead-field';
+import DepheadHome from './page/dephead/dephead-home';
 
-import CounsellorQuestion from "./page/counsellor/counsellor-question";
-import CounsellorHome from "./page/counsellor/counsellor-home";
-import CounsellorFeedback from "./page/counsellor/counsellor-feedback";
+import CounsellorFeedback from './page/counsellor/counsellor-feedback';
+import CounsellorHome from './page/counsellor/counsellor-home';
+import CounsellorQuestion from './page/counsellor/counsellor-question';
 
-import UserProfile from "./page/user/user-profile";
-import PasswordChange from "./page/user/password-change";
-import VerifyAccount from "./page/user/verify-account";
-import History from "./page/user/history";
+import History from './page/user/history';
+import PasswordChange from './page/user/password-change';
+import UserProfile from './page/user/user-profile';
+import VerifyAccount from './page/user/verify-account';
 
-import { links } from "./constance";
+import { links } from './constance';
 
 const App = () => {
   return (

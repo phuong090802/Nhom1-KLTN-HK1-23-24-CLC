@@ -1,6 +1,6 @@
 const depStatisticParams = {
-  search: ["departmentName"],
-  keyword: "T",
+  search: ['departmentName'],
+  keyword: 'T',
   page: 1,
   size: 5,
   sort: {
@@ -11,3 +11,4 @@ const depStatisticParams = {
 };
 
 export { depStatisticParams };
+

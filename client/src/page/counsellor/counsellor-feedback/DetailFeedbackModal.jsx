@@ -1,9 +1,9 @@
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { useContext } from "react";
-import { CounsellorFeedbackContext } from "./CounsellorFeedbackStore";
-import MyButton from "../../../atom/my-button";
-import { Trash2 } from "lucide-react";
+import { Trash2 } from 'lucide-react';
+import { useContext } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import MyButton from '../../../atom/my-button';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { CounsellorFeedbackContext } from './CounsellorFeedbackStore';
 
 export const DetailFeedbackModal = () => {
   const {
@@ -41,7 +41,7 @@ export const DetailFeedbackModal = () => {
                 alt="Avatar tác giả"
               />
               <p className="text-sm text-gray-500">
-                Tác giả:{" "}
+                Tác giả:{' '}
                 <span className="font-medium text-gray-800">Nguyễn Văn A</span>
               </p>
             </div>
@@ -59,7 +59,7 @@ export const DetailFeedbackModal = () => {
               }}
             />
             <p className="mt-2 text-sm text-gray-500">
-              Được trả lời bởi:{" "}
+              Được trả lời bởi:{' '}
               <span className="font-medium text-gray-800">Trần Thị B</span>
             </p>
           </div>
@@ -80,7 +80,7 @@ export const DetailFeedbackModal = () => {
         <div className="flex justify-end">
           <MyButton
             className="bg-error hover:bg-error/75"
-            size={"md"}
+            size={'md'}
             onClick={deleteFeedback}
           >
             <div className="flex gap-2">

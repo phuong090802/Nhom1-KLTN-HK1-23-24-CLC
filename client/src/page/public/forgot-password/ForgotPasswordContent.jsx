@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { ForgotPasswordForm } from "./ForgotPasswordForm";
-import { ForgotPasswordContext } from "./ForgotPasswordStore";
-import { OTPConfirmForm } from "./OTPConfirmForm";
-import { ResetPasswordForm } from "./ResetPasswordForm";
+import { useContext } from 'react';
+import { ForgotPasswordForm } from './ForgotPasswordForm';
+import { ForgotPasswordContext } from './ForgotPasswordStore';
+import { OTPConfirmForm } from './OTPConfirmForm';
+import { ResetPasswordForm } from './ResetPasswordForm';
 
 export const ForgotPasswordContent = () => {
   const { step } = useContext(ForgotPasswordContext);

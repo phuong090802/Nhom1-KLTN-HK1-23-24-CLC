@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
-import ItemLayout from "../../../layout/item-layout";
-import { DepheadFaqContext } from "./DepheadFaqStore";
-import { MessageCircleQuestion } from "lucide-react";
-import { colors } from "../../../constance";
-import MyButton from "../../../atom/my-button";
-import { File } from "lucide-react";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { File, MessageCircleQuestion } from 'lucide-react';
+import { useContext } from 'react';
+import MyButton from '../../../atom/my-button';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { DataContext } from '../../../store';
+import { DepheadFaqContext } from './DepheadFaqStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(DepheadFaqContext);
@@ -20,12 +19,12 @@ export const Item = ({ data }) => {
   return (
     <ItemLayout
       text={data.question}
-      infor={[data.field.fieldName || "unknow field"]}
+      infor={[data.field.fieldName || 'unknow field']}
       isSelected={selected === data._id}
       onExpand={handleExpand}
     >
       <div className="flex flex-row gap-2 px-4 py-2 mt-2 rounded-xl border-2">
-        <MessageCircleQuestion color={darkMode ? "#fff" : colors.black75} />
+        <MessageCircleQuestion color={darkMode ? '#fff' : colors.black75} />
         <div>
           <h1 className="font-bold">Câu hỏi</h1>
           <div
@@ -50,13 +49,13 @@ const FileComponent = ({ link }) => {
   return (
     <a
       className={clsx(
-        "border px-2 py-1 flex items-center bg-primary/10 gap-2 rounded-lg max-w-44"
+        'border px-2 py-1 flex items-center bg-primary/10 gap-2 rounded-lg max-w-44'
       )}
       href={link}
       target="_blank"
     >
-      <File className="" color={darkMode ? "#fff" : colors.black75} />
-      <p className={clsx(darkMode ? "text-white" : "text-black75")}>
+      <File className="" color={darkMode ? '#fff' : colors.black75} />
+      <p className={clsx(darkMode ? 'text-white' : 'text-black75')}>
         Tệp đính kèm
       </p>
     </a>

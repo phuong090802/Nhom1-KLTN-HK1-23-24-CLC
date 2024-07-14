@@ -1,1 +1,2 @@
-export { default } from "./DepheadAnswer";
+export { default } from './DepheadAnswer';
+

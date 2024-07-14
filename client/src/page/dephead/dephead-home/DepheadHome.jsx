@@ -1,5 +1,5 @@
-import { DepheadHomeContent } from "./DepheadHomeContent";
-import { DepheadHomeStore } from "./DepheadHomeStore";
+import { DepheadHomeContent } from './DepheadHomeContent';
+import { DepheadHomeStore } from './DepheadHomeStore';
 
 const DepheadHome = () => {
   return (

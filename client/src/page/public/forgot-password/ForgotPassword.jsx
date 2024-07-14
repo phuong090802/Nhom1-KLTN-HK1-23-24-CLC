@@ -1,6 +1,5 @@
-import React from "react";
-import { ForgotPasswordStore } from "./ForgotPasswordStore";
-import { ForgotPasswordContent } from "./ForgotPasswordContent";
+import { ForgotPasswordContent } from './ForgotPasswordContent';
+import { ForgotPasswordStore } from './ForgotPasswordStore';
 
 const ForgotPassword = () => {
   return (

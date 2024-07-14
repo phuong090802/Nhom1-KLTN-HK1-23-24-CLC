@@ -1,26 +1,25 @@
-import React, { useContext, useMemo, useState } from "react";
-import BottomModalLayout from "../../../layout/bottom-modal-layout/BottomModalLayout";
-import { AdminStaffContext } from "./AdminStaffStore";
-import MyButton from "../../../atom/my-button";
-import { ArrowLeft, FileUp, UserPlus } from "lucide-react";
-import { colors } from "../../../constance";
-import { SingleAddForm } from "./SingleAddForm";
-import { MultiAddForm } from "./MultiAddForm";
-import ModalLayout2 from "../../../layout/modal-layout-2";
+import { ArrowLeft, FileUp, UserPlus } from 'lucide-react';
+import { useContext, useMemo, useState } from 'react';
+import MyButton from '../../../atom/my-button';
+import { colors } from '../../../constance';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { AdminStaffContext } from './AdminStaffStore';
+import { MultiAddForm } from './MultiAddForm';
+import { SingleAddForm } from './SingleAddForm';
 
 export const AddStaffModal = () => {
   const { hiddenAddStaffModal, setHiddenAddStaffModal } =
     useContext(AdminStaffContext);
 
-  const [addMode, setAddMode] = useState("");
+  const [addMode, setAddMode] = useState('');
 
   const selectModeComponent = useMemo(() => {
     return (
       <div className="flex justify-evenly py-2 gap-4">
         <MyButton
           className="border-primary border hover:bg-primary/25"
-          size={"xl"}
-          onClick={() => setAddMode("single")}
+          size={'xl'}
+          onClick={() => setAddMode('single')}
         >
           <div className="flex justify-center items-center gap-1">
             <UserPlus color={colors.black75} />
@@ -29,8 +28,8 @@ export const AddStaffModal = () => {
         </MyButton>
         <MyButton
           className="border-primary border hover:bg-primary/25"
-          size={"xl"}
-          onClick={() => setAddMode("multi")}
+          size={'xl'}
+          onClick={() => setAddMode('multi')}
         >
           <div className="flex justify-center items-center gap-1">
             <FileUp color={colors.black75} />
@@ -45,20 +44,20 @@ export const AddStaffModal = () => {
     <ModalLayout2
       hidden={hiddenAddStaffModal}
       setHidden={setHiddenAddStaffModal}
-      title={"Thêm nhân viên"}
+      title={'Thêm nhân viên'}
     >
-      {addMode === "" ? (
+      {addMode === '' ? (
         selectModeComponent
       ) : (
         <div className="pt-2 min-w-96">
           <button
             className="hover:underline flex justify-center items-center"
-            onClick={() => setAddMode("")}
+            onClick={() => setAddMode('')}
           >
             <ArrowLeft color={colors.black75} size={18} />
             <p className="font-bold text-lg text-black75">Trở lại</p>
           </button>
-          {addMode === "single" ? <SingleAddForm /> : <MultiAddForm />}
+          {addMode === 'single' ? <SingleAddForm /> : <MultiAddForm />}
         </div>
       )}
     </ModalLayout2>
