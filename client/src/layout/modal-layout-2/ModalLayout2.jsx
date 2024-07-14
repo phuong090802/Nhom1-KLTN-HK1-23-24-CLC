@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { X } from "lucide-react";
 import clsx from "clsx";
 
-const ModalLayout2 = ({ hidden, setHidden, children, text }) => {
+const ModalLayout2 = ({ hidden, setHidden, children, text, onClose }) => {
   return (
     !hidden && (
       <div
@@ -15,12 +15,12 @@ const ModalLayout2 = ({ hidden, setHidden, children, text }) => {
             <p className="font-semibold text-lg">{text || ""}</p>
             <div
               className="rounded-full bg-light_gray p-1 cursor-pointer hover:bg-light_gray/75"
-              onClick={() => setHidden(true)}
+              onClick={!!onClose ? onClose : () => setHidden(true)}
             >
               <X />
             </div>
           </div>
-          <div className="mt-1 overflow-y-auto max-h-[80vh]">{children}</div>
+          <div className="mt-1 overflow-y-auto max-h-[80vh] max-w-[80vw]">{children}</div>
         </div>
       </div>
     )

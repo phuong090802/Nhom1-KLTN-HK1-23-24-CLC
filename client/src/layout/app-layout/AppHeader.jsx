@@ -17,6 +17,7 @@ import { getMeSv } from "../../service/public/auth.sv";
 import { DataContext } from "../../store";
 import { ConversationsButton } from "./ConversationsButton";
 import { NotiButton } from "./NotiButton";
+import Cookies from "js-cookie";
 
 export const AppHeader = () => {
   const { isLoggedIn, setIsLoggedIn, setUser, darkMode } =

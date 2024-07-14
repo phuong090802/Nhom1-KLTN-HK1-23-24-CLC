@@ -36,7 +36,7 @@ export const Item = ({ data }) => {
         const tempField = data.fields.filter((field) => field._id !== fieldId);
         return prev.map((coun) => {
           if (coun._id === data._id) return { ...data, fields: tempField };
-          else return data;
+          else return coun;
         });
       });
       toast.success(response?.message || "Xóa lĩnh vực thành công");

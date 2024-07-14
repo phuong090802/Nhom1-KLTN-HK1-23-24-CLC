@@ -26,7 +26,6 @@ export const ConversationsButton = () => {
 
   const handleConversationClick = useCallback(
     (conversation) => {
-      console.log(conversation);
       setMessageBoxHidden(false);
       setSelectedConversation(conversation);
       setShowingModal("");

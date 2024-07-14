@@ -14,4 +14,11 @@ const getKeyByValue = (data: any, value: any) => {
   return temp?.key || null;
 };
 
-export { findKeyValueObject, getKeyByValue };
+const deleteValueFromArray = (array: Array<any>, value: any) => {
+  if (array.includes(value)) {
+    const index = array.indexOf(value);
+    return array.splice(index, 1);
+  } else return array;
+};
+
+export { findKeyValueObject, getKeyByValue, deleteValueFromArray };

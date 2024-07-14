@@ -8,4 +8,8 @@ const getQuestionsSv = (params) => {
   });
 };
 
-export { getQuestionsSv };
+const increaseViewSv = (id) => {
+  return API.put(`questions/${id}`);
+};
+
+export { getQuestionsSv, increaseViewSv };

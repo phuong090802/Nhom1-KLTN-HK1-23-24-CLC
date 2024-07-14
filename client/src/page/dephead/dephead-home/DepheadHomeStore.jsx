@@ -10,16 +10,15 @@ import { getMonth } from "../../../util/convert.util";
 export const DepheadHomeContext = createContext({
   dashboardData: Object,
   chartData: Object,
-  hiddenFieldStatisticModal: Boolean,
-  setHiddenFieldStatisticModal: Function,
   fieldSatisticData: Array,
+  showingModals: Array,
+  setShowingModals: Function,
 });
 
 export const DepheadHomeStore = ({ children }) => {
   const [dashboardData, setDashboardData] = useState({});
 
-  const [hiddenFieldStatisticModal, setHiddenFieldStatisticModal] =
-    useState(true);
+  const [showingModals, setShowingModals] = useState([]);
 
   const [chartData, setChartData] = useState({
     labels: [],
@@ -109,9 +108,9 @@ export const DepheadHomeStore = ({ children }) => {
       value={{
         dashboardData,
         chartData,
-        hiddenFieldStatisticModal,
-        setHiddenFieldStatisticModal,
         fieldSatisticData,
+        showingModals,
+        setShowingModals,
       }}
     >
       {children}

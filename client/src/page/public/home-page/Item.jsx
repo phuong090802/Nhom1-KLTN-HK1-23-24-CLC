@@ -12,12 +12,32 @@ import { convertDateTimeToDate } from "../../../util/convert.util";
 import { HomePageContext } from "./HomePageStore";
 import { DataContext } from "../../../store";
 import clsx from "clsx";
+import { increaseViewSv } from "../../../service/public/question.sv";
 
 export const Item = ({ data }) => {
-  const { setHiddenDetailQuestionModal, selectedData, setSelectedData } =
-    useContext(HomePageContext);
+  const {
+    setHiddenDetailQuestionModal,
+    selectedData,
+    setSelectedData,
+    setQuestions,
+  } = useContext(HomePageContext);
 
   const { darkMode } = useContext(DataContext);
+
+  const increaseView = async () => {
+    try {
+      setQuestions((prev) => {
+        return prev.map((question) => {
+          if (question._id === data._id) {
+            return { ...question, views: question.views + 1 };
+          } else return question;
+        });
+      });
+      const response = await increaseViewSv(data._id);
+    } catch (error) {
+      // console.log(error);
+    }
+  };
 
   // const handleExpand = useCallback(() => {
   //   if (selected === data._id) setSelected("");
@@ -27,6 +47,7 @@ export const Item = ({ data }) => {
   const handleInfor = useCallback(() => {
     setHiddenDetailQuestionModal(false);
     if (selectedData?._id !== data._id) {
+      increaseView();
       setSelectedData(data);
     }
   }, [selectedData, data]);

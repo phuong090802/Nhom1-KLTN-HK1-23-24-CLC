@@ -15,7 +15,6 @@ const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
   };
 
   const handleSearch = () => {
-    console.log(key);
     if (setParams) {
       clearTimeout(timeOutId.current);
       timeOutId.current = setTimeout(() => {

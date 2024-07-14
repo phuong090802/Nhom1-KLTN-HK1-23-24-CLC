@@ -23,9 +23,24 @@ const depheadGetFieldStatistic = () => {
   });
 };
 
+// Lấy danh sách số lượng câu hỏi quá hạn của tư vấn viên
+const getOverDueQuestionCountSv = () => {
+  return API.get("department-head/counsellors/reminder", {
+    headers: authorHeader(),
+  });
+};
+
+const getRankingCounsellorSv = () => {
+  return API.get("department-head/statistics/counsellor/ranking", {
+    headers: authorHeader(),
+  });
+};
+
 export {
   depheadGetUserCountSv,
   depheadGetFaqsCountSv,
   depheadGetQuestionStatisticSv,
   depheadGetFieldStatistic,
+  getOverDueQuestionCountSv,
+  getRankingCounsellorSv
 };

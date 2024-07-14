@@ -71,9 +71,17 @@ export const AppLayoutStore = ({ children }) => {
   // Lấy nội dung của cuộc hội thoại
   const getConversationContents = async () => {
     try {
+      // console.log("getConversationContents");
       const response = await getMessagesSv(selectedConversation._id, params);
       const newMessages = response.messages;
-      setConversationContent((prev) => [...newMessages, ...prev]);
+      setConversationContent((prev) => {
+        const ids = prev.map((data) => data._id);
+        console.log(ids);
+        const tempContent = newMessages.filter(
+          (message) => !ids.includes(message._id)
+        );
+        return [...tempContent, ...prev];
+      });
       setTotalMessages(response.totalMessages);
     } catch (error) {}
   };
@@ -146,7 +154,7 @@ export const AppLayoutStore = ({ children }) => {
   const getNotifications = async () => {
     try {
       const response = await getNotificationSv();
-      console.log("getNotifications", response.notifications);
+      // console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
       toast.error(error?.message || "Lỗi khi lấy thông báo");

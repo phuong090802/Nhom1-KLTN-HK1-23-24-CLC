@@ -40,7 +40,8 @@ const LoginForm = () => {
     try {
       const response = await loginSv(data);
       Cookies.set("accessToken", response.token);
-      console.log("loginData", response);
+      Cookies.set("isLoggedIn", true);
+      // console.log("loginData", response);
       setUser(response.user);
       setIsLoggedIn(true);
       toast.success("Đăng nhập thành công");
@@ -54,7 +55,11 @@ const LoginForm = () => {
 
   return (
     <div className="px-8 pb-8 w-96">
-      <MyForm formInitData={formInitData} onSubmit={loginSubmit} submitTitle={"Đăng nhập"}/>
+      <MyForm
+        formInitData={formInitData}
+        onSubmit={loginSubmit}
+        submitTitle={"Đăng nhập"}
+      />
     </div>
   );
 };

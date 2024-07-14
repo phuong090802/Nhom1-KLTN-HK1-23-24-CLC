@@ -208,6 +208,7 @@ export const StaffMenu = () => {
     try {
       const response = await logoutSv();
       Cookies.remove("accessToken");
+      Cookies.remove("isLoggedIn");
       removeUserData();
       toast.success(response.message || "Đăng xuất thành công");
       navigate(links.public.home);
