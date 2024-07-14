@@ -10,7 +10,6 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 export const handleGetNotifications = catchAsyncErrors(
   async (req, res, next) => {
     const recipient = req.user;
-    console.log(recipient);
     const query = Notification.find({ recipient })
       .select('_id content createdAt read')
       .lean();

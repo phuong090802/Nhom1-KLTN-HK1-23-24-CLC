@@ -4,7 +4,11 @@ import { LOGIN, ME, REFRESH_TOKEN } from '../../constants/actions/user.js';
 import RefreshToken from '../../models/refresh-token.js';
 import User from '../../models/user.js';
 import { sendVerificationEmail } from '../../util/auth/email-verify.js';
-import { clearToken, sendToken } from '../../util/auth/token.js';
+import {
+  clearToken,
+  sendToken,
+  getValidBearerToken,
+} from '../../util/auth/token.js';
 import ErrorHandler from '../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../middlewares/catch-async-errors.js';
 
@@ -146,7 +150,7 @@ export const handleRegister = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Endpoint: /api/auth/register
+// Endpoint: /api/auth/login
 // Method: POST
 // Description: Đăng nhập
 export const handleLogin = catchAsyncErrors(async (req, res, next) => {
@@ -192,6 +196,7 @@ export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
     clearToken(res);
     return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4010));
   }
+
   if (!refreshToken.status) {
     // delete all token in branch
     await RefreshToken.deleteMany({ branch: refreshToken.branch });
@@ -208,8 +213,21 @@ export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
   if (!user.isEnabled) {
     return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4014));
   }
-  const newAccessToken = user.generateAccessToken();
-  const newRefreshToken = await refreshToken.generateRefreshToken();
+
+  let newAccessToken;
+  let newRefreshToken;
+
+  const oldAccessToken = await getValidBearerToken(req);
+
+  const isRefreshTokenValid = refreshToken.expires > Date.now();
+  if (!oldAccessToken || !isRefreshTokenValid) {
+    newAccessToken = user.generateAccessToken();
+    newRefreshToken = await refreshToken.generateRefreshToken();
+  } else {
+    newAccessToken = oldAccessToken;
+    newRefreshToken = refreshToken;
+  }
+
   const userInformation = user.getUserInformation(REFRESH_TOKEN);
   sendToken(res, newAccessToken, newRefreshToken, userInformation);
 });
