@@ -15,10 +15,7 @@ const getKeyByValue = (data: any, value: any) => {
 };
 
 const deleteValueFromArray = (array: Array<any>, value: any) => {
-  if (array.includes(value)) {
-    const index = array.indexOf(value);
-    return array.splice(index, 1);
-  } else return array;
+  return array.filter((v) => value !== v);
 };
 
 export { deleteValueFromArray, findKeyValueObject, getKeyByValue };

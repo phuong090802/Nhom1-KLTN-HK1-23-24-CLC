@@ -1,11 +1,11 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 import {
   depheadGetFaqsCountSv,
   depheadGetFieldStatistic,
   depheadGetQuestionStatisticSv,
   depheadGetUserCountSv,
-} from '../../../service/dephead/depheadStatistic.sv';
-import { getMonth } from '../../../util/convert.util';
+} from "../../../service/dephead/depheadStatistic.sv";
+import { getMonth } from "../../../util/convert.util";
 
 export const DepheadHomeContext = createContext({
   dashboardData: Object,
@@ -32,7 +32,7 @@ export const DepheadHomeStore = ({ children }) => {
       const response = await depheadGetFieldStatistic();
       setFieldStatisticData(response.fieldStatistic);
     } catch (error) {
-      console.log('getFieldStatistic', error);
+      console.log("getFieldStatistic", error);
     }
   };
 
@@ -44,7 +44,7 @@ export const DepheadHomeStore = ({ children }) => {
         countOfUsers: response.countOfUsers,
       }));
     } catch (error) {
-      console.log('getCounsellorCount', error);
+      console.log("getCounsellorCount", error);
     }
   };
 
@@ -56,14 +56,14 @@ export const DepheadHomeStore = ({ children }) => {
         countOfFAQs: response.countOfFAQs,
       }));
     } catch (error) {
-      console.log('getFaqCount', error);
+      console.log("getFaqCount", error);
     }
   };
 
   const getQuestionStatistic = async () => {
     try {
       const response = await depheadGetQuestionStatisticSv({
-        timeUnit: 'month', //year
+        timeUnit: "month", //year
         latestTime: 2,
       });
 
@@ -73,26 +73,26 @@ export const DepheadHomeStore = ({ children }) => {
         ),
         datasets: [
           {
-            label: 'Câu hỏi đã trả lời',
+            label: "Câu hỏi đã trả lời",
             data: response?.departmentStatistic?.map(
               (statistic) => statistic?.countOfAnsweredQuestions
             ),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
           },
           {
-            label: 'Câu hỏi chưa trả lời',
+            label: "Câu hỏi chưa trả lời",
             data: response?.departmentStatistic?.map(
               (statistic) =>
                 statistic?.countOfQuestions -
                 statistic?.countOfAnsweredQuestions
             ),
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            backgroundColor: "rgba(75, 192, 192, 0.5)",
           },
         ],
       };
       setChartData(tempData);
     } catch (error) {
-      console.log('getQuestionStatistic', error);
+      console.log("getQuestionStatistic", error);
     }
   };
 

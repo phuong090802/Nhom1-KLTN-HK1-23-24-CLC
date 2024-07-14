@@ -16,6 +16,8 @@ export const Dashboard = () => {
     useContext(DepheadHomeContext);
   const { darkMode } = useContext(DataContext);
 
+  console.log(dashboardData);
+
   return (
     <div className="grid grid-cols-4 gap-4 ">
       <div
@@ -26,7 +28,7 @@ export const Dashboard = () => {
         onClick={() => setShowingModals((prev) => [...prev, modalName.overDue])}
       >
         <CircleHelp size={24} color={colors.primary} />
-        <h1 className="font-bold text-4xl text-primary mt-2">{1 || 0}</h1>
+        <h1 className="font-bold text-4xl text-primary mt-2">{0}</h1>
         <h1 className="text-primary">Câu hỏi</h1>
       </div>
       <div
