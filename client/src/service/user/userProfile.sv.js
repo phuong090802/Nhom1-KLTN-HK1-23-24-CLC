@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import API from "../api.sv";
 import { authorHeader, createHeader } from "../serviceHeader";
 
@@ -33,9 +32,5 @@ const changeAvatarSv = (data) => {
 };
 
 export {
-  updateProfileSv,
-  passwordChangeSv,
-  verifyOtpSv,
-  requestVerifySv,
-  changeAvatarSv,
+  changeAvatarSv, passwordChangeSv, requestVerifySv, updateProfileSv, verifyOtpSv
 };

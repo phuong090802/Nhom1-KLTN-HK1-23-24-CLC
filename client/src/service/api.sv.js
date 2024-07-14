@@ -1,18 +1,16 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-import { DataContext } from "../store";
-import { initUser } from "../store/constance";
-import { refreshTokenSv } from "./public/auth.sv";
-
-const refreshTokenCode = [4015, 4018, 4017];
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { DataContext } from '../store';
+import { initUser } from '../store/constance';
 
 const setUser = DataContext.Provider._context._currentValue.setUser;
 
 let isRefreshing = false;
 
+const baseURL = `${import.meta.env.VITE_API_BASE_URL}/api/`;
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  // baseURL: import.meta.env.VITE_API_HOST_URL,
+  baseURL,
 });
 
 API.interceptors.response.use(
@@ -22,6 +20,7 @@ API.interceptors.response.use(
 
   async (error) => {
     const originalRequest = error.config;
+    const refreshTokenCode = [4015, 4018, 4017];
     if (
       !isRefreshing &&
       error?.response?.status === 401 &&
@@ -32,20 +31,20 @@ API.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_API_BASE_URL}auth/refresh-token`,
+          `${baseURL}auth/refresh-token`,
           {},
           {
             withCredentials: true,
           }
         );
         const token = response.data.token;
-        Cookies.set("accessToken", token);
+        Cookies.set('accessToken', token);
         originalRequest.headers.Authorization = `Bearer ${token}`;
         return API(originalRequest);
       } catch (refreshError) {
-        console.error("refreshError", refreshError);
+        // console.error('refreshError', refreshError);
         setUser(initUser);
-        Cookies.remove("accessToken");
+        Cookies.remove('accessToken');
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

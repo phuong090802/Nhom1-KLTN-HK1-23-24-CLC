@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import API from "../api.sv";
 import { authorHeader } from "../serviceHeader";
 
@@ -49,12 +48,6 @@ const addCounsellorToDep = (data) => {
 };
 
 export {
-  getDepartmentsSv,
-  updateDepStatusSv,
-  addDepSv,
-  updateDepSv,
-  getDepCounsellorsSv,
-  chooseDepheadSv,
-  getCounsellorsToAddSv,
-  addCounsellorToDep,
+  addCounsellorToDep, addDepSv, chooseDepheadSv,
+  getCounsellorsToAddSv, getDepartmentsSv, getDepCounsellorsSv, updateDepStatusSv, updateDepSv
 };

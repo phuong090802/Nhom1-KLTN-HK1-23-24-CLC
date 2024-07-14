@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { authSocket } from "../socket/auth.socket";
-import { refreshTokenSv } from "../service/public/auth.sv";
-import Cookies from "js-cookie";
-import { DataContext } from "../store";
-import axios from "axios";
-import API from "../service/api.sv";
+import Cookies from 'js-cookie';
+import { useContext, useEffect, useState } from 'react';
+import { refreshTokenSv } from '../service/public/auth.sv';
+import { authSocket } from '../socket/auth.socket';
+import { DataContext } from '../store';
 
 export const useAuthSocket = () => {
   const [connected, setConnected] = useState(authSocket.connected);
@@ -17,14 +15,15 @@ export const useAuthSocket = () => {
     }
     if (connected && !isLoggedIn) {
       authSocket.close();
-      console.log("Disconnected");
-      setConnected(false);
     }
   }, [connected, isLoggedIn]);
 
   useEffect(() => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) {
+      return;
+    }
     const onConnect = () => {
+      console.log(authSocket.extraHeaders);
       console.log('socket "/auth" connected');
       setConnected(true);
     };
@@ -33,32 +32,36 @@ export const useAuthSocket = () => {
       setConnected(false);
     };
     const onConnectError = async (error) => {
+      console.log(error.data);
       console.log('socket "/auth" connectError');
-      authSocket.close();
-      if (error?.data?.code === 4041 || error?.data?.code === 4042) {
-        console.log("authSocket refresh token");
+      // authSocket.close();
+      if (
+        error?.data?.code === 4040 ||
+        error?.data?.code === 4041 ||
+        error?.data?.code === 4042
+        // && !isError
+      ) {
+        console.log('authSocket refresh token');
         try {
-          console.log("socket rf token");
+          console.log('socket rf token');
           const response = await refreshTokenSv();
           console.log(response);
-          Cookies.set("accessToken", response.token);
+          Cookies.set('accessToken', response.token);
           authSocket._opts.extraHeaders.authorization = `bearer ${response.token}`;
           authSocket.connect();
         } catch (rfError) {
-          console.log(rfError);
-        } finally {
           setConnected(false);
         }
       }
     };
 
-    authSocket.on("connect", onConnect);
-    authSocket.on("disconnect", onDisconnect);
-    authSocket.on("connect_error", onConnectError);
+    authSocket.on('connect', onConnect);
+    authSocket.on('disconnect', onDisconnect);
+    authSocket.on('connect_error', onConnectError);
 
     return () => {
-      authSocket.off("connect", onConnect);
-      authSocket.off("disconnect", onDisconnect);
+      authSocket.off('connect', onConnect);
+      authSocket.off('disconnect', onDisconnect);
     };
   }, [isLoggedIn]);
 

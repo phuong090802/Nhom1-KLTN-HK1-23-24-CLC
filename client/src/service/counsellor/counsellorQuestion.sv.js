@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import API from "../api.sv";
 import { authorHeader } from "../serviceHeader";
 
@@ -15,4 +14,4 @@ const forwardQuestionSv = (questionId, data) => {
   });
 };
 
-export { getQuestionsSv, forwardQuestionSv };
+export { forwardQuestionSv, getQuestionsSv };
