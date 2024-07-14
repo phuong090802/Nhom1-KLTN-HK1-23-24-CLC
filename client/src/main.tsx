@@ -5,9 +5,9 @@ import "./index.css";
 import DataProvider from "./store/DataProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <DataProvider>
       <App />
     </DataProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

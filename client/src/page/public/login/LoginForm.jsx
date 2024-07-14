@@ -40,7 +40,7 @@ const LoginForm = () => {
     try {
       const response = await loginSv(data);
       Cookies.set("accessToken", response.token);
-      Cookies.set("isLoggedIn", true);
+      // Cookies.set("isLoggedIn", true);
       // console.log("loginData", response);
       setUser(response.user);
       setIsLoggedIn(true);

@@ -3,6 +3,8 @@ import { authSocket } from "../socket/auth.socket";
 import { refreshTokenSv } from "../service/public/auth.sv";
 import Cookies from "js-cookie";
 import { DataContext } from "../store";
+import axios from "axios";
+import API from "../service/api.sv";
 
 export const useAuthSocket = () => {
   const [connected, setConnected] = useState(authSocket.connected);
@@ -21,6 +23,7 @@ export const useAuthSocket = () => {
   }, [connected, isLoggedIn]);
 
   useEffect(() => {
+    if (!isLoggedIn) return;
     const onConnect = () => {
       console.log('socket "/auth" connected');
       setConnected(true);
@@ -35,7 +38,9 @@ export const useAuthSocket = () => {
       if (error?.data?.code === 4041 || error?.data?.code === 4042) {
         console.log("authSocket refresh token");
         try {
+          console.log("socket rf token");
           const response = await refreshTokenSv();
+          console.log(response);
           Cookies.set("accessToken", response.token);
           authSocket._opts.extraHeaders.authorization = `bearer ${response.token}`;
           authSocket.connect();
