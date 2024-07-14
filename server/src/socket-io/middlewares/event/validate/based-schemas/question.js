@@ -4,7 +4,7 @@ import ErrorHandler from '../../../../../util/error/socket-io-error-handler.js';
 // kiểm tra Id câu hỏi có tồn tại có tồn tại trong DB không
 export const handleValidateQuestion = (question) => {
   if (!question) {
-    throw new ErrorHandler('Quyền truy cập không hợp lệ', 4052);
+    throw new ErrorHandler('Câu hỏi không hợp lệ', 4052);
   }
 };
 
