@@ -20,7 +20,10 @@ export const handleCreateQuestion = catchAsyncErrors(
     const { file, departmentId, fieldId, title, content } = payload;
     const department = await Department.findById(departmentId);
     handleCheckDepartmentAndStatus(department);
-    const field = await Field.findById(fieldId);
+    const field = await Field.findOne({
+      _id: fieldId,
+      department: departmentId,
+    });
     handleCheckFieldAndStatus(field);
     let questionData = {
       department,
@@ -65,7 +68,10 @@ export const handleCreateQuestion = catchAsyncErrors(
     await Promise.all(
       users.map(async (user) => {
         const receiverId = user._id.toString();
-        io.of('/auth').emit(`${receiverId}:question:notification:read`, response);
+        io.of('/auth').emit(
+          `${receiverId}:question:notification:read`,
+          response
+        );
         await sendNotification(receiverId, {
           // sound: 'default',
           title: 'Câu hỏi',

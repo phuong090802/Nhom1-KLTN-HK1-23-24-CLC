@@ -1,8 +1,8 @@
 import ErrorHandler from '../../../../../util/error/socket-io-error-handler.js';
 
 // kiểm tra lĩnh vực có tồn tại có tồn tại không
-export const handleValidateField = (department) => {
-  if (!department) {
+export const handleValidateField = (field) => {
+  if (!field) {
     throw new ErrorHandler('Không tìm thấy lĩnh vực', 4094);
   }
 };
