@@ -64,18 +64,14 @@ export const AppLayoutStore = ({ children }) => {
       const response = await getConversationsSv();
       setConversations(response.conversations);
     } catch (error) {
-<<<<<<< HEAD
       // toast.error("Lỗi lấy dữ liệu tin nhắn");
-=======
-      toast.error('Lỗi lấy dữ liệu tin nhắn');
->>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
     }
   };
 
   // Lấy nội dung của cuộc hội thoại
   const getConversationContents = async () => {
     try {
-      console.log("getConversationContents");
+      console.log('getConversationContents');
       const response = await getMessagesSv(selectedConversation._id, params);
       const newMessages = response.messages;
       setConversationContent((prev) => {
@@ -161,11 +157,7 @@ export const AppLayoutStore = ({ children }) => {
       // console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
-<<<<<<< HEAD
       // toast.error(error?.message || "Lỗi khi lấy thông báo");
-=======
-      toast.error(error?.message || 'Lỗi khi lấy thông báo');
->>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
     }
   };
 

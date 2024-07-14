@@ -48,11 +48,7 @@ export const HomePageStore = ({ children }) => {
       setPages(response.pages);
       // console.log(response);
     } catch (error) {
-<<<<<<< HEAD
       // console.log("error", error);
-=======
-      console.log('error', error);
->>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
       // toast.warning(error?.message || "Lỗi khi tải trang chủ");
     }
   };

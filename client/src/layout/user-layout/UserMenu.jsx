@@ -46,11 +46,7 @@ export const UserMenu = () => {
         icon: <ShieldCheck color={colors.primary} />,
       },
       {
-<<<<<<< HEAD
-        title: "Lịch sử",
-=======
-        title: 'Lịch sử tư vấn',
->>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
+        title: 'Lịch sử',
         link: links.user.history,
         icon: <History color={colors.primary} />,
       },
