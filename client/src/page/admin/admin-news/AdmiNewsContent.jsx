@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-import TitleBar from "../../../molecule/title-bar";
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import no_image from "../../../assets/image/no_image.jpg";
-import { AdminNewsContext } from "./AdminNewsStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import { NewsTable } from "./NewsTable";
-import { DetailNewsModal } from "./DetailNewsModal";
-import { AddNewsModal } from "./AddNewsModal";
+import { useContext } from 'react';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import { AddNewsModal } from './AddNewsModal';
+import { AdminNewsContext } from './AdminNewsStore';
+import { DetailNewsModal } from './DetailNewsModal';
+import { NewsTable } from './NewsTable';
 
 export const AdmiNewsContent = () => {
   const { setHiddenAddNewsModal, setParams } = useContext(AdminNewsContext);
@@ -16,7 +13,7 @@ export const AdmiNewsContent = () => {
       <AddNewsModal />
       <DetailNewsModal />
       <StaffTitleBar
-        title={"Quản lý tin tức"}
+        title={'Quản lý tin tức'}
         onAdd={() => {
           setHiddenAddNewsModal(false);
         }}

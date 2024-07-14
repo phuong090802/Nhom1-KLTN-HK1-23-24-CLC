@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { Editor } from "draft-js";
-import "draft-js/dist/Draft.css";
-import { useRef } from "react";
+import clsx from 'clsx';
+import { Editor } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+import { useRef } from 'react';
 
 const MyRichText = ({
   editorState,
@@ -19,7 +19,7 @@ const MyRichText = ({
   return (
     <div
       className={clsx(
-        "border w-full py-2 rounded-xl overflow-hidden px-4",
+        'border w-full py-2 rounded-xl overflow-hidden px-4',
         className
       )}
       onClick={focus}
@@ -28,7 +28,7 @@ const MyRichText = ({
         ref={editorRef}
         editorState={editorState}
         onChange={setEditorState}
-        placeholder={placeholder || "Nhập nội dung ..."}
+        placeholder={placeholder || 'Nhập nội dung ...'}
         readOnly={disable}
       />
     </div>

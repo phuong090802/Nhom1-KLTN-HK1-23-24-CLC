@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout from "../../../layout/modal-layout";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { DepheadHomeContext } from "./DepheadHomeStore";
-import { modalName } from "./const";
-import { getOverDueQuestionCountSv } from "../../../service/dephead/depheadStatistic.sv";
-import Pagination from "../../../molecule/pagination";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import { toast } from "sonner";
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import Pagination from '../../../molecule/pagination';
+import { getOverDueQuestionCountSv } from '../../../service/dephead/depheadStatistic.sv';
+import { DepheadHomeContext } from './DepheadHomeStore';
+import { modalName } from './const';
 
 export const OverDueQuestionModal = () => {
   const { showingModals, setShowingModals } = useContext(DepheadHomeContext);
@@ -29,10 +28,10 @@ export const OverDueQuestionModal = () => {
   const remindCounsellor = async (counsellorId) => {
     try {
       const response = await authSocket.emitWithAck(
-        "counsellor:reminder:create",
+        'counsellor:reminder:create',
         { counsellorIds: [counsellorId] }
       );
-      toast.success(response?.message || "Gửi nhắc nhở thành công");
+      toast.success(response?.message || 'Gửi nhắc nhở thành công');
       getOverDueCount();
     } catch (error) {}
   };
@@ -55,7 +54,7 @@ export const OverDueQuestionModal = () => {
     <ModalLayout2
       hidden={!showingModals.includes(modalName.overDue)}
       onClose={onModalClose}
-      text={"Danh sách các nhân viên có câu hỏi quá hạn"}
+      text={'Danh sách các nhân viên có câu hỏi quá hạn'}
     >
       <div className="flex flex-col">
         <div className="overflow-x-auto">

@@ -1,8 +1,8 @@
-import API from "../api.sv";
-import { authorHeader, createHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader, createHeader } from '../serviceHeader';
 
 const getUsersSv = (params) => {
-  return API.get("admin/users", {
+  return API.get('admin/users', {
     headers: authorHeader(),
     params: params,
   });
@@ -15,15 +15,16 @@ const updateUserStatusSv = (userId, data) => {
 };
 
 const addStaffSv = (data) => {
-  return API.post("admin/staffs", data, {
+  return API.post('admin/staffs', data, {
     headers: authorHeader(),
   });
 };
 
 const importStaffSv = (data) => {
-  return API.post("admin/counsellors/upload", data, {
-    headers: createHeader(["authorization", "formDataType"]),
+  return API.post('admin/counsellors/upload', data, {
+    headers: createHeader(['authorization', 'formDataType']),
   });
 };
 
-export { getUsersSv, updateUserStatusSv, addStaffSv, importStaffSv };
+export { addStaffSv, getUsersSv, importStaffSv, updateUserStatusSv };
+

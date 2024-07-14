@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
+import clsx from 'clsx';
 import {
-  Building2,
-  Layers,
   CircleHelp,
   CircleUser,
-  MessageCircleQuestion,
-} from "lucide-react";
-import { colors, darkModeCss } from "../../../constance";
-import { DepheadHomeContext } from "./DepheadHomeStore";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { modalName } from "./const";
+  Layers,
+  MessageCircleQuestion
+} from 'lucide-react';
+import { useContext } from 'react';
+import { colors, darkModeCss } from '../../../constance';
+import { DataContext } from '../../../store';
+import { modalName } from './const';
+import { DepheadHomeContext } from './DepheadHomeStore';
 
 export const Dashboard = () => {
   const { dashboardData, fieldSatisticData, setShowingModals } =
@@ -21,7 +20,7 @@ export const Dashboard = () => {
     <div className="grid grid-cols-4 gap-4 ">
       <div
         className={clsx(
-          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
+          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
           darkMode && darkModeCss
         )}
         onClick={() => setShowingModals((prev) => [...prev, modalName.overDue])}
@@ -32,7 +31,7 @@ export const Dashboard = () => {
       </div>
       <div
         className={clsx(
-          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
+          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
           darkMode && darkModeCss
         )}
         onClick={() =>
@@ -47,7 +46,7 @@ export const Dashboard = () => {
       </div>
       <div
         className={clsx(
-          "shadow-lg shadow-black50 rounded-xl border py-4 px-8",
+          'shadow-lg shadow-black50 rounded-xl border py-4 px-8',
           darkMode && darkModeCss
         )}
       >
@@ -59,7 +58,7 @@ export const Dashboard = () => {
       </div>
       <div
         className={clsx(
-          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
+          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
           darkMode && darkModeCss
         )}
         onClick={() =>

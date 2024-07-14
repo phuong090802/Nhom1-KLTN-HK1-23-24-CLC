@@ -1,10 +1,9 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
-  depheadCreateFaqSv,
-  depheadGetFaqsSv,
-} from "../../../service/dephead/depheadFaq.sv";
-import { initParams } from "./constance";
-import { toast } from "sonner";
+  depheadGetFaqsSv
+} from '../../../service/dephead/depheadFaq.sv';
+import { initParams } from './constance';
 
 export const DepheadFaqContext = createContext({
   faqs: Array,
@@ -40,7 +39,7 @@ export const DepheadFaqStore = ({ children }) => {
       setFaqs(response.faqs);
       setPages(response.pages);
     } catch (error) {
-      toast.error(error?.message || "Lỗi lấy dữ liệu faqs");
+      toast.error(error?.message || 'Lỗi lấy dữ liệu faqs');
     }
   };
 

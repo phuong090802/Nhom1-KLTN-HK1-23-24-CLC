@@ -1,6 +1,6 @@
-import { FC, createContext, useState } from "react";
-import { iContextValue, iDataProviderProps, iUser } from "./interface";
-import { initUser } from "./constance";
+import { FC, createContext, useState } from 'react';
+import { initUser } from './constance';
+import { iContextValue, iDataProviderProps, iUser } from './interface';
 
 export const DataContext = createContext<iContextValue>({
   user: initUser,

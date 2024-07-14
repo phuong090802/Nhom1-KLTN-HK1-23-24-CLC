@@ -1,15 +1,15 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { useAuthSocket } from '../../hooks/useAuthSocket';
 import {
   getConversationsSv,
   getMessagesSv,
-} from "../../service/user/userMessage.sv";
-import { useAuthSocket } from "../../hooks/useAuthSocket";
-import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import { toast } from "sonner";
-import { DataContext } from "../../store";
-import { initParams } from "./constance";
-import { getNotificationSv } from "../../service/user/userNotification.sv";
+} from '../../service/user/userMessage.sv';
+import { getNotificationSv } from '../../service/user/userNotification.sv';
+import { DataContext } from '../../store';
+import { initParams } from './constance';
 
 export const AppLayoutContext = createContext({
   params: Object,
@@ -38,7 +38,7 @@ export const AppLayoutStore = ({ children }) => {
 
   const { authSocket, connected } = useAuthSocket();
 
-  const [showingModal, setShowingModal] = useState(""); // modal đang hiển thị
+  const [showingModal, setShowingModal] = useState(''); // modal đang hiển thị
 
   const [conversations, setConversations] = useState([]); // chứa những cuộc hội thoại
 
@@ -64,7 +64,11 @@ export const AppLayoutStore = ({ children }) => {
       const response = await getConversationsSv();
       setConversations(response.conversations);
     } catch (error) {
+<<<<<<< HEAD
       // toast.error("Lỗi lấy dữ liệu tin nhắn");
+=======
+      toast.error('Lỗi lấy dữ liệu tin nhắn');
+>>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
     }
   };
 
@@ -96,11 +100,11 @@ export const AppLayoutStore = ({ children }) => {
   const sendMessage = async () => {
     if (
       draftToHtml(convertToRaw(messageContent.getCurrentContent())).trim() ===
-      "<p></p>"
+      '<p></p>'
     )
       return;
     try {
-      const response = await authSocket.emitWithAck("message:create", {
+      const response = await authSocket.emitWithAck('message:create', {
         conversationId: selectedConversation._id,
         messageContent: draftToHtml(
           convertToRaw(messageContent.getCurrentContent())
@@ -129,7 +133,7 @@ export const AppLayoutStore = ({ children }) => {
       setMessageContent(EditorState.createEmpty());
     } catch (error) {
       console.log(error);
-      toast.error("Tin nhắn chưa được gửi đi");
+      toast.error('Tin nhắn chưa được gửi đi');
     }
   };
 
@@ -157,7 +161,11 @@ export const AppLayoutStore = ({ children }) => {
       // console.log("getNotifications", response.notifications);
       setNotification(response.notifications);
     } catch (error) {
+<<<<<<< HEAD
       // toast.error(error?.message || "Lỗi khi lấy thông báo");
+=======
+      toast.error(error?.message || 'Lỗi khi lấy thông báo');
+>>>>>>> c87f93f8c0a6b31302b48d576a74ddf1cd19a910
     }
   };
 
@@ -190,7 +198,7 @@ export const AppLayoutStore = ({ children }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      if (user.role !== "ADMIN" && user.role !== "SUPERVISOR") {
+      if (user.role !== 'ADMIN' && user.role !== 'SUPERVISOR') {
         getNotifications();
         getConversations();
       }
@@ -200,7 +208,7 @@ export const AppLayoutStore = ({ children }) => {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    setShowingModal("");
+    setShowingModal('');
   }, [isLoggedIn]);
 
   useEffect(() => {

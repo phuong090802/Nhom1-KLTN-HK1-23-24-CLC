@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import no_image from "../../../assets/image/no_image.jpg";
-import { NewsPageContext } from "./NewsPageStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import FileComponent from "../../../atom/file-component/FileComponent";
+import { useContext } from 'react';
+import FileComponent from '../../../atom/file-component/FileComponent';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { NewsPageContext } from './NewsPageStore';
 
 export const DetailNewsModal = () => {
   const { hiddenDetailNewsModal, setHiddenDetailNewsModal, selectedNews } =
@@ -24,8 +23,8 @@ export const DetailNewsModal = () => {
           </p>
           <div className="mb-4">
             {selectedNews?.file &&
-              (selectedNews.file.includes("png") ||
-                selectedNews.file.includes("jpg")) && (
+              (selectedNews.file.includes('png') ||
+                selectedNews.file.includes('jpg')) && (
                 <img
                   src={selectedNews.file}
                   alt="News"
@@ -38,8 +37,8 @@ export const DetailNewsModal = () => {
             dangerouslySetInnerHTML={{ __html: selectedNews?.content }}
           />
           {selectedNews?.file &&
-            !selectedNews.file.includes("png") &&
-            !selectedNews.file.includes("jpg") && (
+            !selectedNews.file.includes('png') &&
+            !selectedNews.file.includes('jpg') && (
               <div className="mt-2">
                 <FileComponent link={selectedNews?.file} />
               </div>

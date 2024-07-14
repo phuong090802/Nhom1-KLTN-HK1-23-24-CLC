@@ -1,5 +1,5 @@
-import { DepheadFieldContent } from "./DepheadFieldContent";
-import { DepheadFieldStore } from "./DepheadFieldStore";
+import { DepheadFieldContent } from './DepheadFieldContent';
+import { DepheadFieldStore } from './DepheadFieldStore';
 
 const DepheadField = () => {
   DepheadFieldStore;

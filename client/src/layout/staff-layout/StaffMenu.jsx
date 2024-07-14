@@ -1,85 +1,8 @@
-// import { useContext } from "react";
-// import { links } from "../../constance";
-// import { DataContext } from "../../store/DataProvider";
-// import { MenuItem } from "./MenuItem";
-
-// export const StaffMenu = () => {
-//   const { user } = useContext(DataContext);
-
-//   const itemList = {
-//     USER: [
-//       {
-//         title: "Dashboard",
-//         link: links.counsellor.home,
-//         icon: "LayoutDashboard",
-//       },
-//     ],
-//     COUNSELLOR: [
-//       {
-//         title: "Dashboard",
-//         link: links.counsellor.home,
-//         icon: "LayoutDashboard",
-//       },
-//       {
-//         title: "Danh sách câu hỏi",
-//         link: links.counsellor.questions,
-//         icon: "CircleHelp",
-//       },
-//       {
-//         title: "Phản hồi từ trưởng khoa",
-//         link: links.counsellor.feedback,
-//         icon: "MessageCircleReply",
-//       },
-//     ],
-//     DEPARTMENT_HEAD: [
-//       { title: "Dashboard", link: links.dephead.home, icon: "LayoutDashboard" },
-//       {
-//         title: "Danh sách câu hỏi",
-//         link: links.dephead.questions,
-//         icon: "CircleHelp",
-//       },
-//       { title: "Quản lý lĩnh vực", link: links.dephead.fields, icon: "Layers" },
-//       { title: "Quản lý nhân sự", link: links.dephead.staffs, icon: "Users" },
-//       {
-//         title: "Quản lý FAQs",
-//         link: links.dephead.faqs,
-//         icon: "MessageCircleQuestion",
-//       },
-//       {
-//         title: "Duyệt câu trả lời",
-//         link: links.dephead.answers,
-//         icon: "ClipboardCheck",
-//       },
-//     ],
-//     ADMIN: [
-//       { title: "Dashboard", link: links.admin.home, icon: "LayoutDashboard" },
-//       { title: "Quản lý khoa", link: links.admin.department, icon: "Store" },
-//       { title: "Quản lý nhân sự", link: links.admin.staffs, icon: "Users" },
-//       { title: "Quản lý tin tức", link: links.admin.news, icon: "Newspaper" },
-//     ],
-//   };
-
-//   return (
-//     <div className="mt-2 bg-white rounded-2xl overflow-hidden shadow-black50 shadow-lg border">
-//       {user?.role !== "USER" &&
-//         itemList[user.role].map((option) => (
-//           <MenuItem
-//             icon={option.icon}
-//             title={option.title}
-//             link={option.link}
-//             key={option.link}
-//           />
-//         ))}
-//     </div>
-//   );
-// };
-
-import clsx from "clsx";
-import Cookies from "js-cookie";
+import clsx from 'clsx';
+import Cookies from 'js-cookie';
 import {
   CircleHelp,
   ClipboardCheck,
-  History,
   KeySquare,
   Layers,
   LayoutDashboard,
@@ -90,15 +13,15 @@ import {
   ShieldCheck,
   SquareUser,
   Store,
-  Users,
-} from "lucide-react";
-import React, { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import default_avatar from "../../assets/image/default_avatar.png";
-import { colors, darkModeCss, links } from "../../constance";
-import { logoutSv } from "../../service/public/auth.sv";
-import { DataContext } from "../../store/DataProvider";
+  Users
+} from 'lucide-react';
+import { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import default_avatar from '../../assets/image/default_avatar.png';
+import { colors, darkModeCss, links } from '../../constance';
+import { logoutSv } from '../../service/public/auth.sv';
+import { DataContext } from '../../store/DataProvider';
 
 export const StaffMenu = () => {
   const { user, removeUserData, darkMode } = useContext(DataContext);
@@ -107,19 +30,19 @@ export const StaffMenu = () => {
   const itemList = {
     USER: [
       {
-        title: "Thông tin người dùng",
+        title: 'Thông tin người dùng',
         link: links.user.profile,
-        icon: <SquareUser color={darkMode ? "#fff" : colors.primary} />,
+        icon: <SquareUser color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Đổi mật khẩu",
+        title: 'Đổi mật khẩu',
         link: links.user.passwordChange,
-        icon: <KeySquare color={darkMode ? "#fff" : colors.primary} />,
+        icon: <KeySquare color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Xác thực tài khoản",
+        title: 'Xác thực tài khoản',
         link: links.user.verify,
-        icon: <ShieldCheck color={darkMode ? "#fff" : colors.primary} />,
+        icon: <ShieldCheck color={darkMode ? '#fff' : colors.primary} />,
       },
     ],
     COUNSELLOR: [
@@ -129,77 +52,77 @@ export const StaffMenu = () => {
       //   icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
       // },
       {
-        title: "Danh sách câu hỏi",
+        title: 'Danh sách câu hỏi',
         link: links.counsellor.questions,
-        icon: <CircleHelp color={darkMode ? "#fff" : colors.primary} />,
+        icon: <CircleHelp color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Phản hồi từ trưởng khoa",
+        title: 'Phản hồi từ trưởng khoa',
         link: links.counsellor.feedback,
-        icon: <MessageCircleReply color={darkMode ? "#fff" : colors.primary} />,
+        icon: <MessageCircleReply color={darkMode ? '#fff' : colors.primary} />,
       },
     ],
     DEPARTMENT_HEAD: [
       {
-        title: "Dashboard",
+        title: 'Dashboard',
         link: links.dephead.home,
-        icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
+        icon: <LayoutDashboard color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Danh sách câu hỏi",
+        title: 'Danh sách câu hỏi',
         link: links.dephead.questions,
-        icon: <CircleHelp color={darkMode ? "#fff" : colors.primary} />,
+        icon: <CircleHelp color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý lĩnh vực",
+        title: 'Quản lý lĩnh vực',
         link: links.dephead.fields,
-        icon: <Layers color={darkMode ? "#fff" : colors.primary} />,
+        icon: <Layers color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý nhân sự",
+        title: 'Quản lý nhân sự',
         link: links.dephead.staffs,
-        icon: <Users color={darkMode ? "#fff" : colors.primary} />,
+        icon: <Users color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý FAQs",
+        title: 'Quản lý FAQs',
         link: links.dephead.faqs,
         icon: (
-          <MessageCircleQuestion color={darkMode ? "#fff" : colors.primary} />
+          <MessageCircleQuestion color={darkMode ? '#fff' : colors.primary} />
         ),
       },
       {
-        title: "Duyệt câu trả lời",
+        title: 'Duyệt câu trả lời',
         link: links.dephead.answers,
-        icon: <ClipboardCheck color={darkMode ? "#fff" : colors.primary} />,
+        icon: <ClipboardCheck color={darkMode ? '#fff' : colors.primary} />,
       },
     ],
     ADMIN: [
       {
-        title: "Dashboard",
+        title: 'Dashboard',
         link: links.admin.home,
-        icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
+        icon: <LayoutDashboard color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý khoa",
+        title: 'Quản lý khoa',
         link: links.admin.department,
-        icon: <Store color={darkMode ? "#fff" : colors.primary} />,
+        icon: <Store color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý nhân sự",
+        title: 'Quản lý nhân sự',
         link: links.admin.staffs,
-        icon: <Users color={darkMode ? "#fff" : colors.primary} />,
+        icon: <Users color={darkMode ? '#fff' : colors.primary} />,
       },
       {
-        title: "Quản lý tin tức",
+        title: 'Quản lý tin tức',
         link: links.admin.news,
-        icon: <Newspaper color={darkMode ? "#fff" : colors.primary} />,
+        icon: <Newspaper color={darkMode ? '#fff' : colors.primary} />,
       },
     ],
     SUPERVISOR: [
       {
-        title: "Thống kê",
+        title: 'Thống kê',
         link: links.supervisor.home,
-        icon: <LayoutDashboard color={darkMode ? "#fff" : colors.primary} />,
+        icon: <LayoutDashboard color={darkMode ? '#fff' : colors.primary} />,
       },
     ],
   };
@@ -207,20 +130,20 @@ export const StaffMenu = () => {
   const handleLogout = async () => {
     try {
       const response = await logoutSv();
-      Cookies.remove("accessToken");
+      Cookies.remove('accessToken');
       // Cookies.remove("isLoggedIn");
       removeUserData();
-      toast.success(response.message || "Đăng xuất thành công");
+      toast.success(response.message || 'Đăng xuất thành công');
       navigate(links.public.home);
     } catch (error) {
-      toast.error(error?.message || "Đăng xuất không thành công");
+      toast.error(error?.message || 'Đăng xuất không thành công');
     }
   };
 
   return (
     <div
       className={clsx(
-        "pt-4 rounded-xl shadow-black50 shadow-lg min-h-[90vh] border overflow-hidden",
+        'pt-4 rounded-xl shadow-black50 shadow-lg min-h-[90vh] border overflow-hidden',
         darkMode && darkModeCss
       )}
     >
@@ -251,7 +174,7 @@ export const StaffMenu = () => {
           })}
           <span className="border"></span>
           {user.role &&
-            user.role !== "USER" &&
+            user.role !== 'USER' &&
             itemList[user.role].map((item) => {
               return (
                 <MenuButton
@@ -285,7 +208,7 @@ const MenuButton = ({ icon, text, link }) => {
       {icon}
       <p
         className={clsx(
-          link === location?.pathname && "text-primary underline"
+          link === location?.pathname && 'text-primary underline'
         )}
       >
         {text}
@@ -300,7 +223,7 @@ const LogoutButton = ({ onClick, darkMode }) => {
       className="flex items-center gap-2 w-full px-2 py-1 rounded-xl hover:text-primary duration-300 cursor-pointer font-semibold"
       onClick={onClick}
     >
-      <LogOut color={darkMode ? "#fff" : colors.primary} />
+      <LogOut color={darkMode ? '#fff' : colors.primary} />
       <p>Đăng xuất</p>
     </div>
   );

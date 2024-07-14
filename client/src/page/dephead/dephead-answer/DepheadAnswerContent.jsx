@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import { DepheadAnswerContext } from "./DepheadAnswerStore";
-import { Item } from "./Item";
-import Pagination from "../../../molecule/pagination";
-import { FeedbackModal } from "./FeedbackModal";
-import { DepheadAnswerTable } from "./DepheadAnswerTable";
-import { DetailAnswerModal } from "./DetailAnswerModal";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import { DepheadAnswerContext } from './DepheadAnswerStore';
+import { DepheadAnswerTable } from './DepheadAnswerTable';
+import { DetailAnswerModal } from './DetailAnswerModal';
 
 export const DepheadAnswerContent = () => {
   const { waitingQuestions, pages, params, setParams } =
@@ -13,7 +11,7 @@ export const DepheadAnswerContent = () => {
   return (
     <div>
       <DetailAnswerModal />
-      <StaffTitleBar title={"Câu trả lời chờ duyệt"} />
+      <StaffTitleBar title={'Câu trả lời chờ duyệt'} />
       <div className="mt-2 grid gap-2">
         {waitingQuestions?.length === 0 ? (
           <div className="flex w-full justify-center border py-20 rounded-xl bg-white shadow-lg shadow-black75 text-lg font-bold">

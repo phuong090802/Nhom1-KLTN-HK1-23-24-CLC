@@ -1,12 +1,12 @@
-import Cookies from "js-cookie";
-import MyForm from "../../../molecule/my-form";
-import { loginSv } from "../../../service/public/auth.sv";
-import { formInitData } from "./constance";
-import { useContext } from "react";
-import { DataContext } from "../../../store";
-import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
-import { links } from "../../../constance";
+import Cookies from 'js-cookie';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { links } from '../../../constance';
+import MyForm from '../../../molecule/my-form';
+import { loginSv } from '../../../service/public/auth.sv';
+import { DataContext } from '../../../store';
+import { formInitData } from './constance';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -15,19 +15,19 @@ const LoginForm = () => {
 
   const forwardLoggedInUser = (role) => {
     switch (role) {
-      case "USER":
+      case 'USER':
         navigate(links.public.home);
         break;
-      case "COUNSELLOR":
+      case 'COUNSELLOR':
         navigate(links.counsellor.questions);
         break;
-      case "DEPARTMENT_HEAD":
+      case 'DEPARTMENT_HEAD':
         navigate(links.dephead.home);
         break;
-      case "SUPERVISOR":
+      case 'SUPERVISOR':
         navigate(links.supervisor.home);
         break;
-      case "ADMIN":
+      case 'ADMIN':
         navigate(links.admin.home);
         break;
       default:
@@ -39,17 +39,17 @@ const LoginForm = () => {
   const loginSubmit = async (data) => {
     try {
       const response = await loginSv(data);
-      Cookies.set("accessToken", response.token);
+      Cookies.set('accessToken', response.token);
       // Cookies.set("isLoggedIn", true);
       // console.log("loginData", response);
       setUser(response.user);
       setIsLoggedIn(true);
-      toast.success("Đăng nhập thành công");
+      toast.success('Đăng nhập thành công');
       setTimeout(() => {
-        forwardLoggedInUser(response.user.role || "GUEST");
+        forwardLoggedInUser(response.user.role || 'GUEST');
       }, 1000);
     } catch (error) {
-      toast.error(error?.message || "Đăng nhập không thành công");
+      toast.error(error?.message || 'Đăng nhập không thành công');
     }
   };
 
@@ -58,7 +58,7 @@ const LoginForm = () => {
       <MyForm
         formInitData={formInitData}
         onSubmit={loginSubmit}
-        submitTitle={"Đăng nhập"}
+        submitTitle={'Đăng nhập'}
       />
     </div>
   );

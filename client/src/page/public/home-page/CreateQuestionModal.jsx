@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import { X } from "lucide-react";
-import clsx from "clsx";
-import { HomePageContext } from "./HomePageStore";
-import MySelect from "../../../atom/my-select";
-import MyRichText from "../../../atom/my-rich-text";
-import MyButton from "../../../atom/my-button";
-import MyInput from "../../../atom/my-input";
-import { EditorState, convertToRaw } from "draft-js";
-import useDepartmentField from "../../../hooks/useDepartmentField";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import draftToHtml from "draftjs-to-html";
-import { toast } from "sonner";
-import MyFileInput from "../../../atom/my-file-input";
+import clsx from 'clsx';
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { X } from 'lucide-react';
+import { useContext, useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import MyInput from '../../../atom/my-input';
+import MyRichText from '../../../atom/my-rich-text';
+import MySelect from '../../../atom/my-select';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import useDepartmentField from '../../../hooks/useDepartmentField';
+import { HomePageContext } from './HomePageStore';
 
 export const CreateQuestionModal = ({ hidden }) => {
   const { hiddenCreateQuestion, setHiddenCreateQuestion, file, setFile } =
@@ -23,7 +23,7 @@ export const CreateQuestionModal = ({ hidden }) => {
 
   const { authSocket, connected } = useAuthSocket();
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
 
   // useEffect(() => {
   //   console.log(file?.type || null);
@@ -63,15 +63,15 @@ export const CreateQuestionModal = ({ hidden }) => {
               convertToRaw(submitQuestion.getCurrentContent())
             ),
           };
-      const response = await authSocket.emitWithAck("question:create", submit);
-      setTitle("");
+      const response = await authSocket.emitWithAck('question:create', submit);
+      setTitle('');
       setSubmitQuestion(EditorState.createEmpty());
       setSelectedDep(null);
       setSelectedField(null);
       setFile(null);
-      toast.success(response.message || "Đặt câu hỏi thành công");
+      toast.success(response.message || 'Đặt câu hỏi thành công');
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi đặt câu hỏi");
+      toast.error(error?.message || 'Lỗi khi đặt câu hỏi');
     }
   };
 
@@ -88,7 +88,7 @@ export const CreateQuestionModal = ({ hidden }) => {
           <div className="inline-block w-4/5">
             <MySelect
               boxHeight={32}
-              variant={"underline"}
+              variant={'underline'}
               placeholder="Chọn khoa"
               className="w-full"
               data={deps}
@@ -104,7 +104,7 @@ export const CreateQuestionModal = ({ hidden }) => {
           <div className="inline-block w-4/5">
             <MySelect
               boxHeight={32}
-              variant={"underline"}
+              variant={'underline'}
               placeholder="Chọn Lĩnh vực"
               className="w-full"
               data={fields}
@@ -127,8 +127,8 @@ export const CreateQuestionModal = ({ hidden }) => {
           <MyRichText
             editorState={submitQuestion}
             setEditorState={setSubmitQuestion}
-            className={"border-2 h-[150px] px-0"}
-            placeholder={"Nhập nội dung câu hỏi ..."}
+            className={'border-2 h-[150px] px-0'}
+            placeholder={'Nhập nội dung câu hỏi ...'}
           />
         </div>
         <div className="pt-2 px-4">
@@ -144,7 +144,7 @@ export const CreateQuestionModal = ({ hidden }) => {
       <div className="p-2">
         <MyButton
           className="bg-primary"
-          size={"fullWidth"}
+          size={'fullWidth'}
           onClick={createQuestion}
         >
           Đặt câu hỏi
@@ -158,8 +158,8 @@ const ModalLayout = ({ children, hidden, onClose }) => {
   return (
     <div
       className={clsx(
-        "fixed top-0 bottom-0 left-0 right-0 bg-black25 flex justify-center items-center z-50 backdrop-blur-sm",
-        hidden && "hidden"
+        'fixed top-0 bottom-0 left-0 right-0 bg-black25 flex justify-center items-center z-50 backdrop-blur-sm',
+        hidden && 'hidden'
       )}
     >
       <div className="min-w-96 min-h-48 bg-white rounded-2xl">

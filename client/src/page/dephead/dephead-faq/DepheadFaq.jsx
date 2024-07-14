@@ -1,5 +1,5 @@
-import { DepheadFaqContent } from "./DepheadFaqContent";
-import { DepheadFaqStore } from "./DepheadFaqStore";
+import { DepheadFaqContent } from './DepheadFaqContent';
+import { DepheadFaqStore } from './DepheadFaqStore';
 
 const DepheadFaq = () => {
   return (

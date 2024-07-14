@@ -1,6 +1,6 @@
 const initParams = {
-  search: ["title", "content"],
-  keyword: "",
+  search: ['title', 'content'],
+  keyword: '',
   page: 1,
   size: 5,
   filter: {
@@ -13,16 +13,17 @@ const initParams = {
 
 const initFilter = [
   {
-    label: { key: "Lĩnh vực", value: "field" },
-    data: [{ key: "Không có", value: null }],
+    label: { key: 'Lĩnh vực', value: 'field' },
+    data: [{ key: 'Không có', value: null }],
   },
 ];
 
 const initSort = [
   {
-    label: { key: "Ngày tạo", value: "createdAt" },
+    label: { key: 'Ngày tạo', value: 'createdAt' },
     data: [1, -1],
   },
 ];
 
-export { initParams, initFilter, initSort };
+export { initFilter, initParams, initSort };
+

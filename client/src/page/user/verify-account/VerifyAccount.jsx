@@ -1,6 +1,5 @@
-import React from "react";
-import { VerifyAccountStore } from "./VerifyAccountStore";
-import { VerifyAccountContent } from "./VerifyAccountContent";
+import { VerifyAccountContent } from './VerifyAccountContent';
+import { VerifyAccountStore } from './VerifyAccountStore';
 
 const VerifyAccount = () => {
   return (

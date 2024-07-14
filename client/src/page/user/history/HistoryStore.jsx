@@ -1,11 +1,10 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
   getLikeHistorySv,
-  getQuestionByIdSv,
-  getQuestionHistorySv,
-} from "../../../service/user/userQuestion.sv";
-import { toast } from "sonner";
-import { initParams } from "./constance";
+  getQuestionHistorySv
+} from '../../../service/user/userQuestion.sv';
+import { initParams } from './constance';
 
 export const HistoryContext = createContext({
   historyQuestions: Array,
@@ -39,7 +38,8 @@ export const HistoryStore = ({ children }) => {
 
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
-  const [hiddenDetailQuestionModal, setHiddenDetailQuestionModal] = useState(true);
+  const [hiddenDetailQuestionModal, setHiddenDetailQuestionModal] =
+    useState(true);
 
   const getQuestionHistory = async () => {
     try {
@@ -47,22 +47,20 @@ export const HistoryStore = ({ children }) => {
       setHistoryQuestion(response.questions);
       setHistoryPages(response?.pages || 0);
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi lấy lịch sử câu hỏi");
+      toast.error(error?.message || 'Lỗi khi lấy lịch sử câu hỏi');
     }
   };
 
   const getLikeHistory = async () => {
     try {
       const response = await getLikeHistorySv(likedParams);
-      console.log("liked", response);
+      console.log('liked', response);
       setLikedQuestion(response?.questions);
       setLikePages(response?.pages || 0);
     } catch (error) {
-      toast(error?.message || "Lỗi lấy danh sách câu hỏi yêu thích");
+      toast(error?.message || 'Lỗi lấy danh sách câu hỏi yêu thích');
     }
   };
-
-
 
   useEffect(() => {
     getQuestionHistory();
@@ -71,8 +69,6 @@ export const HistoryStore = ({ children }) => {
   useEffect(() => {
     getLikeHistory();
   }, [likedParams]);
-
-
 
   return (
     <HistoryContext.Provider
@@ -88,7 +84,9 @@ export const HistoryStore = ({ children }) => {
         likePages,
         historyPages,
         selectedQuestion,
-        setSelectedQuestion,hiddenDetailQuestionModal, setHiddenDetailQuestionModal
+        setSelectedQuestion,
+        hiddenDetailQuestionModal,
+        setHiddenDetailQuestionModal,
       }}
     >
       {children}

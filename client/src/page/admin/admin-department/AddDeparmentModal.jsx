@@ -1,11 +1,10 @@
-import { toast } from "sonner";
-import MyForm from "../../../molecule/my-form";
-import { addDepSv } from "../../../service/admin/adminDepartment.sv";
-import ModalLayout from "../../../layout/modal-layout";
-import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
-import { formAddDep, formUpdateDep } from "./constance";
-import { useContext, useRef } from "react";
-import { AdminDepartmentContext } from "./AdminDepartmentStore";
+import { useContext, useRef } from 'react';
+import { toast } from 'sonner';
+import ModalLayout2 from '../../../layout/modal-layout-2/ModalLayout2';
+import MyForm from '../../../molecule/my-form';
+import { addDepSv } from '../../../service/admin/adminDepartment.sv';
+import { AdminDepartmentContext } from './AdminDepartmentStore';
+import { formAddDep } from './constance';
 
 export const AddDeparmentModal = ({ title }) => {
   const { hiddenAddDep, setHiddenAddDep, getDepartment } = useContext(
@@ -17,10 +16,10 @@ export const AddDeparmentModal = ({ title }) => {
   const addDeparment = async (data) => {
     try {
       const response = await addDepSv(data);
-      toast.success(response.message || "Thêm khoa thành công");
+      toast.success(response.message || 'Thêm khoa thành công');
       getDepartment();
     } catch (error) {
-      toast.error(error?.message || "Xảy ra lỗi trong quá trình thêm khoa");
+      toast.error(error?.message || 'Xảy ra lỗi trong quá trình thêm khoa');
     }
   };
 
@@ -35,7 +34,7 @@ export const AddDeparmentModal = ({ title }) => {
       <div className="mt-4 w-80 flex flex-col justify-center items-center">
         <MyForm
           formInitData={formAddDep}
-          submitTitle={"Thêm"}
+          submitTitle={'Thêm'}
           onSubmit={addDeparment}
           ref={AddDepFormRef}
         />

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import ItemLayout from "../../../layout/item-layout";
-import { colors } from "../../../constance";
-import { MessageCircleReply, Paperclip, Calendar } from "lucide-react";
-import { NewsPageContext } from "./NewsPageStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import { DataContext } from "../../../store";
+import { Calendar, MessageCircleReply, Paperclip } from 'lucide-react';
+import { useContext } from 'react';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { DataContext } from '../../../store';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { NewsPageContext } from './NewsPageStore';
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(NewsPageContext);
@@ -12,21 +12,21 @@ export const Item = ({ data }) => {
   const { darkMode } = useContext(DataContext);
 
   const handleExpand = () => {
-    if (selected === data._id) setSelected("");
+    if (selected === data._id) setSelected('');
     else setSelected(data._id);
   };
   return (
     <ItemLayout
-      text={data.title || "Tiêu đề "}
+      text={data.title || 'Tiêu đề '}
       isSelected={selected === data._id}
       onExpand={handleExpand}
       extraInforComponent={
         <div className="flex items-center gap-1">
-          <Calendar size={20} color={darkMode ? "#fff" : colors.black75} />
+          <Calendar size={20} color={darkMode ? '#fff' : colors.black75} />
           <p className="text-sm">
             {data?.createdAt
               ? convertDateTimeToDate(data.createdAt)
-              : "createdAt"}
+              : 'createdAt'}
           </p>
         </div>
       }
@@ -37,7 +37,7 @@ export const Item = ({ data }) => {
           <h1 className="font-bold text-black75">Phản hồi</h1>
           <p>{data?.content}</p>
           {!!data.file &&
-            (data?.file?.includes(".png") ? (
+            (data?.file?.includes('.png') ? (
               <img
                 src={data.file}
                 alt=""

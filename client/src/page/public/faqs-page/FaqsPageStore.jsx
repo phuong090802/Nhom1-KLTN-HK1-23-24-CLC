@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from "react";
-import { getFaqsSv } from "../../../service/public/faqs.sv";
-import { toast } from "sonner";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { getFaqsSv } from '../../../service/public/faqs.sv';
+import { initParams } from './constance';
 
 export const FaqsPageContext = createContext({
   faqs: Array,
@@ -19,7 +19,7 @@ export const FaqsPageStore = ({ children }) => {
 
   const [params, setParams] = useState(initParams);
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
 
   const getFaqs = async () => {
     console.log(params);
@@ -28,7 +28,7 @@ export const FaqsPageStore = ({ children }) => {
       setFaqs(response.faqs);
       setPages(response.pages);
     } catch (error) {
-      toast.warning(error?.message || "Lỗi khi lấy dữ liệu");
+      toast.warning(error?.message || 'Lỗi khi lấy dữ liệu');
     }
   };
 

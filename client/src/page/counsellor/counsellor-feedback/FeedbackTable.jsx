@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import { CounsellorFeedbackContext } from "./CounsellorFeedbackStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import Pagination from "../../../molecule/pagination";
+import { useContext } from 'react';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { CounsellorFeedbackContext } from './CounsellorFeedbackStore';
 
 export const FeedbackTable = () => {
   const {
@@ -45,7 +44,7 @@ export const FeedbackTable = () => {
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                   <div className="text-sm leading-5 text-gray-900">
-                    {feedback?.question?.title || "Tiêu đề câu hỏi"}
+                    {feedback?.question?.title || 'Tiêu đề câu hỏi'}
                   </div>
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">

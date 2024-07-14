@@ -1,18 +1,18 @@
-import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import { Type } from "lucide-react";
-import React, { useContext, useState } from "react";
-import { toast } from "sonner";
-import MyButton from "../../../atom/my-button/MyButton";
-import MyFileInput from "../../../atom/my-file-input";
-import MyInput from "../../../atom/my-input";
-import MyRichText from "../../../atom/my-rich-text/MyRichText";
-import MySelect from "../../../atom/my-select";
-import { colors } from "../../../constance";
-import { depheadCreateFaqSv } from "../../../service/dephead/depheadFaq.sv";
-import { AddFaqModalContext } from "./AddFaqModal";
-import { DepheadFaqContext } from "./DepheadFaqStore";
-import { initFaqData } from "./constance";
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { Type } from 'lucide-react';
+import { useContext, useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button/MyButton';
+import MyFileInput from '../../../atom/my-file-input';
+import MyInput from '../../../atom/my-input';
+import MyRichText from '../../../atom/my-rich-text/MyRichText';
+import MySelect from '../../../atom/my-select';
+import { colors } from '../../../constance';
+import { depheadCreateFaqSv } from '../../../service/dephead/depheadFaq.sv';
+import { AddFaqModalContext } from './AddFaqModal';
+import { DepheadFaqContext } from './DepheadFaqStore';
+import { initFaqData } from './constance';
 
 export const AddFaqForm = () => {
   const { fieldData } = useContext(AddFaqModalContext);
@@ -28,16 +28,16 @@ export const AddFaqForm = () => {
       formData.append(key, submitData[key]);
     }
     formData.append(
-      "answer",
+      'answer',
       draftToHtml(convertToRaw(submitAnswer.getCurrentContent()))
     );
     try {
       const reponse = await depheadCreateFaqSv(formData);
-      toast.success(reponse.message || "Tạo câu hỏi chung thành công");
+      toast.success(reponse.message || 'Tạo câu hỏi chung thành công');
       depheadGetFaqs();
       setSubmitData(initFaqData);
     } catch (error) {
-      toast.error(error?.message || "Có lỗi xảy ra khi tạo câu");
+      toast.error(error?.message || 'Có lỗi xảy ra khi tạo câu');
     }
   };
 
@@ -71,7 +71,7 @@ export const AddFaqForm = () => {
           onChange={handleFieldSelect}
         />
         <MyInput
-          variant={"icon"}
+          variant={'icon'}
           placeholder="Câu hỏi"
           inputHeight={40}
           value={submitData.question}
@@ -82,7 +82,7 @@ export const AddFaqForm = () => {
         <MyRichText
           editorState={submitAnswer}
           setEditorState={setSubmitAnswer}
-          className={"border-2 h-[150px] px-0"}
+          className={'border-2 h-[150px] px-0'}
         />
         <MyFileInput onChange={handleFileChange} value={submitData.file} />
       </div>

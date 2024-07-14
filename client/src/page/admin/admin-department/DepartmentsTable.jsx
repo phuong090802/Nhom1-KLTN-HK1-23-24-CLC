@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { AdminDepartmentContext } from "./AdminDepartmentStore";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { useContext } from 'react';
+import { AdminDepartmentContext } from './AdminDepartmentStore';
 
 export const DepartmentsTable = () => {
   const { deps, updateDepStatus, setSelectedDep, setHiddenDetailDepModal } =
@@ -33,7 +33,7 @@ export const DepartmentsTable = () => {
               <tr key={dep?._id || index}>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                   <div className="text-sm leading-5 text-gray-900 truncate">
-                    {dep?.departmentName || "Tên khoa"}
+                    {dep?.departmentName || 'Tên khoa'}
                   </div>
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
@@ -42,13 +42,13 @@ export const DepartmentsTable = () => {
                       updateDepStatus(dep._id, { isActive: !dep.isActive })
                     }
                     className={clsx(
-                      "px-2 inline-flex text-xs leading-5 font-semibold rounded-full duration-300",
+                      'px-2 inline-flex text-xs leading-5 font-semibold rounded-full duration-300',
                       dep.isActive
-                        ? " bg-green-100 text-green-800 hover:bg-green-200"
-                        : " bg-red-100 text-red-800 hover:bg-red-200"
+                        ? ' bg-green-100 text-green-800 hover:bg-green-200'
+                        : ' bg-red-100 text-red-800 hover:bg-red-200'
                     )}
                   >
-                    {dep?.isActive ? "Hoạt động" : "Dừng hoạt động"}
+                    {dep?.isActive ? 'Hoạt động' : 'Dừng hoạt động'}
                   </button>
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">

@@ -1,8 +1,8 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const getQuestionsSv = (params) => {
-  return API.get("counsellor/questions", {
+  return API.get('counsellor/questions', {
     headers: authorHeader(),
     params: params,
   });
@@ -15,3 +15,4 @@ const forwardQuestionSv = (questionId, data) => {
 };
 
 export { forwardQuestionSv, getQuestionsSv };
+

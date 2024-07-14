@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import MyButton from "../../../atom/my-button";
-import { HomePageContext } from "./HomePageStore";
-import { DataContext } from "../../../store";
-import { toast } from "sonner";
+import { useContext } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import MyButton from '../../../atom/my-button';
+import { DataContext } from '../../../store';
+import { HomePageContext } from './HomePageStore';
 
 export const HomeHeader = () => {
   const { setHiddenCreateQuestion } = useContext(HomePageContext);
@@ -11,9 +11,9 @@ export const HomeHeader = () => {
 
   const handleCreateButtonClick = () => {
     if (!isLoggedIn) {
-      toast.warning("Vui lòng đăng nhập để đặt câu hỏi !!");
-    } else if (user.role !== "USER") {
-      toast.warning("Chỉ có người dùng mới được đặt câu hỏi");
+      toast.warning('Vui lòng đăng nhập để đặt câu hỏi !!');
+    } else if (user.role !== 'USER') {
+      toast.warning('Chỉ có người dùng mới được đặt câu hỏi');
     } else {
       setHiddenCreateQuestion(false);
     }
@@ -32,7 +32,7 @@ export const HomeHeader = () => {
         </div>
         <MyButton
           className="bg-primary hover:bg-primary/75"
-          size={"md"}
+          size={'md'}
           onClick={handleCreateButtonClick}
         >
           <p className="font-bold">Đặt câu hỏi</p>

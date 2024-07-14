@@ -1,1 +1,1 @@
-export { default } from "./BottomModalLayout";
+export { default } from './BottomModalLayout';

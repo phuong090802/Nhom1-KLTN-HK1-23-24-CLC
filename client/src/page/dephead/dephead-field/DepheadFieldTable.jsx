@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { DepheadFieldContext } from "./DepheadFieldStore";
-import clsx from "clsx";
+import clsx from 'clsx';
+import { useContext } from 'react';
+import { DepheadFieldContext } from './DepheadFieldStore';
 
 export const DepheadFieldTable = () => {
   const { fields, updateFieldStatus } = useContext(DepheadFieldContext);
@@ -32,13 +32,13 @@ export const DepheadFieldTable = () => {
                     updateFieldStatus(field._id, { isActive: !field.isActive })
                   }
                   className={clsx(
-                    "px-2 inline-flex text-xs leading-5 font-semibold rounded-full duration-300",
+                    'px-2 inline-flex text-xs leading-5 font-semibold rounded-full duration-300',
                     field.isActive
-                      ? " bg-green-100 text-green-800 hover:bg-green-200"
-                      : " bg-red-100 text-red-800 hover:bg-red-200"
+                      ? ' bg-green-100 text-green-800 hover:bg-green-200'
+                      : ' bg-red-100 text-red-800 hover:bg-red-200'
                   )}
                 >
-                  {field?.isActive ? "Hoạt động" : "Dừng hoạt động"}
+                  {field?.isActive ? 'Hoạt động' : 'Dừng hoạt động'}
                 </button>
               </td>
             </tr>

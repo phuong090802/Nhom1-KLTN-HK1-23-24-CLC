@@ -1,21 +1,21 @@
-import API from "../api.sv";
-import { authorHeader, createHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader, createHeader } from '../serviceHeader';
 
 const getNewsSv = (params) => {
-  return API.get("news", {
+  return API.get('news', {
     params: params,
   });
 };
 
 const addNewsSv = (data) => {
-  return API.post("admin/news", data, {
-    headers: createHeader(["authorization", "formDataType"]),
+  return API.post('admin/news', data, {
+    headers: createHeader(['authorization', 'formDataType']),
   });
 };
 
 const updateNewsSv = (id, data) => {
   return API.put(`admin/news/${id}`, data, {
-    headers: createHeader(["authorization", "formDataType"]),
+    headers: createHeader(['authorization', 'formDataType']),
   });
 };
 

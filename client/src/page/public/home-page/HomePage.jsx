@@ -1,5 +1,5 @@
-import { HomePageContent } from "./HomePageContent";
-import { HomePageStore } from "./HomePageStore";
+import { HomePageContent } from './HomePageContent';
+import { HomePageStore } from './HomePageStore';
 
 const HomePage = () => {
   return (

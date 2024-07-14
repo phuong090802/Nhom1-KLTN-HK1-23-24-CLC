@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 import {
   getDepartmentStatisticSv,
   getQuestionStatisticSv,
   getStatisticSv,
-} from "../../../service/admin/adminStatistic";
-import { getMonth } from "../../../util/convert.util";
-import { depStatisticParams } from "./constance";
+} from '../../../service/admin/adminStatistic';
+import { getMonth } from '../../../util/convert.util';
+import { depStatisticParams } from './constance';
 
 export const AdminHomeContext = createContext({
   dashboardData: Object,
@@ -41,7 +41,7 @@ export const AdminHomeStore = ({ children }) => {
   const getQuestionStatistic = async () => {
     try {
       const response = await getQuestionStatisticSv({
-        timeUnit: "month",
+        timeUnit: 'month',
         latestTime: 2,
       });
       const tempData = {
@@ -50,12 +50,12 @@ export const AdminHomeStore = ({ children }) => {
         ),
         datasets: [
           {
-            label: "Câu hỏi",
+            label: 'Câu hỏi',
             data: response?.questionStatistic?.map(
               (statistic) => statistic?.countOfQuestions
             ),
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
         ],
       };

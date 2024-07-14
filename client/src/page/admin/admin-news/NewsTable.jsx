@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { AdminNewsContext } from "./AdminNewsStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import Pagination from "../../../molecule/pagination/Pagination";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination/Pagination';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { AdminNewsContext } from './AdminNewsStore';
 
 export const NewsTable = () => {
   const {
@@ -45,7 +45,7 @@ export const NewsTable = () => {
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                   <div className="text-sm leading-5 text-gray-900">
-                    {newItem?.title || "Tiêu đề câu hỏi"}
+                    {newItem?.title || 'Tiêu đề câu hỏi'}
                   </div>
                 </td>
                 <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">

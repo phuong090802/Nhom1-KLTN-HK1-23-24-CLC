@@ -21,4 +21,4 @@ const deleteValueFromArray = (array: Array<any>, value: any) => {
   } else return array;
 };
 
-export { findKeyValueObject, getKeyByValue, deleteValueFromArray };
+export { deleteValueFromArray, findKeyValueObject, getKeyByValue };

@@ -1,13 +1,10 @@
-import { createContext, useEffect, useState } from "react";
-import { initFilter, initParams, initSort } from "./constance";
-import { depListConvert } from "../../../util/convert.util";
-import { getDepartmentsListSv } from "../../../service/public/department.sv";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
-  addDepSv,
   getDepartmentsSv,
-  updateDepStatusSv,
-} from "../../../service/admin/adminDepartment.sv";
-import { toast } from "sonner";
+  updateDepStatusSv
+} from '../../../service/admin/adminDepartment.sv';
+import { initFilter, initParams, initSort } from './constance';
 
 export const AdminDepartmentContext = createContext({
   deps: Array,
@@ -71,10 +68,10 @@ const AdminDepartmentStore = ({ children }) => {
   const updateDepStatus = async (depId, data) => {
     try {
       const response = await updateDepStatusSv(depId, data);
-      toast.success(response.message || "Cập nhật trạng thái khoa thành công");
+      toast.success(response.message || 'Cập nhật trạng thái khoa thành công');
       getDepartment();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi cập nhật trạng thái khoa");
+      toast.error(error?.message || 'Lỗi khi cập nhật trạng thái khoa');
     }
   };
 

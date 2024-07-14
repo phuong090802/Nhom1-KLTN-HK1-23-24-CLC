@@ -1,18 +1,15 @@
 import {
   Calendar,
-  Eye,
-  MessageCircleQuestion,
-  MessageCircleReply,
-} from "lucide-react";
-import React, { useCallback, useContext, useMemo } from "react";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { colors, darkModeCss } from "../../../constance";
-import ItemLayout from "../../../layout/item-layout";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import { HomePageContext } from "./HomePageStore";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { increaseViewSv } from "../../../service/public/question.sv";
+  Eye
+} from 'lucide-react';
+import { useCallback, useContext, useMemo } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import { colors } from '../../../constance';
+import ItemLayout from '../../../layout/item-layout';
+import { increaseViewSv } from '../../../service/public/question.sv';
+import { DataContext } from '../../../store';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { HomePageContext } from './HomePageStore';
 
 export const Item = ({ data }) => {
   const {
@@ -61,18 +58,18 @@ export const Item = ({ data }) => {
             alt="user_avatar"
             className="w-6 h-6 rounded-full border-2 border-primary"
           />
-          <p className="text-sm">{data?.user?.fullName || "author name"}</p>
+          <p className="text-sm">{data?.user?.fullName || 'author name'}</p>
         </div>
         <div className="flex items-center gap-1">
-          <Calendar size={20} color={darkMode ? "#fff" : colors.black75} />
+          <Calendar size={20} color={darkMode ? '#fff' : colors.black75} />
           <p className="text-sm">
             {data?.createdAt
               ? convertDateTimeToDate(data.createdAt)
-              : "createdAt"}
+              : 'createdAt'}
           </p>
         </div>
         <div className="flex items-center gap-1">
-          <Eye size={20} color={darkMode ? "#fff" : colors.black75} />
+          <Eye size={20} color={darkMode ? '#fff' : colors.black75} />
           <p className="text-sm">{`${data?.views || 0} views`}</p>
         </div>
       </div>
@@ -127,8 +124,8 @@ export const Item = ({ data }) => {
       <ItemLayout
         onInfor={handleInfor}
         // onExpand={handleExpand}
-        text={data.title || "Tiêu đề câu hỏi"}
-        infor={["Khoa Công Nghệ Thông Tin"]}
+        text={data.title || 'Tiêu đề câu hỏi'}
+        infor={['Khoa Công Nghệ Thông Tin']}
         // isSelected={selected === data._id}
         extraInforComponent={extraInforComponent}
       >

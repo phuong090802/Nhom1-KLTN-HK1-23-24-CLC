@@ -1,8 +1,8 @@
-import { ruleList } from "../../../molecule/my-form";
+import { ruleList } from '../../../molecule/my-form';
 
 const initParams = {
-  search: ["fullName", "email", "phoneNumber"],
-  keyword: "",
+  search: ['fullName', 'email', 'phoneNumber'],
+  keyword: '',
   page: 1,
   size: 5,
   filter: {
@@ -20,77 +20,77 @@ const initParams = {
 
 const initFilter = [
   {
-    label: { key: "Trạng thái", value: "isEnabled" },
+    label: { key: 'Trạng thái', value: 'isEnabled' },
     data: [
-      { key: "Không có", value: null },
-      { key: "Hoạt động", value: true },
-      { key: "Không hoạt động", value: false },
+      { key: 'Không có', value: null },
+      { key: 'Hoạt động', value: true },
+      { key: 'Không hoạt động', value: false },
     ],
   },
   {
-    label: { key: "Nghề nghiệp", value: "occupation" },
+    label: { key: 'Nghề nghiệp', value: 'occupation' },
     data: [
-      { key: "Không có", value: null },
-      { key: "Sinh viên", value: "Sinh viên" },
-      { key: "Cựu sinh viên", value: "Cựu sinh viên" },
-      { key: "Phụ huynh", value: "Phụ huynh" },
+      { key: 'Không có', value: null },
+      { key: 'Sinh viên', value: 'Sinh viên' },
+      { key: 'Cựu sinh viên', value: 'Cựu sinh viên' },
+      { key: 'Phụ huynh', value: 'Phụ huynh' },
     ],
   },
   {
-    label: { key: "Chức vụ", value: "role" },
+    label: { key: 'Chức vụ', value: 'role' },
     data: [
-      { key: "Không có", value: null },
-      { key: "Người dùng", value: "USER" },
-      { key: "Tư vấn viên", value: "COUNSELLOR" },
-      { key: "Trưởng khoa", value: "DEPARTMENT_HEAD" },
-      { key: "Giám sát viên", value: "SUPERVISOR" },
+      { key: 'Không có', value: null },
+      { key: 'Người dùng', value: 'USER' },
+      { key: 'Tư vấn viên', value: 'COUNSELLOR' },
+      { key: 'Trưởng khoa', value: 'DEPARTMENT_HEAD' },
+      { key: 'Giám sát viên', value: 'SUPERVISOR' },
     ],
   },
 ];
 
 const initSort = [
   {
-    label: { key: "Họ & Tên", value: "fullName" },
+    label: { key: 'Họ & Tên', value: 'fullName' },
     data: [1, -1],
   },
   {
-    label: { key: "Chức vụ", value: "role" },
+    label: { key: 'Chức vụ', value: 'role' },
     data: [1, -1],
   },
 ];
 
 const formAddStaff = {
-  id: "add-department-form",
+  id: 'add-department-form',
   inputs: [
     {
-      label: "Họ & Tên",
-      name: "fullName",
-      type: "text",
+      label: 'Họ & Tên',
+      name: 'fullName',
+      type: 'text',
       rules: [ruleList.isRequired()],
     },
     {
-      label: "Email",
-      name: "email",
-      type: "email",
+      label: 'Email',
+      name: 'email',
+      type: 'email',
       rules: [ruleList.isRequired(), ruleList.isEmail],
     },
     {
-      label: "Số điện thoại",
-      name: "phoneNumber",
-      type: "tel",
+      label: 'Số điện thoại',
+      name: 'phoneNumber',
+      type: 'tel',
       rules: [ruleList.isRequired(), ruleList.isMobilePhone],
     },
     {
-      label: "Mật khẩu",
-      name: "password",
-      type: "password",
+      label: 'Mật khẩu',
+      name: 'password',
+      type: 'password',
       rules: [ruleList.isRequired(), ruleList.minLength(6)],
     },
     {
-      label: "Xác nhận mật khẩu",
-      name: "confirmPassword",
-      type: "password",
-      rules: [ruleList.isRequired(), ruleList.isConfirm("password")],
+      label: 'Xác nhận mật khẩu',
+      name: 'confirmPassword',
+      type: 'password',
+      rules: [ruleList.isRequired(), ruleList.isConfirm('password')],
     },
   ],
 };

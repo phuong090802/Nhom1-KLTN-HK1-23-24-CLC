@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import Pagination from "../../../molecule/pagination";
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import SortFilterModal from "../../../organism/sort-filter-modal";
-import { AddDeparmentModal } from "./AddDeparmentModal";
-import { AdminDepartmentContext } from "./AdminDepartmentStore";
-import { DepartmentsTable } from "./DepartmentsTable";
-import { DetailDepartmentModal } from "./DetailDepartmentModal";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import SortFilterModal from '../../../organism/sort-filter-modal';
+import { AddDeparmentModal } from './AddDeparmentModal';
+import { AdminDepartmentContext } from './AdminDepartmentStore';
+import { DepartmentsTable } from './DepartmentsTable';
+import { DetailDepartmentModal } from './DetailDepartmentModal';
 
 export const AdminDepartmentContent = () => {
   const {
@@ -22,9 +22,9 @@ export const AdminDepartmentContent = () => {
   return (
     <>
       <DetailDepartmentModal />
-      <AddDeparmentModal title={"Thêm khoa"} />
+      <AddDeparmentModal title={'Thêm khoa'} />
       <SortFilterModal
-        modalTitle={"Sắp xếp & Lọc Khoa"}
+        modalTitle={'Sắp xếp & Lọc Khoa'}
         hidden={hiddenSortFilter}
         onClose={() => setHiddenSortFilter(true)}
         params={params}
@@ -33,7 +33,7 @@ export const AdminDepartmentContent = () => {
         sorts={sort}
       />
       <StaffTitleBar
-        title={"Quản lý khoa"}
+        title={'Quản lý khoa'}
         setParams={setParams}
         onSearchFilter={() => setHiddenSortFilter(false)}
         onAdd={() => setHiddenAddDep(false)}

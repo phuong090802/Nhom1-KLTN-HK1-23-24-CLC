@@ -1,17 +1,15 @@
-import React, {
-  useCallback,
+import clsx from 'clsx';
+import { SendHorizontal, X } from 'lucide-react';
+import {
   useContext,
   useEffect,
   useMemo,
-  useRef,
-  useState,
-} from "react";
-import default_avatar from "../../assets/image/default_avatar.png";
-import { X, SendHorizontal } from "lucide-react";
-import { AppLayoutContext } from "./AppLayoutStore";
-import clsx from "clsx";
-import { DataContext } from "../../store";
-import MyRichText from "../../atom/my-rich-text/MyRichText";
+  useRef
+} from 'react';
+import default_avatar from '../../assets/image/default_avatar.png';
+import MyRichText from '../../atom/my-rich-text/MyRichText';
+import { DataContext } from '../../store';
+import { AppLayoutContext } from './AppLayoutStore';
 
 export const MessageBox = () => {
   const { messageBoxHidden } = useContext(AppLayoutContext);
@@ -19,8 +17,8 @@ export const MessageBox = () => {
   return (
     <div
       className={clsx(
-        "fixed bottom-0 right-4 z-10",
-        messageBoxHidden && "hidden"
+        'fixed bottom-0 right-4 z-10',
+        messageBoxHidden && 'hidden'
       )}
     >
       <div className="border border-black25 rounded-t-lg bg-white w-80 ">
@@ -68,7 +66,7 @@ const MessageBoxBody = () => {
 
   const hanldeScroll = (e) => {
     if (e.target.scrollTop === 0) {
-      console.log("touching top");
+      console.log('touching top');
       loadMessage();
     } else {
       // console.log("not touching top");
@@ -78,7 +76,7 @@ const MessageBoxBody = () => {
   useEffect(() => {
     if (selectedConversation?._id) {
       const scrollToBottom = () => {
-        divRef.current.scrollIntoView({ behavior: "instant" });
+        divRef.current.scrollIntoView({ behavior: 'instant' });
       };
       if (conversationContent?.length <= params.size) {
         scrollToBottom();
@@ -92,13 +90,14 @@ const MessageBoxBody = () => {
         className="flex w-full flex-col gap-1 overflow-y-scroll h-96 px-2 py-4"
         onScroll={hanldeScroll}
       >
-        {conversationContent?.length !== 0 && conversationContent?.map((message, index) => (
-          <MessageBubble
-            key={message?._id || index}
-            content={message.content}
-            senderId={message.sender}
-          />
-        ))}
+        {conversationContent?.length !== 0 &&
+          conversationContent?.map((message, index) => (
+            <MessageBubble
+              key={message?._id || index}
+              content={message.content}
+              senderId={message.sender}
+            />
+          ))}
         <div ref={divRef} />
       </div>
     </div>
@@ -112,10 +111,10 @@ const MessageBubble = ({ content, senderId }) => {
     return (
       <div
         className={clsx(
-          "px-3 py-2 rounded-2xl inline-block max-w-52 border border-black25",
+          'px-3 py-2 rounded-2xl inline-block max-w-52 border border-black25',
           user._id === senderId
-            ? "self-end bg-blue-200"
-            : "self-start  bg-white"
+            ? 'self-end bg-blue-200'
+            : 'self-start  bg-white'
         )}
         dangerouslySetInnerHTML={{ __html: content }}
       />
@@ -133,7 +132,7 @@ const ResponseInput = () => {
     <div className="flex items-center  border-t">
       <MyRichText
         className="w-full py-2 pl-4 outline-none min-h-10 max-h-40 border-none overflow-y-auto"
-        placeholder={"Aa"}
+        placeholder={'Aa'}
         editorState={messageContent}
         setEditorState={setMessageContent}
       />

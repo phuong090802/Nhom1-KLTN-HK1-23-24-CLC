@@ -1,6 +1,5 @@
-import React from "react";
-import { HistoryStore } from "./HistoryStore";
-import { HistoryContent } from "./HistoryContent";
+import { HistoryContent } from './HistoryContent';
+import { HistoryStore } from './HistoryStore';
 
 const History = () => {
   return (

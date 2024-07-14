@@ -1,5 +1,5 @@
-import { NewsPageContent } from "./NewsPageContent";
-import { NewsPageStore } from "./NewsPageStore";
+import { NewsPageContent } from './NewsPageContent';
+import { NewsPageStore } from './NewsPageStore';
 
 const NewsPage = () => {
   return (

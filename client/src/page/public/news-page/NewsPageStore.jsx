@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
-import { getNewsSv } from "../../../service/public/news.sv";
-import { initParams } from "./constance";
+import { createContext, useEffect, useState } from 'react';
+import { getNewsSv } from '../../../service/public/news.sv';
+import { initParams } from './constance';
 
 export const NewsPageContext = createContext({
   listNews: Array,
@@ -18,7 +18,7 @@ export const NewsPageContext = createContext({
 export const NewsPageStore = ({ children }) => {
   const [listNews, setListNews] = useState([]);
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
 
   const [pages, setPages] = useState(0);
 

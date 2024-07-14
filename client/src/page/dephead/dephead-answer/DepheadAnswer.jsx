@@ -1,6 +1,5 @@
-import React from "react";
-import { DepheadAnswerStore } from "./DepheadAnswerStore";
-import { DepheadAnswerContent } from "./DepheadAnswerContent";
+import { DepheadAnswerContent } from './DepheadAnswerContent';
+import { DepheadAnswerStore } from './DepheadAnswerStore';
 
 const DepheadAnswer = () => {
   return (

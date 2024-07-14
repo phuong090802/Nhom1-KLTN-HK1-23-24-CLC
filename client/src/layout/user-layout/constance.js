@@ -1,3 +1,1 @@
-import { links } from "../../constance";
-
-
+import { links } from '../../constance';

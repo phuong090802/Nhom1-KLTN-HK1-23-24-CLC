@@ -1,6 +1,5 @@
-import { CounsellorPageContent } from "./CounsellorPageContent";
-import { CounsellorPageStore } from "./CounsellorPageStore";
-import { TemporyCounsellorPageUi } from "./TemporyCounsellorPageUi";
+import { CounsellorPageContent } from './CounsellorPageContent';
+import { CounsellorPageStore } from './CounsellorPageStore';
 
 const CounsellorsPage = () => {
   return (

@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { AdminHomeContext } from "./AdminHomeStore";
-import { getOverDueQuestionsSv } from "../../../service/admin/adminStatistic";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import Pagination from "../../../molecule/pagination/Pagination";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import { toast } from "sonner";
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import Pagination from '../../../molecule/pagination/Pagination';
+import { getOverDueQuestionsSv } from '../../../service/admin/adminStatistic';
+import { AdminHomeContext } from './AdminHomeStore';
 
 export const DepartmentStatisticModal = () => {
   const { hiddenDepStatistic, setHiddenDepStatistic } =
@@ -33,12 +32,12 @@ export const DepartmentStatisticModal = () => {
 
   const remindDepartment = async (depId) => {
     try {
-      const response = authSocket.emitWithAck("department:reminder:create", {
+      const response = authSocket.emitWithAck('department:reminder:create', {
         departmentIds: [depId],
       });
-      toast.success(response?.message || "Đã nhắc nhở đến khoa");
+      toast.success(response?.message || 'Đã nhắc nhở đến khoa');
     } catch (error) {
-      toast.error("Lỗi khi nhắc nhở khoa");
+      toast.error('Lỗi khi nhắc nhở khoa');
     }
   };
 
@@ -50,7 +49,7 @@ export const DepartmentStatisticModal = () => {
     <ModalLayout2
       hidden={hiddenDepStatistic}
       setHidden={setHiddenDepStatistic}
-      text={"Danh sách các câu hỏi quá hạn"}
+      text={'Danh sách các câu hỏi quá hạn'}
     >
       {dueQuestions?.length === 0 ? (
         <div className="p-16 border border-black50 rounded-lg">
@@ -85,7 +84,7 @@ export const DepartmentStatisticModal = () => {
                     </td>
                     <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                       <div className="text-sm leading-5 text-gray-900">
-                        {question?.totalOverDueQuestion || "Tiêu đề câu hỏi"}
+                        {question?.totalOverDueQuestion || 'Tiêu đề câu hỏi'}
                       </div>
                     </td>
                     <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">

@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import TitleBar from "../../../molecule/title-bar";
-import { Item } from "./Item";
-import { FaqsPageContext } from "./FaqsPageStore";
-import Pagination from "../../../molecule/pagination";
-import useDepartmentField from "../../../hooks/useDepartmentField";
-import { Building2 } from "lucide-react";
-import { initSort } from "./constance";
-import clsx from "clsx";
-import { darkModeCss } from "../../../constance";
-import { DataContext } from "../../../store";
+import clsx from 'clsx';
+import { Building2 } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { darkModeCss } from '../../../constance';
+import useDepartmentField from '../../../hooks/useDepartmentField';
+import Pagination from '../../../molecule/pagination';
+import TitleBar from '../../../molecule/title-bar';
+import { DataContext } from '../../../store';
+import { initSort } from './constance';
+import { FaqsPageContext } from './FaqsPageStore';
+import { Item } from './Item';
 
 export const FaqsPageContent = () => {
   const { faqs, params, setParams, pages } = useContext(FaqsPageContext);
@@ -25,8 +25,8 @@ export const FaqsPageContent = () => {
         ...prev,
         filter: [
           {
-            placeholder: "Khoa",
-            name: "department",
+            placeholder: 'Khoa',
+            name: 'department',
             icon: <Building2 size={20} />,
             data: deps,
           },
@@ -38,7 +38,7 @@ export const FaqsPageContent = () => {
   return (
     <div className="mt-2">
       <TitleBar
-        title={"Thư viện câu hỏi"}
+        title={'Thư viện câu hỏi'}
         setParams={setParams}
         sortFilterData={sortFilterData}
       />
@@ -46,8 +46,8 @@ export const FaqsPageContent = () => {
         {faqs?.length === 0 ? (
           <div
             className={clsx(
-              "px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center",
-              darkMode ? darkModeCss : "bg-white"
+              'px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center',
+              darkMode ? darkModeCss : 'bg-white'
             )}
           >
             <p className="text-black50">Không có câu hỏi nào !!!</p>

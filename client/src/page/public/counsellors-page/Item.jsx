@@ -1,15 +1,15 @@
-import { BriefcaseBusiness, Building2, Mail, Phone } from "lucide-react";
-import { useContext, useMemo } from "react";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import ItemLayout from "../../../layout/item-layout";
-import { CounsellorPageContext } from "./CounsellorPageStore";
-import { getRoleName } from "../../../util/user.util";
+import { BriefcaseBusiness, Building2, Mail, Phone } from 'lucide-react';
+import { useContext, useMemo } from 'react';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import ItemLayout from '../../../layout/item-layout';
+import { getRoleName } from '../../../util/user.util';
+import { CounsellorPageContext } from './CounsellorPageStore';
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(CounsellorPageContext);
 
   const itemComponent = useMemo(() => {
     const handleExpand = () => {
-      if (selected === data._id) setSelected("");
+      if (selected === data._id) setSelected('');
       else setSelected(data._id);
     };
 
@@ -21,7 +21,7 @@ export const Item = ({ data }) => {
             <p>Số điện thoại:</p>
           </div>
           <p className="flex items-center gap-1 col-span-2 ">
-            {data.phoneNumber || "Chưa cập nhật"}
+            {data.phoneNumber || 'Chưa cập nhật'}
           </p>
         </div>
         <div className="grid grid-cols-3">
@@ -30,7 +30,7 @@ export const Item = ({ data }) => {
             <p>Email:</p>
           </div>
           <p className="flex items-center gap-1 col-span-2 ">
-            {data.email || "Chưa cập nhật"}
+            {data.email || 'Chưa cập nhật'}
           </p>
         </div>
         <div className="grid grid-cols-3">
@@ -39,7 +39,7 @@ export const Item = ({ data }) => {
             <p>Đơn vị:</p>
           </div>
           <p className="flex items-center gap-1 col-span-2 ">
-            {data.department || "Chưa cập nhật"}
+            {data.department || 'Chưa cập nhật'}
           </p>
         </div>
         <div className="grid grid-cols-3">

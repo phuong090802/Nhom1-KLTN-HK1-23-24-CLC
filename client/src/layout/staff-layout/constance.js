@@ -1,3 +1,1 @@
-export const staffMenuItems = {
-    
-}
+export const staffMenuItems = {};

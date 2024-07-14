@@ -1,18 +1,18 @@
-import React, { useContext, useMemo } from "react";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { DepheadHomeContext } from "./DepheadHomeStore";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { darkModeCss } from "../../../constance";
+} from 'chart.js';
+import clsx from 'clsx';
+import { useContext, useMemo } from 'react';
+import { Bar } from 'react-chartjs-2';
+import { darkModeCss } from '../../../constance';
+import { DataContext } from '../../../store';
+import { DepheadHomeContext } from './DepheadHomeStore';
 
 ChartJS.register(
   CategoryScale,
@@ -29,7 +29,7 @@ const options = {
   plugins: {
     title: {
       display: true,
-      text: "Câu hỏi của khoa",
+      text: 'Câu hỏi của khoa',
     },
   },
   scales: {
@@ -57,7 +57,7 @@ export const Chart = () => {
   return (
     <div
       className={clsx(
-        "shadow-lg border mt-4 shadow-black50 rounded-xl py-8 px-16",
+        'shadow-lg border mt-4 shadow-black50 rounded-xl py-8 px-16',
         darkMode && darkModeCss
       )}
     >

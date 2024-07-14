@@ -1,15 +1,15 @@
-import clsx from "clsx";
-import { Calendar, Eye, Star } from "lucide-react";
-import React, { useContext, useMemo } from "react";
-import { toast } from "sonner";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import { likeSv } from "../../../service/user/userQuestion.sv";
-import { DataContext } from "../../../store/DataProvider";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { convertDateTimeToDate } from "../../../util/convert.util";
-import { HomePageContext } from "./HomePageStore";
-import { colors } from "../../../constance";
-import FileComponent from "../../../atom/file-component/FileComponent";
+import clsx from 'clsx';
+import { Calendar, Eye, Star } from 'lucide-react';
+import { useContext, useMemo } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import FileComponent from '../../../atom/file-component/FileComponent';
+import { colors } from '../../../constance';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { likeSv } from '../../../service/user/userQuestion.sv';
+import { DataContext } from '../../../store/DataProvider';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { HomePageContext } from './HomePageStore';
 
 const QuestionDetailModal = () => {
   const {
@@ -23,14 +23,14 @@ const QuestionDetailModal = () => {
 
   const handleLike = async () => {
     if (!isLoggedIn) {
-      toast.warning("Đăng nhập để thích câu hỏi");
+      toast.warning('Đăng nhập để thích câu hỏi');
       return;
     }
     try {
       await likeSv(selectedData._id);
       setSelectedData((prev) => ({ ...prev, isLiked: !prev.isLiked }));
     } catch (error) {
-      toast.error(error?.message || "Có lỗi xảy ra");
+      toast.error(error?.message || 'Có lỗi xảy ra');
     }
   };
 
@@ -38,16 +38,16 @@ const QuestionDetailModal = () => {
     return (
       <button
         title="Yêu thích câu hỏi"
-        className={clsx("float-right rounded-full p-1", {
+        className={clsx('float-right rounded-full p-1', {
           // "bg-warning": selectedData?.isLiked,
-          "bg-white": !selectedData?.isLiked,
+          'bg-white': !selectedData?.isLiked,
         })}
         onClick={handleLike}
       >
         <Star
           className="text-warning"
           size={20}
-          fill={selectedData?.isLiked ? colors.warning : "#fff"}
+          fill={selectedData?.isLiked ? colors.warning : '#fff'}
         />
       </button>
     );
@@ -70,7 +70,7 @@ const QuestionDetailModal = () => {
               <p>
                 {selectedData?.createdAt
                   ? convertDateTimeToDate(selectedData.createdAt)
-                  : "createdAt"}
+                  : 'createdAt'}
               </p>
             </div>
             <div className="flex items-center gap-1 text-sm text-black75">
@@ -91,8 +91,8 @@ const QuestionDetailModal = () => {
             <div className="mt-2">
               {!selectedData?.fileURL ? (
                 <></>
-              ) : selectedData.fileURL.includes("png") ||
-                selectedData.fileURL.includes("jpg") ? (
+              ) : selectedData.fileURL.includes('png') ||
+                selectedData.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selectedData?.fileURL}
@@ -110,7 +110,7 @@ const QuestionDetailModal = () => {
               />
 
               <p className="text-sm text-gray-500">
-                Tác giả:{" "}
+                Tác giả:{' '}
                 <span className="font-medium text-gray-800">
                   {selectedData?.user?.fullName}
                 </span>
@@ -133,8 +133,8 @@ const QuestionDetailModal = () => {
             <div className="mt-2">
               {!selectedData?.answer?.fileURL ? (
                 <></>
-              ) : selectedData.answer.fileURL.includes("png") ||
-                selectedData.answer.fileURL.includes("jpg") ? (
+              ) : selectedData.answer.fileURL.includes('png') ||
+                selectedData.answer.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selectedData?.answer.fileURL}
@@ -145,7 +145,7 @@ const QuestionDetailModal = () => {
               )}
             </div>
             <p className="mt-2 text-sm text-gray-500">
-              Được trả lời bởi:{" "}
+              Được trả lời bởi:{' '}
               <span className="font-medium text-gray-800">
                 {selectedData?.answer?.user?.fullName}
               </span>
@@ -158,3 +158,4 @@ const QuestionDetailModal = () => {
 };
 
 export { QuestionDetailModal };
+

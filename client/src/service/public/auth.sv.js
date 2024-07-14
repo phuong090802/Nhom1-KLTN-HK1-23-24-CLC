@@ -1,25 +1,25 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const loginSv = (data) => {
-  return API.post("auth/login", data, {
+  return API.post('auth/login', data, {
     withCredentials: true,
   });
 };
 
 const registerSv = (data) => {
-  return API.post("auth/register", data, {});
+  return API.post('auth/register', data, {});
 };
 
 const getMeSv = () => {
-  return API.get("/auth/me", {
+  return API.get('/auth/me', {
     headers: authorHeader(),
   });
 };
 
 const refreshTokenSv = () => {
   return API.post(
-    "auth/refresh-token",
+    'auth/refresh-token',
     {},
     {
       withCredentials: true,
@@ -29,7 +29,7 @@ const refreshTokenSv = () => {
 
 const logoutSv = () => {
   return API.post(
-    "auth/logout",
+    'auth/logout',
     {},
     {
       withCredentials: true,
@@ -38,11 +38,11 @@ const logoutSv = () => {
 };
 
 const forgotPasswordSv = (data) => {
-  return API.post("auth/forgot-password", data, {});
+  return API.post('auth/forgot-password', data, {});
 };
 
 const OTPConfirmSv = (data) => {
-  return API.post("auth/verify-otp", data, {});
+  return API.post('auth/verify-otp', data, {});
 };
 
 const resetPasswordSv = (token, data) => {
@@ -50,12 +50,6 @@ const resetPasswordSv = (token, data) => {
 };
 
 export {
-  loginSv,
-  getMeSv,
-  refreshTokenSv,
-  logoutSv,
-  registerSv,
-  forgotPasswordSv,
-  OTPConfirmSv,
-  resetPasswordSv,
+  forgotPasswordSv, getMeSv, loginSv, logoutSv, OTPConfirmSv, refreshTokenSv, registerSv, resetPasswordSv
 };
+

@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { AdminNewsContext } from "./AdminNewsStore";
-import MyButton from "../../../atom/my-button";
-import MyInput from "../../../atom/my-input";
-import MyFileInput from "../../../atom/my-file-input";
-import MyRichText from "../../../atom/my-rich-text";
-import { EditorState, ContentState, convertToRaw } from "draft-js";
-import htmlToDraft from "html-to-draftjs";
-import { DataContext } from "../../../store";
-import { colors } from "../../../constance";
-import clsx from "clsx";
-import { File } from "lucide-react";
+import clsx from 'clsx';
+import { ContentState, convertToRaw, EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import { File } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import MyInput from '../../../atom/my-input';
+import MyRichText from '../../../atom/my-rich-text';
+import { colors } from '../../../constance';
+import ModalLayout2 from '../../../layout/modal-layout-2';
 import {
   deleteNewsSv,
   updateNewsSv,
-} from "../../../service/admin/adminNews.sv";
-import { toast } from "sonner";
-import draftToHtml from "draftjs-to-html";
+} from '../../../service/admin/adminNews.sv';
+import { DataContext } from '../../../store';
+import { AdminNewsContext } from './AdminNewsStore';
 
 export const DetailNewsModal = () => {
   const {
@@ -31,7 +31,7 @@ export const DetailNewsModal = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const [newsData, setNewsData] = useState({
-    title: "",
+    title: '',
     file: null,
   });
 
@@ -42,29 +42,29 @@ export const DetailNewsModal = () => {
         content: draftToHtml(convertToRaw(newsContent.getCurrentContent())),
       });
       setHiddenDetailNewsModal(true);
-      toast.success(response?.message || "Cập nhật tin tức thành công");
+      toast.success(response?.message || 'Cập nhật tin tức thành công');
       getNews();
       setIsEditing(false);
     } catch (error) {
-      toast.error(error?.message || "Lỗi xảy ra khi cập nhật tin tức");
+      toast.error(error?.message || 'Lỗi xảy ra khi cập nhật tin tức');
     }
   };
 
   const deleteNews = async () => {
     try {
       const response = await deleteNewsSv(selectedNews._id);
-      toast.success(response?.message || "Xóa tin tức thành công");
+      toast.success(response?.message || 'Xóa tin tức thành công');
       setHiddenDetailNewsModal(true);
       getNews();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi xóa tin tức");
+      toast.error(error?.message || 'Lỗi khi xóa tin tức');
     }
   };
 
   useEffect(() => {
     if (!selectedNews) return;
     setNewsData({
-      title: selectedNews?.title || "",
+      title: selectedNews?.title || '',
       file: selectedNews?.file || null,
     });
     const blocksFromHtml = htmlToDraft(selectedNews?.content);
@@ -80,7 +80,7 @@ export const DetailNewsModal = () => {
     <ModalLayout2
       hidden={hiddenDetailNewsModal}
       setHidden={setHiddenDetailNewsModal}
-      text={"Chi tiết"}
+      text={'Chi tiết'}
     >
       <div className="mt-2 py-2 w-[28rem]">
         <div className="px-4">
@@ -98,8 +98,8 @@ export const DetailNewsModal = () => {
           <MyRichText
             editorState={newsContent}
             setEditorState={setNewsContent}
-            className={"border-2 h-[150px] px-0"}
-            placeholder={"Nhập nội dung câu hỏi ..."}
+            className={'border-2 h-[150px] px-0'}
+            placeholder={'Nhập nội dung câu hỏi ...'}
             disable={!isEditing}
           />
         </div>
@@ -122,7 +122,7 @@ export const DetailNewsModal = () => {
           <>
             <MyButton
               className="bg-error hover:bg-error/75"
-              size={"md"}
+              size={'md'}
               onClick={() => {
                 setIsEditing(false);
               }}
@@ -131,7 +131,7 @@ export const DetailNewsModal = () => {
             </MyButton>
             <MyButton
               className="bg-success hover:bg-success/75"
-              size={"md"}
+              size={'md'}
               onClick={updateNews}
             >
               Cập nhật
@@ -141,14 +141,14 @@ export const DetailNewsModal = () => {
           <>
             <MyButton
               className="bg-error hover:bg-error/75"
-              size={"md"}
+              size={'md'}
               onClick={deleteNews}
             >
               Xóa
             </MyButton>
             <MyButton
               className="bg-primary hover:bg-primary/75"
-              size={"md"}
+              size={'md'}
               onClick={() => {
                 setIsEditing(true);
               }}
@@ -168,13 +168,13 @@ const FileComponent = ({ link }) => {
   return (
     <a
       className={clsx(
-        "border px-2 py-1 flex items-center bg-primary/10 gap-2 rounded-lg max-w-44"
+        'border px-2 py-1 flex items-center bg-primary/10 gap-2 rounded-lg max-w-44'
       )}
       href={link}
       target="_blank"
     >
-      <File className="" color={darkMode ? "#fff" : colors.black75} />
-      <p className={clsx(darkMode ? "text-white" : "text-black75")}>
+      <File className="" color={darkMode ? '#fff' : colors.black75} />
+      <p className={clsx(darkMode ? 'text-white' : 'text-black75')}>
         Tệp đính kèm
       </p>
     </a>

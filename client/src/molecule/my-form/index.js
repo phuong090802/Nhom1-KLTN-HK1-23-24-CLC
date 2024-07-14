@@ -1,2 +1,2 @@
-export { default } from "./MyForm";
-export { ruleList } from "./constance";
+export { default } from './MyForm';
+export { ruleList } from './constance';

@@ -1,15 +1,15 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const depheadGetCounsellorsSv = (params) => {
-  return API.get("department-head/counsellors", {
+  return API.get('department-head/counsellors', {
     headers: authorHeader(),
     params: params,
   });
 };
 
 const depheadAddCounsellorSv = (data) => {
-  return API.post("department-head/counsellors", data, {
+  return API.post('department-head/counsellors', data, {
     headers: authorHeader(),
   });
 };
@@ -44,10 +44,8 @@ const deleteFieldsForCounSv = (counsellorId, fieldId) => {
 };
 
 export {
-  depheadGetCounsellorsSv,
-  depheadAddCounsellorSv,
-  depheadUpdateCounsellorStatusSv,
-  getFieldToAddForCounSv,
   addFieldsForCounSv,
-  deleteFieldsForCounSv,
+  deleteFieldsForCounSv, depheadAddCounsellorSv, depheadGetCounsellorsSv, depheadUpdateCounsellorStatusSv,
+  getFieldToAddForCounSv
 };
+

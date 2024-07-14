@@ -1,6 +1,5 @@
-import React from "react";
-import default_avatar from "../../assets/image/default_avatar.png";
-import MyButton from "../../atom/my-button";
+import default_avatar from '../../assets/image/default_avatar.png';
+import MyButton from '../../atom/my-button';
 
 export const HomeHeader = () => {
   return (
@@ -14,7 +13,7 @@ export const HomeHeader = () => {
         <div className="px-4 py-2 bg-light_gray rounded-lg flex-1">
           <p className="text-black75">Bạn có thắc mắc!?</p>
         </div>
-        <MyButton className="bg-primary hover:bg-primary/75" size={"md"}>
+        <MyButton className="bg-primary hover:bg-primary/75" size={'md'}>
           <p className="font-bold">Đặt câu hỏi</p>
         </MyButton>
       </div>

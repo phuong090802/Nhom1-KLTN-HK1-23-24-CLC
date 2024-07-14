@@ -1,19 +1,19 @@
 import {
-  Chart,
   CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
+  Chart,
   Legend,
+  LinearScale,
   LineElement,
   PointElement,
-} from "chart.js";
-import { useContext, useMemo } from "react";
-import { Line } from "react-chartjs-2";
-import { AdminHomeContext } from "./AdminHomeStore";
-import { DataContext } from "../../../store";
-import clsx from "clsx";
-import { darkModeCss } from "../../../constance";
+  Title,
+  Tooltip,
+} from 'chart.js';
+import clsx from 'clsx';
+import { useContext, useMemo } from 'react';
+import { Line } from 'react-chartjs-2';
+import { darkModeCss } from '../../../constance';
+import { DataContext } from '../../../store';
+import { AdminHomeContext } from './AdminHomeStore';
 
 Chart.register(
   CategoryScale,
@@ -30,11 +30,11 @@ const options = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: "top",
+      position: 'top',
     },
     title: {
       display: true,
-      text: "Câu hỏi hệ thống đã nhận",
+      text: 'Câu hỏi hệ thống đã nhận',
     },
   },
 };
@@ -53,7 +53,7 @@ export const QuestionChart = () => {
   return (
     <div
       className={clsx(
-        "shadow-lg border mt-8 shadow-black50 rounded-xl py-8 px-16 ",
+        'shadow-lg border mt-8 shadow-black50 rounded-xl py-8 px-16 ',
         darkMode && darkModeCss
       )}
     >

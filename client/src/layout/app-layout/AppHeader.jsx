@@ -1,23 +1,19 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 import {
-  Bell,
   CircleHelp,
   Home,
-  Moon,
   Newspaper,
-  Sun,
-  Users,
-} from "lucide-react";
-import React, { useContext, useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/image/logo.png";
-import MyButton from "../../atom/my-button";
-import { colors, darkModeCss, links } from "../../constance";
-import { getMeSv } from "../../service/public/auth.sv";
-import { DataContext } from "../../store";
-import { ConversationsButton } from "./ConversationsButton";
-import { NotiButton } from "./NotiButton";
-import Cookies from "js-cookie";
+  Users
+} from 'lucide-react';
+import { useContext, useEffect, useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/image/logo.png';
+import MyButton from '../../atom/my-button';
+import { colors, darkModeCss, links } from '../../constance';
+import { getMeSv } from '../../service/public/auth.sv';
+import { DataContext } from '../../store';
+import { ConversationsButton } from './ConversationsButton';
+import { NotiButton } from './NotiButton';
 
 export const AppHeader = () => {
   const { isLoggedIn, setIsLoggedIn, setUser, darkMode, removeUserData } =
@@ -41,8 +37,8 @@ export const AppHeader = () => {
   return (
     <div
       className={clsx(
-        "border-b border-black10 grid grid-cols-3 px-4",
-        darkMode ? darkModeCss : "bg-white "
+        'border-b border-black10 grid grid-cols-3 px-4',
+        darkMode ? darkModeCss : 'bg-white '
       )}
     >
       <Logo />
@@ -68,13 +64,13 @@ const Logo = () => {
 // Header Navigation
 const HeaderNav = ({ darkMode }) => {
   const buttons = [
-    { name: "home", path: "/" },
-    { name: "faqs", path: "/thu-vien-cau-hoi" },
-    { name: "counsellors", path: "/danh-sach-tu-van-vien" },
-    { name: "news", path: "/tin-tuc" },
+    { name: 'home', path: '/' },
+    { name: 'faqs', path: '/thu-vien-cau-hoi' },
+    { name: 'counsellors', path: '/danh-sach-tu-van-vien' },
+    { name: 'news', path: '/tin-tuc' },
   ];
   return (
-    <div className={clsx("grid grid-cols-4")}>
+    <div className={clsx('grid grid-cols-4')}>
       {buttons.map((button) => (
         <NavButton key={button.path} name={button.name} path={button.path} />
       ))}
@@ -91,17 +87,17 @@ const NavButton = ({ name, path }) => {
     navigate(path);
   };
   const icon = useMemo(() => {
-    const color = isSelected ? colors.primary : darkMode ? "#fff" : "#000";
+    const color = isSelected ? colors.primary : darkMode ? '#fff' : '#000';
     switch (name) {
-      case "home":
+      case 'home':
         return <Home color={color} className="cursor-pointer duration-500" />;
-      case "faqs":
+      case 'faqs':
         return (
           <CircleHelp color={color} className="cursor-pointer duration-500" />
         );
-      case "counsellors":
+      case 'counsellors':
         return <Users color={color} className="cursor-pointer duration-500" />;
-      case "news":
+      case 'news':
         return (
           <Newspaper color={color} className="cursor-pointer duration-500" />
         );
@@ -113,8 +109,8 @@ const NavButton = ({ name, path }) => {
   return (
     <div
       className={clsx(
-        "flex justify-center items-center border-primary hover:bg-primary/15",
-        isSelected && "border-b-[3px]"
+        'flex justify-center items-center border-primary hover:bg-primary/15',
+        isSelected && 'border-b-[3px]'
       )}
       onClick={handleClick}
     >
@@ -134,7 +130,7 @@ const NotiMessageArea = () => {
       <div className="flex items-center flex-row-reverse gap-2">
         {isLoggedIn ? (
           <>
-            {user?.role === "SUPERVISOR" || user?.role === "ADMIN" ? (
+            {user?.role === 'SUPERVISOR' || user?.role === 'ADMIN' ? (
               <></>
             ) : (
               <>
@@ -161,16 +157,16 @@ const NotiMessageArea = () => {
         ) : (
           <div className="flex justify-end gap-2 items-center">
             <MyButton
-              variant={"outline"}
-              size={"default"}
+              variant={'outline'}
+              size={'default'}
               onClick={() => navigate(links.public.register)}
               className="border-2 border-primary"
             >
               Đăng ký
             </MyButton>
             <MyButton
-              variant={"default"}
-              size={"default"}
+              variant={'default'}
+              size={'default'}
               className="bg-primary"
               onClick={() => navigate(links.public.login)}
             >

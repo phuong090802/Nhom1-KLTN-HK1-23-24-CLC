@@ -1,17 +1,17 @@
-import { Building2 } from "lucide-react";
-import React, { useContext, useEffect, useState } from "react";
-import useDepartmentField from "../../../hooks/useDepartmentField";
-import Pagination from "../../../molecule/pagination";
-import TitleBar from "../../../molecule/title-bar";
-import { CreateQuestionModal } from "./CreateQuestionModal";
-import { HomeHeader } from "./HomeHeader";
-import { HomePageContext } from "./HomePageStore";
-import { Item } from "./Item";
-import { initSort } from "./constance";
-import clsx from "clsx";
-import { darkModeCss } from "../../../constance";
-import { DataContext } from "../../../store";
-import { QuestionDetailModal } from "./QuestionDetailModal";
+import clsx from 'clsx';
+import { Building2 } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { darkModeCss } from '../../../constance';
+import useDepartmentField from '../../../hooks/useDepartmentField';
+import Pagination from '../../../molecule/pagination';
+import TitleBar from '../../../molecule/title-bar';
+import { DataContext } from '../../../store';
+import { CreateQuestionModal } from './CreateQuestionModal';
+import { HomeHeader } from './HomeHeader';
+import { HomePageContext } from './HomePageStore';
+import { Item } from './Item';
+import { QuestionDetailModal } from './QuestionDetailModal';
+import { initSort } from './constance';
 
 export const HomePageContent = () => {
   const { questions, params, pages, setParams } = useContext(HomePageContext);
@@ -28,8 +28,8 @@ export const HomePageContent = () => {
         ...prev,
         filter: [
           {
-            placeholder: "Khoa",
-            name: "department",
+            placeholder: 'Khoa',
+            name: 'department',
             icon: <Building2 size={20} />,
             data: deps,
           },
@@ -45,7 +45,7 @@ export const HomePageContent = () => {
       <HomeHeader />
       <div className="mt-2">
         <TitleBar
-          title={"Tư vấn"}
+          title={'Tư vấn'}
           sortFilterData={sortFilterData}
           setParams={setParams}
         />
@@ -53,8 +53,8 @@ export const HomePageContent = () => {
           {questions?.length === 0 ? (
             <div
               className={clsx(
-                "px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center",
-                darkMode ? darkModeCss : "bg-white"
+                'px-4 shadow-black50 shadow-lg py-4 rounded-2xl flex justify-center',
+                darkMode ? darkModeCss : 'bg-white'
               )}
             >
               <p className="text-black50">Không có câu hỏi nào !!!</p>

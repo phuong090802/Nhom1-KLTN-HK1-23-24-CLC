@@ -1,9 +1,8 @@
-import React from "react";
-import { Dashboard } from "./Dashboard";
-import { Chart } from "./Chart";
-import { FieldStatisticModal } from "./FieldStatisticModal";
-import { OverDueQuestionModal } from "./OverDueQuestionModal";
-import { CounsellorRankingModal } from "./CounsellorRankingModal";
+import { Chart } from './Chart';
+import { CounsellorRankingModal } from './CounsellorRankingModal';
+import { Dashboard } from './Dashboard';
+import { FieldStatisticModal } from './FieldStatisticModal';
+import { OverDueQuestionModal } from './OverDueQuestionModal';
 
 export const DepheadHomeContent = () => {
   return (

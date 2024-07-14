@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
-import { toast } from "sonner";
+import { createContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
   depheadAddFieldSv,
   depheadGetFieldsSv,
-  depheadUpdateFieldStatusSv
-} from "../../../service/dephead/depheadField.sv";
-import { initFilter, initParams, initSort } from "./constance";
+  depheadUpdateFieldStatusSv,
+} from '../../../service/dephead/depheadField.sv';
+import { initFilter, initParams, initSort } from './constance';
 
 export const DepheadFieldContext = createContext({
   fields: Array,
@@ -23,7 +23,7 @@ export const DepheadFieldContext = createContext({
   setFilter: Function,
   hiddenAddField: Boolean,
   setHiddenAddField: Function,
-  addField: Function
+  addField: Function,
 });
 export const DepheadFieldStore = ({ children }) => {
   const [fields, setFields] = useState([]);
@@ -52,21 +52,21 @@ export const DepheadFieldStore = ({ children }) => {
     try {
       const response = await depheadUpdateFieldStatusSv(fieldId, data);
       toast.success(
-        response.message || "Cập nhật trạng thái lĩnh vực thành công"
+        response.message || 'Cập nhật trạng thái lĩnh vực thành công'
       );
       getFields();
     } catch (error) {
-      toast.error(error?.message || "Lỗi cập nhật trạng thái lĩnh vực");
+      toast.error(error?.message || 'Lỗi cập nhật trạng thái lĩnh vực');
     }
   };
 
   const addField = async (data) => {
     try {
       const response = await depheadAddFieldSv(data);
-      toast.success(response?.message || "Thêm lĩnh vực thành công");
+      toast.success(response?.message || 'Thêm lĩnh vực thành công');
       getFields();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi thêm lĩnh vực");
+      toast.error(error?.message || 'Lỗi khi thêm lĩnh vực');
     }
   };
 
@@ -92,7 +92,7 @@ export const DepheadFieldStore = ({ children }) => {
         setFilter,
         hiddenAddField,
         setHiddenAddField,
-        addField
+        addField,
       }}
     >
       {children}

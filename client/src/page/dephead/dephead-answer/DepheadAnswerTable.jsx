@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
-import { DepheadAnswerContext } from "./DepheadAnswerStore";
-import { convertDateTimeToDate } from "../../../util/convert.util";
+import { useContext } from 'react';
+import { convertDateTimeToDate } from '../../../util/convert.util';
+import { DepheadAnswerContext } from './DepheadAnswerStore';
 
 export const DepheadAnswerTable = () => {
   const { waitingQuestions, setSelected, setHiddenDetailAnswerModal } =
@@ -39,7 +39,7 @@ export const DepheadAnswerTable = () => {
               </td>
               <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">
                 <div className="text-sm leading-5 text-gray-900">
-                  {question?.title || "Tiêu đề câu hỏi"}
+                  {question?.title || 'Tiêu đề câu hỏi'}
                 </div>
               </td>
               <td className="border-b border-gray-200 px-6 py-4 whitespace-no-wrap">

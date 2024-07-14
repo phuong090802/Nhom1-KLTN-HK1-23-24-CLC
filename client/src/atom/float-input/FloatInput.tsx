@@ -4,7 +4,7 @@ import {
   useCallback,
   useEffect,
   useState,
-} from "react";
+} from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -40,7 +40,9 @@ const FloatInput: FC<InputProps> = ({
 
   const handleLabelClick = () => {
     const inputElement = document.querySelector(`#${name}`);
-    if (inputElement && !focused) inputElement.focus();
+    if (inputElement && !focused) {
+      inputElement.focus();
+    }
   };
 
   return (
@@ -58,7 +60,7 @@ const FloatInput: FC<InputProps> = ({
         <label
           onClick={handleLabelClick}
           className={`absolute text-base mx-4 bg-transparent top-2 cursor-text ${
-            focused && "-translate-y-[20px] bg-white scale-90 -translate-x-1"
+            focused && '-translate-y-[20px] bg-white scale-90 -translate-x-1'
           } duration-500`}
         >
           {label}

@@ -1,1 +1,1 @@
-export { default } from "./ModalLayout2";
+export { default } from './ModalLayout2';

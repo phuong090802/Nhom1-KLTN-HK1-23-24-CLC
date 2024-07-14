@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import StaffTitleBar from "../../../molecule/staff-title-bar";
-import { DepheadFaqContext } from "./DepheadFaqStore";
-import { Item } from "./Item";
-import Pagination from "../../../molecule/pagination";
-import { AddFaqModal } from "./AddFaqModal";
-import { DepheadFaqTable } from "./DepheadFaqTable";
-import { DetailFaqModal } from "./DetailFaqModal";
+import { useContext } from 'react';
+import Pagination from '../../../molecule/pagination';
+import StaffTitleBar from '../../../molecule/staff-title-bar';
+import { AddFaqModal } from './AddFaqModal';
+import { DepheadFaqContext } from './DepheadFaqStore';
+import { DepheadFaqTable } from './DepheadFaqTable';
+import { DetailFaqModal } from './DetailFaqModal';
 
 export const DepheadFaqContent = () => {
   const { faqs, params, setParams, pages, setHiddenAddFaq } =
@@ -16,7 +15,7 @@ export const DepheadFaqContent = () => {
       <DetailFaqModal />
       <AddFaqModal />
       <StaffTitleBar
-        title={"Quản lý câu hỏi chung"}
+        title={'Quản lý câu hỏi chung'}
         onAdd={() => setHiddenAddFaq(false)}
         setParams={setParams}
       />

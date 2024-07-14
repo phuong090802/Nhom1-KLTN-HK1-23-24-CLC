@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import { Ban, SlidersHorizontal } from "lucide-react";
-import React, { useCallback, useState } from "react";
-import MyButton from "../../atom/my-button";
-import MySelect from "../../atom/my-select";
+import clsx from 'clsx';
+import { Ban, SlidersHorizontal } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import MyButton from '../../atom/my-button';
+import MySelect from '../../atom/my-select';
 
 export const SortFilter = ({ sort, filter, setParams }) => {
   const [hidden, setHidden] = useState(true);
@@ -23,11 +23,11 @@ export const SortFilter = ({ sort, filter, setParams }) => {
   }, [setParams, tempSort, tempFilter]);
 
   return (
-    <div className={clsx("relative")}>
+    <div className={clsx('relative')}>
       <div
         className={clsx(
-          "p-2 rounded-lg cursor-pointer duration-500",
-          !hidden && "bg-black10 "
+          'p-2 rounded-lg cursor-pointer duration-500',
+          !hidden && 'bg-black10 '
         )}
       >
         <SlidersHorizontal
@@ -37,8 +37,8 @@ export const SortFilter = ({ sort, filter, setParams }) => {
       </div>
       <div
         className={clsx(
-          "px-2 py-4 absolute top-10 -right-10 border border-black25 shadow-lg shadow-black50 rounded-lg bg-white w-[30rem]",
-          hidden && "hidden"
+          'px-2 py-4 absolute top-10 -right-10 border border-black25 shadow-lg shadow-black50 rounded-lg bg-white w-[30rem]',
+          hidden && 'hidden'
         )}
       >
         {filter && (
@@ -52,7 +52,7 @@ export const SortFilter = ({ sort, filter, setParams }) => {
                   <div className=" relative" key={index}>
                     <MySelect
                       className="w-full pl-8"
-                      placeholder={item.placeholder || "Chọn ..."}
+                      placeholder={item.placeholder || 'Chọn ...'}
                       data={item.data}
                       value={tempFilter?.[item.name]}
                       onChange={(value) => onFilterChange(value, item.name)}
@@ -78,7 +78,7 @@ export const SortFilter = ({ sort, filter, setParams }) => {
                   <div className=" relative" key={index}>
                     <MySelect
                       className="w-full pl-8"
-                      placeholder={item.placeholder || "Chọn ..."}
+                      placeholder={item.placeholder || 'Chọn ...'}
                       data={item.data}
                       value={tempSort?.[item.name]}
                       onChange={(value) => onSortChange(value, item.name)}

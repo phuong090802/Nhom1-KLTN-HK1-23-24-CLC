@@ -1,46 +1,43 @@
-import API from "../api.sv";
-import { authorHeader } from "../serviceHeader";
+import API from '../api.sv';
+import { authorHeader } from '../serviceHeader';
 
 const depheadGetUserCountSv = () => {
-  return API.get("department-head/statistics/counsellor", {
+  return API.get('department-head/statistics/counsellor', {
     headers: authorHeader(),
   });
 };
 
 const depheadGetFaqsCountSv = () => {
-  return API.get("department-head/statistics/faq", { headers: authorHeader() });
+  return API.get('department-head/statistics/faq', { headers: authorHeader() });
 };
 
 const depheadGetQuestionStatisticSv = (data) => {
-  return API.post("department-head/statistics/question", data, {
+  return API.post('department-head/statistics/question', data, {
     headers: authorHeader(),
   });
 };
 
 const depheadGetFieldStatistic = () => {
-  return API.get("department-head/statistics/field", {
+  return API.get('department-head/statistics/field', {
     headers: authorHeader(),
   });
 };
 
 // Lấy danh sách số lượng câu hỏi quá hạn của tư vấn viên
 const getOverDueQuestionCountSv = () => {
-  return API.get("department-head/counsellors/reminder", {
+  return API.get('department-head/counsellors/reminder', {
     headers: authorHeader(),
   });
 };
 
 const getRankingCounsellorSv = () => {
-  return API.get("department-head/statistics/counsellor/ranking", {
+  return API.get('department-head/statistics/counsellor/ranking', {
     headers: authorHeader(),
   });
 };
 
 export {
-  depheadGetUserCountSv,
-  depheadGetFaqsCountSv,
-  depheadGetQuestionStatisticSv,
-  depheadGetFieldStatistic,
-  getOverDueQuestionCountSv,
+  depheadGetFaqsCountSv, depheadGetFieldStatistic, depheadGetQuestionStatisticSv, depheadGetUserCountSv, getOverDueQuestionCountSv,
   getRankingCounsellorSv
 };
+

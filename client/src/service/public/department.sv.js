@@ -1,7 +1,7 @@
-import API from "../api.sv";
+import API from '../api.sv';
 
 const getDepartmentsListSv = () => {
-  return API.get("departments");
+  return API.get('departments');
 };
 
 const getFieldListSv = (departmentId) => {
@@ -9,3 +9,4 @@ const getFieldListSv = (departmentId) => {
 };
 
 export { getDepartmentsListSv, getFieldListSv };
+

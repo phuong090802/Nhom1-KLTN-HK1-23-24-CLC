@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalLayout2 from "../../../layout/modal-layout-2";
-import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
-import MyFileInput from "../../../atom/my-file-input";
-import MyRichText from "../../../atom/my-rich-text";
-import { convertToRaw, EditorState } from "draft-js";
-import default_avatar from "../../../assets/image/default_avatar.png";
-import MyButton from "../../../atom/my-button";
-import { ForwardQuestionModal } from "./ForwardQuestionModal";
-import draftToHtml from "draftjs-to-html";
-import { useAuthSocket } from "../../../hooks/useAuthSocket";
-import { DataContext } from "../../../store";
-import { toast } from "sonner";
-import FileComponent from "../../../atom/file-component";
+import { convertToRaw, EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import default_avatar from '../../../assets/image/default_avatar.png';
+import FileComponent from '../../../atom/file-component';
+import MyButton from '../../../atom/my-button';
+import MyFileInput from '../../../atom/my-file-input';
+import MyRichText from '../../../atom/my-rich-text';
+import { useAuthSocket } from '../../../hooks/useAuthSocket';
+import ModalLayout2 from '../../../layout/modal-layout-2';
+import { DataContext } from '../../../store';
+import { CounsellorQuestionContext } from './CounsellorQuestionStore';
+import { ForwardQuestionModal } from './ForwardQuestionModal';
 
 export const DetailQuestionModal = () => {
   const {
@@ -60,15 +60,15 @@ export const DetailQuestionModal = () => {
         };
 
     try {
-      const response = await authSocket.emitWithAck("answer:create", {
+      const response = await authSocket.emitWithAck('answer:create', {
         ...submit,
       });
       setSubmitContent(EditorState.createEmpty());
       setHiddenDetailQuestionModal(true);
       getQuestions();
-      toast.success(response.message || "Phản hồi câu hỏi thành công");
+      toast.success(response.message || 'Phản hồi câu hỏi thành công');
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
@@ -81,15 +81,15 @@ export const DetailQuestionModal = () => {
     };
     try {
       const response = await authSocket.emitWithAck(
-        "conversation:create",
+        'conversation:create',
         responseData
       );
-      toast.success(response.message || "Phản hồi câu hỏi thành công");
+      toast.success(response.message || 'Phản hồi câu hỏi thành công');
       setSubmitContent(EditorState.createEmpty());
       setHiddenDetailQuestionModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error?.message || "Lỗi khi phản hồi câu hỏi");
+      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
@@ -126,8 +126,8 @@ export const DetailQuestionModal = () => {
             <div className="mt-2">
               {!selectedQuestion?.fileURL ? (
                 <></>
-              ) : selectedQuestion.fileURL.includes("png") ||
-                selectedQuestion.fileURL.includes("jpg") ? (
+              ) : selectedQuestion.fileURL.includes('png') ||
+                selectedQuestion.fileURL.includes('jpg') ? (
                 <img
                   className="size-24"
                   src={selectedQuestion?.fileURL}
@@ -145,7 +145,7 @@ export const DetailQuestionModal = () => {
               />
 
               <p className="text-sm text-gray-500">
-                Tác giả:{" "}
+                Tác giả:{' '}
                 <span className="font-medium text-gray-800">
                   {selectedQuestion?.user?.fullName}
                 </span>
@@ -164,7 +164,7 @@ export const DetailQuestionModal = () => {
               onChange={(e) => setIsPrivate(e.target.checked)}
             />
           </div>
-          {user?.role === "COUNSELLOR" && !isPrivate && (
+          {user?.role === 'COUNSELLOR' && !isPrivate && (
             <div className="flex items-center gap-2">
               <h1 className="text-black75 ml-2 ">Yêu cầu duyệt:</h1>
               <input
@@ -179,8 +179,8 @@ export const DetailQuestionModal = () => {
           <MyRichText
             editorState={submitContent}
             setEditorState={setSubmitContent}
-            className={"border-2 h-[150px] px-0"}
-            placeholder={"Nhập nội dung câu hỏi ..."}
+            className={'border-2 h-[150px] px-0'}
+            placeholder={'Nhập nội dung câu hỏi ...'}
           />
         </div>
         {!isPrivate && (
@@ -195,12 +195,12 @@ export const DetailQuestionModal = () => {
         )}
       </div>
       <div className="flex flex-row-reverse mx-10 gap-4">
-        <MyButton className="bg-primary" size={"md"} onClick={handleResponse}>
+        <MyButton className="bg-primary" size={'md'} onClick={handleResponse}>
           Phản hồi
         </MyButton>
         <MyButton
           className="bg-primary"
-          size={"md"}
+          size={'md'}
           onClick={() => {
             setHiddenForwardModal(false);
           }}
