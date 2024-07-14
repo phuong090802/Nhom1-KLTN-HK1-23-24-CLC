@@ -14,7 +14,6 @@ import { AdminHomeContext } from "./AdminHomeStore";
 import { DataContext } from "../../../store";
 import clsx from "clsx";
 import { darkModeCss } from "../../../constance";
-import { color } from "chart.js/helpers";
 
 Chart.register(
   CategoryScale,

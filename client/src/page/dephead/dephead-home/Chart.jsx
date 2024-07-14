@@ -32,7 +32,6 @@ const options = {
       text: "Câu hỏi của khoa",
     },
   },
-  responsive: true,
   scales: {
     x: {
       stacked: true,
