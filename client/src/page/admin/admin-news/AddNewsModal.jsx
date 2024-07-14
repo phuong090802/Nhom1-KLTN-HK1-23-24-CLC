@@ -27,7 +27,7 @@ export const AddNewsModal = () => {
         ...newsData,
         content: draftToHtml(convertToRaw(newsContent.getCurrentContent())),
       });
-      console.log(response);
+      console.log('addNews', response);
       toast.success(response?.message || 'Tạo tin tức thành công');
       setNewsContent(EditorState.createEmpty());
       setNewsData({

@@ -49,6 +49,7 @@ const FloatInput: FC<InputProps> = ({
     <div className="">
       <div className="relative leading-10 h-10 mb-6">
         <input
+          autoComplete="off"
           {...props}
           value={value}
           name={name}
@@ -58,6 +59,7 @@ const FloatInput: FC<InputProps> = ({
           onBlur={(e) => handleBlur(e)}
         />
         <label
+          htmlFor={name}
           onClick={handleLabelClick}
           className={`absolute text-base mx-4 bg-transparent top-2 cursor-text ${
             focused && '-translate-y-[20px] bg-white scale-90 -translate-x-1'

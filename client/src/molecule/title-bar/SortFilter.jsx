@@ -17,7 +17,7 @@ export const SortFilter = ({ sort, filter, setParams }) => {
     setTempFilter((prev) => ({ ...prev, [name]: value }));
   };
   const handleSortFilter = useCallback(() => {
-    console.log(tempFilter, tempSort);
+    console.log('tempFilter, tempSort', tempFilter, tempSort);
     setParams((prev) => ({ ...prev, sort: tempSort, filter: tempFilter }));
     setHidden(true);
   }, [setParams, tempSort, tempFilter]);

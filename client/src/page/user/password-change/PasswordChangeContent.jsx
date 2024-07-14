@@ -31,7 +31,7 @@ export const PasswordChangeContent = () => {
       setUpdating(false);
       toast.success(response.message || 'Đổi mật khẩu thành công');
     } catch (error) {
-      console.log(error);
+      console.log('passwordChange', error);
       toast.error(error?.message || 'Đổi mật khẩu thất bại');
     }
   };

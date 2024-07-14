@@ -18,6 +18,7 @@ const getMeSv = () => {
 };
 
 const refreshTokenSv = () => {
+  console.log('refreshTokenSv');
   return API.post(
     'auth/refresh-token',
     {},
@@ -50,6 +51,12 @@ const resetPasswordSv = (token, data) => {
 };
 
 export {
-  forgotPasswordSv, getMeSv, loginSv, logoutSv, OTPConfirmSv, refreshTokenSv, registerSv, resetPasswordSv
+  forgotPasswordSv,
+  getMeSv,
+  loginSv,
+  logoutSv,
+  OTPConfirmSv,
+  refreshTokenSv,
+  registerSv,
+  resetPasswordSv,
 };
-

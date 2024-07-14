@@ -187,6 +187,7 @@ export const handleLogin = catchAsyncErrors(async (req, res, next) => {
 export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
   // string
   const token = req.cookies.refreshToken;
+  console.log('token', token);
   if (!token) {
     return next(new ErrorHandler(422, 'Yêu cầu không hợp lệ', 4009));
   }

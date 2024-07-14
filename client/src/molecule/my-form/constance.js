@@ -23,7 +23,7 @@ const ruleValidators = {
     return value.length >= length ? '' : `Yêu cầu tối thiểu ${length} ký tự `;
   },
   isConfirm: (value, confirmValue) => {
-    console.log(value, confirmValue);
+    console.log('isConfirm', value, confirmValue);
     return value === confirmValue ? '' : 'Xác nhận không đúng';
   },
 };
@@ -47,4 +47,3 @@ const ruleList = {
 };
 
 export { createFormInitData, ruleList, ruleValidators };
-

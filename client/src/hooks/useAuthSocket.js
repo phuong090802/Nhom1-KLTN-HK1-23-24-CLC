@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import { refreshTokenSv } from '../service/public/auth.sv';
 import { authSocket } from '../socket/auth.socket';
@@ -33,20 +34,29 @@ export const useAuthSocket = () => {
     const onConnectError = async (error) => {
       console.log('socket "/auth" connectError');
       if (
-        error?.data?.code === 4040 ||
-        error?.data?.code === 4041 ||
-        error?.data?.code === 4042
-        // && !isError
+        (error?.data?.code === 4040 ||
+          error?.data?.code === 4041 ||
+          error?.data?.code === 4042) &&
+        !authSocket._opts.extraHeaders.retry
       ) {
-        console.log('authSocket refresh token');
         try {
-          console.log('socket rf token');
-          const response = await refreshTokenSv();
-          Cookies.set('accessToken', response.token);
-          authSocket._opts.extraHeaders.authorization = `bearer ${response.token}`;
+          console.log('socket refresh token');
+          const baseURL = `${import.meta.env.VITE_API_BASE_URL}/api/`;
+          const response = await axios.post(
+            `${baseURL}auth/refresh-token`,
+            {},
+            {
+              withCredentials: true,
+            }
+          );
+          const token = response.data.token;
+          Cookies.set('accessToken', token);
+          authSocket._opts.extraHeaders.retry = true;
+          console.log(authSocket._opts.extraHeaders);
+          authSocket._opts.extraHeaders.authorization = `bearer ${token}`;
           authSocket.connect();
         } catch (rfError) {
-          setConnected(false);
+          // setConnected(false);
         }
       }
     };

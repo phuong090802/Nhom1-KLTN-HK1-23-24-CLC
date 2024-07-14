@@ -14,7 +14,7 @@ import { DataContext } from '../../../store/DataProvider';
 export const VerifyAccountContent = () => {
   const { user } = useContext(DataContext);
 
-  console.log(user);
+  console.log('user', user);
 
   const [email, setEmail] = useState(user.email);
 

@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { toast } from 'sonner';
 import ModalLayout2 from '../../../layout/modal-layout-2/ModalLayout2';
 import MyForm from '../../../molecule/my-form';
@@ -11,7 +11,7 @@ export const AddDeparmentModal = ({ title }) => {
     AdminDepartmentContext
   );
 
-  const AddDepFormRef = useRef();
+  // const AddDepFormRef = useRef();
 
   const addDeparment = async (data) => {
     try {
@@ -36,7 +36,7 @@ export const AddDeparmentModal = ({ title }) => {
           formInitData={formAddDep}
           submitTitle={'Thêm'}
           onSubmit={addDeparment}
-          ref={AddDepFormRef}
+          // ref={AddDepFormRef}
         />
       </div>
     </ModalLayout2>

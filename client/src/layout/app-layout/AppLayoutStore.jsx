@@ -128,7 +128,7 @@ export const AppLayoutStore = ({ children }) => {
       });
       setMessageContent(EditorState.createEmpty());
     } catch (error) {
-      console.log(error);
+      console.log('sendMessage', error);
       toast.error('Tin nhắn chưa được gửi đi');
     }
   };
@@ -168,7 +168,7 @@ export const AppLayoutStore = ({ children }) => {
         setNewMessage(true);
         updateConversations(data.latestConversation);
         if (data?.latestConversation?._id === selectedConversation._id) {
-          console.log(data);
+          console.log(`${user._id}:message:read`, data);
           setConversationContent((prev) => [
             ...prev,
             data?.latestConversation?.lastMessage,
@@ -181,7 +181,7 @@ export const AppLayoutStore = ({ children }) => {
   useEffect(() => {
     if (connected && isLoggedIn) {
       authSocket.on(`${user._id}:notification:read`, (data) => {
-        console.log(data);
+        console.log(`${user._id}:notification:read`, data);
         setNewNoti(true);
         setNotification((prev) => [data.lastNotification, ...prev]);
       });

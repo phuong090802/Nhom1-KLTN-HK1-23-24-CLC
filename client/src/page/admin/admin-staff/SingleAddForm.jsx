@@ -64,6 +64,7 @@ export const SingleAddForm = () => {
     return (
       <div className="relative leading-10 h-10 mb-6">
         <label
+          htmlFor="temporaryName"
           className={`absolute text-base mx-4 bg-transparent top-2 cursor-text ${
             selectedDepartment &&
             '-translate-y-[20px] bg-white scale-90 -translate-x-1'
@@ -72,6 +73,7 @@ export const SingleAddForm = () => {
           Chọn khoa
         </label>
         <select
+          id="temporaryName"
           className="outline-none w-full text-base border-2 rounded-lg bg-transparent transition-all h-10 px-4"
           // onClick={}
           onChange={handleClick}

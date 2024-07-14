@@ -96,6 +96,8 @@ const MySelect: FC<SelectProps> = ({
   return (
     <div className={'relative w-full '}>
       <input
+       autoComplete="off"
+        name="temporaryName"
         {...props}
         value={getKeyByValue(data, value) || placeholder || 'Không có'}
         // value={getKeyByValue(data, value)}

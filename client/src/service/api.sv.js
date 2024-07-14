@@ -38,6 +38,7 @@ API.interceptors.response.use(
           }
         );
         const token = response.data.token;
+        console.log('API.interceptors.response.use', token);
         Cookies.set('accessToken', token);
         originalRequest.headers.Authorization = `Bearer ${token}`;
         return API(originalRequest);

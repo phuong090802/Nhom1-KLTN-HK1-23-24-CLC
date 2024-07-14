@@ -26,7 +26,7 @@ export const DepartmentStatisticModal = () => {
       setDueQuestions(response.departmentsWithOverDueQuestion);
       setPages(response?.pages);
     } catch (error) {
-      console.log(response);
+      console.log('getOverDueQuestions', error);
     }
   };
 

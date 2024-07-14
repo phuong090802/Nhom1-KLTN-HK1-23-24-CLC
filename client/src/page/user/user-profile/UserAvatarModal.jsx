@@ -19,13 +19,13 @@ export const UserAvatarModal = () => {
       const submitData = new FormData();
       submitData.append('file', file);
       const response = await changeAvatarSv(submitData);
-      console.log(response);
+      console.log('changeAvatar', response);
       setUser((prev) => ({ ...prev, avatar: URL.createObjectURL(file) }));
       toast.success('Thay đổi avatar thành công');
       setFile(null);
       setHiddenAvatarModal(true);
     } catch (error) {
-      console.log(error);
+      console.log('changeAvatar', error);
       toast.error('Lỗi khi thay đổi avatar');
     }
   };

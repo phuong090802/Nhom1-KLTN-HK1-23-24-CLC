@@ -40,7 +40,7 @@ export const ForwardQuestionModal = () => {
       });
       setDepList(convertData);
     } catch (error) {
-      console.log(error);
+      console.log('getDepList', error);
     }
   };
 
@@ -56,7 +56,7 @@ export const ForwardQuestionModal = () => {
       });
       setFieldList(convertData);
     } catch (error) {
-      console.log(error);
+      console.log('getFieldList', error);
     }
   };
 
@@ -75,7 +75,7 @@ export const ForwardQuestionModal = () => {
       getQuestions();
       toast.success(response?.message || 'Chuyển tiếp câu trả lời thành công');
     } catch (error) {
-      console.log(error);
+      console.log('handleFoward', error);
       toast.error(error?.message || 'Lỗi khi chuyển tiếp câu hỏi');
     }
   };

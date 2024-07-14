@@ -57,7 +57,7 @@ export const DetailDepartmentModal = () => {
         response?.counsellors?.length === 0 ? null : response.counsellors[0]
       );
     } catch (error) {
-      console.log(error);
+      console.log('getDephead', error);
     }
   };
 
@@ -67,7 +67,7 @@ export const DetailDepartmentModal = () => {
       setCounsellors(response.counsellors);
       setPages(response.pages);
     } catch (error) {
-      console.log(error);
+      console.log('getDepCounsellors', error);
     }
   };
 
@@ -126,6 +126,8 @@ export const DetailDepartmentModal = () => {
         <div className="rounded-lg px-6 w-full">
           <div className="flex justify-between">
             <input
+              autoComplete="off"
+              name="temporaryName"
               ref={departmentNameRef}
               className={clsx(
                 'text-3xl font-bold mb-2 text-black75 outline-none border-black75',

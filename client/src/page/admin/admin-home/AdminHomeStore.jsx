@@ -34,7 +34,7 @@ export const AdminHomeStore = ({ children }) => {
         countOfUsers: response?.countOfUsers,
       });
     } catch (error) {
-      console.log(error);
+      console.log('getSatistic', error);
     }
   };
 
@@ -61,7 +61,7 @@ export const AdminHomeStore = ({ children }) => {
       };
       setQuestionChartData(tempData);
     } catch (error) {
-      console.log(error);
+      console.log('getQuestionStatistic', error);
     }
   };
 
@@ -70,7 +70,7 @@ export const AdminHomeStore = ({ children }) => {
       const response = await getDepartmentStatisticSv(depStatisticParams);
       console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log('getDepStatistic', error);
     }
   };
 

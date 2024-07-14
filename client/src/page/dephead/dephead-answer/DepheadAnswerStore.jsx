@@ -55,7 +55,7 @@ export const DepheadAnswerStore = ({ children }) => {
       const response = await authSocket.emitWithAck('approve-answer:create', {
         questionId: questionId,
       });
-      console.log(response);
+      console.log('ApproveAnswer', response);
       toast.success(response?.message || 'Duyệt câu trả lời thành công');
       setHiddenDetailAnswerModal(true);
       getWaitingQuestions();
@@ -70,13 +70,13 @@ export const DepheadAnswerStore = ({ children }) => {
         questionId: selected,
         content: draftToHtml(convertToRaw(feedbackContent.getCurrentContent())),
       });
-      console.log(response);
+      console.log('FeedbackAnswer', response);
       toast.success(response?.message || 'Phản hồi câu trả lời thành công');
       setHiddenDetailAnswerModal(true);
       setHiddenFeedback(true);
       getWaitingQuestions();
     } catch (error) {
-      toast.error(response?.message || 'Lỗi khi phản hồi câu trả lời');
+      toast.error(error?.message || 'Lỗi khi phản hồi câu trả lời');
     }
   };
 

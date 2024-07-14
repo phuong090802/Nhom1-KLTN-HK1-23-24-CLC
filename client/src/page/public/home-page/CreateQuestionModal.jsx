@@ -82,11 +82,12 @@ export const CreateQuestionModal = ({ hidden }) => {
     >
       <div className="px-4 mt-2 flex flex-col gap-4">
         <div className="flex justify-between items-end">
-          <label htmlFor="" className="text-base">
+          <label htmlFor="temporaryName" className="text-base">
             Khoa:
           </label>
           <div className="inline-block w-4/5">
             <MySelect
+              id="temporaryName"
               boxHeight={32}
               variant={'underline'}
               placeholder="Chọn khoa"
@@ -98,11 +99,12 @@ export const CreateQuestionModal = ({ hidden }) => {
           </div>
         </div>
         <div className="flex justify-between items-end">
-          <label htmlFor="" className="text-base">
+          <label htmlFor="temporaryName" className="text-base">
             Lĩnh vực:
           </label>
           <div className="inline-block w-4/5">
             <MySelect
+              id="temporaryName"
               boxHeight={32}
               variant={'underline'}
               placeholder="Chọn Lĩnh vực"

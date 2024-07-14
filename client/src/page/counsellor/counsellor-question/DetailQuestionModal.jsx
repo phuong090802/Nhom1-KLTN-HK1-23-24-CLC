@@ -159,6 +159,8 @@ export const DetailQuestionModal = () => {
           <div className="flex items-center gap-2">
             <h1 className="text-black75 ml-2 ">Riêng tư:</h1>
             <input
+              autoComplete="off"
+              name="temporaryName"
               type="checkbox"
               checked={isPrivate}
               onChange={(e) => setIsPrivate(e.target.checked)}
@@ -168,6 +170,8 @@ export const DetailQuestionModal = () => {
             <div className="flex items-center gap-2">
               <h1 className="text-black75 ml-2 ">Yêu cầu duyệt:</h1>
               <input
+                autoComplete="off"
+                name="temporaryName"
                 type="checkbox"
                 checked={isApprovalRequest}
                 onChange={(e) => setIsApprovalRequest(e.target.checked)}

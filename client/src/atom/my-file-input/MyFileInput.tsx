@@ -12,7 +12,7 @@ const MyFileInput: FC<InputProps> = ({ type, onChange, value, ...props }) => {
 
   const handleChange = useCallback(
     (e: any) => {
-      console.log(typeof e);
+      console.log('handleChange', typeof e);
       if (!onChange) return;
       onChange(e.target.files[0]);
     },
@@ -30,6 +30,8 @@ const MyFileInput: FC<InputProps> = ({ type, onChange, value, ...props }) => {
       >
         <p>Chọn file</p>
         <input
+          autoComplete="off"
+          name="temporaryName"
           type="file"
           className="hidden"
           ref={inputRef}

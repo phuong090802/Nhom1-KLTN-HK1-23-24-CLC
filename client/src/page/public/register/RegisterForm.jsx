@@ -13,7 +13,7 @@ export const RegisterForm = () => {
   const register = async (data) => {
     try {
       const submitData = { ...data, occupation: 'Sinh viên' };
-      console.log(submitData);
+      console.log('submitData', submitData);
       const response = await registerSv(submitData);
       // console.log(response);
       toast.success(response?.message || 'Đăng ký thành công');

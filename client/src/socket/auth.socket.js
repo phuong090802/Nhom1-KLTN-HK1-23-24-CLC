@@ -9,6 +9,7 @@ const authSocket = io(socketUrl, {
   withCredentials: true,
   autoConnect: false,
   extraHeaders: {
+    retry: false,
     authorization: `bearer ${Cookies.get('accessToken')}`,
   },
 });

@@ -52,6 +52,8 @@ const MyInput = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         <input
+         autoComplete="off"
+          name="temporaryName"
           ref={ref}
           type="text"
           className={cn(inputVariants({ variant, inputHeight, className }))}

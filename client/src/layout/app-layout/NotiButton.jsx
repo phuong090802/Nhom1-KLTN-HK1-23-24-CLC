@@ -43,7 +43,7 @@ export const NotiButton = () => {
       >
         <h1 className="text-2xl font-bold text-black75 mb-4 px-4">Thông báo</h1>
         {notifications.length !== 0 ? (
-          notifications.map((notification, index) => (
+          notifications?.map((notification) => (
             <Notification
               key={notification._id}
               createdAt={notification.createdAt}

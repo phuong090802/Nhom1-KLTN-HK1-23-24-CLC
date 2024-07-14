@@ -6,7 +6,7 @@ export const DepheadAnswerTable = () => {
   const { waitingQuestions, setSelected, setHiddenDetailAnswerModal } =
     useContext(DepheadAnswerContext);
 
-  console.log(waitingQuestions);
+  console.log('waitingQuestions', waitingQuestions);
 
   const onDetail = (question) => {
     setSelected(question);

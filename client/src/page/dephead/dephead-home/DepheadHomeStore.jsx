@@ -32,7 +32,7 @@ export const DepheadHomeStore = ({ children }) => {
       const response = await depheadGetFieldStatistic();
       setFieldStatisticData(response.fieldStatistic);
     } catch (error) {
-      console.log(error);
+      console.log('getFieldStatistic', error);
     }
   };
 
@@ -44,7 +44,7 @@ export const DepheadHomeStore = ({ children }) => {
         countOfUsers: response.countOfUsers,
       }));
     } catch (error) {
-      console.log(error);
+      console.log('getCounsellorCount', error);
     }
   };
 
@@ -56,7 +56,7 @@ export const DepheadHomeStore = ({ children }) => {
         countOfFAQs: response.countOfFAQs,
       }));
     } catch (error) {
-      console.log(error);
+      console.log('getFaqCount', error);
     }
   };
 
@@ -92,7 +92,7 @@ export const DepheadHomeStore = ({ children }) => {
       };
       setChartData(tempData);
     } catch (error) {
-      console.log(error);
+      console.log('getQuestionStatistic', error);
     }
   };
 

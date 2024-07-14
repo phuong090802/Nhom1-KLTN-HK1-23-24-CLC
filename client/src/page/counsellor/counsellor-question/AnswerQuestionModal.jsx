@@ -120,6 +120,8 @@ export const AnswerQuestionModal = () => {
               <div className="flex items-center gap-2">
                 <h1 className="text-black75 ml-2 ">Riêng tư:</h1>
                 <input
+                  autoComplete="off"
+                  name="temporaryName"
                   type="checkbox"
                   checked={isPrivate}
                   onChange={(e) => setIsPrivate(e.target.checked)}

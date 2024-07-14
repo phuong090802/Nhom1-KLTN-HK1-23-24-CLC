@@ -34,7 +34,7 @@ export const NewsPageStore = ({ children }) => {
       setListNews(response.listNews);
       setPages(response.pages);
     } catch (error) {
-      console.log(error);
+      console.log('getNews', error);
     }
   };
 

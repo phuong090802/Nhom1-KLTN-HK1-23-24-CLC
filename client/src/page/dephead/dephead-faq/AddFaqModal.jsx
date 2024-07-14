@@ -22,7 +22,7 @@ export const AddFaqModal = () => {
       });
       setFieldData(fields);
     } catch (error) {
-      console.log(error);
+      console.log('getMyField', error);
     }
   };
 

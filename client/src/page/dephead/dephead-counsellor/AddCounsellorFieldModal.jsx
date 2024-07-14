@@ -52,7 +52,7 @@ export const AddCounsellorFieldModal = () => {
     }
     try {
       const response = await addFieldsForCounSv(selected, selectedFields);
-      console.log('response', response);
+      console.log('handleAddCounsellorFields', response);
       if (response?.failedFields?.length === 0) {
         toast.success(
           response?.message || 'Thêm lĩnh vực cho tư vấn viên thành công'

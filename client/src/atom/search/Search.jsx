@@ -30,6 +30,8 @@ const Search = ({ boxStyle, inputStyle, placeholder, setParams }) => {
   return (
     <div className={clsx('relative z-[1] ', boxStyle)}>
       <input
+        autoComplete="off"
+        name="temporaryName"
         value={key}
         onChange={(e) => handleChange(e)}
         type="text"

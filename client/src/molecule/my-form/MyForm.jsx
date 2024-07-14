@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import FloatInput from "../../atom/float-input";
-import MyButton from "../../atom/my-button";
-import { createFormInitData, ruleValidators } from "./constance";
+import { useEffect, useState } from 'react';
+import FloatInput from '../../atom/float-input';
+import MyButton from '../../atom/my-button';
+import { createFormInitData, ruleValidators } from './constance';
 
 const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
     for (let i = 0; i < rules.length; i++) {
       const rule = rules[i];
       let errorMessage =
-        rule.name === "isConfirm"
+        rule.name === 'isConfirm'
           ? ruleValidators[rule.name](e.target.value, formData[rule.value])
           : ruleValidators[rule.name](e.target.value, rule.value);
       setFormError((prev) => ({
@@ -50,7 +50,7 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
         for (let i = 0; i < input.rules.length; i++) {
           const rule = input.rules[i];
           let errorMessage =
-            rule.name === "isConfirm"
+            rule.name === 'isConfirm'
               ? ruleValidators[rule.name](inputValue, formData[rule.value])
               : ruleValidators[rule.name](inputValue, rule.value);
           setFormError((prev) => ({ ...prev, [input.name]: errorMessage }));
@@ -69,7 +69,7 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
         } catch (error) {}
       }
     } catch (error) {
-      console.log(formInitData.id, error);
+      console.log('formInitData.id, error', formInitData.id, error);
     } finally {
       setLoading(false);
     }
@@ -80,13 +80,13 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
   // }));
 
   return (
-    <form className="w-full" id={formInitData.id} >
+    <form className="w-full" id={formInitData.id}>
       {formInitData.inputs.map((input) => {
         return (
           <FloatInput
             key={input.name}
             label={input.label}
-            type={input.type || "text"}
+            type={input.type || 'text'}
             name={input.name}
             value={formData[input.name]}
             error={formError[input.name]}
@@ -97,13 +97,13 @@ const MyForm = ({ formInitData, onSubmit, submitTitle, defaultData }) => {
         );
       })}
       <MyButton
-        variant={"default"}
-        size={"fullWidth"}
+        variant={'default'}
+        size={'fullWidth'}
         loading={loading}
         onClick={handleSubmit}
         className="bg-primary"
       >
-        {submitTitle || "Submit"}
+        {submitTitle || 'Submit'}
       </MyButton>
     </form>
   );

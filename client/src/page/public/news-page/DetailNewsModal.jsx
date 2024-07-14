@@ -8,7 +8,7 @@ export const DetailNewsModal = () => {
   const { hiddenDetailNewsModal, setHiddenDetailNewsModal, selectedNews } =
     useContext(NewsPageContext);
 
-  console.log(selectedNews);
+  console.log('selectedNews', selectedNews);
 
   return (
     <ModalLayout2

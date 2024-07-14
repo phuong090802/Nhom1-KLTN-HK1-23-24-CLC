@@ -33,11 +33,11 @@ export const CounsellorFeedbackStore = ({ children }) => {
   const getFeedbacks = async () => {
     try {
       const response = await getFeedbacksSv();
-      console.log(response);
+      console.log('getFeedbacks', response);
       // setPages(response?.pages || 0);
       setFeedbacks(response?.feedbacks);
     } catch (error) {
-      console.log(error);
+      console.log('getFeedbacks', error);
     }
   };
 

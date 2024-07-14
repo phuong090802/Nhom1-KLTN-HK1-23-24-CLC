@@ -48,10 +48,14 @@ const SortFilterModal = ({
             filters.map((filter, index) => {
               return (
                 <div key={filter.label.value || index}>
-                  <label className="text-xs font-semibold text-black75">
+                  <label
+                    htmlFor={filter.label.value}
+                    className="text-xs font-semibold text-black75"
+                  >
                     {filter.label.key + ':'}
                   </label>
                   <MySelect
+                    id={filter.label.value}
                     data={filter.data}
                     name={filter.label.value}
                     value={tempFilter[filter.label.value]}
