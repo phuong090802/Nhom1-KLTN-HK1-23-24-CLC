@@ -26,6 +26,7 @@ export const Item = ({ data }) => {
 
   const increaseView = async () => {
     try {
+      const response = await increaseViewSv(data._id);
       setQuestions((prev) => {
         return prev.map((question) => {
           if (question._id === data._id) {
@@ -33,7 +34,6 @@ export const Item = ({ data }) => {
           } else return question;
         });
       });
-      const response = await increaseViewSv(data._id);
     } catch (error) {
       // console.log(error);
     }

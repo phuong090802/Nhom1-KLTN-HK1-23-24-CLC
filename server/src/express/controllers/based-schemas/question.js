@@ -1,9 +1,9 @@
-import { HOME_GET_ALL_QUESTIONS } from '../../../constants/actions/question.js';
-import Question from '../../../models/question.js';
-import handlePagination from '../../../util/db/pagination.js';
-import QueryAPI from '../../../util/db/query-api.js';
-import QueryTransform from '../../../util/db/query-transform.js';
-import catchAsyncErrors from '../../middlewares/catch-async-errors.js';
+import { HOME_GET_ALL_QUESTIONS } from "../../../constants/actions/question.js";
+import Question from "../../../models/question.js";
+import handlePagination from "../../../util/db/pagination.js";
+import QueryAPI from "../../../util/db/query-api.js";
+import QueryTransform from "../../../util/db/query-transform.js";
+import catchAsyncErrors from "../../middlewares/catch-async-errors.js";
 
 // Endpoint: /api/questions/:id
 // Method: PUT
@@ -13,7 +13,7 @@ export const handleUpdateViewsOfQuestion = catchAsyncErrors(
     const question = req.foundQuestion;
     question.views += 1;
     await question.save();
-    res.status(204);
+    res.status(204).end();
   }
 );
 
@@ -23,18 +23,18 @@ export const handleUpdateViewsOfQuestion = catchAsyncErrors(
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const query = Question.find()
     .populate({
-      path: 'answer',
-      select: 'content file.url answeredAt',
-      populate: { path: 'user', select: '-_id fullName avatar.url' },
+      path: "answer",
+      select: "content file.url answeredAt",
+      populate: { path: "user", select: "-_id fullName avatar.url" },
     })
-    .populate({ path: 'user', select: '-_id fullName avatar.url' })
-    .select('title content file createdAt views user answer likes');
+    .populate({ path: "user", select: "-_id fullName avatar.url" })
+    .select("title content file createdAt views user answer likes");
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
   const reqSort = req.query.sort?.createdAt;
   const queryTransform = new QueryTransform(req.query)
     .applyFilters({
-      status: 'publicly-answered-and-approved',
+      status: "publicly-answered-and-approved",
     })
     .defaultSortNewest({
       ...(!reqSort && { createdAt: -1 }),
