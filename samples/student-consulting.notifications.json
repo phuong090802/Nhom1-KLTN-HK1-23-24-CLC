@@ -1,140 +1,364 @@
 [{
   "_id": {
-    "$oid": "66212c2aff18a356e80f7ae0"
+    "$oid": "6694b3b361f943f5f8a11508"
   },
   "recipient": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "6693c4db0615bc677a88bad2"
   },
-  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
-  "read": false,
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-04-18T14:20:26.639Z"
+    "$date": "2024-07-15T05:29:23.420Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "663c4638716290091ad6e84e"
+    "$oid": "6694b3b361f943f5f8a11509"
   },
   "recipient": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "6693c4fc0615bc677a88bae3"
   },
-  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
-  "read": false,
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-05-09T03:42:48.653Z"
+    "$date": "2024-07-15T05:29:23.420Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "663c5276716290091ad6ef1f"
+    "$oid": "6694b44f61f943f5f8a115a5"
   },
   "recipient": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "6693c4fc0615bc677a88bae3"
   },
-  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
-  "read": false,
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-05-09T04:35:02.871Z"
+    "$date": "2024-07-15T05:31:59.976Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6661e729e773b875c8f95d9a"
+    "$oid": "6694b44f61f943f5f8a115a4"
   },
   "recipient": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "6693c4db0615bc677a88bad2"
   },
-  "content": "Câu hỏi đã được trả lời: Test đặt câu hỏi",
-  "read": false,
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-06T16:43:21.527Z"
+    "$date": "2024-07-15T05:31:59.976Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6676e2d71e240e34ad619c43"
+    "$oid": "6694bd816a2298f5f377e0cf"
   },
   "recipient": {
-    "$oid": "65e961a2df861b306b78faf7"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
-  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
-  "read": false,
+  "content": "Câu hỏi của bạn đã được trả lời",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-22T14:42:31.952Z"
+    "$date": "2024-07-15T06:11:13.000Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6676e32b1e240e34ad619c4a"
+    "$oid": "6694bde86a2298f5f377e10d"
   },
   "recipient": {
-    "$oid": "65e961a2df861b306b78faf7"
+    "$oid": "6693c4fc0615bc677a88bae3"
   },
-  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
-  "read": false,
+  "content": "Có câu trả lời cần được duyệt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-22T14:43:55.296Z"
+    "$date": "2024-07-15T06:12:56.952Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6676e483c0c76c986755198a"
+    "$oid": "6694bfd1063106266e3e50aa"
   },
   "recipient": {
-    "$oid": "65e961a2df861b306b78faf7"
+    "$oid": "6693c4fc0615bc677a88bae3"
   },
-  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
-  "read": false,
+  "content": "Có câu trả lời cần được duyệt.",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-22T14:49:39.441Z"
+    "$date": "2024-07-15T06:21:05.413Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6676e49bc0c76c9867551990"
+    "$oid": "6694c097063106266e3e515b"
   },
   "recipient": {
-    "$oid": "65e961a2df861b306b78faf7"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
-  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
-  "read": false,
+  "content": "Câu hỏi của bạn đã được trả lời",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-22T14:50:03.632Z"
+    "$date": "2024-07-15T06:24:23.775Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6676e5e1b5b036f82340529c"
+    "$oid": "6694c152063106266e3e519e"
   },
   "recipient": {
-    "$oid": "65e961a2df861b306b78faf7"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
-  "content": "Quản trị viên nhắc nhở khoa trả lời những câu hỏi quá hạn.",
-  "read": false,
+  "content": "Câu hỏi của bạn đã được trả lời",
+  "read": true,
   "createdAt": {
-    "$date": "2024-06-22T14:55:29.473Z"
+    "$date": "2024-07-15T06:27:30.013Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "66779c4c5fce6b6b353cd1a3"
+    "$oid": "6694c21d4ad93f10ec251e4e"
   },
   "recipient": {
-    "$oid": "65e014bffb896bbbd6da11be"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
-  "content": "Trưởng khoa nhắc nhở bạn trả lời các câu hỏi quá hạn.",
+  "content": "Câu hỏi của bạn đã được trả lời",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:30:53.408Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c2aec0ab8d672d2c7740"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:33:18.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c2aec0ab8d672d2c773f"
+  },
+  "recipient": {
+    "$oid": "6693c4db0615bc677a88bad2"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:33:18.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c37afc1c9b04c9306087"
+  },
+  "recipient": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "content": "Câu hỏi của bạn đã được trả lời",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:36:42.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c3eafc1c9b04c9306100"
+  },
+  "recipient": {
+    "$oid": "6693c4db0615bc677a88bad2"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:38:34.752Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c3eafc1c9b04c9306101"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:38:34.752Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c43cfc1c9b04c930613a"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu trả lời cần được duyệt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:39:56.064Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c457fc1c9b04c9306158"
+  },
+  "recipient": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "content": "Câu hỏi đã được trả lời: Môn học bắt buộc và môn học tự chọn",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:40:23.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c4d1fc1c9b04c93061b4"
+  },
+  "recipient": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "content": "Câu hỏi đã được trả lời: Học phần tiên quyết và học phần song hành",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:42:25.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c4e4fc1c9b04c9306202"
+  },
+  "recipient": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "content": "Câu hỏi đã được trả lời: Đăng ký lại môn học",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:42:44.008Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c52ffc1c9b04c9306242"
+  },
+  "recipient": {
+    "$oid": "6693c4db0615bc677a88bad2"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:43:59.518Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c52ffc1c9b04c9306243"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T06:43:59.518Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cc06fc1c9b04c930670a"
+  },
+  "recipient": {
+    "$oid": "6693c4db0615bc677a88bad2"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:13:10.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cc06fc1c9b04c930670b"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:13:10.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cfc6fc1c9b04c930697a"
+  },
+  "recipient": {
+    "$oid": "6693c4db0615bc677a88bad2"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
   "read": false,
   "createdAt": {
-    "$date": "2024-06-23T03:53:48.355Z"
+    "$date": "2024-07-15T07:29:10.058Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cfc6fc1c9b04c930697b"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu hỏi mới vừa được đặt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:29:10.059Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694d101fc1c9b04c93069eb"
+  },
+  "recipient": {
+    "$oid": "6693c4fc0615bc677a88bae3"
+  },
+  "content": "Có câu trả lời cần được duyệt.",
+  "read": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:34:25.740Z"
   },
   "__v": 0
 }]

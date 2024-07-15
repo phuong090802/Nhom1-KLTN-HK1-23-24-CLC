@@ -1,165 +1,240 @@
 [{
   "_id": {
-    "$oid": "660a75805b64e5f5d6c76abd"
+    "$oid": "6694b57561f943f5f8a11620"
   },
-  "title": "Tiêu đề tin tức 3:48 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:48 PM 4/1/2024",
+  "title": "Cách lựa chọn ngành học phù hợp với bản thân",
+  "content": "<p>Bài viết này cung cấp các tips và lời khuyên để sinh viên có thể chọn ngành học phù hợp với sở thích, năng lực và triển vọng công việc trong tương lai.</p>\r\n",
   "file": {
-    "ref": "news/Hn28NXk5K84BEgZIb6qvy.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FHn28NXk5K84BEgZIb6qvy.png?alt=media&token=4ed71cbf-82b8-4d08-a3e2-8e8139d8b541"
+    "ref": "news/WcpXavh3TMgd2PsrKaDAb.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FWcpXavh3TMgd2PsrKaDAb.jpg?alt=media&token=655e7fc2-682e-41c2-b946-632b47445e52"
   },
   "createdAt": {
-    "$date": "2024-04-01T08:51:12.713Z"
+    "$date": "2024-07-15T05:36:53.363Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a75435b64e5f5d6c76aae"
+    "$oid": "6694b58961f943f5f8a1162a"
   },
-  "title": "Tiêu đề tin tức 3:43 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:43 PM 4/1/2024",
-  "file": {
-    "ref": "news/UGhbG0JlWxTKyQ-w1GC1S.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FUGhbG0JlWxTKyQ-w1GC1S.png?alt=media&token=c8ea5c15-ae42-4063-9aec-2cb3eeced72f"
-  },
-  "createdAt": {
-    "$date": "2024-04-01T08:50:11.833Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660a759f5b64e5f5d6c76ac3"
-  },
-  "title": "Tiêu đề tin tức 3:50 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:50 PM 4/1/2024",
-  "file": {
-    "ref": "news/KQzIvTtL8np62bj5eFq7Y.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FKQzIvTtL8np62bj5eFq7Y.png?alt=media&token=e8d78cae-1ecf-467d-891a-68efe22ea58e"
-  },
-  "createdAt": {
-    "$date": "2024-04-01T08:51:43.209Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660a75635b64e5f5d6c76aba"
-  },
-  "title": "Tiêu đề tin tức 3:47 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:47 PM 4/1/2024",
+  "title": "Kỹ năng quản lý thời gian hiệu quả cho sinh viên",
+  "content": "<p>Phương pháp và kỹ thuật để sinh viên có thể quản lý thời gian học tập và sinh hoạt một cách hiệu quả, từ việc lập lịch học đến phân bổ thời gian cho các hoạt động khác.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T08:50:43.488Z"
+    "$date": "2024-07-15T05:37:13.524Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a75535b64e5f5d6c76ab4"
+    "$oid": "6694b59961f943f5f8a11634"
   },
-  "title": "Tiêu đề tin tức 3:45 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:45 PM 4/1/2024",
+  "title": "Cách làm thế nào để có CV ấn tượng khi xin việc",
+  "content": "<p>Hướng dẫn cụ thể từ việc chuẩn bị nội dung, cách trình bày đến những lời khuyên để tăng cường khả năng thu hút của CV khi xin việc.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T08:50:27.779Z"
+    "$date": "2024-07-15T05:37:29.688Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a75905b64e5f5d6c76ac0"
+    "$oid": "6694b5a261f943f5f8a11639"
   },
-  "title": "Tiêu đề tin tức 3:49 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:49 PM 4/1/2024",
-  "file": {
-    "ref": "news/RsoRM5PCQy6pe3Zcx_ydd.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FRsoRM5PCQy6pe3Zcx_ydd.png?alt=media&token=8340daeb-cba8-4c12-b5d9-51a5760b3315"
-  },
-  "createdAt": {
-    "$date": "2024-04-01T08:51:28.323Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660a77c1aaeff1f9de9578ab"
-  },
-  "title": "Tiêu đề tin tức 3:51 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:51 PM 4/1/2024",
+  "title": "Sự khác biệt giữa học và tự học",
+  "content": "<p>Phân tích và so sánh giữa học tập trong lớp học và việc học tập tự phát, bao gồm lợi ích và cách thức để sinh viên có thể tận dụng mỗi loại hình học tập.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T09:00:49.311Z"
+    "$date": "2024-07-15T05:37:38.459Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a77cfaaeff1f9de9578af"
+    "$oid": "6694b5af61f943f5f8a11643"
   },
-  "title": "Tiêu đề tin tức 3:51 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:51 PM 4/1/2024",
+  "title": "Cẩm nang tìm kiếm việc làm cho sinh viên mới ra trường",
+  "content": "<p>Những bước cơ bản từ việc nghiên cứu thị trường lao động đến kỹ năng chuẩn bị phỏng vấn, giúp sinh viên mới ra trường có thể tìm kiếm việc làm hiệu quả.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T09:01:03.681Z"
+    "$date": "2024-07-15T05:37:51.592Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a77862b07d7167a06d552"
+    "$oid": "6694b5b761f943f5f8a11648"
   },
-  "title": "Tiêu đề tin tức 3:51 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:51 PM 4/1/2024",
+  "title": " Làm thế nào để du học sinh có thể thích nghi nhanh với môi trường mới",
+  "content": "<p>Gợi ý và kinh nghiệm để du học sinh có thể thích nghi nhanh với cuộc sống và học tập ở môi trường nước ngoài, từ văn hóa đến hệ thống giáo dục.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T08:59:50.635Z"
+    "$date": "2024-07-15T05:37:59.627Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a755a5b64e5f5d6c76ab7"
+    "$oid": "6694b5cb61f943f5f8a11652"
   },
-  "title": "Tiêu đề tin tức 3:46 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:46 PM 4/1/2024",
+  "title": "Cách giải quyết stress trong kỳ thi và học tập",
+  "content": "<p>Các chiến lược và kỹ thuật giúp sinh viên giảm stress và duy trì tâm lý thoải mái trong quá trình ôn thi và thi cử.</p>\r\n",
   "file": {
     "ref": null,
     "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T08:50:34.772Z"
+    "$date": "2024-07-15T05:38:19.613Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a75a75b64e5f5d6c76ac6"
+    "$oid": "6694b5d461f943f5f8a11657"
   },
-  "title": "Tiêu đề tin tức 3:51 PM 4/1/2024",
-  "content": "Nội dung tin tức 3:51 PM 4/1/2024",
+  "title": " Lợi ích của việc thực tập trong quá trình học tập",
+  "content": "<p>Những lợi ích mà sinh viên có thể thu được khi tham gia các chương trình thực tập, bao gồm cả kinh nghiệm thực tế và cơ hội xây dựng mạng lưới quan hệ.</p>\r\n",
   "file": {
-    "ref": "news/e7tDe8FZ7Ep75wT2bS-7i.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2Fe7tDe8FZ7Ep75wT2bS-7i.png?alt=media&token=4b5e0d59-c6e4-4bdc-88a4-bc2394b2f9d1"
+    "ref": null,
+    "url": null
   },
   "createdAt": {
-    "$date": "2024-04-01T08:51:51.787Z"
+    "$date": "2024-07-15T05:38:28.357Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b5f161f943f5f8a11661"
+  },
+  "title": "Tầm quan trọng của kỹ năng giao tiếp trong sự nghiệp",
+  "content": "<p>Bài viết này khám phá vai trò quan trọng của kỹ năng giao tiếp trong môi trường làm việc và cung cấp các bước để phát triển và cải thiện kỹ năng này.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:38:57.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b5fb61f943f5f8a11666"
+  },
+  "title": "Cách xây dựng một mạng lưới quan hệ mạnh mẽ trong ngành nghề",
+  "content": "<p>Hướng dẫn chi tiết về cách sinh viên có thể xây dựng và duy trì một mạng lưới quan hệ chuyên nghiệp trong ngành nghề của mình để tăng cơ hội việc làm và phát triển sự nghiệp.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:07.074Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b60361f943f5f8a11670"
+  },
+  "title": "Cách đảm bảo sức khỏe trong thời gian học tập căng thẳng",
+  "content": "<p>Những lời khuyên và phương pháp để sinh viên duy trì sức khỏe tốt, bao gồm cả chế độ ăn uống và thực hành thể dục thể thao thích hợp.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:15.514Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b60f61f943f5f8a11675"
+  },
+  "title": "Phương pháp học tập hiệu quả theo phương pháp Pomodoro",
+  "content": "<p>Giải thích chi tiết về phương pháp Pomodoro và cách áp dụng nó để cải thiện hiệu quả trong học tập và làm việc.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:27.257Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b61a61f943f5f8a1167f"
+  },
+  "title": "Cẩm nang về việc lên kế hoạch nghỉ hè có ích cho sinh viên",
+  "content": "<p>Những gợi ý và lời khuyên để sinh viên có thể tận dụng thời gian nghỉ hè một cách hiệu quả, bao gồm cả việc xây dựng kỹ năng và trải nghiệm mới.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:38.365Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b62261f943f5f8a11684"
+  },
+  "title": "Làm thế nào để phân biệt giữa sự nghiệp và công việc",
+  "content": "<p>Định nghĩa và phân tích sự khác nhau giữa khái niệm sự nghiệp và công việc, và tại sao việc hiểu rõ điều này quan trọng đối với sinh viên.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:46.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b62a61f943f5f8a1168e"
+  },
+  "title": "Cách sử dụng mạng xã hội một cách thông minh và có ích cho sinh viên",
+  "content": "<p>Lời khuyên về cách sinh viên có thể sử dụng mạng xã hội để mở rộng mạng lưới quan hệ, tìm kiếm cơ hội việc làm và giữ liên lạc với cộng đồng học thuật.</p>\r\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:39:54.826Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b63261f943f5f8a11693"
+  },
+  "title": "Làm thế nào để phát triển kỹ năng tư duy logic và phản biện",
+  "content": "<p>Hướng dẫn và các bài tập để giúp sinh viên rèn luyện và phát triển kỹ năng tư duy logic và phản biện một cách hiệu quả.</p>\r\n",
+  "file": {
+    "ref": "news/UQ8Ksj8oBESu0JTpTUkA7.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/news%2FUQ8Ksj8oBESu0JTpTUkA7.jpg?alt=media&token=a105ec6a-cc25-43c8-8b4e-4857aceec436"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:40:02.314Z"
   },
   "__v": 0
 }]

@@ -1,1 +1,21 @@
-[]
+[{
+  "_id": {
+    "$oid": "6694cf50fc1c9b04c930692b"
+  },
+  "question": {
+    "$oid": "6694cc06fc1c9b04c9306707"
+  },
+  "fromDepartment": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "toDepartment": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "field": {
+    "$oid": "6694cd41fc1c9b04c93067a2"
+  },
+  "forwardedAt": {
+    "$date": "2024-07-15T07:27:12.726Z"
+  },
+  "__v": 0
+}]

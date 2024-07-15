@@ -1,15 +1,40 @@
 [{
   "_id": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "66869019b27445f0b1bcec6a"
+  },
+  "fullName": "ThS. Nguyễn Hữu Trung",
+  "email": "trungnhspkt@gmail.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0908617108",
+  "password": "$2a$10$nB8iEr6VdIIHgvO2wdsUX.9Yc.52fEoQa0y3ZE1iosm8qQh1B2LlK",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "ADMIN",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-04T12:05:45.128Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
   "fullName": "Trần Thanh Phương",
   "email": "phuongjihn@gmail.com",
   "isEmailVerified": true,
   "phoneNumber": "0968039018",
-  "password": "$2a$10$.XO8n3.GtCkEFOXUiuXWCOyVoT9rHEdVWM7roWBjaxQCR5/S.e5gO",
+  "password": "$2a$10$lUr9X4qePfHkYIzyfwmqDOW6Hb/LGBSVHVRpfKN/MAyzAY..TsNk2",
   "avatar": {
-    "ref": "users/96xbsFPTf7zgNUrMPZs0H.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/users%2F96xbsFPTf7zgNUrMPZs0H.png?alt=media&token=88a20ced-d6c3-4cfa-bc4d-f72cd9215252"
+    "ref": "users/O3RdUrntkB6Ao3AL3yylu.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/users%2FO3RdUrntkB6Ao3AL3yylu.jpg?alt=media&token=d9f08add-6790-4d66-819d-6cfcdf9d60b4"
   },
   "isEnabled": true,
   "role": "USER",
@@ -17,459 +42,61 @@
   "counsellor": {
     "fields": []
   },
-  "createdAt": {
-    "$date": "2024-02-29T05:21:02.574Z"
-  },
-  "__v": 0,
-  "forgotPassword": {
-    "otp": "517088",
-    "otpExpiresAt": {
-      "$date": "2024-03-07T14:16:36.927Z"
-    }
-  },
-  "resetPassword": {
-    "resetTokenExpiresAt": {
-      "$date": "2024-03-02T13:12:53.146Z"
-    },
-    "token": "b577d2e8a811eed07dca442200aafceba0ca7142d8af339f2942f2051f9f6cfd"
-  },
-  "verifyEmail": {
-    "otp": "019590",
-    "otpExpiresAt": {
-      "$date": "2024-03-07T14:09:47.240Z"
-    }
-  },
-  "pushTokens": [
-    "ExponentPushToken[J192F3AJcWip2HsADqvhWY]"
-  ]
-},
-{
-  "_id": {
-    "$oid": "65e014bffb896bbbd6da11be"
-  },
-  "fullName": "Ưu Tú",
-  "email": "uutu@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039021",
-  "password": "$2a$10$euNA1J09Mdx1Y.KE4KFV.eSzKnDIW80TPysEFEVdJ6tX/6SwR6nLC",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
-  "counsellor": {
-    "fields": [
-      {
-        "$oid": "65e195829eefc7138b7dbd8b"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd8c"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "663ac56980142a48c0a49e59"
-      },
-      {
-        "$oid": "663ac59380142a48c0a49e6d"
-      }
-    ],
-    "department": {
-      "$oid": "65d87158b394abe04aad269c"
-    }
-  },
-  "createdAt": {
-    "$date": "2024-02-29T05:23:11.963Z"
-  },
-  "__v": 16,
   "pushTokens": [],
-  "lastRemindedAt": {
-    "$date": "2024-06-23T03:53:48.342Z"
-  }
+  "createdAt": {
+    "$date": "2024-07-13T15:27:25.965Z"
+  },
+  "__v": 0,
+  "verifyEmail": null
 },
 {
   "_id": {
-    "$oid": "65e01936d43672e10c14b379"
+    "$oid": "6693c4db0615bc677a88bad2"
   },
-  "fullName": "Tư vấn viên D",
-  "email": "counsellor_d@example.com",
+  "fullName": "Trần Văn Nghệ",
+  "email": "tranvannghe@example.com",
   "isEmailVerified": false,
-  "phoneNumber": "0968039024",
-  "password": "$2a$10$a5afXJVrr6r.YYoxH.wSPew24pTmhMHxLpK6YdPBVLa6BHNN2ePGm",
+  "phoneNumber": "0968039001",
+  "password": "$2a$10$GbZ4x8jmhCZzMc2DQ4jqhuWMypItOx34SupnpAOzsnGZi.oZnMPGS",
   "avatar": {
     "ref": null,
     "url": null
   },
   "isEnabled": true,
   "role": "COUNSELLOR",
+  "occupation": "Khác",
   "counsellor": {
     "fields": [
       {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb9"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbda0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd98"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd9c"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdd9"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdde"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdf6"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbde7"
+        "$oid": "6694a3bad20ce5e772cc9c7e"
       }
     ],
     "department": {
       "$oid": "65d87158b394abe04aad269c"
     }
   },
+  "pushTokens": [],
   "createdAt": {
-    "$date": "2024-02-29T05:42:14.178Z"
+    "$date": "2024-07-14T12:30:19.265Z"
   },
-  "__v": 7,
-  "pushTokens": []
+  "__v": 3
 },
 {
   "_id": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
+    "$oid": "6693c4fc0615bc677a88bae3"
   },
-  "fullName": "Trần Thanh Phương",
-  "email": "20110547@student.hcmute.edu.vn",
+  "fullName": "Trần Văn Công",
+  "email": "cong@example.com",
   "isEmailVerified": false,
-  "phoneNumber": "0968039034",
-  "password": "$2a$10$yVd.pB64VAkpinPU72PcGeQ7LsFKKu4XQLZS7Tx.3mkrfO7M2c95i",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "USER",
-  "occupation": "Phụ huynh",
-  "counsellor": {
-    "fields": []
-  },
-  "createdAt": {
-    "$date": "2024-03-02T12:47:00.124Z"
-  },
-  "__v": 0,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "65e957787b706468a49a990e"
-  },
-  "fullName": "Giám sát viên",
-  "email": "giamsatvien@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039101",
-  "password": "$2a$10$zZkJGG8anHj3Xcqwk2mmgeomMRNbarbYdHVO51Pyqrg9K4sEyWlSK",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "SUPERVISOR",
-  "counsellor": {
-    "fields": []
-  },
-  "createdAt": {
-    "$date": "2024-03-07T05:58:16.918Z"
-  },
-  "__v": 0,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "65e08b3f8476972a6097726d"
-  },
-  "fullName": "Tư viến viên B",
-  "email": "counsellor_b@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039022",
-  "password": "$2a$10$n2eo14WKF6ehOt.DSQgU6OPf.pHAteh7XLvj3UYMJNS6fVq3/5jbu",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
-  "counsellor": {
-    "fields": [
-      {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb9"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdad"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdaf"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc4"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdd5"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdf3"
-      }
-    ],
-    "department": {
-      "$oid": "65d87158b394abe04aad269c"
-    }
-  },
-  "createdAt": {
-    "$date": "2024-02-29T13:48:47.416Z"
-  },
-  "__v": 3,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "65e9541d7d72d40045225eb3"
-  },
-  "fullName": "admin",
-  "email": "admin@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039011",
-  "password": "$2a$10$vOFW8rb.BUjXAkZhAVg4GuO9hDKmID0xm22mrThW9SFNldn4tWdba",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "ADMIN",
-  "counsellor": {
-    "fields": []
-  },
-  "createdAt": {
-    "$date": "2024-03-07T05:43:57.874Z"
-  },
-  "__v": 0,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "65e961a2df861b306b78faf7"
-  },
-  "fullName": "Tư vấn viên F",
-  "email": "counsellor_f@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039124",
-  "password": "$2a$10$Z5w2bqthUsFxxduUx8KVseTl9U8q6wNTPVOHMyc1jm2db9gH0fCD6",
+  "phoneNumber": "0968039002",
+  "password": "$2a$10$a1.N/Dnn1VYPRQi4p/CqM.o2zs8Ym3Yu0ujI.28eCqWJiQ26QsLZO",
   "avatar": {
     "ref": null,
     "url": null
   },
   "isEnabled": true,
   "role": "DEPARTMENT_HEAD",
-  "counsellor": {
-    "fields": [],
-    "department": {
-      "$oid": "65d87158b394abe04aad269c"
-    }
-  },
-  "createdAt": {
-    "$date": "2024-03-07T06:41:38.621Z"
-  },
-  "__v": 0,
-  "pushTokens": [],
-  "verifyEmail": {
-    "otp": "475912",
-    "otpExpiresAt": {
-      "$date": "2024-04-21T15:15:39.416Z"
-    }
-  }
-},
-{
-  "_id": {
-    "$oid": "65ec3cb4303a3ae1607e045f"
-  },
-  "fullName": "Tư vấn viên E",
-  "email": "counsellor_e@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039164",
-  "password": "$2a$10$SQFEPWEA9RfcP0uzf6QdaeIoYF9kHn7YGP48kO/FiQ6Cj1ePsg7um",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
-  "counsellor": {
-    "fields": [
-      {
-        "$oid": "65e195829eefc7138b7dbd98"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbda0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb9"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd9c"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbda2"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdde"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbde1"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbde3"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdf6"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd93"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb8"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdee"
-      }
-    ],
-    "department": {
-      "$oid": "65d87158b394abe04aad269c"
-    }
-  },
-  "createdAt": {
-    "$date": "2024-03-09T10:40:52.815Z"
-  },
-  "__v": 22,
-  "pushTokens": [],
-  "occupation": "Khác"
-},
-{
-  "_id": {
-    "$oid": "65e01499fb896bbbd6da11bb"
-  },
-  "fullName": "Supervisor",
-  "email": "supervisor@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039001",
-  "password": "$2a$10$vlwYlUUStQxGoYD8mJ1NaOhWqxoBnt7ZWtMHKyPCQkQClXfBeXgJ.",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "SUPERVISOR",
-  "counsellor": {
-    "fields": []
-  },
-  "createdAt": {
-    "$date": "2024-02-29T05:22:33.186Z"
-  },
-  "__v": 0,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "65e01929d43672e10c14b376"
-  },
-  "fullName": "Tư vấn viên C",
-  "email": "counsellor_c@example.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0968039023",
-  "password": "$2a$10$zDX.49kaeyd0GjPOdsSW8Oq8WubWOeTydgy7kphpo/VwX7OBpG5yi",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
-  "counsellor": {
-    "fields": [
-      {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb9"
-      }
-    ],
-    "department": {
-      "$oid": "65d87158b394abe04aad269c"
-    }
-  },
-  "createdAt": {
-    "$date": "2024-02-29T05:42:01.440Z"
-  },
-  "__v": 5,
-  "pushTokens": []
-},
-{
-  "_id": {
-    "$oid": "663a91587ef44c4daf9e61c6"
-  },
-  "fullName": "0394908111",
-  "email": "0394908111@gmail.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0394908111",
-  "password": "$2a$10$3t.oDaraj3GGqI05HJFpy.da92qeyBZVIoBguC/cxfnisWVxn4cma",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
-  "counsellor": {
-    "fields": []
-  },
-  "pushTokens": [],
-  "createdAt": {
-    "$date": "2024-05-07T20:38:48.320Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "663b6cc67ce4e3f175bf2ffb"
-  },
-  "fullName": "New counsellor",
-  "email": "0888731584@gmail.com",
-  "isEmailVerified": false,
-  "phoneNumber": "0888731584",
-  "password": "$2a$10$hFkaP2ucfLI9LDVj18Vox.amvXaknb0rXMlS0.NuslxU8Pq8Fao0u",
-  "avatar": {
-    "ref": null,
-    "url": null
-  },
-  "isEnabled": true,
-  "role": "COUNSELLOR",
+  "occupation": "Khác",
   "counsellor": {
     "fields": [],
     "department": {
@@ -478,25 +105,194 @@
   },
   "pushTokens": [],
   "createdAt": {
-    "$date": "2024-05-08T12:15:02.152Z"
+    "$date": "2024-07-14T12:30:52.613Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "663c50b3716290091ad6ecb2"
+    "$oid": "6694ad6bc368e7498824fa1e"
   },
-  "fullName": "Demo user add 09/05/2024",
-  "email": "0888697478@gmail.com",
+  "fullName": "Trần Văn An",
+  "email": "an@example.com",
   "isEmailVerified": false,
-  "phoneNumber": "0888697478",
-  "password": "$2a$10$a2vSWaNOvJ8t7ih8YL9Zgu0j9oTikhvHr7BNhJVZ4kQSBhrvPZkVW",
+  "phoneNumber": "0968039003",
+  "password": "$2a$10$umRoI72Dy51.9zPKpzu6UuWM715AbWfqErVx5nSYsZWHx8lEc2Oc2",
   "avatar": {
     "ref": null,
     "url": null
   },
   "isEnabled": true,
   "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:02:35.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ad84c368e7498824fa27"
+  },
+  "fullName": "Nguyễn Văn Bình",
+  "email": "binh@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039004",
+  "password": "$2a$10$IuUIABF3N7AzRDKYYELUveqAQfB6kgiUtCPUYXWry2kBFM/7Wi.f6",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:03:00.414Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ada3c368e7498824fa30"
+  },
+  "fullName": "Nguyễn Văn Chánh",
+  "email": "chanh@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039005",
+  "password": "$2a$10$pVLV0e36t0a1igy6rxfh0.7DvG5SQy1f8K7rpGXR.36JFRmLXj1vK",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:03:31.626Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694adbbc368e7498824fa39"
+  },
+  "fullName": "Trần Văn Đạt",
+  "email": "dat@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039006",
+  "password": "$2a$10$s/mb7eEvmq8JCJlOWdxNjOAsnykvkFPEH.E5iM4ZWZzXV9SnEj1GC",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:03:55.208Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694adfcc368e7498824fa4b"
+  },
+  "fullName": "Nguyễn Văn Anh",
+  "email": "anh@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039007",
+  "password": "$2a$10$Z2oguHFBIyzTHg1kwq1PAOwxNp/LGYQ4VGxgiKhj1CLiz8r/KlIoq",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:05:00.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ae15c368e7498824fa54"
+  },
+  "fullName": "Nguyễn Văn An",
+  "email": "anvan@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0908617109",
+  "password": "$2a$10$qCQ..YPr5/BqDPr8JzBHPuOaDu/m.lSTG/c0ChKpbbFB2TRhvEn5.",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": [],
+    "department": {
+      "$oid": "65d87158b394abe04aad269c"
+    }
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T05:05:25.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c8d7fc1c9b04c930656c"
+  },
+  "fullName": "Dương Văn An",
+  "email": "duongvanan@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039200",
+  "password": "$2a$10$EZGMil9Ns/TwJZtDwRvlFOcnJi/aqHWKTJhu1USVdgs3H8Djht/ia",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "DEPARTMENT_HEAD",
+  "occupation": "Khác",
   "counsellor": {
     "fields": [],
     "department": {
@@ -505,86 +301,64 @@
   },
   "pushTokens": [],
   "createdAt": {
-    "$date": "2024-05-09T04:27:31.002Z"
+    "$date": "2024-07-15T06:59:35.455Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "663c51cb716290091ad6ee98"
+    "$oid": "6694c8fbfc1c9b04c9306574"
   },
-  "fullName": "New COunsellor",
-  "email": "0888747474@gmail.com",
+  "fullName": "Nguyễn Văn Viên",
+  "email": "nguyenvanvien@example.com",
   "isEmailVerified": false,
-  "phoneNumber": "0888747474",
-  "password": "$2a$10$Fbp6x6yxDeuGQy7mVs43VeVV.39XojyBP1vOg6ScTgq4RM05ClIeu",
+  "phoneNumber": "0968039020",
+  "password": "$2a$10$Jf.0IjckfoasBxUS2a19X.vCc0vPI66e9uXhPj6siK0mnkfyKTyhe",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "SUPERVISOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T07:00:11.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c9a3fc1c9b04c930668d"
+  },
+  "fullName": "Nguyên Văn Diên",
+  "email": "nguyenvandien@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968039201",
+  "password": "$2a$10$OctH.VWEEjYbhCqAlMdM..QoC2IqPuJMXuWshFHtOpc8HhqXWSk4S",
   "avatar": {
     "ref": null,
     "url": null
   },
   "isEnabled": true,
   "role": "COUNSELLOR",
+  "occupation": "Khác",
   "counsellor": {
     "fields": [
       {
-        "$oid": "65e195829eefc7138b7dbd98"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbda0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb9"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdf6"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd97"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdde"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd9c"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb3"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc7"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdcc"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd9f"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdc6"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdd0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbd92"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdb0"
-      },
-      {
-        "$oid": "65e195829eefc7138b7dbdce"
+        "$oid": "6694cd41fc1c9b04c93067a2"
       }
     ],
     "department": {
-      "$oid": "65d87158b394abe04aad269c"
+      "$oid": "65dc93823a43bf67107ca57d"
     }
   },
   "pushTokens": [],
   "createdAt": {
-    "$date": "2024-05-09T04:32:11.666Z"
+    "$date": "2024-07-15T07:02:59.940Z"
   },
-  "__v": 8
+  "__v": 7
 }]

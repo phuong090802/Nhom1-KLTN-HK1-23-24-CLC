@@ -1,9 +1,91 @@
 [{
   "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e2c"
+    "$oid": "6694aed1c368e7498824fbcd"
   },
-  "title": "Thời gian hết hạn học chính quy ",
-  "content": "Thời gian hết hạn học chính quy ",
+  "title": "Quy trình đăng ký môn học của sinh viên",
+  "content": "<p>Quy trình đăng ký môn học của sinh viên như thế nào và có những yêu cầu gì tại trường bạn?</p>\n",
+  "file": {
+    "ref": "questions/nnc686vFNSljIywvAsn3H.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2Fnnc686vFNSljIywvAsn3H.jpg?alt=media&token=26acd935-7a1e-4274-83ac-6254c3526202"
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Thông tin và lịch trình đăng ký: Trường cung cấp thông tin về thời gian mở đăng ký môn học, các hạn chót và lịch trình cụ thể.</p>\n<p></p>\n<p>Xem và lựa chọn môn học: Sinh viên truy cập hệ thống đăng ký trực tuyến của trường để xem danh sách các môn học được mở trong học kỳ đó. Họ có thể tìm kiếm thông tin về từng môn học như giảng viên, thời gian học, yêu cầu tiên quyết (nếu có), và số lượng chỗ còn lại.</p>\n<p></p>\n<p>Đăng ký môn học: Sinh viên chọn các môn học mà họ muốn đăng ký thông qua hệ thống online. Họ có thể có sự lựa chọn về lịch học và sự phối hợp giữa các môn học.</p>\n<p></p>\n<p>Xác nhận và sửa đổi đăng ký: Sau khi đăng ký, hệ thống sẽ cho phép sinh viên xem lại và xác nhận các môn học đã đăng ký. Họ cũng có thể có thời gian để chỉnh sửa đăng ký nếu cần thiết.</p>\n<p></p>\n<p>Xác nhận đăng ký từ phía trường: Sau khi sinh viên xác nhận đăng ký, trường sẽ xử lý và xác nhận lại danh sách môn học của từng sinh viên.</p>\n",
+    "file": {
+      "ref": "answers/v2Iyz6smV19-XRaBPfD4w.jpg",
+      "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/answers%2Fv2Iyz6smV19-XRaBPfD4w.jpg?alt=media&token=1f3df912-ce53-43ba-9dcc-5a56d085c3e8"
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T05:46:54.079Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:08:33.008Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694af28c368e7498824fbf4"
+  },
+  "title": "Thủ tục đăng ký môn học",
+  "content": "<p>Sinh viên cần làm gì để hoàn tất thủ tục đăng ký môn học tại trường của bạn?</p>\n",
+  "file": {
+    "ref": "questions/udkl0E2MPnRbl71aIvfJR.jpg",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2Fudkl0E2MPnRbl71aIvfJR.jpg?alt=media&token=ecec93db-e9a2-4ba2-bdce-7f2ffd5d8944"
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Truy cập vào hệ thống đăng ký môn học của trường, thường là trực tuyến.</p>\n<p>Xem và lựa chọn các môn học mà sinh viên muốn đăng ký trong học kỳ đó.</p>\n<p>Đăng ký các môn học theo lịch trình và quy định được cung cấp.</p>\n<p>Xác nhận và kiểm tra lại danh sách môn học đã đăng ký.</p>\n<p>Theo dõi thông báo từ phía trường để biết về xác nhận và các bước tiếp theo nếu cần.</p>\n",
+    "file": {
+      "ref": "answers/VIMVapxYqHsBXxRXpE8EZ.jpg",
+      "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/answers%2FVIMVapxYqHsBXxRXpE8EZ.jpg?alt=media&token=84fc24b0-dd0e-47c4-8971-1c98c548139d"
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T05:49:56.965Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:10:00.959Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694af3dc368e7498824fbfc"
+  },
+  "title": "Thời gian đăng ký môn học",
+  "content": "<p>Thời gian đăng ký môn học là bao lâu và có những giai đoạn nào quan trọng?</p>\n",
   "file": {
     "ref": null,
     "url": null
@@ -12,1216 +94,470 @@
   "views": 0,
   "isForwarded": false,
   "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
   "department": {
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
+  "likes": [],
   "answer": {
-    "content": "Đây là nộ dung câu trả lời",
+    "content": "<p>Thời gian mở đăng ký: Là thời điểm mà hệ thống đăng ký môn học của trường mở cửa để sinh viên bắt đầu xem và đăng ký các môn học cho học kỳ tiếp theo.</p>\n<p></p>\n<p>Thời hạn đăng ký: Là thời điểm cuối cùng mà sinh viên phải hoàn thành việc đăng ký môn học. Việc đăng ký sau thời hạn này có thể không được chấp nhận hoặc sẽ bị áp đặt các hạn chế.</p>\n<p></p>\n<p>Giai đoạn xác nhận và chỉnh sửa: Sau khi đăng ký, sinh viên thường có một thời gian ngắn để xác nhận lại danh sách môn học và có thể sửa đổi nếu cần thiết.</p>\n<p></p>\n<p>Xử lý đăng ký từ phía trường: Sau khi sinh viên xác nhận đăng ký, trường sẽ xử lý và xác nhận lại danh sách môn học của từng sinh viên.</p>\n",
     "file": {
       "ref": null,
       "url": null
     },
     "user": {
-      "$oid": "65e01936d43672e10c14b379"
+      "$oid": "6693c4db0615bc677a88bad2"
     },
     "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
+      "$date": "2024-07-15T05:53:47.266Z"
     }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:10:21.751Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694afeec368e7498824fca4"
+  },
+  "title": "Hạn chế đăng ký môn học",
+  "content": "<p>Có những hạn chế nào đối với việc đăng ký môn học mà sinh viên cần phải biết?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Số lượng tối đa môn học: Trường có thể áp đặt một số giới hạn về số lượng tối đa môn học mà sinh viên có thể đăng ký trong một học kỳ. Điều này nhằm đảm bảo sinh viên có thể chủ động trong việc lựa chọn môn học và không quá tải.</p>\n<p></p>\n<p>Yêu cầu tiên quyết: Một số môn học có thể yêu cầu sinh viên đã hoàn thành môn học tiên quyết trước đó để có thể đăng ký. Sinh viên cần kiểm tra và đảm bảo đã đáp ứng đủ các yêu cầu này trước khi đăng ký môn học.</p>\n<p></p>\n<p>Thời hạn đăng ký: Thường có một thời hạn cụ thể mà sinh viên phải hoàn thành việc đăng ký môn học. Đăng ký sau thời hạn này có thể dẫn đến không được chấp nhận hoặc phải đối mặt với các hạn chế và phí phạt.</p>\n<p></p>\n<p>Quy định về thay đổi đăng ký: Sau khi đã xác nhận đăng ký, các trường có thể áp đặt các hạn chế về việc thay đổi môn học, như chỉ được phép thực hiện thay đổi trong một khoảng thời gian nhất định và có sự chấp thuận từ phía giáo vụ.</p>\n<p></p>\n<p>Các yêu cầu đặc biệt: Ngoài những hạn chế cơ bản, có thể có các yêu cầu khác như yêu cầu chứng minh thêm về nhu cầu học tập hay các yêu cầu đặc biệt khác do từng trường đưa ra.</p>\n",
+    "file": {
+      "ref": "answers/nmh8U_3oRUqWzpj35PRZ5.jpg",
+      "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/answers%2Fnmh8U_3oRUqWzpj35PRZ5.jpg?alt=media&token=5c4b1b38-dbd4-4169-8e42-34f6958604d5"
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T05:55:52.162Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:13:18.760Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b1373683dd8a9c44ecaf"
+  },
+  "title": "Thay đổi đăng ký môn học",
+  "content": "<p>Quy trình và điều kiện để thay đổi đăng ký môn học là gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Xem xét thời gian thay đổi: Trước tiên, sinh viên cần kiểm tra xem trường có đưa ra thời gian cụ thể cho việc thay đổi đăng ký môn học hay không. Thời gian này thường được quy định rõ ràng để đảm bảo việc quản lý lớp học và tài nguyên của trường.</p>\n<p></p>\n<p>Đăng nhập vào hệ thống đăng ký môn học: Sinh viên cần đăng nhập vào hệ thống đăng ký môn học của trường, thường là một hệ thống trực tuyến, để thực hiện thay đổi. Họ có thể cần sử dụng tên đăng nhập và mật khẩu đã được cấp từ trường.</p>\n<p></p>\n<p>Thực hiện thay đổi: Sau khi truy cập vào hệ thống, sinh viên chọn tùy chọn thay đổi đăng ký môn học và chọn các môn học mà họ muốn thay đổi. Thao tác này thường gồm việc xóa môn học hiện tại và thêm môn học mới vào danh sách đăng ký của mình.</p>\n<p></p>\n<p>Xác nhận và lưu ý các giới hạn: Sau khi thực hiện thay đổi, sinh viên cần xác nhận lại danh sách môn học đã thay đổi và lưu ý các giới hạn về số tín chỉ, yêu cầu tiên quyết hoặc các hạn chế khác mà trường có thể áp đặt.</p>\n<p></p>\n<p>Phê duyệt từ phía trường (nếu cần): Tại một số trường, việc thay đổi đăng ký môn học có thể yêu cầu sự phê duyệt từ phía giáo vụ. Sinh viên cần kiểm tra và tuân thủ các quy định này để tránh trục trặc trong quá trình thay đổi.</p>\n<p></p>\n<p>Theo dõi thông báo: Sinh viên nên theo dõi thông báo từ hệ thống đăng ký hoặc từ phía giáo vụ để đảm bảo rằng thay đổi đăng ký đã được xử lý và xác nhận.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:11:12.909Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:18:47.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b1563683dd8a9c44ece6"
+  },
+  "title": "Môn học bắt buộc và môn học tự chọn",
+  "content": "<p>Sự khác biệt giữa môn học bắt buộc và môn học tự chọn là gì? Sinh viên cần chú ý những gì khi đăng ký mỗi loại môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Môn học bắt buộc:</p>\n<p></p>\n<p>Đây là những môn học mà sinh viên phải học và hoàn thành để đạt được các yêu cầu chương trình học tập của khóa học hay ngành học.</p>\n<p>Thường các môn học bắt buộc được xây dựng dựa trên những kiến thức cơ bản và nền tảng quan trọng cho ngành học cụ thể.</p>\n<p>Sinh viên không có sự lựa chọn nếu không có yêu cầu đặc biệt từ giáo viên hướng dẫn hoặc quản lý chương trình học tập.</p>\n<p>Môn học tự chọn:</p>\n<p></p>\n<p>Đây là những môn học mà sinh viên có thể lựa chọn để thỏa mãn các yêu cầu không bắt buộc hoặc để tăng cường chuyên môn trong lĩnh vực học tập của mình.</p>\n<p>Thường các môn học tự chọn cung cấp sự linh hoạt cho sinh viên trong việc tùy chọn các chủ đề, chương trình học hoặc phương pháp giảng dạy.</p>\n<p>Sinh viên có thể lựa chọn môn học tự chọn dựa trên sở thích cá nhân, mục tiêu nghề nghiệp hoặc để đi sâu vào một lĩnh vực cụ thể hơn.</p>\n<p>Những điều cần chú ý khi đăng ký mỗi loại môn học:</p>\n<p></p>\n<p>Môn học bắt buộc: Sinh viên cần chắc chắn rằng họ đăng ký và hoàn thành các môn học bắt buộc theo lịch trình và yêu cầu của chương trình học tập. Việc không hoàn thành các môn học này có thể ảnh hưởng đến việc tốt nghiệp và các yêu cầu bắt buộc khác.</p>\n<p></p>\n<p>Môn học tự chọn: Khi đăng ký các môn học tự chọn, sinh viên nên xem xét kỹ các yêu cầu tiên quyết (nếu có), nội dung của môn học, và cách tính điểm. Họ cũng nên tham khảo ý kiến từ giáo viên hướng dẫn hoặc cố vấn học tập để đảm bảo rằng môn học này phù hợp với mục tiêu học tập và sự nghiệp của mình.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:40:23.429Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:19:18.294Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b2d98db4319f18dabfe5"
+  },
+  "title": "Học phần tiên quyết và học phần song hành",
+  "content": "<p>Học phần tiên quyết và học phần song hành có vai trò gì trong quy trình đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Học phần tiên quyết (Prerequisite):</p>\n<p></p>\n<p>Vai trò: Đây là những môn học mà sinh viên cần phải hoàn thành và đạt điểm đủ để có thể đăng ký môn học tiếp theo. Học phần tiên quyết đặt nền tảng kiến thức và kỹ năng cần thiết để học một môn học khác một cách hiệu quả.</p>\n<p>Quy định: Sinh viên phải đáp ứng các yêu cầu về học phần tiên quyết trước khi được phép đăng ký môn học tiếp theo. Nếu không đáp ứng đủ các yêu cầu này, hệ thống đăng ký có thể không cho phép sinh viên đăng ký môn học.</p>\n<p>Học phần song hành (Corequisite):</p>\n<p></p>\n<p>Vai trò: Đây là những môn học mà sinh viên cần phải đăng ký và học cùng một lúc với một môn học khác. Học phần song hành thường cần thiết để bổ sung kiến thức và kỹ năng cần thiết để thành công trong môn học chính.</p>\n<p>Quy định: Sinh viên cần đăng ký cả hai học phần song hành và học phần chính cùng một lúc. Việc này giúp đảm bảo rằng sinh viên có đủ kiến thức và năng lực để theo kịp nội dung giảng dạy và yêu cầu của môn học chính.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:42:25.304Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:25:45.926Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b3408db4319f18dabfec"
+  },
+  "title": "Sự hỗ trợ từ nhà trường",
+  "content": "<p>Nhà trường cung cấp những dịch vụ hỗ trợ gì để giúp sinh viên đăng ký môn học dễ dàng hơn?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Hệ thống đăng ký môn học trực tuyến: Nhà trường cung cấp một hệ thống đăng ký môn học trực tuyến tiện lợi và dễ sử dụng, giúp sinh viên có thể truy cập từ bất kỳ đâu và đăng ký các môn học một cách thuận tiện.</p>\n<p></p>\n<p>Thông tin và hướng dẫn đăng ký: Nhà trường cung cấp các tài liệu hướng dẫn chi tiết về quy trình đăng ký môn học, bao gồm các bước cần thiết và các lịch trình quan trọng. Thông tin này giúp sinh viên hiểu rõ hơn về quy trình và làm thế nào để hoàn thành đăng ký môn học một cách chính xác.</p>\n<p></p>\n<p>Hỗ trợ từ cố vấn học tập: Các cố vấn học tập của nhà trường có thể cung cấp hỗ trợ và lời khuyên cho sinh viên về việc đăng ký môn học. Họ có thể giúp sinh viên hiểu rõ hơn về các yêu cầu tiên quyết, lựa chọn môn học phù hợp với nhu cầu và mục tiêu học tập của mình.</p>\n<p></p>\n<p>Các buổi hướng dẫn và đào tạo: Nhà trường có thể tổ chức các buổi hướng dẫn và đào tạo đặc biệt về việc đăng ký môn học cho sinh viên mới và sinh viên có nhu cầu. Điều này giúp sinh viên hiểu rõ hơn về các quy trình và hỗ trợ có sẵn để đăng ký môn học.</p>\n<p></p>\n<p>Hỗ trợ kỹ thuật: Cung cấp hỗ trợ kỹ thuật cho sinh viên khi gặp phải vấn đề về hệ thống đăng ký môn học trực tuyến, bao gồm các lỗi kỹ thuật hoặc khó khăn trong việc sử dụng các công cụ liên quan đến đăng ký môn học.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:24:23.688Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:27:28.055Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b3b361f943f5f8a11505"
+  },
+  "title": "Công cụ và hệ thống đăng ký môn học",
+  "content": "<p>Sinh viên sử dụng những công cụ và hệ thống nào để đăng ký môn học và cần lưu ý điều gì khi sử dụng?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Sinh viên thường sử dụng các công cụ và hệ thống sau để đăng ký môn học:</p>\n<p></p>\n<p>Hệ thống đăng ký môn học trực tuyến của trường: Đây là công cụ chính mà sinh viên sử dụng để đăng ký và quản lý các môn học của mình. Hệ thống này thường cung cấp các tùy chọn để xem thông tin về các môn học, đăng ký, rút đăng ký, và chỉnh sửa đăng ký.</p>\n<p></p>\n<p>Trang web của trường: Trang web của trường cũng cung cấp thông tin chi tiết về các chương trình học, các yêu cầu tiên quyết, lịch trình đăng ký, và các tài liệu hướng dẫn liên quan đến việc đăng ký môn học.</p>\n<p></p>\n<p>Email và thông báo từ phía trường: Sinh viên nhận được thông tin qua email và thông báo từ phía trường về các thay đổi quan trọng, các lịch trình đăng ký, hoặc các hướng dẫn đăng ký môn học.</p>\n<p></p>\n<p>Khi sử dụng các công cụ và hệ thống này để đăng ký môn học, sinh viên cần lưu ý các điều sau:</p>\n<p></p>\n<p>Thời gian đăng ký: Theo dõi thời gian mở đăng ký môn học và thời hạn đăng ký để đảm bảo không bỏ lỡ cơ hội đăng ký các môn học mong muốn.</p>\n<p></p>\n<p>Yêu cầu tiên quyết: Kiểm tra và đảm bảo rằng đã hoàn thành các môn học tiên quyết cần thiết trước khi đăng ký môn học tiếp theo. Hệ thống đăng ký thường sẽ kiểm tra điều này và không cho phép đăng ký nếu không đáp ứng yêu cầu tiên quyết.</p>\n<p></p>\n<p>Lịch trình và thời gian: Xác định các môn học có trùng lịch hoặc xung đột với nhau để tránh tình trạng môn học trùng lịch.</p>\n<p></p>\n<p>Các thông tin quan trọng: Đọc kỹ và hiểu các thông tin được cung cấp bởi hệ thống đăng ký và trang web của trường để đảm bảo việc đăng ký môn học diễn ra một cách chính xác và suôn sẻ.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:27:29.901Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:29:23.251Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694b44f61f943f5f8a115a1"
+  },
+  "title": "Lịch học và lịch thi",
+  "content": "<p>Sinh viên có thể xem và quản lý lịch học và lịch thi như thế nào sau khi hoàn tất đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Hệ thống đăng ký môn học của trường:</p>\n<p></p>\n<p>Hệ thống này thường cung cấp cho sinh viên thông tin chi tiết về lịch học của từng môn học đã đăng ký, bao gồm thời gian, địa điểm, và giảng viên.</p>\n<p>Sinh viên có thể truy cập vào hệ thống đăng ký môn học để xem và kiểm tra lịch học của từng môn học trong học kỳ.</p>\n<p>Lịch học và lịch thi trên trang web của trường:</p>\n<p></p>\n<p>Trang web của trường thường cập nhật các thông tin về lịch học và lịch thi cho sinh viên. Sinh viên có thể truy cập vào phần mục lịch học hoặc lịch thi để xem thông tin chi tiết và các thay đổi mới nhất.</p>\n<p>Ứng dụng di động của trường (nếu có):</p>\n<p></p>\n<p>Một số trường cung cấp các ứng dụng di động để sinh viên có thể truy cập vào lịch học và lịch thi trên điện thoại di động của mình. Các ứng dụng này thường cung cấp tính năng thông báo để sinh viên nhận được thông tin mới nhất và các thay đổi nhanh chóng.</p>\n<p>Email và thông báo từ phía trường:</p>\n<p></p>\n<p>Sinh viên cũng có thể nhận được thông tin về lịch học và lịch thi thông qua email và các thông báo từ phía trường. Điều này giúp sinh viên cập nhật và chuẩn bị kế hoạch học tập một cách hiệu quả.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:30:53.295Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:31:59.806Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c2aec0ab8d672d2c773c"
+  },
+  "title": "Đăng ký lại môn học",
+  "content": "<p>Trường có cung cấp các khóa học hè và quy trình đăng ký như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 2,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Loại hình khóa học:</p>\n<p></p>\n<p>Các khóa học hè thường bao gồm các môn học cụ thể hoặc các chương trình đặc biệt nhằm cung cấp cho sinh viên các cơ hội học tập bổ sung ngoài chương trình học kỳ chính.</p>\n<p>Nội dung và thời gian:</p>\n<p></p>\n<p>Các khóa học hè có thể bao gồm các môn học về các lĩnh vực chuyên ngành, các khoá đào tạo ngắn hạn, hoặc các hoạt động học tập bổ ích khác.</p>\n<p>Thời gian thường linh động và có thể kéo dài từ vài tuần đến một tháng, tuỳ thuộc vào nhu cầu và lịch trình của từng khóa học.</p>\n<p>Lợi ích của khóa học hè:</p>\n<p></p>\n<p>Các khóa học hè thường giúp sinh viên:</p>\n<p>Nâng cao kiến thức và kỹ năng chuyên môn.</p>\n<p>Đáp ứng các yêu cầu học tập bổ sung.</p>\n<p>Tăng cường kinh nghiệm thực tế trong lĩnh vực mong muốn.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T06:36:42.499Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T06:33:18.305Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694c3eafc1c9b04c93060fd"
+  },
+  "title": "Đăng ký lại môn học",
+  "content": "<p>Quy định về đăng ký lại môn học sau khi không đạt điểm đậu là gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 3,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "likes": [
     {
-      "$oid": "65e31fc4f7eb589dd941ab6c"
+      "$oid": "66929cdd1561c2b1a4cc2cff"
     }
   ],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 3
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e2d"
-  },
-  "title": "Về cách xét học bổng KKHT HKI 2019-2020",
-  "content": "Về cách xét học bổng KKHT HKI 2019-2020",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
   "answer": {
-    "content": "Đây là nộ dung câu trả lời",
+    "content": "<p>Yêu cầu và điều kiện:</p>\n<p></p>\n<p>Sinh viên cần phải đăng ký lại môn học nếu không đạt điểm đậu hoặc điểm tối thiểu được quy định.</p>\n<p>Thường có các điều kiện cụ thể về số lần được phép đăng ký lại môn học, thời gian giữa các lần đăng ký lại, và điều kiện tiên quyết nếu có.</p>\n<p>Quy trình đăng ký lại:</p>\n<p></p>\n<p>Đăng ký lại môn học thường được thực hiện thông qua hệ thống đăng ký môn học của trường.</p>\n<p>Sinh viên cần tuân thủ các thời hạn và quy định đăng ký lại môn học được thông báo trước bởi phòng đào tạo hoặc bộ phận chuyên trách.</p>\n<p>Phí đăng ký lại:</p>\n<p></p>\n<p>Có thể có phí đăng ký lại môn học mà sinh viên cần phải thanh toán khi đăng ký lại môn học không đạt điểm đậu.</p>\n<p>Hạn chế và hỗ trợ:</p>\n<p></p>\n<p>Các trường có thể áp dụng các hạn chế về số lần được phép đăng ký lại môn học.</p>\n<p>Có thể có các chương trình hỗ trợ học tập để giúp sinh viên chuẩn bị tốt hơn cho lần đăng ký lại môn học.</p>\n<p>Quy định đối với điểm số và học phí:</p>\n<p></p>\n<p>Quy định về việc điểm số của lần đăng ký lại sẽ được áp dụng và có thể có ảnh hưởng đến học phí, chương trình học tập và tiến độ học tập của sinh viên.</p>\n",
     "file": {
       "ref": null,
       "url": null
     },
     "user": {
-      "$oid": "65e01936d43672e10c14b379"
+      "$oid": "6693c4db0615bc677a88bad2"
     },
     "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
+      "$date": "2024-07-15T06:42:43.919Z"
     }
   },
-  "likes": [],
   "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
+    "$date": "2024-07-15T06:38:34.583Z"
   },
-  "__v": 0
+  "__v": 1
 },
 {
   "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e2e"
+    "$oid": "6694c52ffc1c9b04c930623f"
   },
-  "title": "Nhận bằng tốt nghiệp",
-  "content": "Nhận bằng tốt nghiệp",
+  "title": "Hướng dẫn đăng ký môn học cho sinh viên năm nhất",
+  "content": "<p>Những hướng dẫn cụ thể nào được cung cấp cho sinh viên năm nhất khi đăng ký môn học lần đầu tiên?</p>\n",
   "file": {
     "ref": null,
     "url": null
   },
-  "status": "publicly-answered-and-approved",
+  "status": "privately-answered",
   "views": 0,
   "isForwarded": false,
   "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
   "department": {
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e31"
-  },
-  "title": "Xem xét cảnh báo học tập",
-  "content": "Xem xét cảnh báo học tập",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3f"
-  },
-  "title": "Chứng chỉ sư phạm",
-  "content": "Chứng chỉ sư phạm",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
   "answer": null,
-  "likes": [],
   "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
+    "$date": "2024-07-15T06:43:59.349Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "65e98727b2ddce84501f66ef"
+    "$oid": "6694cc06fc1c9b04c9306707"
   },
-  "title": "Nhận học bổng qua thẻ ngân hàng",
-  "content": "Nhận học bổng qua thẻ ngân hàng",
+  "title": "Đăng ký môn học cho sinh viên quốc tế",
+  "content": "<p>Quy trình đăng ký môn học có khác biệt đối với sinh viên quốc tế không?</p>\n",
   "file": {
     "ref": null,
     "url": null
   },
   "status": "unanswered",
   "views": 0,
-  "isForwarded": false,
+  "isForwarded": true,
   "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T09:21:43.804Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e9907be1bd254424bc01c8"
-  },
-  "title": "Báo cáo thực tập tốt nghiệp",
-  "content": "Báo cáo thực tập tốt nghiệp",
-  "file": {
-    "ref": "questions/7awSH_gizkwf0dYhg_4s-.pdf",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2F7awSH_gizkwf0dYhg_4s-.pdf?alt=media&token=816cc2ab-71e4-4ded-adb7-e9bc3d7e05a0"
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T10:01:31.721Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e990cde1bd254424bc01cd"
-  },
-  "title": "Test đặt câu hỏi không có file",
-  "content": "Test đặt câu hỏi không có file",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T10:02:53.811Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e2f"
-  },
-  "title": "Câu hỏi về thể dục thể thao ",
-  "content": "Câu hỏi về thể dục thể thao ",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e30"
-  },
-  "title": "Tư vấn sức khỏe",
-  "content": "Tư vấn sức khỏe",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e34"
-  },
-  "title": "Về xét học bổng",
-  "content": "Về xét học bổng",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e35"
-  },
-  "title": "Tư vấn sinh viên sức khỏe",
-  "content": "Tư vấn sinh viên sức khỏe",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e37"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e38"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-04-18T14:20:26.571Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e39"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-06-06T16:43:21.455Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3a"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e014bffb896bbbd6da11be"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e29a87bd06a693b43bfe7d"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": "questions/Ih-YEpChzOUAV__oQn6nJ.pdf",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FIh-YEpChzOUAV__oQn6nJ.pdf?alt=media&token=aa66c55e-d70e-487c-bb81-a458985e5078"
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "<p>&nbsp;Phan hoi ne :D</p>\n",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e961a2df861b306b78faf7"
-    },
-    "answeredAt": {
-      "$date": "2024-04-18T13:57:57.358Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e9b9f3ea250cc123780dce"
-  },
-  "title": "Test đặt câu hỏi không có file",
-  "content": "Test đặt câu hỏi không có file",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "<p>Demo response</p>",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e961a2df861b306b78faf7"
-    },
-    "answeredAt": {
-      "$date": "2024-05-09T04:35:32.781Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T12:58:27.192Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e2b"
-  },
-  "title": "Test đặt câu hỏi không có file",
-  "content": "Test đặt câu hỏi không có file",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:24:04.143Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e32"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e33"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3b"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3c"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-05-09T04:35:02.821Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e40"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e987a2b2ddce84501f66f4"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": "questions/LoiUwfjdy44vNZwloRIIQ.pdf",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FLoiUwfjdy44vNZwloRIIQ.pdf?alt=media&token=7e096b9c-9ce5-4537-91e6-3ef21fa49c3d"
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T09:23:46.876Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e9ba38ea250cc123780dd3"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": "questions/fB2_YO4y61JOf0DS6YTqj.pdf",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/questions%2FfB2_YO4y61JOf0DS6YTqj.pdf?alt=media&token=80cd72bc-4c9d-4158-a6e4-90fb1153e76a"
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": "answers/H6O9r4F4fg7w8N4_4HXs_.jpg",
-      "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/answers%2FH6O9r4F4fg7w8N4_4HXs_.jpg?alt=media&token=0383ffa2-349f-4d5b-9e32-f7669eef99a0"
-    },
-    "user": {
-      "$oid": "65e961a2df861b306b78faf7"
-    },
-    "answeredAt": {
-      "$date": "2024-03-07T13:24:24.307Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-07T12:59:36.822Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e36"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-03-02T09:01:24.283Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3d"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "Đây là nộ dung câu trả lời",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e01936d43672e10c14b379"
-    },
-    "answeredAt": {
-      "$date": "2024-05-09T03:42:48.597Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "65e2f17c07ae0a9e32e92e3e"
-  },
-  "title": "Test đặt câu hỏi",
-  "content": "Test đặt câu hỏi",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-03-02T03:18:31.986Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660b57e147d256f75b52c3f7"
-  },
-  "title": "Test dat cau hoi qua socket",
-  "content": "<p>Test dat cau hoi vang socket</p><p>Test dat cau hoi bang socket</p><p><br></p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-02T00:57:05.782Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660b64dc8859153819a1f0e4"
-  },
-  "title": "Test dat cau hoi",
-  "content": "<p>Test dat cau hoi</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-02T01:52:28.537Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660b661d8859153819a1f0fd"
-  },
-  "title": "Cong Nghe Thong tin",
-  "content": "<p>Cong nghe thong tin</p><p>Cong ngghe thong tin</p><p>Cong nghe thong tin</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-02T01:57:49.268Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660b80bb8859153819a1f4f3"
-  },
-  "title": "Test dat cau hoi",
-  "content": "<p>Trest dat cau hoi</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-02T03:51:23.015Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660b817a8859153819a1f4fe"
-  },
-  "title": "Test dat cau hoi",
-  "content": "<p>Trest dat cau hoiaaa</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
   "department": {
     "$oid": "65dc93823a43bf67107ca57d"
   },
   "field": {
-    "$oid": "65e197b89eefc7138b7dbe6f"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
-  "answer": null,
   "likes": [],
+  "answer": null,
   "createdAt": {
-    "$date": "2024-04-02T03:54:34.594Z"
+    "$date": "2024-07-15T07:13:10.393Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660bf517c47b630cef765756"
+    "$oid": "6694cfc5fc1c9b04c9306977"
   },
-  "title": "Test socket dat cau hoi",
-  "content": "<p>Test socket dat cau hoi</p>",
+  "title": "Phí đăng ký môn học",
+  "content": "<p>Sinh viên cần biết về các khoản phí liên quan đến đăng ký môn học như thế nào?</p>\n",
   "file": {
     "ref": null,
     "url": null
@@ -1230,175 +566,18 @@
   "views": 0,
   "isForwarded": false,
   "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
+    "$oid": "66929cdd1561c2b1a4cc2cff"
   },
   "department": {
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
+  "likes": [],
   "answer": null,
-  "likes": [],
   "createdAt": {
-    "$date": "2024-04-02T12:07:51.566Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "661401e1584750231cdce6f6"
-  },
-  "title": "Tesst dat cau hoi",
-  "content": "<p>Test dat cau hoi</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd91"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-08T14:40:33.540Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6614a420db8cde160e733f69"
-  },
-  "title": "Tu van sinh vien",
-  "content": "<p>Tu van sinh vien</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "privately-answered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd94"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-09T02:12:48.254Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "661df7613b7a8d270d540b34"
-  },
-  "title": "<p>Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi&nbsp;</p>\n<p>Tran Nhat Hao demo dat cau hoi Tran Nhat Hao demo dat cau hoi&nbsp;</p>\n",
-  "content": "Tran Nhat Hao demo dat cau hoi ",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "privately-answered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd91"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-04-16T03:58:25.446Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "663c28a53edebf4bcdff8aa4"
-  },
-  "title": "Test dat cau hoi",
-  "content": "<p>Test dat cau hoi</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "unanswered",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e31fc4f7eb589dd941ab6c"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": null,
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-05-09T01:36:37.328Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "663c4e94716290091ad6ebaa"
-  },
-  "title": "Demo dat cau hoi 05/09/2024",
-  "content": "<p>Demo dat cau hoi 05/09/2024</p>",
-  "file": {
-    "ref": null,
-    "url": null
-  },
-  "status": "publicly-answered-and-approved",
-  "views": 0,
-  "isForwarded": false,
-  "user": {
-    "$oid": "65e0143efb896bbbd6da11b4"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
-  },
-  "answer": {
-    "content": "<p>Demo Phan hoi cau hoi</p>",
-    "file": {
-      "ref": null,
-      "url": null
-    },
-    "user": {
-      "$oid": "65e961a2df861b306b78faf7"
-    },
-    "answeredAt": {
-      "$date": "2024-05-09T04:34:28.734Z"
-    }
-  },
-  "likes": [],
-  "createdAt": {
-    "$date": "2024-05-09T04:18:28.145Z"
+    "$date": "2024-07-15T07:29:09.886Z"
   },
   "__v": 0
 }]

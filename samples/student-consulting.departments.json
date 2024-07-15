@@ -4,9 +4,7 @@
   },
   "departmentName": "Khoa Công Nghệ Thông Tin",
   "isActive": true,
-  "lastRemindedAt": {
-    "$date": "2024-06-22T14:55:29.460Z"
-  },
+  "lastRemindedAt": null,
   "__v": 0,
   "createdAt": {
     "$date": "2024-07-02T08:17:15.590Z"
@@ -86,33 +84,9 @@
 },
 {
   "_id": {
-    "$oid": "65dc940b3a43bf67107ca593"
-  },
-  "departmentName": "Khoa Khoa Học Ứng Dụng",
-  "isActive": true,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
     "$oid": "65dc941b3a43bf67107ca599"
   },
-  "departmentName": "Phòng  Đào tạo",
-  "isActive": true,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "65dc94253a43bf67107ca59d"
-  },
-  "departmentName": "Đoàn Trường Đại Học Sư Phạm KTp.HCMỹ Thuật",
+  "departmentName": "Phòng Đào tạo",
   "isActive": true,
   "lastRemindedAt": null,
   "__v": 0,
@@ -221,78 +195,6 @@
     "$oid": "65dc94103a43bf67107ca595"
   },
   "departmentName": "Khoa Đào Tạo Chất Lượng Cao",
-  "isActive": true,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663a3404e8e16b2cb50bff2d"
-  },
-  "departmentName": "Demo add khoa",
-  "isActive": false,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663a3459e8e16b2cb50bff4c"
-  },
-  "departmentName": "Demo theem khoa",
-  "isActive": false,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663a34b6e8e16b2cb50bff76"
-  },
-  "departmentName": "Demo add khoa 2",
-  "isActive": false,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663a34d2e8e16b2cb50bff95"
-  },
-  "departmentName": "Demo add khoa 3",
-  "isActive": false,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663a34f8e8e16b2cb50bff98"
-  },
-  "departmentName": "Demo theem khoa 5 edited",
-  "isActive": true,
-  "lastRemindedAt": null,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-07-02T08:17:15.590Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "663c505b716290091ad6eca0"
-  },
-  "departmentName": "Demo Khoa 09/05/2024",
   "isActive": true,
   "lastRemindedAt": null,
   "__v": 0,

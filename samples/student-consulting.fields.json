@@ -1,0 +1,196 @@
+[{
+  "_id": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "fieldName": "Học tập của SV  - Đăng ký MH",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:21:14.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3c1d20ce5e772cc9c88"
+  },
+  "fieldName": "Nghiên cứu khoa học sinh viên",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:21:21.297Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "fieldName": "Điểm rèn luyện - Học bổng",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:21:25.116Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "fieldName": "Công tác SV - Chế độ chính sách - K.CNTT",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:21:29.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "fieldName": "Các vấn đề chung trong khoa CNTT",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:22:00.769Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "fieldName": "Ngành Công nghệ Thông tin",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:22:04.173Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "fieldName": "Ngành Kỹ thuật Dữ liệu",
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T04:22:07.990Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cd41fc1c9b04c93067a2"
+  },
+  "fieldName": "Tuyển sinh",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:18:25.058Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cddafc1c9b04c93067b2"
+  },
+  "fieldName": "Học Bổng",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:20:58.860Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cdddfc1c9b04c93067bc"
+  },
+  "fieldName": "Công tác SV - Chế độ chính sách - K.Điện ĐT",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:21:01.356Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cddffc1c9b04c93067c6"
+  },
+  "fieldName": "Học tập, Rèn luyện và Nghiên cứu khoa học",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:21:03.927Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cdeafc1c9b04c93067d6"
+  },
+  "fieldName": "Thực tập tốt nghiệp",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:21:14.622Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cdedfc1c9b04c93067e0"
+  },
+  "fieldName": "Tất cả các câu hỏi liên quan",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:21:17.359Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694cdf0fc1c9b04c93067ea"
+  },
+  "fieldName": "Các vấn đề chung trong khoa Điện Điện tử",
+  "department": {
+    "$oid": "65dc93823a43bf67107ca57d"
+  },
+  "isActive": true,
+  "createdAt": {
+    "$date": "2024-07-15T07:21:20.824Z"
+  },
+  "__v": 0
+}]

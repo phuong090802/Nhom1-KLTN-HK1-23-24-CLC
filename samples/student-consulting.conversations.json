@@ -1,28 +1,21 @@
 [{
   "_id": {
-    "$oid": "661f371bb3791d006e48d026"
+    "$oid": "6694c592fc1c9b04c930627a"
   },
   "participates": [
     {
-      "$oid": "65e961a2df861b306b78faf7"
+      "$oid": "6693c4db0615bc677a88bad2"
     },
     {
-      "$oid": "65e31fc4f7eb589dd941ab6c"
+      "$oid": "66929cdd1561c2b1a4cc2cff"
     }
   ],
   "lastMessage": {
-    "$oid": "662506355aff072f709fe21e"
+    "$oid": "6694c64cfc1c9b04c93062bf"
   },
-  "deletedBy": [
-    {
-      "$oid": "65e961a2df861b306b78faf7"
-    },
-    {
-      "$oid": "65e31fc4f7eb589dd941ab6c"
-    }
-  ],
+  "deletedBy": [],
   "createdAt": {
-    "$date": "2024-04-17T02:42:35.953Z"
+    "$date": "2024-07-15T06:45:38.631Z"
   },
   "__v": 0
 }]

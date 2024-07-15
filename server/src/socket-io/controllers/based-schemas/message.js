@@ -15,9 +15,13 @@ export const handleCreateMessage = catchAsyncErrors(
     const user = socket.user;
     // check user in array participates
     const conversation = await Conversation.findById(conversationId);
+    if (!conversation) {
+      throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4088);
+    }
+    // handle undefined
     const participates = conversation.participates;
     if (!participates.includes(user._id)) {
-      throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4088);
+      throw new ErrorHandler('Không tìm thấy cuộc trò chuyện', 4123);
     }
     const _id = new mongoose.Types.ObjectId();
     callback({
@@ -33,7 +37,10 @@ export const handleCreateMessage = catchAsyncErrors(
     });
     conversation.lastMessage = message;
     const savedConversation = await conversation.save();
-    const latestConversation = savedConversation.getLatestConversation(message, user);
+    const latestConversation = savedConversation.getLatestConversation(
+      message,
+      user
+    );
     const [receiver] = participates.filter(
       (participate) => !participate.equals(user._id)
     );

@@ -1,9 +1,9 @@
 [{
   "_id": {
-    "$oid": "660a0ac0beb1112d670f62db"
+    "$oid": "6694a5f8d20ce5e772cc9ef7"
   },
-  "question": "Test tạo câu hỏi chung 1",
-  "answer": "Test tạo câu hỏi chung 1",
+  "question": "Khó khăn khi đăng ký môn học",
+  "answer": "<p>Sinh viên thường gặp phải vấn đề như hệ thống đăng ký bị quá tải, thiếu thông tin chi tiết về môn học, và xung đột lịch học.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -12,19 +12,19 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:15:44.524Z"
+    "$date": "2024-07-15T04:30:48.729Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a0acabeb1112d670f62e7"
+    "$oid": "6694a62ed20ce5e772cc9f0a"
   },
-  "question": "Test tạo câu hỏi chung 3",
-  "answer": "Test tạo câu hỏi chung 3",
+  "question": "Hệ thống đăng ký môn học có thường xuyên bị quá tải không?",
+  "answer": "<p>Có, hệ thống thường bị quá tải vào thời điểm cao điểm, gây ra chậm trễ và lỗi trong quá trình đăng ký.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -33,19 +33,40 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:15:54.491Z"
+    "$date": "2024-07-15T04:31:42.689Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a0ad1beb1112d670f62ed"
+    "$oid": "6694a678d20ce5e772cc9f20"
   },
-  "question": "Test tạo câu hỏi chung 4",
-  "answer": "Test tạo câu hỏi chung 4",
+  "question": "Thời gian báo cáo Khóa luận tốt nghiệp 2024",
+  "answer": "<p>Chi tiết báo cáo khoa luận tốt nghiệp 2024</p>\r\n",
+  "answerAttachment": {
+    "ref": "faqs/TpWSp-qvjl2h9LaxI2gK8.pdf",
+    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2FTpWSp-qvjl2h9LaxI2gK8.pdf?alt=media&token=b64076d6-be75-4222-abd8-7b2990b15542"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:32:56.776Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a68bd20ce5e772cc9f33"
+  },
+  "question": "Làm sao để tránh xung đột lịch học khi đăng ký môn?",
+  "answer": "<p>Sinh viên nên sử dụng công cụ hỗ trợ lập kế hoạch lịch học tự động để tìm các khung giờ học không xung đột.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -54,19 +75,19 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:16:01.427Z"
+    "$date": "2024-07-15T04:33:15.294Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a0ad5beb1112d670f62f3"
+    "$oid": "6694a69dd20ce5e772cc9f46"
   },
-  "question": "Test tạo câu hỏi chung 5",
-  "answer": "Test tạo câu hỏi chung 5",
+  "question": "Bạn có khó đăng ký được các môn học phổ biến không?",
+  "answer": "<p>Có, các môn học phổ biến thường hết chỗ nhanh chóng, khiến sinh viên khó đăng ký được.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -75,19 +96,19 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:16:05.411Z"
+    "$date": "2024-07-15T04:33:33.757Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a0adabeb1112d670f62f9"
+    "$oid": "6694a6abd20ce5e772cc9f56"
   },
-  "question": "Test tạo câu hỏi chung 6",
-  "answer": "Test tạo câu hỏi chung 6",
+  "question": "Bạn có đề xuất giải pháp nào để cải thiện quy trình đăng ký môn học không?",
+  "answer": "<p>Nên nâng cấp hệ thống đăng ký, cung cấp thông tin đầy đủ về môn học, và phân bổ quyền ưu tiên đăng ký hợp lý dựa trên năm học và thành tích học tập.</p>\r\n<p>4o</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -96,19 +117,19 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3bad20ce5e772cc9c7e"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:16:10.301Z"
+    "$date": "2024-07-15T04:33:47.035Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660a0adebeb1112d670f62ff"
+    "$oid": "6694a83fc368e7498824f60b"
   },
-  "question": "Test tạo câu hỏi chung 7",
-  "answer": "Test tạo câu hỏi chung 7",
+  "question": "Sinh viên ngành CNTT thường gặp những khó khăn gì khi thực hiện nghiên cứu khoa học?",
+  "answer": "<p>Sinh viên có thể gặp khó khăn về tài liệu, thiếu hướng dẫn từ giảng viên, hoặc gặp thách thức trong việc quản lý thời gian và dự án.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -117,124 +138,19 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8b"
+    "$oid": "6694a3c1d20ce5e772cc9c88"
   },
   "createdAt": {
-    "$date": "2024-04-01T01:16:14.971Z"
+    "$date": "2024-07-15T04:40:31.018Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "660ecf7f6e43018b266b0552"
+    "$oid": "6694a85ec368e7498824f61e"
   },
-  "question": "Test đặt câu hỏi chung",
-  "answer": "<p>Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung Test đặt câu hỏi chung&nbsp;</p>\r\n<p>Test đặt câu hỏi chung Test đặt câu hỏi chung&nbsp;</p>\r\n",
-  "answerAttachment": {
-    "ref": "faqs/8sw8SW_zd8ySLx0PfWDvN.jpg",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F8sw8SW_zd8ySLx0PfWDvN.jpg?alt=media&token=245c173a-c950-44ea-bb5b-b61defc2eb74"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "createdAt": {
-    "$date": "2024-04-04T16:04:15.469Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660ed1336e43018b266b0bc2"
-  },
-  "question": "Test dat cau hoi ",
-  "answer": "<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n",
-  "answerAttachment": {
-    "ref": "faqs/99BLdxCd_oSEfJuNdyYr5.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F99BLdxCd_oSEfJuNdyYr5.png?alt=media&token=2897037c-30f0-478d-a597-a1f05335d6ec"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "createdAt": {
-    "$date": "2024-04-04T16:11:31.851Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660ed1786e43018b266b0bec"
-  },
-  "question": "Tét dat cau hoi",
-  "answer": "<p>Tét dat cau hoi Tét dat cau hoi Tét dat cau hoi Tét dat cau hoi</p>\r\n<p></p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p></p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n<p>Tét dat cau hoi Tét dat cau hoi</p>\r\n",
-  "answerAttachment": {
-    "ref": "faqs/DQPFY_bJCMirql-wf1K70.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2FDQPFY_bJCMirql-wf1K70.png?alt=media&token=29ce6b06-2f3e-4134-bcef-4cf89b98a0a9"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "createdAt": {
-    "$date": "2024-04-04T16:12:40.067Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660ed25f6e43018b266b0c61"
-  },
-  "question": "Test dat cau hoi ",
-  "answer": "<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi Test dat cau hoi Test dat cau hoi Test dat cau hoi&nbsp;</p>\r\n<p>Test dat cau hoi&nbsp;</p>\r\n",
-  "answerAttachment": {
-    "ref": "faqs/2eathjnKNHwoZivDkFIju.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F2eathjnKNHwoZivDkFIju.png?alt=media&token=6af6ade7-695d-4b10-a70b-e228eb93e602"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "createdAt": {
-    "$date": "2024-04-04T16:16:31.421Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660ed2806e43018b266b0c6b"
-  },
-  "question": "Dat cau hoi",
-  "answer": "<p>Test dat cau hoi</p>\r\n",
-  "answerAttachment": {
-    "ref": "faqs/i2zu-qDp7i52hu7tUlSYf.png",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2Fi2zu-qDp7i52hu7tUlSYf.png?alt=media&token=3997a09a-5830-4b09-ad0d-5bdb1c607704"
-  },
-  "department": {
-    "$oid": "65d87158b394abe04aad269c"
-  },
-  "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
-  },
-  "createdAt": {
-    "$date": "2024-04-04T16:17:04.298Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "660ee1a46e43018b266b0d23"
-  },
-  "question": "Test dat cau hoi chung ",
-  "answer": "<p>Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung Test dat cau hoi chung&nbsp;</p>\r\n",
+  "question": "Sinh viên ngành CNTT nhận được những lợi ích gì khi tham gia nghiên cứu khoa học?",
+  "answer": "<p>Sinh viên có cơ hội nâng cao kỹ năng nghiên cứu, hiểu sâu hơn về kiến thức chuyên ngành, và tăng cường khả năng giải quyết vấn đề thực tiễn.</p>\r\n",
   "answerAttachment": {
     "ref": null,
     "url": null
@@ -243,31 +159,703 @@
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8c"
+    "$oid": "6694a3c1d20ce5e772cc9c88"
   },
   "createdAt": {
-    "$date": "2024-04-04T17:21:40.689Z"
+    "$date": "2024-07-15T04:41:02.793Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "66572f4414b3ad710a9bddcd"
+    "$oid": "6694a86bc368e7498824f62b"
   },
-  "question": "Test dat cau hoi co file",
-  "answer": "<p>Test dat cau hoi co file</p>\r\n",
+  "question": "Sinh viên ngành CNTT nên chọn đề tài nghiên cứu như thế nào để đạt hiệu quả cao?",
+  "answer": "<p>Nên chọn các đề tài có tính ứng dụng cao, phù hợp với xu hướng công nghệ hiện nay và nằm trong khả năng thực hiện của mình.</p>\r\n",
   "answerAttachment": {
-    "ref": "faqs/5f6outlc8wn2zvQAPII3S.pdf",
-    "url": "https://firebasestorage.googleapis.com/v0/b/student-consulting-cb426.appspot.com/o/faqs%2F5f6outlc8wn2zvQAPII3S.pdf?alt=media&token=8c734185-8121-42c3-a57e-9895a2577af0"
+    "ref": null,
+    "url": null
   },
   "department": {
     "$oid": "65d87158b394abe04aad269c"
   },
   "field": {
-    "$oid": "65e195829eefc7138b7dbd8e"
+    "$oid": "6694a3c1d20ce5e772cc9c88"
   },
   "createdAt": {
-    "$date": "2024-05-29T13:36:04.915Z"
+    "$date": "2024-07-15T04:41:15.232Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a89bc368e7498824f647"
+  },
+  "question": "Làm thế nào để sinh viên ngành CNTT có thể hợp tác hiệu quả trong nghiên cứu khoa học?",
+  "answer": "<p>Sinh viên nên xác định rõ vai trò của từng thành viên, giao tiếp thường xuyên, và sử dụng các công cụ quản lý dự án để theo dõi tiến độ công việc.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c1d20ce5e772cc9c88"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:42:03.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a8a6c368e7498824f654"
+  },
+  "question": "Làm thế nào để kết quả nghiên cứu khoa học của sinh viên ngành CNTT có thể được ứng dụng thực tiễn?",
+  "answer": "<p>Sinh viên nên liên hệ với các doanh nghiệp, tổ chức liên quan để trình bày và thử nghiệm kết quả nghiên cứu, hoặc công bố kết quả trên các diễn đàn, hội thảo chuyên ngành.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c1d20ce5e772cc9c88"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:42:14.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a998c368e7498824f754"
+  },
+  "question": "Điểm rèn luyện của sinh viên ngành CNTT được đánh giá dựa trên những tiêu chí nào?",
+  "answer": "<p>Điểm rèn luyện thường được đánh giá dựa trên các tiêu chí như thái độ học tập, tham gia các hoạt động ngoại khóa, tình nguyện, kỷ luật và tinh thần đoàn kết.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:46:16.598Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694a9c8c368e7498824f767"
+  },
+  "question": "Điểm rèn luyện có ý nghĩa như thế nào đối với sinh viên ngành CNTT?",
+  "answer": "<p>Điểm rèn luyện thường được đánh giá dựa trên các tiêu chí như thái độ học tập, tham gia các hoạt động ngoại khóa, tình nguyện, kỷ luật và tinh thần đoàn kết.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:47:04.820Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aa0fc368e7498824f77a"
+  },
+  "question": "Sinh viên ngành CNTT cần đạt những điều kiện gì để được xét học bổng?",
+  "answer": "<p>Sinh viên cần có thành tích học tập xuất sắc, điểm rèn luyện cao, tham gia tích cực vào các hoạt động ngoại khóa, và có hoàn cảnh gia đình khó khăn để được ưu tiên xét học bổng.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:48:15.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aa1ec368e7498824f790"
+  },
+  "question": "Sinh viên ngành CNTT có thể nhận được những loại học bổng nào?",
+  "answer": "<p>Sinh viên có thể nhận các loại học bổng như học bổng khuyến khích học tập, học bổng tài năng, học bổng do các doanh nghiệp tài trợ và học bổng hỗ trợ sinh viên nghèo vượt khó.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:48:30.619Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aa2fc368e7498824f7a3"
+  },
+  "question": "Học bổng có tác động như thế nào đến quá trình học tập của sinh viên ngành CNTT?",
+  "answer": "<p>Học bổng giúp giảm bớt gánh nặng tài chính, tạo động lực để sinh viên phấn đấu học tập tốt hơn và tham gia tích cực vào các hoạt động nghiên cứu khoa học và ngoại khóa.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:48:47.054Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aa39c368e7498824f7b0"
+  },
+  "question": "Sinh viên ngành CNTT có thể làm gì để nâng cao điểm rèn luyện của mình?",
+  "answer": "<p>Sinh viên nên chủ động tham gia các hoạt động ngoại khóa, tình nguyện, rèn luyện kỹ năng mềm, giữ gìn kỷ luật và có thái độ học tập tích cực để nâng cao điểm rèn luyện.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c5d20ce5e772cc9c92"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:48:57.198Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aad4c368e7498824f7c3"
+  },
+  "question": "Khoa CNTT có những chính sách hỗ trợ gì cho sinh viên trong quá trình học tập?",
+  "answer": "<p>Khoa CNTT thường có các chính sách hỗ trợ tài chính như học bổng, giảm học phí, và hỗ trợ sinh viên khó khăn, cùng với các chương trình tư vấn học tập và hướng nghiệp.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:51:32.736Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aae6c368e7498824f7d6"
+  },
+  "question": "Khoa CNTT tổ chức những hoạt động ngoại khóa nào cho sinh viên?",
+  "answer": "<p>Khoa CNTT thường tổ chức các hoạt động ngoại khóa như các cuộc thi lập trình, hội thảo chuyên đề, câu lạc bộ công nghệ, và các hoạt động tình nguyện.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:51:50.719Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694aaf7c368e7498824f7ec"
+  },
+  "question": "Quy trình hỗ trợ sinh viên gặp khó khăn về tài chính tại Khoa CNTT như thế nào?",
+  "answer": "<p>Sinh viên có thể nộp đơn xin hỗ trợ tài chính, kèm theo các giấy tờ chứng minh hoàn cảnh khó khăn. Hội đồng khoa sẽ xem xét và quyết định mức hỗ trợ phù hợp.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:52:07.781Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab03c368e7498824f7f9"
+  },
+  "question": "Khoa CNTT có các dịch vụ tư vấn học tập nào cho sinh viên?",
+  "answer": "<p>Khoa CNTT cung cấp dịch vụ tư vấn học tập bao gồm tư vấn lựa chọn môn học, kế hoạch học tập, và hỗ trợ giải quyết các vấn đề học tập cá nhân.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:52:19.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab17c368e7498824f80c"
+  },
+  "question": "Sinh viên khoa CNTT có cơ hội tham gia các chương trình trao đổi sinh viên quốc tế không?",
+  "answer": "<p>Có, khoa CNTT thường hợp tác với các trường đại học nước ngoài để tạo điều kiện cho sinh viên tham gia các chương trình trao đổi, thực tập và học tập ngắn hạn ở nước ngoài.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:52:39.784Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab24c368e7498824f819"
+  },
+  "question": "Khoa CNTT có hỗ trợ sinh viên tìm việc làm sau khi tốt nghiệp không?",
+  "answer": "<p>Khoa CNTT thường tổ chức các hội chợ việc làm, buổi tư vấn hướng nghiệp, và liên kết với các doanh nghiệp để tạo cơ hội việc làm cho sinh viên sau khi tốt nghiệp.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3c9d20ce5e772cc9ca2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:52:52.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab63c368e7498824f82c"
+  },
+  "question": "Chất lượng giảng dạy tại Khoa CNTT được đánh giá như thế nào?",
+  "answer": "<p>Chất lượng giảng dạy tại Khoa CNTT thường được đánh giá qua phản hồi của sinh viên, kết quả học tập, và mức độ đáp ứng nhu cầu của ngành công nghiệp công nghệ thông tin.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:53:55.992Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab6dc368e7498824f839"
+  },
+  "question": "Cơ sở vật chất tại Khoa CNTT có đáp ứng đủ nhu cầu học tập và nghiên cứu của sinh viên không?",
+  "answer": "<p>Khoa CNTT thường xuyên cập nhật và nâng cấp cơ sở vật chất, bao gồm phòng lab, thiết bị máy tính, và thư viện để đáp ứng nhu cầu học tập và nghiên cứu của sinh viên.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:54:05.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab7bc368e7498824f84c"
+  },
+  "question": "Chương trình đào tạo tại Khoa CNTT có được cập nhật thường xuyên không?",
+  "answer": "<p>Chương trình đào tạo tại Khoa CNTT được cập nhật định kỳ để bắt kịp với xu hướng công nghệ mới và đáp ứng yêu cầu của thị trường lao động.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:54:19.534Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab8bc368e7498824f85f"
+  },
+  "question": "Khoa CNTT có những hoạt động nghiên cứu khoa học nào cho sinh viên?",
+  "answer": "<p>Khoa CNTT khuyến khích sinh viên tham gia vào các dự án nghiên cứu, viết báo cáo khoa học, và trình bày tại các hội nghị, cũng như hỗ trợ sinh viên trong việc tìm kiếm tài trợ cho các đề tài nghiên cứu.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:54:35.950Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ab96c368e7498824f86c"
+  },
+  "question": "Sinh viên Khoa CNTT có những cơ hội thực tập nào trong quá trình học tập?",
+  "answer": "<p>Sinh viên Khoa CNTT thường có cơ hội thực tập tại các công ty công nghệ, thông qua các chương trình hợp tác giữa khoa và doanh nghiệp, giúp sinh viên tích lũy kinh nghiệm thực tiễn.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:54:46.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694abacc368e7498824f87f"
+  },
+  "question": "Khoa CNTT có kết nối như thế nào với các doanh nghiệp để hỗ trợ sinh viên?",
+  "answer": "<p>Khoa CNTT thường xuyên tổ chức các buổi giao lưu với doanh nghiệp, hội thảo chuyên đề, và ngày hội việc làm, tạo cơ hội cho sinh viên kết nối và tìm kiếm cơ hội nghề nghiệp.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3e8d20ce5e772cc9cb2"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:55:08.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac24c368e7498824f892"
+  },
+  "question": "Những xu hướng công nghệ mới nào đang được chú ý trong ngành Công nghệ Thông tin?",
+  "answer": "<p>Những xu hướng công nghệ mới như trí tuệ nhân tạo (AI), blockchain, Internet vạn vật (IoT), và điện toán đám mây đang thu hút nhiều sự chú ý trong ngành Công nghệ Thông tin.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:57:08.405Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac32c368e7498824f89f"
+  },
+  "question": "Ngành Công nghệ Thông tin hiện nay có những cơ hội nghề nghiệp nào?",
+  "answer": "<p>Ngành Công nghệ Thông tin hiện có nhiều cơ hội nghề nghiệp trong các lĩnh vực như phát triển phần mềm, an ninh mạng, phân tích dữ liệu, và quản lý hệ thống thông tin.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:57:22.236Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac3dc368e7498824f8b2"
+  },
+  "question": "Những kỹ năng nào là cần thiết để thành công trong ngành Công nghệ Thông tin?",
+  "answer": "<p>Để thành công trong ngành Công nghệ Thông tin, cần có kỹ năng lập trình, giải quyết vấn đề, tư duy logic, và kiến thức về các công nghệ mới nhất. Kỹ năng giao tiếp và làm việc nhóm cũng rất quan trọng.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:57:33.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac48c368e7498824f8c5"
+  },
+  "question": "Những thách thức chính mà ngành Công nghệ Thông tin đang phải đối mặt là gì?",
+  "answer": "<p>Ngành Công nghệ Thông tin đang đối mặt với các thách thức như bảo mật dữ liệu, tốc độ thay đổi công nghệ nhanh chóng, và nhu cầu liên tục cập nhật kiến thức và kỹ năng mới.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:57:44.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac54c368e7498824f8d2"
+  },
+  "question": "Các chương trình đào tạo và phát triển kỹ năng trong ngành Công nghệ Thông tin hiện nay như thế nào?",
+  "answer": "<p>Các chương trình đào tạo thường bao gồm các khóa học trực tuyến, chứng chỉ chuyên nghiệp, bootcamp lập trình, và các khóa học ngắn hạn tại các trường đại học và trung tâm đào tạo chuyên nghiệp.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:57:56.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ac5fc368e7498824f8e5"
+  },
+  "question": "Công nghệ Thông tin đã và đang tác động như thế nào đến cuộc sống hàng ngày?",
+  "answer": "<p>Công nghệ Thông tin đã thay đổi cách chúng ta làm việc, giao tiếp và giải trí, từ việc làm việc từ xa, mua sắm trực tuyến, đến việc sử dụng mạng xã hội và các ứng dụng di động trong cuộc sống hàng ngày.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3ecd20ce5e772cc9cbc"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:58:07.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694acc5c368e7498824f97e"
+  },
+  "question": "Tại sao Kỹ thuật Dữ liệu được coi là một ngành có tầm quan trọng đối với thế giới hiện đại?",
+  "answer": "<p>Kỹ thuật Dữ liệu đóng vai trò quan trọng trong việc phân tích và sử dụng dữ liệu để đưa ra các quyết định thông minh trong kinh doanh, y tế, khoa học và nhiều lĩnh vực khác.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T04:59:49.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694acd0c368e7498824f98b"
+  },
+  "question": "Những kỹ năng nào là quan trọng đối với sinh viên học Kỹ thuật Dữ liệu?",
+  "answer": "<p>Sinh viên học Kỹ thuật Dữ liệu cần có kỹ năng lập trình, phân tích dữ liệu, thống kê, và sử dụng các công cụ và phần mềm phân tích dữ liệu hiệu quả.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:00:00.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694acd9c368e7498824f99e"
+  },
+  "question": "Kỹ thuật Dữ liệu được áp dụng như thế nào trong thực tế?",
+  "answer": "<p>Kỹ thuật Dữ liệu được áp dụng trong các lĩnh vực như quản lý hệ thống thông tin, dự đoán và phân tích thị trường, tối ưu hóa sản xuất, y tế, và phân tích hành vi người dùng trên mạng.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:00:09.577Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694ace7c368e7498824f9ab"
+  },
+  "question": "Ngành Kỹ thuật Dữ liệu đang phải đối mặt với những thách thức gì?",
+  "answer": "<p>Ngành Kỹ thuật Dữ liệu đang đối mặt với các thách thức như bảo mật dữ liệu, khai thác dữ liệu lớn (big data), và nhu cầu liên tục cập nhật công nghệ và kỹ năng mới.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:00:23.071Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694acf4c368e7498824f9be"
+  },
+  "question": "Sinh viên học Kỹ thuật Dữ liệu có những cơ hội nghề nghiệp nào sau khi tốt nghiệp?",
+  "answer": "<p>Sau khi tốt nghiệp, sinh viên Kỹ thuật Dữ liệu có thể làm việc trong các vị trí như nhà phân tích dữ liệu, chuyên viên dữ liệu, khoa học dữ liệu, và chuyên gia phân tích dữ liệu trong các công ty công nghệ, tài chính, y tế, và nghiên cứu.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:00:36.002Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6694acfec368e7498824f9cb"
+  },
+  "question": "Các công cụ và nền tảng phần mềm nào được sử dụng nhiều nhất trong Kỹ thuật Dữ liệu?",
+  "answer": "<p>Các công cụ và nền tảng phần mềm phổ biến trong Kỹ thuật Dữ liệu bao gồm Python (với các thư viện như Pandas, NumPy), R, Apache Hadoop, Apache Spark, SQL và các công cụ để visualization như Tableau và Power BI.</p>\r\n",
+  "answerAttachment": {
+    "ref": null,
+    "url": null
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3efd20ce5e772cc9cc6"
+  },
+  "createdAt": {
+    "$date": "2024-07-15T05:00:46.285Z"
   },
   "__v": 0
 }]

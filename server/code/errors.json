@@ -622,6 +622,11 @@
       "code": "4122",
       "message": "Yêu cầu không hợp lệ",
       "detail": ""
+    },
+    {
+      "code": "4123",
+      "message": "Không tìm thấy cuộc trò chuyện",
+      "detail": ""
     }
   ]
 }
