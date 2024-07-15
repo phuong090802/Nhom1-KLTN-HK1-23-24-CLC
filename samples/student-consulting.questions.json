@@ -548,7 +548,7 @@
   "likes": [],
   "answer": null,
   "createdAt": {
-    "$date": "2024-07-15T07:13:10.393Z"
+    "$date": "2024-05-15T07:13:10.393Z"
   },
   "__v": 0
 },
@@ -558,6 +558,170 @@
   },
   "title": "Phí đăng ký môn học",
   "content": "<p>Sinh viên cần biết về các khoản phí liên quan đến đăng ký môn học như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Học phí cho từng môn học:</p>\n<p>Mức học phí: Mỗi môn học có mức học phí khác nhau, tùy thuộc vào số tín chỉ, cấp độ môn học (cơ bản hay nâng cao), và ngành học.</p>\n<p>Cách tính học phí: Học phí thường được tính dựa trên số tín chỉ của môn học. Ví dụ, nếu một tín chỉ có giá 500.000 VND và môn học có 3 tín chỉ, học phí của môn học đó sẽ là 1.500.000 VND.</p>\n<p>2. Phí đăng ký lại môn học:</p>\n<p>Sinh viên có thể phải trả thêm phí nếu phải đăng ký lại một môn học do không đạt yêu cầu. Mức phí này thường tương đương với học phí của môn học đó hoặc có thể thấp hơn, tùy theo chính sách của trường.</p>\n<p>3. Phí bổ sung và thay đổi môn học:</p>\n<p>Có thể có phí bổ sung khi sinh viên thêm hoặc thay đổi môn học sau thời hạn đăng ký chính thức. Mức phí này tùy thuộc vào quy định của từng trường.</p>\n<p>4. Phí tài liệu học tập và sách giáo khoa:</p>\n<p>Ngoài học phí, sinh viên cần chi trả cho tài liệu học tập, sách giáo khoa, và các tài liệu bổ sung khác. Một số môn học có thể yêu cầu mua sách hoặc tài liệu đặc thù.</p>\n<p>5. Phí dịch vụ và hỗ trợ học tập:</p>\n<p>Một số trường có thể áp dụng các phí dịch vụ cho việc sử dụng phòng thí nghiệm, phòng máy tính, hoặc các dịch vụ hỗ trợ học tập khác. Những khoản phí này có thể tính riêng lẻ hoặc gộp chung vào học phí.</p>\n<p>6. Phí bảo hiểm và y tế:</p>\n<p>Một số trường yêu cầu sinh viên đóng phí bảo hiểm y tế hoặc các phí liên quan đến dịch vụ y tế của trường. Đây thường là khoản phí bắt buộc đối với tất cả sinh viên.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T14:56:17.891Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T07:29:09.886Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952d450cff36b7375c71c2"
+  },
+  "title": "Phí đăng ký môn học",
+  "content": "<p>Sinh viên cần biết về các khoản phí liên quan đến đăng ký môn học như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Học phí cho từng môn học:</p>\n<p>Mức học phí: Mỗi môn học có mức học phí khác nhau, tùy thuộc vào số tín chỉ, cấp độ môn học (cơ bản hay nâng cao), và ngành học.</p>\n<p>Cách tính học phí: Học phí thường được tính dựa trên số tín chỉ của môn học. Ví dụ, nếu một tín chỉ có giá 500.000 VND và môn học có 3 tín chỉ, học phí của môn học đó sẽ là 1.500.000 VND.</p>\n<p>2. Phí đăng ký lại môn học:</p>\n<p>Sinh viên có thể phải trả thêm phí nếu phải đăng ký lại một môn học do không đạt yêu cầu. Mức phí này thường tương đương với học phí của môn học đó hoặc có thể thấp hơn, tùy theo chính sách của trường.</p>\n<p>3. Phí bổ sung và thay đổi môn học:</p>\n<p>Có thể có phí bổ sung khi sinh viên thêm hoặc thay đổi môn học sau thời hạn đăng ký chính thức. Mức phí này tùy thuộc vào quy định của từng trường.</p>\n<p>4. Phí tài liệu học tập và sách giáo khoa:</p>\n<p>Ngoài học phí, sinh viên cần chi trả cho tài liệu học tập, sách giáo khoa, và các tài liệu bổ sung khác. Một số môn học có thể yêu cầu mua sách hoặc tài liệu đặc thù.</p>\n<p>5. Phí dịch vụ và hỗ trợ học tập:</p>\n<p>Một số trường có thể áp dụng các phí dịch vụ cho việc sử dụng phòng thí nghiệm, phòng máy tính, hoặc các dịch vụ hỗ trợ học tập khác. Những khoản phí này có thể tính riêng lẻ hoặc gộp chung vào học phí.</p>\n<p>6. Phí bảo hiểm và y tế:</p>\n<p>Một số trường yêu cầu sinh viên đóng phí bảo hiểm y tế hoặc các phí liên quan đến dịch vụ y tế của trường. Đây thường là khoản phí bắt buộc đối với tất cả sinh viên.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6693c4db0615bc677a88bad2"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T14:56:32.743Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T14:08:05.323Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952d580cff36b7375c71cf"
+  },
+  "title": "Thông tin về môn học",
+  "content": "<p>Sinh viên có thể tìm thấy thông tin chi tiết về môn học như giảng viên phụ trách, nội dung môn học và tài liệu học liệu ở đâu?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>1. Trang web của trường hoặc cổng thông tin sinh viên:</p>\n<p>Hệ thống quản lý học tập (LMS): Nhiều trường đại học sử dụng hệ thống quản lý học tập như Moodle, Blackboard, hoặc Canvas. Sinh viên có thể đăng nhập vào hệ thống này để xem thông tin chi tiết về môn học, giảng viên, nội dung môn học, và tài liệu học tập.</p>\n<p>Trang đăng ký môn học: Thường có phần mô tả chi tiết về các môn học bao gồm mục tiêu, nội dung chính, lịch trình, và các yêu cầu cần thiết.</p>\n<p>2. Sổ tay sinh viên hoặc tài liệu hướng dẫn học tập:</p>\n<p>Các trường thường phát hành sổ tay sinh viên hoặc tài liệu hướng dẫn học tập, trong đó có mô tả chi tiết về các môn học, yêu cầu đầu vào, giảng viên, và các tài liệu cần thiết.</p>\n<p>3. Phòng đào tạo hoặc văn phòng khoa:</p>\n<p>Sinh viên có thể liên hệ trực tiếp với phòng đào tạo hoặc văn phòng khoa để nhận thông tin chi tiết về môn học. Nhân viên ở đây có thể cung cấp các tài liệu, hướng dẫn, và thông tin cụ thể về các khóa học và giảng viên.</p>\n<p>4. Thư viện trường:</p>\n<p>Thư viện thường có các tài liệu tham khảo và sách giáo khoa cần thiết cho các môn học. Ngoài ra, thư viện còn cung cấp các dịch vụ tìm kiếm tài liệu và hỗ trợ học tập.</p>\n<p>5. Liên hệ trực tiếp với giảng viên:</p>\n<p>Sinh viên có thể liên hệ trực tiếp với giảng viên phụ trách môn học qua email hoặc trong giờ hành chính để hỏi về nội dung môn học, tài liệu tham khảo, và các yêu cầu khác.</p>\n<p>6. Các buổi giới thiệu và tư vấn học tập:</p>\n<p>Trường thường tổ chức các buổi giới thiệu và tư vấn học tập vào đầu mỗi học kỳ để giúp sinh viên hiểu rõ về các môn học, lịch trình học tập, và các tài liệu cần thiết. Sinh viên nên tham gia các buổi này để có được thông tin cụ thể và chính xác.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6694ad6bc368e7498824fa1e"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T14:58:22.075Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T14:08:24.912Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952d6a0cff36b7375c71dc"
+  },
+  "title": "Thủ tục hủy môn học",
+  "content": "<p>Quy trình hủy môn học khi sinh viên muốn thay đổi lựa chọn môn học đã đăng ký là gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "publicly-answered-and-approved",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": {
+    "content": "<p>Bước 1: Kiểm tra thời hạn hủy môn học</p>\n<p>Thời hạn hủy môn: Trước tiên, sinh viên cần kiểm tra thời hạn hủy môn học được quy định bởi trường. Thông tin này thường được công bố trên trang web của trường, cổng thông tin sinh viên, hoặc trong sổ tay sinh viên.</p>\n<p>Phí hủy môn: Kiểm tra xem có phí hủy môn học không và các quy định về hoàn trả học phí (nếu có).</p>\n<p>Bước 2: Đăng nhập vào hệ thống đăng ký môn học</p>\n<p>Hệ thống trực tuyến: Sinh viên cần đăng nhập vào hệ thống đăng ký môn học trực tuyến của trường (ví dụ: cổng thông tin sinh viên, hệ thống quản lý học tập).</p>\n<p>Tìm danh sách môn học: Truy cập vào phần quản lý môn học hoặc danh sách các môn học đã đăng ký.</p>\n<p>Bước 3: Chọn môn học cần hủy</p>\n<p>Lựa chọn môn học: Tìm và chọn môn học mà bạn muốn hủy từ danh sách các môn học đã đăng ký.</p>\n<p>Xác nhận hủy môn: Thường có một nút hoặc liên kết để hủy môn học. Sinh viên cần nhấp vào đó và xác nhận hành động hủy môn.</p>\n<p>Bước 4: Kiểm tra và xác nhận</p>\n<p>Kiểm tra lịch học: Sau khi hủy môn học, sinh viên nên kiểm tra lại lịch học của mình để đảm bảo rằng thay đổi đã được cập nhật.</p>\n<p>Xác nhận hủy môn: Kiểm tra lại trên hệ thống để đảm bảo rằng môn học đã được hủy thành công. Có thể nhận được email hoặc thông báo xác nhận từ hệ thống.</p>\n<p>Bước 5: Thông báo cho giảng viên (nếu cần)</p>\n<p>Thông báo giảng viên: Một số trường yêu cầu sinh viên thông báo cho giảng viên của môn học về việc hủy môn. Điều này có thể thực hiện qua email hoặc trực tiếp trong giờ làm việc của giảng viên.</p>\n<p>Bước 6: Đăng ký môn học mới (nếu cần)</p>\n<p>Đăng ký môn mới: Nếu sinh viên muốn thay đổi môn học, họ cần thực hiện quy trình đăng ký môn học mới thông qua hệ thống đăng ký môn học của trường.</p>\n<p>Kiểm tra xung đột lịch học: Đảm bảo rằng môn học mới không xung đột với các môn học khác đã đăng ký.</p>\n<p>Bước 7: Liên hệ với phòng đào tạo hoặc cố vấn học tập (nếu cần)</p>\n<p>Hỗ trợ thêm: Nếu gặp bất kỳ khó khăn nào trong quá trình hủy môn học, sinh viên nên liên hệ với phòng đào tạo hoặc cố vấn học tập để được hỗ trợ và giải đáp thắc mắc.</p>\n",
+    "file": {
+      "ref": null,
+      "url": null
+    },
+    "user": {
+      "$oid": "6694ad6bc368e7498824fa1e"
+    },
+    "answeredAt": {
+      "$date": "2024-07-15T15:00:50.801Z"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-07-15T14:08:42.812Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952d890cff36b7375c71e9"
+  },
+  "title": "Đăng ký môn học sau khi hết hạn",
+  "content": "<p>Có thể đăng ký môn học sau khi hết hạn đăng ký được không và quy trình như thế nào?</p>\n",
   "file": {
     "ref": null,
     "url": null
@@ -577,7 +741,964 @@
   "likes": [],
   "answer": null,
   "createdAt": {
-    "$date": "2024-07-15T07:29:09.886Z"
+    "$date": "2024-05-15T14:09:13.167Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952da90cff36b7375c71f6"
+  },
+  "title": "Chính sách về số lượng tín chỉ tối đa đăng ký",
+  "content": "<p>Có giới hạn số lượng tín chỉ sinh viên có thể đăng ký mỗi học kỳ không và nếu có thì giới hạn đó là bao nhiêu?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-05-15T14:09:45.230Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952e5d0cff36b7375c7203"
+  },
+  "title": "Quy trình đăng ký môn học cho sinh viên chuyển tiếp",
+  "content": "<p>Sinh viên chuyển tiếp từ các trường khác cần tuân theo quy trình đăng ký môn học như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-06-15T14:12:45.869Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952e7d0cff36b7375c7210"
+  },
+  "title": "Hướng dẫn đăng ký môn học cho sinh viên chương trình liên kết",
+  "content": "<p>Các hướng dẫn cụ thể nào được cung cấp cho sinh viên theo chương trình liên kết khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-06-15T14:13:17.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952e970cff36b7375c721d"
+  },
+  "title": "Đăng ký môn học trong trường hợp đặc biệt",
+  "content": "<p>Điều kiện và quy trình đăng ký môn học trong trường hợp sinh viên có nhu cầu đặc biệt như học cùng một lớp với bạn bè, hay học môn học ngoài chương trình chính.</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-06-15T14:13:43.288Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952eae0cff36b7375c722a"
+  },
+  "title": "Thông tin về lịch học và phòng học",
+  "content": "<p>Sinh viên có thể tra cứu thông tin về lịch học và phòng học của môn học đã đăng ký ở đâu?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-05-15T14:14:06.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952ec00cff36b7375c7237"
+  },
+  "title": "Đăng ký môn học trong thời gian nghỉ hè",
+  "content": "<p>Sinh viên có thể đăng ký môn học trong thời gian nghỉ hè không và nếu có thì quy trình đăng ký như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-05-15T14:14:24.821Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952ee50cff36b7375c7244"
+  },
+  "title": "Quy định về đăng ký lại môn học khi chưa đủ điểm",
+  "content": "<p>Quy định về việc đăng ký lại môn học khi sinh viên chưa đạt điểm qua môn là gì và sinh viên cần tuân theo những quy định nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-05-15T14:15:01.583Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952ef40cff36b7375c7251"
+  },
+  "title": "Đăng ký môn học cho sinh viên bị hạn chế",
+  "content": "<p>Các hướng dẫn đăng ký môn học dành cho sinh viên bị hạn chế về sức khỏe hoặc các yêu cầu đặc biệt khác.</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-05-15T14:15:16.826Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f050cff36b7375c725e"
+  },
+  "title": "Thay đổi đăng ký môn học sau khi bắt đầu học kỳ",
+  "content": "<p>Quy trình và điều kiện để thay đổi đăng ký môn học sau khi đã bắt đầu học kỳ là gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:15:33.319Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f140cff36b7375c726b"
+  },
+  "title": "Đăng ký môn học và quy tắc ưu tiên",
+  "content": "<p>Có quy tắc ưu tiên đăng ký môn học cho sinh viên những năm cuối không và nếu có thì quy tắc ưu tiên đó như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:15:48.592Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f2b0cff36b7375c7278"
+  },
+  "title": "Hướng dẫn sử dụng hệ thống đăng ký môn học",
+  "content": "<p>Sinh viên cần phải làm gì để sử dụng hệ thống đăng ký môn học của trường một cách hiệu quả?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:16:11.013Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f3b0cff36b7375c7285"
+  },
+  "title": "Đăng ký môn học trong các học kỳ mùa",
+  "content": "<p>Quy trình đăng ký môn học trong các học kỳ mùa (học kỳ mùa hè, mùa đông) là gì và có những đặc điểm khác biệt so với học kỳ chính?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:16:27.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f5d0cff36b7375c7292"
+  },
+  "title": "Lựa chọn môn học cho học kỳ tiếp theo",
+  "content": "<p>Sinh viên cần làm gì để lựa chọn môn học cho học kỳ tiếp theo và cần lưu ý điều gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:17:01.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952f6c0cff36b7375c729f"
+  },
+  "title": "Đăng ký môn học cho sinh viên chương trình thạc sĩ và tiến sĩ",
+  "content": "<p>Quy trình đăng ký môn học có khác biệt như thế nào đối với sinh viên chương trình thạc sĩ và tiến sĩ?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:17:16.352Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952fd90cff36b7375c72ac"
+  },
+  "title": "Đăng ký môn học cho sinh viên chương trình thạc sĩ và tiến sĩ",
+  "content": "<p>Quy trình đăng ký môn học có khác biệt như thế nào đối với sinh viên chương trình thạc sĩ và tiến sĩ?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:19:05.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952fe90cff36b7375c72b9"
+  },
+  "title": "Thủ tục đăng ký môn học bằng giấy tờ",
+  "content": "<p>Có những thủ tục đăng ký môn học bằng giấy tờ nào và sinh viên cần chuẩn bị những giấy tờ gì?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:19:21.597Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952ff90cff36b7375c72c6"
+  },
+  "title": "Đăng ký môn học trước khi học phí",
+  "content": "<p>Sinh viên có thể đăng ký môn học trước khi thanh toán học phí không và nếu có thì quy trình đăng ký như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:19:37.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695300d0cff36b7375c72d3"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên chuyển ngành",
+  "content": "<p>Sinh viên chuyển ngành cần tuân theo những thủ tục gì khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:19:57.386Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530210cff36b7375c72e1"
+  },
+  "title": "Thủ tục đăng ký môn học khi bị hạn chế về điểm",
+  "content": "<p>Sinh viên bị hạn chế về điểm cần tuân theo những thủ tục gì khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:20:17.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695305f0cff36b7375c72ee"
+  },
+  "title": "Thời gian bổ sung môn học",
+  "content": "<p>Có thời gian bổ sung để sinh viên có thể thêm môn học sau khi hoàn tất đăng ký không và nếu có thì thời gian bổ sung như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:21:19.644Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530980cff36b7375c72fb"
+  },
+  "title": "Thời gian bổ sung môn học",
+  "content": "<p>Có thời gian bổ sung để sinh viên có thể thêm môn học sau khi hoàn tất đăng ký không và nếu có thì thời gian bổ sung như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:22:16.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530a40cff36b7375c7308"
+  },
+  "title": "Thủ tục đăng ký môn học bằng hệ thống SMS",
+  "content": "<p>Có hệ thống đăng ký môn học qua SMS và quy trình như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:22:28.049Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530b70cff36b7375c7315"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên làm thêm",
+  "content": "<p>Sinh viên làm thêm cần tuân theo những thủ tục gì khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:22:47.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530c70cff36b7375c7322"
+  },
+  "title": "Đăng ký môn học cho sinh viên học phần tiên quyết ở trường khác",
+  "content": "<p>Sinh viên cần tuân theo những thủ tục gì khi đăng ký môn học ở trường khác là môn học tiên quyết?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:23:03.640Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669530dd0cff36b7375c732f"
+  },
+  "title": "Quy trình đăng ký môn học cho sinh viên học cùng lớp với bạn bè",
+  "content": "<p>Sinh viên muốn đăng ký cùng lớp với bạn bè cần làm thủ tục như thế nào?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:23:25.962Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669531380cff36b7375c733c"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên nghỉ học phần",
+  "content": "<p>Sinh viên nghỉ học phần cần làm thủ tục như thế nào để đăng ký lại môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:24:56.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695314c0cff36b7375c7349"
+  },
+  "title": "Đăng ký môn học trong trường hợp bất khả kháng",
+  "content": "<p>Sinh viên gặp phải các trường hợp bất khả kháng như tai nạn, bệnh tật cần làm thủ tục như thế nào để đăng ký lại môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:25:16.404Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669531830cff36b7375c7356"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên bị thay đổi điều kiện học tập",
+  "content": "<p>Sinh viên bị thay đổi điều kiện học tập cần làm thủ tục như thế nào để đăng ký lại môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:26:11.050Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669531f60cff36b7375c7363"
+  },
+  "title": "Quy trình đăng ký môn học cho sinh viên tham gia các hoạt động ngoại khóa",
+  "content": "<p>Sinh viên tham gia các hoạt động ngoại khóa cần tuân theo những thủ tục gì khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:28:06.821Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "669532040cff36b7375c7370"
+  },
+  "title": "Đăng ký môn học cho sinh viên tham gia các chương trình học tập quốc tế",
+  "content": "<p>Sinh viên tham gia các chương trình học tập quốc tế cần làm thủ tục như thế nào khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:28:20.807Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695327c0cff36b7375c737f"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên tham gia các dự án nghiên cứu khoa học",
+  "content": "<p>Sinh viên tham gia các dự án nghiên cứu khoa học cần tuân theo những thủ tục gì khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:30:20.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695328d0cff36b7375c738c"
+  },
+  "title": "Đăng ký môn học trong các chương trình đào tạo chất lượng cao",
+  "content": "<p>Sinh viên tham gia các chương trình đào tạo chất lượng cao cần làm thủ tục như thế nào khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:30:37.837Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6695329d0cff36b7375c7399"
+  },
+  "title": "Thủ tục đăng ký môn học cho sinh viên có nhu cầu học môn học bổ trợ",
+  "content": "<p>Sinh viên có nhu cầu học môn học bổ trợ cần làm thủ tục như thế nào khi đăng ký môn học?</p>\n",
+  "file": {
+    "ref": null,
+    "url": null
+  },
+  "status": "unanswered",
+  "views": 0,
+  "isForwarded": false,
+  "user": {
+    "$oid": "66929cdd1561c2b1a4cc2cff"
+  },
+  "department": {
+    "$oid": "65d87158b394abe04aad269c"
+  },
+  "field": {
+    "$oid": "6694a3bad20ce5e772cc9c7e"
+  },
+  "likes": [],
+  "answer": null,
+  "createdAt": {
+    "$date": "2024-07-15T14:30:53.192Z"
   },
   "__v": 0
 }]

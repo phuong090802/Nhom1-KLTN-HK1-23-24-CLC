@@ -126,7 +126,11 @@
   "role": "COUNSELLOR",
   "occupation": "Khác",
   "counsellor": {
-    "fields": [],
+    "fields": [
+      {
+        "$oid": "6694a3bad20ce5e772cc9c7e"
+      }
+    ],
     "department": {
       "$oid": "65d87158b394abe04aad269c"
     }
@@ -135,7 +139,7 @@
   "createdAt": {
     "$date": "2024-07-15T05:02:35.756Z"
   },
-  "__v": 0
+  "__v": 1
 },
 {
   "_id": {
@@ -266,7 +270,11 @@
   "role": "COUNSELLOR",
   "occupation": "Khác",
   "counsellor": {
-    "fields": [],
+    "fields": [
+      {
+        "$oid": "6694a3bad20ce5e772cc9c7e"
+      }
+    ],
     "department": {
       "$oid": "65d87158b394abe04aad269c"
     }
@@ -275,7 +283,7 @@
   "createdAt": {
     "$date": "2024-07-15T05:05:25.132Z"
   },
-  "__v": 0
+  "__v": 1
 },
 {
   "_id": {
@@ -361,4 +369,104 @@
     "$date": "2024-07-15T07:02:59.940Z"
   },
   "__v": 7
+},
+{
+  "_id": {
+    "$oid": "6695296e0cff36b7375c718f"
+  },
+  "fullName": "Vương Văn An",
+  "email": "vuongvanan@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968038001",
+  "password": "$2a$10$V/flbRUV2p99pVDfyMow/O5KS7JZB.t0b7k37gS1.edEXutysZ2/K",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T13:51:42.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952b3f0cff36b7375c7191"
+  },
+  "fullName": "Vương Văn Anh",
+  "email": "vuongvananh@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968038002",
+  "password": "$2a$10$ubhi7TIXr4QlfX0HjFy1fO2rA8KfhIKrwMsFRfujC3YsUClp5B8.2",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T13:59:27.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952b780cff36b7375c7195"
+  },
+  "fullName": "Vương Văn Dương",
+  "email": "vuongvanduong@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968038003",
+  "password": "$2a$10$FS71vdLS0gGVh5mHrt6/l.NaUJ5oRaTlpDYGs20SsMOCfFlbrp0hK",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T14:00:24.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66952ba60cff36b7375c7197"
+  },
+  "fullName": "Vương Văn Dung",
+  "email": "vuongvandung@example.com",
+  "isEmailVerified": false,
+  "phoneNumber": "0968038004",
+  "password": "$2a$10$5H/aLiPG/SzZ8k95zXnat.AI4Po.Xh6Np4iTqI86U2k6UfzHybfJW",
+  "avatar": {
+    "ref": null,
+    "url": null
+  },
+  "isEnabled": true,
+  "role": "COUNSELLOR",
+  "occupation": "Khác",
+  "counsellor": {
+    "fields": []
+  },
+  "pushTokens": [],
+  "createdAt": {
+    "$date": "2024-07-15T14:01:10.469Z"
+  },
+  "__v": 0
 }]
