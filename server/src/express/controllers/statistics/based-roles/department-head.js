@@ -6,6 +6,21 @@ import { handleCountQuestions } from '../../../../util/statistics/department.js'
 import { handleCountQuestionsByFieldsAndDepartment } from '../../../../util/statistics/field.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
+// Endpoint: /api/statistics/department-head/question
+// Method: GET
+// Description: Trưởng khoa đếm số câu hỏi mà khoa đã nhận
+export const handleCountOfQuestions = catchAsyncErrors(
+  async (req, res, next) => {
+    const department = req.foundDepartment;
+    const countOfQuestions = await Question.countDocuments({ department });
+    res.json({
+      success: true,
+      countOfQuestions,
+      code: 2109,
+    });
+  }
+);
+
 // Endpoint: /api/department-head/statistics/counsellor/ranking
 // Method: GET
 // Description: Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi đã trả lời) thành công

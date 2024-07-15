@@ -25,10 +25,12 @@ router.get('/counsellor', departmentHeadStatistic.handleCountOfCounsellors);
 router.get('/field/ranking', departmentHeadStatistic.handleFieldRanking);
 router.get('/field/count', departmentHeadStatistic.handleCountOfFields);
 router.get('/field', departmentHeadStatistic.handleStatisticFields);
-router.post(
-  '/question',
-  handleValidateTimeForStatisticInBody,
-  departmentHeadStatistic.handleStatisticQuestions
-);
+router
+  .route('/question')
+  .get(departmentHeadStatistic.handleCountOfQuestions)
+  .post(
+    handleValidateTimeForStatisticInBody,
+    departmentHeadStatistic.handleStatisticQuestions
+  );
 
 export default router;

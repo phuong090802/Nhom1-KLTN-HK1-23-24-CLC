@@ -567,6 +567,11 @@
       "code": "2108",
       "message": "",
       "detail": "Trưởng khoa xếp hạng tư vấn viên (theo số lượng câu hỏi đã trả lời) thành công"
+    },
+    {
+      "code": "2109",
+      "message": "",
+      "detail": "Trưởng khoa đếm số câu hỏi mà khoa đã nhận thành công"
     }
   ]
 }
