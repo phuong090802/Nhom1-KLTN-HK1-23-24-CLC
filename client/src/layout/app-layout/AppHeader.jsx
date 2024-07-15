@@ -1,10 +1,5 @@
 import clsx from 'clsx';
-import {
-  CircleHelp,
-  Home,
-  Newspaper,
-  Users
-} from 'lucide-react';
+import { CircleHelp, Home, Newspaper, Users } from 'lucide-react';
 import { useContext, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/image/logo.png';

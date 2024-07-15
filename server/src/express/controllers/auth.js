@@ -198,6 +198,7 @@ export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4010));
   }
 
+  // if (!refreshToken.status && !!oldAccessToken) {
   if (!refreshToken.status) {
     // delete all token in branch
     await RefreshToken.deleteMany({ branch: refreshToken.branch });
@@ -215,20 +216,26 @@ export const handleRefreshToken = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler(403, 'Tài khoản đã bị khóa', 4014));
   }
 
+  const oldAccessToken = await getValidBearerToken(req);
   let newAccessToken;
   let newRefreshToken;
 
-  const oldAccessToken = await getValidBearerToken(req);
-
   const isRefreshTokenValid = refreshToken.expires > Date.now();
-  if (!oldAccessToken || !isRefreshTokenValid) {
-    newAccessToken = user.generateAccessToken();
-    newRefreshToken = await refreshToken.generateRefreshToken();
+  if (isRefreshTokenValid) {
+    if (!oldAccessToken) {
+      newAccessToken = user.generateAccessToken();
+      newRefreshToken = await refreshToken.generateRefreshToken();
+    } else {
+      newAccessToken = oldAccessToken;
+      newRefreshToken = refreshToken;
+    }
   } else {
-    newAccessToken = oldAccessToken;
-    newRefreshToken = refreshToken;
+    await RefreshToken.deleteMany({ branch: refreshToken.branch });
+    clearToken(res);
+    return next(new ErrorHandler(400, 'Yêu cầu không hợp lệ', 4122));
   }
-
+  // console.log('newAccessToken', newAccessToken);
+  // console.log('newRefreshToken', newRefreshToken.token);
   const userInformation = user.getUserInformation(REFRESH_TOKEN);
   sendToken(res, newAccessToken, newRefreshToken, userInformation);
 });

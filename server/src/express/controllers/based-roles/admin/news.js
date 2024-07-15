@@ -59,13 +59,13 @@ export const handleDeleteNews = catchAsyncErrors(async (req, res, next) => {
     try {
       // remove file
       await deleteFile(ref);
-      await News.deleteOne({ _id: news._id });
     } catch (error) {
       return next(
         new ErrorHandler(500, 'Lỗi xóa tin tức. Vui lòng thử lại', 4111)
       );
     }
   }
+  await News.deleteOne({ _id: news._id });
   res.json({
     success: true,
     message: 'Xóa tin tức thành công',

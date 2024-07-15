@@ -1,5 +1,6 @@
 import Department from '../../../../models/department.js';
 import Field from '../../../../models/field.js';
+import Notification from '../../../../models/notification.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
 import sendNotification from '../../../../util/send-notification.js';
@@ -58,20 +59,26 @@ export const handleCreateQuestion = catchAsyncErrors(
         { role: 'DEPARTMENT_HEAD' },
       ],
     });
-    const response = {
-      success: true,
-      // hasNewQuestions: numberOfQuestions > 0,
-      unansweredQuestion: true,
-      // change code
-      code: 2071,
-    };
+
     await Promise.all(
       users.map(async (user) => {
         const receiverId = user._id.toString();
-        io.of('/auth').emit(
-          `${receiverId}:question:notification:read`,
-          response
-        );
+        const message = 'Có câu hỏi mới vừa được đặt.';
+        const lastNotification = await Notification.create({
+          recipient: user._id,
+          content: message,
+        });
+        const response = {
+          success: true,
+          lastNotification,
+          code: 2058,
+          // hasNewQuestions: numberOfQuestions > 0,
+          // unansweredQuestion: true,
+          // change code
+          // code: 2071,
+        };
+
+        io.of('/auth').emit(`${receiverId}:notification:read`, response);
         await sendNotification(receiverId, {
           // sound: 'default',
           title: 'Câu hỏi',

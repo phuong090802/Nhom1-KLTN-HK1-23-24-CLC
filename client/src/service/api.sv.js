@@ -30,6 +30,7 @@ API.interceptors.response.use(
       isRefreshing = true;
       originalRequest._retry = true;
       try {
+        console.log('interceptor refresh token');
         const response = await axios.post(
           `${baseURL}auth/refresh-token`,
           {},
@@ -38,7 +39,7 @@ API.interceptors.response.use(
           }
         );
         const token = response.data.token;
-        console.log('API.interceptors.response.use', token);
+        // console.log('API.interceptors.response.use', token);
         Cookies.set('accessToken', token);
         originalRequest.headers.Authorization = `Bearer ${token}`;
         return API(originalRequest);

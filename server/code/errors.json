@@ -617,6 +617,11 @@
       "code": "4121",
       "message": "Đăng nhập trước khi truy cập vào tài nguyên này",
       "detail": ""
+    },
+    {
+      "code": "4122",
+      "message": "Yêu cầu không hợp lệ",
+      "detail": ""
     }
   ]
 }

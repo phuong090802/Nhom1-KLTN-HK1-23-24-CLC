@@ -1,8 +1,7 @@
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 
-import { refreshTokenSv } from '../service/public/auth.sv';
 import { authSocket } from '../socket/auth.socket';
 import { DataContext } from '../store';
 
@@ -20,11 +19,11 @@ export const useAuthSocket = () => {
   }, [connected, isLoggedIn]);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      return;
-    }
     const onConnect = () => {
       console.log('socket "/auth" connected');
+      // console.log('accessToken', authSocket._opts.extraHeaders.authorization);
+      // console.log('retry', authSocket._opts.extraHeaders.retry);
+      authSocket._opts.extraHeaders.retry = false;
       setConnected(true);
     };
     const onDisconnect = () => {
@@ -32,7 +31,7 @@ export const useAuthSocket = () => {
       setConnected(false);
     };
     const onConnectError = async (error) => {
-      console.log('socket "/auth" connectError');
+      // console.log('socket "/auth" connectError');
       if (
         (error?.data?.code === 4040 ||
           error?.data?.code === 4041 ||
@@ -51,12 +50,12 @@ export const useAuthSocket = () => {
           );
           const token = response.data.token;
           Cookies.set('accessToken', token);
-          authSocket._opts.extraHeaders.retry = true;
-          console.log(authSocket._opts.extraHeaders);
           authSocket._opts.extraHeaders.authorization = `bearer ${token}`;
           authSocket.connect();
         } catch (rfError) {
           // setConnected(false);
+        } finally {
+          authSocket._opts.extraHeaders.retry = true;
         }
       }
     };
@@ -68,8 +67,9 @@ export const useAuthSocket = () => {
     return () => {
       authSocket.off('connect', onConnect);
       authSocket.off('disconnect', onDisconnect);
+      authSocket.on('connect_error', onConnectError);
     };
-  }, [isLoggedIn]);
+  }, []);
 
   return {
     connected,

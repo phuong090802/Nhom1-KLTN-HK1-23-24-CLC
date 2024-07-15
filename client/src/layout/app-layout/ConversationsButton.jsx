@@ -55,8 +55,8 @@ export const ConversationsButton = () => {
         )}
       >
         <h1 className="text-2xl font-bold text-black75 mb-4 px-4">Đoạn chat</h1>
-        {conversations?.length !== 0 ? (
-          conversations.map((conversation) => {
+        {conversations.length !== 0 ? (
+          conversations?.map((conversation) => {
             return (
               <div
                 className="flex items-center gap-2 hover:bg-black10 py-2 px-4 rounded-lg"

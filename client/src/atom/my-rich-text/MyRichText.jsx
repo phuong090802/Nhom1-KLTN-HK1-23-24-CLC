@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Editor } from 'draft-js';
+import * as draftJs from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import { useRef } from 'react';
 
@@ -24,7 +24,7 @@ const MyRichText = ({
       )}
       onClick={focus}
     >
-      <Editor
+      <draftJs.Editor
         ref={editorRef}
         editorState={editorState}
         onChange={setEditorState}

@@ -49,18 +49,19 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
 // Description: Trưởng khoa xóa câu hỏi chung
 export const handleDeleteFAQ = catchAsyncErrors(async (req, res, next) => {
   const faq = req.foundFAQ;
+  console.log('faq', faq);
   const { ref, url } = faq.answerAttachment;
   if (ref && url) {
     try {
       // remove file
       await deleteFile(ref);
-      await FAQ.deleteOne({ _id: faq._id });
     } catch (error) {
       return next(
         new ErrorHandler(500, 'Lỗi xóa câu hỏi chung. Vui lòng thử lại', 4104)
       );
     }
   }
+  await FAQ.deleteOne({ _id: faq._id });
   res.json({
     success: true,
     message: 'Xóa câu hỏi chung thành công',

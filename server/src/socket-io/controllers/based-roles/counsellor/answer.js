@@ -19,11 +19,12 @@ export const handleCreateAnswer = catchAsyncErrors(
     const { questionId, file, content, isApprovalRequest } = payload;
     const user = socket.user;
     const question = await Question.findById(questionId);
-    let status = 'publicly-answered-pending-approval';
-    if (user.role === 'DEPARTMENT_HEAD') {
+    let status;
+    if (user.role === 'DEPARTMENT_HEAD' || !isApprovalRequest) {
       status = 'publicly-answered-and-approved';
     } else {
       validateCounsellor.handleValidateFieldOfCounsellor(question.field, user);
+      status = 'publicly-answered-pending-approval';
     }
     handleCheckQuestionAndStatus(question, 'unanswered');
     let answerData = {
@@ -43,9 +44,7 @@ export const handleCreateAnswer = catchAsyncErrors(
       };
     }
     question.answer = answerData;
-    question.status = !isApprovalRequest
-      ? 'publicly-answered-and-approved'
-      : status;
+    question.status = status;
     await question.save();
     callback({
       success: true,
@@ -53,46 +52,46 @@ export const handleCreateAnswer = catchAsyncErrors(
       code: 2031,
     });
 
-    if (
-      user.role !== 'DEPARTMENT_HEAD' ||
-      (user.role === 'COUNSELLOR' && !isApprovalRequest)
-    ) {
-      const department = question.department;
-      const departmentHead = await User.findOne({
-        role: 'DEPARTMENT_HEAD',
-        'counsellor.department': department,
-      });
-      const receiverId = departmentHead._id.toString();
-      const response = {
-        success: true,
-        unapprovedAnswerExists: true,
-        code: 2059,
-      };
-      io.of('/auth').emit(`${receiverId}:notification:read`, response);
-      await sendNotification(receiverId, {
-        // sound: 'default',
-        title: 'Duyệt câu trả lời',
-        body: 'Có câu trả lời mới cần được duyệt',
-      });
-    } else {
+    let notificationContent;
+    let receiverId;
+    let title;
+    if (!isApprovalRequest || user.role === 'DEPARTMENT_HEAD') {
       // emit notification to user
-      const receiverId = question.user._id.toString();
-      const content = 'Câu hỏi của bạn đã được trả lời';
+      receiverId = question.user._id.toString();
+      notificationContent = 'Câu hỏi của bạn đã được trả lời';
+      title = 'Câu hỏi đã được trả lời';
+    } else {
+      if (user.role === 'DEPARTMENT_HEAD') {
+        receiverId = null;
+      } else {
+        const department = question.department;
+        const departmentHead = await User.findOne({
+          role: 'DEPARTMENT_HEAD',
+          'counsellor.department': department,
+        });
+        receiverId = departmentHead._id.toString();
+        notificationContent = 'Có câu trả lời cần được duyệt.';
+        title = 'Có câu trả lời cần được duyệt.';
+      }
+    }
+    console.log('current User Id', user._id);
+    console.log('receiverId', receiverId);
+    if (receiverId) {
       const lastNotification = await Notification.create({
         recipient: receiverId,
-        content,
+        content: notificationContent,
       });
       const response = {
         success: true,
         lastNotification,
-        code: 2107,
+        code: 2058,
       };
       io.of('/auth').emit(`${receiverId}:notification:read`, response);
       await sendNotification(receiverId, {
         // sound: 'default',
-        title: 'Câu hỏi đã được trả lời',
+        title,
         // body: question.answer.content,
-        body: 'Câu hỏi của bạn đã được trả lời',
+        body: notificationContent,
       });
     }
   }

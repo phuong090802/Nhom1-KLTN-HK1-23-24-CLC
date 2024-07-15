@@ -16,19 +16,19 @@ export const AppLayoutContext = createContext({
   setParams: Function,
   showingModal: String,
   setShowingModal: Function,
-  conversations: Array,
+  conversations: [],
   setConversations: Function,
   messageBoxHidden: Boolean,
   setMessageBoxHidden: Function,
   selectedConversation: Object,
   setSelectedConversation: Function,
-  conversationContent: Array,
+  conversationContent: [],
   setConversationContent: Function,
   messageContent: EditorState,
   setMessageContent: Function,
   sendMessage: Function,
   loadMessage: Function,
-  notifications: Array,
+  notifications: [],
   setNotification: Function,
 });
 
@@ -181,6 +181,7 @@ export const AppLayoutStore = ({ children }) => {
   useEffect(() => {
     if (connected && isLoggedIn) {
       authSocket.on(`${user._id}:notification:read`, (data) => {
+        console.log('user._id', user._id);
         console.log(`${user._id}:notification:read`, data);
         setNewNoti(true);
         setNotification((prev) => [data.lastNotification, ...prev]);

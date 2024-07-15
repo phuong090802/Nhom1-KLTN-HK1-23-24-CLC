@@ -300,16 +300,8 @@
     },
     {
       "code": "2059",
-      "details": [
-        {
-          "message": "",
-          "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
-        },
-        {
-          "message": "",
-          "detail": "Trả lời câu hỏi thành công. Nếu role là tư vấn viên sẽ gửi thông báo để trưởng khoa duyệt"
-        }
-      ]
+      "message": "",
+      "detail": "Trưởng khoa kiểm tra có câu hỏi cần trả lời hay không"
     },
     {
       "code": "2060",
@@ -561,7 +553,7 @@
     {
       "code": "2107",
       "message": "",
-      "detail": "Thông báo câu hỏi của bạn đã được trả lời"
+      "detail": ""
     },
     {
       "code": "2108",
@@ -572,6 +564,7 @@
       "code": "2109",
       "message": "",
       "detail": "Trưởng khoa đếm số câu hỏi mà khoa đã nhận thành công"
-    }
+    },
+    [2107]
   ]
 }
