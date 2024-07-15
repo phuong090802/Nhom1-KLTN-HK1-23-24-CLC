@@ -46,7 +46,7 @@ API.interceptors.response.use(
       } catch (refreshError) {
         // console.error('refreshError', refreshError);
         setUser(initUser);
-        Cookies.remove('accessToken');
+        // Cookies.remove('accessToken');
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

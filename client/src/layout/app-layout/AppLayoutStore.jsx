@@ -129,7 +129,7 @@ export const AppLayoutStore = ({ children }) => {
       setMessageContent(EditorState.createEmpty());
     } catch (error) {
       console.log('sendMessage', error);
-      toast.error('Tin nhắn chưa được gửi đi');
+      // toast.error('Tin nhắn chưa được gửi đi');
     }
   };
 

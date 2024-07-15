@@ -35,9 +35,13 @@ export const DepartmentStatisticModal = () => {
       const response = authSocket.emitWithAck('department:reminder:create', {
         departmentIds: [depId],
       });
-      toast.success(response?.message || 'Đã nhắc nhở đến khoa');
+      if (response?.success) {
+        toast.success(response?.message || 'Đã nhắc nhở đến khoa');
+      } else {
+        toast.error(response.message || 'Lỗi khi nhắc nhở khoa');
+      }
     } catch (error) {
-      toast.error('Lỗi khi nhắc nhở khoa');
+      // toast.error('Lỗi khi nhắc nhở khoa');
     }
   };
 

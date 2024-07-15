@@ -69,13 +69,13 @@ export const CreateQuestionModal = ({ hidden }) => {
       setSelectedDep(null);
       setSelectedField(null);
       setFile(null);
-      if (response.success) {
-        toast.success(response.message || 'Đặt câu hỏi thành công');
+      if (response?.success) {
+        toast.success(response?.message || 'Đặt câu hỏi thành công');
       } else {
-        toast.error(response.message || 'Lỗi khi đặt câu hỏi');
+        toast.error(response?.message || 'Lỗi khi đặt câu hỏi');
       }
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi đặt câu hỏi');
+      // toast.error(error?.message || 'Lỗi khi đặt câu hỏi');
     }
   };
 

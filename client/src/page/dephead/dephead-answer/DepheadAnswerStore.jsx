@@ -56,11 +56,16 @@ export const DepheadAnswerStore = ({ children }) => {
         questionId: questionId,
       });
       console.log('ApproveAnswer', response);
-      toast.success(response?.message || 'Duyệt câu trả lời thành công');
+      if (response.success) {
+        toast.success(response?.message || 'Duyệt câu trả lời thành công');
+      } else {
+        toast.error(response?.message || 'Lỗi khi duyệt câu trả lời');
+      }
+
       setHiddenDetailAnswerModal(true);
       getWaitingQuestions();
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi duyệt câu trả lời');
+      // toast.error(error?.message || 'Lỗi khi duyệt câu trả lời');
     }
   };
 
@@ -71,12 +76,16 @@ export const DepheadAnswerStore = ({ children }) => {
         content: draftToHtml(convertToRaw(feedbackContent.getCurrentContent())),
       });
       console.log('FeedbackAnswer', response);
-      toast.success(response?.message || 'Phản hồi câu trả lời thành công');
+      if (response?.success) {
+        toast.success(response?.message || 'Phản hồi câu trả lời thành công');
+      } else {
+        toast.error(response?.message || 'Lỗi khi phản hồi câu trả lời');
+      }
       setHiddenDetailAnswerModal(true);
       setHiddenFeedback(true);
       getWaitingQuestions();
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi phản hồi câu trả lời');
+      // toast.error(error?.message || 'Lỗi khi phản hồi câu trả lời');
     }
   };
 

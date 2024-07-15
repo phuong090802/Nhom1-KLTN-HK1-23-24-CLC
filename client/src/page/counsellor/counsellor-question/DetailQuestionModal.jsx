@@ -66,9 +66,13 @@ export const DetailQuestionModal = () => {
       setSubmitContent(EditorState.createEmpty());
       setHiddenDetailQuestionModal(true);
       getQuestions();
-      toast.success(response.message || 'Phản hồi câu hỏi thành công');
+      if (response?.success) {
+        toast.success(response?.message || 'Phản hồi câu hỏi thành công');
+      } else {
+        toast.error(response?.message || 'Lỗi khi phản hồi câu hỏi');
+      }
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
+      // toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
@@ -84,12 +88,16 @@ export const DetailQuestionModal = () => {
         'conversation:create',
         responseData
       );
-      toast.success(response.message || 'Phản hồi câu hỏi thành công');
+      if (response?.success) {
+        toast.success(response?.message || 'Phản hồi câu hỏi thành công');
+      } else {
+        toast.error(response?.message || 'Lỗi khi phản hồi câu hỏi');
+      }
       setSubmitContent(EditorState.createEmpty());
       setHiddenDetailQuestionModal(true);
       getQuestions();
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
+      // toast.error(error?.message || 'Lỗi khi phản hồi câu hỏi');
     }
   };
 
