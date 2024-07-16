@@ -9,7 +9,7 @@ export const depheadGetFaqSv = async (params) => {
   });
 };
 
-export const depheadAddFaqSv = async () => {
+export const depheadAddFaqSv = async (data) => {
   const header = await createHeader(['author', 'formData']);
   return API.post('department-head/faqs', data, {
     headers: header,

@@ -68,7 +68,7 @@ export const AddFaqModal = () => {
       // console.log(response);
       alert(response?.message || 'Thêm tin tức thành công');
       setFaqData(initFaqData);
-      _editor.current.setContents([{ insert: '' }]);
+      _editor.setContents([{ insert: '' }]);
       alert(response?.message || 'Thêm tin tức thành công');
     } catch (error) {
       console.log('AddFaq', error);
