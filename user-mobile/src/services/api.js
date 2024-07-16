@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: process.env.EXPO_PUBLIC_API_URL,
+  baseURL: `${process.env.EXPO_PUBLIC_API_URL}/api/`,
   timeout: 10000,
 });
 
@@ -18,7 +18,7 @@ API.interceptors.response.use(
       refreshTokenCode.includes(error.response?.data.code) &&
       !originalRequest._retry
     ) {
-      console.log('g=Get new Token');
+      console.log('Get new Token');
       originalRequest._retry = true;
       try {
         const response = await API.post(

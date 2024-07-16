@@ -30,7 +30,6 @@ const HomeContent = () => {
     // deleteAllQuestions();
     let mergeQuestions;
     homeContext.setQuestions((prev) => {
-      r;
       if (homeContext.params.keyword === '') {
         mergeQuestions = [...questions];
       } else {
