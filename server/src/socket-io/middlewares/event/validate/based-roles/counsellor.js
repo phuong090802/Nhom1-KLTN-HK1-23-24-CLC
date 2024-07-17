@@ -31,3 +31,17 @@ const handleCheckStatusOfDepartment = (department) => {
     throw new ErrorHandler(message, 4117);
   }
 };
+
+export const handleCheckCounsellorBelongDepartment = (
+  departmentHead,
+  counsellor
+) => {
+  const isCounsellor =
+    departmentHead.counsellor.department.equals(
+      counsellor.counsellor?.department
+    ) && counsellor.role === 'COUNSELLOR';
+  if (!isCounsellor) {
+    const message = 'Tư vấn viên không thuộc khoa';
+    throw new ErrorHandler(message, 4127);
+  }
+};

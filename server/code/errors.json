@@ -642,6 +642,11 @@
       "code": "4126",
       "message": "",
       "detail": "Lĩnh vực không tồn tại trong hệ thống"
+    },
+    {
+      "code": "4127",
+      "message": "Tư vấn viên không thuộc khoa",
+      "detail": ""
     }
   ]
 }

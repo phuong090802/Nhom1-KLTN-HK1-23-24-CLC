@@ -102,7 +102,6 @@ router
   .route('/counsellors/assign-work')
   .get(counsellorController.handleGetCounsellorsForAssignWork);
 
-
 router
   .route('/counsellors/:id')
   .all(
@@ -121,7 +120,6 @@ router
     counsellorController.handleRemoveFieldOfCounsellor
   )
   .patch(counsellorController.handleUpdateStatusOfCounsellor);
-
 
 router
   .route('/counsellors')

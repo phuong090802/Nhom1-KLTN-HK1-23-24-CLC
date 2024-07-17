@@ -69,11 +69,12 @@ export const handleCreateQuestion = catchAsyncErrors(
       };
     }
 
-    if (isGeneralField) {
+    if (!isGeneralField) {
       const query = {
         role: { $ne: 'DEPARTMENT_HEAD', $eq: 'COUNSELLOR' },
         'counsellor.department': department._id,
         isEnabled: true,
+        'counsellor.fields': field._id,
       };
       const counsellors = await handleCounsellorAndAssignQuestionUnanswered(
         query

@@ -584,6 +584,11 @@
       "code": "2113",
       "message": "Quản trị viên cập nhật tên lĩnh vực chung thành công",
       "detail": ""
+    },
+    {
+      "code": "2114",
+      "message": "Giao câu hỏi cho tư vấn viên thành công",
+      "detail": ""
     }
   ]
 }

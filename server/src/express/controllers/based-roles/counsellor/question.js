@@ -21,7 +21,7 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const queryTransform = new QueryTransform(req.query).applyFilters({
     status: 'unanswered',
     department: department._id,
-    ...(user.role === 'COUNSELLOR' && { field: { $in: fields } }),
+    assignTo: user.role === 'COUNSELLOR' ? user._id : null,
   });
   const queryAPI = new QueryAPI(query, queryTransform.query)
     .search()
