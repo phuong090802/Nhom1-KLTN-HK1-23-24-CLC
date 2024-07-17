@@ -75,6 +75,10 @@ const questionSchema = new mongoose.Schema({
     type: answerSchema,
     default: null,
   },
+  assignTo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
 // cách này không tìm chay

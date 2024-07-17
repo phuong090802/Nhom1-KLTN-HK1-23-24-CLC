@@ -627,6 +627,21 @@
       "code": "4123",
       "message": "Không tìm thấy cuộc trò chuyện",
       "detail": ""
+    },
+    {
+      "code": "4124",
+      "message": "Không tìm thấy lĩnh vực chung",
+      "detail": ""
+    },
+    {
+      "code": "4125",
+      "message": "",
+      "detail": "Lĩnh vực đang bị khóa. Không thể đặt câu hỏi"
+    },
+    {
+      "code": "4126",
+      "message": "",
+      "detail": "Lĩnh vực không tồn tại trong hệ thống"
     }
   ]
 }

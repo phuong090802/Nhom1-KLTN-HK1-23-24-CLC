@@ -2,6 +2,7 @@ import { GET_ALL_STAFFS_IN_DEPARTMENT } from '../../../constants/actions/user.js
 import Department from '../../../models/department.js';
 import Field from '../../../models/field.js';
 import User from '../../../models/user.js';
+import GeneralField from '../../../models/general-field.js';
 import handlePagination from '../../../util/db/pagination.js';
 import QueryAPI from '../../../util/db/query-api.js';
 import QueryTransform from '../../../util/db/query-transform.js';
@@ -75,12 +76,15 @@ export const handleGetStaffsInDepartment = catchAsyncErrors(
 export const handleGetFieldsOfDepartment = catchAsyncErrors(
   async (req, res, next) => {
     const department = req.foundDepartment;
-    const fields = await Field.find({ department, isActive: true })
+    const fieldsOfDepartment = await Field.find({ department, isActive: true })
       .select('fieldName')
       .lean();
+    const generalFields = await GeneralField.find({ isActive: true }).select(
+      'fieldName'
+    );
     res.json({
       success: true,
-      fields,
+      fields: [...generalFields, ...fieldsOfDepartment],
       code: 2039,
     });
   }

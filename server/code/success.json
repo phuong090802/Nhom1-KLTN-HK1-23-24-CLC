@@ -552,7 +552,7 @@
     },
     {
       "code": "2107",
-      "message": "",
+      "message": "Thêm lĩnh vực chung thành công",
       "detail": ""
     },
     {
@@ -565,6 +565,25 @@
       "message": "",
       "detail": "Trưởng khoa đếm số câu hỏi mà khoa đã nhận thành công"
     },
-    [2107]
+    {
+      "code": "2110",
+      "message": "Quản trị viên cập nhật trạng lĩnh vực chung thành công",
+      "detail": ""
+    },
+    {
+      "code": "2111",
+      "message": "",
+      "detail": "Quản trị viên lấy danh sách lĩnh vực chung trong hệ thống (phân trang, tìm kiếm, lọc, sắp xếp) thành công"
+    },
+    {
+      "code": "2112",
+      "message": "",
+      "detail": "Lấy danh tư vấn viên dùng trong khoa (tìm kiếm, lọc, sắp xếp) thành công"
+    },
+    {
+      "code": "2113",
+      "message": "Quản trị viên cập nhật tên lĩnh vực chung thành công",
+      "detail": ""
+    }
   ]
 }

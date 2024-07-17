@@ -1,6 +1,8 @@
+import { OVERDUE } from '../../../../constants/reminder.js';
 import Field from '../../../../models/field.js';
-import User from '../../../../models/user.js';
 import Question from '../../../../models/question.js';
+import User from '../../../../models/user.js';
+import { handleCounsellorAndAssignQuestionUnanswered } from '../../../../util/assign-work/counsellor.js';
 import handlePagination, {
   handleReminderPagination,
 } from '../../../../util/db/pagination.js';
@@ -8,7 +10,6 @@ import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import ErrorHandler from '../../../../util/error/http-error-handler.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
-import { OVERDUE } from '../../../../constants/reminder.js';
 
 // Endpoint: /api/department-head/counsellors/reminder
 // Method: GET
@@ -264,3 +265,28 @@ export const handleGetCounsellors = catchAsyncErrors(async (req, res, next) => {
     code: 2041,
   });
 });
+
+// Endpoint: /api/department-head/counsellors/assign-work
+// Method: GET
+// Description: Lấy danh tư vấn viên dùng trong khoa (tìm kiếm, lọc, sắp xếp)
+export const handleGetCounsellorsForAssignWork = catchAsyncErrors(
+  async (req, res, next) => {
+    const department = req.foundDepartment;
+
+    const queryTransform = new QueryTransform(req.query).applyFilters({
+      role: { $ne: 'DEPARTMENT_HEAD', $eq: 'COUNSELLOR' },
+      'counsellor.department': department._id,
+      isEnabled: true,
+    });
+
+    const counsellors = await handleCounsellorAndAssignQuestionUnanswered(
+      queryTransform.query
+    );
+
+    res.json({
+      success: true,
+      counsellors,
+      code: 2112,
+    });
+  }
+);

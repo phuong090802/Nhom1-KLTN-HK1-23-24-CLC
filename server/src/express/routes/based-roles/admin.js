@@ -3,6 +3,7 @@ import express from 'express';
 import * as counsellorController from '../../controllers/based-roles/admin/counsellor.js';
 import * as departmentController from '../../controllers/based-roles/admin/department.js';
 import * as newsController from '../../controllers/based-roles/admin/news.js';
+import * as generalFieldController from '../../controllers/based-roles/admin/general-field.js';
 import {
   handleCreateStaff,
   handleResetStaffPassword,
@@ -21,6 +22,7 @@ import {
 } from '../../middlewares/upload-file.js';
 import { handleCheckStatusOfDepartment } from '../../middlewares/validate/based-roles/admin.js';
 import { handleValidateDepartmentId } from '../../middlewares/validate/based-schemas/department.js';
+import { handleValidateGeneralFieldId } from '../../middlewares/validate/based-schemas/general-field.js';
 import { handleValidateNewsId } from '../../middlewares/validate/based-schemas/news.js';
 import {
   handleValidateIsStaff,
@@ -32,6 +34,17 @@ import { handleValidateRole } from '../../middlewares/validate/role.js';
 const router = express.Router();
 
 router.use(handleAuthenticationAndAuthorization('ADMIN'));
+
+router
+  .route('/general-fields/:id')
+  .all(handleValidateGeneralFieldId())
+  .put(generalFieldController.handleRenameGeneralField)
+  .patch(generalFieldController.handleUpdateStatusOfGeneralField);
+
+router
+  .route('/general-fields')
+  .get(defaultPaginationParams, generalFieldController.handleGetGeneralFields)
+  .post(generalFieldController.handleCreateGeneralField);
 
 router
   .route('/news/:id')
