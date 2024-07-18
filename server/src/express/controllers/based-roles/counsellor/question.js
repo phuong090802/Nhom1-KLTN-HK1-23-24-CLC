@@ -6,45 +6,40 @@ import QueryAPI from '../../../../util/db/query-api.js';
 import QueryTransform from '../../../../util/db/query-transform.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
-// // Endpoint: /api/counsellor/questions/public-answered
-// // Method: GET
-// // Description: Lấy danh sách các câu hỏi đã trả lời và đã được đánh giá (lọc, tìm kiếm, phân trang, sắp xếp)
-// export const handleGetPubliAnsweredQuestions = catchAsyncErrors(async (req, res, next) => {
-//   const user = req.user;
-//   const { department } = user.counsellor;
-//   const query = Question.find()
-//     .populate({ path: 'user', select: '-_id fullName avatar.url' })
-//     .populate({ path: 'field', select: '-_id fieldName' })
-//     .select('title content file createdAt views user field fieldType');
-//   // không sử dụng learn vì method trong được tạo schema
-//   // .lean()
-//   const queryTransform = new QueryTransform(req.query).applyFilters({
-//     status: 'unanswered',
-//     department: department._id,
-//     assignTo: user.role === 'COUNSELLOR' ? user._id : null,
-//   });
-//   const queryAPI = new QueryAPI(query, queryTransform.query)
-//     .search()
-//     .filter()
-//     .sort();
-//   const {
-//     records: retQuestions,
-//     page,
-//     pages,
-//   } = await handlePagination(queryAPI, req.query.size, req.query.page);
-//   const questions = retQuestions.map((question) =>
-//     question.getQuestionInformation(
-//       DEPARTMENT_HEAD_OR_COUNSELLOR_GET_ALL_QUESTIONS
-//     )
-//   );
-//   res.json({
-//     success: true,
-//     questions,
-//     page,
-//     pages,
-//     code: 2062,
-//   });
-// });
+// Endpoint: /api/counsellor/questions/public-answered
+// Method: GET
+// Description: Lấy danh sách các câu hỏi đã trả lời và đã được đánh giá (lọc, tìm kiếm, phân trang, sắp xếp)
+export const handleGetPublicAnsweredQuestions = catchAsyncErrors(
+  async (req, res, next) => {
+    const user = req.user;
+    const { department } = user.counsellor;
+    const query = Question.find().select('title  rating');
+    // không sử dụng learn vì method trong được tạo schema
+    // .lean()
+    const queryTransform = new QueryTransform(req.query).applyFilters({
+      status: 'publicly-answered-and-approved',
+      department: department._id,
+      rating: { $ne: null },
+      assignTo: user.role === 'COUNSELLOR' ? user._id : null,
+    });
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
+    const {
+      records: questions,
+      page,
+      pages,
+    } = await handlePagination(queryAPI, req.query.size, req.query.page);
+    res.json({
+      success: true,
+      questions,
+      page,
+      pages,
+      code: 2116,
+    });
+  }
+);
 
 // Endpoint: /api/counsellor/questions
 // Method: GET

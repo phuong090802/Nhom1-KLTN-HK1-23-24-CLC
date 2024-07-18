@@ -61,6 +61,13 @@ router
   .get(defaultPaginationParams, questionController.handleGetQuestions);
 
 router
+  .route('/questions/public-answered')
+  .get(
+    defaultPaginationParams,
+    questionController.handleGetPublicAnsweredQuestions
+  );
+
+router
   .route('/questions/:id')
   .all(
     // auth
