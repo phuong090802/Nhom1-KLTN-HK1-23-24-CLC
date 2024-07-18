@@ -21,7 +21,7 @@ export const handleGetCounsellorsHaveOverDueQuestion = catchAsyncErrors(
     const query = User.find({
       role: 'COUNSELLOR',
       department,
-      'counsellor.fields': { $ne: [] }, //  'counsellor.fields' is not empty
+      // 'counsellor.fields': { $ne: [] }, //  'counsellor.fields' is not empty
       $or: [
         { lastRemindedAt: { $lte: new Date(Date.now() - OVERDUE) } },
         { lastRemindedAt: { $eq: null } },
