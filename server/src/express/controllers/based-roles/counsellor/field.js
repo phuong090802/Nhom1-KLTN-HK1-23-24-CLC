@@ -1,4 +1,5 @@
 import Field from '../../../../models/field.js';
+import GeneralField from '../../../../models/general-field.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 
 // Endpoint: /api/counsellor/fields
@@ -11,10 +12,11 @@ export const handleGetFields = catchAsyncErrors(async (req, res, next) => {
   if (user.role === 'DEPARTMENT_HEAD') {
     query = { department, isActive: true };
   }
-  const listField = await Field.find(query).select('_id fieldName');
+  const listField = await Field.find(query).select('fieldName');
+  const generalFields = await GeneralField.find().select('fieldName');
   res.json({
     success: true,
-    fields: listField,
+    fields: [...listField, ...generalFields],
     code: 2074,
   });
 });

@@ -26,8 +26,13 @@ const faqSchema = new mongoose.Schema({
   },
   field: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Field',
-    required: [true, 'Vui lòng nhập mã lĩnh vực'],
+    required: true,
+    refPath: 'fieldType',
+  },
+  fieldType: {
+    type: String,
+    required: true,
+    enum: ['Field', 'GeneralField'], // The models it can reference
   },
   createdAt: {
     type: Date,

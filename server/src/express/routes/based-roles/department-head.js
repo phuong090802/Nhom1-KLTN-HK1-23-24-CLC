@@ -16,7 +16,11 @@ import {
   handleCheckDepartmentOfCounsellor,
   handleCheckStatusDepartmentOfCounsellor,
 } from '../../middlewares/validate/based-roles/counsellor.js';
-import { handleCheckStatusOfField } from '../../middlewares/validate/based-roles/department-head.js';
+import {
+  handleCheckIsFieldBelongToDepartment,
+  handleCheckStatusOfField,
+  handleTypeOfField,
+} from '../../middlewares/validate/based-roles/department-head.js';
 import {
   handleCheckFAQBelongDepartment,
   handleValidateFAQId,
@@ -53,11 +57,11 @@ router
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
     handleUploadImageOrDocument.single('file'),
     // new field
-    handleValidateFieldId('body', 'fieldId'),
+    handleTypeOfField('body', 'fieldId'),
     // new field belong department
-    handleCheckFieldBelongToDepartment,
-    // status of new field
     handleCheckStatusOfField,
+    // field belong department
+    handleCheckIsFieldBelongToDepartment,
     handleOptionalUploadFileToFirebase('faqs'),
     faqController.handleUpdateFAQ
   )
@@ -70,9 +74,10 @@ router
     // đem lên cùng để multer lấy giá trị chuỗi của form-data và chuyển nó thành req.body
     handleUploadImageOrDocument.single('file'),
     // field
-    handleValidateFieldId('body', 'fieldId'),
+    handleTypeOfField('body', 'fieldId'),
+    handleCheckStatusOfField,
     // field belong department
-    handleCheckFieldBelongToDepartment,
+    handleCheckIsFieldBelongToDepartment,
     handleOptionalUploadFileToFirebase('faqs'),
     faqController.handleCreateFAQ
   );

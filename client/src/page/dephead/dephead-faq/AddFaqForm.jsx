@@ -36,6 +36,7 @@ export const AddFaqForm = () => {
       toast.success(reponse.message || 'Tạo câu hỏi chung thành công');
       depheadGetFaqs();
       setSubmitData(initFaqData);
+      setSubmitAnswer(EditorState.createEmpty());
     } catch (error) {
       toast.error(error?.message || 'Có lỗi xảy ra khi tạo câu');
     }

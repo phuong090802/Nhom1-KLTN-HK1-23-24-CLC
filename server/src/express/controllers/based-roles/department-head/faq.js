@@ -16,7 +16,7 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
       path: 'field',
       select: 'fieldName',
     })
-    .select('question answer answerAttachment field createdAt')
+    .select('question answer answerAttachment field fieldType createdAt')
     .lean();
   const queryTransform = new QueryTransform(req.query).applyFilters({
     department: department._id,
@@ -75,6 +75,7 @@ export const handleDeleteFAQ = catchAsyncErrors(async (req, res, next) => {
 export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
   const faq = req.foundFAQ;
   const field = req.foundField;
+  const isGeneralField = req.isGeneralField;
   const { ref, url } = faq.answerAttachment;
   const answerAttachment = req.uploadedFile;
   // check if have news file and it have old attachment remove
@@ -93,6 +94,7 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
     }
   }
   faq.field = field;
+  faq.fieldType = isGeneralField ? 'GeneralField' : 'Field';
   faq.answerAttachment = answerAttachment;
   await faq.save();
 
@@ -109,9 +111,18 @@ export const handleUpdateFAQ = catchAsyncErrors(async (req, res, next) => {
 export const handleCreateFAQ = catchAsyncErrors(async (req, res, next) => {
   const department = req.foundDepartment;
   const field = req.foundField;
+  const isGeneralField = req.isGeneralField;
   const { question, answer } = req.body;
   const answerAttachment = req.uploadedFile;
-  await FAQ.create({ question, answer, field, department, answerAttachment });
+  const fieldType = isGeneralField ? 'GeneralField' : 'Field';
+  await FAQ.create({
+    question,
+    answer,
+    field,
+    department,
+    answerAttachment,
+    fieldType,
+  });
   res.status(201).json({
     success: true,
     message: 'Tạo câu hỏi chung thành công',

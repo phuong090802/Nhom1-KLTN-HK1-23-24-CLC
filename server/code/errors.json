@@ -657,6 +657,16 @@
       "code": "4129",
       "message": "Giá trị đánh giá không hợp lệ",
       "detail": ""
+    },
+    {
+      "code": "4130",
+      "message": "Không tìm thấy lĩnh vực",
+      "detail": ""
+    },
+    {
+      "code": "4131",
+      "message": "Không tìm lĩnh vực thuộc khoa",
+      "detail": ""
     }
   ]
 }

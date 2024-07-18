@@ -10,7 +10,9 @@ export const handleGetFAQs = catchAsyncErrors(async (req, res, next) => {
   const query = FAQ.find()
     .populate({ path: 'field', select: '-_id fieldName' })
     .populate({ path: 'department', select: '-_id departmentName' })
-    .select('question answer answerAttachment field department createdAt')
+    .select(
+      'question answer answerAttachment field fieldType department createdAt'
+    )
     .lean();
   const queryAPI = new QueryAPI(query, req.query).search().filter().sort();
   const {

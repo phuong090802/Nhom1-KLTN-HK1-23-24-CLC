@@ -26,7 +26,7 @@ export const handleApproveAnswer = catchAsyncErrors(
       code: 2032,
     });
     const recipient = question.user;
-    const content = `Câu hỏi đã được trả lời: ${question.title}`;
+    const content = 'Câu hỏi đã được trả lời';
     const lastNotification = await Notification.create({ recipient, content });
     const response = {
       success: true,
