@@ -15,10 +15,13 @@ import {
   transformsFields,
 } from "../../../util/convert.util";
 import { CreateQuestionContext } from "./CreateQuestionStore";
+import useDepartmentField from "../../../hooks/useDepartmentField";
+import MyRichText from "../../../atom/my-rich-text";
+import { useNavigation } from "@react-navigation/native";
 // import { createQuestion } from "../../../socket/guest/authorSocket";
 
 const CreateQuestionForm = () => {
-  const { connected, createQuestion } = useAuthorSocketHook();
+  const { connected, createQuestion, authorSocket } = useAuthorSocketHook();
 
   const initQuestionData = {
     departmentId: "",
@@ -27,62 +30,35 @@ const CreateQuestionForm = () => {
     content: "",
   };
 
-  const [questionData, setQuestionData] = useState(initQuestionData);
-  const { depData, setDepData, fieldData, setFieldData } = useContext(
-    CreateQuestionContext
-  );
+  const {
+    deps,
+    fields,
+    selectedDep,
+    selectedField,
+    setSelectedDep,
+    setSelectedField,
+  } = useDepartmentField();
 
-  const [chosenDep, setChosenDep] = useState("");
+  const [questionData, setQuestionData] = useState(initQuestionData);
+
+  const navigation = useNavigation();
 
   const _editor = createRef();
 
   const [key, setKey] = useState(1);
-
-  const getAllDepartments = async () => {
-    try {
-      const response = await getDepsSv();
-      const retDepartments = transformDepartments(response.departments);
-      setDepData(retDepartments);
-    } catch (error) {
-      console.log("getAllDepartments", error);
-    }
-  };
-
-  const getAllFields = async () => {
-    if (!chosenDep) {
-      return;
-    }
-    try {
-      const response = await getDepFieldsSv(chosenDep);
-      const retFields = transformsFields(response.fields);
-      setFieldData(retFields);
-    } catch (error) {
-      console.log("getAllFields", error);
-    }
-  };
-
-  useEffect(() => {
-    getAllDepartments();
-  }, []);
-
-  useEffect(() => {
-    getAllFields();
-  }, [chosenDep]);
 
   const handleHtmlChange = (data) => {
     setQuestionData((prev) => ({ ...prev, content: data.html }));
   };
 
   const handleDepSelect = (value) => {
-    console.log("handleDepSelect", value);
-    setFieldData([]);
-    setQuestionData((prev) => ({ ...prev, fieldId: "" }));
-    setChosenDep(value === "null" ? null : value);
+    console.log(value);
+    setSelectedDep(value === "null" ? null : value);
   };
 
   const handleFieldSelect = (value) => {
-    console.log("handleFieldSelect", value);
-    setQuestionData((prev) => ({ ...prev, fieldId: value }));
+    console.log(value);
+    setSelectedField(value === "null" ? null : value);
   };
 
   const handleTitleChange = (value) => {
@@ -95,16 +71,14 @@ const CreateQuestionForm = () => {
       questionData.content,
       "questionData.title",
       questionData.title,
-      "chosenDep",
-      chosenDep,
       "fieldId",
-      questionData.fieldId
+      selectedField
     );
     if (
       !questionData.content ||
       !questionData.title ||
-      !chosenDep ||
-      !questionData.fieldId
+      !selectedDep ||
+      !selectedField
     ) {
       Alert.alert(
         "Vui lòng chọn khoa và lĩnh vực, đồng thời nhập đầy đủ Tiêu đề và nội dung câu hhỏi"
@@ -115,21 +89,23 @@ const CreateQuestionForm = () => {
   };
 
   const handleCreateQuestion = async () => {
+    console.log(connected);
     if (!connected || !submitValidate()) {
       return;
     }
-    const temp = { ...questionData, departmentId: chosenDep };
-    console.log("handleCreateQuestion", temp);
-    // const submitData = new FormData();
-    // Object.entries(temp).map(([key, value]) => {
-    //   submitData.append(key, value);
-    // });
+    const temp = {
+      ...questionData,
+      departmentId: selectedDep,
+      fieldId: selectedField,
+    };
     try {
-      const response = await createQuestion(temp);
-      console.log(temp);
-      Alert.alert("Đặt câu hỏi thành công");
-      setQuestionData(initQuestionData);
-      _editor.setContents([{ insert: "" }]);
+      const response = await authorSocket.emitWithAck("question:create", temp);
+      if (response.success) {
+        Alert.alert("Đặt câu hỏi thành công");
+        setQuestionData((prev) => ({ ...prev, title: "", content: "" }));
+        navigation.navigate("AppHome")
+        _editor.current.setContents([{ insert: "\n" }]);
+      }
     } catch (error) {
       console.log("handleCreateQuestion", error);
     }
@@ -141,7 +117,7 @@ const CreateQuestionForm = () => {
         <Text style={style.label}>Khoa:</Text>
         <MySelect
           width={"70%"}
-          data={depData}
+          data={deps}
           onChange={handleDepSelect}
           placeholder={"Chọn khoa"}
         />
@@ -150,7 +126,7 @@ const CreateQuestionForm = () => {
         <Text style={style.label}>Lĩnh vực:</Text>
         <MySelect
           width={"70%"}
-          data={fieldData}
+          data={fields}
           onChange={handleFieldSelect}
           placeholder={"Chọn lĩnh vực"}
           defaultOption={
@@ -172,10 +148,15 @@ const CreateQuestionForm = () => {
         />
       </View>
       <View style={style.box}>
-        <QuillEditor
+        <MyRichText
+          // minHeight={}
+          editorRef={_editor}
+          setValue={handleHtmlChange}
+        />
+        {/* <QuillEditor
           style={style.editor}
           ref={_editor}
-          initialHtml=""
+          // initialHtml=""
           onHtmlChange={handleHtmlChange}
           quill={{
             placeholder: "Nhập nội dung câu hỏi",
@@ -183,7 +164,7 @@ const CreateQuestionForm = () => {
               toolbar: false,
             },
           }}
-        />
+        /> */}
       </View>
       <MyButton onPress={handleCreateQuestion} title={"Đặt câu hỏi"} />
     </View>

@@ -68,8 +68,9 @@ export const AddFaqModal = () => {
       // console.log(response);
       alert(response?.message || 'Thêm tin tức thành công');
       setFaqData(initFaqData);
-      _editor.setContents([{ insert: '' }]);
       alert(response?.message || 'Thêm tin tức thành công');
+      // _editor.current.setContents([{ insert: '' }]);
+      setShowAddFaqModal(false)
     } catch (error) {
       console.log('AddFaq', error);
       alert(error?.message || 'Lỗi khi thêm tin tức');
@@ -121,7 +122,7 @@ export const AddFaqModal = () => {
           </View>
         </View>
       </View>
-      <MyButton style={{ marginTop: 8 }} onPress={AddFaq} />
+      <MyButton style={{ marginTop: 8 }} onPress={AddFaq} buttonText={"Thêm"}/>
     </ModalLayout>
   );
 };

@@ -15,6 +15,7 @@ export const CounsellorConversationProvider = ({ children }) => {
     try {
       const response = await getConversationsSv();
       setConversations(response.conversations);
+      console.log(response);
     } catch (error) {
       console.log('getConversation', error);
     }

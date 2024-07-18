@@ -92,7 +92,7 @@ const UserProfile = ({ name, avatar, onProfile, onLogout }) => (
       <MyIcon name={'user'} iconPackage="Feather" size={30} color={'#fff'} />
       <Text style={styles.buttonText}>Xem thông tin cá nhân</Text>
     </TouchableOpacity>
-    <TouchableOpacity
+    {/* <TouchableOpacity
       activeOpacity={0.6}
       style={styles.button}
       onPress={() => router.push(paths.counsellor.conversations)}
@@ -104,7 +104,7 @@ const UserProfile = ({ name, avatar, onProfile, onLogout }) => (
         color={'#fff'}
       />
       <Text style={styles.buttonText}>Tin nhắn</Text>
-    </TouchableOpacity>
+    </TouchableOpacity> */}
     <TouchableOpacity
       activeOpacity={0.6}
       style={[styles.button]}

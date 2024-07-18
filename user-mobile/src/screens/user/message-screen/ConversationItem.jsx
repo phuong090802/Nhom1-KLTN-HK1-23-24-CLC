@@ -13,11 +13,16 @@ import { DataContext } from "../../../store/Store";
 import { colors, fonts } from "../../../../constant";
 import { MessageScreenContext } from "./MessageScreenStore";
 import { useNavigation } from "@react-navigation/native";
+import { truncateHTML } from "../../../util/convert.util";
 
 export const ConversationItem = ({ data }) => {
   const { width } = useWindowDimensions();
 
-  const { setSelectedConversationId } = useContext(DataContext);
+  const {
+    setSelectedConversationId,
+    selectedConversation,
+    setSelectedConversation,
+  } = useContext(DataContext);
 
   const { user } = useContext(DataContext);
 
@@ -29,6 +34,7 @@ export const ConversationItem = ({ data }) => {
       activeOpacity={0.6}
       onPress={() => {
         setSelectedConversationId(data._id);
+        setSelectedConversation(data);
         navigation.navigate("DetailMessage");
       }}
     >
@@ -42,11 +48,11 @@ export const ConversationItem = ({ data }) => {
             <Text style={[styles.fontBahnschrifd, { fontSize: 16 }]}>Bạn:</Text>
           )}
           <RenderHTML
-            source={{ html: data.lastMessage?.content }}
+            source={{ html: truncateHTML(data.lastMessage?.content, 30) }}
             contentWidth={width}
             baseStyle={{
               fontFamily: fonts.BahnschriftRegular,
-              marginVertical: -12,
+              marginVertical: -0,
             }}
             systemFonts={[fonts.BahnschriftRegular]}
           />

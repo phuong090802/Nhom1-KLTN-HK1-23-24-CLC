@@ -1,29 +1,34 @@
-import Checkbox from 'expo-checkbox';
-import { getDocumentAsync } from 'expo-document-picker';
-import { createRef, useContext, useState } from 'react';
+import Checkbox from "expo-checkbox";
+import { getDocumentAsync } from "expo-document-picker";
+import { createRef, useContext, useState } from "react";
 import {
+  Alert,
   Modal,
   StyleSheet,
   Text,
   ToastAndroid,
   TouchableOpacity,
   View,
-} from 'react-native';
-import { colors, fonts } from '../../../../constance';
-import MyIcon from '../../../component/atomic/my-icon';
-import MyRichText from '../../../component/atomic/my-rich-text/MyRichText';
-import { useAuthSocket } from '../../../hooks/useAuthSocket';
-import { AppContext } from '../../AppProvider';
-import { CounsellorQuestionContext } from './CounsellorQuestionProvider';
+} from "react-native";
+import { colors, fonts } from "../../../../constance";
+import MyIcon from "../../../component/atomic/my-icon";
+import MyRichText from "../../../component/atomic/my-rich-text/MyRichText";
+import { useAuthSocket } from "../../../hooks/useAuthSocket";
+import { AppContext } from "../../AppProvider";
+import { CounsellorQuestionContext } from "./CounsellorQuestionProvider";
 
 export const AnswerQuestionModal = () => {
-  const { showAnswerModal, setShowAnswerModal, selectedQuestion } = useContext(
-    CounsellorQuestionContext
-  );
+  const {
+    showAnswerModal,
+    setShowAnswerModal,
+    selectedQuestion,
+    getQuestions,
+    setShowDetailModal,
+  } = useContext(CounsellorQuestionContext);
   const { authSocket } = useAuthSocket();
   const initAnswerData = {
-    questionId: '',
-    content: '',
+    questionId: "",
+    content: "",
     isApprovalRequest: false,
   };
   const { user } = useContext(AppContext);
@@ -32,7 +37,7 @@ export const AnswerQuestionModal = () => {
 
   const answerQuestion = async () => {
     if (!authSocket) return;
-    console.log('answerQuestion');
+    console.log("answerQuestion");
     const submitFile = file && {
       buffer: file || null,
       size: file ? file.size : null,
@@ -45,18 +50,18 @@ export const AnswerQuestionModal = () => {
       //   questionId: selectedQuestion._id,
       //   file: submitFile,
       // });
-      const response = await authSocket.emitWithAck('answer:create', {
+      const response = await authSocket.emitWithAck("answer:create", {
         ...answerData,
         questionId: selectedQuestion._id,
         file: submitFile,
       });
-      ToastAndroid.show(
-        response.message || 'Phản hôi câu hỏi thành công',
-        ToastAndroid.SHORT
-      );
-      console.log('answerQuestion', response);
+      Alert.alert(response.message || "Phản hôi câu hỏi thành công");
+      setShowAnswerModal(false);
+      setShowDetailModal(false);
+      _editor.current.setContents([{ insert: "\n" }]);
+      getQuestions();
     } catch (error) {
-      console.log('answerQuestion', error);
+      console.log("answerQuestion", error);
     }
   };
 
@@ -82,8 +87,8 @@ export const AnswerQuestionModal = () => {
         <View style={styles.content}>
           <View
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
+              flexDirection: "row",
+              justifyContent: "space-between",
               borderBottomWidth: 0.5,
               paddingBottom: 8,
               paddingHorizontal: 16,
@@ -97,7 +102,7 @@ export const AnswerQuestionModal = () => {
             >
               <MyIcon
                 iconPackage="Fontisto"
-                name={'close'}
+                name={"close"}
                 size={32}
                 color={colors.black75}
               />
@@ -108,13 +113,13 @@ export const AnswerQuestionModal = () => {
 
             <View
               style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
+                flexDirection: "row",
+                justifyContent: "space-between",
                 borderTopWidth: 0.2,
               }}
             >
               <Text numberOfLines={1} style={styles.fileNameText}>
-                {file?.name || 'Chọn File'}
+                {file?.name || "Chọn File"}
               </Text>
               <TouchableOpacity
                 style={styles.fileButton}
@@ -122,7 +127,7 @@ export const AnswerQuestionModal = () => {
               >
                 <MyIcon
                   iconPackage="MaterialIcons"
-                  name={!!file ? 'delete-outline' : 'attach-file'}
+                  name={!!file ? "delete-outline" : "attach-file"}
                   color={colors.primary}
                   size={32}
                 />
@@ -130,11 +135,11 @@ export const AnswerQuestionModal = () => {
             </View>
           </View>
 
-          {user.role === 'COUNSELLOR' && (
+          {user.role === "COUNSELLOR" && (
             <View
               style={{
-                flexDirection: 'row-reverse',
-                alignItems: 'center',
+                flexDirection: "row-reverse",
+                alignItems: "center",
                 gap: 8,
                 padding: 8,
               }}
@@ -154,8 +159,8 @@ export const AnswerQuestionModal = () => {
 
           <View
             style={{
-              width: '100%',
-              flexDirection: 'row-reverse',
+              width: "100%",
+              flexDirection: "row-reverse",
               gap: 8,
               padding: 8,
             }}
@@ -179,16 +184,16 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black10,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   richTextContainer: {
     paddingVertical: 0,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -202,32 +207,32 @@ const styles = StyleSheet.create({
   },
   fileButton: {
     // backgroundColor: colors.error,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "flex-end",
     borderRadius: 8,
     paddingHorizontal: 4,
     paddingVertical: 4,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   fileNameText: {
-    textAlignVertical: 'center',
+    textAlignVertical: "center",
     fontFamily: fonts.BahnschriftRegular,
     fontSize: 16,
     paddingHorizontal: 8,
-    maxWidth: '80%',
+    maxWidth: "80%",
   },
   content: {
     backgroundColor: colors.white,
     paddingTop: 16,
     borderRadius: 8,
-    width: '80%',
-    overflow: 'hidden',
-    shadowColor: '#000',
+    width: "80%",
+    overflow: "hidden",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -243,8 +248,8 @@ const styles = StyleSheet.create({
   },
   option: {
     paddingVertical: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     fontFamily: fonts.BahnschriftRegular,
@@ -252,8 +257,8 @@ const styles = StyleSheet.create({
     color: colors.black75,
   },
   button: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,
