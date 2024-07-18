@@ -589,6 +589,11 @@
       "code": "2114",
       "message": "Giao câu hỏi cho tư vấn viên thành công",
       "detail": ""
+    },
+    {
+      "code": "2115",
+      "message": "Đánh giá câu trả lời thành công",
+      "detail": ""
     }
   ]
 }

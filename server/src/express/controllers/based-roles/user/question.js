@@ -107,3 +107,22 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
     code: 2050,
   });
 });
+
+// Endpoint: /api/user/questions/:id/rating
+// Method: GET
+// Description: Người dùng đánh giá câu trả lời
+export const handleRatingQuestion = catchAsyncErrors(
+  async (req, res, next) => {
+    const question = req.foundQuestion;
+    const { rating } = req.body;
+
+    question.rating = rating;
+    await question.save();
+
+    res.json({
+      success: true,
+      message: 'Đánh giá câu trả lời thành công',
+      code: 2115,
+    });
+  }
+);

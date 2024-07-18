@@ -2,7 +2,7 @@ import { OVERDUE } from '../../../../constants/reminder.js';
 import Field from '../../../../models/field.js';
 import Question from '../../../../models/question.js';
 import User from '../../../../models/user.js';
-import { handleCounsellorAndAssignQuestionUnanswered } from '../../../../util/assign-work/counsellor.js';
+import { handleCountAssignQuestionUnanswered } from '../../../../util/assign-work/counsellor.js';
 import handlePagination, {
   handleReminderPagination,
 } from '../../../../util/db/pagination.js';
@@ -39,7 +39,8 @@ export const handleGetCounsellorsHaveOverDueQuestion = catchAsyncErrors(
       const totalOverDueQuestion = await Question.countDocuments({
         createdAt: { $lte: new Date(Date.now() - OVERDUE) },
         department,
-        field: { $in: u.counsellor.fields },
+        assignTo: u._id,
+        status: 'unanswered',
       });
       if (totalOverDueQuestion > 0) {
         return {
@@ -279,8 +280,16 @@ export const handleGetCounsellorsForAssignWork = catchAsyncErrors(
       isEnabled: true,
     });
 
-    const counsellors = await handleCounsellorAndAssignQuestionUnanswered(
-      queryTransform.query
+    const query = User.find().select('fullName avatar.url');
+    const queryAPI = new QueryAPI(query, queryTransform.query)
+      .search()
+      .filter()
+      .sort();
+
+    const retCounsellors = await queryAPI.query;
+
+    const counsellors = await handleCountAssignQuestionUnanswered(
+      retCounsellors
     );
 
     res.json({

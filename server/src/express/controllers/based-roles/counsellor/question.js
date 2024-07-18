@@ -11,11 +11,11 @@ import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 // Description: Lấy danh sách các câu hỏi chưa được trả lời (lọc, tìm kiếm, phân trang, sắp xếp)
 export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
-  const { department, fields } = user.counsellor;
+  const { department } = user.counsellor;
   const query = Question.find()
     .populate({ path: 'user', select: '-_id fullName avatar.url' })
     .populate({ path: 'field', select: '-_id fieldName' })
-    .select('title content file createdAt views user field');
+    .select('title content file createdAt views user field fieldType');
   // không sử dụng learn vì method trong được tạo schema
   // .lean()
   const queryTransform = new QueryTransform(req.query).applyFilters({

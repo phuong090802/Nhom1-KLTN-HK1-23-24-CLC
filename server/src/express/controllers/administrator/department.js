@@ -24,6 +24,7 @@ export const handleGetDepartmentsOverDue = catchAsyncErrors(
       const totalOverDueQuestion = await Question.countDocuments({
         createdAt: { $lte: new Date(Date.now() - OVERDUE) },
         department: department._id,
+        status: 'unanswered',
       });
       if (totalOverDueQuestion > 0) {
         delete department.lastRemindedAt;

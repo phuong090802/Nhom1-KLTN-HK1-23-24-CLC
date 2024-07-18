@@ -5,6 +5,7 @@ import User from '../../../../models/user.js';
 import sendNotification from '../../../../util/send-notification.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
 import { handleAuthorization } from '../../../middlewares/event/auth.js';
+import { handleCheckCounsellorBelongDepartment } from '../../../middlewares/event/validate/based-roles/counsellor.js';
 import { handleCheckQuestionAndStatus } from '../../../middlewares/event/validate/combine/question.js';
 
 // namespace: /auth

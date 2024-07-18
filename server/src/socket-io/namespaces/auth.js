@@ -123,7 +123,7 @@ export default function auth(io) {
 
       // Trưởng khoa gán câu hỏi cho tư vấn viên và thông báo cho tư vấn viên
       socket.on(
-        'counsellor:counsellor:assign-work:create',
+        'counsellor:assign-work:create',
         (payload, callback) =>
           counsellorController.handleAssignQuestionToCounsellor(
             io,

@@ -647,6 +647,16 @@
       "code": "4127",
       "message": "Tư vấn viên không thuộc khoa",
       "detail": ""
+    },
+    {
+      "code": "4128",
+      "message": "Bạn không thể đánh giá câu trả lời",
+      "detail": ""
+    },
+    {
+      "code": "4129",
+      "message": "Giá trị đánh giá không hợp lệ",
+      "detail": ""
     }
   ]
 }
