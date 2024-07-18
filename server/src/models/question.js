@@ -118,6 +118,7 @@ questionSchema.methods.getQuestionInformation = function (
       return {
         ...baseQuestion,
         answer,
+        rating: this.rating,
       };
     case questionAction.HOME_GET_ALL_QUESTIONS:
       const convertedUserIdInLikes = this.likes.map((userId) =>
