@@ -113,7 +113,7 @@ export const handleValidateEmail = catchAsyncErrors(async (req, res, next) => {
     });
     res.json({
       success: true,
-      message: `Đã gửi email đến: ${user.email}`,
+      message: `Đã gửi email đến: ${email}`,
       code: 2034,
     });
   } catch (error) {
