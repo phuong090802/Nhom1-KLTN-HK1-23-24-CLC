@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.BahnschriftBold,
     color: colors.black75,
+    width: 235
   },
   header: {
     flexDirection: 'row',

@@ -1,23 +1,26 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import Octicon from '../../../atom/octicon';
-import { colors, fonts } from '../../../../constant';
-import user_avatar from '../../../../assets/images/user_avatar.jpg';
+import Octicon from "../../../atom/octicon";
+import { colors, fonts } from "../../../../constant";
+import user_avatar from "../../../../assets/images/user_avatar.jpg";
+import RenderHTML, { useContentWidth } from "react-native-render-html";
 
 const AnswerBox = ({ data }) => {
+  const width = useContentWidth();
+
   return (
     <View style={dropdownContentStyles.container}>
-      <Octicon name={'comment-discussion'} size={24} color={colors.primary} />
-      <View style={{ width: '85%' }}>
+      <Octicon name={"comment-discussion"} size={24} color={colors.primary} />
+      <View style={{ width: "85%" }}>
         <Text style={dropdownContentStyles.title}>Phản hồi</Text>
-        <Text style={dropdownContentStyles.content}>{data.content}</Text>
+        <RenderHTML source={{ html: data?.content }} contentWidth={width} />
         <View style={dropdownContentStyles.authorContainer}>
           <Text style={styles.text}>Phản hồi từ</Text>
           <Image
             source={user_avatar}
             style={dropdownContentStyles.authorImage}
           />
-          <Text style={styles.text}>{data.user.fullName}</Text>
+          <Text style={styles.text}>{data?.user.fullName }</Text>
         </View>
       </View>
     </View>
@@ -37,8 +40,8 @@ const dropdownContentStyles = StyleSheet.create({
     paddingHorizontal: 16,
     borderTopWidth: 2,
     borderTopColor: colors.black10,
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     gap: 8,
   },
   title: {
@@ -48,8 +51,8 @@ const dropdownContentStyles = StyleSheet.create({
   content: {
     fontSize: 16,
     fontFamily: fonts.BahnschriftRegular,
-    width: '95%',
-    textAlign: 'justify',
+    width: "95%",
+    textAlign: "justify",
     color: colors.black75,
   },
   authorImage: {
@@ -60,10 +63,10 @@ const dropdownContentStyles = StyleSheet.create({
     borderColor: colors.primary,
   },
   authorContainer: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     gap: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 

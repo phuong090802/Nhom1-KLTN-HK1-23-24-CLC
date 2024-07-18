@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { colors, fonts } from '../../../../../constant';
+import { colors, fonts } from "../../../../../constant";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,9 +13,9 @@ const styles = StyleSheet.create({
 
 const dropdownItemStyles = StyleSheet.create({
   container: {
-    display: 'flex',
-    backgroundColor: '#fff',
-    flexDirection: 'column',
+    display: "flex",
+    backgroundColor: "#fff",
+    flexDirection: "column",
     paddingVertical: 16,
     borderWidth: 0.5,
     borderColor: colors.black10,
@@ -23,15 +23,15 @@ const dropdownItemStyles = StyleSheet.create({
     borderRadius: 16,
   },
   header: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 16,
-    width: '100%',
+    width: "100%",
   },
   questionInfor: {
-    width: '85%',
+    width: "85%",
   },
   title: {
     fontSize: 18,
@@ -40,9 +40,9 @@ const dropdownItemStyles = StyleSheet.create({
   },
   inforContainer: {
     marginTop: 4,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
     gap: 4,
   },
   authorImage: {
@@ -59,9 +59,9 @@ const dropdownItemStyles = StyleSheet.create({
   icon: {},
   dropDownContainer: {
     paddingTop: 8,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
-  open: { height: 'auto' },
+  open: { height: "auto" },
   close: { height: 0 },
 });
 
@@ -71,16 +71,16 @@ const dropdownContentStyles = StyleSheet.create({
     paddingHorizontal: 16,
     borderTopWidth: 2,
     borderTopColor: colors.black10,
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     gap: 8,
   },
   title: { fontSize: 16, fontFamily: fonts.BahnschriftBold },
   content: {
     fontSize: 16,
     fontFamily: fonts.BahnschriftRegular,
-    width: '95%',
-    textAlign: 'justify',
+    width: "95%",
+    textAlign: "justify",
     color: colors.black75,
   },
   authorImage: {
@@ -91,16 +91,16 @@ const dropdownContentStyles = StyleSheet.create({
     borderColor: colors.primary,
   },
   authorContainer: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     gap: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 
 const initParams = {
-  search: ['title', 'content'],
-  keyword: '',
+  search: ["title", "content"],
+  keyword: "",
   skip: 0,
   size: 8,
   filter: {},
@@ -109,4 +109,16 @@ const initParams = {
     createdAt: 1,
   },
 };
-export { dropdownContentStyles, dropdownItemStyles, initParams, styles };
+
+const modalName = {
+  search: "searchModal",
+  sort: "sortModal",
+};
+
+export {
+  dropdownContentStyles,
+  dropdownItemStyles,
+  initParams,
+  styles,
+  modalName,
+};

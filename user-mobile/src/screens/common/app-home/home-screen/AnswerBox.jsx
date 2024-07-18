@@ -1,17 +1,20 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import user_avatar from '../../../../../assets/images/user_avatar.jpg';
-import { colors, fonts } from '../../../../../constant';
-import Octicon from '../../../../atom/octicon';
-import { dropdownContentStyles } from './const';
+import user_avatar from "../../../../../assets/images/user_avatar.jpg";
+import { colors, fonts } from "../../../../../constant";
+import Octicon from "../../../../atom/octicon";
+import { dropdownContentStyles } from "./const";
+import RenderHTML, { useContentWidth } from "react-native-render-html";
 
 const AnswerBox = ({ data }) => {
+  const width = useContentWidth();
+
   return (
     <View style={dropdownContentStyles.container}>
-      <Octicon name={'comment-discussion'} size={24} color={colors.primary} />
-      <View style={{ width: '85%' }}>
+      <Octicon name={"comment-discussion"} size={24} color={colors.primary} />
+      <View style={{ width: "85%" }}>
         <Text style={dropdownContentStyles.title}>Phản hồi</Text>
-        <Text style={dropdownContentStyles.content}>{data.content}</Text>
+        <RenderHTML source={{ html: data.content }} contentWidth={width} />
         <View style={dropdownContentStyles.authorContainer}>
           <Text style={styles.text}>Phản hồi từ</Text>
           <Image

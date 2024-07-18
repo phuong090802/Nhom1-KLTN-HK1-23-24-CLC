@@ -12,7 +12,7 @@ const MenuScreen = () => {
 
   const { user } = useContext(DataContext);
 
-  console.log('MenuScreen', user);
+  // console.log('MenuScreen', user);
 
   return (
     <Layout>

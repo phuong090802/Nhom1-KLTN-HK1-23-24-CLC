@@ -2,14 +2,20 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, fonts } from '../../../../../constant';
 import Octicon from '../../../../atom/octicon';
+import RenderHTML, { useContentWidth } from "react-native-render-html";
+
 
 const QuestionBox = ({ content }) => {
+
+  const width = useContentWidth();
+
+
   return (
     <View style={dropdownContentStyles.container}>
       <Octicon name={'comment'} size={24} color={colors.primary} />
       <View style={{ width: '85%' }}>
         <Text style={dropdownContentStyles.title}>Câu hỏi</Text>
-        <Text style={dropdownContentStyles.content}>{content}</Text>
+        <RenderHTML source={{ html: content }} contentWidth={width} />
       </View>
     </View>
   );

@@ -1,29 +1,17 @@
-import { createContext, useEffect, useState } from 'react';
-import { getMyQuestionsSv } from '../../../services/guest/question.sv';
+import { createContext, useEffect, useState } from "react";
+import { getMyQuestionsSv } from "../../../services/guest/question.sv";
+import { initParams } from "./const";
 
 export const AskedQuestionContext = createContext({
-  selected: String | Number,
-  setSelected: Function,
+  params: {},
+  setParams: () => {},
 });
 
 export const AskedQuestionStore = ({ children }) => {
-  const [selected, setSelected] = useState(-1);
+  const [params, setParams] = useState(initParams);
 
-  const getMyQuestions = async () => {
-    console.log('getMyQuestions');
-    try {
-      const response = await getMyQuestionsSv();
-      console.log('getMyQuestions', response);
-    } catch (error) {
-      console.log('getMyQuestions', error);
-    }
-  };
-
-  useEffect(() => {
-    getMyQuestions();
-  }, []);
   return (
-    <AskedQuestionContext.Provider value={{ selected, setSelected }}>
+    <AskedQuestionContext.Provider value={{ params, setParams }}>
       {children}
     </AskedQuestionContext.Provider>
   );

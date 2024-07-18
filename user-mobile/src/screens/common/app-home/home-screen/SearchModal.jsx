@@ -1,110 +1,113 @@
-import { useCallback, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useCallback, useContext, useState } from "react";
+import { StyleSheet, View } from "react-native";
 
-import { colors } from '../../../../../constant';
-import MyButton from '../../../../atom/my-button';
-import IconInput from '../../../../molecule/icon-input';
-import MySelect from '../../../../molecule/my-select';
-import ModalLayout from '../../../../template/modal-layout/ModalLayout';
-import { HomeContext } from './HomeStore';
+import { colors } from "../../../../../constant";
+import MyButton from "../../../../atom/my-button";
+import IconInput from "../../../../molecule/icon-input";
+import MySelect from "../../../../molecule/my-select";
+import ModalLayout from "../../../../template/modal-layout/ModalLayout";
+import { HomeContext } from "./HomeStore";
+import { modalName } from "./const";
+import useDepartmentField from "../../../../hooks/useDepartmentField";
 
 const SearchModal = () => {
   const {
-    depData,
-    fieldData,
     setParams,
-    searchVisible,
-    setSearchVisible,
     params,
-    chosenDep,
-    setChosenDep,
-    chosenField,
-    setChosenField,
     setQuestions,
+    showingModal,
+    setShowingModal,
   } = useContext(HomeContext);
 
+  const [keyword, setKeyword] = useState("");
+
+  const {
+    deps,
+    selectedDep,
+    setSelectedDep,
+    fields,
+    selectedField,
+    setSelectedField,
+  } = useDepartmentField();
+
   const onClose = useCallback(() => {
-    setSearchVisible(false);
-  }, []);
+    setShowingModal((prev) => {
+      return prev.filter((modal) => modal !== modalName.search);
+    });
+  }, [setShowingModal]);
 
-  const handleDepSelect = useCallback(
-    (value) => {
-      setChosenDep(value === 'null' ? null : value);
-    },
-    [setChosenDep]
-  );
+  const handleDepSelect = (value) => {
+    setSelectedDep(value === "null" ? null : value);
+  };
 
-  const handleFieldSelect = useCallback(
-    (value) => {
-      setChosenField(value === 'null' ? null : value);
-    },
-    [setChosenField]
-  );
+  const handleFieldSelect = (value) => {
+    setSelectedField(value === "null" ? null : value);
+  };
 
   const handleSearchChange = useCallback((value) => {
-    setParams((prev) => ({ ...prev, keyword: value }));
+    setKeyword(value);
   }, []);
 
   const searchHandle = () => {
     let tempFilter = { ...params.filter };
-    console.log('searchHandle', tempFilter);
-    if (!chosenDep) tempFilter = {};
+    console.log("searchHandle", tempFilter);
+    if (!selectedDep) tempFilter = {};
     else {
-      tempFilter.department = chosenDep;
-      if (!chosenField) delete tempFilter.fieldId;
-      else tempFilter.field = chosenField;
+      tempFilter.department = selectedDep;
+      if (!selectedField) delete tempFilter.fieldId;
+      else tempFilter.field = selectedField;
     }
-    setParams((prev) => ({ ...prev, filter: tempFilter, page: 1 }));
+    setParams((prev) => ({ ...prev, filter: tempFilter, skip: 0, keyword }));
   };
 
   const submit = useCallback(() => {
     setQuestions([]);
     searchHandle();
-    setSearchVisible(false);
+    onClose();
   }, [searchHandle]);
 
   return (
     <ModalLayout
-      visible={searchVisible}
+      visible={showingModal.includes(modalName.search)}
       onClose={onClose}
-      title={'Tìm kiếm câu hỏi'}
+      title={"Tìm kiếm câu hỏi"}
     >
       <View style={styles.rootContainer}>
         <IconInput
-          iconPackage={'Ionicons'}
-          icon={'search'}
-          placeholder={'Từ khóa'}
-          value={params.keyword || ''}
+          iconPackage={"Ionicons"}
+          icon={"search"}
+          placeholder={"Từ khóa"}
+          value={params.keyword || ""}
           onChange={handleSearchChange}
         />
         <MySelect
-          data={depData || []}
+          data={deps || []}
           onChange={handleDepSelect}
-          iconPackage={'Octicons'}
-          iconName={'organization'}
+          iconPackage={"Octicons"}
+          iconName={"organization"}
           iconColor={colors.black75}
-          placeholder={'Chọn khoa'}
+          placeholder={"Chọn khoa"}
           defaultOption={
-            chosenDep
-              ? depData.find((dep) => dep.key === chosenDep)
-              : { key: null, value: 'Chọn khoa' }
+            selectedDep
+              ? deps.find((dep) => dep.key === selectedDep)
+              : { key: null, value: "Chọn khoa" }
           }
         />
         <MySelect
-          data={fieldData || []}
+          data={fields || []}
           onChange={handleFieldSelect}
-          iconPackage={'Octicons'}
-          iconName={'stack'}
+          iconPackage={"Octicons"}
+          iconName={"stack"}
           iconColor={colors.black75}
-          placeholder={'Chọn lĩnh vực'}
+          placeholder={"Chọn lĩnh vực"}
           defaultOption={
-            chosenField && fieldData
-              ? fieldData.find((field) => field.key === chosenField)
-              : { key: null, value: 'Chọn lĩnh vực' }
+            selectedField && fields
+              ? fields.find((field) => field.key === selectedField)
+              : { key: null, value: "Chọn lĩnh vực" }
           }
         />
         <View style={{}}>
-          <MyButton title={'Tìm kiếm'} onPress={submit} />
+          <MyButton title={"Tìm kiếm"} onPress={submit} />
         </View>
       </View>
     </ModalLayout>

@@ -50,7 +50,7 @@ export const useAuthorSocketHook = () => {
       authorSocket.on('connect', handleConnect);
       authorSocket.on('disconnect', handleDisconnect);
       authorSocket.on('connect_error', (error) =>
-        console.log('connect_error', error.data)
+        console.log('connect_error', error)
       );
 
       return () => {

@@ -1,12 +1,15 @@
-import { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '../../../../constant';
-import Octicon from '../../../atom/octicon';
-import { ItemLayout } from '../../../template/item-layout/ItemLayout';
-import { FaqsStoreContext } from './FaqsScreenStore';
+import { useContext } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { colors, fonts } from "../../../../constant";
+import Octicon from "../../../atom/octicon";
+import { ItemLayout } from "../../../template/item-layout/ItemLayout";
+import { FaqsStoreContext } from "./FaqsScreenStore";
+import RenderHTML, { useContentWidth } from "react-native-render-html";
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(FaqsStoreContext);
+
+  const width = useContentWidth();
 
   const handleExpand = () => {
     if (selected === data._id) {
@@ -24,10 +27,10 @@ export const Item = ({ data }) => {
       infor={data.department}
     >
       <View style={styles.container}>
-        <Octicon name={'comment-discussion'} size={24} color={colors.primary} />
-        <View style={{ width: '85%' }}>
+        <Octicon name={"comment-discussion"} size={24} color={colors.primary} />
+        <View style={{ width: "85%" }}>
           <Text style={styles.title}>Phản hồi</Text>
-          <Text style={styles.text}>{data.answer}</Text>
+          <RenderHTML source={{ html: data.answer }} contentWidth={width} />
         </View>
       </View>
     </ItemLayout>
@@ -37,7 +40,7 @@ export const Item = ({ data }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 8,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
   },
   title: {

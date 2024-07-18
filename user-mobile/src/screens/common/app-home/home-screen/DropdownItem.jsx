@@ -35,10 +35,10 @@ const DropdownItem = ({ data, isOpen, onSelect }) => {
                 <Text style={dropdownItemStyles.inforText}>
                   {dateTimeToDate(data.createdAt)}
                 </Text>
-                <Octicon name={'eye'} size={16} />
+                {/* <Octicon name={'eye'} size={16} />
                 <Text style={dropdownItemStyles.inforText}>
                   {data.views || '0'}
-                </Text>
+                </Text> */}
               </View>
             </View>
             <View style={dropdownItemStyles.icon}>

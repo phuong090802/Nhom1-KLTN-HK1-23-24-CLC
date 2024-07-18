@@ -1,19 +1,16 @@
-import React, { useContext, useMemo } from 'react';
-import {
-  Image,
-  Linking,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { useContext, useMemo } from "react";
+import { Image, Linking, StyleSheet, Text, View } from "react-native";
 
-import { colors, fonts } from '../../../../constant';
-import { ItemLayout } from '../../../template/item-layout/ItemLayout';
-import { convertDateTime } from '../../../util/convert.util';
-import { NewsScreenContext } from './NewsScreenStore';
+import { colors, fonts } from "../../../../constant";
+import { ItemLayout } from "../../../template/item-layout/ItemLayout";
+import { convertDateTime } from "../../../util/convert.util";
+import { NewsScreenContext } from "./NewsScreenStore";
+import RenderHTML, { useContentWidth } from "react-native-render-html";
 
 export const Item = ({ data }) => {
   const { selected, setSelected } = useContext(NewsScreenContext);
+
+  const width = useContentWidth();
 
   const handleExpand = () => {
     if (selected === data._id) setSelected(-1);
@@ -22,17 +19,17 @@ export const Item = ({ data }) => {
 
   const openLink = () => {
     Linking.openURL(data.file).catch((err) =>
-      console.error('Không thể mở liên kết:', err)
+      console.error("Không thể mở liên kết:", err)
     );
   };
 
   const fileComponent = useMemo(() => {
     const returnComponent = (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: "row" }}>
         {/* <Text>Xem thông tin chi tiết: </Text> */}
         <Image
           source={{ uri: data.file }}
-          style={{ flex: 1, resizeMode: 'contain', width: null, height: 150 }}
+          style={{ flex: 1, resizeMode: "contain", width: null, height: 150 }}
         />
         {/* <TouchableOpacity onPress={openLink}>
           <Text
@@ -53,7 +50,7 @@ export const Item = ({ data }) => {
       onExpand={handleExpand}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>{data.content}</Text>
+        <RenderHTML source={{ html: data.content }} contentWidth={width} />
         {!!data.file && fileComponent}
       </View>
     </ItemLayout>

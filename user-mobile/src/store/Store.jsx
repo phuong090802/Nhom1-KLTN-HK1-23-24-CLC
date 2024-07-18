@@ -1,11 +1,13 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
-import { initUSer } from './const';
+import { initUSer } from "./const";
 
 export const DataContext = createContext();
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(initUSer);
+
+  const [newNoti, setNewNoti] = useState(false);
 
   const clearUserData = () => {
     setUser(initUSer);
@@ -15,6 +17,8 @@ const Store = ({ children }) => {
     user,
     setUser,
     clearUserData,
+    newNoti,
+    setNewNoti,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
