@@ -1,9 +1,10 @@
-import clsx from 'clsx';
-import { MessageCircle } from 'lucide-react';
-import { useCallback, useContext } from 'react';
-import default_avatar from '../../assets/image/default_avatar.png';
-import { DataContext } from '../../store';
-import { AppLayoutContext } from './AppLayoutStore';
+import clsx from "clsx";
+import { MessageCircle } from "lucide-react";
+import { useCallback, useContext } from "react";
+import default_avatar from "../../assets/image/default_avatar.png";
+import { DataContext } from "../../store";
+import { AppLayoutContext } from "./AppLayoutStore";
+import { truncateHTML } from "../../util/convert.util";
 
 export const ConversationsButton = () => {
   const {
@@ -17,9 +18,9 @@ export const ConversationsButton = () => {
   const { user, darkMode, newMessage, setNewMessage } = useContext(DataContext);
 
   const handleClick = useCallback(() => {
-    if (showingModal === 'message') setShowingModal('');
+    if (showingModal === "message") setShowingModal("");
     else {
-      setShowingModal('message');
+      setShowingModal("message");
       setNewMessage(false);
     }
   }, [setShowingModal, showingModal]);
@@ -28,7 +29,7 @@ export const ConversationsButton = () => {
     (conversation) => {
       setMessageBoxHidden(false);
       setSelectedConversation(conversation);
-      setShowingModal('');
+      setShowingModal("");
     },
     [setMessageBoxHidden, setSelectedConversation, setShowingModal]
   );
@@ -37,8 +38,8 @@ export const ConversationsButton = () => {
     <div className="relative">
       <div
         className={clsx(
-          'w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer',
-          darkMode && 'bg-white/10'
+          "w-10 h-10 flex justify-center items-center rounded-full bg-black10 cursor-pointer",
+          darkMode && "bg-white/10"
         )}
       >
         <button className="cursor-pointer relative" onClick={handleClick}>
@@ -50,8 +51,8 @@ export const ConversationsButton = () => {
       </div>
       <div
         className={clsx(
-          'w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-2 py-4 overflow-y-auto cursor-pointer',
-          showingModal !== 'message' && 'hidden'
+          "w-96 max-h-[80vh] border bg-white rounded-lg absolute z-10 -right-2 py-4 overflow-y-auto cursor-pointer",
+          showingModal !== "message" && "hidden"
         )}
       >
         <h1 className="text-2xl font-bold text-black75 mb-4 px-4">Đoạn chat</h1>
@@ -70,18 +71,20 @@ export const ConversationsButton = () => {
                 />
                 <div>
                   <p className="font-bold text-black75">
-                    {conversation?.otherUser?.fullName || 'User Name'}
+                    {conversation?.otherUser?.fullName || "User Name"}
                   </p>
-                  <div className="text-sm font-semibold text-black50 ">
+                  <div className="text-sm font-semibold text-black50">
                     {user?._id === conversation?.lastMessage?.sender && (
                       <p className="inline-block">Bạn: </p>
                     )}
                     <span
                       className="inline-block"
                       dangerouslySetInnerHTML={{
-                        __html: conversation?.lastMessage?.content,
+                        __html: truncateHTML(
+                          conversation?.lastMessage?.content, 25
+                        ),
                       }}
-                    ></span>
+                    />
                   </div>
                 </div>
               </div>

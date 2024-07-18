@@ -7,7 +7,7 @@ export const MessageScreenContext = createContext();
 export const MessageScreenStore = ({ children }) => {
   const [conversations, setConversations] = useState([]);
 
-  const [selectedConversation, setSelectedConversation] = useState(null);
+  // const [selectedConversation, setSelectedConversation] = useState(null);
 
   const getConversations = async () => {
     try {
@@ -28,8 +28,8 @@ export const MessageScreenStore = ({ children }) => {
       value={{
         conversations,
         setConversations,
-        selectedConversation,
-        setSelectedConversation,
+        // selectedConversation,
+        // setSelectedConversation,
       }}
     >
       {children}

@@ -1,39 +1,39 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 import {
   CircleHelp,
   CircleUser,
   Layers,
-  MessageCircleQuestion
-} from 'lucide-react';
-import { useContext } from 'react';
-import { colors, darkModeCss } from '../../../constance';
-import { DataContext } from '../../../store';
-import { modalName } from './const';
-import { DepheadHomeContext } from './DepheadHomeStore';
+  MessageCircleQuestion,
+} from "lucide-react";
+import { useContext } from "react";
+import { colors, darkModeCss } from "../../../constance";
+import { DataContext } from "../../../store";
+import { modalName } from "./const";
+import { DepheadHomeContext } from "./DepheadHomeStore";
 
 export const Dashboard = () => {
   const { dashboardData, fieldSatisticData, setShowingModals } =
     useContext(DepheadHomeContext);
   const { darkMode } = useContext(DataContext);
 
-  console.log(dashboardData);
-
   return (
     <div className="grid grid-cols-4 gap-4 ">
       <div
         className={clsx(
-          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
+          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
           darkMode && darkModeCss
         )}
         onClick={() => setShowingModals((prev) => [...prev, modalName.overDue])}
       >
         <CircleHelp size={24} color={colors.primary} />
-        <h1 className="font-bold text-4xl text-primary mt-2">{0}</h1>
+        <h1 className="font-bold text-4xl text-primary mt-2">
+          {dashboardData.countOfQuestions || 0}
+        </h1>
         <h1 className="text-primary">Câu hỏi</h1>
       </div>
       <div
         className={clsx(
-          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
+          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
           darkMode && darkModeCss
         )}
         onClick={() =>
@@ -48,7 +48,7 @@ export const Dashboard = () => {
       </div>
       <div
         className={clsx(
-          'shadow-lg shadow-black50 rounded-xl border py-4 px-8',
+          "shadow-lg shadow-black50 rounded-xl border py-4 px-8",
           darkMode && darkModeCss
         )}
       >
@@ -60,7 +60,7 @@ export const Dashboard = () => {
       </div>
       <div
         className={clsx(
-          'shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer',
+          "shadow-lg shadow-black50 rounded-xl border py-4 px-8 hover:bg-primary/10 cursor-pointer",
           darkMode && darkModeCss
         )}
         onClick={() =>

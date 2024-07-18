@@ -4,6 +4,7 @@ import {
   depheadGetFieldStatistic,
   depheadGetQuestionStatisticSv,
   depheadGetUserCountSv,
+  getQuestionCountSv,
 } from "../../../service/dephead/depheadStatistic.sv";
 import { getMonth } from "../../../util/convert.util";
 
@@ -60,6 +61,18 @@ export const DepheadHomeStore = ({ children }) => {
     }
   };
 
+  const getQuestionCount = async () => {
+    try {
+      const response = await getQuestionCountSv();
+      setDashboardData((prev) => ({
+        ...prev,
+        countOfQuestions: response.countOfQuestions,
+      }));
+    } catch (error) {
+      console.log("getFaqCount", error);
+    }
+  };
+
   const getQuestionStatistic = async () => {
     try {
       const response = await depheadGetQuestionStatisticSv({
@@ -101,6 +114,7 @@ export const DepheadHomeStore = ({ children }) => {
     getFaqCount();
     getQuestionStatistic();
     getFieldStatistic();
+    getQuestionCount();
   }, []);
 
   return (

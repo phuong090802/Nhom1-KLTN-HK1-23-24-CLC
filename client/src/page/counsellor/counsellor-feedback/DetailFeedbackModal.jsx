@@ -13,6 +13,8 @@ export const DetailFeedbackModal = () => {
     deleteFeedback,
   } = useContext(CounsellorFeedbackContext);
 
+  console.log(selectedFeedback);
+
   return (
     <ModalLayout2
       hidden={hiddenDetailFeedbackModal}
@@ -34,7 +36,7 @@ export const DetailFeedbackModal = () => {
               }}
             />
 
-            <div className="mt-4 flex items-center">
+            {/* <div className="mt-4 flex items-center">
               <img
                 className="size-8 rounded-full mr-2"
                 src={default_avatar}
@@ -44,7 +46,7 @@ export const DetailFeedbackModal = () => {
                 Tác giả:{' '}
                 <span className="font-medium text-gray-800">Nguyễn Văn A</span>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mb-8">

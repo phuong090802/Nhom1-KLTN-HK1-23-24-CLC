@@ -9,6 +9,10 @@ const Store = ({ children }) => {
 
   const [newNoti, setNewNoti] = useState(false);
 
+  const [newMessage, setNewMessage] = useState(false);
+
+  const [selectedConversationId, setSelectedConversationId] = useState(null);
+
   const clearUserData = () => {
     setUser(initUSer);
   };
@@ -19,6 +23,10 @@ const Store = ({ children }) => {
     clearUserData,
     newNoti,
     setNewNoti,
+    newMessage,
+    setNewMessage,
+    selectedConversationId,
+    setSelectedConversationId,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

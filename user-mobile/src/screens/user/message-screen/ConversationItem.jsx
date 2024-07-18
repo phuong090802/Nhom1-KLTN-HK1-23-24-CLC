@@ -17,7 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 export const ConversationItem = ({ data }) => {
   const { width } = useWindowDimensions();
 
-  const { setSelectedConversation } = useContext(MessageScreenContext);
+  const { setSelectedConversationId } = useContext(DataContext);
 
   const { user } = useContext(DataContext);
 
@@ -28,7 +28,7 @@ export const ConversationItem = ({ data }) => {
       style={styles.itemContainer}
       activeOpacity={0.6}
       onPress={() => {
-        setSelectedConversation(data._id);
+        setSelectedConversationId(data._id);
         navigation.navigate("DetailMessage");
       }}
     >
