@@ -81,7 +81,7 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
       select: 'content file.url answeredAt',
       populate: { path: 'user', select: '-_id fullName avatar.url' },
     })
-    .select('title content file createdAt answer');
+    .select('title content file createdAt answer rating');
   // .lean()
   // không sử dụng learn vì method trong được tạo schema
   const queryTransform = new QueryTransform(req.query).applyFilters({
@@ -111,18 +111,16 @@ export const handleGetQuestions = catchAsyncErrors(async (req, res, next) => {
 // Endpoint: /api/user/questions/:id/rating
 // Method: GET
 // Description: Người dùng đánh giá câu trả lời
-export const handleRatingQuestion = catchAsyncErrors(
-  async (req, res, next) => {
-    const question = req.foundQuestion;
-    const { rating } = req.body;
+export const handleRatingQuestion = catchAsyncErrors(async (req, res, next) => {
+  const question = req.foundQuestion;
+  const { rating } = req.body;
 
-    question.rating = rating;
-    await question.save();
+  question.rating = rating;
+  await question.save();
 
-    res.json({
-      success: true,
-      message: 'Đánh giá câu trả lời thành công',
-      code: 2115,
-    });
-  }
-);
+  res.json({
+    success: true,
+    message: 'Đánh giá câu trả lời thành công',
+    code: 2115,
+  });
+});
