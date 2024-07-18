@@ -62,7 +62,7 @@ export const handleChangePassword = catchAsyncErrors(async (req, res, next) => {
 // Description: Xác nhận email
 // Role: All role
 export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
-  const { otp } = req.body;
+  const { otp, email } = req.body;
   const user = req.user;
   if (
     !otp ||
@@ -75,6 +75,7 @@ export const handleVerifyEmail = catchAsyncErrors(async (req, res, next) => {
   }
   user.isEmailVerified = true;
   user.verifyEmail = null;
+  user.email = email;
   await user.save();
   res.json({
     success: true,
