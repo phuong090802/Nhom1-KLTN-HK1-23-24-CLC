@@ -1,10 +1,14 @@
-import { Calendar, Eye } from 'lucide-react';
-import { useContext } from 'react';
-import default_avatar from '../../../assets/image/default_avatar.png';
-import FileComponent from '../../../atom/file-component/FileComponent';
-import ModalLayout2 from '../../../layout/modal-layout-2';
-import { convertDateTimeToDate } from '../../../util/convert.util';
-import { HistoryContext } from './HistoryStore';
+import { Calendar, Eye } from "lucide-react";
+import { useContext, useState } from "react";
+import default_avatar from "../../../assets/image/default_avatar.png";
+import FileComponent from "../../../atom/file-component/FileComponent";
+import ModalLayout2 from "../../../layout/modal-layout-2";
+import { convertDateTimeToDate } from "../../../util/convert.util";
+import { HistoryContext } from "./HistoryStore";
+import { RatingButton } from "./RatingButton";
+import MyButton from "../../../atom/my-button";
+import { ratingQuestionSv } from "../../../service/user/userQuestion.sv";
+import { toast } from "sonner";
 
 export const DetailQuestionModal = () => {
   const {
@@ -13,32 +17,23 @@ export const DetailQuestionModal = () => {
     selectedQuestion,
   } = useContext(HistoryContext);
 
-  //   const [questionDetail, setQuestionDetail] = useState(null);
+  const [rating, setRating] = useState(5);
 
-  //   const getQuestionById = async () => {
-  //     try {
-  //       console.log(selectedQuestion);
-  //       const response = await getQuestionByIdSv(selectedQuestion._id);
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     getQuestionById();
-  //   }, [selectedQuestion]);
-
-  //   useEffect(() => {
-  //     if (selectedQuestion) getQuestionById();
-  //   }, [selectedQuestion]);
+  const ratingQuestion = async () => {
+    try {
+      const response = await ratingQuestionSv(selectedQuestion._id, { rating });
+      toast.success(response?.message || "Đánh giá câu trả lời thành công");
+      console.log(response);
+    } catch (error) {
+      toast.error(error?.message || "Lỗi khi đánh giá câu trả lời");
+    }
+  };
 
   return (
     <ModalLayout2
       hidden={hiddenDetailQuestionModal}
       setHidden={setHiddenDetailQuestionModal}
     >
-      {/* {likeButtonComponent} */}
       <div className="max-w-4xl mx-auto px-6 mb-8 min-w-[40rem]">
         <div className="mb-8">
           <h1 className="text-2xl font-extrabold text-indigo-600">
@@ -50,7 +45,7 @@ export const DetailQuestionModal = () => {
               <p>
                 {selectedQuestion?.createdAt
                   ? convertDateTimeToDate(selectedQuestion.createdAt)
-                  : 'createdAt'}
+                  : "createdAt"}
               </p>
             </div>
             <div className="flex items-center gap-1 text-sm text-black75">
@@ -71,8 +66,8 @@ export const DetailQuestionModal = () => {
             <div className="mt-2">
               {!selectedQuestion?.fileURL ? (
                 <></>
-              ) : selectedQuestion.fileURL.includes('png') ||
-                selectedQuestion.fileURL.includes('jpg') ? (
+              ) : selectedQuestion.fileURL.includes("png") ||
+                selectedQuestion.fileURL.includes("jpg") ? (
                 <img
                   className="size-24"
                   src={selectedQuestion?.fileURL}
@@ -90,7 +85,7 @@ export const DetailQuestionModal = () => {
               />
 
               <p className="text-sm text-gray-500">
-                Tác giả:{' '}
+                Tác giả:{" "}
                 <span className="font-medium text-gray-800">
                   {selectedQuestion?.user?.fullName}
                 </span>
@@ -113,8 +108,8 @@ export const DetailQuestionModal = () => {
             <div className="mt-2">
               {!selectedQuestion?.answer?.fileURL ? (
                 <></>
-              ) : selectedQuestion.answer.fileURL.includes('png') ||
-                selectedQuestion.answer.fileURL.includes('jpg') ? (
+              ) : selectedQuestion.answer.fileURL.includes("png") ||
+                selectedQuestion.answer.fileURL.includes("jpg") ? (
                 <img
                   className="size-24"
                   src={selectedQuestion?.answer.fileURL}
@@ -125,11 +120,26 @@ export const DetailQuestionModal = () => {
               )}
             </div>
             <p className="mt-2 text-sm text-gray-500">
-              Được trả lời bởi:{' '}
+              Được trả lời bởi:{" "}
               <span className="font-medium text-gray-800">
                 {selectedQuestion?.answer?.user?.fullName}
               </span>
             </p>
+          </div>
+        </div>
+        <div className="mb-8 border-2 p-4 rounded-lg">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Đánh giá chất lượng câu trả lời:
+          </h2>
+          <RatingButton value={rating} setValue={setRating} />
+          <div className="mt-2 flex flex-row-reverse">
+            <MyButton
+              className="bg-primary hover:bg-primary/70"
+              size={"md"}
+              onClick={ratingQuestion}
+            >
+              Đánh giá
+            </MyButton>
           </div>
         </div>
       </div>

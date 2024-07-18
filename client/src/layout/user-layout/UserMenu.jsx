@@ -4,8 +4,10 @@ import {
   CircleHelp,
   ClipboardCheck,
   History,
+  icons,
   KeySquare,
   Layers,
+  Layers2,
   LayoutDashboard,
   LogOut,
   MessageCircleQuestion,
@@ -116,6 +118,11 @@ export const UserMenu = () => {
         link: links.admin.news,
         icon: <Newspaper color={colors.primary} />,
       },
+      {
+        title: "Lĩnh vực chung",
+        link: links.admin.fields,
+        icon: <Layers2 color={colors.primary} />,
+      }
     ],
     SUPERVISOR: [],
   };

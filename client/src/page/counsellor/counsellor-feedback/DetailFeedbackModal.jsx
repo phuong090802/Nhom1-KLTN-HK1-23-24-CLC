@@ -60,10 +60,10 @@ export const DetailFeedbackModal = () => {
                 __html: selectedFeedback?.answer?.content,
               }}
             />
-            <p className="mt-2 text-sm text-gray-500">
+            {/* <p className="mt-2 text-sm text-gray-500">
               Được trả lời bởi:{' '}
               <span className="font-medium text-gray-800">Trần Thị B</span>
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="mb-4">

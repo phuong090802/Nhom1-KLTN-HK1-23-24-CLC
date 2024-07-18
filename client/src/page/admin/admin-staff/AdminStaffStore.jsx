@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from 'react';
-import { toast } from 'sonner';
+import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   getUsersSv,
   updateUserStatusSv,
-} from '../../../service/admin/adminUser.sv';
-import { initFilter, initParams, initSort } from './constance';
+} from "../../../service/admin/adminUser.sv";
+import { initFilter, initParams, initSort } from "./constance";
 
 export const AdminStaffContext = createContext({
   params: Object,
@@ -24,6 +24,7 @@ export const AdminStaffContext = createContext({
   setSort: Function,
   hiddenAddStaffModal: Boolean,
   setHiddenAddStaffModal: Function,
+  getUser: Function,
 });
 
 export const AdminStaffStore = ({ children }) => {
@@ -55,11 +56,11 @@ export const AdminStaffStore = ({ children }) => {
     try {
       const response = await updateUserStatusSv(userId, data);
       toast.success(
-        response.message || 'Cập nhật trạng thái người dùng thành công'
+        response.message || "Cập nhật trạng thái người dùng thành công"
       );
       getUser();
     } catch (error) {
-      toast.success(error?.message || 'Xảy ra lỗi khi cập nhật');
+      toast.success(error?.message || "Xảy ra lỗi khi cập nhật");
     }
   };
 
@@ -86,6 +87,7 @@ export const AdminStaffStore = ({ children }) => {
         setSort,
         hiddenAddStaffModal,
         setHiddenAddStaffModal,
+        getUser,
       }}
     >
       {children}

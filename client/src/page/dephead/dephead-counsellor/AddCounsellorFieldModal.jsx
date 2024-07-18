@@ -1,15 +1,15 @@
-import clsx from 'clsx';
-import { CircleCheck } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react';
-import { toast } from 'sonner';
-import MyButton from '../../../atom/my-button';
-import { colors } from '../../../constance';
-import ModalLayout2 from '../../../layout/modal-layout-2/ModalLayout2';
+import clsx from "clsx";
+import { CircleCheck } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
+import { toast } from "sonner";
+import MyButton from "../../../atom/my-button";
+import { colors } from "../../../constance";
+import ModalLayout2 from "../../../layout/modal-layout-2/ModalLayout2";
 import {
   addFieldsForCounSv,
   getFieldToAddForCounSv,
-} from '../../../service/dephead/depheadCounsellor.sv';
-import { DepheadCounsellorContext } from './DepheadCounsellorStore';
+} from "../../../service/dephead/depheadCounsellor.sv";
+import { DepheadCounsellorContext } from "./DepheadCounsellorStore";
 
 export const AddCounsellorFieldModal = () => {
   const {
@@ -47,15 +47,15 @@ export const AddCounsellorFieldModal = () => {
 
   const handleAddCounsellorFields = async () => {
     if (selectedFields.length === 0) {
-      toast.warning('Chưa có lĩnh vực nào được chọn!!!');
+      toast.warning("Chưa có lĩnh vực nào được chọn!!!");
       return;
     }
     try {
       const response = await addFieldsForCounSv(selected, selectedFields);
-      console.log('handleAddCounsellorFields', response);
+      console.log("handleAddCounsellorFields", response);
       if (response?.failedFields?.length === 0) {
         toast.success(
-          response?.message || 'Thêm lĩnh vực cho tư vấn viên thành công'
+          response?.message || "Thêm lĩnh vực cho tư vấn viên thành công"
         );
         setFields((prev) =>
           prev.filter((item) => !selectedFields.includes(item._id))
@@ -63,7 +63,7 @@ export const AddCounsellorFieldModal = () => {
       } else {
         toast.warning(
           `Có lỗi khi xảy ra khi thêm các lĩnh vực: "${response.failedFieldIds?.join(
-            ', '
+            ", "
           )}"`
         );
         setFields((prev) =>
@@ -78,7 +78,7 @@ export const AddCounsellorFieldModal = () => {
       depheadGetCounsellors();
     } catch (error) {
       toast.success(
-        error?.message || 'Lỗi khi thêm lĩnh vực cho tư vấn viên!!'
+        error?.message || "Lỗi khi thêm lĩnh vực cho tư vấn viên!!"
       );
     }
   };
@@ -87,9 +87,14 @@ export const AddCounsellorFieldModal = () => {
     if (selected !== -1) {
       setFields([]);
       setSelectedFields([]);
-      getFieldsToAdd();
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (!hiddenAddCounField) {
+      getFieldsToAdd();
+    }
+  }, [hiddenAddCounField]);
 
   return (
     <ModalLayout2
@@ -100,12 +105,12 @@ export const AddCounsellorFieldModal = () => {
       <h1 className="font-bold text-black50">Danh sách lĩnh vực:</h1>
       <div className="border rounded-lg overflow-hidden">
         <div className="w-96 max-h-96 overflow-y-auto">
-          {fields &&
+          {fields.length === 0 ? <div className="p-6 flex justify-center">Không có lĩnh vực nào!!</div>:fields &&
             fields.map((field) => {
               return (
                 <div
                   className={clsx(
-                    'py-2 hover:bg-primary/20 cursor-pointer duration-300'
+                    "py-2 hover:bg-primary/20 cursor-pointer duration-300"
                   )}
                   key={field._id}
                   onClick={() => itemClick(field._id)}

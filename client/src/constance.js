@@ -49,6 +49,7 @@ const links = {
     department: '/admin/khoa',
     staffs: '/admin/nhan-su',
     news: '/admin/tin-tuc',
+    fields: '/admin/linh-vuc-chung'
   },
   supervisor: { home: '/supervisor' },
 };

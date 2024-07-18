@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
   AdminRoute,
@@ -7,40 +7,41 @@ import {
   ProtectedRoute,
   SupervisorRoute,
   UserRoute,
-} from './routes';
+} from "./routes";
 
-import AppLayout from './layout/app-layout';
+import AppLayout from "./layout/app-layout";
 
-import UserLayout from './layout/user-layout';
-import CounsellorsPage from './page/public/counsellors-page';
-import FaqsPage from './page/public/faqs-page/FaqsPage';
-import ForgotPassword from './page/public/forgot-password';
-import HomePage from './page/public/home-page';
-import Login from './page/public/login';
-import NewsPage from './page/public/news-page';
-import Register from './page/public/register';
+import UserLayout from "./layout/user-layout";
+import CounsellorsPage from "./page/public/counsellors-page";
+import FaqsPage from "./page/public/faqs-page/FaqsPage";
+import ForgotPassword from "./page/public/forgot-password";
+import HomePage from "./page/public/home-page";
+import Login from "./page/public/login";
+import NewsPage from "./page/public/news-page";
+import Register from "./page/public/register";
 
-import AdminDepartment from './page/admin/admin-department';
-import AdminHome from './page/admin/admin-home';
-import AdminNews from './page/admin/admin-news';
-import AdminStaff from './page/admin/admin-staff';
+import AdminDepartment from "./page/admin/admin-department";
+import AdminHome from "./page/admin/admin-home";
+import AdminNews from "./page/admin/admin-news";
+import AdminStaff from "./page/admin/admin-staff";
+import AdminField from "./page/admin/admin-field";
 
-import DepheadAnswer from './page/dephead/dephead-answer';
-import DepheadCounsellor from './page/dephead/dephead-counsellor';
-import DepheadFaq from './page/dephead/dephead-faq';
-import DepheadField from './page/dephead/dephead-field';
-import DepheadHome from './page/dephead/dephead-home';
+import DepheadAnswer from "./page/dephead/dephead-answer";
+import DepheadCounsellor from "./page/dephead/dephead-counsellor";
+import DepheadFaq from "./page/dephead/dephead-faq";
+import DepheadField from "./page/dephead/dephead-field";
+import DepheadHome from "./page/dephead/dephead-home";
 
-import CounsellorFeedback from './page/counsellor/counsellor-feedback';
-import CounsellorHome from './page/counsellor/counsellor-home';
-import CounsellorQuestion from './page/counsellor/counsellor-question';
+import CounsellorFeedback from "./page/counsellor/counsellor-feedback";
+import CounsellorHome from "./page/counsellor/counsellor-home";
+import CounsellorQuestion from "./page/counsellor/counsellor-question";
 
-import History from './page/user/history';
-import PasswordChange from './page/user/password-change';
-import UserProfile from './page/user/user-profile';
-import VerifyAccount from './page/user/verify-account';
+import History from "./page/user/history";
+import PasswordChange from "./page/user/password-change";
+import UserProfile from "./page/user/user-profile";
+import VerifyAccount from "./page/user/verify-account";
 
-import { links } from './constance';
+import { links } from "./constance";
 
 const App = () => {
   return (
@@ -77,6 +78,7 @@ const App = () => {
               <Route path="/admin/khoa" element={<AdminDepartment />} />
               <Route path="/admin/nhan-su" element={<AdminStaff />} />
               <Route path="/admin/tin-tuc" element={<AdminNews />} />
+              <Route path="/admin/linh-vuc-chung" element={<AdminField />} />
             </Route>
 
             <Route element={<SupervisorRoute />}>

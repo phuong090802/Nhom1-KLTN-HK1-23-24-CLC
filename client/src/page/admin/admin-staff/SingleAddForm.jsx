@@ -1,27 +1,31 @@
-import clsx from 'clsx';
-import { UserRound, UserRoundCog } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
-import { toast } from 'sonner';
-import useDepartmentField from '../../../hooks/useDepartmentField';
-import MyForm from '../../../molecule/my-form';
-import { addStaffSv } from '../../../service/admin/adminUser.sv';
-import { formAddStaff } from './constance';
+import clsx from "clsx";
+import { UserRound, UserRoundCog } from "lucide-react";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
+import useDepartmentField from "../../../hooks/useDepartmentField";
+import MyForm from "../../../molecule/my-form";
+import { addStaffSv } from "../../../service/admin/adminUser.sv";
+import { formAddStaff } from "./constance";
+import { AdminStaffContext } from "./AdminStaffStore";
 
 export const SingleAddForm = () => {
-  const [role, setRole] = useState('COUNSELLOR');
+  const [role, setRole] = useState("COUNSELLOR");
 
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 
   const { deps } = useDepartmentField();
 
+  const { getUser } = useContext(AdminStaffContext);
+
   const addStaff = async (data) => {
     try {
       const submitData = { ...data, role, departmentId: selectedDepartment };
       const response = await addStaffSv(submitData);
-      toast.success(response.message || 'Thêm nhân viên thành công');
+      toast.success(response.message || "Thêm nhân viên thành công");
       // setSelectedDepartment(null)
+      getUser();
     } catch (error) {
-      toast.error(error?.message || 'Lỗi xảy ra khi thêm nhân viên');
+      toast.error(error?.message || "Lỗi xảy ra khi thêm nhân viên");
     }
   };
 
@@ -29,10 +33,10 @@ export const SingleAddForm = () => {
     return (
       <div className="w-full border-2 mb-4 rounded-lg border-primary overflow-hidden">
         <button
-          onClick={() => setRole('COUNSELLOR')}
+          onClick={() => setRole("COUNSELLOR")}
           className={clsx(
-            'w-1/2 py-2 duration-300',
-            role === 'COUNSELLOR' && 'bg-primary text-white'
+            "w-1/2 py-2 duration-300",
+            role === "COUNSELLOR" && "bg-primary text-white"
           )}
         >
           <div className="flex justify-center items-start">
@@ -41,10 +45,10 @@ export const SingleAddForm = () => {
           </div>
         </button>
         <button
-          onClick={() => setRole('SUPERVISOR')}
+          onClick={() => setRole("SUPERVISOR")}
           className={clsx(
-            'w-1/2 py-2 duration-300',
-            role === 'SUPERVISOR' && 'bg-primary text-white'
+            "w-1/2 py-2 duration-300",
+            role === "SUPERVISOR" && "bg-primary text-white"
           )}
         >
           <div className="flex justify-center items-start">
@@ -67,7 +71,7 @@ export const SingleAddForm = () => {
           htmlFor="temporaryName"
           className={`absolute text-base mx-4 bg-transparent top-2 cursor-text ${
             selectedDepartment &&
-            '-translate-y-[20px] bg-white scale-90 -translate-x-1'
+            "-translate-y-[20px] bg-white scale-90 -translate-x-1"
           } duration-500`}
         >
           Chọn khoa
@@ -81,7 +85,7 @@ export const SingleAddForm = () => {
           {deps.map((dep) => {
             return (
               <option key={dep.value} value={dep.value}>
-                {dep.key === 'Chọn khoa' ? '' : dep.key}
+                {dep.key === "Chọn khoa" ? "" : dep.key}
               </option>
             );
           })}
@@ -91,16 +95,16 @@ export const SingleAddForm = () => {
   }, [selectedDepartment, deps]);
 
   useEffect(() => {
-    if (role === 'SUPERVISOR') setSelectedDepartment(null);
+    if (role === "SUPERVISOR") setSelectedDepartment(null);
   }, [role]);
 
   return (
     <div className="mt-2">
       {selectRoleButtonComponent}
-      {role === 'COUNSELLOR' && selectDepartmentComponent}
+      {role === "COUNSELLOR" && selectDepartmentComponent}
       <MyForm
         formInitData={formAddStaff}
-        submitTitle={'Thêm'}
+        submitTitle={"Thêm"}
         onSubmit={addStaff}
       />
     </div>
