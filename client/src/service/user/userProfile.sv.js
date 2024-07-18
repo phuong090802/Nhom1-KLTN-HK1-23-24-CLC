@@ -20,6 +20,7 @@ const verifyOtpSv = (data) => {
 };
 
 const requestVerifySv = (data) => {
+  console.log(data);
   return API.post("auth/validate-email", data, {
     headers: authorHeader(),
   });

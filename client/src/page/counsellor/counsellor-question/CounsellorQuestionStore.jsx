@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
-import { toast } from 'sonner';
-import { getQuestionsSv } from '../../../service/counsellor/counsellorQuestion.sv';
-import { initParams } from './constance';
+import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
+import { getQuestionsSv } from "../../../service/counsellor/counsellorQuestion.sv";
+import { initParams } from "./constance";
 
 export const CounsellorQuestionContext = createContext({
   questions: Array,
@@ -23,6 +23,8 @@ export const CounsellorQuestionContext = createContext({
   getQuestions: Function,
   hiddenDetailQuestionModal: Boolean,
   setHiddenDetailQuestionModal: Function,
+  hiddenAssignModal: Boolean,
+  setHiddenAssignModal: Function,
 });
 
 export const CounsellorQuestionStore = ({ children }) => {
@@ -38,6 +40,8 @@ export const CounsellorQuestionStore = ({ children }) => {
 
   const [hiddenForwardModal, setHiddenForwardModal] = useState(true);
 
+  const [hiddenAssignModal, setHiddenAssignModal] = useState(true);
+
   const [hiddenSortFilter, setHiddenSortFilter] = useState(true);
 
   const [selectedQuestion, setSelectedQuestion] = useState({});
@@ -51,7 +55,7 @@ export const CounsellorQuestionStore = ({ children }) => {
       setQuestions(response.questions);
       setPages(response.pages);
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi lấy danh sách câu hỏi');
+      toast.error(error?.message || "Lỗi khi lấy danh sách câu hỏi");
     }
   };
 
@@ -81,6 +85,8 @@ export const CounsellorQuestionStore = ({ children }) => {
         getQuestions,
         hiddenDetailQuestionModal,
         setHiddenDetailQuestionModal,
+        hiddenAssignModal,
+        setHiddenAssignModal,
       }}
     >
       {children}

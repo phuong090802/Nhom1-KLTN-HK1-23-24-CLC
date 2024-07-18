@@ -1,14 +1,15 @@
-import clsx from 'clsx';
-import { useContext } from 'react';
-import Pagination from '../../../molecule/pagination';
-import StaffTitleBar from '../../../molecule/staff-title-bar';
-import SortFilterModal from '../../../organism/sort-filter-modal';
-import { DataContext } from '../../../store';
-import { AnswerQuestionModal } from './AnswerQuestionModal';
-import { initFilter, initSort } from './constance';
-import { CounsellorQuestionContext } from './CounsellorQuestionStore';
-import { CounsellorQuestionTable } from './CounsellorQuestionTable';
-import { DetailQuestionModal } from './DetailQuestionModal';
+import clsx from "clsx";
+import { useContext } from "react";
+import Pagination from "../../../molecule/pagination";
+import StaffTitleBar from "../../../molecule/staff-title-bar";
+import SortFilterModal from "../../../organism/sort-filter-modal";
+import { DataContext } from "../../../store";
+import { AnswerQuestionModal } from "./AnswerQuestionModal";
+import { initFilter, initSort } from "./constance";
+import { CounsellorQuestionContext } from "./CounsellorQuestionStore";
+import { CounsellorQuestionTable } from "./CounsellorQuestionTable";
+import { DetailQuestionModal } from "./DetailQuestionModal";
+import { AssignModal } from "./AssignModal";
 export const CounsellorQuestionContent = () => {
   const {
     questions,
@@ -26,7 +27,7 @@ export const CounsellorQuestionContent = () => {
       <DetailQuestionModal />
       <SortFilterModal
         hidden={hiddenSortFilter}
-        modalTitle={'Lọc & sắp xếp'}
+        modalTitle={"Lọc & sắp xếp"}
         onClose={() => setHiddenSortFilter(true)}
         filters={initFilter}
         sorts={initSort}
@@ -34,15 +35,15 @@ export const CounsellorQuestionContent = () => {
       />
       <AnswerQuestionModal />
       <StaffTitleBar
-        title={'Danh sách câu hỏi chờ'}
+        title={"Danh sách câu hỏi chờ"}
         onSearchFilter={() => setHiddenSortFilter(false)}
       />
       <div className="mt-2 grid gap-2">
         {questions?.length === 0 ? (
           <div
             className={clsx(
-              'flex w-full justify-center border py-20 rounded-xl shadow-lg shadow-black75 text-lg font-bold',
-              darkMode ? 'bg-black75 text-white' : 'bg-white'
+              "flex w-full justify-center border py-20 rounded-xl shadow-lg shadow-black75 text-lg font-bold",
+              darkMode ? "bg-black75 text-white" : "bg-white"
             )}
           >
             Không có dữ liệu!!

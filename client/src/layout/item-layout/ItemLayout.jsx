@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 import {
   CircleChevronDown,
   CircleChevronUp,
@@ -7,12 +7,12 @@ import {
   LockKeyholeOpen,
   Pencil,
   Trash2,
-} from 'lucide-react';
-import { useContext, useMemo } from 'react';
-import default_avatar from '../../assets/image/default_avatar.png';
-import MyButton from '../../atom/my-button';
-import { darkModeCss } from '../../constance';
-import { DataContext } from '../../store';
+} from "lucide-react";
+import { useContext, useMemo } from "react";
+import default_avatar from "../../assets/image/default_avatar.png";
+import MyButton from "../../atom/my-button";
+import { darkModeCss } from "../../constance";
+import { DataContext } from "../../store";
 
 const ItemLayout = ({
   children,
@@ -31,8 +31,8 @@ const ItemLayout = ({
   const { darkMode } = useContext(DataContext);
   const inforButton = useMemo(() => {
     const props = {
-      className: 'bg-primary hover:bg-primary/75 duration-500',
-      size: 'icon',
+      className: "bg-primary hover:bg-primary/75 duration-500",
+      size: "icon",
     };
     return (
       <MyButton {...props} onClick={onInfor}>
@@ -42,8 +42,8 @@ const ItemLayout = ({
   }, [onInfor]);
   const editButton = useMemo(() => {
     const props = {
-      className: 'bg-warning hover:bg-warning/75 duration-500',
-      size: 'icon',
+      className: "bg-warning hover:bg-warning/75 duration-500",
+      size: "icon",
     };
     return (
       <MyButton {...props} onClick={onEdit}>
@@ -53,8 +53,8 @@ const ItemLayout = ({
   }, [onEdit]);
   const deleteButton = useMemo(() => {
     const props = {
-      className: 'bg-error hover:bg-error/75 duration-500',
-      size: 'icon',
+      className: "bg-error hover:bg-error/75 duration-500",
+      size: "icon",
     };
     return (
       <MyButton {...props} onClick={onDelete}>
@@ -65,9 +65,9 @@ const ItemLayout = ({
   const statusButton = useMemo(() => {
     const props = {
       className: status
-        ? 'bg-success hover:bg-success/75 duration-500'
-        : 'bg-error hover:bg-error/75 duration-500',
-      size: 'icon',
+        ? "bg-success hover:bg-success/75 duration-500"
+        : "bg-error hover:bg-error/75 duration-500",
+      size: "icon",
     };
     return (
       <MyButton {...props} onClick={onStatus}>
@@ -99,8 +99,8 @@ const ItemLayout = ({
   return (
     <div
       className={clsx(
-        'px-4 shadow-black50 shadow-lg py-4 rounded-2xl',
-        darkMode ? darkModeCss : 'bg-white'
+        "px-4 shadow-black50 shadow-lg py-4 rounded-2xl",
+        darkMode ? darkModeCss : "bg-white"
       )}
     >
       <div className=" flex justify-between">
@@ -115,7 +115,7 @@ const ItemLayout = ({
           <div>
             <h1
               className={clsx(
-                'font-bold text-black75 text-lg',
+                "font-bold text-black75 text-lg",
                 darkMode && darkModeCss
               )}
             >
@@ -123,9 +123,9 @@ const ItemLayout = ({
             </h1>
             {infor && (
               <div className="w-full flex flex-row gap-2">
-                {infor.map((inf) => (
+                {infor.map((inf, index) => (
                   <p
-                    key={inf}
+                    key={inf || index}
                     className="bg-light_gray/75 text-xs px-1 rounded-md text-black75"
                   >
                     {inf}
@@ -146,7 +146,7 @@ const ItemLayout = ({
       </div>
       <div
         className={`${
-          isSelected ? `max-h-[400px]` : 'max-h-0'
+          isSelected ? `max-h-[400px]` : "max-h-0"
         } overflow-hidden duration-700 `}
       >
         <span className="block border mt-2"></span>
