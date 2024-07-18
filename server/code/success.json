@@ -594,6 +594,11 @@
       "code": "2115",
       "message": "Đánh giá câu trả lời thành công",
       "detail": ""
+    },
+    {
+      "code": "2116",
+      "message": "",
+      "detail": "Lấy danh sách các câu hỏi đã trả lời và đã được đánh giá (lọc, tìm kiếm, phân trang, sắp xếp)"
     }
   ]
 }
