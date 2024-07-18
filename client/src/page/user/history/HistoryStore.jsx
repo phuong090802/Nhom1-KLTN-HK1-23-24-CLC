@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from 'react';
-import { toast } from 'sonner';
+import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   getLikeHistorySv,
-  getQuestionHistorySv
-} from '../../../service/user/userQuestion.sv';
-import { initParams } from './constance';
+  getQuestionHistorySv,
+} from "../../../service/user/userQuestion.sv";
+import { initParams } from "./constance";
 
 export const HistoryContext = createContext({
   historyQuestions: Array,
@@ -21,6 +21,8 @@ export const HistoryContext = createContext({
   setSelectedQuestion: Function,
   hiddenDetailQuestionModal: Object,
   setHiddenDetailQuestionModal: Function,
+  showingContent: Array,
+  setShowingContent: Function,
 });
 
 export const HistoryStore = ({ children }) => {
@@ -41,24 +43,26 @@ export const HistoryStore = ({ children }) => {
   const [hiddenDetailQuestionModal, setHiddenDetailQuestionModal] =
     useState(true);
 
+  const [showingContent, setShowingContent] = useState("questionHistory");
+
   const getQuestionHistory = async () => {
     try {
       const response = await getQuestionHistorySv(historyParams);
       setHistoryQuestion(response.questions);
       setHistoryPages(response?.pages || 0);
     } catch (error) {
-      toast.error(error?.message || 'Lỗi khi lấy lịch sử câu hỏi');
+      toast.error(error?.message || "Lỗi khi lấy lịch sử câu hỏi");
     }
   };
 
   const getLikeHistory = async () => {
     try {
       const response = await getLikeHistorySv(likedParams);
-      console.log('liked', response);
+      console.log("liked", response);
       setLikedQuestion(response?.questions);
       setLikePages(response?.pages || 0);
     } catch (error) {
-      toast(error?.message || 'Lỗi lấy danh sách câu hỏi yêu thích');
+      toast(error?.message || "Lỗi lấy danh sách câu hỏi yêu thích");
     }
   };
 
@@ -87,6 +91,8 @@ export const HistoryStore = ({ children }) => {
         setSelectedQuestion,
         hiddenDetailQuestionModal,
         setHiddenDetailQuestionModal,
+        showingContent,
+        setShowingContent,
       }}
     >
       {children}

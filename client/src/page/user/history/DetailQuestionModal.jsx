@@ -1,5 +1,5 @@
 import { Calendar, Eye } from "lucide-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import default_avatar from "../../../assets/image/default_avatar.png";
 import FileComponent from "../../../atom/file-component/FileComponent";
 import ModalLayout2 from "../../../layout/modal-layout-2";
@@ -15,9 +15,10 @@ export const DetailQuestionModal = () => {
     setHiddenDetailQuestionModal,
     hiddenDetailQuestionModal,
     selectedQuestion,
+    showingContent,
   } = useContext(HistoryContext);
 
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState(selectedQuestion?.rating || 5);
 
   const ratingQuestion = async () => {
     try {
@@ -28,6 +29,11 @@ export const DetailQuestionModal = () => {
       toast.error(error?.message || "Lỗi khi đánh giá câu trả lời");
     }
   };
+
+  useEffect(() => {
+    if (!selectedQuestion?.rating) return;
+    setRating(selectedQuestion.rating);
+  }, [selectedQuestion]);
 
   return (
     <ModalLayout2
@@ -127,21 +133,31 @@ export const DetailQuestionModal = () => {
             </p>
           </div>
         </div>
-        <div className="mb-8 border-2 p-4 rounded-lg">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            Đánh giá chất lượng câu trả lời:
-          </h2>
-          <RatingButton value={rating} setValue={setRating} />
-          <div className="mt-2 flex flex-row-reverse">
-            <MyButton
-              className="bg-primary hover:bg-primary/70"
-              size={"md"}
-              onClick={ratingQuestion}
-            >
-              Đánh giá
-            </MyButton>
+        {showingContent === "questionHistory" && (
+          <div className="mb-8 border-2 p-4 rounded-lg">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              Đánh giá chất lượng câu trả lời:
+            </h2>
+            <RatingButton
+              value={rating || 5}
+              setValue={setRating}
+              disabled={selectedQuestion?.rating !== null}
+            />
+            {selectedQuestion?.rating !== null ? (
+              <></>
+            ) : (
+              <div className="mt-2 flex flex-row-reverse">
+                <MyButton
+                  className="bg-primary hover:bg-primary/70"
+                  size={"md"}
+                  onClick={ratingQuestion}
+                >
+                  Đánh giá
+                </MyButton>
+              </div>
+            )}
           </div>
-        </div>
+        )}
       </div>
     </ModalLayout2>
   );

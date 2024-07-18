@@ -13,11 +13,12 @@ export const QuestionsHistoryTable = () => {
     setHiddenDetailQuestionModal,
   } = useContext(HistoryContext);
 
-  const onDetail = (questionId) => {
-    // console.log("questionId", questionId);
-    setSelectedQuestion(questionId);
+  const onDetail = (question) => {
+    // console.log("question", question);
+    setSelectedQuestion(question);
     setHiddenDetailQuestionModal(false);
   };
+
 
   return (
     <>
