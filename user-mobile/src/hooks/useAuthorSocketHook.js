@@ -61,11 +61,13 @@ export const useAuthorSocketHook = () => {
   }, [authorSocket]);
 
   const createQuestion = async (data) => {
+    console.log("create Question");
     if (!authorSocket) {
       return;
     }
     try {
       const response = await authorSocket.emitWithAck('question:create', data);
+      console.log(response);
       Alert.alert('Đặt câu hỏi thành công');
     } catch (error) {
       console.log('createQuestion', error);

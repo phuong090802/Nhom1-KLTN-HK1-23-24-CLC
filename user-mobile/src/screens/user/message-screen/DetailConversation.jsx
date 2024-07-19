@@ -25,8 +25,12 @@ import { createRef } from "react";
 export const DetailConversation = () => {
   const [messages, setMessages] = useState([]);
 
-  const { selectedConversationId, setSelectedConversationId } =
-    useContext(DataContext);
+  const {
+    selectedConversationId,
+    setSelectedConversationId,
+
+    selectedConversation,
+  } = useContext(DataContext);
 
   const [params, setParams] = useState(initMessageParams);
 
@@ -41,13 +45,11 @@ export const DetailConversation = () => {
   const _editor = createRef();
 
   const sendMessage = async () => {
-    console.log(messageContent);
     if (messageContent === "" || !connected) return;
     const response = await authorSocket.emitWithAck("message:create", {
       conversationId: selectedConversationId,
       messageContent: messageContent,
     });
-    console.log(response);
     if (response.success) {
       _editor.current.setContents([{ insert: "\n" }]);
       setMessages((prev) => [
@@ -118,8 +120,17 @@ export const DetailConversation = () => {
                 size={32}
               />
             </TouchableOpacity>
-            <Image source={user_avatar} style={styles.avatar} />
-            <Text style={styles.title}>Trần Nhật Hào</Text>
+            <Image
+              source={
+                selectedConversation?.otherUser?.avatar !== null
+                  ? { uri: selectedConversation?.otherUser?.avatar !== null }
+                  : user_avatar
+              }
+              style={styles.avatar}
+            />
+            <Text style={styles.title}>
+              {selectedConversation.otherUser.fullName}
+            </Text>
           </View>
           <MyIcon
             iconPackage="Ionicons"

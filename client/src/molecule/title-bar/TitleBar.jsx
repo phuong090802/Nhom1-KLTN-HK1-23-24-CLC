@@ -14,7 +14,7 @@ const TitleBar = ({ title, sortFilterData, setParams }) => {
         darkMode ? darkModeCss : 'bg-white'
       )}
     >
-      <p className="text-lg font-bold ">{title || 'Title'}</p>
+      <p className="text-lg font-bold text-black75">{title || 'Title'}</p>
       <div className="inline-flex items-center gap-2">
         {sortFilterData && (
           <SortFilter

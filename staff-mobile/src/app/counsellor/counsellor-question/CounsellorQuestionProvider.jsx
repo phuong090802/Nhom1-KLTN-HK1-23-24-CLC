@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from 'react';
-import { initParams } from './constance';
-import { counsellorGetQUestionsSv } from '../../../service/cousellor/counsellorQuestion';
+import { createContext, useEffect, useState } from "react";
+import { initParams } from "./constance";
+import { counsellorGetQUestionsSv } from "../../../service/cousellor/counsellorQuestion";
 
 export const CounsellorQuestionContext = createContext({
   loading: false,
@@ -19,6 +19,7 @@ export const CounsellorQuestionContext = createContext({
   setShowAnswerModal: (isShowAnswerModal) => {},
   showForwardModal: false,
   setShowForwardModal: (isShowForwardModal) => {},
+  getQuestions: () => {},
 });
 
 export const CounsellorQuestionProvider = ({ children }) => {
@@ -42,7 +43,7 @@ export const CounsellorQuestionProvider = ({ children }) => {
       setQuestion(response?.questions);
       setPages(response?.pages);
     } catch (error) {
-      console.log('getQuestions', error);
+      console.log("getQuestions", error);
     }
     setLoading(false);
   };
@@ -68,6 +69,7 @@ export const CounsellorQuestionProvider = ({ children }) => {
     setShowAnswerModal,
     showForwardModal,
     setShowForwardModal,
+    getQuestions,
   };
 
   return (
