@@ -44,7 +44,6 @@ export const DetailConversation = () => {
 
   const _editor = createRef();
 
-
   const sendMessage = async () => {
     if (messageContent === "" || !connected) return;
     const response = await authorSocket.emitWithAck("message:create", {
