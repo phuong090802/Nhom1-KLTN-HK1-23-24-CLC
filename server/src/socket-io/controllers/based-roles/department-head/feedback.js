@@ -1,4 +1,5 @@
 import Feedback from '../../../../models/feedback.js';
+import Notification from '../../../../models/notification.js';
 import Question from '../../../../models/question.js';
 import sendNotification from '../../../../util/send-notification.js';
 import catchAsyncErrors from '../../../middlewares/catch-async-errors.js';
@@ -32,31 +33,26 @@ export const handleCreateFeedback = catchAsyncErrors(
     question.status = 'unanswered';
     question.answer = null;
     await question.save();
-    const savedFeedback = await Feedback.create({ content, answer, question });
+    await Feedback.create({ content, answer, question });
     callback({
       success: true,
       message: 'Gửi phản hồi thành công',
       code: 2055,
     });
-    const feedback = await Feedback.findById(savedFeedback._id)
-      .populate({
-        path: 'answer',
-        select: '-_id content answeredAt',
-      })
-      .populate({
-        path: 'question',
-        select: '-_id title content',
-      })
-      .select('content answer question');
-
+    const lastNotification = await Notification.create({
+      recipient: answer.user._id,
+      content: 'Câu trả lời của bạn đã được từ chối bởi trưởng nhóm',
+    });
     const response = {
       success: true,
-      latestFeedback: feedback,
-      code: 2056,
+      lastNotification,
+      code: 2058,
+      // code: 2056,
     };
     // handle emit feedback
     const receiverId = answer.user._id.toString();
-    io.of('/auth').emit(`${receiverId}:feedback:read`, response);
+    console.log('abc receiverId', receiverId);
+    io.of('/auth').emit(`${receiverId}:notification:read`, response);
     await sendNotification(receiverId, {
       // sound: 'default',
       title: 'Phản hồi',
