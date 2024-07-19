@@ -84,7 +84,7 @@ router
     // question belong department
     handleCheckQuestionBelongToDepartment,
     // counsellor have field of question
-    handleCheckCounsellorIncludesFieldOfQuestion,
+    // handleCheckCounsellorIncludesFieldOfQuestion,
     // validate new department
     handleValidateDepartmentId('body', 'departmentId'),
     // status of new department
